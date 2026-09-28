@@ -2,8 +2,9 @@
 import { MetadataRoute } from 'next'
 import { howToArticles } from '@/lib/how-to';
 import { allCountries } from '@/lib/countries';
+import { SITE_URL } from '@/lib/site-config';
 
-const baseUrl = process.env.SITE_URL || 'https://www.iptvprovider.me';
+const baseUrl = process.env.SITE_URL || SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   
@@ -33,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/checkout`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/locations`,

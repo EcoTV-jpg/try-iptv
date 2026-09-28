@@ -2,13 +2,13 @@
 import { ImageResponse } from 'next/og'
 import { getSafeArticleData } from '@/lib/how-to';
 
-export const runtime = 'edge'
 export const alt = 'IPTV Setup Guide'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default async function Image({ params }: { params: { device: string } }) {
-  const post = getSafeArticleData(params.device)
+export default async function Image({ params }: { params: Promise<{ device: string }> }) {
+  const { device } = await params;
+  const post = getSafeArticleData(device);
   
   return new ImageResponse(
     (
@@ -45,7 +45,7 @@ export default async function Image({ params }: { params: { device: string } }) 
             backgroundClip: 'text',
             color: 'transparent'
           }}>
-            IPTV Provider
+            TryIPTV
           </span>
         </div>
         <p
@@ -60,7 +60,7 @@ export default async function Image({ params }: { params: { device: string } }) 
           {post?.title}
         </p>
         <p style={{ fontSize: 24, color: '#A0A0A0', marginTop: '20px' }}>
-          The world's most reliable streaming service.
+          The world&apos;s most reliable streaming service.
         </p>
       </div>
     ),

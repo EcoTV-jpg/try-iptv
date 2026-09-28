@@ -2,8 +2,6 @@
 import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 
-export const runtime = 'edge';
-
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   
@@ -11,7 +9,7 @@ export async function GET(req: NextRequest) {
   const hasTitle = searchParams.has('title');
   const title = hasTitle
     ? searchParams.get('title')?.slice(0, 100)
-    : 'IPTV Provider';
+    : 'TryIPTV';
 
   return new ImageResponse(
     (
@@ -48,7 +46,7 @@ export async function GET(req: NextRequest) {
             backgroundClip: 'text',
             color: 'transparent'
           }}>
-            IPTV Provider
+            TryIPTV
           </span>
         </div>
         <p
@@ -63,7 +61,7 @@ export async function GET(req: NextRequest) {
           {title}
         </p>
         <p style={{ fontSize: 24, color: '#A0A0A0', marginTop: '20px' }}>
-          The world's most reliable streaming service.
+          The world&apos;s most reliable streaming service.
         </p>
       </div>
     ),

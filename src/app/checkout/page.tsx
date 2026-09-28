@@ -16,8 +16,8 @@ import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
     return generatePageMetadata({
-        title: "Secure Checkout | IPTV Provider",
-        description: "Complete your IPTV Provider subscription securely. Enter your payment details to get instant access to thousands of channels.",
+        title: "Secure Checkout",
+        description: "Complete your TryIPTV subscription securely. Enter your payment details to get instant access to thousands of channels.",
         canonical: "/checkout",
     });
 }

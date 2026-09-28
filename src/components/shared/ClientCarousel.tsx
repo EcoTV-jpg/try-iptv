@@ -44,7 +44,7 @@ export function ClientCarousel({
           >
             <main className="group relative overflow-hidden rounded-xl">
               <Image
-                alt={`Poster for ${item.title}, a popular movie available on IPTV Provider`}
+                alt={`Poster for ${item.title}, a popular movie available on TryIPTV`}
                 loading="lazy"
                 width={200}
                 height={300}

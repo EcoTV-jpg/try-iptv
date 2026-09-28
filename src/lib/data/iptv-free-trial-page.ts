@@ -3,6 +3,7 @@ import { unstable_cache as cache } from 'next/cache';
 import { generateSemanticContent, type SemanticContent as SemanticContentType } from "@/lib/vector-seo";
 import { generateBreadcrumbSchema, generateFAQPageSchema, generateServiceSchema } from '@/lib/schema';
 import type { BreadcrumbList, FAQPage, Service } from 'schema-dts';
+import { siteConfig } from '@/lib/site-config';
 
 const trialFaqs = [
     {
@@ -29,7 +30,7 @@ const trialFaqs = [
 
 export const getIptvFreeTrialPageData = cache(
   async () => {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.iptvprovider.me';
+    const baseUrl = siteConfig.url;
     const pageUrl = `${baseUrl}/iptv-free-trial`;
 
     const semanticContentPromise: Promise<SemanticContentType> = generateSemanticContent("IPTV Free Trial");
@@ -43,7 +44,7 @@ export const getIptvFreeTrialPageData = cache(
 
     const serviceSchemaPromise: Promise<Service> = Promise.resolve(generateServiceSchema({
         serviceType: "Free IPTV Trial",
-        providerName: "IPTV Provider",
+        providerName: "TryIPTV",
         name: "24-Hour IPTV Free Trial",
         description: "Get a free 24-hour trial of our premium IPTV service. Access over 20,000 channels, movies, and sports with no credit card required. Instant activation.",
         areaServed: { type: "Country", name: "Worldwide" },

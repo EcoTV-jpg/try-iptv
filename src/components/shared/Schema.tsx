@@ -1,12 +1,11 @@
 
-import type { Thing, WithContext } from 'schema-dts';
-
-interface SchemaProps<T extends Thing> {
-  schema: WithContext<T>;
+interface SchemaProps {
+  schema: any;
   id: string;
 }
 
-export function Schema<T extends Thing>({ schema, id }: SchemaProps<T>) {
+export function Schema({ schema, id }: SchemaProps) {
+  if (!schema) return null;
   return (
     <script
       id={`schema-${id}`}

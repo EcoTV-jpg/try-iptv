@@ -112,7 +112,7 @@ export default async function IPTVSubscription() {
               <div className="rounded-xl bg-primary/10 p-8 text-center md:p-12">
                   <h2 className="font-headline text-3xl font-bold">7-Day Money-Back Guarantee</h2>
                   <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-                      Try our IPTV subscription completely risk-free. If you're not 100% satisfied within the first 7 days, contact our support team for a full refund — no questions asked. We're confident you'll love the service.
+                      Try our IPTV subscription completely risk-free. If you&apos;re not 100% satisfied within the first 7 days, contact our support team for a full refund — no questions asked. We&apos;re confident you&apos;ll love the service.
                   </p>
               </div>
           </Container>

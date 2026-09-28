@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
-  title: "IPTV Subscription Plans | IPTV Provider",
+  title: "IPTV Subscription Plans",
   description: "Explore our IPTV subscription plans. Choose the best package for your needs and enjoy thousands of channels and movies.",
   alternates: {
     canonical: "/pricing",

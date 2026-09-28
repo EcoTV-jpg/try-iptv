@@ -1,8 +1,8 @@
 # llms.txt - AI-readable site summary
-name: IPTV Provider
+name: TryIPTV
 description: Buy IPTV from the #1 rated provider! Get 24,000+ live channels, HD/4K streaming, VOD movies & sports. Affordable IPTV subscription for USA, UK & worldwide. 24/7 support.
-url: https://www.iptvprovider.me
-contact: support@iptvprovider.me
+url: https://www.tryiptv.com
+contact: support@tryiptv.com
 
 ## Key Pages
 - /pricing - IPTV subscription plans and pricing

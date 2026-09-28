@@ -17,8 +17,8 @@ import { generateMetadata as generatePageMetadata } from '@/lib/site-config';
 
 export function generateMetadata(): Metadata {
     return generatePageMetadata({
-        title: "Contact Us | IPTV Provider",
-        description: "Get in touch with our team. Whether you have a question about our IPTV Provider or need support, we're here to help.",
+        title: "Contact Us",
+        description: "Get in touch with our team. Whether you have a question about TryIPTV or need support, we're here to help.",
         canonical: "/contact",
     });
 }
@@ -55,7 +55,7 @@ export default async function ContactPage() {
                             <CardHeader>
                                 <CardTitle>Contact Us</CardTitle>
                                 <CardDescription>
-                                    Have a question or need support? Fill out the form below and we'll get back to you shortly.
+                                    Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>

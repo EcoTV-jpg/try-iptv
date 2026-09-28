@@ -3,11 +3,12 @@ import { unstable_cache as cache } from 'next/cache';
 import { generateSemanticContent, type SemanticContent as SemanticContentType } from "@/lib/vector-seo";
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import type { BreadcrumbList } from 'schema-dts';
+import { siteConfig } from '@/lib/site-config';
 
 // This function fetches and processes all data required for the checkout page in a single, cached operation.
 export const getCheckoutPageData = cache(
   async () => {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.iptvprovider.me';
+    const baseUrl = siteConfig.url;
 
     // Define all data fetching and processing promises
     const semanticContentPromise: Promise<SemanticContentType> = generateSemanticContent("IPTV Subscription Checkout");

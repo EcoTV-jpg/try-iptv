@@ -10,8 +10,8 @@ import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
     return generatePageMetadata({
-        title: "Frequently Asked Questions | IPTV Provider",
-        description: "Have questions about our IPTV Provider? Find answers to common questions about free trials, device compatibility, buffering, activation, and our refund policy.",
+        title: "Frequently Asked Questions",
+        description: "Have questions about TryIPTV? Find answers to common questions about free trials, device compatibility, buffering, activation, and our refund policy.",
         canonical: "/faq",
     });
 }

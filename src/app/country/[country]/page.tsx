@@ -16,11 +16,12 @@ import { getCountryById } from "@/lib/countries";
 
 
 type Props = {
-  params: { country: string };
+  params: Promise<{ country: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const country = getCountryById(params.country);
+  const { country: countryParam } = await params;
+  const country = getCountryById(countryParam);
 
   if (!country) {
     notFound();
@@ -32,11 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title,
     description,
-    canonical: `/country/${params.country}`,
+    canonical: `/country/${countryParam}`,
   });
 }
 
-export default async function CountryPage({ params }: { params: { country: string }}) {
+export default async function CountryPage({ params }: Props) {
+  const { country: countryParam } = await params;
   const {
     country,
     pageFaqs,
@@ -44,7 +46,7 @@ export default async function CountryPage({ params }: { params: { country: strin
     breadcrumbSchema,
     serviceSchema,
     faqSchema
-  } = await getCountryPageData(params.country);
+  } = await getCountryPageData(countryParam);
 
   const { name, code } = country;
 
@@ -103,7 +105,7 @@ export default async function CountryPage({ params }: { params: { country: strin
                 </div>
                 <div className="rounded-lg bg-muted/30 p-6 dark:bg-card/50">
                     <h3 className="mb-2 flex items-center gap-2 font-headline text-xl"><Zap size={20} className="text-primary"/> Instant Activation</h3>
-                    <p className="text-muted-foreground">Your IPTV Provider is activated immediately after payment. Start watching in {name} within minutes.</p>
+                    <p className="text-muted-foreground">Your TryIPTV subscription is activated immediately after payment. Start watching in {name} within minutes.</p>
                 </div>
                 <div className="rounded-lg bg-muted/30 p-6 dark:bg-card/50">
                     <h3 className="mb-2 flex items-center gap-2 font-headline text-xl"><Check size={20} className="text-primary"/> HD/4K Quality</h3>

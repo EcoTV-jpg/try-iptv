@@ -10,8 +10,8 @@ import { Schema } from '@/components/shared/Schema';
 import { generateMetadata as generatePageMetadata } from '@/lib/site-config';
 
 export function generateMetadata(): Metadata {
-    const title = "IPTV Provider Service Locations | Available Worldwide";
-    const description = "Our IPTV Provider is available in over 100 countries worldwide. Find your country and get the best IPTV streaming service for your region.";
+    const title = "Service Locations | Available Worldwide";
+    const description = "TryIPTV is available in over 100 countries worldwide. Find your country and get the best IPTV streaming service for your region.";
     
     return generatePageMetadata({
         title,
@@ -49,10 +49,10 @@ export default async function LocationsPage() {
                     </nav>
                     <div className="text-center">
                         <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">
-                            IPTV Provider Service Locations
+                            TryIPTV Service Locations
                         </h1>
                         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                            We offer our premium IPTV Provider in over 100 countries. Find your country below to get started with the best streaming service in your region.
+                            We offer our premium TryIPTV service in over 100 countries. Find your country below to get started with the best streaming service in your region.
                         </p>
                     </div>
 

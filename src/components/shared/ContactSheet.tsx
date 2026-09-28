@@ -1,8 +1,7 @@
 
 "use client";
 
-import { useEffect } from "react";
-import { useFormState } from "react-dom";
+import { useEffect, useState, useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,8 +18,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/actions";
-import { useState } from "react";
-
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -35,7 +32,7 @@ export function ContactSheet() {
   const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const initialState = { message: null, errors: null };
-  const [state, dispatch] = useFormState(submitContactForm, initialState);
+  const [state, dispatch] = useActionState(submitContactForm, initialState);
 
   useEffect(() => {
     if (state.message && !state.errors) {
@@ -43,7 +40,8 @@ export function ContactSheet() {
         title: "Success!",
         description: state.message,
       });
-      setIsOpen(false);
+      const timer = setTimeout(() => setIsOpen(false), 0);
+      return () => clearTimeout(timer);
     } else if (state.message && state.errors) {
       toast({
         variant: "destructive",
@@ -67,7 +65,7 @@ export function ContactSheet() {
         <SheetHeader>
           <SheetTitle>Contact Us</SheetTitle>
           <SheetDescription>
-            Have a question or need support? Fill out the form below and we'll get back to you shortly.
+            Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
           </SheetDescription>
         </SheetHeader>
         <form action={dispatch} className="mt-8 space-y-4">

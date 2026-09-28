@@ -83,7 +83,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${siteConfig.name} — IPTV Service in USA, UK & Worldwide`,
     description: siteConfig.description,
-    creator: '@iptvprovider',
     images: [siteConfig.ogImage],
   },
   robots: {

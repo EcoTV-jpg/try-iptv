@@ -3,7 +3,7 @@
 
 import { memo, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { animate } from "motion";
+import { animate } from "framer-motion";
 
 interface GlowingEffectProps {
   blur?: number;
@@ -87,15 +87,17 @@ const GlowingEffect = memo(
           const newAngle = currentAngle + angleDiff;
 
           animate(
-            (progress) => {
-              element.style.setProperty(
-                "--start",
-                String(currentAngle + angleDiff * progress)
-              );
-            },
+            0,
+            1,
             {
               duration: movementDuration,
               ease: [0.16, 1, 0.3, 1],
+              onUpdate: (progress: number) => {
+                element.style.setProperty(
+                  "--start",
+                  String(currentAngle + angleDiff * progress)
+                );
+              },
             }
           );
         });

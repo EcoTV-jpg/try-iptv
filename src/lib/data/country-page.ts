@@ -5,6 +5,7 @@ import { generateSemanticContent, type SemanticContent as SemanticContentType } 
 import { getCountryById } from "@/lib/countries";
 import { generateBreadcrumbSchema, generateServiceSchema, generateFAQPageSchema } from '@/lib/schema';
 import type { BreadcrumbList, Service, FAQPage } from 'schema-dts';
+import { siteConfig } from '@/lib/site-config';
 
 const getPageFaqs = (name: string) => [
     {
@@ -28,7 +29,7 @@ const getPageFaqs = (name: string) => [
 // This function fetches and processes all data required for a specific country page in a single, cached operation.
 export const getCountryPageData = cache(
   async (countryId: string) => {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.iptvprovider.me';
+    const baseUrl = siteConfig.url;
     
     const country = getCountryById(countryId);
     if (!country) {
@@ -49,9 +50,9 @@ export const getCountryPageData = cache(
 
     const serviceSchemaPromise: Promise<Service> = Promise.resolve(generateServiceSchema({
         serviceType: "IPTV Provider",
-        providerName: "IPTV Provider",
+        providerName: "TryIPTV",
         areaServed: { type: "Country", name },
-        name: `IPTV Provider for ${name}`,
+        name: `TryIPTV for ${name}`,
         description: `Premium IPTV service available in ${name} with over 20,000 channels, HD/4K quality, and instant setup.`,
         offers: {
             "@type": "Offer",

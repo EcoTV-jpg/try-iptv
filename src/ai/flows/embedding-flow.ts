@@ -23,9 +23,10 @@ const embeddingFlow = ai.defineFlow(
     outputSchema: EmbeddingOutputSchema,
   },
   async text => {
-    const {embedding} = await ai.embed({
+    const results = await ai.embed({
+      embedder: 'googleai/text-embedding-004',
       content: text,
     });
-    return embedding;
+    return results[0]?.embedding || [];
   }
 );

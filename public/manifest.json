@@ -1,7 +1,7 @@
 {
-    "name": "DigitalLizard IPTV",
-    "short_name": "IPTV",
-    "description": "Your premier IPTV service for unlocking a world of entertainment.",
+    "name": "TryIPTV",
+    "short_name": "TryIPTV",
+    "description": "Subscribe to TryIPTV with 24,000+ live channels & VOD. HD/4K quality, instant activation & 24/7 support.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#000000",

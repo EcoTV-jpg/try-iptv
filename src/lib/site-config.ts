@@ -1,14 +1,13 @@
 
+export const SITE_URL = "https://www.tryiptv.com";
+
 export const siteConfig = {
-  name: "#1 IPTV Provider",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.iptvprovider.me",
+  name: "TryIPTV",
+  url: process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || SITE_URL,
   ogImage: "/api/og",
   description: "Subscribe to the #1 IPTV provider with 24,000+ live channels & VOD. HD/4K quality, instant activation & 24/7 support. Try the best IPTV service now!",
   links: {
-    twitter: "https://twitter.com/iptvprovider",
-    facebook: "https://facebook.com/iptvprovider",
-    instagram: "https://instagram.com/iptvprovider",
-    email: "support@iptvprovider.me",
+    email: "support@tryiptv.com",
   },
 } as const;
 
@@ -53,8 +52,6 @@ export function generateMetadata({
       title,
       description,
       images: [ogImageUrl],
-      site: siteConfig.links.twitter,
-      creator: siteConfig.links.twitter,
     },
     robots: noIndex
       ? { index: false, follow: false }

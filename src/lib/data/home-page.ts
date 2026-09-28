@@ -46,10 +46,10 @@ export const getHomePageData = cache(
         priceCurrency: "USD",
         lowPrice: Math.min(...plans.map(p => p.price_monthly)).toFixed(2),
         highPrice: Math.max(...plans.map(p => p.price_monthly)).toFixed(2),
-        offerCount: plans.length.toString(),
+        offerCount: plans.length,
         offers: plans.map(plan => ({
           "@type": "Offer",
-          name: `IPTV Provider - ${plan.name}`,
+          name: `TryIPTV - ${plan.name}`,
           price: plan.price.toFixed(2),
           priceCurrency: "USD",
           url: `${siteConfig.url}/pricing`

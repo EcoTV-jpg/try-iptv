@@ -12,13 +12,13 @@ import Image from "next/image";
 import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
 import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateProductSchema, generateBreadcrumbSchema } from "@/lib/schema";
-import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { plans } from "@/lib/site-data/pricing";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { getPlaceholderImage } from "@/lib/server/image-blur-server";
 
 type Props = {
-  params: { device: string; };
+  params: Promise<{ device: string }>;
 };
 
 type ArticleType = ReturnType<typeof getSafeArticleData> & { 
@@ -31,7 +31,7 @@ type ArticleType = ReturnType<typeof getSafeArticleData> & {
     } 
 };
 
-async function getArticleData(deviceId: string): Promise<ArticleType> {
+async function getArticleData(deviceId: string): Promise<ArticleType | undefined> {
     const article = getSafeArticleData(deviceId);
     if (!article) return undefined;
 
@@ -52,7 +52,7 @@ async function getArticleData(deviceId: string): Promise<ArticleType> {
 function StructuredData({ article }: { article: ArticleType }) {
     if (!article) return null;
     const { id, title, description, steps, faqs, image, datePublished, dateModified, primaryKeyword, totalTime } = article;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.iptvprovider.me';
+    const baseUrl = siteConfig.url;
 
     const articleSchema = generateArticleSchema({
         headline: title,
@@ -85,8 +85,8 @@ function StructuredData({ article }: { article: ArticleType }) {
     const highPrice = Math.max(...plans.map(p => p.price_monthly));
 
     const productSchema = generateProductSchema({
-        name: "IPTV Provider Subscription",
-        description: `Our premium IPTV Provider is fully compatible with ${primaryKeyword}. Follow our guide to get set up.`,
+        name: "TryIPTV Subscription",
+        description: `Our premium TryIPTV subscription is fully compatible with ${primaryKeyword}. Follow our guide to get set up.`,
         image: "https://images-cdn.ubuy.co.in/633fee9c3a16a463ad2f7388-iptv-subscription-not-box-including.jpg",
         ratingValue: "4.8",
         reviewCount: "2547",
@@ -95,7 +95,7 @@ function StructuredData({ article }: { article: ArticleType }) {
             priceCurrency: "USD",
             lowPrice: lowPrice.toFixed(2),
             highPrice: highPrice.toFixed(2),
-            offerCount: plans.length.toString(),
+            offerCount: plans.length,
         }
     });
 
@@ -117,7 +117,8 @@ function StructuredData({ article }: { article: ArticleType }) {
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = getSafeArticleData(params.device);
+  const { device } = await params;
+  const article = getSafeArticleData(device);
 
   if (!article) {
     notFound();
@@ -128,12 +129,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title,
     description,
-    canonical: `/devices/${params.device}`,
+    canonical: `/devices/${device}`,
   });
 }
 
-export default async function HowToPage({ params }: { params: { device: string }}) {
-  const article = await getArticleData(params.device);
+export default async function HowToPage({ params }: Props) {
+  const { device } = await params;
+  const article = await getArticleData(device);
 
   if (!article) {
     notFound();
@@ -187,7 +189,7 @@ export default async function HowToPage({ params }: { params: { device: string }
                   <div className="prose prose-lg dark:prose-invert max-w-none">
                        <Card className="not-prose my-8">
                           <CardHeader>
-                              <CardTitle>What You'll Need</CardTitle>
+                              <CardTitle>What You&apos;ll Need</CardTitle>
                           </CardHeader>
                           <CardContent>
                               <ul className="space-y-3 my-0">
@@ -200,7 +202,7 @@ export default async function HowToPage({ params }: { params: { device: string }
                       </Card>
 
                       <h2 className="font-headline text-3xl">Step-by-Step Installation Guide for {primaryKeyword}</h2>
-                      <p>Follow these simple steps to get our IPTV Provider running on your {primaryKeyword}. The entire process should only take a few minutes.</p>
+                      <p>Follow these simple steps to get TryIPTV running on your {primaryKeyword}. The entire process should only take a few minutes.</p>
                       <div className="space-y-8 mt-8">
                       {steps.map((step, index) => (
                           <div key={index} id={`step-${index + 1}`} className="flex gap-6">

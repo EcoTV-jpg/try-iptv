@@ -1,7 +1,10 @@
+const SITE_URL = process.env.SITE_URL || 'https://www.tryiptv.com';
+
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-    siteUrl: process.env.SITE_URL || 'https://www.iptvprovider.me',
+    siteUrl: SITE_URL,
     generateRobotsTxt: true,
+    exclude: ['/iptv-subscription'],
     robotsTxtOptions: {
         policies: [
             { userAgent: '*', allow: '/' },
@@ -9,8 +12,11 @@ const config = {
             // { userAgent: '*', disallow: '/admin' },
         ],
         additionalSitemaps: [
-            `${process.env.SITE_URL || 'https://www.iptvprovider.me'}/sitemap.xml`,
+            `${SITE_URL}/sitemap.xml`,
         ],
+        transformRobotsTxt: async (_, robotsTxt) => {
+            return robotsTxt.replace(/Host: https?:\/\//i, 'Host: ');
+        },
         // To add a crawl-delay, uncomment the following line:
         // crawlDelay: 5, 
     }

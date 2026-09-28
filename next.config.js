@@ -1,9 +1,6 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -93,6 +90,17 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: '(?:www\\.)?iptvprovider\\.me',
+          },
+        ],
+        destination: 'https://www.tryiptv.com/:path*',
+        permanent: true,
+      },
       {
         source: '/iptv-subscription',
         destination: '/pricing',

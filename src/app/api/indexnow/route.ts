@@ -2,9 +2,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { howToArticles } from '@/lib/how-to';
 import { allCountries } from '@/lib/countries';
+import { SITE_URL as DEFAULT_SITE_URL } from '@/lib/site-config';
 
 const INDEXNOW_API_URL = 'https://api.indexnow.org/indexnow';
-const SITE_URL = process.env.SITE_URL || 'https://www.iptvprovider.me';
+const SITE_URL = process.env.SITE_URL || DEFAULT_SITE_URL;
 const API_KEY = '34703b31e96542ffb49bffed790d5e29';
 
 async function submitUrls(urlList: string[]) {
@@ -43,7 +44,7 @@ export async function GET(req: NextRequest) {
     const staticPages = [
         '/',
         '/pricing',
-        '/iptv-subscription',
+        '/checkout',
         '/locations',
         '/faq',
         '/contact',

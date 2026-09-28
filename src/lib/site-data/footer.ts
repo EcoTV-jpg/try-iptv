@@ -13,6 +13,6 @@ export const footerLinks = {
     ],
     contact: {
         address: "123 Digital Street, Lizard City, LC 12345",
-        email: "support@iptvprovider.me"
+        email: "support@tryiptv.com"
     }
 };

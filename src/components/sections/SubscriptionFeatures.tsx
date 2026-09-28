@@ -50,7 +50,7 @@ export function SubscriptionFeatures() {
         <section className="py-16 sm:py-24">
           <Container>
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">What's Included in Every IPTV Subscription</h2>
+              <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">What&apos;s Included in Every IPTV Subscription</h2>
               <p className="mt-4 text-lg text-muted-foreground">No matter which plan you choose, you get access to our complete feature set.</p>
             </div>
             <ul className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

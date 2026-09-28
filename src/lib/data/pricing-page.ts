@@ -4,13 +4,13 @@ import { generateSemanticContent, type SemanticContent as SemanticContentType } 
 import { plans } from "@/lib/site-data/pricing";
 import { pricingPageFaqs } from "@/lib/site-data/pricing-page-faq";
 import { generateProductSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
-import type { Product, BreadcrumbList, FAQPage } from 'schema-d-ts';
+import type { Product, BreadcrumbList, FAQPage } from 'schema-dts';
 import { siteConfig } from '../site-config';
 
 // This function fetches and processes all data required for the pricing page in a single, cached operation.
 export const getPricingPageData = cache(
   async () => {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.iptvprovider.me';
+    const baseUrl = siteConfig.url;
 
     // Define all data fetching and processing promises
     const semanticContentPromise: Promise<SemanticContentType> = generateSemanticContent("IPTV Subscription Plans");
@@ -30,7 +30,7 @@ export const getPricingPageData = cache(
         priceCurrency: "USD",
         lowPrice: Math.min(...plans.map(p => p.price_monthly)).toFixed(2),
         highPrice: Math.max(...plans.map(p => p.price_monthly)).toFixed(2),
-        offerCount: plans.length.toString(),
+        offerCount: plans.length,
         offers: plans.map(plan => ({
             "@type": "Offer",
             "name": `IPTV Subscription - ${plan.name}`,
@@ -42,7 +42,7 @@ export const getPricingPageData = cache(
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {
               "@type": "Organization",
-              "name": "IPTV Provider"
+              "name": siteConfig.name
             }
         }))
       }

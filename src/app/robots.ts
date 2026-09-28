@@ -1,8 +1,9 @@
 
 import { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/site-config';
  
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = 'https://www.iptvprovider.me';
+  const siteUrl = process.env.SITE_URL || SITE_URL;
   
   return {
     rules: [
@@ -33,5 +34,6 @@ export default function robots(): MetadataRoute.Robots {
         }
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
+    host: new URL(siteUrl).host,
   }
 }
