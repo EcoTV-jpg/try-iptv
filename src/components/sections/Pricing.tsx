@@ -19,7 +19,7 @@ import { Section } from "../shared/Section";
 
 export function Pricing() {
   return (
-    <Section id="pricing">
+    <Section id="pricing-plans">
       <Container>
         <SectionHeader
           title="Choose the Best IPTV Plan for You"
@@ -71,7 +71,7 @@ export function Pricing() {
           ))}
         </div>
         <div className="mt-8 rounded-lg border border-white/[0.08] bg-card/60 p-4 text-center text-xs text-muted-foreground sm:text-sm">
-          Every plan includes identical service features: 24,000+ live channels, 80,000+ VOD titles, EPG TV guide, and 2 simultaneous device connections. Only duration and prepaid savings differ.
+          Every plan includes identical service features: 25,000+ live channels, 120,000+ movies &amp; TV shows, EPG TV guide, and 2 simultaneous device connections. Only duration and prepaid savings differ.
         </div>
       </Container>
     </Section>
