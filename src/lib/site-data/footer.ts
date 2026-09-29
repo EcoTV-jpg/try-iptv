@@ -13,6 +13,11 @@ export const footerLinks = {
         { name: "Windows", href: "/devices/windows" },
         { name: "macOS", href: "/devices/macos" },
     ],
+    legalLinks: [
+        { name: "Terms of Service", href: "/terms" },
+        { name: "Privacy Policy", href: "/privacy" },
+        { name: "Refund Policy", href: "/refund-policy" },
+    ],
     contact: {
         email: "support@tryiptv.com"
     }

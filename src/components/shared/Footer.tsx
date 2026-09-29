@@ -52,11 +52,21 @@ export function Footer() {
             </address>
           </div>
         </div>
-        <div className="flex flex-col gap-2 border-t border-white/[0.08] py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted-foreground">
+        <div className="flex flex-col gap-4 border-t border-white/[0.08] py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>
             &copy; {new Date().getFullYear()} TryIPTV. All rights reserved.
           </p>
-          <p>Streaming support, every day.</p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {footerLinks.legalLinks?.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="transition-colors hover:text-foreground"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </Container>
     </footer>
