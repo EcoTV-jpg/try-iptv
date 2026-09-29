@@ -14,7 +14,7 @@ export const pricingPageFaqs = [
     },
     {
         question: "How quickly do I receive my login credentials?",
-        answer: "Your IPTV subscription details are sent via email within minutes of payment confirmation, including your M3U playlist URL, Xtream Codes credentials, and setup instructions. If you do not see the email within 15 minutes, please check your spam folder or contact our 24/7 support team."
+        answer: "Your IPTV subscription details are sent to your email after payment confirmation, including your M3U playlist URL, Xtream Codes credentials, and setup instructions. If you do not see the confirmation email in your inbox, check your spam or junk folder or contact our 24/7 support team."
     },
     {
         question: "Is there a free trial available before purchasing?",

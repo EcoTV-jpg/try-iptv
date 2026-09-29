@@ -7,23 +7,23 @@ import { FeatureCard } from "../shared/FeatureCard";
 const features = [
     { 
         icon: Smartphone, 
-        title: "Play Anywhere, Anytime",
-        description: "Android, Fire TV, Apple TV, Smart TVs, Windows, macOS, and MAG: log in and start watching in minutes."
+        title: "Broad Device Compatibility",
+        description: "Android, Fire TV, Apple TV, Smart TVs, Windows, macOS, and MAG: stream across your preferred hardware."
     },
     { 
         icon: Tv, 
         title: "Smooth Streaming",
-        description: "Optimized streaming infrastructure; a 25 Mbps connection handles HD and 50 Mbps handles 4K comfortably."
+        description: "Optimized streaming infrastructure designed for consistent playback across live sports, news channels, and video on demand."
     },
     { 
         icon: Film, 
         title: "High Quality Video",
-        description: "HD, Full HD, and 4K resolution where available, featuring crisp picture and clear multi-channel audio."
+        description: "HD, Full HD, and 4K resolution where available from broadcast sources, featuring crisp picture and clear audio."
     },
     { 
         icon: Calendar, 
         title: "Smart EPG TV Guide",
-        description: "Full Electronic Program Guide listings included so you can always check current and upcoming programming."
+        description: "Electronic Program Guide listings included so you can always check current and upcoming programming."
     },
     { 
         icon: Shield, 
@@ -31,9 +31,9 @@ const features = [
         description: "Flat prepaid pricing with no hidden charges, unexpected contracts, or recurring automatic renewals."
     },
     { 
-        icon: MessageCircle,
-        title: "24/7 Support",
-        description: "Real help whenever you need it. Reach our customer support team anytime via WhatsApp and email."
+        icon: MessageCircle, 
+        title: "24/7 Customer Support",
+        description: "Technical assistance available whenever you need help configuring your playlist or player app via WhatsApp and email."
     },
 ];
 

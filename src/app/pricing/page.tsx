@@ -93,7 +93,7 @@ export default async function IPTVSubscription() {
           <SectionHeader
             eyebrow="Simple 3-Step Process"
             title="How Does TryIPTV Work?"
-            subtitle="Order a plan, complete checkout, and start watching. Most customers receive their login credentials via email within minutes of payment confirmation."
+            subtitle="Order a plan, complete checkout, and start watching. Your login credentials and playlist links are delivered to your email following payment confirmation."
           />
           <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-3 md:divide-x md:divide-white/[0.09]">
             <div className="relative border-b border-white/[0.09] px-6 py-8 last:border-b-0 md:border-b-0 md:px-8 md:py-9">
@@ -131,7 +131,7 @@ export default async function IPTVSubscription() {
               </div>
               <h3 className="mb-3 font-headline text-xl font-extrabold leading-7">Start streaming</h3>
               <p className="text-sm leading-6 text-muted-foreground">
-                We email your M3U playlist URL and Xtream Codes login within minutes. Works on Fire TV, Android, Apple TV, Smart TVs, and PC.
+                We send your M3U playlist URL and Xtream Codes login details by email following payment. Works on Fire TV, Android, Apple TV, Smart TVs, and PC.
               </p>
             </div>
           </div>
@@ -148,17 +148,17 @@ export default async function IPTVSubscription() {
                 Stream Smarter with TryIPTV
               </h2>
               <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-                TryIPTV plans start at $16 for one month and drop to an equivalent of $7.50 per month on the 12-month prepaid plan. Every plan includes 24,000+ live channels and 80,000+ movies and series, with 2 simultaneous device connections, regular EPG schedule updates, and fast 24/7 support.
+                TryIPTV plans start at $16 for one month and drop to an equivalent of $7.50 per month on the 12-month prepaid plan. Every plan includes 24,000+ live channels and 80,000+ movies and series, with 2 simultaneous device connections, regular EPG schedule updates, and 24/7 support.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className="rounded-lg border border-white/[0.08] bg-card p-3.5 text-sm font-semibold text-foreground">
                   ✓ 2 Connections Included
                 </div>
                 <div className="rounded-lg border border-white/[0.08] bg-card p-3.5 text-sm font-semibold text-foreground">
-                  ✓ Quick Setup via Email
+                  ✓ Setup Credentials via Email
                 </div>
                 <div className="rounded-lg border border-white/[0.08] bg-card p-3.5 text-sm font-semibold text-foreground">
-                  ✓ 24/7 Fast Support
+                  ✓ 24/7 Customer Support
                 </div>
                 <div className="rounded-lg border border-white/[0.08] bg-card p-3.5 text-sm font-semibold text-foreground">
                   ✓ No Auto-Renewals
@@ -178,7 +178,7 @@ export default async function IPTVSubscription() {
                       "24,000+ live TV channels & major sports events",
                       "80,000+ movies & series on demand (VOD)",
                       "Smart EPG (TV guide) with regular schedule updates",
-                      "HD & 4K streams (25 Mbps HD / 50 Mbps 4K recommended)",
+                      "HD & 4K streams where available from broadcast source",
                       "Works on Fire TV, Android, Apple TV, Smart TVs & PC",
                       "2 simultaneous device connections on every plan",
                     ].map((item) => (
@@ -246,7 +246,7 @@ export default async function IPTVSubscription() {
               <Link href="/contact" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
                 Contact our support team
               </Link>
-              . We reply fast via WhatsApp and email.
+              . Available via WhatsApp and email.
             </p>
           </div>
         </Container>
