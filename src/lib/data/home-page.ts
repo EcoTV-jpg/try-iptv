@@ -10,7 +10,7 @@ export const getHomePageData = cache(
   async () => {
     const productSchema: Product = generateProductSchema({
       name: `${siteConfig.name} IPTV Subscription`,
-      description: "Prepaid IPTV subscription featuring 24,000+ live channels, 80,000+ VOD movies and series, HD & 4K streams, and 2 simultaneous connections across compatible devices.",
+      description: "Prepaid IPTV subscription featuring 25,000+ live channels, 120,000+ movies & TV shows, HD & 4K streams, and 2 simultaneous connections across compatible devices.",
       image: `${siteConfig.url}/og-image.jpg`,
       sku: "tryiptv-subscription",
       mpn: "tryiptv-subscription",
@@ -31,7 +31,7 @@ export const getHomePageData = cache(
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
           url: `${siteConfig.url}${plan.url}`,
-          description: `${plan.name} prepaid IPTV subscription including 2 simultaneous device connections, 24,000+ live channels, and HD & 4K streaming.`,
+          description: `${plan.name} prepaid IPTV subscription including 2 simultaneous device connections, 25,000+ live channels, and HD & 4K streaming.`,
         }))
       }
     });
