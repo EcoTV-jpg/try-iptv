@@ -7,23 +7,23 @@ import { FeatureCard } from "../shared/FeatureCard";
 const benefits = [
   {
     icon: Tv,
-    title: "More to Watch",
-    description: "Stream over 24,000 live television channels and an on-demand library with 80,000+ movies and series, including live sports, news, and international broadcasts.",
+    title: "24,000+ Live Channels",
+    description: "Stream live sports, international networks, news channels, and major PPV events with complete EPG TV guide listings included.",
   },
   {
     icon: Zap,
-    title: "Streaming Quality",
-    description: "Watch live sports and favorite programming in HD and 4K resolution with full Electronic Program Guide (EPG) listings included on all standard plans.",
+    title: "80,000+ Movies & Series",
+    description: "Access an expansive on-demand VOD library in HD and 4K resolution where available from broadcast sources, with zero rental fees.",
   },
   {
     icon: Smartphone,
-    title: "Simple Setup",
-    description: "Connect in minutes using your preferred IPTV app on Fire TV, Smart TVs, Android, iOS, or PC with standard M3U playlists and Xtream Codes credentials.",
+    title: "Broad Device Support",
+    description: "Stream across your preferred hardware: Amazon Fire TV, Android, Apple TV, Smart TVs, Windows, macOS, and MAG boxes.",
   },
   {
     icon: CalendarCheck,
-    title: "Flexible Prepaid Plans",
-    description: "Subscribe for 1, 3, 6, or 12 months with flat prepaid pricing. Every plan includes 2 simultaneous device connections, no hidden fees, and no recurring contracts.",
+    title: "2 Streams & Prepaid Plans",
+    description: "Plans start at $16 for one month. Every package includes 2 simultaneous device connections, no contracts, and no auto-renewals.",
   },
 ];
 

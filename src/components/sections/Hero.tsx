@@ -16,7 +16,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-40" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            Prepaid IPTV Streaming — Ready in Minutes
+            Prepaid IPTV Streaming • 2 Connections Included
           </div>
 
           {/* 2. H1 */}
@@ -26,7 +26,7 @@ export function Hero() {
 
           {/* 3. Supporting copy */}
           <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-            Tired of expensive TV packages and juggling multiple streaming apps? TryIPTV brings 24,000+ live channels, sports, movies and series together in one IPTV subscription, with HD &amp; 4K streaming on your favorite devices. Plans start at $16.
+            Tired of expensive TV packages and juggling multiple streaming apps? TryIPTV brings 24,000+ live channels, sports, movies and series together in one IPTV subscription, with HD &amp; 4K streaming on your favorite devices. Plans start at $16 with a 24-hour free trial available.
           </p>
 
           {/* 4. CTAs */}
@@ -41,13 +41,18 @@ export function Hero() {
 
           {/* Microcopy below CTA */}
           <p className="mt-4 text-xs font-medium text-muted-foreground">
-            2 connections • Prepaid plans • No auto-renewal
+            2 simultaneous connections • Flat prepaid pricing • No auto-renewal
           </p>
 
           {/* 5. Product facts */}
-          <div className="mt-8 grid w-full max-w-xl grid-cols-3 divide-x divide-white/[0.09] border-y border-white/[0.09] py-4">
-            {[['24K+', 'Live channels'], ['80K+', 'Movies & series'], ['HD / 4K', 'Stream quality']].map(([value, label]) => (
-              <div key={label} className="px-3 text-center sm:px-5">
+          <div className="mt-8 grid w-full max-w-2xl grid-cols-2 divide-y divide-white/[0.09] border-y border-white/[0.09] py-4 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+            {[
+              ['24K+', 'Live channels'],
+              ['80K+', 'Movies & series'],
+              ['2 Screens', 'Simultaneous streams'],
+              ['HD / 4K', 'Stream quality']
+            ].map(([value, label]) => (
+              <div key={label} className="px-3 py-2 text-center sm:px-4 sm:py-0">
                 <p className="text-sm font-extrabold leading-5 text-foreground sm:text-base">{value}</p>
                 <p className="mt-1 text-[11px] leading-4 text-muted-foreground sm:text-xs">{label}</p>
               </div>

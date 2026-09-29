@@ -13,7 +13,7 @@ const steps = [
     {
         icon: CheckCircle,
         title: "Get Your Subscription Details",
-        description: "Receive your M3U playlist URL, Xtream Codes credentials, and account details via email within minutes of order completion."
+        description: "Receive your M3U playlist URL, Xtream Codes credentials, and account details via email following payment confirmation."
     },
     {
         icon: Tv,
@@ -28,7 +28,7 @@ export function HowItWorks() {
       <Container>
         <SectionHeader
           title="Start Watching with TryIPTV in 3 Simple Steps"
-          subtitle="Setting up your IPTV subscription takes only a few minutes. Follow these straightforward steps to start streaming on your devices."
+          subtitle="Getting started with your IPTV subscription is simple. Follow these straightforward steps to set up and stream across your devices."
           eyebrow="Setup Process"
         />
           <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-3 md:divide-x md:divide-white/[0.09]">
