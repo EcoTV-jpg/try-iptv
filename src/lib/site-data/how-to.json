@@ -80,7 +80,7 @@
       { "title": "Watch Your Channels", "description": "Tap 'Add'. The app will begin processing the playlist. Once it's loaded, you can navigate through the channel groups and start watching all your content." }
     ],
     "faqs": [
-      { "question": "Can I use my subscription on both my iPhone and iPad simultaneously?", "answer": "You can install the IPTV app on multiple devices, but our standard subscription plan allows for only one stream at a time. If you wish to watch on two devices at the same time, you would need to purchase an additional connection. Please contact support for custom plans." },
+      { "question": "Can I use my subscription on both my iPhone and iPad simultaneously?", "answer": "Yes. Every standard TryIPTV subscription includes 2 simultaneous device connections, allowing you to stream on both your iPhone and iPad at the same time. If you need more than two concurrent screens, contact our support team for custom plans." },
       { "question": "Why are the channel logos or the TV guide (EPG) not showing up?", "answer": "This can sometimes happen on the first load. The easiest fix is to try refreshing the playlist within the app's settings. If that doesn't work, completely close and restart the application. If the problem persists, our 24/7 support team is available to help you." }
     ]
   },

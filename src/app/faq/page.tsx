@@ -1,10 +1,13 @@
-
-import { FAQ } from "@/components/sections/FAQ";
+import { FaqList } from "@/components/sections/FAQ";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container } from "@/components/shared/Container";
+import { Section } from "@/components/shared/Section";
+import { SectionHeader } from "@/components/shared/SectionHeader";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { CTA } from "@/components/sections/CTA";
 import SemanticContent from "@/components/shared/SemanticContent";
 import { getFaqPageData } from "@/lib/data/faq-page";
+import { faqs } from "@/lib/site-data/faq";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
@@ -34,24 +37,33 @@ export default async function FaqPage() {
         semanticClusters={semanticContent.semanticClusters}
         contextualKeywords={semanticContent.contextualKeywords}
       />
-      <main>
-        <Container className="py-16 sm:py-24">
-            <nav aria-label="Breadcrumb" className="mb-8 text-sm text-muted-foreground">
-                <ol className="flex items-center gap-2">
-                <li>
-                    <Link href="/" className="hover:text-primary">
-                    Home
-                    </Link>
-                </li>
-                <li>/</li>
-                <li>
-                    FAQ
-                </li>
-                </ol>
-            </nav>
-            <FAQ />
+      
+      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
+        <Container className="relative text-center">
+          <Breadcrumb items={[{ label: "FAQ" }]} align="center" />
+          <SectionHeader
+            as="h1"
+            eyebrow="TryIPTV help center"
+            title="Answers for Better Streaming"
+            subtitle="Clear guidance on setup, playback, billing, devices, and support."
+          />
         </Container>
-      </main>
+      </Section>
+
+      <Section>
+        <Container>
+          <FaqList items={faqs} />
+        </Container>
+      </Section>
+
+      <CTA
+        title="Still Have Questions?"
+        subtitle="Our dedicated support team is available 24/7. Reach out via WhatsApp or submit a request directly."
+        eyebrow="Always here to help"
+        buttonText="Contact Support"
+        buttonHref="/contact"
+      />
     </>
   );
 }

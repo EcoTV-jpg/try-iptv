@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -45,9 +44,10 @@ export default function InternalLinks({ currentId }: { currentId: string }) {
   }
   
   return (
-    <Card className="mt-12 not-prose">
+    <Card className="not-prose">
       <CardHeader>
-        <CardTitle>Related Articles</CardTitle>
+        <p className="eyebrow mb-1">Explore</p>
+        <CardTitle className="font-headline text-lg font-extrabold">Related Guides</CardTitle>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -59,10 +59,10 @@ export default function InternalLinks({ currentId }: { currentId: string }) {
                         <Link
                             href={link.href}
                             title={link.title}
-                            className="flex items-center justify-between text-primary hover:underline group"
+                            className="group flex items-center justify-between text-sm text-muted-foreground transition-colors hover:text-foreground"
                         >
-                            <span>{link.title}</span>
-                            <ArrowRight className="h-4 w-4 opacity-0 transition-opacity group-hover:opacity-100" />
+                            <span className="line-clamp-1 group-hover:text-primary">{link.title}</span>
+                            <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-primary" />
                         </Link>
                     </li>
                 ))}

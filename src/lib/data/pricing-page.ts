@@ -28,8 +28,8 @@ export const getPricingPageData = cache(
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "USD",
-        lowPrice: Math.min(...plans.map(p => p.price_monthly)).toFixed(2),
-        highPrice: Math.max(...plans.map(p => p.price_monthly)).toFixed(2),
+        lowPrice: Math.min(...plans.map(p => p.price)).toFixed(2),
+        highPrice: Math.max(...plans.map(p => p.price)).toFixed(2),
         offerCount: plans.length,
         offers: plans.map(plan => ({
             "@type": "Offer",
@@ -38,7 +38,6 @@ export const getPricingPageData = cache(
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock",
             "url": `${baseUrl}/pricing`,
-            "priceValidUntil": "2025-12-31",
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {
               "@type": "Organization",

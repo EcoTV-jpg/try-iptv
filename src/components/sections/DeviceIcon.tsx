@@ -1,14 +1,13 @@
-"use client";
-
-import type { IconType } from "react-icons";
-import * as siIcons from "react-icons/si";
-import * as lucideIcons from "lucide-react";
+import type { ComponentType } from "react";
+import { Flame, Monitor, Smartphone, Tablet, Tv } from "lucide-react";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  SiAndroid,
+  SiAppletv,
+  SiLg,
+  SiMacos,
+  SiRoku,
+  SiSamsung,
+} from "react-icons/si";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -18,39 +17,46 @@ interface DeviceIconProps {
   href: string;
 }
 
-const allIcons: Record<string, IconType | any> = { ...siIcons, ...lucideIcons };
-
-// A list of icons that are part of the simple-icons library
-const simpleIconKeys = Object.keys(siIcons);
+const iconMap: Record<string, ComponentType<{ className?: string }>> = {
+  Smartphone,
+  Tablet,
+  SiMacos,
+  Macos: SiMacos,
+  SiAndroid,
+  Android: SiAndroid,
+  Monitor,
+  SiRoku,
+  Roku: SiRoku,
+  SiSamsung,
+  Samsung: SiSamsung,
+  SiLg,
+  Lg: SiLg,
+  Flame,
+  Tv,
+  SiAppletv,
+  Appletv: SiAppletv,
+};
 
 export function DeviceIcon({ name, iconName, href }: DeviceIconProps) {
-  // A bit of a hacky way to get the right icon component
-  const correctedIconName = simpleIconKeys.includes(iconName) ? iconName : `Si${iconName}`;
-  const Icon = allIcons[correctedIconName] || allIcons[iconName];
-
-  if (!Icon) {
-    return null;
-  }
+  const Icon = iconMap[iconName] || iconMap[`Si${iconName}`] || Tv;
 
   const isInternal = href.startsWith('/');
   const Component = isInternal ? Link : 'a';
 
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Component href={href} className={cn(
-            "group flex h-16 w-16 items-center justify-center rounded-lg bg-muted/50 transition-colors hover:bg-primary/10",
-            !isInternal && "cursor-pointer",
-            href === '#' && "pointer-events-none opacity-50"
-          )}>
-            <Icon className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
-          </Component>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{name}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Component
+      href={href}
+      className={cn(
+        "group flex min-h-28 flex-col items-center justify-center gap-3 rounded-lg border border-white/[0.09] bg-card px-3 text-center transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/20 motion-reduce:transform-none",
+        !isInternal && "cursor-pointer",
+        href === '#' && "pointer-events-none opacity-50"
+      )}
+      aria-label={name}
+    >
+      <span className="grid h-10 w-10 place-items-center text-muted-foreground transition-colors duration-200 group-hover:text-primary">
+        <Icon className="h-7 w-7" />
+      </span>
+      <span className="text-xs font-extrabold leading-4 text-foreground">{name}</span>
+    </Component>
   );
 }

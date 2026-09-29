@@ -1,6 +1,12 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  serverExternalPackages: [
+    'genkit',
+    '@genkit-ai/core',
+    '@genkit-ai/google-genai',
+    '@opentelemetry/sdk-node',
+  ],
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -45,6 +51,12 @@ const nextConfig = {
         hostname: 'image.tmdb.org',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'r2.thesportsdb.com',
+        port: '',
+        pathname: '/images/**',
       }
     ],
   },

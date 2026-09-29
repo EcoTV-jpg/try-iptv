@@ -4,33 +4,31 @@ import { Button } from '@/components/ui/button';
 import { Container } from '@/components/shared/Container';
 import { Logo } from '@/components/shared/Logo';
 import { MobileNav } from '@/components/shared/MobileNav';
-import { ThemeToggle } from '@/components/shared/ThemeToggle';
 import { navLinks } from '@/lib/site-data/nav';
-import { SiWhatsapp } from 'react-icons/si';
+import { ArrowUpRight } from 'lucide-react';
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.07] bg-background/90 backdrop-blur-xl">
       <Container>
-        <div className="flex h-16 items-center">
+        <div className="flex h-[72px] items-center">
           <Logo />
-          <nav className="ml-10 hidden items-center space-x-6 lg:flex">
+          <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center space-x-7 lg:flex" aria-label="Primary navigation">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                className="text-sm font-semibold text-muted-foreground transition-colors duration-200 hover:text-foreground"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-2">
-            <ThemeToggle />
-            <Button asChild>
-              <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
-                <SiWhatsapp />
-                <span className='hidden sm:inline-block ml-2'>WhatsApp</span>
+            <Button asChild className="hidden sm:inline-flex">
+              <Link href="/iptv-free-trial">
+                Start free trial
+                <ArrowUpRight />
               </Link>
             </Button>
             <MobileNav />

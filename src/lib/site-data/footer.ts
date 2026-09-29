@@ -1,18 +1,19 @@
 
 export const footerLinks = {
     quickLinks: [
+        { name: "Home", href: "/" },
         { name: "Pricing", href: "/pricing" },
-        { name: "Affiliate Program", href: "#" },
+        { name: "Free Trial", href: "/iptv-free-trial" },
+        { name: "FAQ", href: "/faq" },
         { name: "Contact", href: "/contact"}
     ],
     supportedLinks: [
-        { name: "Android App", href: "#" },
-        { name: "iOS App", href: "#" },
-        { name: "Windows App", href: "#" },
-        { name: "macOS App", href: "#" },
+        { name: "Android", href: "/devices/android" },
+        { name: "iOS", href: "/devices/ios" },
+        { name: "Windows", href: "/devices/windows" },
+        { name: "macOS", href: "/devices/macos" },
     ],
     contact: {
-        address: "123 Digital Street, Lizard City, LC 12345",
         email: "support@tryiptv.com"
     }
 };

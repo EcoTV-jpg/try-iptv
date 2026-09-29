@@ -2,51 +2,53 @@
 import { CheckCircle, Package, Tv } from "lucide-react";
 import { Container } from "../shared/Container";
 import { SectionHeader } from "../shared/SectionHeader";
-import { Reveal } from "../shared/Reveal";
+import { Section } from "../shared/Section";
 
 const steps = [
     {
         icon: Package,
-        title: "Choose Your Plan",
-        description: "Select the subscription plan that best fits your needs, from one month to our best-value 12-month package."
+        title: "Choose Your IPTV Plan",
+        description: "Select the prepaid subscription duration that fits your viewing needs, from 1 month to 12 months, with no recurring contracts."
     },
     {
         icon: CheckCircle,
-        title: "Get Instant Activation",
-        description: "Your login credentials and setup instructions are sent to your email immediately after payment confirmation."
+        title: "Get Your Subscription Details",
+        description: "Receive your M3U playlist URL, Xtream Codes credentials, and account details via email within minutes of order completion."
     },
     {
         icon: Tv,
-        title: "Start Watching",
-        description: "Use our easy-to-follow guides to set up the service on your favorite device and start streaming in minutes."
+        title: "Set Up & Start Watching",
+        description: "Enter your credentials into your preferred IPTV player using our step-by-step device guides and start streaming live TV immediately."
     }
 ]
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-16 sm:py-24 bg-muted/30 dark:bg-card/50">
+    <Section id="how-it-works" className="border-y border-white/[0.06] bg-[#070a08]">
       <Container>
         <SectionHeader
-          title="Get Started in 3 Simple Steps"
-          subtitle="We've made the process of getting world-class entertainment as simple as possible. Follow these steps and you'll be watching in no time."
+          title="Start Watching with TryIPTV in 3 Simple Steps"
+          subtitle="Setting up your IPTV subscription takes only a few minutes. Follow these straightforward steps to start streaming on your devices."
+          eyebrow="Setup Process"
         />
-        <Reveal>
-          <div className="relative grid grid-cols-1 gap-12 md:grid-cols-3">
-             <div className="absolute top-1/2 left-0 hidden w-full -translate-y-1/2 md:block">
-                <div className="w-full border-t-2 border-dashed border-border" />
-            </div>
+          <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-3 md:divide-x md:divide-white/[0.09]">
             {steps.map((step, i) => (
-                <div key={i} className="relative flex flex-col items-center text-center">
-                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-background ring-4 ring-muted/30 dark:ring-card/50 shadow-md">
-                        <step.icon className="h-8 w-8 text-primary" />
+                <div key={i} className="relative border-b border-white/[0.09] px-6 py-8 last:border-b-0 md:border-b-0 md:px-8 md:py-9">
+                    {i < steps.length - 1 && (
+                      <span className="absolute right-0 top-[3.75rem] hidden h-px w-12 translate-x-1/2 bg-primary/30 md:block" />
+                    )}
+                    <div className="mb-8 flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-muted-foreground">0{i + 1}</span>
+                      <span className="grid h-11 w-11 place-items-center rounded-md border border-primary/20 bg-primary/[0.06]">
+                        <step.icon className="h-5 w-5 text-primary" />
+                      </span>
                     </div>
-                    <h3 className="mb-2 font-headline text-xl font-bold">{step.title}</h3>
-                    <p className="text-muted-foreground">{step.description}</p>
+                    <h3 className="mb-3 font-headline text-xl font-extrabold leading-7">{step.title}</h3>
+                    <p className="text-sm leading-6 text-muted-foreground">{step.description}</p>
                 </div>
             ))}
           </div>
-        </Reveal>
       </Container>
-    </section>
+    </Section>
   );
 }

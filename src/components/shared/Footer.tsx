@@ -1,26 +1,26 @@
 import Link from "next/link";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { footerLinks } from "@/lib/site-data/footer";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t border-white/[0.08] bg-[#070a08]">
       <Container>
-        <div className="grid grid-cols-2 gap-8 py-12 md:grid-cols-4">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] lg:py-16">
+          <div>
             <Logo />
-            <p className="mt-4 text-sm text-muted-foreground">
-              Your premier IPTV provider for unlocking a world of entertainment. The most reliable choice for all your streaming needs.
+            <p className="mt-5 max-w-xs text-sm leading-6 text-muted-foreground">
+              Premium live TV and on-demand entertainment, built for the devices you already use.
             </p>
           </div>
           <div>
-            <h3 className="font-semibold">Quick Links</h3>
+            <h3 className="text-sm font-extrabold text-foreground">Explore</h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
+                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary">
                     {link.name}
                   </Link>
                 </li>
@@ -28,11 +28,11 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold">Supported Apps</h3>
+            <h3 className="text-sm font-extrabold text-foreground">Device guides</h3>
             <ul className="mt-4 space-y-2">
               {footerLinks.supportedLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary">
+                  <Link href={link.href} className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary">
                     {link.name}
                   </Link>
                 </li>
@@ -40,24 +40,23 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold">Contact</h3>
-            <address className="mt-4 space-y-2 text-sm not-italic text-muted-foreground">
-              <p>{footerLinks.contact.address}</p>
-              <a href={`mailto:${footerLinks.contact.email}`} className="hover:text-primary">
+            <h3 className="text-sm font-extrabold text-foreground">Support</h3>
+            <address className="mt-4 space-y-3 text-sm not-italic text-muted-foreground">
+              <a href={`mailto:${footerLinks.contact.email}`} className="flex items-center gap-2 transition-colors duration-200 hover:text-primary">
+                <Mail className="h-4 w-4" />
                 {footerLinks.contact.email}
+              </a>
+              <a href="https://wa.me/447848197761" className="flex items-center gap-2 transition-colors duration-200 hover:text-primary" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-4 w-4" />WhatsApp support
               </a>
             </address>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-between border-t py-6 sm:flex-row">
+        <div className="flex flex-col gap-2 border-t border-white/[0.08] py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} TryIPTV. All rights reserved.
           </p>
-          <div className="mt-4 flex items-center space-x-4 sm:mt-0">
-            <Link href="#" aria-label="Follow us on Facebook" className="text-muted-foreground hover:text-primary"><Facebook className="h-5 w-5" /></Link>
-            <Link href="#" aria-label="Follow us on Twitter" className="text-muted-foreground hover:text-primary"><Twitter className="h-5 w-5" /></Link>
-            <Link href="#" aria-label="Follow us on Instagram" className="text-muted-foreground hover:text-primary"><Instagram className="h-5 w-5" /></Link>
-          </div>
+          <p>Streaming support, every day.</p>
         </div>
       </Container>
     </footer>

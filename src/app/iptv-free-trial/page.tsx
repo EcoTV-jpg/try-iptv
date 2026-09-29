@@ -1,17 +1,17 @@
-
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/shared/Container";
+import { Section } from "@/components/shared/Section";
+import { SectionHeader } from "@/components/shared/SectionHeader";
+import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { FaqList } from "@/components/sections/FAQ";
+import { CTA } from "@/components/sections/CTA";
 import { Check, Tv, Zap, Shield, MessageCircle, Smartphone, UserCheck, Star } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiWhatsapp } from "react-icons/si";
 import SemanticContent from "@/components/shared/SemanticContent";
 import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
-import { SectionHeader } from "@/components/shared/SectionHeader";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export function generateMetadata(): Metadata {
     const title = "IPTV Free Trial 2026: Start Streaming in 5 Minutes (No Card Needed)";
@@ -50,13 +50,13 @@ const howItWorksSteps = [
     },
     {
         number: 2,
-        "title": "Request Your Trial",
-        "description": "Send us a message asking for your free trial. Our team will generate your unique access credentials."
+        title: "Request Your Trial",
+        description: "Send us a message asking for your free trial. Our team will generate your unique access credentials."
     },
     {
         number: 3,
-        "title": "Start Streaming Instantly",
-        "description": "Use the credentials and our easy setup guides to log in on your favorite device and start watching immediately."
+        title: "Start Streaming Instantly",
+        description: "Use the credentials and our easy setup guides to log in on your favorite device and start watching immediately."
     }
 ];
 
@@ -75,163 +75,138 @@ export default async function IptvFreeTrialPage() {
                 semanticClusters={semanticContent.semanticClusters}
                 contextualKeywords={semanticContent.contextualKeywords}
             />
-            <main>
-                {/* Hero Section */}
-                <section className="py-20 sm:py-32 text-center bg-muted/20 dark:bg-card/30">
-                    <Container>
-                         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-muted-foreground">
-                            <ol className="flex items-center justify-center gap-2">
-                            <li>
-                                <Link href="/" className="hover:text-primary">
-                                Home
-                                </Link>
-                            </li>
-                            <li>/</li>
-                            <li>
-                                IPTV Free Trial
-                            </li>
-                            </ol>
-                        </nav>
-                        <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-6xl">
-                           Start Your IPTV Free Trial Now
-                        </h1>
-                        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                           20,000+ Channels. Zero Commitment. Instant Access.
-                        </p>
-                        <Button asChild size="lg" className="mt-8">
-                            <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
-                                <SiWhatsapp className="mr-2" />
+
+            {/* Hero Section */}
+            <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
+                <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
+                <Container className="relative text-center">
+                    <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
+                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.06] px-3.5 py-1.5 text-xs font-extrabold text-primary">
+                        <span className="relative flex h-2 w-2">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-40" />
+                            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                        </span>
+                        No credit card required • Instant access
+                    </div>
+                    <h1 className="font-headline text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl max-w-3xl mx-auto">
+                        Start Your IPTV Free Trial Now
+                    </h1>
+                    <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+                        20,000+ Channels. Zero Commitment. Instant Access.
+                    </p>
+                    <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <Button asChild size="lg">
+                            <a href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
+                                <SiWhatsapp className="mr-2 h-4 w-4" />
                                 Start Free Trial on WhatsApp
-                            </Link>
+                            </a>
                         </Button>
-                        <p className="mt-4 text-sm text-muted-foreground">
-                            No credit card required • Cancel anytime • 24hr access
-                        </p>
-                    </Container>
-                </section>
+                    </div>
+                    <p className="mt-4 text-xs font-semibold text-muted-foreground">
+                        No credit card required • Cancel anytime • 24hr access
+                    </p>
+                </Container>
+            </Section>
 
-                {/* What You Get Section */}
-                <section className="py-16 sm:py-24">
-                    <Container>
-                        <SectionHeader
-                            title="What You Get in Your IPTV Free Trial"
-                            subtitle="Experience the full power of our premium IPTV service with absolutely no limitations during your 24-hour trial."
-                        />
-                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-                            {trialFeatures.map((feature, index) => (
-                                <Card key={index} className="text-center">
-                                    <CardHeader>
-                                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                            <feature.icon className="h-6 w-6" />
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <p className="font-semibold text-lg">{feature.text}</p>
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </div>
-                    </Container>
-                </section>
-
-                {/* How It Works Section */}
-                <section className="py-16 sm:py-24 bg-muted/20 dark:bg-card/30">
-                    <Container>
-                        <SectionHeader
-                            title="Get Your Free Trial in 3 Easy Steps"
-                            subtitle="We've made the process incredibly simple. You'll be streaming in just a few minutes."
-                        />
-                        <div className="relative grid grid-cols-1 gap-12 md:grid-cols-3">
-                            <div className="absolute top-1/2 left-0 hidden w-full -translate-y-1/2 md:block">
-                                <div className="w-full border-t-2 border-dashed border-border" />
-                            </div>
-                            {howItWorksSteps.map((step) => (
-                                <div key={step.number} className="relative flex flex-col items-center text-center">
-                                    <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-background text-primary ring-4 ring-muted/20 dark:ring-card/30 shadow-md">
-                                        <span className="font-headline text-2xl font-bold">{step.number}</span>
-                                    </div>
-                                    <h3 className="mb-2 font-headline text-xl font-bold">{step.title}</h3>
-                                    <p className="text-muted-foreground">{step.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </Container>
-                </section>
-
-                {/* Why Choose Our Trial Section */}
-                <section className="py-16 sm:py-24">
-                     <Container>
-                        <SectionHeader
-                            title="Why Our Free Trial is Better"
-                            subtitle="We offer a truly risk-free way to test our service, focused on quality and customer trust."
-                        />
-                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                             {whyChooseFeatures.map((feature) => (
-                                <div key={feature.title} className="flex items-start gap-4">
-                                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                                        <feature.icon className="h-6 w-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-lg">{feature.title}</h3>
-                                        <p className="mt-1 text-muted-foreground">{feature.description}</p>
-                                    </div>
-                                </div>
-                             ))}
-                        </div>
-                    </Container>
-                </section>
-                
-                {/* FAQ Section */}
-                <section id="faq" className="py-16 sm:py-24 bg-muted/20 dark:bg-card/30">
-                  <Container>
-                      <SectionHeader
-                          title="Free Trial - Frequently Asked Questions"
-                          subtitle="Got questions about the trial? We have answers."
-                      />
-                      <div className="mx-auto mt-8 max-w-3xl">
-                        <Accordion type="single" collapsible>
-                          {trialFaqs.map((faq, i) => (
-                            <AccordionItem key={i} value={`item-${i}`}>
-                              <AccordionTrigger>{faq.question}</AccordionTrigger>
-                              <AccordionContent>
-                                <p>{faq.answer}</p>
-                              </AccordionContent>
-                            </AccordionItem>
-                          ))}
-                        </Accordion>
-                      </div>
-                  </Container>
-                </section>
-
-                {/* Final CTA Section */}
-                <section className="py-16 sm:py-24">
-                    <Container>
-                        <div className="rounded-xl bg-primary p-8 text-center md:p-12">
-                            <h2 className="font-headline text-3xl font-bold text-primary-foreground sm:text-4xl">
-                                Ready to Start Streaming?
-                            </h2>
-                            <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-foreground/80">
-                                Your 24-hour, all-access pass to the best entertainment is just one click away.
-                            </p>
-                            <Button
-                            asChild
-                            size="lg"
-                            variant="outline"
-                            className="mt-8 border-primary-foreground bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+            {/* What You Get Section */}
+            <Section>
+                <Container>
+                    <SectionHeader
+                        eyebrow="Trial features"
+                        title="What You Get in Your IPTV Free Trial"
+                        subtitle="Experience the full power of our premium IPTV service with absolutely no limitations during your 24-hour trial."
+                    />
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        {trialFeatures.map((feature, index) => (
+                            <div
+                                key={index}
+                                className="rounded-lg border border-white/[0.09] bg-card p-6 text-center shadow-[0_18px_60px_rgba(0,0,0,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20"
                             >
-                            <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
-                                Get Your Free Trial Now
-                            </Link>
-                            </Button>
-                        </div>
-                    </Container>
-                </section>
+                                <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
+                                    <feature.icon className="h-6 w-6" />
+                                </div>
+                                <p className="font-headline text-lg font-extrabold leading-6 text-foreground">{feature.text}</p>
+                            </div>
+                        ))}
+                    </div>
+                </Container>
+            </Section>
 
-            </main>
+            {/* How It Works Section */}
+            <Section variant="alt" className="border-y border-white/[0.06]">
+                <Container>
+                    <SectionHeader
+                        eyebrow="From message to playback"
+                        title="Get Your Free Trial in 3 Easy Steps"
+                        subtitle="We've made the process incredibly simple. You'll be streaming in just a few minutes."
+                    />
+                    <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-3 md:divide-x md:divide-white/[0.09]">
+                        {howItWorksSteps.map((step, i) => (
+                            <div key={step.number} className="relative border-b border-white/[0.09] px-6 py-8 last:border-b-0 md:border-b-0 md:px-8 md:py-9">
+                                {i < howItWorksSteps.length - 1 && (
+                                    <span className="absolute right-0 top-12 hidden h-px w-10 translate-x-1/2 bg-primary/30 md:block" />
+                                )}
+                                <div className="mb-8 flex items-center justify-between">
+                                    <span className="text-xs font-extrabold text-muted-foreground">0{step.number}</span>
+                                    <span className="grid h-11 w-11 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary font-extrabold text-sm">
+                                        0{step.number}
+                                    </span>
+                                </div>
+                                <h3 className="mb-3 font-headline text-xl font-extrabold leading-7 text-foreground">{step.title}</h3>
+                                <p className="text-sm leading-6 text-muted-foreground">{step.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </Container>
+            </Section>
+
+            {/* Why Choose Our Trial Section */}
+            <Section>
+                <Container>
+                    <SectionHeader
+                        eyebrow="The TryIPTV difference"
+                        title="Why Our Free Trial is Better"
+                        subtitle="We offer a truly risk-free way to test our service, focused on quality and customer trust."
+                    />
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        {whyChooseFeatures.map((feature) => (
+                            <div
+                                key={feature.title}
+                                className="flex items-start gap-4 rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20"
+                            >
+                                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
+                                    <feature.icon className="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <h3 className="font-headline text-lg font-extrabold leading-6 text-foreground">{feature.title}</h3>
+                                    <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </Container>
+            </Section>
+            
+            {/* FAQ Section */}
+            <Section id="faq" className="border-t border-white/[0.06]">
+                <Container>
+                    <SectionHeader
+                        eyebrow="Trial FAQ"
+                        title="Free Trial — Frequently Asked Questions"
+                        subtitle="Got questions about the trial? We have answers."
+                    />
+                    <FaqList items={trialFaqs} />
+                </Container>
+            </Section>
+
+            {/* Final CTA Section */}
+            <CTA
+                title="Ready to Start Streaming?"
+                subtitle="Your 24-hour, all-access pass to the best entertainment is just one click away."
+                eyebrow="Instant activation"
+                buttonText="Start Free Trial on WhatsApp"
+                buttonHref="https://wa.me/447848197761"
+            />
         </>
-    )
+    );
 }
-
-    
-
-    

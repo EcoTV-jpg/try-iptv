@@ -40,16 +40,15 @@ export function ClientCarousel({
         {items.map((item, index) => (
           <CarouselItem
             key={index}
-            className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6 xl:basis-1/7 pl-3 max-w-[200px]"
+            className="basis-[46%] pl-3 sm:basis-[31%] md:basis-[23%] lg:basis-[18.5%] xl:basis-[15.5%]"
           >
-            <main className="group relative overflow-hidden rounded-xl">
+            <article className="group relative h-[238px] overflow-hidden rounded-md border border-white/[0.09] bg-card transition-[border-color,background-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/20 sm:h-[300px] lg:h-[320px]">
               <Image
-                alt={`Poster for ${item.title}, a popular movie available on TryIPTV`}
+                alt={`${item.title} artwork`}
                 loading="lazy"
-                width={200}
-                height={300}
+                fill
                 decoding="async"
-                className="rounded-xl object-cover transition-opacity duration-300 ease-in h-[300px] w-[200px]"
+                className="object-cover transition-transform duration-200 group-hover:scale-[1.025]"
                 src={item.src}
                 placeholder="blur"
                 blurDataURL={item.placeholder}
@@ -57,8 +56,8 @@ export function ClientCarousel({
               />
               {showHoverContent && (
                 <>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent opacity-0 transition-[colors,opacity] ease-in-out group-hover:bg-black/40 group-hover:opacity-100">
-                    <div className="m-auto grid h-10 w-10 scale-0 place-content-center rounded-full bg-card text-primary shadow-xl shadow-primary/50 transition-transform ease-in-out group-hover:scale-100">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent opacity-0 transition-[background-color,opacity] duration-200 ease-in-out group-hover:bg-black/35 group-hover:opacity-100">
+                    <div className="m-auto grid h-10 w-10 scale-95 place-content-center rounded-full bg-card text-primary shadow-xl shadow-black/40 transition-transform duration-200 ease-in-out group-hover:scale-100">
                       <Play className="h-6 w-6 fill-current" />
                     </div>
                   </div>
@@ -85,7 +84,9 @@ export function ClientCarousel({
                   </div>
                 </>
               )}
-            </main>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-80" />
+              <p className="pointer-events-none absolute inset-x-0 bottom-0 line-clamp-2 p-3 text-xs font-extrabold leading-4">{item.title}</p>
+            </article>
           </CarouselItem>
         ))}
       </CarouselContent>

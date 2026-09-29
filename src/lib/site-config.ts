@@ -5,7 +5,7 @@ export const siteConfig = {
   name: "TryIPTV",
   url: process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || SITE_URL,
   ogImage: "/api/og",
-  description: "Subscribe to the #1 IPTV provider with 24,000+ live channels & VOD. HD/4K quality, instant activation & 24/7 support. Try the best IPTV service now!",
+  description: "TryIPTV is a prepaid IPTV service featuring 24,000+ live channels, sports, and 80,000+ movies and series in HD & 4K across all devices. Plans start at $16 with a 24-hour free trial available.",
   links: {
     email: "support@tryiptv.com",
   },

@@ -1,43 +1,43 @@
 
 export const faqs = [
     {
-        question: "Do you offer free trials for TryIPTV?",
-        answer: "We do not offer free trials to maintain the highest quality for our paying subscribers, but we provide a low-cost 1-month plan as a perfect way to test our service. This approach prevents server overload from temporary users and ensures a stable, premium experience for serious customers."
+        question: "What is TryIPTV?",
+        answer: "TryIPTV is an internet-based television streaming service providing access to more than 24,000 live TV channels and over 80,000 on-demand movies and series. It streams directly over your existing internet connection to compatible devices in HD and 4K resolution without requiring a traditional cable box or satellite dish."
+    },
+    {
+        question: "Does TryIPTV offer a free trial?",
+        answer: "Yes. TryIPTV offers a 24-hour free trial with no credit card required so you can test the channel lineup, picture quality, and device compatibility before purchasing. You can request trial access through our free trial page or support team to get started."
+    },
+    {
+        question: "How much does TryIPTV cost?",
+        answer: "TryIPTV subscription plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, and $90 for 12 months. All plans are one-time prepaid purchases with no hidden fees, and the 12-month plan offers the lowest equivalent cost at $7.50 per month."
     },
     {
         question: "How many devices can I use with one TryIPTV subscription?",
-        answer: "Our standard TryIPTV plan allows for one connection at a time to ensure stable and high-quality streaming for every user. If you require multiple simultaneous connections for your family, please contact our support team, and we would be happy to create a custom plan for you."
+        answer: "Every standard TryIPTV subscription includes 2 simultaneous device connections. This allows you to stream on two separate screens at the same time in your household, and custom multi-connection plans are available upon request through support."
     },
     {
-        question: "Why is TryIPTV buffering?",
-        answer: "Buffering is most often caused by an unstable internet connection, ISP throttling, or a device issue. For a smooth experience, we recommend a stable internet connection of at least 25 Mbps, using a wired Ethernet connection instead of Wi-Fi, and using a reliable VPN to prevent your Internet Service Provider from slowing down your stream."
+        question: "Which devices and apps does TryIPTV support?",
+        answer: "TryIPTV supports Amazon Fire TV, Android TV and mobile, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, Roku, and MAG boxes. It works with popular IPTV player applications including TiviMate, IPTV Smarters Pro, and GSE Smart IPTV using standard M3U playlist URLs or Xtream Codes API credentials."
     },
     {
-        question: "How long does TryIPTV activation take?",
-        answer: "Activation for TryIPTV is instant and automatic. As soon as your payment is successfully processed, your login credentials and setup instructions will be sent to your email address, allowing you to start streaming within minutes."
+        question: "How does TryIPTV work?",
+        answer: "TryIPTV delivers live television broadcasts and video-on-demand content over the internet using Internet Protocol (IP) instead of cable lines or satellite signals. After subscribing, you enter your provided playlist URL or login credentials into a compatible IPTV player application on your device to stream."
     },
     {
-        question: "Do I need a VPN to use TryIPTV?",
-        answer: "While a VPN is not strictly required, it is highly recommended for the best and most private TryIPTV experience. A VPN encrypts your traffic, which prevents your ISP from throttling or blocking your stream and protects your online privacy."
+        question: "How do I set up TryIPTV?",
+        answer: "To set up TryIPTV, install a compatible IPTV player application on your device and enter the account details or M3U playlist URL provided after order confirmation. We provide step-by-step setup guides for Fire TV, Android, Apple, Windows, and Smart TVs, and our support team is available 24/7 to assist."
     },
     {
-        question: "What is your refund policy for TryIPTV?",
-        answer: "We offer a 7-day, 100% money-back guarantee on all our TryIPTV plans, allowing you to try our service completely risk-free. If you are not satisfied within the first week, simply contact our support team to request a full and prompt refund."
+        question: "How do I get customer support for TryIPTV?",
+        answer: "TryIPTV provides 24/7 customer support via email at support@tryiptv.com and direct WhatsApp messaging. Our support team can help you with app setup, playlist loading, playlist troubleshooting, and general account questions at any time."
     },
     {
-        question: "What apps does TryIPTV support?",
-        answer: "Our flexible TryIPTV service supports a wide range of popular applications to suit your preference. This includes IPTV Smarters, TiviMate, GSE Smart IPTV, OTT Navigator, and many others. We also provide easy-to-follow setup guides for all major apps and devices to get you started quickly."
+        question: "What is the TryIPTV refund policy?",
+        answer: "TryIPTV offers a 7-day refund policy on all prepaid subscription plans if you experience technical issues that our support team cannot resolve. We also encourage viewers to test the service first using our 24-hour free trial to confirm compatibility before purchasing."
     },
     {
-        question: "Do you provide channel updates for TryIPTV?",
-        answer: "Yes, our TryIPTV channel list is updated automatically and regularly at no extra cost. This ensures you always have access to the latest channels, movies, and TV series without needing to perform any manual updates on your end."
-    },
-    {
-        question: "How can I get support for TryIPTV?",
-        answer: "We offer dedicated 24/7 customer support for TryIPTV. You can reach our expert team anytime via our contact form, email, or live chat. We are always ready to assist you with any setup, billing, or technical questions you may have."
-    },
-    {
-        question: "Can I cancel my TryIPTV subscription anytime?",
-        answer: "Yes, you can cancel your TryIPTV subscription at any time without any penalty. We do not use binding contracts, so you have complete flexibility. Simply contact our support team, and they will process the cancellation for you."
+        question: "Does TryIPTV automatically renew?",
+        answer: "No, TryIPTV plans do not automatically renew or charge your payment method on a recurring basis. All subscriptions are strictly prepaid for the duration you select (1, 3, 6, or 12 months), and you decide whether to renew when your subscription term ends."
     }
 ];

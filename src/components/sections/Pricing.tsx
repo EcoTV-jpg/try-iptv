@@ -1,6 +1,4 @@
 
-"use client";
-
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,60 +13,64 @@ import { cn } from "@/lib/utils";
 import { plans } from "@/lib/site-data/pricing";
 import { Container } from "../shared/Container";
 import { SectionHeader } from "../shared/SectionHeader";
-import { Reveal } from "../shared/Reveal";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
+import { Section } from "../shared/Section";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-16 sm:py-24">
+    <Section id="pricing">
       <Container>
         <SectionHeader
-          title="Choose Your IPTV Provider Package"
-          subtitle="Select the perfect plan from one of the best IPTV providers. All plans come with our full feature set."
+          title="Choose the Best IPTV Plan for You"
+          subtitle="All plans are one-time prepaid subscriptions with no hidden fees and no automatic renewals. Every package includes full access to 24,000+ live channels, VOD, and 2 simultaneous connections."
+          eyebrow="Prepaid IPTV Plans"
         />
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan, i) => (
-            <Reveal key={plan.name} delay={i * 0.1}>
               <Card className={cn(
-                "relative flex h-full flex-col transition-all hover:scale-[1.02] bg-card",
-                plan.isPopular && "border-2 border-primary shadow-lg shadow-primary/20"
-              )}>
+                "relative flex h-full min-h-[610px] flex-col transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20",
+                plan.isPopular && "border-primary/55 bg-[#0d1711] shadow-[0_20px_60px_rgba(0,240,120,0.07)]"
+              )} key={plan.name}>
                 {plan.isPopular && (
-                  <Badge className="absolute -top-3 right-4 bg-primary text-primary-foreground hover:bg-accent">Best Value</Badge>
+                  <Badge className="absolute right-4 top-4 rounded-md border border-primary/20 bg-primary/10 text-primary hover:bg-primary/10">Best value</Badge>
                 )}
-                <CardHeader>
-                  <CardTitle className="font-headline">{plan.name}</CardTitle>
-                  <CardDescription>
-                    <span className="text-4xl font-bold text-foreground">${plan.price}</span>
-                    <span className="text-muted-foreground"> / {plan.duration.toLowerCase()}</span>
+                <CardHeader className="min-h-[178px] pb-5">
+                  <p className="text-xs font-extrabold uppercase text-muted-foreground">{String(i + 1).padStart(2, '0')} / plan</p>
+                  <CardTitle className="pt-3 font-headline text-xl">{plan.name}</CardTitle>
+                  <CardDescription className="pt-2">
+                    <span className="text-4xl font-extrabold leading-none text-foreground">${plan.price}</span>
+                    <span className="text-xs text-muted-foreground"> prepaid</span>
                   </CardDescription>
-                  {plan.price_monthly !== plan.price && (
-                    <p className="text-sm text-muted-foreground">
+                  <p className="min-h-5 text-sm leading-5 text-muted-foreground">
+                  {plan.price_monthly !== plan.price ? (
+                    <>
                       Equivalent to ${plan.price_monthly.toFixed(2)}/month
-                    </p>
+                    </>
+                  ) : (
+                    <>Standard 1-month prepaid access</>
                   )}
+                  </p>
                 </CardHeader>
                 <CardContent className="flex-1">
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 border-t border-white/[0.08] pt-5">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
-                        <Check className="h-5 w-5 flex-shrink-0 text-primary" />
-                        <span className="text-muted-foreground">{feature}</span>
+                        <Check className="h-4 w-4 flex-shrink-0 text-primary" />
+                        <span className="text-sm leading-5 text-muted-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
                 <CardFooter>
                   <Button asChild className="w-full" variant={plan.isPopular ? "default" : "outline"}>
-                    <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">Order Now</Link>
+                    <Link href={plan.url}>Choose {plan.name}</Link>
                   </Button>
                 </CardFooter>
               </Card>
-            </Reveal>
           ))}
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

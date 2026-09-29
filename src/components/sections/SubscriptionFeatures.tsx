@@ -1,6 +1,8 @@
-
-import { Tv, Zap, Check, Shield, MessageCircle, Smartphone, Film, Trophy, Clock, GitCommit } from "lucide-react";
+import { Tv, Shield, MessageCircle, Smartphone, Film, Trophy, Clock, GitCommit } from "lucide-react";
 import { Container } from "../shared/Container";
+import { Section } from "../shared/Section";
+import { SectionHeader } from "../shared/SectionHeader";
+import { FeatureCard } from "../shared/FeatureCard";
 
 const features = [
     { 
@@ -43,30 +45,28 @@ const features = [
         title: "Electronic Program Guide (EPG)",
         description: "A full TV guide shows you what's on now and what's coming up. Set reminders and never miss your favorite shows."
     },
-]
+];
 
 export function SubscriptionFeatures() {
     return (
-        <section className="py-16 sm:py-24">
+        <Section variant="alt" className="border-t border-white/[0.06]">
           <Container>
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">What&apos;s Included in Every IPTV Subscription</h2>
-              <p className="mt-4 text-lg text-muted-foreground">No matter which plan you choose, you get access to our complete feature set.</p>
-            </div>
-            <ul className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <SectionHeader
+              eyebrow="Included features"
+              title="What's Included in Every IPTV Subscription"
+              subtitle="No matter which plan you choose, you get access to our complete feature set."
+            />
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {features.map((feature, i) => (
-                    <li key={i} className="rounded-lg bg-muted/30 p-6 dark:bg-card/50">
-                        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                            <feature.icon className="h-6 w-6" />
-                        </div>
-                        <h3 className="mb-2 font-headline text-xl">
-                            {feature.title}
-                        </h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                    </li>
+                    <FeatureCard
+                      key={i}
+                      icon={feature.icon}
+                      title={feature.title}
+                      description={feature.description}
+                    />
                 ))}
-            </ul>
+            </div>
           </Container>
-        </section>
-    )
+        </Section>
+    );
 }

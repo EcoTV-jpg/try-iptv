@@ -1,106 +1,60 @@
-
-"use client";
-
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/shared/Container";
-import { ShieldCheck, Tv, Zap } from "lucide-react";
-import { AnimatedText } from "../ui/animated-underline-text-one";
-import { SiWhatsapp } from "react-icons/si";
-import Image from "next/image";
-import MouseIcon from "@/assets/icons/mouse.svg";
-
-const BLUR_DATA_URL = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDUiPjxwYXRoIGQ9Ik0wIDBoOHY1SDB6IiBmaWxsPSIjMDMwNTBiIi8+PC9zdmc+";
+import Link from 'next/link';
+import { ArrowRight, CirclePlay } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Container } from '@/components/shared/Container';
 
 export function Hero() {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
   return (
-    <section className="relative w-full overflow-hidden">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        poster="https://iptvwell.com/wp-content/uploads/2024/05/The-Best-IPTV-Subscription-Service-Provider-1.jpeg"
-        onCanPlay={() => setVideoLoaded(true)}
-        className="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
-        style={{ opacity: videoLoaded ? 1 : 0 }}
-      >
-        <source
-          src="https://pub-93d3f90925314c4ea8adf63998c26129.r2.dev/The-Best-IPTV-Subscription-Service-Provider.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(40%_100%_at_50%_0%,hsl(var(--primary)/0.1),transparent)]" />
-      <Container className="relative z-10 flex min-h-[80vh] flex-col items-center justify-center py-20 text-center md:min-h-[600px]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="w-full max-w-4xl"
-        >
-          <AnimatedText 
-            text="The World's Premier IPTV Provider"
-            textClassName="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70"
-            underlineClassName="text-primary"
-          />
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-secondary-foreground/80">
-            Unlock a world of entertainment with one of the world&apos;s best IPTV providers. Start your subscription now, from just $7.50/mo.
+    <section className="relative overflow-hidden border-b border-white/[0.07]">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
+      <Container className="relative py-12 sm:py-14 lg:py-16">
+        {/* Left Column: Text & CTAs */}
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
+          {/* 1. Eyebrow */}
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.06] px-3.5 py-1.5 text-xs font-extrabold text-primary">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-40" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
+            Prepaid IPTV Streaming — Ready in Minutes
+          </div>
+
+          {/* 2. H1 */}
+          <h1 className="max-w-none font-headline text-3xl font-extrabold leading-[1.08] sm:max-w-2xl sm:text-5xl sm:leading-[1.06] lg:text-[2.85rem] xl:text-[3.45rem]">
+            TryIPTV — <span className="text-primary">Best IPTV Service</span> in USA, UK &amp; Worldwide
+          </h1>
+
+          {/* 3. Supporting copy */}
+          <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+            Tired of expensive TV packages and juggling multiple streaming apps? TryIPTV brings 24,000+ live channels, sports, movies and series together in one IPTV subscription, with HD &amp; 4K streaming on your favorite devices. Plans start at $16.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="shadow-lg shadow-primary/20 transition-all hover:bg-accent hover:shadow-xl hover:shadow-primary/30">
-              <Link href="/#pricing">View Pricing</Link>
+
+          {/* 4. CTAs */}
+          <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="#pricing">View IPTV Plans <ArrowRight /></Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
-                <SiWhatsapp className="mr-2" />
-                Contact on WhatsApp
-              </Link>
+              <Link href="/iptv-free-trial"><CirclePlay /> Start Free Trial</Link>
             </Button>
           </div>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-medium text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <Zap className="h-4 w-4 text-primary" />
-              Instant activation
-            </div>
-            <div className="flex items-center gap-2">
-              <Tv className="h-4 w-4 text-primary" />
-              All devices
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-primary" />
-              HD/4K Quality
-            </div>
+          {/* Microcopy below CTA */}
+          <p className="mt-4 text-xs font-medium text-muted-foreground">
+            2 connections • Prepaid plans • No auto-renewal
+          </p>
+
+          {/* 5. Product facts */}
+          <div className="mt-8 grid w-full max-w-xl grid-cols-3 divide-x divide-white/[0.09] border-y border-white/[0.09] py-4">
+            {[['24K+', 'Live channels'], ['80K+', 'Movies & series'], ['HD / 4K', 'Stream quality']].map(([value, label]) => (
+              <div key={label} className="px-3 text-center sm:px-5">
+                <p className="text-sm font-extrabold leading-5 text-foreground sm:text-base">{value}</p>
+                <p className="mt-1 text-[11px] leading-4 text-muted-foreground sm:text-xs">{label}</p>
+              </div>
+            ))}
           </div>
-        </motion.div>
-      </Container>
-       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex h-10 w-6 items-center justify-center rounded-full border border-border">
-          <motion.div
-            className="h-2 w-1 rounded-full bg-foreground/50"
-            animate={{ y: [0, 10, 0] }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-            }}
-          >
-             <Image src={MouseIcon} alt="Scroll down" className="h-full w-full" />
-          </motion.div>
         </div>
-      </motion.div>
+      </Container>
     </section>
   );
 }

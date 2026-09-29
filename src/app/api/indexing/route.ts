@@ -19,13 +19,11 @@ export async function POST(req: NextRequest) {
     const decodedKey = Buffer.from(process.env.GOOGLE_INDEXING_SERVICE_ACCOUNT_BASE64, 'base64').toString('utf-8');
     const credentials = JSON.parse(decodedKey);
 
-    const jwtClient = new google.auth.JWT(
-      credentials.client_email,
-      undefined,
-      credentials.private_key,
-      ['https://www.googleapis.com/auth/indexing'], // The required scope
-      undefined
-    );
+    const jwtClient = new google.auth.JWT({
+      email: credentials.client_email,
+      key: credentials.private_key,
+      scopes: ['https://www.googleapis.com/auth/indexing'],
+    });
 
     const tokens = await jwtClient.authorize();
 

@@ -1,7 +1,7 @@
 
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Inter, Outfit } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
@@ -15,18 +15,10 @@ import { Schema } from "@/components/shared/Schema";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
-  preload: true,
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  display: "swap",
-  variable: "--font-outfit",
+  variable: "--font-manrope",
   preload: true,
 });
 
@@ -128,35 +120,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isProduction = process.env.NODE_ENV === 'production';
 
   return (
     <html lang="en" suppressHydrationWarning className={cn(
         "font-body antialiased",
-        inter.variable,
-        outfit.variable
+        manrope.variable
       )}>
        <head>
           <Schema id="organization" schema={generateOrganizationSchema()} />
           <Schema id="website" schema={generateWebSiteSchema()} />
-          <link rel="dns-prefetch" href="https://www.google-analytics.com"/>
+          {isProduction ? <link rel="dns-prefetch" href="https://www.google-analytics.com" /> : null}
         </head>
       <body>
         <ProgressBar />
-        <Analytics />
-        <Script
-            src="https://cdn.visitors.now/v.js"
-            data-token="0a9ca441-3262-415a-a3ac-e06859feeeba"
-            strategy="afterInteractive"
-        />
-        <Script
-            src="https://analytics.ahrefs.com/analytics.js"
-            id="ahrefs-analytics"
-            strategy="afterInteractive"
-        />
+        {isProduction ? (
+          <>
+            <Analytics />
+            <Script
+              src="https://cdn.visitors.now/v.js"
+              data-token="0a9ca441-3262-415a-a3ac-e06859feeeba"
+              strategy="afterInteractive"
+            />
+            <Script
+              src="https://analytics.ahrefs.com/analytics.js"
+              id="ahrefs-analytics"
+              strategy="afterInteractive"
+            />
+          </>
+        ) : null}
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          forcedTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="relative flex min-h-screen flex-col">

@@ -7,7 +7,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/shared/Logo';
 import { navLinks } from '@/lib/site-data/nav';
-import { ThemeToggle } from './ThemeToggle';
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,27 +14,27 @@ export function MobileNav() {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="lg:hidden">
+        <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation">
           <Menu className="h-6 w-6" />
           <span className="sr-only">Toggle Navigation</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="flex flex-col">
+      <SheetContent side="right" className="flex flex-col border-white/[0.08] bg-card">
         <Logo />
         <nav className="mt-8 flex flex-1 flex-col gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="rounded-md px-3 py-2 text-lg font-medium hover:bg-accent"
+            className="rounded-md border-b border-white/[0.06] px-1 py-4 text-lg font-bold transition-colors hover:text-primary"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
             </Link>))}
         </nav>
-        <div className="mt-auto flex justify-center">
-            <ThemeToggle />
-        </div>
+        <Button asChild className="mt-auto">
+          <Link href="/iptv-free-trial" onClick={() => setIsOpen(false)}>Start free trial</Link>
+        </Button>
       </SheetContent>
     </Sheet>
   );

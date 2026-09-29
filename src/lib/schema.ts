@@ -31,7 +31,7 @@ export function generateWebSiteSchema(): WithContext<WebSite> {
     '@type': 'WebSite',
     'url': siteConfig.url,
     'name': siteConfig.name,
-    'alternateName': ["IPTV Providers", "best iptv provider"],
+    'alternateName': ["Try IPTV", "TryIPTV Stream"],
     'potentialAction': {
       '@type': 'SearchAction',
       'target': {
@@ -62,8 +62,8 @@ interface ProductSchemaProps {
   name: string;
   description: string;
   image: string;
-  ratingValue: string;
-  reviewCount: string;
+  ratingValue?: string;
+  reviewCount?: string;
   price?: string;
   offers?: Offer | AggregateOffer;
   sku?: string;
@@ -80,10 +80,9 @@ export function generateProductSchema(props: ProductSchemaProps): WithContext<Pr
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock' as const,
         url: `${siteConfig.url}/pricing`,
-        priceValidUntil: "2025-12-31",
     } : undefined);
 
-    return {
+    const schema: WithContext<Product> = {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name,
@@ -92,13 +91,18 @@ export function generateProductSchema(props: ProductSchemaProps): WithContext<Pr
         sku,
         mpn,
         brand,
-        aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue,
-            reviewCount: reviewCount ? Number(reviewCount) : undefined,
-        },
         offers: offerDetails,
     };
+
+    if (ratingValue && reviewCount) {
+        schema.aggregateRating = {
+            '@type': 'AggregateRating',
+            ratingValue,
+            reviewCount: Number(reviewCount),
+        };
+    }
+
+    return schema;
 }
 
 
