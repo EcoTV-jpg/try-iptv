@@ -29,7 +29,7 @@ export function Pricing() {
         <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan, i) => (
               <Card className={cn(
-                "relative flex h-full min-h-[440px] flex-col transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20",
+                "relative flex h-full min-h-[610px] flex-col transition-all duration-200 hover:-translate-y-0.5 hover:border-white/20",
                 plan.isPopular && "border-primary/55 bg-[#0d1711] shadow-[0_20px_60px_rgba(0,240,120,0.07)]"
               )} key={plan.name}>
                 {plan.isPopular && (
