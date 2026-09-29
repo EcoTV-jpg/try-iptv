@@ -42,9 +42,9 @@ export default function NotFound() {
                                 </Link>
                             </Button>
                              <Button asChild variant="outline">
-                                <Link href="/locations">
+                                <Link href="/iptv-free-trial">
                                     <Compass className="mr-2 h-4 w-4" />
-                                    Browse Locations
+                                    Free Trial
                                 </Link>
                             </Button>
                             <Button asChild variant="outline">

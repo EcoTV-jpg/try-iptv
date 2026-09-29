@@ -15,11 +15,19 @@ import { getCheckoutPageData } from "@/lib/data/checkout-page";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
-    return generatePageMetadata({
+    const meta = generatePageMetadata({
         title: "Secure Checkout",
         description: "Complete your TryIPTV subscription securely. Enter your payment details to get instant access to thousands of channels.",
         canonical: "/checkout",
     });
+
+    return {
+        ...meta,
+        robots: {
+            index: false,
+            follow: true,
+        },
+    };
 }
 
 

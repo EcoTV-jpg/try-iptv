@@ -6,6 +6,6 @@ contact: support@tryiptv.com
 
 ## Key Pages
 - /pricing - IPTV subscription plans and pricing
-- /locations - Service availability by country
+- /iptv-free-trial - Instant 24-hour IPTV free trial
 - /faq - Frequently asked questions
 - /contact - Contact support

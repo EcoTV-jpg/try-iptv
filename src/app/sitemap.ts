@@ -1,75 +1,34 @@
-
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
 import { howToArticles } from '@/lib/how-to';
-import { allCountries } from '@/lib/countries';
 import { SITE_URL } from '@/lib/site-config';
 
 const baseUrl = process.env.SITE_URL || SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  
-  const devicePages: MetadataRoute.Sitemap = howToArticles.map((article) => ({
-    url: `${baseUrl}/devices/${article.id}`,
-    lastModified: new Date(article.dateModified),
-    changeFrequency: 'weekly',
-    priority: 0.8,
-  }));
-
-  const countryPages: MetadataRoute.Sitemap = allCountries.map((country) => ({
-    url: `${baseUrl}/country/${country.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
-
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1.0,
     },
     {
       url: `${baseUrl}/pricing`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
     },
     {
-      url: `${baseUrl}/checkout`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
+      url: `${baseUrl}/iptv-free-trial`,
     },
     {
       url: `${baseUrl}/faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-        url: `${baseUrl}/iptv-free-trial`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.8,
     },
   ];
+
+  const devicePages: MetadataRoute.Sitemap = howToArticles.map((article) => ({
+    url: `${baseUrl}/devices/${article.id}`,
+  }));
 
   return [
     ...staticPages,
     ...devicePages,
-    ...countryPages,
-  ]
+  ];
 }

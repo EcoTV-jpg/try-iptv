@@ -1,7 +1,5 @@
-
 import { NextRequest, NextResponse } from 'next/server'
 import { howToArticles } from '@/lib/how-to';
-import { allCountries } from '@/lib/countries';
 import { SITE_URL as DEFAULT_SITE_URL } from '@/lib/site-config';
 
 const INDEXNOW_API_URL = 'https://api.indexnow.org/indexnow';
@@ -44,20 +42,16 @@ export async function GET(req: NextRequest) {
     const staticPages = [
         '/',
         '/pricing',
-        '/checkout',
-        '/locations',
+        '/iptv-free-trial',
         '/faq',
         '/contact',
-        '/iptv-free-trial',
     ];
 
     const devicePages = howToArticles.map(article => `/devices/${article.id}`);
-    const countryPages = allCountries.map(country => `/country/${country.id}`);
 
     const allUrls = [
         ...staticPages.map(path => `${SITE_URL}${path}`),
         ...devicePages.map(path => `${SITE_URL}${path}`),
-        ...countryPages.map(path => `${SITE_URL}${path}`),
     ];
     
     const result = await submitUrls(allUrls);

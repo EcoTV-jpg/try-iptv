@@ -4,12 +4,23 @@ const SITE_URL = process.env.SITE_URL || 'https://www.tryiptv.com';
 const config = {
     siteUrl: SITE_URL,
     generateRobotsTxt: true,
-    exclude: ['/iptv-subscription'],
+    generateIndexSitemap: false,
+    autoLastmod: false,
+    exclude: [
+        '/iptv-subscription',
+        '/checkout',
+        '/api/*',
+        '/robots.txt',
+        '/sitemap.xml',
+    ],
+    transform: async (config, path) => {
+        return {
+            loc: path,
+        };
+    },
     robotsTxtOptions: {
         policies: [
             { userAgent: '*', allow: '/' },
-            // Example of disallowing a path:
-            // { userAgent: '*', disallow: '/admin' },
         ],
         additionalSitemaps: [
             `${SITE_URL}/sitemap.xml`,
@@ -17,8 +28,6 @@ const config = {
         transformRobotsTxt: async (_, robotsTxt) => {
             return robotsTxt.replace(/Host: https?:\/\//i, 'Host: ');
         },
-        // To add a crawl-delay, uncomment the following line:
-        // crawlDelay: 5, 
     }
 };
 
