@@ -16,7 +16,11 @@ const trialFaqs = [
     },
     {
         question: "How do I receive my free trial login credentials?",
-        answer: "After submitting your trial request via WhatsApp or email, our support team provides your M3U playlist URL, Xtream Codes credentials, and step-by-step setup instructions."
+        answer: "After submitting your trial request via WhatsApp or email, our support team provides your M3U playlist URL, Xtream Codes credentials (server URL, username, and password), and step-by-step setup instructions."
+    },
+    {
+        question: "What is the difference between Xtream Codes and M3U setup?",
+        answer: "Xtream Codes API uses a Server URL, Username, and Password to automatically organize channels, VOD categories, and EPG data in modern player apps like TiviMate and IPTV Smarters. An M3U playlist is a single web link that loads the complete stream directory, universally compatible with media players like VLC and GSE Smart IPTV."
     },
     {
         question: "What devices and apps work with the free trial?",
@@ -24,7 +28,7 @@ const trialFaqs = [
     },
     {
         question: "Is any content locked or downgraded during the free trial?",
-        answer: "No. The 24-hour trial provides complete, unrestricted access to our full catalog of 24,000+ live channels, 80,000+ movies and series, HD & 4K streams, and the EPG TV guide, exactly like a paid subscription."
+        answer: "No. The 24-hour trial provides complete, unrestricted access to our full catalog of 25,000+ live channels, 120,000+ movies and series, 4K streams, and the EPG TV guide, exactly like a paid subscription."
     },
     {
         question: "What happens when the 24-hour trial ends?",
@@ -54,7 +58,7 @@ export const getIptvFreeTrialPageData = cache(
         serviceType: "Free IPTV Trial",
         providerName: "TryIPTV",
         name: "24-Hour IPTV Free Trial",
-        description: "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, HD & 4K streams, and 2 simultaneous connections. No credit card required.",
+        description: "24-hour free trial of TryIPTV with full access to 25,000+ live channels, 120,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
         areaServed: { type: "Country", name: "Worldwide" },
         offers: {
             "@type": "Offer",
