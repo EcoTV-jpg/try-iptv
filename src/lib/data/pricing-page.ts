@@ -16,11 +16,9 @@ export const getPricingPageData = cache(
     const semanticContentPromise: Promise<SemanticContentType> = generateSemanticContent("IPTV Subscription Plans");
     
     const productSchemaPromise: Promise<Product> = Promise.resolve(generateProductSchema({
-      name: "IPTV Subscription",
-      description: "Premium IPTV subscription with 24,000+ live channels, 80,000+ VOD content, HD/4K streaming, and 24/7 support.",
-      image: "https://images-cdn.ubuy.co.in/633fee9c3a16a463ad2f7388-iptv-subscription-not-box-including.jpg",
-      ratingValue: "4.8",
-      reviewCount: "2847",
+      name: "TryIPTV Subscription",
+      description: "Prepaid IPTV subscription featuring 24,000+ live channels, 80,000+ VOD movies and series, HD & 4K streams, and 2 simultaneous connections across compatible devices.",
+      image: `${siteConfig.url}/og-image.jpg`,
       brand: {
         "@type": "Brand",
         name: siteConfig.name,
