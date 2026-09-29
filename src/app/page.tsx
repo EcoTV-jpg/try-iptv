@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/Hero";
-import { Devices } from "@/components/sections/Devices";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { Pricing } from "@/components/sections/Pricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -20,7 +19,6 @@ export default async function Home() {
       <Schema id="product" schema={productSchema} />
       <Schema id="faq-page" schema={generateFAQPageSchema(faqs)} />
       <Hero />
-      <Devices />
       <WhyChooseTryIPTV />
       <Pricing />
       <HowItWorks />
