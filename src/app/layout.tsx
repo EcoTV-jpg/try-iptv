@@ -89,7 +89,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'WayUe3dolb9UPFpMPHfTYy8CS-T1RkpFYqGvAkW5XqI',
+    google: [
+      'WayUe3dolb9UPFpMPHfTYy8CS-T1RkpFYqGvAkW5XqI',
+      '-sJ-uRB_Ep3-Ba0pMU8MYHwpEuYclX_xQpwzWAENQc4',
+    ],
     yandex: '4cafd334f7cdc146',
     other: {
       'msvalidate.01': 'CEC29E9356C1B062CC9637E64D68C778',
