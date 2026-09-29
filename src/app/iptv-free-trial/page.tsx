@@ -99,7 +99,7 @@ export default async function IptvFreeTrialPage() {
                            20,000+ Channels. Zero Commitment. Instant Access.
                         </p>
                         <Button asChild size="lg" className="mt-8">
-                            <Link href="https://wa.me/212700664844" target="_blank" rel="noopener noreferrer">
+                            <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
                                 <SiWhatsapp className="mr-2" />
                                 Start Free Trial on WhatsApp
                             </Link>
@@ -219,7 +219,7 @@ export default async function IptvFreeTrialPage() {
                             variant="outline"
                             className="mt-8 border-primary-foreground bg-primary text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                             >
-                            <Link href="https://wa.me/212700664844" target="_blank" rel="noopener noreferrer">
+                            <Link href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
                                 Get Your Free Trial Now
                             </Link>
                             </Button>
