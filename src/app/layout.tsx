@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 
 const Toaster = dynamic(() => import("@/components/ui/toaster").then((mod) => mod.Toaster));
 const ContactSheet = dynamic(() => import("@/components/shared/ContactSheet").then((mod) => mod.ContactSheet));
-import { ProgressBar } from '@/components/shared/ProgressBar';
 import { Analytics } from "@/components/shared/Analytics";
 import { Schema } from "@/components/shared/Schema";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
@@ -124,7 +123,6 @@ export default function RootLayout({
         </head>
       <body>
         <Analytics />
-        <ProgressBar />
         {isProduction ? (
           <>
             <Script

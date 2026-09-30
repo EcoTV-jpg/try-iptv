@@ -64,6 +64,9 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons'],
+  },
   async headers() {
     return [
       {

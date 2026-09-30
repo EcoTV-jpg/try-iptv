@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { Pricing } from "@/components/sections/Pricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Devices } from "@/components/sections/Devices";
 import { CTA } from "@/components/sections/CTA";
-import { FAQ } from "@/components/sections/FAQ";
+
+const FAQ = dynamic(() => import("@/components/sections/FAQ").then((mod) => mod.FAQ));
 import { getHomePageData } from "@/lib/data/home-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateFAQPageSchema } from "@/lib/schema";

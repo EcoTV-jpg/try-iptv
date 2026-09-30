@@ -11,7 +11,7 @@ const MobileNav = dynamic(
   () => import('@/components/shared/MobileNav').then((mod) => mod.MobileNav),
   {
     loading: () => (
-      <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation" disabled>
+      <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation">
         <Menu className="h-6 w-6" />
         <span className="sr-only">Toggle Navigation</span>
       </Button>

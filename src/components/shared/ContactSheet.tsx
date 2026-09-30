@@ -61,32 +61,34 @@ export function ContactSheet() {
           <MessageSquare className="h-6 w-6" />
         </Button>
       </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Contact Us</SheetTitle>
-          <SheetDescription>
-            Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
-          </SheetDescription>
-        </SheetHeader>
-        <form action={dispatch} className="mt-8 space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name-sheet">Name</Label>
-            <Input id="name-sheet" name="name" placeholder="Your Name" />
-            {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email-sheet">Email</Label>
-            <Input id="email-sheet" name="email" type="email" placeholder="your@email.com" />
-            {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="message-sheet">Message</Label>
-            <Textarea id="message-sheet" name="message" placeholder="How can we help you?" />
-            {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
-          </div>
-          <SubmitButton />
-        </form>
-      </SheetContent>
+      {isOpen && (
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>Contact Us</SheetTitle>
+            <SheetDescription>
+              Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
+            </SheetDescription>
+          </SheetHeader>
+          <form action={dispatch} className="mt-8 space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name-sheet">Name</Label>
+              <Input id="name-sheet" name="name" placeholder="Your Name" />
+              {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email-sheet">Email</Label>
+              <Input id="email-sheet" name="email" type="email" placeholder="your@email.com" />
+              {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message-sheet">Message</Label>
+              <Textarea id="message-sheet" name="message" placeholder="How can we help you?" />
+              {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
+            </div>
+            <SubmitButton />
+          </form>
+        </SheetContent>
+      )}
     </Sheet>
   );
 }
