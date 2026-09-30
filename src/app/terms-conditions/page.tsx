@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Schema } from "@/components/shared/Schema";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifications";
 
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
@@ -44,7 +45,7 @@ export default function TermsConditionsPage() {
         <Container className="max-w-4xl">
           <div className="space-y-8 text-sm sm:text-base leading-relaxed text-muted-foreground">
             <div>
-              <p className="text-xs font-semibold text-primary">Last Updated: March 2026</p>
+              <p className="text-xs font-semibold text-primary">Last Updated: {formatLegalDate(PAGE_LAST_MODIFIED["/terms-conditions"])}</p>
               <p className="mt-2">
                 By purchasing, activating, or testing a subscription with TryIPTV ({siteConfig.url}), you agree to comply with and be bound by the following Terms and Conditions. Please review them thoroughly before initiating an order.
               </p>

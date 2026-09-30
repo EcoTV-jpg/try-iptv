@@ -7,6 +7,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Schema } from "@/components/shared/Schema";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifications";
 import { Button } from "@/components/ui/button";
 
 export function generateMetadata(): Metadata {
@@ -46,7 +47,7 @@ export default function RefundPolicyPage() {
         <Container className="max-w-4xl">
           <div className="space-y-8 text-sm sm:text-base leading-relaxed text-muted-foreground">
             <div>
-              <p className="text-xs font-semibold text-primary">Last Updated: March 2026</p>
+              <p className="text-xs font-semibold text-primary">Last Updated: {formatLegalDate(PAGE_LAST_MODIFIED["/refund-policy"])}</p>
               <p className="mt-2">
                 At TryIPTV, we prioritize delivering an exceptional streaming experience. Because digital service credentials are delivered immediately upon payment, we urge all prospective users to test our service via the 24-hour free trial prior to purchasing a long-term plan.
               </p>

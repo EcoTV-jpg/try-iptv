@@ -6,6 +6,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Schema } from "@/components/shared/Schema";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifications";
 
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
@@ -44,7 +45,7 @@ export default function DmcaReportPage() {
         <Container className="max-w-4xl">
           <div className="space-y-8 text-sm sm:text-base leading-relaxed text-muted-foreground">
             <div>
-              <p className="text-xs font-semibold text-primary">Last Updated: March 2026</p>
+              <p className="text-xs font-semibold text-primary">Last Updated: {formatLegalDate(PAGE_LAST_MODIFIED["/dmca-report"])}</p>
               <p className="mt-2">
                 TryIPTV ({siteConfig.url}) respects the intellectual property rights of content owners and complies with the Digital Millennium Copyright Act (17 U.S.C. § 512) and applicable international copyright standards.
               </p>
