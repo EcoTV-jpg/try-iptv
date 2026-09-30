@@ -33,7 +33,13 @@ export function FaqList({ items, className }: FaqListProps) {
             {faq.question}
           </AccordionTrigger>
           <AccordionContent className="pb-7 pr-8 text-[15px] leading-7 text-muted-foreground sm:text-base">
-            {faq.answer}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: faq.answer.includes("support@tryiptv.com")
+                  ? faq.answer.replace("support@tryiptv.com", "<!--email_off-->support@tryiptv.com<!--/email_off-->")
+                  : faq.answer,
+              }}
+            />
           </AccordionContent>
         </AccordionItem>
       ))}

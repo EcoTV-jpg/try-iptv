@@ -68,11 +68,11 @@ export default function DmcaReportPage() {
             <div className="space-y-3">
               <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground">2. Designated Copyright Agent</h2>
               <p>Please send all infringement notifications to our designated copyright response team at:</p>
-              <div className="rounded-lg border border-white/[0.08] bg-[#0d1711] p-4 text-sm font-mono text-foreground space-y-1">
-                <p>Email: <a href="mailto:dmca@tryiptv.com" className="text-primary underline">dmca@tryiptv.com</a></p>
-                <p>Secondary: <a href={`mailto:${siteConfig.links.email}`} className="text-primary underline">{siteConfig.links.email}</a></p>
-                <p>Subject Line: Formal DMCA Copyright Takedown Request</p>
-              </div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `<!--email_off--><p>Email: <a href="mailto:dmca@tryiptv.com" class="text-primary underline">dmca@tryiptv.com</a></p><p>Secondary: <a href="mailto:${siteConfig.links.email}" class="text-primary underline">${siteConfig.links.email}</a></p><!--/email_off-->`,
+                  }}
+                />
             </div>
 
             <div className="space-y-3">

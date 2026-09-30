@@ -135,10 +135,11 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-foreground">Support</h3>
             <address className="mt-4 space-y-3 text-[15px] not-italic text-muted-foreground">
-              <a href={`mailto:${footerLinks.contact.email}`} className="flex items-center gap-2 transition-colors duration-200 hover:text-foreground">
-                <Mail className="h-4 w-4 text-primary" />
-                {footerLinks.contact.email}
-              </a>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="flex items-center gap-2 transition-colors duration-200 hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-primary"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}</a><!--/email_off-->`,
+                }}
+              />
               <a href="https://wa.me/447848197761" className="flex items-center gap-2 transition-colors duration-200 hover:text-foreground" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4 text-primary" />WhatsApp Support
               </a>
