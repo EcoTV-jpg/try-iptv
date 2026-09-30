@@ -20,10 +20,8 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default async function Home() {
-    const { 
-      productSchema
-    } = await getHomePageData();
+export default function Home() {
+  const { productSchema } = getHomePageData();
 
   return (
     <>

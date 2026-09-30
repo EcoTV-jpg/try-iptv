@@ -1,6 +1,4 @@
 
-"use client";
-
 import Image from "next/image";
 import { brands, brands_two } from "@/lib/site-data/brands";
 import { PlaceHolderImages } from "@/lib/placeholder-images";

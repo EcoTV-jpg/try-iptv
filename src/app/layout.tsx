@@ -4,10 +4,12 @@ import Script from "next/script";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
-import { Toaster } from "@/components/ui/toaster";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ContactSheet } from "@/components/shared/ContactSheet";
+
+const Toaster = dynamic(() => import("@/components/ui/toaster").then((mod) => mod.Toaster));
+const ContactSheet = dynamic(() => import("@/components/shared/ContactSheet").then((mod) => mod.ContactSheet));
 import { ProgressBar } from '@/components/shared/ProgressBar';
 import { Analytics } from "@/components/shared/Analytics";
 import { Schema } from "@/components/shared/Schema";
@@ -115,7 +117,7 @@ export default function RootLayout({
   const isProduction = process.env.NODE_ENV === 'production';
 
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-body antialiased")}>
+    <html lang="en" suppressHydrationWarning className={cn("dark font-body antialiased")}>
        <head>
           <Schema id="organization" schema={generateOrganizationSchema()} />
           <Schema id="website" schema={generateWebSiteSchema()} />
@@ -128,12 +130,12 @@ export default function RootLayout({
             <Script
               src="https://cdn.visitors.now/v.js"
               data-token="0a9ca441-3262-415a-a3ac-e06859feeeba"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
             <Script
               src="https://analytics.ahrefs.com/analytics.js"
               id="ahrefs-analytics"
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
           </>
         ) : null}
