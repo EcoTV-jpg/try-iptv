@@ -21,15 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/contact`,
     },
-    {
-      url: `${baseUrl}/terms`,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-    },
-    {
-      url: `${baseUrl}/refund-policy`,
-    },
   ];
 
   const devicePages: MetadataRoute.Sitemap = howToArticles.map((article) => ({
