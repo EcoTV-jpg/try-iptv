@@ -1,7 +1,5 @@
-'use client'
-
-import { GoogleAnalytics } from 'nextjs-google-analytics'
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export function Analytics() {
-    return <GoogleAnalytics trackPageViews />
+  return <GoogleAnalytics gaId="G-76FDX71VDQ" />;
 }

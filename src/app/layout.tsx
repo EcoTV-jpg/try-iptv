@@ -119,13 +119,12 @@ export default function RootLayout({
        <head>
           <Schema id="organization" schema={generateOrganizationSchema()} />
           <Schema id="website" schema={generateWebSiteSchema()} />
-          {isProduction ? <link rel="dns-prefetch" href="https://www.google-analytics.com" /> : null}
         </head>
       <body>
+        <Analytics />
         <ProgressBar />
         {isProduction ? (
           <>
-            <Analytics />
             <Script
               src="https://cdn.visitors.now/v.js"
               data-token="0a9ca441-3262-415a-a3ac-e06859feeeba"
