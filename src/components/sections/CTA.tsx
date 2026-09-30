@@ -3,7 +3,6 @@ import { Container } from "../shared/Container";
 import Link from "next/link";
 import { ArrowRight, CircleCheck } from "lucide-react";
 import { Section } from "../shared/Section";
-import { cn } from "@/lib/utils";
 import type React from "react";
 
 interface CTAProps {
@@ -32,8 +31,8 @@ export function CTA({
   return (
     <Section className={className}>
       <Container>
-        <div className="relative overflow-hidden rounded-lg border border-primary/25 bg-[#0b100d] p-7 sm:p-8 md:p-10 lg:flex lg:items-center lg:justify-between lg:text-left">
-          <div className="absolute inset-y-0 left-0 w-1 bg-primary" />
+        <div className="relative overflow-hidden rounded-2xl border border-primary/25 bg-[#07080a] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-9 md:p-10 lg:flex lg:items-center lg:justify-between lg:text-left xl:p-12">
+          <div className="pointer-events-none absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-primary/[0.08] blur-3xl" />
           <div className="max-w-3xl">
             {eyebrow && (
               <p className="eyebrow mb-3 flex items-center justify-center gap-2 lg:justify-start">
@@ -41,10 +40,10 @@ export function CTA({
                 {eyebrow}
               </p>
             )}
-            <h2 className="font-headline text-3xl font-extrabold leading-[1.12] sm:text-4xl">
+            <h2 className="font-headline text-3xl font-semibold leading-[1.12] sm:text-4xl">
               {title}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground lg:mx-0">
+            <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-muted-foreground sm:text-base lg:mx-0">
               {subtitle}
             </p>
           </div>

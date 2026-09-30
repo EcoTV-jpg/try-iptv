@@ -43,14 +43,20 @@ export async function GET(req: NextRequest) {
         '/',
         '/pricing',
         '/iptv-free-trial',
+        '/devices',
         '/faq',
         '/contact',
+        '/privacy-policy',
+        '/terms-conditions',
+        '/refund-policy',
+        '/disclaimer',
+        '/dmca-report',
     ];
 
     const devicePages = howToArticles.map(article => `/devices/${article.id}`);
 
     const allUrls = [
-        ...staticPages.map(path => `${SITE_URL}${path}`),
+        ...staticPages.map(path => path === '/' ? SITE_URL : `${SITE_URL}${path}`),
         ...devicePages.map(path => `${SITE_URL}${path}`),
     ];
     

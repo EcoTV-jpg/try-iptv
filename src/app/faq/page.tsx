@@ -5,7 +5,6 @@ import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { CTA } from "@/components/sections/CTA";
-import SemanticContent from "@/components/shared/SemanticContent";
 import { getFaqPageData } from "@/lib/data/faq-page";
 import { faqs } from "@/lib/site-data/faq";
 import { Schema } from "@/components/shared/Schema";
@@ -21,7 +20,6 @@ export function generateMetadata(): Metadata {
 
 export default async function FaqPage() {
   const { 
-    semanticContent, 
     faqSchema, 
     breadcrumbSchema 
   } = await getFaqPageData();
@@ -30,13 +28,6 @@ export default async function FaqPage() {
     <>
       <Schema id="faq" schema={faqSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
-
-      <SemanticContent 
-        primaryEntity={semanticContent.primaryEntity}
-        relatedEntities={semanticContent.relatedEntities}
-        semanticClusters={semanticContent.semanticClusters}
-        contextualKeywords={semanticContent.contextualKeywords}
-      />
       
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
@@ -44,15 +35,16 @@ export default async function FaqPage() {
           <Breadcrumb items={[{ label: "FAQ" }]} align="center" />
           <SectionHeader
             as="h1"
-            eyebrow="TryIPTV help center"
-            title="Answers for Better Streaming"
-            subtitle="Clear guidance on setup, playback, billing, devices, and support."
+            eyebrow="TryIPTV Help Center"
+            title="Frequently Asked Questions About TryIPTV"
+            subtitle="Clear answers on IPTV setup, channel playlists, device compatibility, activation, and customer support."
           />
         </Container>
       </Section>
 
       <Section>
         <Container>
+          <h2 className="sr-only">Frequently Asked Questions</h2>
           <FaqList items={faqs} />
         </Container>
       </Section>

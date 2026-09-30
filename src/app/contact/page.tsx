@@ -12,7 +12,6 @@ import { Section } from '@/components/shared/Section';
 import { SectionHeader } from '@/components/shared/SectionHeader';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { ContactForm } from '@/components/shared/ContactForm';
-import SemanticContent from '@/components/shared/SemanticContent';
 import { getContactPageData } from '@/lib/data/contact-page';
 import { Schema } from '@/components/shared/Schema';
 import { generateMetadata as generatePageMetadata } from '@/lib/site-config';
@@ -21,23 +20,17 @@ import { Mail, MessageCircle, Clock, ShieldCheck, ArrowRight } from 'lucide-reac
 export function generateMetadata(): Metadata {
     return generatePageMetadata({
         title: "Contact Us",
-        description: "Get in touch with our team. Whether you have a question about TryIPTV or need support, we're here to help.",
+        description: "Get in touch with the TryIPTV team. Whether you have questions about device setup, channels, or subscriptions, our support desk is ready to help.",
         canonical: "/contact",
     });
 }
 
 export default async function ContactPage() {
-    const { breadcrumbSchema, semanticContent } = await getContactPageData();
+    const { breadcrumbSchema } = await getContactPageData();
 
     return (
         <>
             <Schema id="breadcrumb" schema={breadcrumbSchema} />
-            <SemanticContent 
-                primaryEntity={semanticContent.primaryEntity}
-                relatedEntities={semanticContent.relatedEntities}
-                semanticClusters={semanticContent.semanticClusters}
-                contextualKeywords={semanticContent.contextualKeywords}
-            />
 
             <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
@@ -45,9 +38,9 @@ export default async function ContactPage() {
                     <Breadcrumb items={[{ label: "Contact Us" }]} align="center" />
                     <SectionHeader
                         as="h1"
-                        eyebrow="Support when you need it"
-                        title="Contact TryIPTV"
-                        subtitle="Tell us what you need help with and our support team will get back to you."
+                        eyebrow="Support When You Need It"
+                        title="Contact TryIPTV Support"
+                        subtitle="Tell us what you need help with and our support team will get back to you promptly."
                     />
                 </Container>
             </Section>
@@ -60,7 +53,7 @@ export default async function ContactPage() {
                             <Card>
                                 <CardHeader>
                                     <p className="eyebrow mb-1">Direct support</p>
-                                    <CardTitle className="font-headline text-2xl font-extrabold">Instant Assistance</CardTitle>
+                                    <CardTitle as="h2" className="font-headline text-2xl font-extrabold">Instant Assistance</CardTitle>
                                     <CardDescription>Connect directly with our support specialists for setup, billing, or technical help.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
@@ -124,7 +117,7 @@ export default async function ContactPage() {
                             <Card>
                                 <CardHeader>
                                     <p className="eyebrow mb-1">Send a message</p>
-                                    <CardTitle className="font-headline text-2xl font-extrabold">Send Us a Message</CardTitle>
+                                    <CardTitle as="h2" className="font-headline text-2xl font-extrabold">Send Us a Message</CardTitle>
                                     <CardDescription>
                                         Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
                                     </CardDescription>

@@ -1,6 +1,5 @@
 
 import { unstable_cache as cache } from 'next/cache';
-import { generateSemanticContent, type SemanticContent as SemanticContentType } from "@/lib/vector-seo";
 import { generateBreadcrumbSchema, generateFAQPageSchema, generateServiceSchema } from '@/lib/schema';
 import type { BreadcrumbList, FAQPage, Service } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
@@ -28,7 +27,7 @@ const trialFaqs = [
     },
     {
         question: "Is any content locked or downgraded during the free trial?",
-        answer: "No. The 24-hour trial provides complete, unrestricted access to our full catalog of 25,000+ live channels, 120,000+ movies and series, 4K streams, and the EPG TV guide, exactly like a paid subscription."
+        answer: "No. The 24-hour trial provides complete, unrestricted access to our full catalog of 24,000+ live channels, 80,000+ movies and series, 4K streams, and the EPG TV guide, exactly like a paid subscription."
     },
     {
         question: "What happens when the 24-hour trial ends?",
@@ -45,8 +44,6 @@ export const getIptvFreeTrialPageData = cache(
     const baseUrl = siteConfig.url;
     const pageUrl = `${baseUrl}/iptv-free-trial`;
 
-    const semanticContentPromise: Promise<SemanticContentType> = generateSemanticContent("IPTV Free Trial");
-
     const breadcrumbSchemaPromise: Promise<BreadcrumbList> = Promise.resolve(generateBreadcrumbSchema([
         { name: "Home", item: `${baseUrl}/` },
         { name: "IPTV Free Trial", item: pageUrl }
@@ -58,7 +55,7 @@ export const getIptvFreeTrialPageData = cache(
         serviceType: "Free IPTV Trial",
         providerName: "TryIPTV",
         name: "24-Hour IPTV Free Trial",
-        description: "24-hour free trial of TryIPTV with full access to 25,000+ live channels, 120,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
+        description: "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
         areaServed: { type: "Country", name: "Worldwide" },
         offers: {
             "@type": "Offer",
@@ -68,19 +65,16 @@ export const getIptvFreeTrialPageData = cache(
     }));
     
     const [
-      semanticContent,
       breadcrumbSchema,
       faqSchema,
       serviceSchema
     ] = await Promise.all([
-      semanticContentPromise,
       breadcrumbSchemaPromise,
       faqSchemaPromise,
       serviceSchemaPromise,
     ]);
 
     return { 
-      semanticContent, 
       breadcrumbSchema,
       faqSchema,
       serviceSchema,

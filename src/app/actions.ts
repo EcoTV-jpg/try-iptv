@@ -1,4 +1,3 @@
-
 'use server';
 
 import { z } from 'zod';
@@ -20,8 +19,6 @@ type State = {
 };
 
 export async function submitContactForm(prevState: State, formData: FormData): Promise<State> {
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
-
   const validatedFields = contactSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
@@ -35,10 +32,13 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
-  // In a real application, you would send an email, save to a database, etc.
-  console.log('Contact form submitted successfully:', validatedFields.data);
-
-  return { message: 'Your message has been sent successfully!', errors: null };
+  // Transparent delivery integrity: Avoid reporting false delivery when no SMTP/backend service is attached
+  return { 
+    message: 'To ensure your request is answered immediately, please email support@tryiptv.com or message our team on WhatsApp.', 
+    errors: {
+      message: ['Direct email or WhatsApp is required for active support routing.']
+    }
+  };
 }
 
 export async function getRelatedPostsAction(currentId: string) {

@@ -118,11 +118,6 @@ const nextConfig = {
         destination: '/pricing',
         permanent: true,
       },
-      {
-        source: '/old-blog/:slug',
-        destination: '/new-blog/:slug',
-        permanent: true,
-      },
     ]
   },
 };

@@ -6,7 +6,6 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Pricing } from "@/components/sections/Pricing";
 import { FaqList } from "@/components/sections/FAQ";
-import SemanticContent from "@/components/shared/SemanticContent";
 import { SubscriptionFeatures } from "@/components/sections/SubscriptionFeatures";
 import { getPricingPageData } from "@/lib/data/pricing-page";
 import { Schema } from "@/components/shared/Schema";
@@ -33,7 +32,6 @@ export function generateMetadata(): Metadata {
 
 export default async function IPTVSubscription() {
     const { 
-      semanticContent, 
       productSchema,
       breadcrumbSchema, 
       faqSchema,
@@ -45,13 +43,6 @@ export default async function IPTVSubscription() {
       <Schema id="product" schema={productSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       <Schema id="faq" schema={faqSchema} />
-      
-      <SemanticContent 
-        primaryEntity={semanticContent.primaryEntity}
-        relatedEntities={semanticContent.relatedEntities}
-        semanticClusters={semanticContent.semanticClusters}
-        contextualKeywords={semanticContent.contextualKeywords}
-      />
       
       {/* 1. Header Section */}
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
@@ -170,7 +161,7 @@ export default async function IPTVSubscription() {
               <Card className="border-primary/25 bg-[#0d1711] shadow-[0_20px_60px_rgba(0,240,120,0.05)]">
                 <CardHeader className="pb-4">
                   <p className="eyebrow mb-1">Standard Inclusions</p>
-                  <CardTitle className="font-headline text-xl sm:text-2xl font-extrabold">What You Get With Every Plan</CardTitle>
+                  <CardTitle as="h2" className="font-headline text-xl sm:text-2xl font-extrabold">What You Get With Every Plan</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3.5 text-sm sm:text-base">

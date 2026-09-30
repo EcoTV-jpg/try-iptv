@@ -1,0 +1,17 @@
+# llms.txt - AI-readable site summary
+name: TryIPTV
+description: TryIPTV provides 24,000+ live TV channels, 80,000+ movies and series on demand, and 2 simultaneous connections across compatible devices. Prepaid crypto plans from $16/month with 5–15 minute activation and a 24-hour free trial with no card required.
+url: https://www.tryiptv.com
+contact: support@tryiptv.com
+
+## Key Pages
+- /pricing - IPTV subscription plans and pricing
+- /iptv-free-trial - 24-hour free evaluation trial (no card required)
+- /devices - Device setup guides for Fire TV, Android, Apple TV, Smart TVs, PC, and MAG
+- /faq - Frequently asked questions regarding setup, playlists, and compatibility
+- /contact - Direct WhatsApp and email support
+- /privacy-policy - Privacy policy and data protection
+- /terms-conditions - Terms of service and connection policies
+- /refund-policy - Technical resolution and refund policy
+- /disclaimer - Trademark fair use and third-party software disclosures
+- /dmca-report - DMCA copyright compliance and takedown notices

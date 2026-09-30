@@ -3,20 +3,20 @@
 
 @layer base {
   :root {
-    --background: 140 17% 2%;
+    --background: 150 20% 2%;
     --foreground: 150 11% 96%;
-    --card: 150 15% 5%;
+    --card: 150 13% 4%;
     --card-foreground: 150 11% 96%;
-    --popover: 150 14% 7%;
+    --popover: 150 12% 6%;
     --popover-foreground: 150 11% 96%;
     --primary: 150 100% 47%;
     --primary-foreground: 0 0% 0%;
-    --secondary: 150 13% 8%;
+    --secondary: 150 10% 7%;
     --secondary-foreground: 150 11% 96%;
-    --muted: 150 12% 9%;
-    --muted-foreground: 150 6% 72%;
+    --muted: 150 8% 8%;
+    --muted-foreground: 150 3% 68%;
     --accent: 150 100% 56%;
-    --accent-foreground: 140 17% 2%;
+    --accent-foreground: 150 20% 2%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 150 8% 18%;
@@ -41,8 +41,12 @@
   body {
     @apply bg-background text-foreground;
     min-width: 320px;
-    background: #050706;
+    background:
+      radial-gradient(circle at 50% 0%, rgb(0 240 120 / 0.055), transparent 38rem),
+      #040506;
     letter-spacing: 0;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
   }
   ::selection {
     background: rgb(0 240 120 / 0.25);
@@ -82,15 +86,23 @@
 
 @layer components {
   .surface-panel {
-    @apply rounded-lg border border-white/[0.09] bg-card shadow-[0_18px_60px_rgba(0,0,0,0.2)];
+    @apply rounded-2xl border border-white/[0.08] bg-card shadow-[inset_0_1px_0_rgba(255,255,255,0.05)];
   }
 
   .eyebrow {
-    @apply text-xs font-extrabold uppercase text-primary;
+    @apply text-[11px] font-semibold uppercase tracking-[0.08em] text-primary;
   }
 }
 
 @layer utilities {
+  .premium-surface {
+    @apply border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)];
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
   @keyframes scroll {
     from {
       transform: translateX(0);

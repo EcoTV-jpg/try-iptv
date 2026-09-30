@@ -18,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ["var(--font-manrope)", "sans-serif"],
-        headline: ["var(--font-manrope)", "sans-serif"],
+        body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        headline: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         code: ["monospace"],
       },
       colors: {

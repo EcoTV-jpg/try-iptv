@@ -29,7 +29,7 @@ const benefits = [
 
 export function WhyChooseTryIPTV() {
   return (
-    <Section id="why-tryiptv" className="border-b border-white/[0.06]">
+    <Section id="why-tryiptv">
       <Container>
         <SectionHeader
           eyebrow="Why TryIPTV"

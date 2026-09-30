@@ -8,13 +8,12 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FaqList } from "@/components/sections/FAQ";
 import { howToArticles, getSafeArticleData } from "@/lib/how-to";
 import { Check, Clock } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
 import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
-import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateProductSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
-import { plans } from "@/lib/site-data/pricing";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { getPlaceholderImage } from "@/lib/server/image-blur-server";
 
@@ -51,7 +50,7 @@ async function getArticleData(deviceId: string): Promise<ArticleType | undefined
 
 function StructuredData({ article }: { article: ArticleType }) {
     if (!article) return null;
-    const { id, title, description, steps, faqs, image, datePublished, dateModified, primaryKeyword, totalTime } = article;
+    const { id, title, description, steps, faqs, image, datePublished, dateModified, totalTime } = article;
     const baseUrl = siteConfig.url;
 
     const articleSchema = generateArticleSchema({
@@ -80,27 +79,10 @@ function StructuredData({ article }: { article: ArticleType }) {
     });
 
     const faqSchema = faqs ? generateFAQPageSchema(faqs) : null;
-    
-    const lowPrice = Math.min(...plans.map(p => p.price_monthly));
-    const highPrice = Math.max(...plans.map(p => p.price_monthly));
-
-    const productSchema = generateProductSchema({
-        name: "TryIPTV Subscription",
-        description: `Our premium TryIPTV subscription is fully compatible with ${primaryKeyword}. Follow our guide to get set up.`,
-        image: "https://images-cdn.ubuy.co.in/633fee9c3a16a463ad2f7388-iptv-subscription-not-box-including.jpg",
-        ratingValue: "4.8",
-        reviewCount: "2547",
-        offers: {
-            "@type": "AggregateOffer",
-            priceCurrency: "USD",
-            lowPrice: lowPrice.toFixed(2),
-            highPrice: highPrice.toFixed(2),
-            offerCount: plans.length,
-        }
-    });
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", item: `${baseUrl}/` },
+        { name: "Devices", item: `${baseUrl}/devices` },
         { name: title, item: `${baseUrl}/devices/${id}` }
     ]);
 
@@ -109,7 +91,6 @@ function StructuredData({ article }: { article: ArticleType }) {
             <Schema id="article" schema={articleSchema} />
             <Schema id="how-to" schema={howToSchema} />
             {faqSchema && <Schema id="faq" schema={faqSchema} />}
-            <Schema id="product" schema={productSchema} />
             <Schema id="breadcrumb" schema={breadcrumbSchema} />
         </>
     );
@@ -148,7 +129,7 @@ export default async function HowToPage({ params }: Props) {
       <StructuredData article={article} />
       <Section className="pt-10 pb-16 sm:pt-14 sm:pb-24">
         <Container>
-          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: title }]} />
+          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Devices", href: "/devices" }, { label: title }]} />
           
           <article>
             <header className="mb-12 text-center max-w-4xl mx-auto">
@@ -181,7 +162,7 @@ export default async function HowToPage({ params }: Props) {
                   <Card className="not-prose my-6">
                     <CardHeader>
                       <p className="eyebrow mb-1">Prerequisites</p>
-                      <CardTitle className="font-headline text-xl font-extrabold">What You&apos;ll Need</CardTitle>
+                      <h2 className="font-headline text-xl font-extrabold text-foreground">What You&apos;ll Need</h2>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3 my-0">
@@ -192,10 +173,10 @@ export default async function HowToPage({ params }: Props) {
                           <Check className="h-4 w-4 flex-shrink-0 text-primary" /> A stable internet connection
                         </li>
                         <li className="flex items-center gap-3 text-sm leading-6 text-muted-foreground">
-                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> An active IPTV subscription
+                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> An active TryIPTV subscription
                         </li>
                         <li className="flex items-center gap-3 text-sm leading-6 text-muted-foreground">
-                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> Your M3U link or credentials
+                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> Your M3U link or Xtream credentials
                         </li>
                       </ul>
                     </CardContent>
@@ -235,11 +216,11 @@ export default async function HowToPage({ params }: Props) {
                   <div className="not-prose relative overflow-hidden rounded-lg border border-primary/25 bg-[#0b100d] p-6 sm:p-8 my-10 text-center">
                     <div className="absolute inset-x-0 top-0 h-1 bg-primary sm:inset-y-0 sm:left-0 sm:h-full sm:w-1" />
                     <p className="eyebrow mb-2">Ready to stream</p>
-                    <h3 className="font-headline text-2xl font-extrabold text-foreground">
+                    <h2 className="font-headline text-2xl font-extrabold text-foreground">
                       Ready to Start Watching on Your {primaryKeyword}?
-                    </h3>
+                    </h2>
                     <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-                      Get your premium IPTV subscription today and unlock thousands of live channels, sports, and movies.
+                      Get your TryIPTV subscription today and unlock 24,000+ live channels and 80,000+ movies and series.
                     </p>
                     <div className="mt-6 flex flex-wrap justify-center gap-3">
                       <Button asChild>

@@ -30,7 +30,6 @@ import {
   HelpCircle
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
-import SemanticContent from "@/components/shared/SemanticContent";
 import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
@@ -39,7 +38,7 @@ import { cn } from "@/lib/utils";
 
 export function generateMetadata(): Metadata {
     const title = "Try IPTV Free for 24 Hours Before You Subscribe — TryIPTV";
-    const description = "Test TryIPTV free for 24 hours. Full access to 25,000+ live channels, 120,000+ movies & TV shows, 4K streams, and 2 simultaneous connections with no credit card required.";
+    const description = "Test TryIPTV free for 24 hours. Full access to 24,000+ live channels, 80,000+ movies & series, 4K streams, and 2 simultaneous connections with no credit card required.";
     return {
       ...generatePageMetadata({
           title,
@@ -71,7 +70,7 @@ const quickFacts = [
   {
     metric: "100% Open",
     label: "Catalog Inclusions",
-    description: "All 25,000+ live channels and 120,000+ VOD titles are fully unlocked."
+    description: "All 24,000+ live channels and 80,000+ VOD titles are fully unlocked."
   }
 ];
 
@@ -83,12 +82,12 @@ const trialInclusions = [
   },
   { 
     icon: Tv, 
-    title: "25,000+ Live Channels Worldwide", 
+    title: "24,000+ Live Channels Worldwide", 
     description: "Live sports, news networks, premium entertainment, and international broadcasts across USA, UK, Canada, and global regions." 
   },
   { 
     icon: Film, 
-    title: "120,000+ Movies & TV Shows", 
+    title: "80,000+ Movies & Series", 
     description: "The complete on-demand VOD library is unlocked during your 24 hours, exactly as paying subscribers see it." 
   },
   { 
@@ -207,20 +206,13 @@ const whyTryReasons = [
 ];
 
 export default async function IptvFreeTrialPage() {
-    const { semanticContent, breadcrumbSchema, faqSchema, serviceSchema, trialFaqs } = await getIptvFreeTrialPageData();
+    const { breadcrumbSchema, faqSchema, serviceSchema, trialFaqs } = await getIptvFreeTrialPageData();
 
     return (
         <>
             <Schema id="breadcrumb" schema={breadcrumbSchema} />
             <Schema id="faq" schema={faqSchema} />
             <Schema id="service" schema={serviceSchema} />
-
-            <SemanticContent 
-                primaryEntity={semanticContent.primaryEntity}
-                relatedEntities={semanticContent.relatedEntities}
-                semanticClusters={semanticContent.semanticClusters}
-                contextualKeywords={semanticContent.contextualKeywords}
-            />
 
             {/* 1. Hero offer + CTA */}
             <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
@@ -238,7 +230,7 @@ export default async function IptvFreeTrialPage() {
                         Try IPTV Free for 24 Hours Before You Subscribe
                     </h1>
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-                        Experience the full TryIPTV service on your own screens before spending a dollar. Our 24-hour free trial unlocks 25,000+ live channels, 120,000+ on-demand movies and series, 4K streaming, and the full EPG TV guide. No credit card required, no contracts, and no automatic renewals.
+                        Experience the full TryIPTV service on your own screens before spending a dollar. Our 24-hour free trial unlocks 24,000+ live channels, 80,000+ on-demand movies and series, 4K streaming, and the full EPG TV guide. No credit card required, no contracts, and no automatic renewals.
                     </p>
                     <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <Button asChild size="lg">
@@ -254,7 +246,7 @@ export default async function IptvFreeTrialPage() {
                         </Button>
                     </div>
                     <p className="mt-4 text-xs font-semibold text-muted-foreground">
-                        No credit card required • Instant credentials via WhatsApp &amp; email • Zero auto-charges
+                        No credit card required • Typical activation within 5–15 minutes via WhatsApp &amp; email • Zero auto-charges
                     </p>
                 </Container>
             </Section>
@@ -262,6 +254,7 @@ export default async function IptvFreeTrialPage() {
             {/* 2. Quick Trial Facts */}
             <Section className="border-b border-white/[0.06] bg-[#070a08] py-10">
                 <Container>
+                    <h2 className="sr-only">Key Trial Details</h2>
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                         {quickFacts.map((fact) => (
                             <div 
@@ -488,9 +481,9 @@ export default async function IptvFreeTrialPage() {
                                     <td className="py-3.5 px-6 text-muted-foreground">From $16/mo (or $7.50/mo eq on 12-mo)</td>
                                 </tr>
                                 <tr>
-                                    <td className="py-3.5 px-6 font-semibold text-foreground">Credit Card Needed</td>
-                                    <td className="py-3.5 px-6 text-muted-foreground">No credit card required</td>
-                                    <td className="py-3.5 px-6 text-muted-foreground">Yes (One-time checkout)</td>
+                                    <td className="py-3.5 px-6 font-semibold text-foreground">Payment Required</td>
+                                    <td className="py-3.5 px-6 text-muted-foreground">None ($0 free)</td>
+                                    <td className="py-3.5 px-6 text-muted-foreground">Prepaid crypto checkout (no auto-charges)</td>
                                 </tr>
                                 <tr>
                                     <td className="py-3.5 px-6 font-semibold text-foreground">Access Duration</td>
@@ -499,13 +492,13 @@ export default async function IptvFreeTrialPage() {
                                 </tr>
                                 <tr>
                                     <td className="py-3.5 px-6 font-semibold text-foreground">Live Channels</td>
-                                    <td className="py-3.5 px-6 text-muted-foreground">25,000+ Channels (Full Access)</td>
-                                    <td className="py-3.5 px-6 text-muted-foreground">25,000+ Channels (Full Access)</td>
+                                    <td className="py-3.5 px-6 text-muted-foreground">24,000+ Channels (Full Access)</td>
+                                    <td className="py-3.5 px-6 text-muted-foreground">24,000+ Channels (Full Access)</td>
                                 </tr>
                                 <tr>
                                     <td className="py-3.5 px-6 font-semibold text-foreground">Movies &amp; Series (VOD)</td>
-                                    <td className="py-3.5 px-6 text-muted-foreground">120,000+ Titles (Full Library)</td>
-                                    <td className="py-3.5 px-6 text-muted-foreground">120,000+ Titles (Full Library)</td>
+                                    <td className="py-3.5 px-6 text-muted-foreground">80,000+ Titles (Full Library)</td>
+                                    <td className="py-3.5 px-6 text-muted-foreground">80,000+ Titles (Full Library)</td>
                                 </tr>
                                 <tr>
                                     <td className="py-3.5 px-6 font-semibold text-foreground">Streaming Quality</td>
@@ -637,7 +630,7 @@ export default async function IptvFreeTrialPage() {
                                 Start Your 24-Hour IPTV Free Trial Tonight
                             </h2>
                             <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground lg:mx-0">
-                                24 hours of full access to 25,000+ live channels and 120,000+ on-demand titles on your own TV. No credit card required, no contracts, and no catch. If the service earns your subscription, choose a plan. If not, walk away owing nothing.
+                                24 hours of full access to 24,000+ live channels and 80,000+ on-demand titles on your own TV. No credit card required, no contracts, and no catch. If the service earns your subscription, choose a plan. If not, walk away owing nothing.
                             </p>
                         </div>
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:ml-10 lg:mt-0 lg:shrink-0">

@@ -1,4 +1,3 @@
-
 import type {
   Product,
   WebSite,
@@ -32,14 +31,6 @@ export function generateWebSiteSchema(): WithContext<WebSite> {
     'url': siteConfig.url,
     'name': siteConfig.name,
     'alternateName': ["Try IPTV", "TryIPTV Stream"],
-    'potentialAction': {
-      '@type': 'SearchAction',
-      'target': {
-        '@type': 'EntryPoint',
-        'urlTemplate': `${siteConfig.url}/?s={search_term_string}`
-      },
-      'query-input': 'required name=search_term_string',
-    } as any,
   };
 }
 
@@ -62,8 +53,6 @@ interface ProductSchemaProps {
   name: string;
   description: string;
   image: string;
-  ratingValue?: string;
-  reviewCount?: string;
   price?: string;
   offers?: Offer | AggregateOffer;
   sku?: string;
@@ -72,7 +61,7 @@ interface ProductSchemaProps {
 }
 
 export function generateProductSchema(props: ProductSchemaProps): WithContext<Product> {
-    const { name, description, image, ratingValue, reviewCount, price, offers, sku, mpn, brand } = props;
+    const { name, description, image, price, offers, sku, mpn, brand } = props;
     
     const offerDetails = offers || (price ? {
         '@type': 'Offer' as const,
@@ -94,17 +83,8 @@ export function generateProductSchema(props: ProductSchemaProps): WithContext<Pr
         offers: offerDetails,
     };
 
-    if (ratingValue && reviewCount) {
-        schema.aggregateRating = {
-            '@type': 'AggregateRating',
-            ratingValue,
-            reviewCount: Number(reviewCount),
-        };
-    }
-
     return schema;
 }
-
 
 export function generateFAQPageSchema(mainEntity: { question: string; answer: string }[]): WithContext<FAQPage> {
   return {
@@ -174,6 +154,18 @@ interface HowToSchemaProps {
     totalTime?: string;
 }
 
+function stripHtml(html: string): string {
+    return html
+        .replace(/<[^>]+>/g, '')
+        .replace(/&amp;/g, '&')
+        .replace(/&apos;/g, "'")
+        .replace(/&#x27;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .trim();
+}
+
 export function generateHowToSchema(props: HowToSchemaProps): WithContext<HowTo> {
     const { name, description, image, steps, totalTime } = props;
     return {
@@ -190,14 +182,13 @@ export function generateHowToSchema(props: HowToSchemaProps): WithContext<HowTo>
         step: steps.map((step, index) => ({
             '@type': 'HowToStep',
             name: step.name,
-            text: step.text,
+            text: stripHtml(step.text),
             url: step.url,
             position: index + 1,
         })),
         totalTime: totalTime,
     };
 }
-
 
 interface ServiceSchemaProps {
     serviceType: string;

@@ -1,7 +1,6 @@
 
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Manrope } from 'next/font/google';
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
@@ -14,13 +13,6 @@ import { Analytics } from "@/components/shared/Analytics";
 import { Schema } from "@/components/shared/Schema";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-manrope",
-  preload: true,
-});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -106,20 +98,9 @@ export const metadata: Metadata = {
       'msvalidate.01': 'CEC29E9356C1B062CC9637E64D68C778',
     },
   },
-  alternates: {
-    canonical: '/',
-    languages: {
-      'en-US': '/',
-      'x-default': '/',
-    },
-  },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
   },
   manifest: '/site.webmanifest',
@@ -134,10 +115,7 @@ export default function RootLayout({
   const isProduction = process.env.NODE_ENV === 'production';
 
   return (
-    <html lang="en" suppressHydrationWarning className={cn(
-        "font-body antialiased",
-        manrope.variable
-      )}>
+    <html lang="en" suppressHydrationWarning className={cn("font-body antialiased")}>
        <head>
           <Schema id="organization" schema={generateOrganizationSchema()} />
           <Schema id="website" schema={generateWebSiteSchema()} />

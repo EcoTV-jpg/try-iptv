@@ -25,14 +25,14 @@ export function FaqList({ items, className }: FaqListProps) {
     <Accordion
       type="single"
       collapsible
-      className={cn("mx-auto max-w-3xl overflow-hidden rounded-lg border border-white/[0.09] bg-card", className)}
+      className={cn("mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]", className)}
     >
       {items.map((faq, i) => (
-        <AccordionItem key={i} value={`item-${i}`} className="border-white/[0.08] px-5 last:border-b-0 sm:px-6">
-          <AccordionTrigger className="min-h-16 py-5 text-left text-base font-extrabold leading-6 hover:no-underline hover:text-primary data-[state=open]:text-primary">
+        <AccordionItem key={i} value={`item-${i}`} className="border-white/[0.08] px-5 last:border-b-0 sm:px-7">
+          <AccordionTrigger className="min-h-[76px] py-5 text-left text-base font-semibold leading-6 hover:no-underline hover:text-foreground hover:bg-white/[0.015] data-[state=open]:text-foreground sm:text-[17px]">
             {faq.question}
           </AccordionTrigger>
-          <AccordionContent className="pb-6 pr-8 text-sm leading-7 text-muted-foreground sm:text-base">
+          <AccordionContent className="pb-7 pr-8 text-[15px] leading-7 text-muted-foreground sm:text-base">
             {faq.answer}
           </AccordionContent>
         </AccordionItem>
@@ -43,7 +43,7 @@ export function FaqList({ items, className }: FaqListProps) {
 
 export function FAQ() {
   return (
-    <Section id="faq" className="border-t border-white/[0.06]">
+    <Section id="faq">
       <Container>
         <SectionHeader
           title="Frequently Asked Questions"

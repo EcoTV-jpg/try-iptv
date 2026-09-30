@@ -1,13 +1,21 @@
 
 'use server';
 
-import { z } from 'zod';
 import { unstable_cache as cache } from 'next/cache';
 import { generateTextEmbedding } from '@/ai/flows/embedding-flow';
 import { generateSemanticContentFlow } from '@/ai/flows/generate-semantic-content-flow';
-import { SemanticContentSchema, type SemanticContent as SemanticContentType } from '@/lib/types/semantic-content';
+import type { SemanticContent as SemanticContentType } from '@/lib/types/semantic-content';
 
 export type SemanticContent = SemanticContentType;
+
+function getFallbackSemanticContent(topic: string): SemanticContent {
+  return {
+    primaryEntity: topic,
+    relatedEntities: [],
+    semanticClusters: [],
+    contextualKeywords: [topic],
+  };
+}
 
 /**
  * Generates a semantic content structure for a given topic by calling an AI flow.
@@ -16,18 +24,24 @@ export type SemanticContent = SemanticContentType;
  * @returns A promise that resolves to a semantic content structure.
  */
 export const generateSemanticContent = cache(async (topic: string): Promise<SemanticContent> => {
+  const isProductionBuild = process.env.NEXT_PHASE === 'phase-production-build';
+  const hasGeminiKey = Boolean(
+    process.env.GEMINI_API_KEY ||
+    process.env.GOOGLE_API_KEY ||
+    process.env.GOOGLE_GENAI_API_KEY
+  );
+  const aiSemanticContentEnabled = process.env.ENABLE_AI_SEMANTIC_CONTENT === 'true';
+
+  if (isProductionBuild || !hasGeminiKey || !aiSemanticContentEnabled) {
+    return getFallbackSemanticContent(topic);
+  }
+
   try {
     const content = await generateSemanticContentFlow(topic);
     return content;
   } catch (error) {
-    console.error(`Failed to generate semantic content for topic "${topic}":`, error);
-    // Return a fallback structure to prevent page errors
-    return {
-      primaryEntity: topic,
-      relatedEntities: [],
-      semanticClusters: [],
-      contextualKeywords: [],
-    };
+    console.warn(`Using fallback semantic content for topic "${topic}":`, error);
+    return getFallbackSemanticContent(topic);
   }
 },
 ['semantic-content'],

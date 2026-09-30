@@ -1,6 +1,4 @@
-
 import { unstable_cache as cache } from 'next/cache';
-import { generateSemanticContent, type SemanticContent as SemanticContentType } from "@/lib/vector-seo";
 import { plans } from "@/lib/site-data/pricing";
 import { pricingPageFaqs } from "@/lib/site-data/pricing-page-faq";
 import { generateProductSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
@@ -12,13 +10,10 @@ export const getPricingPageData = cache(
   async () => {
     const baseUrl = siteConfig.url;
 
-    // Define all data fetching and processing promises
-    const semanticContentPromise: Promise<SemanticContentType> = generateSemanticContent("IPTV Subscription Plans");
-    
-    const productSchemaPromise: Promise<Product> = Promise.resolve(generateProductSchema({
+    const productSchema: Product = generateProductSchema({
       name: "TryIPTV Subscription",
       description: "Prepaid IPTV subscription featuring 24,000+ live channels, 80,000+ VOD movies and series, HD & 4K streams, and 2 simultaneous connections across compatible devices.",
-      image: `${siteConfig.url}/og-image.jpg`,
+      image: `${siteConfig.url}/api/og`,
       brand: {
         "@type": "Brand",
         name: siteConfig.name,
@@ -43,34 +38,20 @@ export const getPricingPageData = cache(
             }
         }))
       }
-    }));
+    });
 
-    const breadcrumbSchemaPromise: Promise<BreadcrumbList> = Promise.resolve(generateBreadcrumbSchema([
+    const breadcrumbSchema: BreadcrumbList = generateBreadcrumbSchema([
         { name: "Home", item: `${baseUrl}/` },
         { name: "Pricing", item: `${baseUrl}/pricing` }
-    ]));
-    
-    const faqSchemaPromise: Promise<FAQPage> = Promise.resolve(generateFAQPageSchema(pricingPageFaqs));
-
-    // Await all promises in parallel for maximum efficiency
-    const [
-      semanticContent,
-      productSchema,
-      breadcrumbSchema,
-      faqSchema,
-    ] = await Promise.all([
-      semanticContentPromise,
-      productSchemaPromise,
-      breadcrumbSchemaPromise,
-      faqSchemaPromise,
     ]);
+    
+    const faqSchema: FAQPage = generateFAQPageSchema(pricingPageFaqs);
 
     return { 
-      semanticContent, 
       productSchema,
       breadcrumbSchema,
       faqSchema,
-      pricingPageFaqs, // Pass static data through as well
+      pricingPageFaqs,
     };
   },
   ['pricing-page-data'], // Unique cache key

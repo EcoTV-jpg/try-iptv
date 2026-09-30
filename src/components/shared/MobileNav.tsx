@@ -19,14 +19,14 @@ export function MobileNav() {
           <span className="sr-only">Toggle Navigation</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="flex flex-col border-white/[0.08] bg-card">
+      <SheetContent side="right" className="flex flex-col border-white/[0.08] bg-[#07080a]">
         <Logo />
         <nav className="mt-8 flex flex-1 flex-col gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-            className="rounded-md border-b border-white/[0.06] px-1 py-4 text-lg font-bold transition-colors hover:text-primary"
+            className="rounded-md border-b border-white/[0.06] px-1 py-4 text-lg font-semibold transition-colors hover:text-foreground"
               onClick={() => setIsOpen(false)}
             >
               {link.name}
