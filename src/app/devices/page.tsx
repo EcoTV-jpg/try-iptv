@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Schema } from "@/components/shared/Schema";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
-import { howToArticles } from "@/lib/how-to";
+import { howToArticles, getDeviceSlug } from "@/lib/how-to";
 import { ArrowRight, Clock, Tv, CheckCircle2 } from "lucide-react";
 
 export function generateMetadata(): Metadata {
@@ -67,7 +67,7 @@ export default function DevicesPage() {
                       )}
                     </div>
                     <CardTitle as="h2" className="font-headline text-lg sm:text-xl font-extrabold leading-snug">
-                      <Link href={`/devices/${article.id}`} className="hover:text-primary transition-colors">
+                      <Link href={`/devices/${getDeviceSlug(article.id)}`} className="hover:text-primary transition-colors">
                         {article.title}
                       </Link>
                     </CardTitle>
@@ -81,7 +81,7 @@ export default function DevicesPage() {
                         {article.steps.length} setup steps
                       </span>
                       <Link
-                        href={`/devices/${article.id}`}
+                        href={`/devices/${getDeviceSlug(article.id)}`}
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:underline"
                       >
                         Read Guide <ArrowRight className="h-3.5 w-3.5" />

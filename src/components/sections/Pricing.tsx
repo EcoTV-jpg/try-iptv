@@ -64,7 +64,7 @@ export function Pricing() {
                 </CardContent>
                 <CardFooter className="px-7 pb-7 pt-6">
                   <Button asChild className="w-full" variant={plan.isPopular ? "default" : "outline"}>
-                    <Link href={plan.url}>Choose {plan.name}</Link>
+                    <Link href={plan.checkoutUrl}>Choose {plan.name}</Link>
                   </Button>
                 </CardFooter>
               </Card>

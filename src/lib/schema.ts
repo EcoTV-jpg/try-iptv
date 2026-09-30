@@ -13,10 +13,15 @@ import type {
   WithContext,
 } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
+import { publicBrandSocialLinks, socialLinks } from '@/lib/site-data/socials';
+
+const organizationId = `${siteConfig.url}/#organization`;
+const websiteId = `${siteConfig.url}/#website`;
 
 // Reusable parts of schemas
 const defaultPublisher = {
   '@type': 'Organization' as const,
+  '@id': organizationId,
   'name': siteConfig.name,
   'logo': {
     '@type': 'ImageObject' as const,
@@ -28,9 +33,14 @@ export function generateWebSiteSchema(): WithContext<WebSite> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': websiteId,
     'url': siteConfig.url,
     'name': siteConfig.name,
     'alternateName': ["Try IPTV", "TryIPTV Stream"],
+    'publisher': {
+      '@type': 'Organization',
+      '@id': organizationId,
+    },
   };
 }
 
@@ -38,13 +48,16 @@ export function generateOrganizationSchema(): WithContext<Organization> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': organizationId,
     'name': siteConfig.name,
     'url': siteConfig.url,
     'logo': `${siteConfig.url}/api/og`,
+    'sameAs': [...publicBrandSocialLinks],
     'contactPoint': {
       '@type': 'ContactPoint',
       'email': siteConfig.links.email,
       'contactType': 'Customer Service',
+      'url': socialLinks.whatsapp,
     },
   };
 }
@@ -136,6 +149,7 @@ export function generateArticleSchema(props: ArticleSchemaProps): WithContext<Ar
         dateModified: props.dateModified,
         author: {
             '@type': 'Organization',
+            '@id': organizationId,
             name: props.authorName || siteConfig.name,
         },
         publisher: defaultPublisher,
@@ -206,6 +220,7 @@ export function generateServiceSchema(props: ServiceSchemaProps): WithContext<Se
         serviceType: props.serviceType,
         provider: {
             '@type': 'Organization',
+            '@id': organizationId,
             name: props.providerName
         },
         areaServed: {

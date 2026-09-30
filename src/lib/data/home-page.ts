@@ -15,6 +15,7 @@ export const getHomePageData = cache(
       mpn: "tryiptv-subscription",
       brand: {
         "@type": "Brand",
+        "@id": `${siteConfig.url}/#organization`,
         name: siteConfig.name,
       },
       offers: {
@@ -29,7 +30,7 @@ export const getHomePageData = cache(
           price: plan.price.toFixed(2),
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
-          url: `${siteConfig.url}${plan.url}`,
+          url: plan.checkoutUrl,
           description: `${plan.name} prepaid IPTV subscription including 2 simultaneous device connections, 24,000+ live channels, and HD & 4K streaming.`,
         }))
       }

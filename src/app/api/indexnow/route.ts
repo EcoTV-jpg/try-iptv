@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { howToArticles } from '@/lib/how-to';
+import { howToArticles, isRedirectedDevice } from '@/lib/how-to';
 import { SITE_URL as DEFAULT_SITE_URL } from '@/lib/site-config';
 
 const INDEXNOW_API_URL = 'https://api.indexnow.org/indexnow';
@@ -53,7 +53,9 @@ export async function GET(req: NextRequest) {
         '/dmca-report',
     ];
 
-    const devicePages = howToArticles.map(article => `/devices/${article.id}`);
+    const devicePages = howToArticles
+        .filter(article => !isRedirectedDevice(article.id))
+        .map(article => `/devices/${article.id}`);
 
     const allUrls = [
         ...staticPages.map(path => path === '/' ? SITE_URL : `${SITE_URL}${path}`),

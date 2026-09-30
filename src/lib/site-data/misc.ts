@@ -1,7 +1,9 @@
+import { socialLinks } from "./socials";
+
 export const socialIcons = [
-    { name: "Facebook", href: "#" },
-    { name: "Twitter", href: "#" },
-    { name: "Instagram", href: "#" },
+    { name: "Facebook", href: socialLinks.facebook },
+    { name: "X", href: socialLinks.x },
+    { name: "Instagram", href: socialLinks.instagram },
 ];
 
 export const iptvApps = [

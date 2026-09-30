@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Laptop } from 'lucide-react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { howToArticles } from '@/lib/how-to';
+import { howToArticles, getDeviceSlug } from '@/lib/how-to';
 
 interface InternalLinksProps {
   currentId: string;
@@ -28,7 +28,7 @@ export default function InternalLinks({ currentId }: InternalLinksProps) {
           {relatedGuides.map((guide) => (
             <li key={guide.id}>
               <Link
-                href={`/devices/${guide.id}`}
+                href={`/devices/${getDeviceSlug(guide.id)}`}
                 title={guide.title}
                 className="group flex items-center justify-between text-sm text-muted-foreground transition-colors hover:text-foreground"
               >

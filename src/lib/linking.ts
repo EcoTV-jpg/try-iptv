@@ -1,7 +1,7 @@
 
 
 
-import { getSafeArticleData } from '@/lib/how-to';
+import { getSafeArticleData, getDeviceSlug } from '@/lib/how-to';
 import { getArticlesWithEmbeddings } from '@/lib/server/how-to-server';
 import { findSemanticallySimilarContent } from './vector-related-content';
 import { unstable_cache as cache } from 'next/cache';
@@ -63,7 +63,7 @@ export const getRelatedPosts = cache(async (currentId: string, minLinks = 3) => 
   
   return related.map(post => ({
       ...post,
-      href: `/devices/${post.id}`
+      href: `/devices/${getDeviceSlug(post.id)}`
   }));
 },
 ['related-posts'],

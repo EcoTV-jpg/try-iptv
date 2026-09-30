@@ -8,14 +8,14 @@ export const footerLinks = {
         { name: "All Devices", href: "/devices" }
     ],
     supportedLinks: [
-        { name: "Fire TV Stick", href: "/devices/fire-tv" },
-        { name: "Android", href: "/devices/android" },
+        { name: "Fire TV Stick", href: "/devices/firestick" },
+        { name: "Android", href: "/devices/android-tv" },
         { name: "Apple TV", href: "/devices/apple-tv" },
-        { name: "iOS", href: "/devices/ios" },
+        { name: "iOS", href: "/devices/iphone-ipad" },
         { name: "Samsung TV", href: "/devices/samsung-tv" },
         { name: "LG TV", href: "/devices/lg-tv" },
         { name: "Windows", href: "/devices/windows" },
-        { name: "macOS", href: "/devices/macos" },
+        { name: "macOS", href: "/devices/mac" },
     ],
     legalLinks: [
         { name: "Privacy Policy", href: "/privacy-policy" },

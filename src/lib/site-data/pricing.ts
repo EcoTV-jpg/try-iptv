@@ -18,7 +18,7 @@ export const plans = [
       "Multi-Device Compatibility",
     ],
     isPopular: false,
-    url: "/checkout?plan=1-month"
+    checkoutUrl: "https://flujipay.com/payment/e1JWrpo7MBOGuaq0axpgtaxxIBTcFRoj",
   },
   {
     id: "3-months",
@@ -38,7 +38,7 @@ export const plans = [
       "Multi-Device Compatibility",
     ],
     isPopular: false,
-    url: "/checkout?plan=3-months"
+    checkoutUrl: "https://flujipay.com/payment/npi8bNFKa60nGloEpZuBguh6tBFSueUN",
   },
   {
     id: "6-months",
@@ -58,7 +58,7 @@ export const plans = [
       "Multi-Device Compatibility",
     ],
     isPopular: false,
-    url: "/checkout?plan=6-months"
+    checkoutUrl: "https://flujipay.com/payment/DkNU7UJ2dliHkpGRF7HHhW3JJajmwi3m",
   },
   {
     id: "12-months",
@@ -78,6 +78,6 @@ export const plans = [
       "Multi-Device Compatibility",
     ],
     isPopular: true,
-    url: "/checkout?plan=12-months"
+    checkoutUrl: "https://flujipay.com/payment/y59giDeQUiwnLBXIMYDo4ZRbLBpjeNmG",
   },
 ];

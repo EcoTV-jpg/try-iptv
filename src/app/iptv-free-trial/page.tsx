@@ -36,6 +36,9 @@ import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { plans } from "@/lib/site-data/pricing";
 import { cn } from "@/lib/utils";
 
+const freeTrialWhatsAppUrl =
+  "https://wa.me/447848197761?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
+
 export function generateMetadata(): Metadata {
     const title = "Try IPTV Free for 24 Hours Before You Subscribe — TryIPTV";
     const description = "Test TryIPTV free for 24 hours. Full access to 24,000+ live channels, 80,000+ movies & series, 4K streams, and 2 simultaneous connections with no credit card required.";
@@ -147,12 +150,12 @@ const supportedDevices = [
   {
     name: "Amazon Fire TV & Fire Stick",
     apps: "TiviMate, IPTV Smarters, Downloader",
-    url: "/devices/fire-tv"
+    url: "/devices/firestick"
   },
   {
     name: "Android TV & Android Box",
     apps: "TiviMate, IPTV Smarters Pro, XCIPTV",
-    url: "/devices/android"
+    url: "/devices/android-tv"
   },
   {
     name: "Apple TV, iPhone & iPad",
@@ -177,7 +180,7 @@ const supportedDevices = [
   {
     name: "Apple macOS",
     apps: "VLC, IPTV Smarters Pro for Mac",
-    url: "/devices/macos"
+    url: "/devices/mac"
   },
   {
     name: "MAG & Stalker Set-Top Boxes",
@@ -234,7 +237,7 @@ export default async function IptvFreeTrialPage() {
                     </p>
                     <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <Button asChild size="lg">
-                            <a href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
+                            <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
                                 <SiWhatsapp className="mr-2 h-4 w-4" />
                                 Start Free Trial on WhatsApp
                             </a>
@@ -635,7 +638,7 @@ export default async function IptvFreeTrialPage() {
                         </div>
                         <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:ml-10 lg:mt-0 lg:shrink-0">
                             <Button asChild size="lg">
-                                <a href="https://wa.me/447848197761" target="_blank" rel="noopener noreferrer">
+                                <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
                                     <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial on WhatsApp
                                 </a>
                             </Button>

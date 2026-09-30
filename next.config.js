@@ -63,6 +63,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  trailingSlash: false,
   async headers() {
     return [
       {
@@ -107,6 +108,17 @@ const nextConfig = {
         has: [
           {
             type: 'host',
+            value: 'tryiptv\\.com',
+          },
+        ],
+        destination: 'https://www.tryiptv.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
             value: '(?:www\\.)?iptvprovider\\.me',
           },
         ],
@@ -114,8 +126,33 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/checkout',
+        destination: '/pricing',
+        permanent: true,
+      },
+      {
         source: '/iptv-subscription',
         destination: '/pricing',
+        permanent: true,
+      },
+      {
+        source: '/devices/fire-tv',
+        destination: '/devices/firestick',
+        permanent: true,
+      },
+      {
+        source: '/devices/android',
+        destination: '/devices/android-tv',
+        permanent: true,
+      },
+      {
+        source: '/devices/ios',
+        destination: '/devices/iphone-ipad',
+        permanent: true,
+      },
+      {
+        source: '/devices/macos',
+        destination: '/devices/mac',
         permanent: true,
       },
     ]

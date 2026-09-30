@@ -1,7 +1,7 @@
 
 [
   {
-    "id": "fire-tv",
+    "id": "firestick",
     "title": "How Do I Install IPTV on an Amazon Fire TV Stick?",
     "description": "To install IPTV on your Fire TV Stick, you need to enable 'Apps from Unknown Sources' in your device settings, use the Downloader app to install a compatible IPTV player, and then log in with your subscription credentials.",
     "primaryKeyword": "Fire TV Stick",
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "id": "android",
+    "id": "android-tv",
     "title": "How Do I Set Up IPTV on an Android Device?",
     "description": "To set up IPTV on an Android device, download a recommended IPTV player like IPTV Smarters Pro from the Google Play Store, choose the 'Login with Xtream Codes API' method, and enter the subscription details we provide.",
     "primaryKeyword": "Android Device",
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "id": "ios",
+    "id": "iphone-ipad",
     "title": "How Do I Set Up IPTV on an iPhone or iPad?",
     "description": "To set up IPTV on an iOS device, install a compatible player like 'GSE Smart IPTV' from the App Store, add a new remote playlist using your M3U URL, and your channels will load automatically.",
     "primaryKeyword": "IPTV on iOS",
@@ -106,7 +106,7 @@
     ]
   },
   {
-    "id": "macos",
+    "id": "mac",
     "title": "What's the Best Way to Set Up IPTV on macOS?",
     "description": "The best way to set up IPTV on macOS is to use a dedicated application like IPTV Smarters Player. This provides a better user experience than generic players by offering features like a full TV guide (EPG) and organized VOD libraries.",
     "primaryKeyword": "IPTV on macOS",

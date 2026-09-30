@@ -6,7 +6,7 @@ import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FaqList } from "@/components/sections/FAQ";
-import { howToArticles, getSafeArticleData } from "@/lib/how-to";
+import { howToArticles, getSafeArticleData, isRedirectedDevice } from "@/lib/how-to";
 import { Check, Clock } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Image from "next/image";
@@ -272,7 +272,9 @@ export default async function HowToPage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-  return howToArticles.map((article) => ({
-    device: article.id,
-  }));
+  return howToArticles
+    .filter((article) => !isRedirectedDevice(article.id))
+    .map((article) => ({
+      device: article.id,
+    }));
 }

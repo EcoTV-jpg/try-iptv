@@ -16,6 +16,7 @@ export const getPricingPageData = cache(
       image: `${siteConfig.url}/api/og`,
       brand: {
         "@type": "Brand",
+        "@id": `${siteConfig.url}/#organization`,
         name: siteConfig.name,
       },
       offers: {
@@ -30,10 +31,11 @@ export const getPricingPageData = cache(
             "price": plan.price.toFixed(2),
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock",
-            "url": `${baseUrl}/pricing`,
+            "url": plan.checkoutUrl,
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {
               "@type": "Organization",
+              "@id": `${baseUrl}/#organization`,
               "name": siteConfig.name
             }
         }))
