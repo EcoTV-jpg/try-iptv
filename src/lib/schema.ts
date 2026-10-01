@@ -13,7 +13,6 @@ import type {
   WithContext,
 } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
-import { publicBrandSocialLinks, socialLinks } from '@/lib/site-data/socials';
 
 export const organizationId = `${siteConfig.url}/#organization`;
 const websiteId = `${siteConfig.url}/#website`;
@@ -31,6 +30,7 @@ export function generateWebSiteSchema(): WithContext<WebSite> {
     '@id': websiteId,
     'url': `${siteConfig.url}/`,
     'name': siteConfig.name,
+    'alternateName': 'Try IPTV',
     'publisher': organizationReference,
   };
 }
@@ -41,19 +41,24 @@ export function generateOrganizationSchema(): WithContext<Organization> {
     '@type': 'Organization',
     '@id': organizationId,
     'name': siteConfig.name,
+    'alternateName': 'Try IPTV',
     'url': `${siteConfig.url}/`,
     'logo': {
       '@type': 'ImageObject',
       'url': `${siteConfig.url}/logo.png`,
+      'contentUrl': `${siteConfig.url}/logo.png`,
+      'width': 1024 as any,
+      'height': 1024 as any,
     },
-    'email': siteConfig.links.email,
-    'sameAs': [...publicBrandSocialLinks],
-    'contactPoint': {
-      '@type': 'ContactPoint',
-      'email': siteConfig.links.email,
-      'contactType': 'Customer Service',
-      'url': socialLinks.whatsapp,
-    },
+    'sameAs': [
+      'https://x.com/tryiptv',
+      'https://www.instagram.com/tryiptvofficial',
+      'https://www.facebook.com/tryiptv/',
+      'https://www.youtube.com/@TryIPTV',
+      'https://www.reddit.com/user/tryiptv/',
+      'https://medium.com/@tryiptv',
+      'https://t.me/tryiptvofficial',
+    ],
   };
 }
 
