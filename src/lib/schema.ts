@@ -15,32 +15,23 @@ import type {
 import { siteConfig } from '@/lib/site-config';
 import { publicBrandSocialLinks, socialLinks } from '@/lib/site-data/socials';
 
-const organizationId = `${siteConfig.url}/#organization`;
+export const organizationId = `${siteConfig.url}/#organization`;
 const websiteId = `${siteConfig.url}/#website`;
+const organizationReference = {
+  '@id': organizationId,
+} as const;
 
 // Reusable parts of schemas
-const defaultPublisher = {
-  '@type': 'Organization' as const,
-  '@id': organizationId,
-  'name': siteConfig.name,
-  'logo': {
-    '@type': 'ImageObject' as const,
-    'url': `${siteConfig.url}/api/og`,
-  },
-};
+const defaultPublisher = organizationReference;
 
 export function generateWebSiteSchema(): WithContext<WebSite> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': websiteId,
-    'url': siteConfig.url,
+    'url': `${siteConfig.url}/`,
     'name': siteConfig.name,
-    'alternateName': ["Try IPTV", "TryIPTV Stream"],
-    'publisher': {
-      '@type': 'Organization',
-      '@id': organizationId,
-    },
+    'publisher': organizationReference,
   };
 }
 
@@ -50,8 +41,12 @@ export function generateOrganizationSchema(): WithContext<Organization> {
     '@type': 'Organization',
     '@id': organizationId,
     'name': siteConfig.name,
-    'url': siteConfig.url,
-    'logo': `${siteConfig.url}/api/og`,
+    'url': `${siteConfig.url}/`,
+    'logo': {
+      '@type': 'ImageObject',
+      'url': `${siteConfig.url}/logo.png`,
+    },
+    'email': siteConfig.links.email,
     'sameAs': [...publicBrandSocialLinks],
     'contactPoint': {
       '@type': 'ContactPoint',
@@ -70,7 +65,7 @@ interface ProductSchemaProps {
   offers?: Offer | AggregateOffer;
   sku?: string;
   mpn?: string;
-  brand?: Brand;
+  brand?: Brand | typeof organizationReference;
 }
 
 export function generateProductSchema(props: ProductSchemaProps): WithContext<Product> {
@@ -147,11 +142,7 @@ export function generateArticleSchema(props: ArticleSchemaProps): WithContext<Ar
         image: props.image,
         datePublished: props.datePublished,
         dateModified: props.dateModified,
-        author: {
-            '@type': 'Organization',
-            '@id': organizationId,
-            name: props.authorName || siteConfig.name,
-        },
+        author: organizationReference,
         publisher: defaultPublisher,
         mainEntityOfPage: {
             '@type': 'WebPage',
@@ -218,11 +209,7 @@ export function generateServiceSchema(props: ServiceSchemaProps): WithContext<Se
         '@context': 'https://schema.org',
         '@type': 'Service',
         serviceType: props.serviceType,
-        provider: {
-            '@type': 'Organization',
-            '@id': organizationId,
-            name: props.providerName
-        },
+        provider: organizationReference,
         areaServed: {
             '@type': props.areaServed.type as any,
             name: props.areaServed.name,

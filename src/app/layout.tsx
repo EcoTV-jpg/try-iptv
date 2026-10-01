@@ -13,7 +13,7 @@ const ContactSheet = dynamic(() => import("@/components/shared/ContactSheet").th
 import { Analytics } from "@/components/shared/Analytics";
 import { Schema } from "@/components/shared/Schema";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
-import { siteConfig } from "@/lib/site-config";
+import { SITE_URL, siteConfig } from "@/lib/site-config";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -26,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${siteConfig.name} — Best IPTV Service in USA, UK & Worldwide`,
     template: `%s | ${siteConfig.name}`,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: siteConfig.url,
+    url: `${SITE_URL}/`,
     siteName: siteConfig.name,
     title: `${siteConfig.name} — Best IPTV Service in USA, UK & Worldwide`,
     description: siteConfig.description,
@@ -102,6 +102,16 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      { rel: 'icon', url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { rel: 'icon', url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
     ],
   },
   manifest: '/site.webmanifest',

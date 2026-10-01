@@ -1,4 +1,4 @@
-import { generateProductSchema } from '@/lib/schema';
+import { generateProductSchema, organizationId } from '@/lib/schema';
 import type { Product } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
 import { plans } from '@/lib/site-data/pricing';
@@ -11,9 +11,7 @@ export function getHomePageData() {
     sku: "tryiptv-subscription",
     mpn: "tryiptv-subscription",
     brand: {
-      "@type": "Brand",
-      "@id": `${siteConfig.url}/#organization`,
-      name: siteConfig.name,
+      "@id": organizationId,
     },
     offers: {
       "@type": "AggregateOffer",

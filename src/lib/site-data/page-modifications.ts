@@ -25,6 +25,7 @@ export const STATIC_ROUTES = [
   '/',
   '/pricing',
   '/iptv-free-trial',
+  '/about',
   '/devices',
   '/faq',
   '/contact',
@@ -45,6 +46,7 @@ export type StaticRoute = (typeof STATIC_ROUTES)[number];
  * - Homepage (/): 2026-09-30 (Hero copy, value props, and layout overhaul - commit 61807de)
  * - /pricing: 2026-09-30 (Plan structure and pricing feature matrix overhaul - commit 61807de)
  * - /iptv-free-trial: 2026-09-30 (Channel/VOD metrics correction & WhatsApp flow - commit 16efd8f)
+ * - /about: 2026-10-01 (About page created and published)
  * - /devices: 2026-09-30 (Device directory index created and published - commit 16efd8f)
  * - /faq: 2026-09-29 (FAQ content and answer updates in faq.ts - commit a25404e)
  * - /contact: 2026-09-29 (Contact information and support channel copy - commit a25404e)
@@ -54,6 +56,7 @@ export const PAGE_LAST_MODIFIED: Record<StaticRoute, string> = {
   '/': '2026-09-30',
   '/pricing': '2026-09-30',
   '/iptv-free-trial': '2026-09-30',
+  '/about': '2026-10-01',
   '/devices': '2026-09-30',
   '/faq': '2026-09-29',
   '/contact': '2026-09-29',

@@ -3,7 +3,7 @@ import { howToArticles, isRedirectedDevice } from '@/lib/how-to';
 import { SITE_URL } from '@/lib/site-config';
 import { PAGE_LAST_MODIFIED, STATIC_ROUTES } from '@/lib/site-data/page-modifications';
 
-const baseUrl = process.env.SITE_URL || SITE_URL;
+const baseUrl = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({

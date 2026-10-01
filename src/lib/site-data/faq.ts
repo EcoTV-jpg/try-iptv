@@ -2,7 +2,7 @@
 export const faqs = [
     {
         question: "What is TryIPTV?",
-        answer: "TryIPTV is an internet-based television streaming service providing access to more than 24,000 live TV channels and over 80,000 on-demand movies and series. It streams directly over your existing internet connection to compatible devices in HD and 4K resolution without requiring a traditional cable box or satellite dish."
+        answer: "TryIPTV is a prepaid IPTV subscription service available at tryiptv.com. The service provides live TV, sports, and on-demand streaming across compatible IPTV devices and apps, with fixed-term prepaid plans, 2 simultaneous connections, a 24-hour trial with no card required, and no automatic renewal."
     },
     {
         question: "Does TryIPTV offer a free trial?",

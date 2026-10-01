@@ -1,7 +1,7 @@
 import { unstable_cache as cache } from 'next/cache';
 import { plans } from "@/lib/site-data/pricing";
 import { pricingPageFaqs } from "@/lib/site-data/pricing-page-faq";
-import { generateProductSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
+import { generateProductSchema, generateBreadcrumbSchema, generateFAQPageSchema, organizationId } from "@/lib/schema";
 import type { Product, BreadcrumbList, FAQPage } from 'schema-dts';
 import { siteConfig } from '../site-config';
 
@@ -15,9 +15,7 @@ export const getPricingPageData = cache(
       description: "Prepaid IPTV subscription featuring 24,000+ live channels, 80,000+ VOD movies and series, HD & 4K streams, and 2 simultaneous connections across compatible devices.",
       image: `${siteConfig.url}/api/og`,
       brand: {
-        "@type": "Brand",
-        "@id": `${siteConfig.url}/#organization`,
-        name: siteConfig.name,
+        "@id": organizationId,
       },
       offers: {
         "@type": "AggregateOffer",
@@ -34,9 +32,7 @@ export const getPricingPageData = cache(
             "url": plan.checkoutUrl,
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {
-              "@type": "Organization",
-              "@id": `${baseUrl}/#organization`,
-              "name": siteConfig.name
+              "@id": organizationId
             }
         }))
       }

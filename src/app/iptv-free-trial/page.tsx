@@ -40,7 +40,7 @@ const freeTrialWhatsAppUrl =
   "https://wa.me/447848197761?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
-    const title = "Try IPTV Free for 24 Hours Before You Subscribe — TryIPTV";
+    const title = "TryIPTV Free for 24 Hours Before You Subscribe — TryIPTV";
     const description = "Test TryIPTV free for 24 hours. Full access to 24,000+ live channels, 80,000+ movies & series, 4K streams, and 2 simultaneous connections with no credit card required.";
     return {
       ...generatePageMetadata({
@@ -230,7 +230,7 @@ export default async function IptvFreeTrialPage() {
                         24-Hour All-Access Pass • Zero Commitment
                     </div>
                     <h1 className="font-headline text-3xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl max-w-4xl mx-auto">
-                        Try IPTV Free for 24 Hours Before You Subscribe
+                        TryIPTV Free for 24 Hours Before You Subscribe
                     </h1>
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
                         Experience the full TryIPTV service on your own screens before spending a dollar. Our 24-hour free trial unlocks 24,000+ live channels, 80,000+ on-demand movies and series, 4K streaming, and the full EPG TV guide. No credit card required, no contracts, and no automatic renewals.
