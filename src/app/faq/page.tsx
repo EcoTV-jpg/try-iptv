@@ -54,7 +54,7 @@ export default async function FaqPage() {
         subtitle="Our dedicated support team is available 24/7. Reach out via WhatsApp or submit a request directly."
         eyebrow="Always here to help"
         buttonText="Contact Support"
-        buttonHref="/contact"
+        buttonHref="/contact-us"
       />
     </>
   );

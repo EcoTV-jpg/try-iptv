@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { howToArticles, isRedirectedDevice } from '@/lib/how-to';
+import { INDEXABLE_ROUTES } from '@/lib/site-routes';
 import { SITE_URL as DEFAULT_SITE_URL } from '@/lib/site-config';
 
 const INDEXNOW_API_URL = 'https://api.indexnow.org/indexnow';
@@ -39,34 +39,16 @@ async function submitUrls(urlList: string[]) {
 }
 
 export async function GET(req: NextRequest) {
-    const staticPages = [
-        '/',
-        '/pricing',
-        '/iptv-free-trial',
-        '/devices',
-        '/faq',
-        '/contact',
-        '/privacy-policy',
-        '/terms-conditions',
-        '/refund-policy',
-        '/disclaimer',
-        '/dmca-report',
-    ];
+  // Only submit URLs that are currently indexable (index: true, real content, in sitemap)
+  const allUrls = INDEXABLE_ROUTES.map((route) =>
+    route.path === '/' ? SITE_URL : `${SITE_URL}${route.path}`
+  );
 
-    const devicePages = howToArticles
-        .filter(article => !isRedirectedDevice(article.id))
-        .map(article => `/devices/${article.id}`);
+  const result = await submitUrls(allUrls);
 
-    const allUrls = [
-        ...staticPages.map(path => path === '/' ? SITE_URL : `${SITE_URL}${path}`),
-        ...devicePages.map(path => `${SITE_URL}${path}`),
-    ];
-    
-    const result = await submitUrls(allUrls);
-
-    if (result.success) {
-        return NextResponse.json({ message: 'URLs submitted to IndexNow successfully.', details: result });
-    } else {
-        return NextResponse.json({ error: 'Failed to submit URLs to IndexNow.', details: result }, { status: 500 });
-    }
+  if (result.success) {
+    return NextResponse.json({ message: 'URLs submitted to IndexNow successfully.', details: result });
+  } else {
+    return NextResponse.json({ error: 'Failed to submit URLs to IndexNow.', details: result }, { status: 500 });
+  }
 }

@@ -106,6 +106,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // ── Domain canonicalization ────────────────────────────────────────────
       {
         source: '/:path*',
         has: [
@@ -128,6 +129,8 @@ const nextConfig = {
         destination: 'https://www.tryiptv.com/:path*',
         permanent: true,
       },
+
+      // ── Commercial page redirects ──────────────────────────────────────────
       {
         source: '/checkout',
         destination: '/pricing',
@@ -138,6 +141,8 @@ const nextConfig = {
         destination: '/pricing',
         permanent: true,
       },
+
+      // ── Old device slug redirects (legacy aliases) ─────────────────────────
       {
         source: '/devices/fire-tv',
         destination: '/devices/firestick',
@@ -148,16 +153,38 @@ const nextConfig = {
         destination: '/devices/android-tv',
         permanent: true,
       },
-      {
-        source: '/devices/ios',
-        destination: '/devices/iphone-ipad',
-        permanent: true,
-      },
+      // /devices/ios had a how-to page (iphone-ipad) that is no longer in
+      // the approved allowlist. No approved iOS device page exists. 404.
       {
         source: '/devices/macos',
         destination: '/devices/mac',
         permanent: true,
       },
+      // /devices/mag → /devices/mag-box (slug rename to match approved allowlist)
+      {
+        source: '/devices/mag',
+        destination: '/devices/mag-box',
+        permanent: true,
+      },
+      // /devices/iphone-ipad has no approved replacement device page → 404
+      // (no redirect added intentionally)
+
+      // /devices/troubleshooting → closest approved equivalent is /help/iptv-buffering
+      {
+        source: '/devices/troubleshooting',
+        destination: '/help/iptv-buffering',
+        permanent: true,
+      },
+
+      // ── Removed utility page redirects ─────────────────────────────────────
+      // /contact → /contact-us (slug rename to match approved allowlist)
+      {
+        source: '/contact',
+        destination: '/contact-us',
+        permanent: true,
+      },
+      // /about has no close approved equivalent → intentional 404
+      // (no redirect added intentionally)
     ]
   },
 };

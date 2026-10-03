@@ -1,0 +1,108 @@
+/**
+ * @file site-routes.ts
+ * @description Single source of truth for TryIPTV's approved SEO URL architecture.
+ *
+ * RULES:
+ * 1. Only approved canonical URLs appear here.
+ * 2. `indexable: true` means the page has real content and must appear in sitemap.xml.
+ * 3. `indexable: false` means the page exists but is noindex (content not yet ready).
+ *    Noindex pages MUST NOT appear in sitemap.xml.
+ * 4. Technical routes (API, OG, sitemap, robots) are NOT listed here.
+ * 5. Update `lastModified` (YYYY-MM-DD) only when meaningful page content changes.
+ *
+ * DEVELOPER WORKFLOW:
+ * - Adding a new approved URL: add an entry here first.
+ * - Making a noindex page indexable: set `indexable: true` and set `lastModified`.
+ * - Removing a URL: remove the entry and add a redirect in next.config.ts.
+ * - The sitemap (src/app/sitemap.ts) and robots (src/app/robots.ts) derive from this file.
+ */
+
+export type RouteSection =
+  | 'commercial'
+  | 'devices'
+  | 'players'
+  | 'guides'
+  | 'help'
+  | 'legal'
+  | 'utility';
+
+export interface SiteRoute {
+  /** Canonical path, e.g. "/devices/firestick" */
+  path: string;
+  section: RouteSection;
+  /**
+   * true  = page has real indexable content → included in sitemap.xml
+   * false = page exists but is noindex (content pending) → excluded from sitemap
+   */
+  indexable: boolean;
+  /** ISO date string YYYY-MM-DD. Required when indexable: true. */
+  lastModified?: string;
+}
+
+export const SITE_ROUTES: SiteRoute[] = [
+  // ── Commercial ───────────────────────────────────────────────────────────────
+  { path: '/',                  section: 'commercial', indexable: true,  lastModified: '2026-09-30' },
+  { path: '/pricing',           section: 'commercial', indexable: true,  lastModified: '2026-09-30' },
+  { path: '/iptv-free-trial',   section: 'commercial', indexable: true,  lastModified: '2026-09-30' },
+  { path: '/setup',             section: 'commercial', indexable: false },
+
+  // ── Devices hub + device pages ────────────────────────────────────────────
+  { path: '/devices',           section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/firestick', section: 'devices',    indexable: true,  lastModified: '2026-10-02' },
+  { path: '/devices/android-tv',section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/samsung-tv',section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/lg-tv',     section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/apple-tv',  section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/chromecast',section: 'devices',    indexable: false },
+  { path: '/devices/mag-box',   section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/roku',      section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/windows',   section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+  { path: '/devices/mac',       section: 'devices',    indexable: true,  lastModified: '2026-09-30' },
+
+  // ── Players hub + player pages ────────────────────────────────────────────
+  { path: '/players',                section: 'players', indexable: false },
+  { path: '/players/iptv-smarters',  section: 'players', indexable: false },
+  { path: '/players/tivimate',       section: 'players', indexable: false },
+  { path: '/players/xciptv',         section: 'players', indexable: false },
+  { path: '/players/televizo',       section: 'players', indexable: false },
+  { path: '/players/perfect-player', section: 'players', indexable: false },
+  { path: '/players/ott-navigator',  section: 'players', indexable: false },
+  { path: '/players/iptv-extreme',   section: 'players', indexable: false },
+
+  // ── Guides hub + guide pages ──────────────────────────────────────────────
+  { path: '/guides',                     section: 'guides', indexable: false },
+  { path: '/guides/what-is-iptv',        section: 'guides', indexable: true,  lastModified: '2026-10-01' },
+  { path: '/guides/how-does-iptv-work',  section: 'guides', indexable: false },
+  { path: '/guides/what-is-m3u',         section: 'guides', indexable: false },
+  { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: false },
+  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: false },
+  { path: '/guides/what-is-epg',         section: 'guides', indexable: false },
+  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: false },
+  { path: '/guides/iptv-vs-cable',       section: 'guides', indexable: false },
+
+  // ── Help hub + help pages ─────────────────────────────────────────────────
+  { path: '/help',                        section: 'help', indexable: false },
+  { path: '/help/iptv-buffering',         section: 'help', indexable: false },
+  { path: '/help/iptv-not-working',       section: 'help', indexable: false },
+  { path: '/help/iptv-login-not-working', section: 'help', indexable: false },
+  { path: '/help/m3u-not-loading',        section: 'help', indexable: false },
+  { path: '/help/epg-not-working',        section: 'help', indexable: false },
+
+  // ── Utility ───────────────────────────────────────────────────────────────
+  { path: '/faq',        section: 'utility', indexable: true, lastModified: '2026-09-29' },
+  { path: '/contact-us', section: 'utility', indexable: false },
+  { path: '/blog',       section: 'utility', indexable: false },
+
+  // ── Legal ─────────────────────────────────────────────────────────────────
+  { path: '/privacy-policy',  section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  { path: '/terms-conditions',section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  { path: '/refund-policy',   section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  { path: '/disclaimer',      section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  { path: '/dmca-report',     section: 'legal', indexable: true, lastModified: '2026-03-01' },
+];
+
+/** All indexable routes that should appear in sitemap.xml */
+export const INDEXABLE_ROUTES = SITE_ROUTES.filter((r) => r.indexable);
+
+/** All routes regardless of indexability (for completeness checks) */
+export const ALL_APPROVED_PATHS = SITE_ROUTES.map((r) => r.path);

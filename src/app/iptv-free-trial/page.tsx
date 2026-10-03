@@ -185,7 +185,7 @@ const supportedDevices = [
   {
     name: "MAG & Stalker Set-Top Boxes",
     apps: "MAG 250, 254, 322 Stalker Portal",
-    url: "/devices/mag"
+    url: "/devices/mag-box"
   },
 ];
 
@@ -611,7 +611,7 @@ export default async function IptvFreeTrialPage() {
                     <div className="mt-10 text-center">
                         <p className="text-sm text-muted-foreground sm:text-base">
                             Still have questions?{" "}
-                            <Link href="/contact" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
+                            <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
                                 Contact our 24/7 support team
                             </Link>
                             . Available via WhatsApp and email.

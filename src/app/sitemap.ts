@@ -1,25 +1,30 @@
 import type { MetadataRoute } from 'next';
-import { howToArticles, isRedirectedDevice } from '@/lib/how-to';
 import { SITE_URL } from '@/lib/site-config';
-import { PAGE_LAST_MODIFIED, STATIC_ROUTES } from '@/lib/site-data/page-modifications';
+import { INDEXABLE_ROUTES } from '@/lib/site-routes';
 
 const baseUrl = SITE_URL;
 
+/**
+ * Canonical sitemap for https://www.tryiptv.com
+ *
+ * Only includes:
+ * - Approved canonical URLs
+ * - Pages that return HTTP 200
+ * - Pages with real indexable content (indexable: true in site-routes.ts)
+ *
+ * Excluded:
+ * - noindex pages (indexable: false)
+ * - redirects
+ * - 404 / 410 pages
+ * - API endpoints
+ * - /thank-you (noindex technical page)
+ *
+ * Source of truth: src/lib/site-routes.ts
+ * Do NOT add URLs here manually — update site-routes.ts instead.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
-    url: route === '/' ? baseUrl : `${baseUrl}${route}`,
-    lastModified: new Date(PAGE_LAST_MODIFIED[route]),
+  return INDEXABLE_ROUTES.map((route) => ({
+    url: route.path === '/' ? baseUrl : `${baseUrl}${route.path}`,
+    lastModified: route.lastModified ? new Date(route.lastModified) : undefined,
   }));
-
-  const devicePages: MetadataRoute.Sitemap = howToArticles
-    .filter((article) => !isRedirectedDevice(article.id))
-    .map((article) => ({
-      url: `${baseUrl}/devices/${article.id}`,
-      lastModified: new Date(article.dateModified || article.datePublished),
-    }));
-
-  return [
-    ...staticPages,
-    ...devicePages,
-  ];
 }

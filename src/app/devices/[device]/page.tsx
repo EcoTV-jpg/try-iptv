@@ -1,14 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FaqList } from "@/components/sections/FAQ";
 import { howToArticles, getSafeArticleData, isRedirectedDevice } from "@/lib/how-to";
-import { Check, Clock } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Clock, Calendar } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
@@ -16,6 +14,19 @@ import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, gene
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { getPlaceholderImage } from "@/lib/server/image-blur-server";
+import {
+  GuideQuickInfo,
+  GuideRequirements,
+  GuideStepList,
+  GuideComparisonTable,
+  GuideTroubleshooting,
+  GuideBufferingChecklist,
+  GuideCallout,
+  GuideScreenshot,
+  GuideToc,
+  GuideCta,
+  type TocItem,
+} from "@/components/guide";
 
 type Props = {
   params: Promise<{ device: string }>;
@@ -96,6 +107,15 @@ function StructuredData({ article }: { article: ArticleType }) {
     );
 }
 
+// Per-device metadata overrides where the SERP <title> or meta description
+// needs to differ from the on-page H1 / visible lede paragraph.
+const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?: string }> = {
+  firestick: {
+    seoTitle: 'How to Install IPTV on Firestick (2026 Setup Guide)',
+    metaDescription: 'Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.',
+  },
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { device } = await params;
   const article = getSafeArticleData(device);
@@ -104,7 +124,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     notFound();
   }
 
-  const { title, description } = article;
+  const overrides = DEVICE_SEO_OVERRIDES[device];
+  const title = overrides?.seoTitle ?? article.title;
+  const description = overrides?.metaDescription ?? article.description;
 
   return generatePageMetadata({
     title,
@@ -123,129 +145,366 @@ export default async function HowToPage({ params }: Props) {
   
   const { title, description, steps, extraSections, faqs, image, primaryKeyword, id, totalTime, dateModified } = article;
   const totalTimeInMinutes = totalTime?.replace('PT', '').replace('M', '');
+  const isFirestick = id === "firestick";
+
+  // Table of Contents definition
+  const firestickTocItems: TocItem[] = [
+    { id: "what-you-need", label: "What You'll Need" },
+    { id: "setup-steps", label: "7-Step Installation" },
+    { id: "service-vs-player", label: "Service vs Player" },
+    { id: "m3u-vs-xtream", label: "M3U vs Xtream Codes" },
+    { id: "developer-options", label: "Developer Options" },
+    { id: "xtream-setup-detail", label: "Xtream Codes Setup" },
+    { id: "m3u-setup-detail", label: "M3U Playlist Setup" },
+    { id: "epg-detail", label: "EPG (TV Guide) Setup" },
+    { id: "troubleshooting", label: "Troubleshooting Matrix" },
+    { id: "buffering", label: "Buffering Checklist" },
+    { id: "two-firesticks", label: "Two Simultaneous Streams" },
+    { id: "before-paying", label: "24-Hour Free Trial" },
+    { id: "storage", label: "Storage Management" },
+    { id: "security", label: "Sideloading Security" },
+    ...(faqs ? [{ id: "faq", label: "Frequently Asked Questions" }] : []),
+  ];
+
+  const defaultTocItems: TocItem[] = [
+    { id: "what-you-need", label: "What You'll Need" },
+    { id: "setup-steps", label: "Setup Steps" },
+    ...(extraSections || []).map((s) => ({ id: s.id, label: s.title })),
+    ...(faqs ? [{ id: "faq", label: "Frequently Asked Questions" }] : []),
+  ];
+
+  const tocItems = isFirestick ? firestickTocItems : defaultTocItems;
 
   return (
     <>
       <StructuredData article={article} />
-      <Section className="pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <Section className="pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container>
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Devices", href: "/devices" }, { label: title }]} />
           
-          <article>
+          <article className="mt-6">
+            {/* Editorial Header */}
             <header className="mb-12 text-center max-w-4xl mx-auto">
-              <p className="eyebrow mb-3">Installation Guide</p>
-              <h1 className="font-headline text-3xl font-extrabold leading-[1.1] sm:text-4xl lg:text-5xl text-foreground">
+              <p className="eyebrow mb-2.5">Installation Guide</p>
+              <h1 className="font-headline text-3xl font-extrabold leading-[1.15] sm:text-4xl lg:text-[46px] xl:text-[48px] text-foreground tracking-tight max-w-4xl mx-auto">
                 {title}
               </h1>
-              <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground leading-7">
+              <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 {description}
               </p>
-              <div className="mt-6 flex flex-wrap justify-center items-center gap-3 text-xs">
+
+              {/* Informational Specs Rail */}
+              <GuideQuickInfo
+                device={primaryKeyword}
+                setupMethod="IPTV Player + Credentials"
+                loginFormat="Xtream Codes or M3U"
+                difficulty="Simple Guided Setup"
+              />
+
+              {/* Badges: Time & Last Reviewed */}
+              <div className="mt-5 flex flex-wrap justify-center items-center gap-3 text-xs">
                 {totalTimeInMinutes && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-card px-3 py-1 text-muted-foreground">
-                    <Clock className="h-3.5 w-3.5 text-primary" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-[#07080a] px-3 py-1 text-muted-foreground">
+                    <Clock className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                     <span>Estimated time: {totalTimeInMinutes} minutes</span>
                   </span>
                 )}
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-card px-3 py-1 text-muted-foreground">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-[#07080a] px-3 py-1 text-muted-foreground">
+                  <Calendar className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                   <span>Updated:</span>
                   <time dateTime={dateModified} className="text-foreground font-semibold">
-                    {new Date(dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {new Date(dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
                   </time>
                 </span>
               </div>
+
+              {/* Mobile Table of Contents */}
+              <GuideToc items={tocItems} variant="mobile" />
             </header>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12 items-start">
-              <div className="lg:col-span-2">
-                <div className="prose prose-lg dark:prose-invert max-w-none">
-                  <Card className="not-prose my-6">
-                    <CardHeader>
-                      <p className="eyebrow mb-1">Prerequisites</p>
-                      <h2 className="font-headline text-xl font-extrabold text-foreground">What You&apos;ll Need</h2>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-3 my-0">
-                        <li className="flex items-center gap-3 text-sm leading-6 text-muted-foreground">
-                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> A compatible {primaryKeyword}
-                        </li>
-                        <li className="flex items-center gap-3 text-sm leading-6 text-muted-foreground">
-                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> A stable internet connection
-                        </li>
-                        <li className="flex items-center gap-3 text-sm leading-6 text-muted-foreground">
-                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> An active TryIPTV subscription
-                        </li>
-                        <li className="flex items-center gap-3 text-sm leading-6 text-muted-foreground">
-                          <Check className="h-4 w-4 flex-shrink-0 text-primary" /> Your M3U link or Xtream credentials
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+            {/* Editorial Grid: Main Article + Sticky Sidebar */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
+              {/* Main Reading Column (capped at comfortable reading width ~760-820px) */}
+              <div className="lg:col-span-8 w-full max-w-[820px] space-y-12 sm:space-y-14">
+                {/* Prerequisites Grid */}
+                <GuideRequirements primaryKeyword={primaryKeyword} />
 
-                  <h2 className="font-headline text-2xl sm:text-3xl font-extrabold mt-10 mb-3 text-foreground">
-                    Step-by-Step Installation Guide for {primaryKeyword}
-                  </h2>
-                  <p className="text-base leading-7 text-muted-foreground">
-                    Follow these simple steps to get TryIPTV running on your {primaryKeyword}. The entire process should only take a few minutes.
-                  </p>
+                {/* Step-by-Step Sequence */}
+                <GuideStepList steps={steps} primaryKeyword={primaryKeyword} />
 
-                  <div className="space-y-8 mt-8 not-prose">
-                    {steps.map((step, index) => (
-                      <div key={index} id={`step-${index + 1}`} className="flex gap-5">
-                        <div className="flex flex-col items-center">
-                          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary font-extrabold text-sm">
-                            {index + 1}
-                          </div>
-                          {index < steps.length - 1 && <div className="w-px flex-grow bg-white/[0.09] my-2" />}
+                {/* Stream Isolation Callout right after steps */}
+                {isFirestick && (
+                  <GuideCallout type="important" title="Stream Isolation Rule">
+                    <p>
+                      If one specific channel fails while other channels in your player stream smoothly, the issue is stream-specific.
+                      Do not immediately replace your account credentials or reset the player application.
+                    </p>
+                  </GuideCallout>
+                )}
+
+                {/* Firestick-Specific Rich Sections */}
+                {isFirestick && extraSections && (
+                  <div className="space-y-12">
+                    {/* Service vs Player */}
+                    {extraSections.find((s) => s.id === "service-vs-player") && (
+                      <div id="service-vs-player" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {extraSections.find((s) => s.id === "service-vs-player")?.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>ul]:space-y-2 [&>ul]:list-disc [&>ul]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: extraSections.find((s) => s.id === "service-vs-player")?.content || "",
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* M3U vs Xtream Codes */}
+                    {extraSections.find((s) => s.id === "m3u-vs-xtream") && (
+                      <div id="m3u-vs-xtream" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {extraSections.find((s) => s.id === "m3u-vs-xtream")?.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>strong]:text-foreground [&>strong]:font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: extraSections.find((s) => s.id === "m3u-vs-xtream")?.content || "",
+                          }}
+                        />
+                        <GuideComparisonTable />
+                        <GuideCallout type="tip" title="Fire TV Remote Navigation">
+                          <p>
+                            Xtream Codes is generally easier to enter using a Fire TV remote because credentials are separated into
+                            three distinct fields (server URL, username, password), significantly reducing on-screen typing errors compared to long URLs.
+                          </p>
+                        </GuideCallout>
+                      </div>
+                    )}
+
+                    {/* Developer Options & Sideloading */}
+                    {extraSections.find((s) => s.id === "developer-options") && (
+                      <div id="developer-options" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {extraSections.find((s) => s.id === "developer-options")?.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>ol]:space-y-2.5 [&>ol]:list-decimal [&>ol]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: extraSections.find((s) => s.id === "developer-options")?.content || "",
+                          }}
+                        />
+
+                        {/* Visual Evidence: Developer Options / Unknown Sources */}
+                        <GuideScreenshot
+                          src="/images/guides/firestick/firestick-developer-options-unknown-sources.webp"
+                          alt="Developer Options on Fire TV showing Apps from Unknown Sources enabled"
+                          caption="Developer Options on a Fire TV version showing Apps from Unknown Sources."
+                          note="Menu names can vary by Fire TV model and Fire OS version. Some devices use “Install Unknown Apps” instead."
+                          width={1024}
+                          height={576}
+                        />
+
+                        {/* Visual Evidence: Unknown Sources Warning Dialog */}
+                        <GuideScreenshot
+                          src="/images/guides/firestick/firestick-unknown-sources-warning.webp"
+                          alt="Fire TV warning prompt before allowing installation from outside Appstore"
+                          caption="Fire TV warning shown before allowing installation from outside the Amazon Appstore."
+                          width={1024}
+                          height={572}
+                        />
+
+                        <GuideCallout type="security" title="Sideloading Permission Control">
+                          <p>
+                            Developer Options and unknown source permissions are only needed if your chosen player is unavailable in the Amazon Appstore.
+                            Once installation finishes, you can disable the Downloader permission to keep your device secure.
+                          </p>
+                        </GuideCallout>
+                      </div>
+                    )}
+
+                    {/* Xtream Setup Detail */}
+                    {extraSections.find((s) => s.id === "xtream-setup-detail") && (
+                      <div id="xtream-setup-detail" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {extraSections.find((s) => s.id === "xtream-setup-detail")?.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>ul]:space-y-2 [&>ul]:list-disc [&>ul]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: extraSections.find((s) => s.id === "xtream-setup-detail")?.content || "",
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* M3U Setup Detail */}
+                    {extraSections.find((s) => s.id === "m3u-setup-detail") && (
+                      <div id="m3u-setup-detail" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {extraSections.find((s) => s.id === "m3u-setup-detail")?.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>strong]:text-foreground [&>strong]:font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: extraSections.find((s) => s.id === "m3u-setup-detail")?.content || "",
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* EPG Setup Detail */}
+                    {extraSections.find((s) => s.id === "epg-detail") && (
+                      <div id="epg-detail" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {extraSections.find((s) => s.id === "epg-detail")?.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>ul]:space-y-2 [&>ul]:list-disc [&>ul]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold"
+                          dangerouslySetInnerHTML={{
+                            __html: extraSections.find((s) => s.id === "epg-detail")?.content || "",
+                          }}
+                        />
+                      </div>
+                    )}
+
+                    {/* Diagnostic Troubleshooting Interface */}
+                    <GuideTroubleshooting />
+
+                    {/* Buffering Decision Checklist */}
+                    <GuideBufferingChecklist />
+
+                    {/* Two Firesticks */}
+                    {extraSections.find((s) => s.id === "two-firesticks") && (
+                      <div id="two-firesticks" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/[0.08] border border-primary/20 rounded px-2 py-0.5 inline-block mb-3">
+                            Device Policy
+                          </span>
+                          <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground mb-3">
+                            {extraSections.find((s) => s.id === "two-firesticks")?.title}
+                          </h2>
+                          <div
+                            className="text-xs sm:text-sm leading-relaxed text-muted-foreground space-y-3 [&>p]:leading-relaxed [&>strong]:text-foreground [&>strong]:font-semibold"
+                            dangerouslySetInnerHTML={{
+                              __html: extraSections.find((s) => s.id === "two-firesticks")?.content || "",
+                            }}
+                          />
                         </div>
-                        <div className="pb-4">
-                          <h3 className="font-headline text-xl font-extrabold text-foreground mb-2">{step.title}</h3>
-                          <div className="text-sm sm:text-base leading-7 text-muted-foreground" dangerouslySetInnerHTML={{ __html: step.description }} />
+                      </div>
+                    )}
+
+                    {/* Before Paying / Free Trial Section */}
+                    {extraSections.find((s) => s.id === "before-paying") && (
+                      <div id="before-paying" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground bg-white/[0.04] border border-white/[0.1] rounded px-2 py-0.5 inline-block mb-3">
+                            Trial Terms
+                          </span>
+                          <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground mb-3">
+                            {extraSections.find((s) => s.id === "before-paying")?.title}
+                          </h2>
+                          <div
+                            className="text-xs sm:text-sm leading-relaxed text-muted-foreground space-y-3 [&>p]:leading-relaxed [&>strong]:text-foreground [&>strong]:font-semibold [&>a]:text-primary [&>a]:underline [&>a]:underline-offset-4"
+                            dangerouslySetInnerHTML={{
+                              __html: extraSections.find((s) => s.id === "before-paying")?.content || "",
+                            }}
+                          />
                         </div>
+                      </div>
+                    )}
+
+                    {/* Storage Management */}
+                    {extraSections.find((s) => s.id === "storage") && (
+                      <div id="storage" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/[0.08] border border-amber-400/20 rounded px-2 py-0.5 inline-block mb-3">
+                            Device Maintenance
+                          </span>
+                          <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground mb-3">
+                            {extraSections.find((s) => s.id === "storage")?.title}
+                          </h2>
+                          <div
+                            className="text-xs sm:text-sm leading-relaxed text-muted-foreground space-y-3 [&>p]:leading-relaxed [&>ul]:space-y-1.5 [&>ul]:list-disc [&>ul]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold"
+                            dangerouslySetInnerHTML={{
+                              __html: extraSections.find((s) => s.id === "storage")?.content || "",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Sideloading Security */}
+                    {extraSections.find((s) => s.id === "security") && (
+                      <div id="security" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] space-y-4">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-sky-400 bg-sky-400/[0.08] border border-sky-400/20 rounded px-2 py-0.5 inline-block">
+                            Security Verification
+                          </span>
+                          <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground">
+                            {extraSections.find((s) => s.id === "security")?.title}
+                          </h2>
+                          <div
+                            className="text-xs sm:text-sm leading-relaxed text-muted-foreground space-y-3 [&>p]:leading-relaxed [&>strong]:text-foreground [&>strong]:font-semibold"
+                            dangerouslySetInnerHTML={{
+                              __html: extraSections.find((s) => s.id === "security")?.content || "",
+                            }}
+                          />
+                          <GuideCallout type="security" title="Keep Credentials Private">
+                            <p>
+                              Never expose your M3U playlist URL, username, password, or server credentials in public forums, social media, or shared screenshots.
+                              Always download player APKs directly from the player developer&apos;s verified website.
+                            </p>
+                          </GuideCallout>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Generic fallback for non-Firestick devices with extraSections (e.g. Mac) */}
+                {!isFirestick && extraSections && extraSections.length > 0 && (
+                  <div className="space-y-12">
+                    {extraSections.map((section) => (
+                      <div key={section.id} id={section.id} className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                        <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">
+                          {section.title}
+                        </h2>
+                        <div
+                          className="text-sm sm:text-base leading-relaxed text-muted-foreground space-y-4 [&>p]:leading-relaxed [&>ul]:space-y-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold [&>a]:text-primary [&>a]:underline [&>a]:underline-offset-4"
+                          dangerouslySetInnerHTML={{ __html: section.content }}
+                        />
                       </div>
                     ))}
                   </div>
+                )}
 
-                  {extraSections?.map(section => (
-                    <div key={section.id} className="my-10">
-                      <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-4">{section.title}</h2>
-                      <div className="text-base leading-7 text-muted-foreground" dangerouslySetInnerHTML={{ __html: section.content }} />
-                    </div>
-                  ))}
+                {/* Integrated Technical CTA Box */}
+                <GuideCta primaryKeyword={primaryKeyword} />
 
-                  <div className="not-prose relative overflow-hidden rounded-lg border border-primary/25 bg-[#0b100d] p-6 sm:p-8 my-10 text-center">
-                    <div className="absolute inset-x-0 top-0 h-1 bg-primary sm:inset-y-0 sm:left-0 sm:h-full sm:w-1" />
-                    <p className="eyebrow mb-2">Ready to stream</p>
-                    <h2 className="font-headline text-2xl font-extrabold text-foreground">
-                      Ready to Start Watching on Your {primaryKeyword}?
-                    </h2>
-                    <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
-                      Get your TryIPTV subscription today and unlock 24,000+ live channels and 80,000+ movies and series.
-                    </p>
-                    <div className="mt-6 flex flex-wrap justify-center gap-3">
-                      <Button asChild>
-                        <Link href="/pricing">Get Your Subscription Now</Link>
-                      </Button>
-                      <Button asChild variant="outline">
-                        <Link href="/iptv-free-trial">Start Free Trial</Link>
-                      </Button>
-                    </div>
-                  </div>
-
-                  {faqs && (
-                    <div className="not-prose mt-12">
-                      <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground mb-6">
+                {/* Frequently Asked Questions */}
+                {faqs && (
+                  <div id="faq" className="scroll-mt-28 pt-8 border-t border-white/[0.08]">
+                    <div className="mb-6">
+                      <p className="eyebrow mb-1">Direct Answers</p>
+                      <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground">
                         Frequently Asked Questions
                       </h2>
-                      <FaqList items={faqs} />
+                      <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                        Clear, non-marketing answers to common setup, compatibility, and playback questions for {primaryKeyword}.
+                      </p>
                     </div>
-                  )}
-                </div>
+                    <FaqList items={faqs} />
+                  </div>
+                )}
               </div>
 
-              <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-24">
+              {/* Sidebar Column: Sticky TOC + Image + Related Guides */}
+              <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+                <GuideToc items={tocItems} variant="desktop" />
+
                 {image && image.blurDataURL && (
-                  <Card className="overflow-hidden">
+                  <Card className="overflow-hidden border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                     <CardContent className="p-0">
                       <Image
                         src={image.imageUrl}
@@ -261,6 +520,7 @@ export default async function HowToPage({ params }: Props) {
                     </CardContent>
                   </Card>
                 )}
+
                 <InternalLinks currentId={id} />
               </aside>
             </div>

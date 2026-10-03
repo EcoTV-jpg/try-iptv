@@ -209,7 +209,7 @@ export default async function IPTVSubscription() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/contact">
+                <Link href="/contact-us">
                   <MessageCircle className="mr-2 h-4 w-4" /> Contact Support
                 </Link>
               </Button>
@@ -234,7 +234,7 @@ export default async function IPTVSubscription() {
           <div className="mt-10 text-center">
             <p className="text-sm text-muted-foreground sm:text-base">
               Questions?{" "}
-              <Link href="/contact" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
+              <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
                 Contact our support team
               </Link>
               . Available via WhatsApp and email.

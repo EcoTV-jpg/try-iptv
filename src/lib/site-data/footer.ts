@@ -3,20 +3,19 @@ export const footerLinks = {
         { name: "Home", href: "/" },
         { name: "Pricing", href: "/pricing" },
         { name: "Free Trial", href: "/iptv-free-trial" },
-        { name: "About", href: "/about" },
         { name: "FAQ", href: "/faq" },
-        { name: "Contact", href: "/contact" },
+        { name: "Contact", href: "/contact-us" },
         { name: "All Devices", href: "/devices" }
     ],
     supportedLinks: [
         { name: "Fire TV Stick", href: "/devices/firestick" },
         { name: "Android", href: "/devices/android-tv" },
         { name: "Apple TV", href: "/devices/apple-tv" },
-        { name: "iOS", href: "/devices/iphone-ipad" },
         { name: "Samsung TV", href: "/devices/samsung-tv" },
         { name: "LG TV", href: "/devices/lg-tv" },
         { name: "Windows", href: "/devices/windows" },
         { name: "macOS", href: "/devices/mac" },
+        { name: "MAG Box", href: "/devices/mag-box" },
     ],
     legalLinks: [
         { name: "Privacy Policy", href: "/privacy-policy" },

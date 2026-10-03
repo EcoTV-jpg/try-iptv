@@ -77,11 +77,18 @@ export default async function ContactPage() {
                                         </div>
                                     </a>
 
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: `<!--email_off--><a href="mailto:support@tryiptv.com" class="group flex items-start gap-4 rounded-lg border border-white/[0.08] bg-[#101512] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.05]"><div class="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div class="flex-1"><p class="text-sm font-extrabold text-foreground group-hover:text-primary">Email Support</p><p class="mt-1 text-xs text-muted-foreground">support@tryiptv.com • Checked around the clock.</p></div></a><!--/email_off-->`,
-                                        }}
-                                    />
+                                    <a
+                                        href="mailto:support@tryiptv.com"
+                                        className="group flex items-start gap-4 rounded-lg border border-white/[0.08] bg-[#101512] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.05]"
+                                    >
+                                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
+                                            <Mail className="h-5 w-5" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="text-sm font-extrabold text-foreground group-hover:text-primary">Email Support</p>
+                                            <p className="mt-1 text-xs text-muted-foreground">support@tryiptv.com • Checked around the clock.</p>
+                                        </div>
+                                    </a>
                                 </CardContent>
                             </Card>
 

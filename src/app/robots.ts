@@ -1,7 +1,25 @@
 import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/site-config';
 
-const standardAllow = ['/', '/api/og'];
+/**
+ * Robots.txt configuration for https://www.tryiptv.com
+ *
+ * Allow rules: content pages, brand assets, OG image endpoint.
+ * Disallow rules: API routes, admin, staging.
+ *
+ * NOTE: Noindex pages (players/*, guides/*, help/*, etc.) are NOT disallowed here.
+ * Robots.txt controls crawlability; the <meta robots> tag and x-robots-tag
+ * control indexability. We allow crawling of all content paths so bots can
+ * discover internal links, even for pages that are temporarily noindex.
+ */
+const standardAllow = [
+  '/',
+  '/api/og',
+  '/devices/',
+  '/players/',
+  '/guides/',
+  '/help/',
+];
 const brandAssetAllow = [
   '/favicon.ico',
   '/favicon-16x16.png',

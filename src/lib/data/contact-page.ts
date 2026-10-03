@@ -10,7 +10,7 @@ export const getContactPageData = cache(
 
     const breadcrumbSchema: BreadcrumbList = generateBreadcrumbSchema([
         { name: "Home", item: `${baseUrl}/` },
-        { name: "Contact Us", item: `${baseUrl}/contact` }
+        { name: "Contact Us", item: `${baseUrl}/contact-us` }
     ]);
 
     return { 
