@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Is Perfect Player IPTV still being updated, and can I get it on Google Play?",
     answer:
-      "No. Perfect Player IPTV (developed by Niklabs Software, niklabs.com) is a legacy application. It was removed from the official Google Play Store in late 2021 and has received no official updates since version 1.6.0. While it can still be downloaded as an APK from trusted archive mirrors and runs on older Android TV boxes, new installations on modern devices generally encounter security warnings and codec limitations.",
+      "No. Perfect Player IPTV (developed by Niklabs Software, niklabs.com) is legacy software. Historical store records indicate it was removed from the Google Play Store in late 2021 and has received no official updates since version 1.6.0.1. Because official app store distribution has ceased, downloading APK files from unknown third-party websites presents security risks. This guide is provided for educational and legacy reference for existing installations.",
   },
   {
     question: "Can I log in using Xtream Codes API username and password in Perfect Player?",
@@ -181,7 +181,7 @@ export default function PerfectPlayerPage() {
                       </tr>
                       <tr>
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Maintenance Status</td>
-                        <td className="p-4 text-amber-400 font-medium">Unmaintained (Final release v1.6.0; delisted from Google Play late 2021)</td>
+                        <td className="p-4 text-amber-400 font-medium">Unmaintained (Final release v1.6.0.1; delisted from Google Play late 2021)</td>
                       </tr>
                       <tr className="bg-white/[0.01]">
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Supported Operating Systems</td>
@@ -494,6 +494,16 @@ export default function PerfectPlayerPage() {
                   </Link>
                 </CardContent>
               </Card>
+
+              {/* Official Verification Reference */}
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
+                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Legacy Developer Resource</span>
+                <p>
+                  Original developer: Niklabs Software.<br />
+                  Official website: <a href="http://niklabs.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">niklabs.com</a>.<br />
+                  Status: Delisted late 2021; unmaintained since v1.6.0.1. Unofficial APK mirrors not recommended.
+                </p>
+              </div>
             </div>
           </div>
         </Container>

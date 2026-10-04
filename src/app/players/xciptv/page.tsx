@@ -229,11 +229,7 @@ export default function XciptvPage() {
                         Install XCIPTV onto your Streaming Device
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        On Android TV or Google TV (Chromecast, Sony TV, Nvidia Shield), install &quot;XCIPTV Player&quot; directly from the Google Play Store. On Amazon Fire TV sticks, install the Downloader application, enable Unknown Sources, and enter the official download URL from OTTRUN. (See our detailed{" "}
-                        <Link href="/devices/firestick-iptv" className="text-primary underline hover:text-primary/80">
-                          Firestick IPTV setup guide
-                        </Link>{" "}
-                        for sideloading steps).
+                        On <Link href="/devices/android-tv-iptv" className="text-primary underline hover:text-primary/80">Android TV or Google TV</Link> (Chromecast, Sony TV, Nvidia Shield), install &quot;XCIPTV Player&quot; directly from Google Play. On Amazon Fire TV, enter the official download URL from OTTRUN into the Downloader app following our <Link href="/devices/firestick-iptv" className="text-primary underline hover:text-primary/80">Firestick IPTV setup guide</Link>.
                       </p>
                     </div>
                   </div>
@@ -346,10 +342,10 @@ export default function XciptvPage() {
                     <div className="flex items-start gap-3 border-t border-white/[0.06] pt-4">
                       <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-amber-300 text-sm">Important: Concurrent Connection Math</h4>
+                        <h4 className="font-semibold text-amber-300 text-sm">Important: Concurrent Connection Limits</h4>
                         <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                          Every open pane in a multi-screen grid initiates an active HTTP socket to the streaming server. If you run 4 screens on a provider plan that only permits 1 connection, 3 panes will immediately display black screens or disconnect. All TryIPTV plans include{" "}
-                          <strong className="text-foreground">{PRODUCT_TRUTHS.connections} simultaneous connections</strong>, allowing full 2-screen side-by-side streaming without extra subscription costs.
+                          Every active pane in a multi-screen layout requests an independent concurrent stream from your IPTV provider. If your subscription is restricted to a single connection, the server will terminate secondary feeds or refuse new requests. All TryIPTV subscriptions include{" "}
+                          <strong className="text-foreground">{PRODUCT_TRUTHS.connections} simultaneous connections</strong>, enabling 2-screen side-by-side viewing without purchasing supplementary lines.
                         </p>
                       </div>
                     </div>
@@ -376,8 +372,8 @@ export default function XciptvPage() {
                       <Volume2 className="h-5 w-5 shrink-0 text-red-400" />
                     </div>
                     <div className="mt-3 space-y-2 text-xs text-muted-foreground">
-                      <p><strong>Root Cause:</strong> ExoPlayer passing Dolby Digital Plus stream to a television that only accepts 2-channel PCM stereo.</p>
-                      <p><strong>Resolution:</strong> 1) Open XCIPTV Settings &gt; Player &gt; switch Live TV player to VLC. 2) In Firestick / Android TV OS settings &gt; Display &amp; Sounds &gt; Audio &gt; Surround Sound, switch from &quot;Best Available&quot; to &quot;PCM&quot; or &quot;Stereo&quot;.</p>
+                      <p><strong>Troubleshooting Context:</strong> Playback engines handle audio decoding and hardware passthrough differently depending on device firmware, particularly with multichannel EAC3 or AC3 tracks.</p>
+                      <p><strong>Common Solutions:</strong> 1) In XCIPTV Settings &gt; Player, toggle Live TV player to <em>VLC</em>. 2) In device OS audio settings (e.g. Fire TV Display &amp; Sounds &gt; Audio), change surround sound output to PCM/Stereo to let the local streaming device handle decoding directly.</p>
                     </div>
                   </div>
 
@@ -555,6 +551,16 @@ export default function XciptvPage() {
                   </Link>
                 </CardContent>
               </Card>
+
+              {/* Official Verification Reference */}
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
+                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
+                <p>
+                  Official developer: OTTRUN.<br />
+                  Official site: <a href="https://ottrun.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">ottrun.com</a>.<br />
+                  Distributed on Google Play Store under OTTRUN / OTR Player.
+                </p>
+              </div>
             </div>
           </div>
         </Container>

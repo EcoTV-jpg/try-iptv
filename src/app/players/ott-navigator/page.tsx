@@ -43,7 +43,7 @@ const faqs = [
   {
     question: "How does Studio Mode work in OTT Navigator?",
     answer:
-      "Studio Mode is OTT Navigator's advanced multi-view monitoring feature. On powerful hardware (such as the Nvidia Shield TV Pro), it allows you to display a grid of active live channels simultaneously (up to 9 streams depending on processor limits). You can listen to one primary audio channel while monitoring real-time video across the others. Note that each active stream consumes one connection from your IPTV provider; using 4 active streams requires an IPTV subscription with at least 4 concurrent connections.",
+      "Studio Mode is OTT Navigator's advanced multi-view monitoring feature. On capable Android TV hardware (such as the Nvidia Shield TV Pro), it allows you to display a grid of active live channels simultaneously. You can listen to one primary audio channel while monitoring real-time video across secondary panes. The number of simultaneous streams depends on your device's hardware decoder capabilities and your IPTV subscription's concurrent stream limit.",
   },
   {
     question: "How do I fix combing artifacts or jagged lines on 1080i live channels?",
@@ -179,7 +179,7 @@ export default function OttNavigatorPage() {
                       </tr>
                       <tr>
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Supported Platforms</td>
-                        <td className="p-4 text-muted-foreground">Android TV, Google TV, Android Phones/Tablets, Fire TV (Sideloaded APK)</td>
+                        <td className="p-4 text-muted-foreground">Android TV, Google TV, Android Phones/Tablets, <Link href="/devices/firestick-iptv" className="text-primary underline">Amazon Fire TV</Link> (Sideloaded APK)</td>
                       </tr>
                       <tr className="bg-white/[0.01]">
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Playback Engines</td>
@@ -199,7 +199,7 @@ export default function OttNavigatorPage() {
                       </tr>
                       <tr className="bg-white/[0.01]">
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Multi-View Capabilities</td>
-                        <td className="p-4 text-muted-foreground">Studio Mode (up to 9 streams depending on GPU limits), Picture-in-Picture (PiP)</td>
+                        <td className="p-4 text-muted-foreground">Studio Mode (multi-stream grid determined by device hardware decoder &amp; provider connection limit), Picture-in-Picture (PiP)</td>
                       </tr>
                       <tr>
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Timeshift &amp; Archives</td>
@@ -503,6 +503,16 @@ export default function OttNavigatorPage() {
                   </Link>
                 </CardContent>
               </Card>
+
+              {/* Official Verification Reference */}
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
+                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
+                <p>
+                  Official developer: SIA Scillarium Studio.<br />
+                  Official FAQ: <a href="https://ottnav.github.io/faq.html" target="_blank" rel="noopener noreferrer" className="text-primary underline">ottnav.github.io/faq.html</a>.<br />
+                  Distributed on Google Play Store for Android and Android TV.
+                </p>
+              </div>
             </div>
           </div>
         </Container>

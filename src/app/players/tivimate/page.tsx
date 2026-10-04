@@ -33,27 +33,27 @@ const faqs = [
   {
     question: "Is TiviMate available on iPhone, iPad, Apple TV, or Windows PC?",
     answer:
-      "No. Officially developed by Armobsoft FZE, TiviMate is designed exclusively for Android TV, Google TV, and Amazon Fire OS devices. It requires a TV remote interface and does not have an official native client for iOS, iPadOS, tvOS, or Windows. Any website claiming to sell a 'TiviMate for Windows' or 'TiviMate for iOS' download is not affiliated with the official developer and may contain modified or malicious software. On PC, some users run it through an Android emulator, but performance is optimized for television hardware.",
+      "Armobsoft FZE develops TiviMate specifically for Android TV, Google TV, and Amazon Fire OS devices with television remote controls. The developer's official distribution channels do not list native applications for iOS, iPadOS, tvOS, Windows, or Roku. Users should exercise caution regarding third-party websites claiming to offer unofficial Windows or Apple downloads, as these are not affiliated with the developer.",
   },
   {
     question: "How do I purchase and activate TiviMate Premium on a Fire TV Stick without Google Play?",
     answer:
-      "Because Fire TV devices use the Amazon Appstore rather than the Google Play Store, you cannot purchase TiviMate Premium directly on a Firestick. To activate Premium on Fire TV, install the official 'TiviMate Companion' app on an Android phone, tablet, or Android emulator. Sign in or create a TiviMate account in Companion, purchase a subscription (yearly or lifetime), and then open TiviMate on your Fire TV, go to Settings > Unlock Premium, and log in with the same account credentials to authorize the device. One license covers up to 5 devices.",
+      "Because Fire TV devices use the Amazon Appstore rather than the Google Play Store, users can activate Premium on Fire TV using the official 'TiviMate Companion' app available on Google Play via an Android phone, tablet, or Android emulator. After purchasing a subscription or one-time license in Companion, open TiviMate on your Fire TV, navigate to Settings > Unlock Premium, and log in with your account credentials. The developer confirms one account authorizes up to 5 devices.",
   },
   {
     question: "Why does my recording in TiviMate stop after just a few minutes?",
     answer:
-      "Recording failures typically stem from two root causes: connection limits and local storage limits. First, recording a live channel while watching another channel requires at least two simultaneous streams from your IPTV provider. TryIPTV includes two simultaneous connections on every plan, allowing you to watch and record at the same time. If your provider only allows one connection, the server will terminate the older stream. Second, Firesticks have limited free storage (often under 2 GB); a high-definition stream can fill that in under an hour, causing Android to abort the recording. Setting up an SMB network folder on your home PC or NAS solves this storage bottleneck.",
+      "Recording interruptions typically stem from two common constraints: concurrent connection limits and local storage limits. First, recording a live channel while watching another channel requires multiple simultaneous streams from your IPTV service; if your provider account allows only one connection, the server will terminate the older stream. Second, streaming sticks frequently have limited available internal storage; high-definition recordings can quickly fill available flash memory, prompting the operating system to stop the write process. Configuring an SMB network share on a home PC or NAS provides a reliable storage target.",
   },
   {
     question: "What causes 'An error occurred: Code 401' or 'Code 403' in TiviMate?",
     answer:
-      "HTTP error codes 401 (Unauthorized) and 403 (Forbidden) indicate an authentication or server-side access block. The most common causes are an incorrect username or password, an expired subscription, or exceeding your allowed concurrent device connections. If your credentials are confirmed accurate, some IPTV provider firewalls block generic or default player request headers; setting a custom User-Agent (such as 'VLC' or 'IPTVSmartersPlayer') under Settings > Playlists > [Your Playlist] > User-Agent frequently resolves header-level 403 blocks.",
+      "HTTP error codes 401 (Unauthorized) and 403 (Forbidden) indicate an authentication or server-side access block. Common causes include an incorrect username or password, an expired subscription, or exceeding allowed simultaneous connections. If credentials and subscription status are verified, community discussions on r/TiviMate note that some intermediate server firewalls filter generic player request headers; setting a custom User-Agent (such as 'VLC') under Settings > Playlists > [Your Playlist] > User-Agent is a community-reported troubleshooting step.",
   },
   {
     question: "What is the best Buffer Size setting in TiviMate to eliminate stuttering?",
     answer:
-      "In TiviMate (Settings > Playback > Buffer Size), the ideal setting depends on your local network latency. For stable, high-speed fiber or Ethernet connections, many users find 'None' or 'Small' yields the fastest channel-switching times and avoids delayed packet synchronization. However, if you experience occasional micro-stutters over Wi-Fi, increasing the buffer to 'Medium' or 'Large' provides a few seconds of playback cushion against jitter. If buffering persists regardless of buffer size, switch your playlist stream output format from MPEG-TS to HLS.",
+      "In TiviMate (Settings > Playback > Buffer size), options include 'None', 'Small', 'Medium', and 'Large'. For stable, high-speed wired connections, 'None' or 'Small' yields the fastest channel zap times. If you experience occasional micro-stutters over Wi-Fi, increasing the buffer to 'Medium' provides additional playback buffering against packet latency. If buffering persists regardless of buffer size, consult our IPTV buffering troubleshooting guide to diagnose network or server congestion.",
   },
 ];
 
@@ -275,7 +275,7 @@ export default function TivimatePage() {
                       Install TiviMate on Your Device
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      On <strong>Android TV</strong> or <strong>Google TV</strong> (e.g. Chromecast with Google TV, NVIDIA Shield, Sony TV), install directly from the Google Play Store. On <strong>Amazon Fire TV Stick</strong>, install the <Link href="/devices/firestick-iptv" className="text-primary underline underline-offset-4">Downloader app</Link>, enable unknown apps permissions in Fire TV Developer Options, and enter the official TiviMate download code or URL.
+                      On television devices running Android (such as Chromecast with Google TV, NVIDIA Shield, or Sony TV), install directly from Google Play—refer to our dedicated <Link href="/devices/android-tv-iptv" className="text-primary underline underline-offset-4">Android TV IPTV setup guide</Link>. On <strong>Amazon Fire TV Stick</strong>, use the Downloader app following our <Link href="/devices/firestick-iptv" className="text-primary underline underline-offset-4">Firestick installation guide</Link> to enter the official TiviMate download code or URL.
                     </p>
                   </div>
 
@@ -332,7 +332,7 @@ export default function TivimatePage() {
                       <Settings className="h-4 w-4 text-primary" /> Stream Output Format: MPEG-TS vs. HLS
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Navigate to <strong>Settings &gt; Playlists &gt; TryIPTV &gt; Xtream Codes parameters &gt; Output format</strong>. By default, most providers stream via <code className="font-mono text-xs text-primary">MPEG-TS</code>. If you notice stuttering or micro-freezes during high-traffic events, switch this setting to <code className="font-mono text-xs text-primary">HLS</code>. HLS delivers video in segmented chunks that navigate intermediate ISP traffic routing and Wi-Fi packet drops more smoothly. For deeper background, see our <Link href="/guides/m3u-vs-xtream-codes" className="text-primary underline underline-offset-4">M3U vs Xtream Codes comparison</Link>.
+                      Navigate to <strong>Settings &gt; Playlists &gt; TryIPTV &gt; Xtream Codes parameters &gt; Output format</strong>. If you experience recurring micro-freezes during live events, switch from <code className="font-mono text-xs text-primary">MPEG-TS</code> to <code className="font-mono text-xs text-primary">HLS</code>. HLS transmits video in segmented chunks that better handle Wi-Fi jitter. For complete network and bandwidth diagnostics, see our <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">IPTV Buffering Checklist</Link>.
                     </p>
                   </div>
 
@@ -341,7 +341,7 @@ export default function TivimatePage() {
                       <Settings className="h-4 w-4 text-primary" /> Buffer Size Configuration
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Go to <strong>Settings &gt; Playback &gt; Buffer size</strong>. Default is &ldquo;None&rdquo;. If your connection suffers from momentary ping spikes or Wi-Fi interference, setting this to <strong>Small</strong> or <strong>Medium</strong> gives the player a 3–5 second preloaded buffer. Avoid &ldquo;Large&rdquo; unless you are on a very high-latency satellite connection, as it increases channel-change latency. Read our full <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">IPTV Buffering Checklist</Link> for additional network diagnostics.
+                      Go to <strong>Settings &gt; Playback &gt; Buffer size</strong>. Default is &ldquo;None&rdquo;. If your connection suffers from momentary ping spikes or Wi-Fi packet drops, selecting <strong>Small</strong> or <strong>Medium</strong> instructs the playback pipeline to maintain an extra buffer before displaying frames. Avoid &ldquo;Large&rdquo; under normal circumstances, as larger buffer targets increase channel-switching zap times. Read our full <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">IPTV Buffering Checklist</Link> for additional network diagnostics.
                     </p>
                   </div>
 

@@ -38,17 +38,17 @@ const faqs = [
   {
     question: "Why do I get 'Failed to Connect' or 'Invalid Details' when logging into IPTV Smarters?",
     answer:
-      "The single most common mistake in IPTV Smarters is entering a trailing slash ('/') at the end of the Server URL (e.g., entering 'http://server.com:8080/' instead of 'http://server.com:8080'). Smarters concatenates its API endpoints directly onto your input; a trailing slash results in a double slash ('//player_api.php') which causes web servers to return a 404 Not Found error. Also check that your username and password contain no accidental spaces and verify your device clock is set to automatic network time.",
+      "A common user-reported login issue in IPTV Smarters occurs when entering a trailing slash ('/') at the end of the Server URL (e.g., entering 'http://server.com:8080/' instead of 'http://server.com:8080'). In community troubleshooting reports, this trailing slash is known to create endpoint concatenation errors (such as '//player_api.php') that prevent the application from reaching authentication services. Also check that your username and password contain no accidental spaces, verify that the server port matches your provider instructions, and ensure your device clock is set to automatic network time.",
   },
   {
     question: "Can I install IPTV Smarters directly on Samsung or LG Smart TVs without a streaming stick?",
     answer:
-      "Yes. In many regions, IPTV Smarters Pro is available directly in the Samsung Smart Hub (Tizen OS) and LG Content Store / Apps (webOS). Search for 'IPTV Smarters Pro' or 'Smarters Player' using your TV remote. If it does not appear in your TV's regional store, you can change your TV account region or simply plug an Amazon Fire TV Stick or Google TV device into an HDMI port, which provides faster navigation and unrestricted app availability.",
+      "In many geographic regions, IPTV Smarters Pro is available directly in the Samsung Smart Hub (Tizen OS) and LG Content Store / Apps (webOS). Search for 'IPTV Smarters Pro' or 'Smarters Player' using your TV remote. Availability is governed by regional store catalog policies; if the application is not listed in your country's smart TV store, connecting a compatible streaming stick (such as an Amazon Fire TV Stick or Google TV device) provides unrestricted access to the software.",
   },
   {
     question: "Why does IPTV Smarters freeze or crash when loading my channel list?",
     answer:
-      "This happens almost exclusively when users attempt to load a raw M3U playlist file containing tens of thousands of channels and VOD titles. Parsing an enormous raw M3U text file into memory exhausts the RAM on budget streaming sticks and smart TVs. To prevent this, always select 'Login with Xtream Codes API' instead of M3U. Xtream Codes queries categories and video metadata on demand in small JSON chunks, preventing memory crashes.",
+      "Loading enormous raw M3U files can exhaust available RAM on budget streaming sticks and smart TVs. Selecting 'Login with Xtream Codes API' queries channel categories on demand in smaller JSON chunks instead of buffering the entire playlist into memory at once.",
   },
   {
     question: "How do I switch the built-in media player to VLC inside IPTV Smarters?",
@@ -220,7 +220,7 @@ export default function IptvSmartersPage() {
                       <Smartphone className="h-4 w-4 text-primary" /> Apple iOS, iPadOS &amp; Apple TV (tvOS)
                     </h3>
                     <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Search the official Apple App Store for <strong>&ldquo;Smarters Player Lite&rdquo;</strong>. Install it directly onto your iPhone, iPad, or Apple TV. It requires no sideloading or jailbreaking. Refer to our <Link href="/devices/apple-tv-iptv" className="text-primary underline">Apple TV guide</Link> for remote navigation tips.
+                      Install <a href="https://apps.apple.com/app/smarters-player-lite/id1470535305" target="_blank" rel="noopener noreferrer" className="text-primary underline">Smarters Player Lite on the Apple App Store</a> directly onto your iPhone, iPad, or Apple TV. It operates natively without sideloading. Refer to our <Link href="/devices/apple-tv-iptv" className="text-primary underline">Apple TV IPTV guide</Link> for remote control navigation advice.
                     </p>
                   </div>
 
@@ -317,7 +317,7 @@ export default function IptvSmartersPage() {
                       <Settings className="h-4 w-4 text-primary" /> Stream Format: Default / MPEGTS vs. HLS
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Navigate to <strong>Settings &gt; Stream Format</strong>. Here you can toggle between <code className="font-mono text-xs text-primary">MPEG-TS (.ts)</code> and <code className="font-mono text-xs text-primary">HLS (.m3u8)</code>. If live streams constantly freeze or buffer after 15–30 seconds, switch this setting to <strong>HLS</strong>. HLS downloads video in discrete 3-to-6 second segments that handle Wi-Fi packet drops and ISP throttling much better than continuous transport streams.
+                      Navigate to <strong>Settings &gt; Stream Format</strong> to toggle between <code className="font-mono text-xs text-primary">MPEG-TS (.ts)</code> and <code className="font-mono text-xs text-primary">HLS (.m3u8)</code>. When streaming over Wi-Fi, switching to HLS can improve stability by delivering video in discrete chunks. For broader network troubleshooting, see our <Link href="/help/iptv-buffering" className="text-primary underline">IPTV Buffering Diagnosis Guide</Link>.
                     </p>
                   </div>
 
@@ -363,7 +363,7 @@ export default function IptvSmartersPage() {
                       <tr>
                         <td className="p-3.5 sm:p-4 font-medium text-foreground">&ldquo;Invalid Details&rdquo; or &ldquo;Failed to Authorize&rdquo;</td>
                         <td className="p-3.5 sm:p-4">Server URL trailing slash bug, typo in credentials, or expired subscription.</td>
-                        <td className="p-3.5 sm:p-4">Remove any trailing slash &ldquo;/&rdquo; from the Server URL field. Verify username/password capitalization.</td>
+                        <td className="p-3.5 sm:p-4">Remove any trailing slash &ldquo;/&rdquo; from the Server URL field and verify credentials. If authorization fails, check our <Link href="/help/iptv-login-not-working" className="text-primary underline">authorization error checklist</Link> to test server connectivity and DNS.</td>
                       </tr>
                       <tr>
                         <td className="p-3.5 sm:p-4 font-medium text-foreground">&ldquo;Network Error&rdquo; or Connection Timeout</td>

@@ -170,7 +170,11 @@ export default function IptvExtremePage() {
                       </tr>
                       <tr>
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Supported Platforms</td>
-                        <td className="p-4 text-muted-foreground">Android TV, Google TV, Android Phones/Tablets, Fire TV (Sideloaded APK)</td>
+                        <td className="p-4 text-muted-foreground">Android TV, Google TV, Android Phones/Tablets, <Link href="/devices/firestick-iptv" className="text-primary underline">Amazon Fire TV</Link> (Sideloaded APK)</td>
+                      </tr>
+                      <tr className="bg-white/[0.01]">
+                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">iOS / Apple TV / Windows</td>
+                        <td className="p-4 text-muted-foreground">The developer&apos;s official channels do not list iOS, Apple TV, or Windows applications</td>
                       </tr>
                       <tr className="bg-white/[0.01]">
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Remote Configuration Portal</td>
@@ -472,6 +476,16 @@ export default function IptvExtremePage() {
                   </Link>
                 </CardContent>
               </Card>
+
+              {/* Official Verification Reference */}
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
+                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
+                <p>
+                  Lead developer: Paolo Turatti.<br />
+                  Official web portal: <a href="https://iptvextreme.eu" target="_blank" rel="noopener noreferrer" className="text-primary underline">iptvextreme.eu</a>.<br />
+                  Distributed on Google Play Store (Free and Pro versions).
+                </p>
+              </div>
             </div>
           </div>
         </Container>

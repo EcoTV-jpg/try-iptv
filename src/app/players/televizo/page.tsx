@@ -33,12 +33,12 @@ const faqs = [
   {
     question: "Who develops Televizo, and which operating systems are supported?",
     answer:
-      "Televizo is developed independently by Andrey Menscikov (televizo.net). It is officially available for Android smartphones, Android tablets, and Android TV / Google TV via the Google Play Store. It is not currently available for Apple iOS, tvOS, or Samsung Tizen / LG webOS smart TVs. While not listed on the Amazon Appstore, the official Android APK can be directly sideloaded onto Amazon Fire TV devices.",
+      "Televizo is developed independently by Andrey Menscikov (televizo.net). It is officially available for Android smartphones, Android tablets, and Android TV / Google TV via the Google Play Store. The developer's official distribution channels do not list applications for Apple iOS, tvOS, or Samsung Tizen / LG webOS smart TVs. While not listed on the Amazon Appstore, the official Android APK can be directly downloaded from televizo.net and sideloaded onto Amazon Fire TV devices.",
   },
   {
     question: "How does Televizo's pricing model compare to subscription players like TiviMate?",
     answer:
-      "Unlike players that require recurring yearly subscriptions, Televizo operates on a freemium model with a one-time in-app purchase unlock. The free version provides full, unrestricted video playback and playlist support, supported by occasional in-menu advertising. Upgrading to Premium permanently removes ads, unlocks multiple playlist and EPG support, enables parental controls, and allows cloud and local backup/restore of channel favorites. Televizo also provides an in-app 1-hour free trial of Premium so users can test advanced features before buying.",
+      "Televizo operates on a freemium model. Core video playback is free with standard in-app advertisements. Premium upgrade options are available through the application via Google Play to remove advertising, unlock multiple playlist and EPG management, enable parental controls, and allow backup and restore of channel favorites.",
   },
   {
     question: "Why does Chromecast casting fail or show a black screen when casting from Televizo?",
@@ -48,7 +48,7 @@ const faqs = [
   {
     question: "How do I install Televizo on an Amazon Fire TV Stick?",
     answer:
-      "Because Televizo is not hosted on the Amazon Appstore, you must install it using the Downloader app. On your Firestick, enable Developer Options (Settings > My Fire TV > About > click device name 7 times), turn on 'Install Unknown Apps' for Downloader, launch Downloader, and enter the direct official APK link from televizo.net. The app will install and provide full TV remote D-pad navigation.",
+      "Because Televizo is not hosted on the Amazon Appstore, install the official Android APK directly from televizo.net using the Downloader app. Refer to our Firestick IPTV guide for the step-by-step process of enabling Developer Options and Unknown Apps permissions.",
   },
   {
     question: "Can I use both Xtream Codes and M3U playlists in Televizo?",
@@ -99,7 +99,7 @@ export default function TelevizoPage() {
               Televizo IPTV Player Setup: Hybrid Mobile/TV UI & Optimization
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Televizo (developed by Andrey Menscikov) is renowned for having one of the cleanest, most fluid user interfaces in the IPTV landscape. Designed to bridge the gap between touchscreen mobile convenience and traditional television remote navigation, Televizo delivers rapid playlist indexing, built-in Chromecast casting, and a transparent one-time purchase model.
+              Televizo (developed by Andrey Menscikov) is renowned for having one of the cleanest, most fluid user interfaces in the IPTV landscape. Designed to bridge the gap between touchscreen mobile convenience and traditional television remote navigation, Televizo delivers rapid playlist indexing, built-in Chromecast casting, and optional in-app Premium upgrades.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
@@ -110,7 +110,7 @@ export default function TelevizoPage() {
                 <Cast className="h-3.5 w-3.5 text-primary" /> Built-in Google Cast
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Sparkles className="h-3.5 w-3.5 text-primary" /> One-Time Lifetime License
+                <Sparkles className="h-3.5 w-3.5 text-primary" /> Optional Premium Upgrade
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
                 <Download className="h-3.5 w-3.5 text-primary" /> Sideloadable on Fire OS
@@ -187,7 +187,7 @@ export default function TelevizoPage() {
                       </tr>
                       <tr>
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">iOS / Apple TV / Windows</td>
-                        <td className="p-4 text-muted-foreground">No native version available (Android ecosystem only)</td>
+                        <td className="p-4 text-muted-foreground">The developer&apos;s official channels do not list iOS, Apple TV, or Windows apps (Android ecosystem only)</td>
                       </tr>
                       <tr className="bg-white/[0.01]">
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Authentication Protocols</td>
@@ -203,7 +203,7 @@ export default function TelevizoPage() {
                       </tr>
                       <tr>
                         <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Pricing Model</td>
-                        <td className="p-4 text-muted-foreground">Free (ad-supported) or One-time in-app lifetime purchase (No recurring subscription)</td>
+                        <td className="p-4 text-muted-foreground">Free (ad-supported) with optional in-app Premium upgrade options</td>
                       </tr>
                     </tbody>
                   </table>
@@ -291,22 +291,16 @@ export default function TelevizoPage() {
               {/* Sideloading on Firestick */}
               <div>
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  How to Sideload Televizo on Amazon Fire TV
+                  Installing Televizo on Amazon Fire TV
                 </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   <p>
-                    Since Televizo is not hosted in the Amazon Appstore, Firestick owners must perform a brief 2-minute sideload:
+                    Because Televizo is not hosted in the Amazon Appstore, download the official Android APK directly from developer Andrey Menscikov by entering <code className="rounded bg-white/[0.05] px-1.5 py-0.5 text-foreground">televizo.net</code> into the Downloader app.
                   </p>
-                  <ol className="list-inside list-decimal space-y-2 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm">
-                    <li>Install the free <strong>Downloader</strong> app from the Amazon Appstore.</li>
-                    <li>Go to Fire TV <strong>Settings &gt; My Fire TV &gt; Developer Options</strong> and toggle <em>Install Unknown Apps</em> to &quot;ON&quot; for Downloader.</li>
-                    <li>Open Downloader, enter <code className="rounded bg-white/[0.05] px-1.5 py-0.5 text-foreground">televizo.net</code> in the browser field, and download the official Android APK directly from developer Andrey Menscikov.</li>
-                    <li>Click <strong>Install</strong>, then open Televizo and log in with your TryIPTV credentials.</li>
-                  </ol>
                   <p className="text-xs text-muted-foreground">
-                    For detailed device-level instructions with troubleshooting on developer options, see our{" "}
+                    For complete step-by-step instructions on configuring Developer Options and Unknown Apps permissions on Fire OS, refer to our dedicated{" "}
                     <Link href="/devices/firestick-iptv" className="text-primary underline hover:text-primary/80">
-                      Amazon Firestick IPTV Guide
+                      Firestick IPTV setup guide
                     </Link>.
                   </p>
                 </div>
@@ -525,6 +519,16 @@ export default function TelevizoPage() {
                   </Link>
                 </CardContent>
               </Card>
+
+              {/* Official Verification Reference */}
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
+                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
+                <p>
+                  Official developer: Andrey Menscikov.<br />
+                  Official site: <a href="https://televizo.net" target="_blank" rel="noopener noreferrer" className="text-primary underline">televizo.net</a>.<br />
+                  Available on Google Play Store for Android and Android TV.
+                </p>
+              </div>
             </div>
           </div>
         </Container>
