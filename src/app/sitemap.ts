@@ -36,6 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     } else if (route.section === 'devices') {
       changeFrequency = 'weekly';
       priority = route.path === '/devices' ? 0.85 : 0.8;
+    } else if (route.section === 'players') {
+      changeFrequency = 'weekly';
+      priority = route.path === '/players' ? 0.85 : 0.8;
     } else if (route.path === '/contact-us' || route.path === '/faq') {
       changeFrequency = 'monthly';
       priority = 0.7;

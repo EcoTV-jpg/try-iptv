@@ -60,14 +60,14 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/devices/mac-iptv',        section: 'devices', indexable: true,  lastModified: '2026-10-04' },
 
   // ── Players hub + player pages ────────────────────────────────────────────
-  { path: '/players',                section: 'players', indexable: false },
-  { path: '/players/iptv-smarters',  section: 'players', indexable: false },
-  { path: '/players/tivimate',       section: 'players', indexable: false },
-  { path: '/players/xciptv',         section: 'players', indexable: false },
-  { path: '/players/televizo',       section: 'players', indexable: false },
-  { path: '/players/perfect-player', section: 'players', indexable: false },
-  { path: '/players/ott-navigator',  section: 'players', indexable: false },
-  { path: '/players/iptv-extreme',   section: 'players', indexable: false },
+  { path: '/players',                section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/iptv-smarters',  section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/tivimate',       section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/xciptv',         section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/televizo',       section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/perfect-player', section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/ott-navigator',  section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/iptv-extreme',   section: 'players', indexable: true,  lastModified: '2026-10-04' },
 
   // ── Guides hub + guide pages ──────────────────────────────────────────────
   { path: '/guides',                     section: 'guides', indexable: false },

@@ -12,6 +12,7 @@ Official website: https://www.tryiptv.com/
 - https://www.tryiptv.com/setup
 - https://www.tryiptv.com/faq
 - https://www.tryiptv.com/contact-us
+- https://www.tryiptv.com/players
 
 ## Device Setup Guides
 
