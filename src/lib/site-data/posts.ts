@@ -15,7 +15,7 @@ export const posts: {
         image: "guide-image-firestick",
         excerpt: "A step-by-step guide to setting up IPTV on your Fire TV Stick and start streaming your favorite channels in minutes.",
         tags: ["Fire TV", "Installation", "Guide"],
-        href: "/devices/firestick"
+        href: "/devices/firestick-iptv"
     },
     {
         id: "how-to-install-iptv-on-android",
@@ -23,7 +23,7 @@ export const posts: {
         image: "guide-image-android-tv",
         excerpt: "Learn how to easily install and configure our IPTV service on any Android phone, tablet, or TV box.",
         tags: ["Android", "Setup", "Mobile"],
-        href: "/devices/android-tv"
+        href: "/devices/android-tv-iptv"
     },
     {
         id: "troubleshooting-common-iptv-issues",

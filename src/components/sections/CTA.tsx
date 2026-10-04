@@ -13,6 +13,7 @@ interface CTAProps {
   buttonHref?: string;
   className?: string;
   badgeIcon?: React.ReactNode;
+  showTrustPills?: boolean;
 }
 
 export function CTA({
@@ -23,39 +24,63 @@ export function CTA({
   buttonHref = "/iptv-free-trial",
   className,
   badgeIcon = <CircleCheck className="h-4 w-4" />,
+  showTrustPills,
 }: CTAProps = {}) {
   const isExternal = buttonHref.startsWith("http");
   const LinkComp = isExternal ? "a" : Link;
   const externalProps = isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {};
+  const shouldShowPills = showTrustPills ?? buttonHref.includes("trial");
 
   return (
     <Section className={className}>
       <Container>
-        <div className="relative overflow-hidden rounded-2xl border border-primary/25 bg-[#07080a] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-9 md:p-10 lg:flex lg:items-center lg:justify-between lg:text-left xl:p-12">
-          <div className="pointer-events-none absolute -right-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-primary/[0.08] blur-3xl" />
-          <div className="max-w-3xl">
+        <div className="relative overflow-hidden rounded-[20px] border border-primary/30 bg-[linear-gradient(135deg,#07130b_0%,#050807_50%,#040506_100%)] p-7 sm:p-9 md:p-11 shadow-[inset_0_1px_0_rgba(0,240,120,0.12)] lg:flex lg:items-center lg:justify-between lg:text-left">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
+          <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
+          
+          <div className="relative z-10 max-w-2xl">
             {eyebrow && (
-              <p className="eyebrow mb-3 flex items-center justify-center gap-2 lg:justify-start">
+              <p className="mb-3 flex items-center justify-start gap-2 font-mono text-xs font-bold uppercase tracking-wider text-primary">
                 {badgeIcon}
                 {eyebrow}
               </p>
             )}
-            <h2 className="font-headline text-3xl font-semibold leading-[1.12] sm:text-4xl">
+            <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[34px] leading-tight">
               {title}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-muted-foreground sm:text-base lg:mx-0">
+            <p className="mt-3.5 text-[15px] sm:text-base leading-relaxed text-muted-foreground">
               {subtitle}
             </p>
+
+            {shouldShowPills && (
+              <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3 text-[13px] text-muted-foreground">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1 font-medium">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  No card required
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1 font-medium">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  24-hour access
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1 font-medium">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  Fast activation
+                </span>
+              </div>
+            )}
           </div>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 lg:ml-10 lg:mt-0 lg:shrink-0"
-          >
-            <LinkComp href={buttonHref} {...externalProps}>
-              {buttonText} <ArrowRight />
-            </LinkComp>
-          </Button>
+
+          <div className="relative z-10 mt-8 lg:ml-10 lg:mt-0 lg:shrink-0">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 min-h-[48px] px-8 text-[15px] font-semibold rounded-xl"
+            >
+              <LinkComp href={buttonHref} {...externalProps}>
+                {buttonText} <ArrowRight className="ml-1.5 h-4 w-4" />
+              </LinkComp>
+            </Button>
+          </div>
         </div>
       </Container>
     </Section>

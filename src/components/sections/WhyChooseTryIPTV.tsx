@@ -36,7 +36,7 @@ export function WhyChooseTryIPTV() {
           title="Why Viewers Choose TryIPTV"
           subtitle="An IPTV service built around extensive channel coverage, HD & 4K streaming, and transparent prepaid plans."
         />
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {benefits.map((benefit, i) => (
             <FeatureCard
               key={i}

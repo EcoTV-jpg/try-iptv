@@ -15,7 +15,7 @@ export function Devices() {
           subtitle="Stream your TryIPTV subscription across your preferred hardware. Our service supports popular IPTV player apps on Amazon Fire TV, Android TV and mobile, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, Roku, and MAG boxes with simple setup guides for every platform."
           eyebrow="Device Compatibility"
         />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="grid grid-cols-3 gap-3 sm:gap-3.5 lg:grid-cols-9 lg:gap-4">
           {devices.map((device) => (
             <DeviceIcon key={device.name} name={device.name} iconName={device.icon} href={device.href} />
           ))}
@@ -23,7 +23,7 @@ export function Devices() {
         <div className="mt-8 text-center">
           <Link
             href="/devices"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            className="inline-flex items-center gap-2 text-[15px] font-semibold text-primary hover:underline"
           >
             <span>View all step-by-step device setup guides</span>
             <ArrowRight className="h-4 w-4" />

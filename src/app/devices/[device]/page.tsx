@@ -1,19 +1,15 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FaqList } from "@/components/sections/FAQ";
-import { howToArticles, getSafeArticleData, isRedirectedDevice } from "@/lib/how-to";
+import { howToArticles, getSafeArticleData, isRedirectedDevice, getDeviceSlug } from "@/lib/how-to";
 import { Clock, Calendar } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
 import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { getPlaceholderImage } from "@/lib/server/image-blur-server";
 import {
   GuideQuickInfo,
   GuideRequirements,
@@ -22,7 +18,6 @@ import {
   GuideTroubleshooting,
   GuideBufferingChecklist,
   GuideCallout,
-  GuideScreenshot,
   GuideToc,
   GuideCta,
   type TocItem,
@@ -35,7 +30,7 @@ type Props = {
 type ArticleType = ReturnType<typeof getSafeArticleData> & { 
     image?: { 
         imageUrl: string; 
-        imageHint: string; 
+        imageHint?: string; 
         width?: number; 
         height?: number; 
         blurDataURL?: string;
@@ -46,16 +41,9 @@ async function getArticleData(deviceId: string): Promise<ArticleType | undefined
     const article = getSafeArticleData(deviceId);
     if (!article) return undefined;
 
-    const imageInfo = PlaceHolderImages.find(img => img.id === `guide-image-${article.id}`);
-    if (!imageInfo) return { ...article, image: undefined };
-
-    const blurDataURL = await getPlaceholderImage(imageInfo.imageUrl);
     return {
         ...article,
-        image: {
-            ...imageInfo,
-            blurDataURL,
-        },
+        image: undefined,
     };
 }
 
@@ -110,6 +98,10 @@ function StructuredData({ article }: { article: ArticleType }) {
 // Per-device metadata overrides where the SERP <title> or meta description
 // needs to differ from the on-page H1 / visible lede paragraph.
 const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?: string }> = {
+  'firestick-iptv': {
+    seoTitle: 'How to Install IPTV on Firestick (2026 Setup Guide)',
+    metaDescription: 'Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.',
+  },
   firestick: {
     seoTitle: 'How to Install IPTV on Firestick (2026 Setup Guide)',
     metaDescription: 'Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.',
@@ -118,34 +110,38 @@ const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { device } = await params;
-  const article = getSafeArticleData(device);
+  const canonicalSlug = getDeviceSlug(device);
+  const article = getSafeArticleData(canonicalSlug);
 
   if (!article) {
     notFound();
   }
 
-  const overrides = DEVICE_SEO_OVERRIDES[device];
+  const overrides = DEVICE_SEO_OVERRIDES[canonicalSlug];
   const title = overrides?.seoTitle ?? article.title;
   const description = overrides?.metaDescription ?? article.description;
 
   return generatePageMetadata({
     title,
     description,
-    canonical: `/devices/${device}`,
+    canonical: `/devices/${canonicalSlug}`,
   });
 }
 
 export default async function HowToPage({ params }: Props) {
   const { device } = await params;
+  if (isRedirectedDevice(device)) {
+    permanentRedirect(`/devices/${getDeviceSlug(device)}`);
+  }
   const article = await getArticleData(device);
 
   if (!article) {
     notFound();
   }
   
-  const { title, description, steps, extraSections, faqs, image, primaryKeyword, id, totalTime, dateModified } = article;
+  const { title, description, steps, extraSections, faqs, primaryKeyword, id, totalTime, dateModified } = article;
   const totalTimeInMinutes = totalTime?.replace('PT', '').replace('M', '');
-  const isFirestick = id === "firestick";
+  const isFirestick = id === "firestick-iptv" || id === "firestick";
 
   // Table of Contents definition
   const firestickTocItems: TocItem[] = [
@@ -293,25 +289,6 @@ export default async function HowToPage({ params }: Props) {
                           dangerouslySetInnerHTML={{
                             __html: extraSections.find((s) => s.id === "developer-options")?.content || "",
                           }}
-                        />
-
-                        {/* Visual Evidence: Developer Options / Unknown Sources */}
-                        <GuideScreenshot
-                          src="/images/guides/firestick/firestick-developer-options-unknown-sources.webp"
-                          alt="Developer Options on Fire TV showing Apps from Unknown Sources enabled"
-                          caption="Developer Options on a Fire TV version showing Apps from Unknown Sources."
-                          note="Menu names can vary by Fire TV model and Fire OS version. Some devices use “Install Unknown Apps” instead."
-                          width={1024}
-                          height={576}
-                        />
-
-                        {/* Visual Evidence: Unknown Sources Warning Dialog */}
-                        <GuideScreenshot
-                          src="/images/guides/firestick/firestick-unknown-sources-warning.webp"
-                          alt="Fire TV warning prompt before allowing installation from outside Appstore"
-                          caption="Fire TV warning shown before allowing installation from outside the Amazon Appstore."
-                          width={1024}
-                          height={572}
                         />
 
                         <GuideCallout type="security" title="Sideloading Permission Control">
@@ -499,27 +476,9 @@ export default async function HowToPage({ params }: Props) {
                 )}
               </div>
 
-              {/* Sidebar Column: Sticky TOC + Image + Related Guides */}
+              {/* Sidebar Column: Sticky TOC + Related Guides */}
               <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
                 <GuideToc items={tocItems} variant="desktop" />
-
-                {image && image.blurDataURL && (
-                  <Card className="overflow-hidden border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-                    <CardContent className="p-0">
-                      <Image
-                        src={image.imageUrl}
-                        alt={`${primaryKeyword} - ${title}`}
-                        width={image.width || 600}
-                        height={image.height || 400}
-                        data-ai-hint={image.imageHint}
-                        priority
-                        className="object-cover w-full h-auto"
-                        placeholder="blur"
-                        blurDataURL={image.blurDataURL}
-                      />
-                    </CardContent>
-                  </Card>
-                )}
 
                 <InternalLinks currentId={id} />
               </aside>
@@ -533,7 +492,7 @@ export default async function HowToPage({ params }: Props) {
 
 export async function generateStaticParams() {
   return howToArticles
-    .filter((article) => !isRedirectedDevice(article.id))
+    .filter((article) => !isRedirectedDevice(article.id) && article.id !== 'chromecast-iptv')
     .map((article) => ({
       device: article.id,
     }));

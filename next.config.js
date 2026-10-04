@@ -142,32 +142,84 @@ const nextConfig = {
         permanent: true,
       },
 
-      // ── Old device slug redirects (legacy aliases) ─────────────────────────
+      // ── Old device slug redirects (legacy aliases direct to new -iptv routes) ─
       {
         source: '/devices/fire-tv',
-        destination: '/devices/firestick',
+        destination: '/devices/firestick-iptv',
         permanent: true,
       },
       {
         source: '/devices/android',
-        destination: '/devices/android-tv',
+        destination: '/devices/android-tv-iptv',
         permanent: true,
       },
       // /devices/ios had a how-to page (iphone-ipad) that is no longer in
       // the approved allowlist. No approved iOS device page exists. 404.
       {
         source: '/devices/macos',
-        destination: '/devices/mac',
+        destination: '/devices/mac-iptv',
         permanent: true,
       },
-      // /devices/mag → /devices/mag-box (slug rename to match approved allowlist)
+      // /devices/mag → /devices/mag-box-iptv
       {
         source: '/devices/mag',
-        destination: '/devices/mag-box',
+        destination: '/devices/mag-box-iptv',
         permanent: true,
       },
       // /devices/iphone-ipad has no approved replacement device page → 404
       // (no redirect added intentionally)
+
+      // ── 10 Device slug migration redirects (old -> new SEO-friendly routes) ──
+      {
+        source: '/devices/firestick',
+        destination: '/devices/firestick-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/android-tv',
+        destination: '/devices/android-tv-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/samsung-tv',
+        destination: '/devices/samsung-tv-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/lg-tv',
+        destination: '/devices/lg-tv-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/apple-tv',
+        destination: '/devices/apple-tv-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/chromecast',
+        destination: '/devices/chromecast-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/mag-box',
+        destination: '/devices/mag-box-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/roku',
+        destination: '/devices/roku-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/windows',
+        destination: '/devices/windows-iptv',
+        permanent: true,
+      },
+      {
+        source: '/devices/mac',
+        destination: '/devices/mac-iptv',
+        permanent: true,
+      },
 
       // /devices/troubleshooting → closest approved equivalent is /help/iptv-buffering
       {

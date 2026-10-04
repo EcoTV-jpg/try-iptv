@@ -87,66 +87,66 @@ function SocialIcon({ name }: { name: SocialIconName }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-[#050706]">
+    <footer className="border-t border-white/[0.08] bg-[#040506]">
       <Container>
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] lg:py-16">
-          <div>
+        <div className="grid gap-10 py-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 lg:gap-8 lg:py-16">
+          <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Logo />
-            <p className="mt-5 max-w-xs text-[15px] leading-7 text-muted-foreground">
-              Premium live TV and on-demand entertainment, built for the devices you already use.
+            <p className="mt-4 max-w-sm text-[14.5px] leading-relaxed text-muted-foreground">
+              Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 24,000+ live channels and 80,000+ VOD titles.
             </p>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Explore</h3>
-            <ul className="mt-4 space-y-2">
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Explore</h3>
+            <ul className="space-y-2.5">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[15px] text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                  <Link href={link.href} className="text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Device Guides</h3>
-            <ul className="mt-4 space-y-2">
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Device Guides</h3>
+            <ul className="space-y-2.5">
               {footerLinks.supportedLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[15px] text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                  <Link href={link.href} className="text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Legal & Trust</h3>
-            <ul className="mt-4 space-y-2">
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Legal & Trust</h3>
+            <ul className="space-y-2.5">
               {footerLinks.legalLinks.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-[15px] text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                  <Link href={link.href} className="text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Support</h3>
-            <address className="mt-4 space-y-3 text-[15px] not-italic text-muted-foreground">
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Support</h3>
+            <address className="space-y-2.5 text-[13.5px] not-italic text-muted-foreground">
               <span
                 dangerouslySetInnerHTML={{
-                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="flex items-center gap-2 transition-colors duration-200 hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-primary"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}</a><!--/email_off-->`,
+                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="flex items-center gap-2 transition-colors duration-150 hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}</a><!--/email_off-->`,
                 }}
               />
-              <a href="https://wa.me/447848197761" className="flex items-center gap-2 transition-colors duration-200 hover:text-foreground" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-4 w-4 text-primary" />WhatsApp Support
+              <a href="https://wa.me/447848197761" className="flex items-center gap-2 transition-colors duration-150 hover:text-foreground" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-3.5 w-3.5 text-primary shrink-0" />WhatsApp Support
               </a>
             </address>
             <div className="mt-6">
-              <h3 className="text-sm font-semibold text-foreground">Social</h3>
-              <ul className="mt-4 flex flex-wrap gap-2" aria-label="TryIPTV social links">
+              <h4 className="mb-3 font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">Social</h4>
+              <ul className="flex flex-wrap gap-2" aria-label="TryIPTV social links">
                 {socialFooterLinks.map((link) => (
                   <li key={link.name}>
                     <a
@@ -155,7 +155,7 @@ export function Footer() {
                       title={link.name}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/[0.1] bg-white/[0.03] text-muted-foreground transition-colors duration-200 hover:border-primary/35 hover:bg-primary/[0.06] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-muted-foreground transition-colors duration-150 hover:border-primary/30 hover:bg-primary/[0.08] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                     >
                       <SocialIcon name={link.icon} />
                     </a>
@@ -165,13 +165,13 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 border-t border-white/[0.08] py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-muted-foreground">
+        <div className="flex flex-col gap-4 border-t border-white/[0.06] py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>
             &copy; {new Date().getFullYear()} TryIPTV. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-4 text-xs">
+          <div className="flex flex-wrap gap-4">
             {footerLinks.legalLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="hover:text-foreground transition-colors">
+              <Link key={link.name} href={link.href} className="transition-colors hover:text-foreground">
                 {link.name}
               </Link>
             ))}

@@ -150,42 +150,42 @@ const supportedDevices = [
   {
     name: "Amazon Fire TV & Fire Stick",
     apps: "TiviMate, IPTV Smarters, Downloader",
-    url: "/devices/firestick"
+    url: "/devices/firestick-iptv"
   },
   {
     name: "Android TV & Android Box",
     apps: "TiviMate, IPTV Smarters Pro, XCIPTV",
-    url: "/devices/android-tv"
+    url: "/devices/android-tv-iptv"
   },
   {
     name: "Apple TV, iPhone & iPad",
     apps: "GSE Smart IPTV, IPTV Smarters, UHF",
-    url: "/devices/apple-tv"
+    url: "/devices/apple-tv-iptv"
   },
   {
     name: "Samsung Smart TVs",
     apps: "Smart IPTV, IBO Player, Nanomid",
-    url: "/devices/samsung-tv"
+    url: "/devices/samsung-tv-iptv"
   },
   {
     name: "LG Smart TVs",
     apps: "Smart IPTV, IPTV Smarters, SS IPTV",
-    url: "/devices/lg-tv"
+    url: "/devices/lg-tv-iptv"
   },
   {
     name: "Windows PC & Laptops",
     apps: "VLC Media Player, IPTV Smarters Pro",
-    url: "/devices/windows"
+    url: "/devices/windows-iptv"
   },
   {
     name: "Apple macOS",
     apps: "VLC, IPTV Smarters Pro for Mac",
-    url: "/devices/mac"
+    url: "/devices/mac-iptv"
   },
   {
     name: "MAG & Stalker Set-Top Boxes",
     apps: "MAG 250, 254, 322 Stalker Portal",
-    url: "/devices/mag-box"
+    url: "/devices/mag-box-iptv"
   },
 ];
 

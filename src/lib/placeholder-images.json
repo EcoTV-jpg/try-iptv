@@ -147,62 +147,6 @@
       "description": "Featured image for the Android IPTV guide, showing an Android phone to represent mobile compatibility.",
       "width": 600,
       "height": 400
-    },
-    {
-      "id": "guide-image-windows",
-      "imageUrl": "https://images.unsplash.com/photo-1624571395775-253d9666612b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aW5kb3dzJTIwcGN8ZW58MHx8fHwxNzYzMzk2ODk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "windows pc",
-      "description": "Featured image for the Windows IPTV guide, illustrating a PC setup to show desktop compatibility.",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "guide-image-mac",
-      "imageUrl": "https://images.unsplash.com/photo-1627660163617-72878fc413e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtYWNvcyUyMGxhcHRvcHxlbnwwfHx8fDE3NjMzOTY4OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "macos laptop",
-      "description": "Featured image for the macOS IPTV guide, showing a MacBook to represent compatibility with Apple computers.",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "guide-image-samsung-tv",
-      "imageUrl": "https://images.unsplash.com/photo-1593784991188-c899ca07263b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzYW1zdW5nJTIwdHZ8ZW58MHx8fHwxNzYzMzk2ODk3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "samsung tv",
-      "description": "Featured image for the Samsung TV IPTV guide, showing a Samsung Smart TV in a living room setting.",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "guide-image-lg-tv",
-      "imageUrl": "https://images.unsplash.com/photo-1611718663049-4c39b6b1182e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsZyUyMHR2fGVufDB8fHx8MTc2MzM5Njg5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "lg tv",
-      "description": "Featured image for the LG TV IPTV guide, showing an LG Smart TV to illustrate compatibility.",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "guide-image-apple-tv",
-      "imageUrl": "https://images.unsplash.com/photo-1591970698020-e685959dcdaa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhcHBsZSUyMHR2fGVufDB8fHx8MTc2MzM5Njg5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "apple tv",
-      "description": "Featured image for the Apple TV IPTV guide, showing the Apple TV device and remote.",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "guide-image-roku",
-      "imageUrl": "https://images.unsplash.com/photo-1699940191424-c99a129e7b1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyb2t1JTIwZGV2aWNlfGVufDB8fHx8MTc2MzM9Njg5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "roku device",
-      "description": "Featured image for the Roku IPTV guide, showing a Roku streaming device to represent compatibility.",
-      "width": 600,
-      "height": 400
-    },
-    {
-      "id": "guide-image-mag-box",
-      "imageUrl": "https://images.unsplash.com/photo-1698376620993-41b0e91fb0ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYWclMjBib3h8ZW58MHx8fHwxNzYzMzk2ODk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "mag box",
-      "description": "Featured image for the MAG box IPTV guide, showing a set-top box to represent dedicated hardware.",
-      "width": 600,
-      "height": 400
     }
   ]
 }

@@ -5,10 +5,23 @@ import articles from '@/lib/site-data/how-to.json';
 export const howToArticles = articles;
 
 export const REDIRECTED_DEVICE_SLUGS: Record<string, string> = {
-  'fire-tv': 'firestick',
-  'android': 'android-tv',
+  // Legacy aliases (direct to new -iptv routes to prevent redirect chains)
+  'fire-tv': 'firestick-iptv',
+  'android': 'android-tv-iptv',
   'ios': 'iphone-ipad',
-  'macos': 'mac',
+  'macos': 'mac-iptv',
+  'mag': 'mag-box-iptv',
+  // Old device routes to new SEO-friendly routes
+  'firestick': 'firestick-iptv',
+  'android-tv': 'android-tv-iptv',
+  'samsung-tv': 'samsung-tv-iptv',
+  'lg-tv': 'lg-tv-iptv',
+  'apple-tv': 'apple-tv-iptv',
+  'chromecast': 'chromecast-iptv',
+  'mag-box': 'mag-box-iptv',
+  'roku': 'roku-iptv',
+  'windows': 'windows-iptv',
+  'mac': 'mac-iptv',
 };
 
 export const getDeviceSlug = (id: string): string => {
@@ -22,5 +35,6 @@ export const isRedirectedDevice = (id: string): boolean => {
 // A lightweight, dependency-free function to get article data for client/edge use.
 // This function does NOT include the processed image blur data.
 export const getSafeArticleData = (deviceId: string) => {
-    return articles.find((p) => p.id === deviceId);
+    const canonicalId = REDIRECTED_DEVICE_SLUGS[deviceId] || deviceId;
+    return articles.find((p) => p.id === canonicalId || p.id === deviceId);
 }

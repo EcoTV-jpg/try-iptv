@@ -33,7 +33,12 @@ const brandAssetAllow = [
   '/site.webmanifest',
   '/manifest.json',
 ];
-const publicAllow = [...standardAllow, ...brandAssetAllow];
+const aiDiscoveryAllow = [
+  '/llms.txt',
+  '/llms-full.txt',
+  '/ai.txt',
+];
+const publicAllow = [...standardAllow, ...brandAssetAllow, ...aiDiscoveryAllow];
 const standardDisallow = ['/api/', '/admin/', '/staging/'];
  
 export default function robots(): MetadataRoute.Robots {
@@ -63,6 +68,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: 'GPTBot',
+        allow: aiDiscoveryAllow,
         disallow: ['/'],
       },
       {

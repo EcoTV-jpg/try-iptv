@@ -128,6 +128,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={cn("dark font-body antialiased")}>
        <head>
+          <link
+            rel="describedby"
+            href="https://www.tryiptv.com/llms.txt"
+            type="text/markdown"
+          />
           <Schema id="organization" schema={generateOrganizationSchema()} />
           <Schema id="website" schema={generateWebSiteSchema()} />
         </head>

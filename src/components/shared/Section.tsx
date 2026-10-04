@@ -9,8 +9,8 @@ export function Section({ className, variant = 'default', ...props }: SectionPro
   return (
     <section
       className={cn(
-        'py-14 sm:py-[4.5rem] lg:py-24 xl:py-[7.5rem]',
-        variant === 'alt' && 'bg-[#07080a]',
+        'py-14 sm:py-16 md:py-20 lg:py-24',
+        variant === 'alt' && 'border-y border-white/[0.05] bg-[#07080a]',
         className
       )}
       {...props}

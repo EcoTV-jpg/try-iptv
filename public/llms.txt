@@ -1,17 +1,89 @@
-# llms.txt - AI-readable site summary
-name: TryIPTV
-description: TryIPTV provides 24,000+ live TV channels, 80,000+ movies and series on demand, and 2 simultaneous connections across compatible devices. Prepaid crypto plans from $16/month with 5–15 minute activation and a 24-hour free trial with no card required.
-url: https://www.tryiptv.com
-contact: support@tryiptv.com
+# TryIPTV
 
-## Key Pages
-- /pricing - IPTV subscription plans and pricing
-- /iptv-free-trial - 24-hour free evaluation trial (no card required)
-- /devices - Device setup guides for Fire TV, Android, Apple TV, Smart TVs, PC, and MAG
-- /faq - Frequently asked questions regarding setup, playlists, and compatibility
-- /contact - Direct WhatsApp and email support
-- /privacy-policy - Privacy policy and data protection
-- /terms-conditions - Terms of service and connection policies
-- /refund-policy - Technical resolution and refund policy
-- /disclaimer - Trademark fair use and third-party software disclosures
-- /dmca-report - DMCA copyright compliance and takedown notices
+> TryIPTV is a prepaid IPTV subscription service offering live TV, sports, movies, series, and on-demand streaming with support for popular streaming devices and IPTV players.
+
+Official website: https://www.tryiptv.com/
+
+## Core Pages
+
+- https://www.tryiptv.com/
+- https://www.tryiptv.com/pricing
+- https://www.tryiptv.com/iptv-free-trial
+- https://www.tryiptv.com/setup
+- https://www.tryiptv.com/faq
+- https://www.tryiptv.com/contact-us
+
+## Device Setup Guides
+
+- https://www.tryiptv.com/devices/firestick-iptv
+- https://www.tryiptv.com/devices/android-tv-iptv
+- https://www.tryiptv.com/devices/samsung-tv-iptv
+- https://www.tryiptv.com/devices/lg-tv-iptv
+- https://www.tryiptv.com/devices/apple-tv-iptv
+- https://www.tryiptv.com/devices/chromecast-iptv
+- https://www.tryiptv.com/devices/mag-box-iptv
+- https://www.tryiptv.com/devices/roku-iptv
+- https://www.tryiptv.com/devices/windows-iptv
+- https://www.tryiptv.com/devices/mac-iptv
+
+## IPTV Player Guides
+
+- https://www.tryiptv.com/players/iptv-smarters
+- https://www.tryiptv.com/players/tivimate
+- https://www.tryiptv.com/players/xciptv
+- https://www.tryiptv.com/players/televizo
+- https://www.tryiptv.com/players/perfect-player
+- https://www.tryiptv.com/players/ott-navigator
+- https://www.tryiptv.com/players/iptv-extreme
+
+## IPTV Guides
+
+- https://www.tryiptv.com/guides/what-is-iptv
+- https://www.tryiptv.com/guides/how-does-iptv-work
+- https://www.tryiptv.com/guides/what-is-m3u
+- https://www.tryiptv.com/guides/what-are-xtream-codes
+- https://www.tryiptv.com/guides/m3u-vs-xtream-codes
+- https://www.tryiptv.com/guides/what-is-epg
+- https://www.tryiptv.com/guides/xmltv-epg
+- https://www.tryiptv.com/guides/iptv-internet-speed
+- https://www.tryiptv.com/guides/iptv-connections-explained
+- https://www.tryiptv.com/guides/do-i-need-a-vpn-for-iptv
+
+## Troubleshooting
+
+- https://www.tryiptv.com/help/iptv-buffering
+- https://www.tryiptv.com/help/iptv-not-working
+- https://www.tryiptv.com/help/iptv-login-not-working
+- https://www.tryiptv.com/help/m3u-not-loading
+- https://www.tryiptv.com/help/epg-not-working
+
+## Service Information
+
+- Brand: TryIPTV
+- Subscription model: prepaid
+- Automatic renewal: no
+- Trial: 24 hours
+- Typical activation target: approximately 5–15 minutes
+- Login methods: Xtream Codes API and M3U
+- Simultaneous connections: 2
+- 1 month: $16
+- 3 months: $39
+- 6 months: $60
+- 12 months: $90
+
+## Policies
+
+- https://www.tryiptv.com/terms-conditions
+- https://www.tryiptv.com/privacy-policy
+- https://www.tryiptv.com/refund-policy
+- https://www.tryiptv.com/disclaimer
+- https://www.tryiptv.com/dmca-report
+
+Full AI context:
+https://www.tryiptv.com/llms-full.txt
+
+Sitemap:
+https://www.tryiptv.com/sitemap.xml
+
+Robots:
+https://www.tryiptv.com/robots.txt

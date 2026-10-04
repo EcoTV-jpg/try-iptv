@@ -31,21 +31,27 @@ export function HowItWorks() {
           subtitle="Getting started with your IPTV subscription is simple. Follow these straightforward steps to set up and stream across your devices."
           eyebrow="Setup Process"
         />
-          <div className="grid grid-cols-1 border-y border-white/[0.1] md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-6">
             {steps.map((step, i) => (
-                <div key={i} className="relative border-b border-white/[0.09] px-1 py-8 last:border-b-0 md:border-b-0 md:px-8 md:py-11">
-                    {i < steps.length - 1 && (
-                      <span className="absolute right-0 top-[4.35rem] hidden h-px w-28 translate-x-1/2 bg-gradient-to-r from-white/[0.2] via-primary/40 to-white/[0.2] md:block" />
-                    )}
-                    <div className="mb-9 flex items-center justify-between">
-                      <span className="text-sm font-semibold text-foreground/80">0{i + 1}</span>
-                      <span className="grid h-11 w-11 place-items-center rounded-lg border border-white/[0.09] bg-white/[0.035]">
-                        <step.icon className="h-5 w-5 text-primary" />
-                      </span>
-                    </div>
-                    <h3 className="mb-3 font-headline text-xl font-semibold leading-7">{step.title}</h3>
-                    <p className="text-[15px] leading-7 text-muted-foreground">{step.description}</p>
+              <div
+                key={i}
+                className="group relative flex flex-col rounded-[18px] border border-white/[0.08] bg-[#07080a] p-7 sm:p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-all duration-200 hover:border-white/[0.14] hover:bg-[#090b0d] motion-safe:hover:-translate-y-0.5"
+              >
+                <div className="mb-6 flex items-center justify-between">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-primary transition-colors duration-200 group-hover:border-primary/30 group-hover:bg-primary/[0.08]">
+                    <step.icon className="h-6 w-6" />
+                  </div>
+                  <span className="font-mono text-2xl font-bold tracking-tight text-primary/70 transition-colors duration-200 group-hover:text-primary">
+                    0{i + 1}
+                  </span>
                 </div>
+                <h3 className="font-headline text-[19px] sm:text-xl font-semibold leading-snug text-foreground">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                  {step.description}
+                </p>
+              </div>
             ))}
           </div>
       </Container>

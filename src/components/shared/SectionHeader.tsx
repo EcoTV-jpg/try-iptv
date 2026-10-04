@@ -23,19 +23,23 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "mb-10 max-w-3xl sm:mb-12 lg:mb-14",
+        "mb-10 sm:mb-12 lg:mb-14 max-w-3xl",
         align === 'center' && 'mx-auto text-center',
         className
       )}
     >
-      {badge && <div className="mb-4">{badge}</div>}
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
+      {badge && <div className="mb-3.5">{badge}</div>}
+      {eyebrow && (
+        <p className="text-xs font-mono font-bold uppercase tracking-[0.08em] text-primary mb-3">
+          {eyebrow}
+        </p>
+      )}
       <Heading
         className={cn(
-          "font-headline font-semibold leading-[1.12]",
+          "font-headline font-bold text-foreground tracking-tight",
           Heading === 'h1'
-            ? "text-4xl sm:text-5xl lg:text-[3.25rem] leading-[1.06]"
-            : "text-3xl sm:text-4xl lg:text-[2.5rem]"
+            ? "text-4xl sm:text-5xl lg:text-[52px] leading-[1.08]"
+            : "text-[28px] sm:text-[34px] lg:text-[36px] xl:text-[38px] leading-[1.14]"
         )}
       >
         {title}
@@ -43,7 +47,7 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={cn(
-            "mt-5 max-w-2xl text-[15px] leading-7 text-muted-foreground sm:text-base sm:leading-7",
+            "mt-4 max-w-2xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground",
             align === 'center' && 'mx-auto'
           )}
         >

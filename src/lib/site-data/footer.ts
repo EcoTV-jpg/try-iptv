@@ -8,14 +8,14 @@ export const footerLinks = {
         { name: "All Devices", href: "/devices" }
     ],
     supportedLinks: [
-        { name: "Fire TV Stick", href: "/devices/firestick" },
-        { name: "Android", href: "/devices/android-tv" },
-        { name: "Apple TV", href: "/devices/apple-tv" },
-        { name: "Samsung TV", href: "/devices/samsung-tv" },
-        { name: "LG TV", href: "/devices/lg-tv" },
-        { name: "Windows", href: "/devices/windows" },
-        { name: "macOS", href: "/devices/mac" },
-        { name: "MAG Box", href: "/devices/mag-box" },
+        { name: "Fire TV Stick", href: "/devices/firestick-iptv" },
+        { name: "Android", href: "/devices/android-tv-iptv" },
+        { name: "Apple TV", href: "/devices/apple-tv-iptv" },
+        { name: "Samsung TV", href: "/devices/samsung-tv-iptv" },
+        { name: "LG TV", href: "/devices/lg-tv-iptv" },
+        { name: "Windows", href: "/devices/windows-iptv" },
+        { name: "macOS", href: "/devices/mac-iptv" },
+        { name: "MAG Box", href: "/devices/mag-box-iptv" },
     ],
     legalLinks: [
         { name: "Privacy Policy", href: "/privacy-policy" },

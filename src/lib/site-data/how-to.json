@@ -1,8 +1,8 @@
 [
   {
-    "id": "firestick",
+    "id": "firestick-iptv",
     "title": "How to Install IPTV on Firestick: Step-by-Step Fire TV Setup",
-    "description": "Installing IPTV on a Firestick requires four steps: install a compatible IPTV player (check the Amazon Appstore first for apps such as IPTV Smarters or XCIPTV), enter your Xtream Codes credentials or M3U playlist URL, load channels and EPG, then test a few streams. TryIPTV provides the IPTV credentials — M3U and Xtream Codes. The player is a separate third-party app you install yourself.",
+    "description": "Set up IPTV on Amazon Fire TV Stick. Learn how to install a compatible player from the Amazon Appstore or via Downloader, configure Xtream Codes or M3U credentials, and troubleshoot Fire OS playback.",
     "primaryKeyword": "Fire TV Stick",
     "keywords": [
       "iptv on firestick",
@@ -12,524 +12,952 @@
       "install iptv on fire tv"
     ],
     "datePublished": "2024-07-20T10:00:00Z",
-    "dateModified": "2026-10-02T00:00:00Z",
-    "totalTime": "PT20M",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Get your IPTV credentials from TryIPTV",
-        "description": "<p>After subscribing, your credentials arrive within <strong>5–15 minutes</strong> via email. You will receive either:</p><ul><li><strong>Xtream Codes details</strong> — Server URL, Username, and Password</li><li><strong>M3U playlist URL</strong> — A single comprehensive streaming link</li></ul><p>Keep these credentials secure and do not share them publicly. If you want to test playback before purchasing, TryIPTV offers a <a href='/iptv-free-trial'>24-hour free trial with no card required</a>.</p>"
+        "title": "Search the Amazon Appstore for your preferred player",
+        "description": "<p>From the Fire TV home screen, open <strong>Find</strong> (search icon) and enter the name of your chosen player (such as IPTV Smarters Pro). If the app is available in your regional Appstore, select <strong>Download</strong> or <strong>Get</strong> to install it directly without modifying device settings.</p>"
       },
       {
-        "title": "Choose a compatible IPTV player for Firestick",
-        "description": "<p>Pick an IPTV player designed for TV remote navigation that matches your credential type. Popular third-party options include:</p><ul><li><strong>IPTV Smarters</strong> — Supports both M3U and Xtream Codes login</li><li><strong>TiviMate</strong> — Popular for Fire TV-style navigation (where available)</li><li><strong>XCIPTV</strong> — Fast interface with native Xtream Codes support</li></ul><p><em>TryIPTV is the IPTV service provider and does not produce a proprietary player app. These are independent third-party applications.</em></p>"
+        "title": "Enable installation permissions if sideloading is required",
+        "description": "<p>If your chosen player is not distributed in the Amazon Appstore in your country, install the <strong>Downloader</strong> app from the Appstore, then enable developer permissions on your Fire TV:</p><ol><li>Navigate to <strong>Settings &gt; My Fire TV &gt; Developer Options</strong>.</li><li>Turn on <strong>Install unknown apps</strong> for Downloader (or <strong>Apps from Unknown Sources</strong> on earlier Fire OS releases).</li><li><em>If Developer Options is hidden:</em> Open <strong>About</strong>, highlight your Fire TV name, and press the remote Select button <strong>7 times</strong> (per <a href='https://developer.amazon.com/docs/fire-tv/developer-options.html' target='_blank' rel='noopener noreferrer'>Amazon Developer documentation</a>).</li></ol>"
       },
       {
-        "title": "Check the Amazon Appstore first",
-        "description": "<p>From the Fire TV home screen, open <strong>Find</strong> (search icon) and type your chosen player name.</p><ul><li>If available: Select <strong>Download</strong> or <strong>Get</strong> to install directly — no special settings needed.</li><li>Note: App availability varies by country, device model, and Fire OS version. Always check the official Appstore before considering sideloading.</li></ul>"
+        "title": "Download the player APK and delete the installer",
+        "description": "<p>Open Downloader, enter the player developer's official download URL, and let the package download. After selecting <strong>Install</strong>, choose <strong>Done</strong>, then select <strong>Delete</strong> when Downloader prompts you to remove the APK file to save internal storage.</p>"
       },
       {
-        "title": "Sideload a player only when the Appstore cannot help",
-        "description": "<p>If your chosen player is unavailable in the Amazon Appstore in your region, install the official <strong>Downloader</strong> app from the Appstore to fetch the APK from the player developer's verified website.</p><p>To authorize installation on Fire TV:</p><ol><li>Go to <strong>Settings &gt; My Fire TV &gt; Developer Options</strong></li><li>Select <strong>Install unknown apps</strong> and turn permission <strong>ON</strong> for Downloader only</li><li><em>If Developer Options is hidden:</em> Open <strong>About</strong>, highlight your Fire TV name, and press the remote Select button 7 times until unlocked.</li></ol><p>Open Downloader and select the URL/search field to enter the official developer download address.</p><p>Do not download from APK mirror sites, shortened URLs, or unofficial forums.</p>"
+        "title": "Open the player and select your login method",
+        "description": "<p>Launch your player from <strong>Your Apps &amp; Games</strong>. Select <strong>Login with Xtream Codes API</strong> (recommended) or <strong>Load M3U Playlist</strong> depending on your subscription format.</p>"
       },
       {
-        "title": "Install the player and delete the installer file",
-        "description": "<p>Once Downloader finishes downloading the APK, follow the on-screen prompts to complete installation:</p><ul><li>Select <strong>Install</strong>, then select <strong>Done</strong> (do not open immediately).</li><li>When prompted by Downloader, select <strong>Delete</strong> to remove the APK installer file.</li></ul><p>Deleting the installer file does not affect the installed player and frees critical internal storage on your Firestick.</p>"
+        "title": "Enter your server URL, username, and password",
+        "description": "<p>For Xtream Codes, enter your <strong>Server URL</strong>, <strong>Username</strong>, and <strong>Password</strong> without trailing spaces. If using an M3U link, enter the complete playlist URL. You can use the official <strong>Amazon Fire TV mobile app</strong> on your phone to paste long URLs directly into the on-screen keyboard.</p>"
       },
       {
-        "title": "Open the player and enter your Xtream Codes or M3U credentials",
-        "description": "<p>Launch your installed player and choose your login format:</p><ul><li><strong>For Xtream Codes:</strong> Select <em>Xtream Codes</em> or <em>Login with API</em>. Enter the <strong>Server URL</strong>, <strong>Username</strong>, and <strong>Password</strong> exactly as provided — verify there are no trailing spaces.</li><li><strong>For M3U:</strong> Select <em>M3U URL</em> or <em>Add Playlist</em>. Paste your complete playlist URL string. If prompted for a playlist name, enter any preferred label (e.g., <em>TryIPTV</em>).</li></ul>"
+        "title": "Synchronize channel bouquets and the TV guide",
+        "description": "<p>Allow the player to index categories and live streams. If the electronic program guide (EPG) does not populate immediately, open the player's settings and select <strong>Refresh EPG</strong>. Ensure your Fire TV time zone is accurate under <strong>Settings &gt; Preferences &gt; Time Zone</strong>.</p>"
       },
       {
-        "title": "Load channels, set up the EPG, and test playback",
-        "description": "<p>Allow the player 30 seconds to several minutes to download categories, bouquets, and channels.</p><ul><li><strong>EPG (TV Guide):</strong> Many players sync guide data automatically; others require a manual <em>Refresh EPG</em> in settings.</li><li><strong>Test playback:</strong> Test at least 3 channels across different categories to confirm stream stability before customizing settings.</li><li><strong>Diagnostic rule:</strong> If one channel fails but others play normally, the interruption is stream-specific. If nothing plays, check your network and login credentials.</li></ul>"
+        "title": "Test stream playback across multiple categories",
+        "description": "<p>Open a live channel to verify video and audio. Test streams in different categories to confirm stability. If a single channel fails while others play normally, the issue is stream-specific rather than a device configuration problem.</p>"
       }
     ],
     "extraSections": [
       {
         "id": "what-you-need",
-        "title": "What You Need Before Installing IPTV on Firestick",
-        "content": "<p>Before starting, confirm you have:</p><ul><li>A Fire TV Stick or Fire TV device connected to your TV</li><li>A stable internet connection — wired via a compatible Ethernet adapter is preferable for HD or 4K streams; Wi-Fi works for most setups when signal strength is good</li><li>An active TryIPTV subscription or a <a href='/iptv-free-trial'>24-hour free trial</a> — no card required for the trial</li><li>Your IPTV credentials: the server URL, username, and password (Xtream Codes), or the playlist URL (M3U)</li></ul><p>TryIPTV accounts support <strong>two simultaneous connections</strong>, so you can use the same credentials on two devices — including two Firestick devices — at the same time.</p><p>Do not share credentials publicly. Do not paste real credentials into screenshots, social posts, or forum messages.</p>"
+        "title": "Requirements Before Starting Firestick Setup",
+        "content": "<p>To set up IPTV on Fire TV, you need:</p><ul><li>A supported Amazon Fire TV device (Fire TV Stick, Fire TV Stick 4K, 4K Max, or Fire TV Cube) connected to HDMI and powered with its included wall adapter.</li><li>A reliable internet connection (5 GHz Wi-Fi or a compatible wired Ethernet adapter is recommended).</li><li>An active IPTV subscription or <a href='/iptv-free-trial'>trial account</a> providing either Xtream Codes credentials (Server URL, username, password) or an M3U playlist URL.</li></ul>"
       },
       {
         "id": "service-vs-player",
-        "title": "IPTV Service vs IPTV Player: Understanding the Difference",
-        "content": "<p>This distinction matters before you install anything, and it helps you diagnose problems faster.</p><p><strong>TryIPTV is the IPTV service.</strong> It delivers live channels, on-demand content, and stream credentials in M3U or Xtream Codes format. TryIPTV does not produce its own Firestick app.</p><p><strong>The IPTV player is a separate third-party app</strong> installed on your Firestick. It handles the user interface, channel navigation, EPG display, and video decoding. Examples include IPTV Smarters, TiviMate, and XCIPTV.</p><p>Why this helps with troubleshooting:</p><ul><li>If credentials work in one player but fail in another, the issue is player-specific — try reinstalling or reconfiguring the failing player.</li><li>If credentials fail in every player you try, the issue is more likely the credentials themselves or your network connection.</li><li>If channels load but EPG is missing, the problem is in the player's guide settings, not the service.</li><li>If playback is fine but navigation is difficult, try a different player that is better suited to TV remote use.</li></ul>"
+        "title": "IPTV Service vs IPTV Player App",
+        "content": "<p>A common source of confusion is the difference between the service provider and the player application:</p><ul><li><strong>The IPTV service (such as TryIPTV):</strong> Provides the streaming feeds, account credentials, and on-demand catalog.</li><li><strong>The IPTV player (such as IPTV Smarters Pro or TiviMate):</strong> Is the software installed on your Fire TV that decodes the stream, renders the guide, and accepts remote navigation.</li></ul><p>If you encounter playback or login errors, identifying whether the issue relates to the app or the server credentials speeds up resolution. Read more in our guide on <a href='/guides/what-is-iptv'>what IPTV is</a>.</p>"
       },
       {
         "id": "m3u-vs-xtream",
-        "title": "M3U vs Xtream Codes on Firestick: Which Should You Use?",
-        "content": "<p>Both credential formats give access to the same content. The difference is in how the player receives and manages the channel data.</p><p><strong>Xtream Codes login</strong> sends three fields to the server — server URL, username, and password. The player uses these to fetch channel categories, VOD content, and EPG data directly. This approach handles large playlists cleanly and makes it easy to keep content updated without managing a URL string.</p><p><strong>M3U playlist</strong> uses a single URL that points to a plain-text file listing every channel. The player downloads and parses this file. M3U is a good fallback when a player does not support Xtream Codes login, but the full URL must be exact — one incorrect character prevents the playlist from loading entirely.</p><p>In practice: use Xtream Codes if your chosen player supports it and you received those credentials. Use M3U if your player accepts only a playlist URL or does not show an Xtream Codes option.</p><p>For a full comparison of both formats, read M3U vs Xtream Codes.</p>"
+        "title": "M3U vs Xtream Codes on Fire TV",
+        "content": "<p>On a television interface operated by a physical remote control, credential format matters:</p><p><strong>Xtream Codes API</strong> separates your login into three fields: Server URL, Username, and Password. This is significantly faster to type with a remote and allows the player to load categories and guide data dynamically. In contrast, <strong>M3U playlist URLs</strong> require typing a long URL string, and a single typo prevents the playlist from loading. For a full comparison, see our guide on <a href='/guides/m3u-vs-xtream-codes'>M3U vs Xtream Codes</a>.</p>"
       },
       {
         "id": "developer-options",
-        "title": "How to Enable Developer Options on Fire TV (for Sideloading Only)",
-        "content": "<p>Developer Options are only needed if you must sideload an IPTV player that is unavailable in the Amazon Appstore. If your player is available in the store, skip this entirely.</p><p>Depending on your Fire TV model and Fire OS version, the menu may be labeled differently. On many Fire TV devices, Developer Options appear under <strong>Settings &gt; My Fire TV</strong> or <strong>Settings &gt; Device &amp; Software</strong> (or simply <strong>Device</strong> on older generations). Newer Fire OS versions may hide the menu. To unlock it:</p><ol><li>Go to <strong>Settings &gt; My Fire TV &gt; About</strong> (or <strong>Device &gt; About</strong>)</li><li>Highlight your Fire TV device name and press the Select button repeatedly (7 times)</li><li>The device will display a message confirming Developer Options are now available</li></ol><p>After unlocking, return to the device menu, open <strong>Developer Options</strong>, then select <strong>Install unknown apps</strong>. Find <strong>Downloader</strong> in the list and enable it. On older Fire OS versions, the setting may appear as a single toggle labelled <strong>Apps from Unknown Sources</strong> rather than a per-app list.</p><p>Once sideloading is complete, you can disable the Downloader permission if you no longer need it.</p>"
+        "title": "Enabling Developer Options on Fire TV",
+        "content": "<p>Developer Options are only necessary if your chosen player is not available in the official Amazon Appstore in your region:</p><ol><li>Open <strong>Settings &gt; My Fire TV &gt; About</strong>.</li><li>Highlight your device name and press the remote <strong>Select</strong> button <strong>7 times</strong>.</li><li>Return to <strong>My Fire TV</strong> and open <strong>Developer Options</strong>.</li><li>Select <strong>Install unknown apps</strong> and set Downloader to <strong>ON</strong>.</li></ol><p>After installing your app, you can turn this permission back to <strong>OFF</strong> to keep device security intact.</p>"
       },
       {
         "id": "xtream-setup-detail",
-        "title": "Setting Up IPTV With Xtream Codes on Firestick: Detail",
-        "content": "<p>In the player's add account or login screen, look for an option labelled <strong>Xtream Codes</strong>, <strong>Xtream API</strong>, or <strong>Login with username and password</strong>. Enter the following exactly as they appear in your TryIPTV confirmation:</p><ul><li><strong>Server URL</strong> — copy the full URL, including the protocol (http:// or https://). Do not add or remove any characters, including trailing slashes.</li><li><strong>Username</strong> — enter exactly, including any capitalisation.</li><li><strong>Password</strong> — enter exactly. Watch for trailing spaces when copying from email.</li></ul><p>After saving, the player contacts the server and downloads your content categories. This can take 30 seconds to a few minutes depending on playlist size.</p><p>If the login is rejected immediately: check for typos in each field, confirm the server URL format is correct, verify the subscription is active, and check for spaces added during copy-paste. For a plain-English explanation of what these credentials are, read what Xtream Codes credentials are.</p>"
+        "title": "Xtream Codes Setup Step-by-Step",
+        "content": "<p>To connect using Xtream Codes API:</p><ul><li>Select <strong>Add User</strong> or <strong>Login with Xtream Codes</strong> in your player.</li><li>Enter a connection name (e.g., <em>TryIPTV</em>).</li><li>Enter your <strong>Username</strong> and <strong>Password</strong> exactly as provided.</li><li>Enter the full <strong>Server URL</strong> (including <code>http://</code> or <code>https://</code> and port number).</li></ul><p>If login fails, review our <a href='/help/iptv-login-not-working'>IPTV login troubleshooting guide</a>.</p>"
       },
       {
         "id": "m3u-setup-detail",
-        "title": "Setting Up IPTV With an M3U Playlist on Firestick: Detail",
-        "content": "<p>In the player's add playlist or add source screen, select <strong>M3U</strong>, <strong>Playlist URL</strong>, or <strong>Add URL</strong>. Paste the complete playlist URL — the full string as provided, with no modifications.</p><p>If the player asks for a playlist name, enter any descriptive label you prefer. If it asks for a separate EPG URL, leave it blank unless you have a specific guide URL; many players discover guide data from the playlist automatically.</p><p>M3U links often embed credentials directly in the URL. A single missing or incorrect character — including the protocol prefix or a trailing slash — will prevent the playlist from loading. If loading fails, paste the URL into a text editor on a phone or computer first to confirm it is intact before entering it again.</p><p>For background on how the format works, read what an M3U playlist is.</p>"
+        "title": "M3U Playlist URL Setup",
+        "content": "<p>If your player only supports M3U playlists, select <strong>Add M3U URL</strong> and paste your playlist link. Use the Fire TV mobile app on your smartphone to avoid manually typing long character strings with the remote. If your playlist does not open, consult our <a href='/help/m3u-not-loading'>M3U troubleshooting guide</a>.</p>"
       },
       {
         "id": "epg-detail",
-        "title": "Loading and Refreshing the EPG on Firestick",
-        "content": "<p>EPG stands for electronic programme guide. It provides channel schedules, programme names, and timing information inside the player. Without it, you see channel names but no schedule data.</p><p>EPG behaviour on Firestick depends on the player:</p><ul><li>Some players load EPG automatically after a successful login and refresh it on a schedule</li><li>Some players require you to trigger a manual <strong>Refresh EPG</strong> or <strong>Update guide</strong> action in settings</li><li>Some players need a separate EPG URL entered in their settings — this is separate from your M3U or Xtream Codes credentials</li></ul><p>If listings are missing or show incorrect programme times, check the player's timezone setting and run a manual refresh before assuming the service has a problem. EPG data can take several minutes to populate after the first successful load.</p><p>If guide data still does not appear after refreshing, use the EPG troubleshooting guide. For background on how guide data works, read what an EPG is.</p>"
+        "title": "Configuring the EPG Guide on Fire TV",
+        "content": "<p>An Electronic Programme Guide (EPG) populates channel schedules and program details. If guide listings are blank:</p><ul><li>Select <strong>Refresh EPG</strong> in your player settings.</li><li>Verify that your Fire TV time zone is correct under <strong>Settings &gt; Preferences &gt; Time Zone</strong> to prevent schedule offsets.</li></ul><p>For persistent guide problems, visit our <a href='/help/epg-not-working'>EPG troubleshooting guide</a>.</p>"
       },
       {
         "id": "troubleshooting",
-        "title": "Troubleshooting: IPTV Not Working on Firestick",
-        "content": "<h3>Credentials are rejected at login</h3><p>Check the server URL (including the protocol prefix), username, and password for typos or extra spaces. Confirm your subscription is active. If the same credentials fail in two or more players, the problem is more likely the credentials or network than the player. See IPTV login troubleshooting.</p><h3>M3U playlist does not load</h3><p>Verify the full URL is pasted correctly and is not truncated. M3U links often include credentials inside the URL — one missing character blocks the entire playlist. Paste the URL into a text editor first to confirm it is complete. See M3U loading troubleshooting.</p><h3>Channels load but EPG is missing</h3><p>Open the player's settings and find the EPG or guide section. Run a manual refresh. Check whether the player requires a separate EPG URL. Verify the player timezone setting. EPG problems are almost always player-configuration issues, not service issues. Use the EPG troubleshooting guide.</p><h3>One channel fails, others work</h3><p>This pattern indicates a stream-specific problem, not an account or player problem. Try another channel in the same category. If the channel reappears later, the interruption was temporary on the stream side.</p><h3>All channels fail after working previously</h3><p>Restart the player, then restart the Firestick. Check your internet connection. If credentials are accepted but channels time out rather than load, the issue may be a temporary network problem. Wait a few minutes and test again before contacting support.</p><h3>App closes unexpectedly or becomes unstable</h3><p>Check available storage at <strong>Settings &gt; My Fire TV &gt; About &gt; Storage</strong>. Clear the player's cache (not data) at <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>. If the problem continues, reinstall the player from its original trusted source.</p><h3>One player fails, another works with the same credentials</h3><p>If credentials work in one player but not a second, the problem is player-specific. Clear the failing player's cache and data, or reinstall it from a trusted source. If the issue persists in that player, continue using the one that works.</p><h3>Downloader is not available in the Appstore</h3><p>Amazon Appstore availability varies by region and device. If Downloader is unavailable in your region, do not use unknown workaround links. Use a player that is available in your Appstore, or follow official distribution instructions from the player developer directly.</p>"
-      },
-      {
-        "id": "buffering",
-        "title": "How to Reduce IPTV Buffering on Firestick",
-        "content": "<p>Buffering has several distinct causes, and the fix depends on which one applies. Work through these in order before changing multiple settings at once:</p><ol><li><strong>Test internet speed</strong> — a standard HD stream typically needs at least 10 Mbps of stable throughput; 4K needs significantly more. Run a speed test from a device close to the Firestick.</li><li><strong>Check Wi-Fi signal strength</strong> — move the Firestick closer to the router, or use a Wi-Fi extender if distance is the problem. A compatible Ethernet adapter provides a more stable connection than Wi-Fi when signal quality is unreliable.</li><li><strong>Close background apps</strong> — Fire TV Stick has limited RAM. Hold the home button to view and close running apps, or force-stop them at <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>.</li><li><strong>Clear the player's cache</strong> — go to <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>, select the player, and tap <strong>Clear Cache</strong>. Avoid clearing app data unless you are prepared to re-enter credentials.</li><li><strong>Free up storage</strong> — low storage can cause player instability. Delete unused apps and any APK installer files left over from previous sideloading sessions.</li><li><strong>Test a different stream</strong> — if buffering affects only one channel or category, the cause is likely that specific stream rather than your device or connection.</li><li><strong>Adjust the decoder setting</strong> — inside the player, look for a hardware or software decoder option. Test one change at a time. Some Fire TV models handle certain codecs better with hardware decoding; others perform better with software decoding.</li><li><strong>Restart the Firestick</strong> — if buffering appeared suddenly across many channels after working normally, a restart can rule out a temporary memory issue before you change other settings.</li></ol><p>For a deeper network analysis, read the IPTV buffering troubleshooting guide.</p>"
+        "title": "Troubleshooting Fire TV Playback Issues",
+        "content": "<p>If you experience streaming interruptions on Fire TV:</p><ul><li><strong>Buffering:</strong> Connect to 5 GHz Wi-Fi or use an Ethernet adapter. Review our <a href='/help/iptv-buffering'>IPTV buffering guide</a> for network diagnostics.</li><li><strong>App freezing:</strong> Go to <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>, select your player, and click <strong>Clear Cache</strong> and <strong>Force Stop</strong>.</li><li><strong>Audio with black screen:</strong> In player settings, test switching the video decoder from Hardware to Software or an alternate player engine.</li></ul>"
       },
       {
         "id": "two-firesticks",
-        "title": "Can I Use TryIPTV on Two Firesticks?",
-        "content": "<p>Yes. TryIPTV subscriptions include <strong>two simultaneous connections</strong>. Two devices — including two Fire TV Sticks — can stream at the same time using the same credentials.</p><p>To set up a second Firestick, install a compatible IPTV player on that device and enter the same server URL, username, and password (or the same M3U URL). Both can stream simultaneously without affecting each other, as long as no more than two streams are active at once.</p><p>If a third device tries to connect while two are already streaming, the player on the third device will typically show a login error or a connection limit message. This is expected behaviour, not a credential problem.</p>"
+        "title": "Using Multiple Fire TV Devices",
+        "content": "<p>TryIPTV accounts include <strong>two simultaneous connections</strong>, allowing you to stream on two Fire TV devices in different rooms concurrently without extra configuration.</p>"
       },
       {
         "id": "before-paying",
-        "title": "Can I Test IPTV on Firestick Before Paying?",
-        "content": "<p>Yes. TryIPTV offers a <a href='/iptv-free-trial'>24-hour free trial with no credit card required</a>. The trial uses the same service credentials as a paid subscription, so you can confirm your Firestick model, chosen player, and internet connection all work before selecting a plan.</p><p>TryIPTV plans are prepaid with no automatic renewal. View available durations and pricing on the <a href='/pricing'>pricing page</a>.</p>"
+        "title": "Testing Before Subscribing",
+        "content": "<p>If you want to verify player responsiveness and channel stability on your Fire TV hardware before purchasing, start with a <a href='/iptv-free-trial'>24-hour free trial</a> (no credit card required).</p>"
       },
       {
         "id": "storage",
-        "title": "Firestick Storage and Cache Management",
-        "content": "<p>Fire TV Stick devices have limited internal storage. Keeping it clear helps prevent app instability and update failures.</p><p>After sideloading a player, delete the APK installer file from within Downloader. The installed player app is not affected.</p><p>To check free storage: <strong>Settings &gt; My Fire TV &gt; About &gt; Storage</strong>.</p><p>If storage is low:</p><ul><li>Clear the cache (not data) of IPTV apps you are actively using — this removes temporary files without deleting saved playlists or credentials</li><li>Uninstall apps you no longer need</li><li>Delete any APK files in Downloader that are no longer needed</li></ul><p>Avoid clearing an app's <em>data</em> unless you are prepared to re-enter credentials, because clearing data removes saved playlists and login profiles from that app.</p>"
+        "title": "Fire TV Storage Management",
+        "content": "<p>Standard Fire TV Sticks feature 8 GB of internal storage, with part reserved for the OS and updates. To prevent sluggish performance:</p><ul><li>Delete downloaded APK files in Downloader after installation.</li><li>Periodically clear app cache in <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>.</li><li>Uninstall unused applications to preserve free working space.</li></ul>"
       },
       {
         "id": "security",
-        "title": "Security: What to Know About Sideloading on Firestick",
-        "content": "<p>If you need to sideload an IPTV player, verify the source of the file before installing anything. Use only the official website or verified distribution channel published by the player's developer.</p><p>Avoid APK mirror sites, shortened links, and files shared on forums or social media. Modified APK files can behave differently from the official version.</p><p>After sideloading is complete, consider disabling the Downloader install permission if you no longer need it. On Fire TV devices with per-app install permissions, this does not affect the player you already installed.</p><p>TryIPTV provides IPTV access credentials. Third-party IPTV player apps are independent software products. TryIPTV does not distribute, modify, or take responsibility for any third-party player software.</p>"
+        "title": "Sideloading Security Best Practices",
+        "content": "<p>When installing apps outside the Amazon Appstore, only download installer packages from verified developer websites. Once installed, turn off unknown source permissions for Downloader to maintain device security.</p>"
       }
     ],
     "faqs": [
       {
-        "question": "How do I install IPTV on Firestick?",
-        "answer": "Install a compatible IPTV player from the Amazon Appstore — such as IPTV Smarters or XCIPTV. Open the player, choose Xtream Codes or M3U login, and enter the credentials from your TryIPTV account. Allow channels and EPG to load, then test playback. TryIPTV provides the service credentials; the player is a separate third-party app."
+        "question": "Does Fire TV Stick include a built-in IPTV player?",
+        "answer": "No. Fire TV devices do not come with a native IPTV player. You must install a third-party application like IPTV Smarters Pro or TiviMate to open streams."
       },
       {
-        "question": "Does Firestick have IPTV built in?",
-        "answer": "No. Fire TV Stick does not include a built-in IPTV player. You install a compatible third-party player app — such as IPTV Smarters or XCIPTV — and enter credentials from an IPTV service like TryIPTV."
+        "question": "Can I install an IPTV player without using Downloader on Fire TV?",
+        "answer": "Yes, if the player is available directly in the Amazon Appstore in your region. Downloader is only required when sideloading an application not hosted in Amazon's store."
       },
       {
-        "question": "Do I need an IPTV player?",
-        "answer": "Yes. An IPTV player is the app that reads your credentials or playlist and handles the channel interface, EPG display, and video playback on Firestick. TryIPTV provides service credentials; you install a compatible player separately."
+        "question": "How do I unlock Developer Options on newer Fire TV models?",
+        "answer": "Go to Settings > My Fire TV > About, highlight your Fire TV name, and press the remote Select button 7 times. A message will confirm that Developer Options have been enabled."
       },
       {
-        "question": "Should I use M3U or Xtream Codes on Firestick?",
-        "answer": "Use whichever format your chosen player supports best. Xtream Codes login (server URL, username, password) is often easier to manage on Firestick because the player fetches categories and EPG automatically. M3U uses a single playlist URL and works well when a player does not support Xtream Codes. If your player supports both, try Xtream Codes first."
+        "question": "Why is the TV guide (EPG) empty after loading channels?",
+        "answer": "Initial guide data can take several minutes to index. If it remains blank, select 'Refresh EPG' in player settings and confirm your Fire TV time zone matches your local region in Settings > Preferences."
       },
       {
-        "question": "Can I install IPTV without Downloader?",
-        "answer": "Yes — if your chosen player is available in the Amazon Appstore for your device and region, you can install it directly without Downloader or any sideloading. Downloader is only needed when you must sideload a player that is not in the Appstore."
-      },
-      {
-        "question": "Is it safe to install IPTV apps on Firestick?",
-        "answer": "Installing from the Amazon Appstore carries the same level of risk as any other Fire TV app. Sideloading from outside the store requires more caution because you must verify the source yourself. Use official developer sources only, avoid APK mirror sites, and do not install files from unverified links."
-      },
-      {
-        "question": "Why is my IPTV EPG not showing?",
-        "answer": "The most common reasons are that the player needs more time to load guide data after a fresh login, requires a manual EPG refresh, needs a separate EPG URL in its settings, or has an incorrect timezone set. Open the player's EPG settings and run a manual refresh before assuming the service has a problem."
-      },
-      {
-        "question": "Why does IPTV buffer on Firestick?",
-        "answer": "Common causes include weak Wi-Fi signal, network congestion, low Firestick storage, a full player cache, or a decoder setting mismatch. Test a different stream first — if only one channel buffers, the issue is stream-specific. If all channels buffer, check internet speed and signal strength, then restart the Firestick."
-      },
-      {
-        "question": "Can I watch IPTV in 4K on Firestick?",
-        "answer": "4K content is available where the stream source provides it. Whether a specific Firestick model outputs 4K depends on the device generation — not all Fire TV Stick models support 4K. Confirm your device model's capabilities before expecting 4K playback."
-      },
-      {
-        "question": "Does TryIPTV have a Firestick app?",
-        "answer": "No. TryIPTV is an IPTV service that provides M3U and Xtream Codes credentials. It does not produce a proprietary Firestick app. You install a compatible third-party IPTV player — such as IPTV Smarters or XCIPTV — and use your TryIPTV credentials inside that player."
-      },
-      {
-        "question": "Can I use TryIPTV on two Firesticks?",
-        "answer": "Yes. TryIPTV subscriptions include two simultaneous connections. Install a compatible IPTV player on each Firestick and enter the same credentials. Both devices can stream at the same time as long as no more than two streams are active simultaneously."
-      },
-      {
-        "question": "Can I test IPTV before paying?",
-        "answer": "Yes. TryIPTV offers a 24-hour free trial with no credit card required. The trial credentials work the same way as a paid plan, so you can verify your Firestick, player, and internet connection before choosing a prepaid plan."
+        "question": "Which Fire TV models support 4K streaming?",
+        "answer": "4K streaming requires a 4K-capable model (Fire TV Stick 4K, 4K Max, or Fire TV Cube) connected to a 4K television with sufficient network bandwidth."
       }
     ]
   },
   {
-    "id": "android-tv",
-    "title": "How Do I Set Up IPTV on an Android Device?",
-    "description": "To set up IPTV on an Android device, download a recommended IPTV player like IPTV Smarters Pro from the Google Play Store, choose the 'Login with Xtream Codes API' method, and enter the subscription details we provide.",
-    "primaryKeyword": "Android Device",
+    "id": "android-tv-iptv",
+    "title": "How to Set Up IPTV on Android TV and Google TV",
+    "description": "Install and configure IPTV players on Android TV and Google TV devices. Learn how to install TiviMate or IPTV Smarters from Google Play, enter Xtream Codes credentials, and configure video decoders.",
+    "primaryKeyword": "Android TV",
     "keywords": [
-      "IPTV on Android",
-      "Android IPTV player",
-      "setup IPTV Android"
+      "android tv iptv setup",
+      "google tv iptv",
+      "tivimate android tv",
+      "iptv smarters android tv",
+      "best iptv player android tv",
+      "nvidia shield iptv"
     ],
-    "datePublished": "2024-07-19T11:00:00Z",
-    "dateModified": "2024-07-19T11:00:00Z",
-    "totalTime": "PT5M",
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Download a Recommended IPTV Player",
-        "description": "Go to the Google Play Store and search for an IPTV player. We highly recommend <a href='https://www.iptvsmarters.com/' target='_blank' rel='noopener noreferrer'><strong>IPTV Smarters Pro</strong></a> or <a href='https://play.google.com/store/apps/details?id=ar.tvplayer.tv' target='_blank' rel='noopener noreferrer'><strong>TiviMate</strong></a> for the best user experience and reliability."
+        "title": "Search for a player in the Google Play Store",
+        "description": "<p>From your Android TV or Google TV home screen, open the <strong>Google Play Store</strong> (or use the Search tab on Google TV). Search for a dedicated TV player such as <strong>TiviMate IPTV Player</strong> or <strong>IPTV Smarters Pro</strong>.</p>"
       },
       {
-        "title": "Install the Application",
-        "description": "Tap the 'Install' button and wait for the app to download and install on your Android phone, tablet, or TV box."
+        "title": "Install the player directly on your device",
+        "description": "<p>Select the application and click <strong>Install</strong>. Installing directly from the official Google Play Store ensures automatic background updates and avoids manual APK management.</p>"
       },
       {
-        "title": "Open the App and Select Login Method",
-        "description": "Launch the IPTV app. You will typically be prompted to add a new user or playlist. For the most seamless setup, choose the option to <strong>'Login with Xtream Codes API'</strong>."
+        "title": "Open the player and choose your login format",
+        "description": "<p>Launch the player and select <strong>Add Playlist</strong>. Choose <strong>Xtream Codes API</strong> (recommended) or <strong>M3U Playlist</strong> depending on your subscription details.</p>"
       },
       {
-        "title": "Enter Your Subscription Details",
-        "description": "Carefully enter the login credentials provided in your subscription confirmation email. This includes a playlist name (e.g., 'TryIPTV'), your username, your password, and the server URL. Double-check for typos."
+        "title": "Enter your connection credentials",
+        "description": "<p>For Xtream Codes, enter your <strong>Server URL</strong>, <strong>Username</strong>, and <strong>Password</strong>. Xtream Codes allows the player to query categories dynamically rather than parsing a massive text file at once. Learn more about how this works in our <a href='/guides/what-are-xtream-codes'>Xtream Codes guide</a>.</p>"
       },
       {
-        "title": "Start Streaming Your Content",
-        "description": "After logging in, the app will automatically download the channel lists, movies, and TV shows. You can now start enjoying thousands of hours of content!"
-      }
-    ],
-    "faqs": [
-      {
-        "question": "What's the difference between an M3U link and the Xtream Codes API?",
-        "answer": "The Xtream Codes API login is a simpler and more powerful method. It uses a username, password, and server URL to automatically fetch all your content, including the TV guide (EPG) and channel logos. An M3U link is a single file URL that can sometimes have issues with guide data and may require manual updates."
+        "title": "Synchronize channel categories and EPG data",
+        "description": "<p>Allow the app a moment to download channel bouquets and guide data. In player settings, ensure your EPG source is assigned to update automatically on app launch or at regular intervals.</p>"
       },
       {
-        "question": "Can I use a different IPTV player on Android?",
-        "answer": "Yes, our service is compatible with most IPTV players on the Google Play Store. However, for optimal performance, features, and full EPG (Electronic Program Guide) support, we strongly recommend using IPTV Smarters Pro or TiviMate."
-      }
-    ]
-  },
-  {
-    "id": "windows",
-    "title": "How Can I Watch IPTV on a Windows PC?",
-    "description": "You can watch IPTV on a Windows PC by using a media player that supports network streams. The best method is to download the free VLC Media Player, open its 'Network Stream' feature, and paste in your M3U subscription URL.",
-    "primaryKeyword": "IPTV on Windows",
-    "keywords": [
-      "IPTV player for PC",
-      "VLC IPTV setup",
-      "watch IPTV on computer"
-    ],
-    "datePublished": "2024-07-22T12:00:00Z",
-    "dateModified": "2024-07-22T12:00:00Z",
-    "totalTime": "PT5M",
-    "steps": [
-      {
-        "title": "Download VLC Media Player",
-        "description": "Go to the official VideoLAN website at <strong>videolan.org</strong> and download the free VLC Media Player. VLC is a powerful and versatile open-source player that fully supports IPTV streams."
+        "title": "Check video decoder settings",
+        "description": "<p>In your player settings, verify that <strong>Video Decoder</strong> is set to <strong>Hardware (HW)</strong> (typically ExoPlayer). If an individual stream renders audio with a black screen, test switching to <strong>Software (SW)</strong> or an alternate internal engine.</p>"
       },
       {
-        "title": "Install VLC on Your PC",
-        "description": "Run the downloaded installer file. Follow the on-screen instructions to complete the installation of VLC Media Player on your computer."
-      },
-      {
-        "title": "Open the Network Stream Menu",
-        "description": "Launch VLC Media Player. In the top menu bar, click on <strong>'Media'</strong> and then select <strong>'Open Network Stream...'</strong> from the dropdown menu. Alternatively, you can use the keyboard shortcut (Ctrl+N)."
-      },
-      {
-        "title": "Paste Your M3U Subscription URL",
-        "description": "A new window titled 'Open Media' will appear. In the 'Network' tab, paste your unique M3U subscription URL (which we provided in your email) into the field that says 'Please enter a network URL:'."
-      },
-      {
-        "title": "Access the Playlist and Start Watching",
-        "description": "Click the 'Play' button. The first channel on your list will begin playing. To see all channels and categories, click the 'Toggle Playlist' button (an icon with three horizontal lines) located in the bottom control bar of VLC."
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Are there other IPTV players for Windows?",
-        "answer": "Yes, other applications like 'MyIPTV Player' from the Microsoft Store also work well. However, VLC is universally recommended due to its unmatched stability, compatibility, and the fact that it is completely free and open-source."
-      },
-      {
-        "question": "How do I view the program guide (EPG) in VLC?",
-        "answer": "VLC has basic EPG support. If your M3U link includes EPG data (ours do), it should load automatically. You can view the guide by navigating to 'Tools' > 'Program Guide' from the top menu bar."
-      }
-    ]
-  },
-  {
-    "id": "mac",
-    "title": "What's the Best Way to Set Up IPTV on macOS?",
-    "description": "The best way to set up IPTV on macOS is to use a dedicated application like IPTV Smarters Player. This provides a better user experience than generic players by offering features like a full TV guide (EPG) and organized VOD libraries.",
-    "primaryKeyword": "IPTV on macOS",
-    "keywords": [
-      "IPTV for Mac",
-      "macOS IPTV player",
-      "IPTV Smarters Mac"
-    ],
-    "datePublished": "2024-07-23T14:00:00Z",
-    "dateModified": "2024-09-05T16:00:00Z",
-    "totalTime": "PT5M",
-    "steps": [
-      {
-        "title": "Download the Recommended Player",
-        "description": "For the best experience on macOS, download the official <strong>IPTV Smarters Player</strong>. Go to iptvsmarters.com and download the .dmg file specifically for macOS."
-      },
-      {
-        "title": "Install the Application",
-        "description": "Open the downloaded .dmg file. Drag the IPTV Smarters Player icon into your 'Applications' folder to install it. If prompted by macOS security, you may need to go to 'System Settings' > 'Privacy & Security' to grant permission to open the app."
-      },
-      {
-        "title": "Launch and Select Login Method",
-        "description": "Open IPTV Smarters Player from your Applications folder. When prompted, choose the <strong>'Login with Xtream Codes API'</strong> option. This is the most reliable and feature-rich method."
-      },
-      {
-        "title": "Enter Your Credentials",
-        "description": "In the login screen, fill in the four fields exactly as they appear in your subscription email: a name for the playlist (e.g., 'TryIPTV'), your username, your password, and the server URL."
-      },
-      {
-        "title": "Load and Watch",
-        "description": "Click 'Add User'. The application will verify your details and automatically download all the channels, movies, and series associated with your account. Once this process is complete, you are ready to stream."
+        "title": "Test channels across multiple bouquets",
+        "description": "<p>Test several channels to confirm smooth playback. If one channel encounters downtime while others play normally, the issue is stream-specific.</p>"
       }
     ],
     "extraSections": [
       {
-        "id": "why-smarters",
-        "title": "Why Is IPTV Smarters Player the Recommended Choice?",
-        "content": "While a generic media player like VLC can play IPTV streams, it provides a very basic, file-like interface. In contrast, <strong>IPTV Smarters Player</strong> is a dedicated application purpose-built for IPTV. It delivers a true television-like experience with a full Electronic Program Guide (EPG), organized channel categories, a separate VOD library for movies and series, and a much more intuitive interface. These features make it the superior choice for any macOS user."
+        "id": "android-tv-vs-google-tv",
+        "title": "Android TV vs Google TV Differences",
+        "content": "<p>Both Android TV and Google TV support television apps distributed through Google Play, though user interfaces and recommendations differ. Google TV provides a content-focused interface built on top of Android TV foundations. For IPTV playback, player compatibility, decoder options, and network settings operate similarly across both systems.</p>"
+      },
+      {
+        "id": "best-android-tv-players",
+        "title": "Popular IPTV Players for Android TV",
+        "content": "<p>Top players available directly in the Google Play Store include:</p><ul><li><strong>TiviMate:</strong> Renowned for its cable-like EPG grid, customizable channel groups, multi-screen viewing, and responsive remote control navigation.</li><li><strong>IPTV Smarters Pro:</strong> Versatile player supporting Xtream Codes, multi-user playlists, and organized movie and series sections.</li><li><strong>Televizo:</strong> Lightweight player with comprehensive subtitle support and low resource usage.</li></ul>"
+      },
+      {
+        "id": "hardware-decoding-buffer",
+        "title": "Hardware Decoding and Buffer Settings",
+        "content": "<p>Android TV devices range from high-performance boxes (like Nvidia Shield) to entry-level smart TVs. In player settings, defaulting to <strong>Hardware decoding</strong> routes video decompression to the GPU. If your wireless network experiences occasional latency variations, adjusting the player's buffer size to <em>Normal</em> or <em>Large</em> can help maintain steady playback. For network tuning, see our <a href='/help/iptv-buffering'>buffering guide</a>.</p>"
+      },
+      {
+        "id": "cache-storage-management",
+        "title": "Managing App Cache on Android TV",
+        "content": "<p>Over time, cached channel logos and EPG data can accumulate. To restore responsiveness on devices with limited storage: Open <strong>Settings &gt; Apps &gt; See all apps</strong>, select your player, and select <strong>Clear cache</strong>. Avoid clicking 'Clear data' unless you wish to erase your saved playlists and login credentials.</p>"
+      },
+      {
+        "id": "troubleshooting-android",
+        "title": "Troubleshooting Android TV Playback",
+        "content": "<p>Quick diagnostics for common Android TV streaming issues:</p><ul><li><strong>Black screen with audio:</strong> Test switching the video decoder from Hardware to Software in player settings to resolve codec incompatibilities.</li><li><strong>Audio out of sync:</strong> Check your Android TV <em>Display &amp; Sound</em> settings and test digital audio output modes, or adjust the audio delay slider inside the player.</li><li><strong>Login failed:</strong> Verify your server URL, username, and password. Review our <a href='/help/iptv-login-not-working'>IPTV login guide</a>.</li></ul>"
       }
     ],
     "faqs": [
       {
-        "question": "Why should I use the 'Xtream Codes API' login instead of an M3U link?",
-        "answer": "Logging in with the Xtream Codes API is a more direct and robust method. It automatically handles the fetching and syncing of your TV Guide (EPG), channel logos, and VOD categories. Using an M3U link is a more manual process and can sometimes lead to issues with missing or outdated guide data."
+        "question": "Can I install IPTV apps directly from Google Play on Android TV?",
+        "answer": "Yes. Android TV and Google TV include the television Google Play Store, where players like TiviMate, IPTV Smarters Pro, and Televizo can be installed directly without sideloading."
       },
       {
-        "question": "Is TiviMate available for macOS?",
-        "answer": "No, TiviMate is an Android-exclusive application and is not officially available for macOS. IPTV Smarters Player is the best and most comparable alternative, offering a rich, TV-centric feature set specifically for Mac users."
+        "question": "What is the difference between Android TV and Google TV for IPTV apps?",
+        "answer": "Both platforms share the same Google Play Store application repository and core video decoders. Google TV features a different home screen interface, but IPTV apps function similarly on both."
+      },
+      {
+        "question": "What should I check if a stream shows a black screen with audio?",
+        "answer": "This usually indicates that the hardware decoder does not support the stream's video codec. In player settings, test switching the video decoder from Hardware (HW) to Software (SW)."
+      },
+      {
+        "question": "How do I clear player cache on Android TV?",
+        "answer": "Go to Settings > Apps > See all apps on your Android TV, select your player, scroll down, and select 'Clear cache'."
+      },
+      {
+        "question": "Is wired Ethernet recommended over Wi-Fi for Android TV streaming?",
+        "answer": "Yes. Connecting via wired Ethernet provides consistent network throughput and eliminates Wi-Fi signal interference, which is particularly beneficial for high-definition live streams."
       }
     ]
   },
   {
-    "id": "samsung-tv",
-    "title": "How Can I Install IPTV on a Samsung Smart TV?",
-    "description": "To install IPTV on a Samsung Smart TV by searching for 'SET IPTV' or 'NET IPTV' in the Samsung App Store. Once installed, you will need to use the TV's MAC address to upload your M3U playlist via the app developer's website.",
+    "id": "windows-iptv",
+    "title": "How to Watch IPTV on Windows PC: Windows 10 and 11 Setup Guide",
+    "description": "Stream IPTV on Windows 10 and Windows 11 PCs and laptops. Compare dedicated IPTV players like IPTV Smarters Pro and MyIPTV Player with VLC Media Player, configure hardware acceleration, and adjust network caching.",
+    "primaryKeyword": "Windows PC",
+    "keywords": [
+      "windows iptv",
+      "iptv smarters windows",
+      "vlc iptv windows",
+      "watch iptv on pc",
+      "myiptv player windows",
+      "best iptv player windows 11"
+    ],
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
+    "steps": [
+      {
+        "title": "Choose the Windows IPTV application for your workflow",
+        "description": "<p>Windows supports different streaming software: <strong>Dedicated IPTV Players</strong> like <strong>IPTV Smarters Pro for Windows</strong> or <strong>MyIPTV Player</strong> (Microsoft Store) offer structured channel categories and EPG grids. <strong>VLC Media Player</strong> is a versatile tool for opening raw network streams and testing stream connectivity.</p>"
+      },
+      {
+        "title": "Method A (Dedicated Player): Install IPTV Smarters Pro for Windows",
+        "description": "<p>Download the official Windows installer (.exe) for IPTV Smarters Pro from the developer's verified site. Run the installer, select <strong>Login with Xtream Codes API</strong>, enter your Server URL, Username, and Password, and select <strong>Add User</strong> to load live channels and the EPG.</p>"
+      },
+      {
+        "title": "Method B (Microsoft Store): Install MyIPTV Player",
+        "description": "<p>Open the <strong>Microsoft Store</strong> in Windows 10 or 11, search for <strong>MyIPTV Player</strong>, and install it. In the app's settings, add a new playlist, enter your M3U URL, and refresh to display your channels.</p>"
+      },
+      {
+        "title": "Method C (Diagnostic Utility): Stream via VLC Media Player",
+        "description": "<p>In VLC Media Player: Press <strong>Ctrl + N</strong> (Media &gt; Open Network Stream), paste your M3U playlist URL, and select <strong>Play</strong>. Press <strong>Ctrl + L</strong> to open the playlist panel and view channel entries.</p>"
+      },
+      {
+        "title": "Enable GPU Hardware Acceleration",
+        "description": "<p>To reduce CPU load when playing high-definition or 4K streams: in VLC, go to <strong>Tools &gt; Preferences &gt; Input / Codecs</strong> and verify that <strong>Hardware-accelerated decoding</strong> is set to <strong>Automatic</strong> or <strong>DirectX Video Acceleration (DXVA 2.0)</strong>.</p>"
+      },
+      {
+        "title": "Adjust network caching settings in VLC if needed",
+        "description": "<p>If experiencing stream fluctuations in VLC, open <strong>Tools &gt; Preferences &gt; Input / Codecs</strong>, set <em>Show settings</em> at the bottom to <strong>All</strong>, select <strong>Input / Codecs</strong>, scroll to <strong>Advanced &gt; Network caching (ms)</strong>, and test increasing the caching value (for example, to 1000 ms or 1500 ms) to give the player additional buffering cushion.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "windows-software-comparison",
+        "title": "Dedicated IPTV Applications vs General Media Players",
+        "content": "<p>Windows users have several software options depending on their viewing habits:</p><ul><li><strong>IPTV Smarters Pro:</strong> Provides a television-style interface with categorized live channels, movies, series, search functions, and multi-screen viewing.</li><li><strong>MyIPTV Player:</strong> A lightweight application available in the Microsoft Store with built-in EPG parsing and clean channel navigation.</li><li><strong>VLC Media Player:</strong> The open-source media player by VideoLAN. VLC is widely used for stream diagnostics and playing raw network links, though its playlist panel is simpler than a dedicated TV guide.</li></ul>"
+      },
+      {
+        "id": "vlc-caching-tuning",
+        "title": "Adjusting Network Caching in VLC Media Player",
+        "content": "<p>When streaming live network streams in VLC Media Player, adjusting the network caching buffer can help smooth out minor network jitter:</p><ol><li>Open VLC and select <strong>Tools &gt; Preferences</strong> (Ctrl + P).</li><li>At the bottom under <em>Show settings</em>, select <strong>All</strong>.</li><li>In the left panel, click <strong>Input / Codecs</strong> and scroll to <strong>Advanced</strong> on the right.</li><li>Locate <strong>Network caching (ms)</strong>. You can test increasing this value (e.g. to 1000 ms or 1500 ms).</li><li>Click <strong>Save</strong> and restart VLC.</li></ol>"
+      },
+      {
+        "id": "gpu-acceleration-windows",
+        "title": "GPU Hardware Decoding on Windows",
+        "content": "<p>Modern streaming video commonly utilizes high-compression codecs such as <strong>HEVC (H.265)</strong>. Leveraging GPU hardware decoding helps maintain smooth playback while minimizing CPU utilization:</p><ul><li>Ensure your graphics drivers (NVIDIA, AMD, or Intel) are up to date.</li><li>In supported media players, verify that hardware decoding is enabled via <strong>DirectX Video Acceleration (DXVA2)</strong> or <strong>Direct3D 11 Video Acceleration (D3D11VA)</strong>.</li><li>You can monitor hardware decoding in Windows Task Manager (<strong>Ctrl + Shift + Esc</strong>) under the <em>Performance &gt; GPU</em> tab.</li></ul>"
+      },
+      {
+        "id": "firewall-antivirus-notes",
+        "title": "Windows Firewall and Security Considerations",
+        "content": "<p>On Windows 10 and 11, firewall rules or security software can occasionally manage incoming network connections:</p><ul><li>If a media player cannot establish a network connection, verify that the application has appropriate permissions under <strong>Windows Security &gt; Firewall &amp; network protection &gt; Allow an app through firewall</strong>.</li><li>If using security suites with active web shields or VPNs, test streaming with those features temporarily adjusted to rule out network filtering delays.</li></ul>"
+      },
+      {
+        "id": "troubleshooting-windows",
+        "title": "Troubleshooting Windows PC Playback Issues",
+        "content": "<p>If you encounter streaming issues on Windows:</p><ul><li><strong>VLC playlist closes immediately:</strong> The M3U URL may be entered incorrectly or inactive. Verify the link in a browser to confirm it responds. See our <a href='/help/m3u-not-loading'>M3U loading guide</a>.</li><li><strong>Audio synchronization:</strong> In VLC, press the <strong>J</strong> or <strong>K</strong> keys during playback to adjust audio track synchronization offset.</li><li><strong>Buffering on Wi-Fi:</strong> Connect to 5 GHz Wi-Fi or use a wired Ethernet connection. Review our <a href='/help/iptv-buffering'>IPTV buffering guide</a>.</li></ul>"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What IPTV applications are available for Windows 10 and 11?",
+        "answer": "IPTV Smarters Pro for Windows is popular for its TV-style interface and EPG support. MyIPTV Player in the Microsoft Store and VLC Media Player are also widely used."
+      },
+      {
+        "question": "How do I open an IPTV playlist stream in VLC Media Player?",
+        "answer": "Open VLC, press Ctrl+N (Media > Open Network Stream), paste your TryIPTV M3U playlist URL, and select Play. Press Ctrl+L to view the playlist panel."
+      },
+      {
+        "question": "How do I enable GPU hardware acceleration in Windows media players?",
+        "answer": "In VLC, go to Tools > Preferences > Input / Codecs and verify that Hardware-accelerated decoding is set to Automatic or DXVA 2.0. In dedicated players like IPTV Smarters, check the video decoder setting in preferences."
+      },
+      {
+        "question": "Can Windows Defender Firewall block IPTV streams?",
+        "answer": "Yes, if the application was not granted appropriate network permissions. Check Windows Security > Firewall & network protection > Allow an app through firewall to confirm permissions."
+      },
+      {
+        "question": "Does VLC include an interactive EPG TV guide grid?",
+        "answer": "VLC has basic program guide support under Tools > Program Guide when stream metadata includes it, but it does not provide the full interactive channel grid found in dedicated IPTV applications."
+      }
+    ]
+  },
+  {
+    "id": "mac-iptv",
+    "title": "How to Set Up IPTV on macOS: Complete Mac Setup Guide",
+    "description": "Stream IPTV on macOS computers including MacBook, iMac, and Mac mini. Discover native Mac IPTV applications like UHF and IINA, navigate macOS Gatekeeper permissions, and use Picture-in-Picture for multitasking.",
+    "primaryKeyword": "macOS",
+    "keywords": [
+      "mac iptv",
+      "iptv smarters mac",
+      "iina iptv mac",
+      "watch iptv on macbook",
+      "uhf iptv mac",
+      "best iptv player macos"
+    ],
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
+    "steps": [
+      {
+        "title": "Select a macOS-compatible IPTV player",
+        "description": "<p>Mac users can choose between App Store apps and media players: <strong>UHF - IPTV Client</strong> (Mac App Store, with iCloud sync), <strong>IPTV Smarters Pro for macOS</strong> (DMG installer), or <strong>IINA</strong> (open-source media player based on mpv).</p>"
+      },
+      {
+        "title": "Method A (App Store): Install UHF - IPTV Client",
+        "description": "<p>Open the <strong>Mac App Store</strong> and search for <strong>UHF - IPTV Client</strong>. Install the app, select <strong>Add Playlist</strong>, choose <strong>Xtream Codes</strong>, and enter your credentials. Playlists and favorites can synchronize across your Mac, iPhone, and Apple TV via iCloud.</p>"
+      },
+      {
+        "title": "Method B (DMG Installer): Install IPTV Smarters Pro",
+        "description": "<p>Download the official macOS disk image (<code>.dmg</code>) file from the developer's verified website. Open the DMG file, drag <strong>IPTV Smarters Pro</strong> into your Applications folder, and launch the application to enter your Xtream Codes credentials.</p>"
+      },
+      {
+        "title": "Authorize macOS Gatekeeper security if prompted",
+        "description": "<p>If macOS displays an alert when launching software downloaded from outside the App Store: Open <strong>System Settings &gt; Privacy &amp; Security</strong>, scroll down to <em>Security</em>, click <strong>Open Anyway</strong> next to the blocked app notification, and enter your Mac administrator password to confirm.</p>"
+      },
+      {
+        "title": "Method C (Open Source): Stream via IINA Media Player",
+        "description": "<p>Download IINA from the official project website. Launch IINA, press <strong>Command + Shift + O</strong> (File &gt; Open URL), paste your TryIPTV M3U playlist URL, and press <strong>Open</strong>.</p>"
+      },
+      {
+        "title": "Use Picture-in-Picture for multitasking",
+        "description": "<p>In supported players like UHF and IINA, click the <strong>Picture-in-Picture (PiP)</strong> icon to detach your video stream into a floating, resizable window that remains visible while you work across other macOS desktop spaces and applications.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "macos-player-comparison",
+        "title": "Comparing IPTV Players for macOS",
+        "content": "<p>Mac users can choose between App Store apps, TV-style interfaces, and versatile media players:</p><ul><li><strong>UHF - IPTV Client:</strong> Built for macOS with SwiftUI, offering keyboard shortcut navigation, multiple playlists, and iCloud synchronization with iOS and tvOS.</li><li><strong>IPTV Smarters Pro for Mac:</strong> Provides a traditional TV layout with separate sections for Live TV, Movies, and Series with EPG support.</li><li><strong>IINA:</strong> Modern open-source media player for macOS with an mpv backend, featuring native dark mode, Picture-in-Picture, and Retina display scaling. Useful for playing individual network streams.</li><li><strong>VLC for macOS:</strong> Cross-platform player for opening direct network stream URLs via <strong>Command + N</strong>.</li></ul>"
+      },
+      {
+        "id": "gatekeeper-walkthrough",
+        "title": "Managing macOS Gatekeeper for Downloaded Applications",
+        "content": "<p>Apple utilizes <strong>Gatekeeper</strong> on macOS to verify software distribution. When opening third-party applications downloaded from the internet rather than the Mac App Store, macOS may verify permissions on first launch.</p><p>To authorize verified applications: If a security prompt appears, select <strong>Cancel</strong>. Open <strong>System Settings &gt; Privacy &amp; Security &gt; Security</strong>. Under <em>'Allow applications downloaded from'</em>, locate the notification for the blocked app and select <strong>Open Anyway</strong>, then confirm in the system prompt.</p>"
+      },
+      {
+        "id": "apple-silicon-efficiency",
+        "title": "Hardware Video Decoding on Apple Silicon and Modern Macs",
+        "content": "<p>Mac computers equipped with Apple Silicon (M-series chips) and modern Intel processors include dedicated hardware decoders that support video standards such as H.264 and HEVC (H.265) via Apple's <strong>VideoToolbox</strong> framework.</p><p>Hardware-accelerated decoding offloads video decompression from the main CPU cores to dedicated media processing blocks. This improves efficiency and frees CPU resources for other applications while watching high-resolution live streams.</p>"
+      },
+      {
+        "id": "picture-in-picture-multitasking",
+        "title": "Picture-in-Picture Multitasking on macOS",
+        "content": "<p>macOS supports <strong>Picture-in-Picture (PiP)</strong> playback across supported video players. In UHF and IINA, clicking the PiP button detaches the video stream into a floating window that stays on top of other open windows and desktop spaces, allowing you to resize and reposition the stream while working.</p>"
+      },
+      {
+        "id": "troubleshooting-macos",
+        "title": "Troubleshooting macOS IPTV Playback",
+        "content": "<p>If you encounter issues streaming on macOS:</p><ul><li><strong>Playback pauses when switching desktop spaces:</strong> In player settings, check settings related to background playback or pausing when minimized.</li><li><strong>AirPlay audio sync:</strong> When routing audio through external AirPlay speakers, live video streams may exhibit an audio sync offset. Testing internal speakers or wired audio can help determine if network audio latency is the cause.</li><li><strong>Buffering on Wi-Fi:</strong> Connect to 5 GHz Wi-Fi or test a wired USB-C Ethernet connection. Follow our <a href='/help/iptv-buffering'>IPTV buffering guide</a> for optimization tips.</li></ul>"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What IPTV apps are available for Mac?",
+        "answer": "UHF is available in the Mac App Store with iCloud sync support. IPTV Smarters Pro provides a TV-style interface, and IINA is a popular open-source media player for macOS."
+      },
+      {
+        "question": "How do I open an application on Mac if Gatekeeper blocks it?",
+        "answer": "Open System Settings > Privacy & Security, scroll down to the Security section, and select 'Open Anyway' next to the blocked application notice. Enter your Mac password to confirm."
+      },
+      {
+        "question": "Does UHF synchronize playlists across Apple devices?",
+        "answer": "Yes. UHF utilizes iCloud synchronization, allowing playlists and favorites configured on your Mac to sync with an iPhone, iPad, or Apple TV signed in to the same Apple Account."
+      },
+      {
+        "question": "Can I watch IPTV in Picture-in-Picture mode on macOS?",
+        "answer": "Yes. Players like UHF and IINA include Picture-in-Picture buttons, allowing you to float a resizable video window over other desktop applications."
+      },
+      {
+        "question": "How does macOS handle hardware video decoding for streaming?",
+        "answer": "On Apple Silicon Macs and supported Intel models, media players utilizing macOS VideoToolbox offload supported video codecs (like H.264 and HEVC) to hardware decoders, minimizing CPU overhead during playback."
+      }
+    ]
+  },
+  {
+    "id": "samsung-tv-iptv",
+    "title": "How to Install IPTV on Samsung Smart TV: Tizen OS Guide",
+    "description": "Learn how to set up IPTV on a Samsung Smart TV running Tizen OS. Discover compatible Smart Hub apps like IBO Player and Smart IPTV, configure credentials via web portal, and manage post-2018 audio formats.",
     "primaryKeyword": "Samsung Smart TV",
     "keywords": [
-      "IPTV on Samsung TV",
-      "Samsung Smart IPTV",
-      "Set IPTV Samsung"
+      "samsung tv iptv",
+      "tizen iptv setup",
+      "smart iptv samsung",
+      "ibo player samsung tv",
+      "install iptv on samsung smart tv",
+      "samsung smart hub iptv"
     ],
-    "datePublished": "2024-07-24T10:00:00Z",
-    "dateModified": "2024-07-24T10:00:00Z",
-    "totalTime": "PT10M",
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Install an IPTV Player",
-        "description": "<ol><li>Press the <strong>Smart Hub</strong> or <strong>Home</strong> button on your remote.</li><li>Navigate to <strong>Apps</strong> and search for a player like <strong>'SET IPTV'</strong> or <strong>'NET IPTV'</strong>.</li><li>Select and install the application.</li></ol>"
+        "title": "Open the Samsung Smart Hub App Store",
+        "description": "<p>Turn on your Samsung TV, press the <strong>Home</strong> or <strong>Smart Hub</strong> button on your remote, and navigate to <strong>Apps</strong>.</p>"
       },
       {
-        "title": "Find Your TV's MAC Address",
-        "description": "Open the newly installed app. The first thing you'll see is your TV's unique MAC address. Write this down or take a picture of it."
+        "title": "Search for a compatible Tizen IPTV player",
+        "description": "<p>Search for an approved player in the Smart Hub Store, such as <strong>IBO Player</strong> or <strong>Smart IPTV (SIPTV)</strong>. Note that Samsung Smart TVs run Tizen OS; Android APK packages and Downloader cannot be installed on Samsung TVs.</p>"
       },
       {
-        "title": "Upload Your Playlist via Web Browser",
-        "description": "<ol><li>On a computer or phone, go to the app's website (e.g., <strong>setiptv.app</strong> or <strong>netiptv.eu</strong>).</li><li>Find the section to upload a playlist (often called 'Add External Playlist' or similar).</li></ol>"
+        "title": "Install the app and note your TV's identifier",
+        "description": "<p>Select <strong>Install</strong> to download the application to your TV. When you launch the app, it will display a device identifier: for <strong>Smart IPTV</strong>, note the <strong>MAC Address</strong>; for <strong>IBO Player</strong>, note the <strong>Device ID</strong> and <strong>Device Key</strong>.</p>"
       },
       {
-        "title": "Enter MAC and M3U URL",
-        "description": "<ol><li>Carefully type your TV's MAC address into the first field.</li><li>Paste your M3U subscription URL (from your email) into the second field.</li><li>Click 'Upload' or 'Send'.</li></ol>"
+        "title": "Upload credentials via the developer's web portal",
+        "description": "<p>Because typing long URLs on a TV remote is error-prone, Tizen players manage playlists through developer web portals:</p><ol><li>On your phone or computer browser, open the player developer's portal (e.g., <code>iboplayer.com/device</code> or <code>siptv.app/mylist</code>).</li><li>Enter your TV's identifier (MAC address or Device ID &amp; Key).</li><li>Enter your TryIPTV credentials (Xtream Codes server URL, username, and password, or M3U playlist link).</li><li>Click <strong>Save</strong> or <strong>Send</strong>.</li></ol>"
       },
       {
-        "title": "Restart and Watch",
-        "description": "Restart the IPTV app on your Samsung TV. Your channels will now load automatically."
+        "title": "Reload the application on your Samsung TV",
+        "description": "<p>Return to your TV and restart the IPTV app (or press the reload button indicated on screen). The application will connect to the portal and download your channel bouquets and guide.</p>"
+      },
+      {
+        "title": "Verify stream playback and audio output",
+        "description": "<p>Test several channels. If you experience video without sound on specific on-demand titles, verify the audio track. Samsung TVs manufactured from 2018 onward do not decode DTS audio natively; ensure your stream or player is using stereo, AAC, or Dolby Digital audio.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "tizen-architecture",
+        "title": "Samsung Tizen Platform and App Compatibility",
+        "content": "<p>Samsung Smart TVs run Samsung's proprietary <strong>Tizen platform</strong> rather than Android. Key practical points include:</p><ul><li>Android APK packages are not compatible with Tizen, meaning Android-specific sideloading tools cannot be used.</li><li>All applications must be installed from the official <strong>Samsung Smart Hub App Store</strong>.</li><li>App availability in the Smart Hub varies by TV model year and regional market.</li></ul>"
+      },
+      {
+        "id": "tizen-player-comparison",
+        "title": "IPTV Players on Samsung Smart TV",
+        "content": "<p>Available options on the Samsung Smart Hub include:</p><ul><li><strong>IBO Player:</strong> Widely used on modern Samsung TVs, featuring a dark interface, QR code upload, and Xtream Codes support.</li><li><strong>Smart IPTV (SIPTV):</strong> Minimalist channel list interface managed via an external MAC address portal.</li><li><strong>Nanomid Player:</strong> Media player supporting cloud playlist backup where available in regional stores.</li></ul>"
+      },
+      {
+        "id": "app-developer-fees",
+        "title": "Third-Party Player Licensing",
+        "content": "<p>Most third-party IPTV players on the Samsung Smart Hub are developed by independent software companies. Some offer a short trial period, after which the developer may require a separate one-time activation license purchased directly on their website. This software fee is charged independently by the app developer and is separate from your TryIPTV subscription.</p>"
+      },
+      {
+        "id": "dts-audio-limitation",
+        "title": "Audio Codec Support on 2018+ Samsung TVs",
+        "content": "<p>Samsung Smart TVs manufactured from <strong>2018 onward</strong> do not decode <strong>DTS (Digital Theater Systems)</strong> audio natively. If an on-demand video file contains only a DTS audio track, the TV hardware will not output sound from that track.</p><p>To address this: in your player's audio menu, switch the audio track to <strong>AC3 (Dolby Digital)</strong>, <strong>AAC</strong>, or <strong>Stereo</strong>. You can also test setting <em>Digital Output Audio Format</em> to <strong>PCM</strong> in your TV's Sound settings.</p>"
+      },
+      {
+        "id": "external-streaming-alternative",
+        "title": "When to Consider an External Streaming Device",
+        "content": "<p>If your Samsung TV model is older, exhibits sluggish navigation with large channel lists, or lacks compatible players in its regional App Store, connecting an inexpensive HDMI streaming device (such as a <a href='/devices/firestick-iptv'>Fire TV Stick</a> or <a href='/devices/android-tv-iptv'>Chromecast with Google TV</a>) provides access to dedicated TV players like TiviMate and separate hardware processing.</p>"
+      },
+      {
+        "id": "troubleshooting-samsung",
+        "title": "Troubleshooting Samsung TV Playback",
+        "content": "<p>Common solutions for Samsung TV streaming issues:</p><ul><li><strong>Playlist not updating:</strong> Fully exit and restart the app, or power-cycle the TV by holding the remote Power button for 5 seconds until the TV reboots.</li><li><strong>Buffering on live streams:</strong> Connect your TV via wired Ethernet or 5 GHz Wi-Fi. Review our <a href='/help/iptv-buffering'>buffering guide</a>.</li><li><strong>Portal error:</strong> Double-check for typos in your credentials entered into the developer's website. See our <a href='/help/m3u-not-loading'>M3U loading guide</a>.</li></ul>"
       }
     ],
     "faqs": [
       {
-        "question": "Are the IPTV apps for Samsung TV free to use?",
-        "answer": "Apps like SET IPTV and NET IPTV are created by third-party developers, not us. They typically offer a 7-day free trial. After the trial period, they require a one-time activation fee (usually around €5-€15) that is payable directly to the app developer to continue using them. This fee is separate from your IPTV subscription with our service."
+        "question": "Can I install Android APK files or Downloader on a Samsung Smart TV?",
+        "answer": "No. Samsung Smart TVs run Samsung's Tizen platform, which does not support Android APK files. Applications must be downloaded from the Samsung Smart Hub App Store."
       },
       {
-        "question": "What if my TV is an older model and doesn't have these apps?",
-        "answer": "If your Samsung TV is an older model (generally pre-2016) or if you cannot find these apps in your regional app store, the best and most reliable alternative is to purchase an external Android streaming device, such as an Amazon Fire TV Stick or a Chromecast with Google TV. These modern devices are fully compatible and offer a superior, faster experience."
+        "question": "Are third-party IPTV apps in the Samsung App Store free?",
+        "answer": "Some third-party players (like IBO Player or Smart IPTV) offer an initial trial period, after which the independent developer may require a one-time activation fee on their website. This is separate from your IPTV service."
+      },
+      {
+        "question": "Why do some videos have picture but no audio on a Samsung TV?",
+        "answer": "Samsung Smart TVs manufactured from 2018 onward do not support native DTS audio decoding. If a video uses a DTS audio track, switch the player audio track to AAC, AC3 (Dolby Digital), or stereo."
+      },
+      {
+        "question": "How do I upload playlist credentials to a Samsung TV player?",
+        "answer": "Open the player on your TV to note your MAC Address or Device ID. Open the player developer's website on your phone or PC, enter the ID, paste your credentials, save, and reload the app on your TV."
+      },
+      {
+        "question": "What can I do if no IPTV apps appear in my regional Samsung App Store?",
+        "answer": "App availability depends on your TV model year and regional firmware. Connecting an external streaming stick (such as a Fire TV Stick or Chromecast with Google TV) via HDMI allows you to use dedicated TV players independently."
       }
     ]
   },
   {
-    "id": "lg-tv",
-    "title": "How Do I Activate IPTV on an LG Smart TV?",
-    "description": "To activate IPTV on an LG Smart TV, search for a player like 'IPTV Smarters Player' in the LG Content Store. For the easiest setup, log in directly using your Xtream Codes API credentials. Alternatively, use an app like 'SET IPTV' and upload your playlist via their website using your TV's MAC address.",
+    "id": "lg-tv-iptv",
+    "title": "How to Install IPTV on LG Smart TV: webOS Setup Guide",
+    "description": "Set up and configure IPTV on your LG Smart TV running webOS. Discover compatible players in the LG Content Store, manage large playlists effectively, and configure audio synchronization.",
     "primaryKeyword": "LG Smart TV",
     "keywords": [
-      "IPTV on LG TV",
-      "webOS IPTV",
-      "Smart IPTV LG"
+      "lg tv iptv",
+      "webos iptv setup",
+      "iptv smarters lg tv",
+      "ibo player lg",
+      "install iptv on lg smart tv",
+      "lg content store iptv"
     ],
-    "datePublished": "2024-07-25T11:00:00Z",
-    "dateModified": "2024-07-25T11:00:00Z",
-    "totalTime": "PT10M",
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Go to the LG Content Store",
-        "description": "Press the 'Home' button on your LG Magic Remote and navigate to the 'LG Content Store'."
+        "title": "Open the LG Content Store or Apps launcher",
+        "description": "<p>Turn on your LG TV and press the <strong>Home</strong> button on your remote. Select the <strong>LG Content Store</strong> (or <strong>Apps</strong> on modern webOS versions).</p>"
       },
       {
-        "title": "Find a Recommended IPTV Player",
-        "description": "Use the search function to find an IPTV player. We strongly recommend using <strong>'IPTV Smarters Player'</strong> if available, as it allows direct login. Alternatively, you can use apps like 'SET IPTV' or 'NET IPTV'."
+        "title": "Search for a compatible webOS IPTV player",
+        "description": "<p>Search for an approved webOS player such as <strong>IPTV Smarters Pro</strong> or <strong>IBO Player</strong>. Note that LG Smart TVs run webOS; Android APK packages and sideloading tools cannot be installed on LG TVs.</p>"
       },
       {
-        "title": "Install and Launch the Application",
-        "description": "Select the app of your choice and follow the on-screen prompts to install it on your LG Smart TV. Once installed, launch the app."
+        "title": "Install and launch the player on your LG TV",
+        "description": "<p>Select the application from the search results and click <strong>Install</strong>. Once the download finishes, select <strong>Launch</strong> to open the player.</p>"
       },
       {
-        "title": "Log In or Upload Your Playlist",
-        "description": "If you are using <strong>IPTV Smarters</strong>, select 'Login with Xtream Codes API' and enter your credentials directly. If you are using an app like <strong>SET IPTV</strong>, you must first launch the app to get your TV's MAC address, then visit that app's website on a computer to upload your M3U playlist URL."
+        "title": "Choose your connection format",
+        "description": "<p>If using IPTV Smarters Pro or IBO Player, select <strong>Login with Xtream Codes API</strong> (recommended). For MAC-based players like Smart IPTV, note the MAC address displayed on your screen and upload your playlist via the developer's web portal.</p>"
       },
       {
-        "title": "Restart the App and Start Streaming",
-        "description": "After successfully logging in or uploading your playlist, restart the application on your LG TV. The channels and VOD library will load, and you can begin watching."
+        "title": "Enter your server details and login credentials",
+        "description": "<p>Enter your <strong>Server URL</strong>, <strong>Username</strong>, and <strong>Password</strong>. Using Xtream Codes API allows the player to request categories dynamically on demand rather than loading an entire monolithic playlist file all at once.</p>"
+      },
+      {
+        "title": "Test stream playback and verify audio sync",
+        "description": "<p>Allow the app a moment to index channel bouquets. Test several channels across categories. If you notice an audio delay when routing sound through an external soundbar, adjust audio timing under LG webOS <strong>Settings &gt; Sound &gt; Match Screen and Sound</strong>.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "webos-architecture",
+        "title": "LG webOS Platform and App Availability",
+        "content": "<p>LG Smart TVs run <strong>webOS</strong>, an operating system that executes applications within security-managed containers:</p><ul><li>Android APK packages are not compatible with webOS, and Android sideloading utilities cannot be installed.</li><li>Applications must be installed through the official <strong>LG Content Store / Apps launcher</strong>.</li><li>App availability depends on your TV model year, webOS version, and regional market.</li></ul>"
+      },
+      {
+        "id": "out-of-memory-fix",
+        "title": "Managing Playlist Size and Memory on LG webOS",
+        "content": "<p>Some LG TV users may encounter messages such as <em>'This app will now restart to free up memory'</em> when running resource-intensive applications:</p><ul><li><strong>Playlist Size:</strong> Very large playlists containing tens of thousands of channels and on-demand titles require significant memory to parse.</li><li><strong>Dynamic Indexing:</strong> Using <strong>Xtream Codes API login</strong> allows supported players to load category indexes and stream links on demand, which generally requires less simultaneous memory than parsing a large monolithic playlist file.</li><li><strong>Bouquet Selection:</strong> If your player only supports M3U, configuring your account to load only the bouquets you regularly watch can reduce the memory footprint on your TV.</li></ul>"
+      },
+      {
+        "id": "magic-remote-navigation",
+        "title": "Navigating with the LG Magic Remote",
+        "content": "<p>The LG Magic Remote features both an on-screen cursor and physical directional buttons (D-pad):</p><ul><li>In many IPTV applications, using the physical <strong>Directional Pad (Up/Down/Left/Right)</strong> offers more predictable control through channel grids than the motion cursor.</li><li>Pressing any D-pad arrow can dismiss the pointer and return the interface to standard directional navigation.</li><li>The remote's <strong>Scroll Wheel</strong> can be used to quickly scroll through extended channel lists.</li></ul>"
+      },
+      {
+        "id": "audio-video-troubleshooting",
+        "title": "Troubleshooting Audio Sync on LG TV",
+        "content": "<p>If you notice an audio delay when streaming live content on LG TVs:</p><ul><li><strong>Adjusting Audio Timing:</strong> Open <strong>Settings &gt; Sound &gt; Advanced Settings &gt; Match Screen and Sound</strong> and test the TV speaker delay or bypass options.</li><li><strong>Soundbar Output:</strong> In Sound settings, test setting <em>Digital Sound Output</em> to <strong>Pass Through</strong> or <strong>PCM</strong> depending on your audio receiver's capabilities.</li><li><strong>Network Buffering:</strong> Connect your TV via wired Ethernet or 5 GHz Wi-Fi to ensure consistent throughput. Follow our <a href='/help/iptv-buffering'>IPTV buffering guide</a>.</li></ul>"
+      },
+      {
+        "id": "hdmi-streaming-fallback",
+        "title": "When to Consider an External Streaming Device",
+        "content": "<p>Older LG TVs or entry-level models may have limited memory or processor speeds, and some regional app stores offer fewer IPTV clients.</p><p>If your LG TV model experiences slow navigation or lacks your preferred player, connecting an external streaming stick (such as an <a href='/devices/firestick-iptv'>Amazon Fire TV Stick</a> or <a href='/devices/android-tv-iptv'>Chromecast with Google TV</a>) to an HDMI port is a practical alternative that provides access to a wider selection of streaming apps.</p>"
       }
     ],
     "faqs": [
       {
-        "question": "Do I have to pay for the IPTV apps on my LG TV?",
-        "answer": "While 'IPTV Smarters Player' is generally free, other popular third-party apps like 'SET IPTV' and 'NET IPTV' often require a small, one-time activation fee that is paid directly to the app's developer, not to us. This fee is for the use of their application."
+        "question": "Can I install Android APK packages on an LG Smart TV?",
+        "answer": "No. LG Smart TVs run webOS, a proprietary operating system that cannot run Android APK packages. Applications must be installed from the official LG Content Store or Apps launcher."
       },
       {
-        "question": "The app I want isn't in the LG Content Store. What can I do?",
-        "answer": "App availability can vary based on your geographical region and your TV's model year. If you cannot find a specific player, the most reliable and future-proof solution is to connect an external streaming device, like an Amazon Fire TV Stick, which offers a much wider range of app compatibility and often performs better."
+        "question": "Why might an IPTV app on LG TV restart or show a memory warning?",
+        "answer": "Very large playlists containing tens of thousands of items can place heavy demands on TV memory during parsing. Using Xtream Codes API login or reducing playlist bouquet size helps the player load content on demand."
+      },
+      {
+        "question": "How should I navigate IPTV channel lists with the LG Magic Remote?",
+        "answer": "Using the directional D-pad buttons often provides more precise channel-by-channel navigation than the motion pointer. The center wheel can also be used to scroll through channel categories."
+      },
+      {
+        "question": "How do I adjust audio synchronization on an LG TV?",
+        "answer": "Go to LG Settings > Sound > Advanced Settings > Match Screen and Sound to adjust audio timing, or test changing Digital Sound Output settings to PCM or Pass Through."
+      },
+      {
+        "question": "What should I do if IPTV apps are missing from my regional LG Content Store?",
+        "answer": "App availability is determined by your TV model year, webOS version, and regional market. If a specific app is unavailable, consider another supported player or an external HDMI streaming device."
       }
     ]
   },
   {
-    "id": "apple-tv",
-    "title": "How Do I Set Up IPTV on an Apple TV?",
-    "description": "To set up IPTV on an Apple TV, search the App Store for a player like 'iPlayTV' or 'GSE Smart IPTV'. Once installed, add your playlist using the M3U URL or Xtream Codes API credentials provided in your subscription email.",
+    "id": "apple-tv-iptv",
+    "title": "How to Set Up IPTV on Apple TV: tvOS Step-by-Step Guide",
+    "description": "Install and configure IPTV on Apple TV running tvOS. Learn how to select tvOS players like iPlayTV and UHF, enter Xtream Codes credentials via iPhone keyboard or local web upload, and configure Match Frame Rate.",
     "primaryKeyword": "Apple TV",
     "keywords": [
-      "IPTV Apple TV",
-      "tvOS IPTV player",
-      "iPlayTV setup"
+      "apple tv iptv",
+      "tvos iptv player",
+      "iplaytv apple tv",
+      "uhf iptv apple tv",
+      "tivimax apple tv",
+      "best iptv app apple tv 4k"
     ],
-    "datePublished": "2024-07-26T15:00:00Z",
-    "dateModified": "2024-07-26T15:00:00Z",
-    "totalTime": "PT5M",
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Go to the App Store",
-        "description": "From your Apple TV home screen, navigate to and open the App Store application."
+        "title": "Open the tvOS App Store on Apple TV",
+        "description": "<p>From the Apple TV home screen, open the <strong>App Store</strong> application. Applications for regular consumer use on Apple TV are distributed through Apple's official App Store.</p>"
       },
       {
-        "title": "Search for a Compatible IPTV Player",
-        "description": "Use the search function to find an IPTV player. Popular and reliable choices for Apple TV (tvOS) include <strong>'iPlayTV'</strong> (this is a paid app) or <strong>'GSE Smart IPTV'</strong> (which is free)."
+        "title": "Download a compatible tvOS player",
+        "description": "<p>Search for a tvOS IPTV client designed for Apple TV remote navigation, such as <strong>iPlayTV</strong>, <strong>UHF - IPTV Client</strong>, or <strong>Smarters Player Lite</strong>.</p>"
       },
       {
-        "title": "Install Your Chosen App",
-        "description": "Download and install your chosen application onto your Apple TV device."
+        "title": "Open the player and choose your login format",
+        "description": "<p>Launch the player and select <strong>Add Playlist</strong> &gt; <strong>Xtream Codes API</strong> (recommended) or <strong>M3U Playlist</strong> depending on your subscription details.</p>"
       },
       {
-        "title": "Add Your Playlist",
-        "description": "Open the app and locate the option to add a new playlist. You will typically be given a choice between 'Add M3U URL' or 'Login with Xtream Codes API'."
+        "title": "Enter credentials via iPhone keyboard or local web upload",
+        "description": "<p>Entering credentials on Apple TV can be streamlined using Apple ecosystem features:</p><ul><li><strong>Continuity Keyboard:</strong> When an input field opens on Apple TV, a notification can appear on your nearby iPhone or iPad. Tap it to paste your Server URL, Username, and Password directly from your mobile clipboard.</li><li><strong>Local Web Upload:</strong> Players like iPlayTV provide a local network address (e.g., <code>http://192.168.1.X:8080</code>). Open this URL in a browser on your Mac or phone to enter your credentials conveniently.</li></ul>"
       },
       {
-        "title": "Enter Credentials and Stream",
-        "description": "Enter the details that were provided in your subscription email. We recommend using the Xtream Codes API login for the easiest setup. Once you are logged in, your channel list will appear, and you can start watching."
+        "title": "Allow playlist bouquets and guide data to sync",
+        "description": "<p>Allow initial synchronization to complete. Apple TV's processors handle downloading and indexing category lists, channel bouquets, and guide schedules smoothly.</p>"
+      },
+      {
+        "title": "Configure Match Frame Rate for smooth playback",
+        "description": "<p>To prevent motion judder when viewing content at different broadcast frame rates, go to Apple TV <strong>Settings &gt; Video and Audio &gt; Match Content</strong> and test turning <strong>Match Dynamic Range</strong> and <strong>Match Frame Rate</strong> to <strong>ON</strong>.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "top-tvos-players",
+        "title": "Popular Apple TV IPTV Players",
+        "content": "<p>The tvOS App Store hosts several IPTV player choices:</p><ul><li><strong>iPlayTV:</strong> Established player on Apple TV offering multi-playlist support, EPG timeline display, and audio track selection.</li><li><strong>UHF - IPTV Client:</strong> Built in modern Swift, featuring iCloud synchronization so playlists and favorites configured on an iPhone or Mac can synchronize with Apple TV.</li><li><strong>Smarters Player Lite:</strong> A widely used option supporting Xtream Codes API login.</li></ul>"
+      },
+      {
+        "id": "match-frame-rate-detail",
+        "title": "Using Match Frame Rate to Reduce Motion Judder",
+        "content": "<p>Broadcast streams originate at different native frame rates. For example, many European sports broadcasts are encoded at <strong>50 fps (50 Hz)</strong>, while North American broadcasts typically use <strong>60 fps (59.94 Hz)</strong>.</p><p>When a display device outputs all video at a fixed 60 Hz rate, 50 Hz content may exhibit motion judder. Apple TV addresses this with display matching settings:</p><ol><li>Go to Apple TV <strong>Settings &gt; Video and Audio &gt; Match Content</strong>.</li><li>Set <strong>Match Frame Rate</strong> to <strong>ON</strong>.</li><li>Set <strong>Match Dynamic Range</strong> to <strong>ON</strong>.</li></ol><p>When enabled, Apple TV switches your TV's refresh rate to match the native frame rate of the video stream. Apple documentation notes that during this switch, your screen may briefly flicker or blank as the TV changes display modes.</p>"
+      },
+      {
+        "id": "icloud-sync-feature",
+        "title": "Playlist Synchronization via iCloud",
+        "content": "<p>For users with multiple Apple devices, players like <strong>UHF</strong> support Apple's iCloud ecosystem. Playlists, favorites, and settings configured on an iPhone or Mac can automatically synchronize to your Apple TV without re-entering credentials on each device.</p>"
+      },
+      {
+        "id": "troubleshooting-apple-tv",
+        "title": "Troubleshooting Apple TV IPTV Playback",
+        "content": "<p>If you encounter playback issues on Apple TV, consider these diagnostic steps:</p><ul><li><strong>Screen blanking or flickering during format changes:</strong> When Match Frame Rate or Match Dynamic Range is active, Apple notes that the TV screen may flicker or briefly go blank while switching video modes. On compatible HDMI 2.1 televisions and Apple TV models supporting Quick Media Switching (QMS), these transitions are minimized.</li><li><strong>Audio sync with wireless speakers:</strong> If using HomePods or wireless audio, run the calibration tool under <strong>Settings &gt; Video and Audio &gt; Wireless Audio Sync</strong> using your iPhone.</li><li><strong>Playlist failing to load:</strong> Verify that your server URL includes the proper protocol (<code>http://</code> or <code>https://</code>) and port. Consult our <a href='/help/iptv-login-not-working'>IPTV login troubleshooting guide</a>.</li></ul>"
       }
     ],
     "faqs": [
       {
-        "question": "Is a paid app like iPlayTV better than a free one?",
-        "answer": "Paid apps like iPlayTV often provide a more polished user interface, better EPG (TV Guide) integration, and more frequent developer updates. However, free apps like GSE Smart IPTV are also very functional and perfectly suitable for most users."
+        "question": "Can I install apps outside the App Store on Apple TV?",
+        "answer": "For standard consumer use, Apple TV requires downloading applications directly from the tvOS App Store. There is no consumer sideloading tool or Downloader app like on Fire TV."
       },
       {
-        "question": "My remote makes typing the URL difficult. Is there an easier way?",
-        "answer": "Yes. Many IPTV apps, including iPlayTV, offer a way to add the playlist via a web browser on your computer or phone. This usually involves visiting a specific URL and entering a code displayed on your TV screen, which is much easier than typing a long URL with the remote."
+        "question": "How do I avoid typing long credentials on Apple TV?",
+        "answer": "When an input field opens on Apple TV, use the Continuity Keyboard notification on your iPhone or iPad to paste credentials directly. Alternatively, select players that provide a local web upload address."
+      },
+      {
+        "question": "What does Match Frame Rate do on Apple TV?",
+        "answer": "Match Frame Rate allows Apple TV to adjust your television's display refresh rate to match the native frame rate of the video (such as 50Hz for European broadcasts), helping eliminate motion judder during sports."
+      },
+      {
+        "question": "Why does the screen briefly flicker or go blank when starting a stream on Apple TV?",
+        "answer": "If Match Frame Rate or Match Dynamic Range is enabled, Apple notes that your TV may briefly blank or flicker while adjusting to the incoming video format. This is an expected HDMI mode switch."
+      },
+      {
+        "question": "Does UHF synchronize playlists across Apple devices?",
+        "answer": "Yes. UHF supports iCloud synchronization, allowing playlists and favorites set up on an iPhone or Mac to sync with your Apple TV under the same Apple Account."
       }
     ]
   },
   {
-    "id": "roku",
-    "title": "How Can I Watch IPTV on a Roku Device?",
-    "description": "Roku devices do not natively support IPTV player apps. The only reliable method is to use screen mirroring, where you play the IPTV stream on a different device (like your phone or PC) and then cast its screen to your Roku.",
+    "id": "chromecast-iptv",
+    "title": "How to Watch IPTV on Chromecast: Google TV and Casting Guide",
+    "description": "Learn how to watch IPTV on Google Chromecast. Understand the differences between standalone app installation on Chromecast with Google TV versus mobile casting on legacy Chromecast devices.",
+    "primaryKeyword": "Google Chromecast",
+    "keywords": [
+      "chromecast iptv",
+      "chromecast with google tv iptv",
+      "cast iptv to chromecast",
+      "tivimate chromecast",
+      "best iptv app chromecast",
+      "google tv streaming"
+    ],
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
+    "steps": [
+      {
+        "title": "Identify your Chromecast setup method",
+        "description": "<p>Determine your hardware before starting: <strong>Chromecast with Google TV</strong> (includes remote) supports installing native TV apps directly from the Google Play Store. <strong>Legacy Chromecast</strong> (no remote) requires casting streams from a phone, tablet, or PC browser via the Google Cast protocol.</p>"
+      },
+      {
+        "title": "Method A (Chromecast with Google TV): Install a native player",
+        "description": "<p>If you have Chromecast with Google TV: From the Google TV home screen, go to <strong>Apps &gt; Search for apps</strong>. Search for <strong>TiviMate IPTV Player</strong> or <strong>IPTV Smarters Pro</strong> and click <strong>Install</strong>. This provides an independent TV experience operated with your remote.</p>"
+      },
+      {
+        "title": "Method B (Legacy Chromecast): Set up casting from mobile or PC",
+        "description": "<p>If you have an older cast-only dongle without a remote: Install a casting-compatible application (such as <strong>Web Video Caster</strong> or <strong>IPTV Smarters Pro</strong>) on your smartphone. Connect both devices to the same local Wi-Fi network, start playback on your phone, and tap the <strong>Cast icon</strong>.</p>"
+      },
+      {
+        "title": "Connect using Xtream Codes API or M3U link",
+        "description": "<p>In your player, select <strong>Xtream Codes API</strong> login (recommended) or enter your M3U playlist URL. Xtream Codes indexes categories and guide data dynamically.</p>"
+      },
+      {
+        "title": "Connect to the official wall power adapter",
+        "description": "<p>Google explicitly recommends powering Chromecast devices using the included power adapter connected directly to an electrical wall outlet. Powering the device from a TV USB port may supply insufficient power, leading to unexpected device restarts during high-definition streaming.</p>"
+      },
+      {
+        "title": "Test playback and adjust buffer settings",
+        "description": "<p>Test several live channels and on-demand titles. In player settings, set the buffer size to Normal or Large if your wireless network encounters brief latency variations.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "chromecast-hardware-types",
+        "title": "Chromecast with Google TV vs Legacy Cast-Only Dongles",
+        "content": "<p>Google has produced two distinct categories of streaming hardware under the Chromecast brand:</p><ul><li><strong>Chromecast with Google TV (HD / 4K):</strong> Includes a physical remote control, Bluetooth connectivity, and direct access to the Google Play Store for TV apps. It runs applications standalone on the device without requiring a phone or tablet.</li><li><strong>Legacy Chromecast (Gen 1, 2, 3, Ultra):</strong> Screenless receivers that do not have an on-screen app launcher or physical remote. They operate by receiving video streams cast from an external app or browser via the Google Cast protocol.</li></ul>"
+      },
+      {
+        "id": "power-reboot-warning",
+        "title": "Power Requirements and Preventing Restarts",
+        "content": "<p>Google officially recommends powering Chromecast devices using the included power adapter and cable connected to an electrical wall outlet.</p><p>Connecting a Chromecast to a television's built-in USB port rather than an electrical wall outlet can result in insufficient power delivery. When the device handles resource-heavy operations—such as decoding high-definition video feeds or managing network traffic—insufficient power can trigger unexpected reboots. Always use the manufacturer-supplied wall power adapter.</p>"
+      },
+      {
+        "id": "storage-management-chromecast",
+        "title": "Managing Storage on Chromecast with Google TV",
+        "content": "<p>Chromecast with Google TV devices feature 8 GB of internal storage, with a significant portion allocated to the operating system, core applications, and system updates.</p><p>To prevent low-storage warnings and maintain responsive performance: Periodically clear application cache under <strong>Settings &gt; Apps &gt; See all apps &gt; [Player] &gt; Clear cache</strong>, and uninstall streaming applications that you do not actively use.</p>"
+      },
+      {
+        "id": "legacy-casting-tips",
+        "title": "Best Practices for Legacy Chromecast Dongles",
+        "content": "<p>If using a legacy cast-only Chromecast without a remote control:</p><ul><li>Use a dedicated casting app like <strong>Web Video Caster</strong> on your mobile device to load your M3U playlist and route streams to the Chromecast.</li><li>Connect both your phone and Chromecast to the 5 GHz Wi-Fi band where possible to reduce local wireless contention.</li><li>Keep your casting device connected to power during extended viewing sessions.</li></ul>"
+      },
+      {
+        "id": "troubleshooting-chromecast",
+        "title": "Troubleshooting Chromecast Playback",
+        "content": "<p>If you experience streaming difficulties on Chromecast:</p><ul><li><strong>Buffering:</strong> Ensure your Chromecast has a stable Wi-Fi connection. In your player settings, test increasing the buffer size. See our <a href='/help/iptv-buffering'>IPTV buffering troubleshooting guide</a>.</li><li><strong>Cast icon missing in mobile app:</strong> Confirm that your mobile device and Chromecast are connected to the exact same Wi-Fi network and that Access Point (AP) Isolation is disabled on your router.</li><li><strong>Black screen with audio:</strong> On Chromecast with Google TV, test switching the video decoder in player settings from Hardware to Software or an alternate internal player engine.</li></ul>"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Can I install IPTV apps directly on Chromecast with Google TV?",
+        "answer": "Yes. Chromecast with Google TV includes a physical remote and access to the Google Play Store, allowing you to install native television apps like TiviMate and IPTV Smarters Pro directly on the device."
+      },
+      {
+        "question": "How do I watch IPTV on an older Chromecast without a remote?",
+        "answer": "For legacy Chromecast dongles, install a cast-compatible app (such as Web Video Caster or IPTV Smarters) on your phone or tablet, start playback, and tap the Google Cast icon to send the stream to your TV."
+      },
+      {
+        "question": "Why might a Chromecast restart unexpectedly during streaming?",
+        "answer": "Powering the Chromecast from a TV USB port instead of an electrical wall outlet can result in insufficient power, causing unexpected reboots. Google recommends using the supplied wall power adapter."
+      },
+      {
+        "question": "How do I free up storage space on Chromecast with Google TV?",
+        "answer": "Go to Settings > Apps > See all apps, select your player, and click 'Clear cache'. You can also uninstall unused streaming apps to free internal storage."
+      },
+      {
+        "question": "Can I cast IPTV from an iPhone to Chromecast?",
+        "answer": "Yes. You can use casting-compatible apps like Web Video Caster on an iPhone, connect to the same Wi-Fi network as your Chromecast, and tap the Cast icon to stream."
+      }
+    ]
+  },
+  {
+    "id": "roku-iptv",
+    "title": "How to Watch IPTV on Roku: AirPlay and Screen Mirroring Guide",
+    "description": "Learn how to stream IPTV to Roku devices. App availability can change; check the Roku Channel Store for applications currently available in your region. Discover how to stream IPTV using Apple AirPlay 2, screen mirroring, or casting.",
     "primaryKeyword": "Roku",
     "keywords": [
-      "IPTV on Roku",
-      "Roku screen mirror IPTV",
-      "cast IPTV to Roku"
+      "roku iptv",
+      "how to watch iptv on roku",
+      "airplay iptv roku",
+      "screen mirror iptv roku",
+      "iptv player roku tv",
+      "roku streaming stick iptv"
     ],
-    "datePublished": "2024-07-27T16:00:00Z",
-    "dateModified": "2024-09-06T11:00:00Z",
-    "totalTime": "PT5M",
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Understand the Method: Screen Mirroring",
-        "description": "Roku's operating system does not allow the direct installation of common IPTV apps. Therefore, the most reliable method is to play the IPTV stream on a separate device (such as your phone or computer) and then 'mirror' or 'cast' its screen to your Roku."
+        "title": "Understand Roku platform capabilities and app availability",
+        "description": "<p>App availability can change; check the Roku Channel Store for applications currently available in your region. Because the Roku platform uses a proprietary application framework (BrightScript) and enforces strict certification requirements, many common IPTV player apps found on Android or Fire TV are not available as native Roku channels. Furthermore, non-certified (private) channels were retired by Roku in March 2022.</p><p>However, you can stream your TryIPTV service to compatible Roku devices using <strong>Apple AirPlay 2</strong>, <strong>Screen Mirroring</strong>, or certified companion casting channels.</p>"
       },
       {
-        "title": "Set Up IPTV on Your Casting Device",
-        "description": "First, ensure your IPTV subscription is properly set up and working on a secondary device. This can be an <strong>Android/iOS phone or tablet</strong>, or a <strong>Windows/macOS computer</strong>. Follow one of our other guides to do this first."
+        "title": "Method A (Apple Devices): Stream via Apple AirPlay 2",
+        "description": "<p>Compatible Roku streaming players and Roku TVs running Roku OS 9.4 or higher support <strong>Apple AirPlay 2</strong>:</p><ol><li>On your Roku, navigate to <strong>Settings &gt; Apple AirPlay and HomeKit</strong>. Ensure AirPlay is set to <strong>On</strong>.</li><li>Ensure your iPhone, iPad, or Mac is on the <strong>same Wi-Fi network</strong> as your Roku.</li><li>Open your IPTV player on your Apple device and start playing a stream.</li><li>Tap the <strong>AirPlay icon</strong> in playback controls and select your Roku device from the available targets.</li></ol>"
       },
       {
-        "title": "Enable Screen Mirroring on Your Roku Device",
-        "description": "On your Roku player, navigate to <strong>Settings &gt; System &gt; Screen Mirroring</strong>. Ensure that the 'Screen mirroring mode' is set to either 'Prompt' or 'Always allow'."
+        "title": "Method B (Android Devices): Screen Mirror via Smart View / Miracast",
+        "description": "<p>If you use a compatible Android smartphone or tablet supporting screen mirroring:</p><ol><li>On your Roku, go to <strong>Settings &gt; System &gt; Screen Mirroring</strong> and set <em>Screen mirroring mode</em> to <strong>Prompt</strong> or <strong>Always allow</strong>.</li><li>On your Android phone, open Quick Settings and select <strong>Smart View</strong>, <strong>Cast</strong>, or <strong>Screen Mirroring</strong>.</li><li>Select your Roku TV or streaming stick.</li><li>Open your IPTV player on your phone to mirror the video display and audio to your TV screen.</li></ol>"
       },
       {
-        "title": "Initiate Mirroring from Your Phone or PC",
-        "description": "On your Android device, pull down the quick settings panel and tap 'Smart View', 'Cast', or 'Screen Mirror'. On a Windows PC, press the <strong>Windows Key + K</strong>. Select your Roku device from the list of available devices that appears."
+        "title": "Method C (Windows PC): Project Screen via Miracast",
+        "description": "<p>To project from a compatible Windows 10 or 11 PC: Press <strong>Windows Key + K</strong> on your keyboard to open the Cast panel. Select your Roku device from the list of wireless displays, then open your media player in full-screen view.</p>"
       },
       {
-        "title": "Play Your IPTV Content",
-        "description": "Once your device's screen is successfully displayed on your TV via the Roku, simply open your IPTV player on your phone or PC and start playing any channel or movie. The audio and video will be mirrored to your Roku in real-time."
+        "title": "Method D (Companion Receiver Channel): Web Video Caster",
+        "description": "<p>On your Roku, search the Channel Store for <strong>Web Video Caster Receiver</strong> and install it if available in your region. Install the companion <strong>Web Video Caster</strong> application on your mobile device, load your M3U playlist, and route the video feed to your Roku.</p>"
+      },
+      {
+        "title": "Connect devices to 5 GHz Wi-Fi",
+        "description": "<p>Because screen mirroring transmits video wirelessly from your source device through your local network to your Roku, connecting both devices to the <strong>5 GHz Wi-Fi band</strong> of your router helps prevent video stutter and latency.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "roku-closed-ecosystem",
+        "title": "Roku Platform Architecture and IPTV Availability",
+        "content": "<p>Roku devices operate on Roku OS, a proprietary operating system that uses the BrightScript programming framework rather than Android:</p><ul><li>Android APK packages are not compatible with Roku hardware.</li><li>In March 2022, Roku officially deprecated non-certified (private) channels across its platform, transitioning all distribution to the public Roku Channel Store.</li><li>App availability can change; check the Roku Channel Store for applications currently available in your region. Because dedicated IPTV players are limited in the store, streaming via Apple AirPlay 2 or screen mirroring represents the standard approach for Roku users.</li></ul>"
+      },
+      {
+        "id": "airplay-setup-detail",
+        "title": "Using Apple AirPlay 2 with Roku",
+        "content": "<p>For Apple device users, <strong>Apple AirPlay 2</strong> provides a direct streaming path to supported Roku models:</p><ul><li><strong>Audio and Video Quality:</strong> AirPlay 2 supports high-definition video transmission with synchronized audio to compatible Roku devices.</li><li><strong>Basic Media Controls:</strong> Supported Roku remotes can pause and resume active AirPlay streams.</li><li><strong>Multitasking:</strong> With supported iOS media applications, you can continue using other functions on your phone while the stream plays on your TV.</li></ul>"
+      },
+      {
+        "id": "mirroring-limitations",
+        "title": "Considerations for Wireless Screen Mirroring",
+        "content": "<p>While screen mirroring allows you to view content on a Roku TV, there are operational differences compared to a native TV application:</p><ul><li><strong>Source Device Resource Use:</strong> Miracast screen mirroring typically keeps the source device display active, which increases battery consumption on portable devices.</li><li><strong>Local Wireless Traffic:</strong> Video streams are transmitted over Wi-Fi to your mobile device and simultaneously mirrored across your network to the Roku.</li><li><strong>Navigation:</strong> Channel selection and guide browsing are controlled on your mobile device or computer rather than via the Roku TV remote.</li></ul>"
+      },
+      {
+        "id": "why-dedicated-streaming-sticks-win",
+        "title": "Considering a Dedicated Streaming Device",
+        "content": "<p>If you regularly watch live television and prefer a native on-screen interface operated entirely with a single TV remote, an external streaming device may offer a more streamlined experience:</p><ul><li>Devices such as an <a href='/devices/firestick-iptv'>Amazon Fire TV Stick</a> or <a href='/devices/android-tv-iptv'>Chromecast with Google TV</a> connect to an available HDMI port on your TV.</li><li>They provide access to app stores hosting dedicated TV players like TiviMate and IPTV Smarters Pro, offering on-screen channel guides and direct remote control zapping.</li></ul>"
+      },
+      {
+        "id": "troubleshooting-roku-casting",
+        "title": "Troubleshooting Roku Casting and Mirroring",
+        "content": "<p>If you experience issues streaming to Roku:</p><ul><li><strong>Roku not discovered in device list:</strong> Confirm that both devices are connected to the exact same Wi-Fi network and frequency band. Verify that Access Point (AP) Isolation is disabled on your router.</li><li><strong>Playback stuttering:</strong> Position your source device closer to your Wi-Fi router and test connecting both devices to 5 GHz Wi-Fi. Review our <a href='/help/iptv-buffering'>IPTV buffering guide</a>.</li><li><strong>Audio plays without video:</strong> In your mobile player's settings, test switching the video player engine or decoder if an incompatible video profile is in use.</li></ul>"
       }
     ],
     "faqs": [
       {
-        "question": "Are there any M3U player apps available for Roku?",
-        "answer": "While some third-party apps exist in the Roku Channel Store that claim to play M3U playlists, they are notoriously unreliable, frequently removed, and often lack critical features like EPG support. They provide a poor user experience, which is why we exclusively recommend the screen mirroring method for a stable and functional setup."
+        "question": "Can I install Android APK files or Downloader on a Roku?",
+        "answer": "No. Roku runs its own proprietary operating system (BrightScript), not Android. Android APK files cannot be installed or executed on Roku hardware."
       },
       {
-        "question": "Does screen mirroring reduce the stream quality?",
-        "answer": "The quality of the mirrored stream depends heavily on the strength and stability of your Wi-Fi network, as the video signal is sent wirelessly from your casting device to your Roku. For the best results, ensure both your Roku and your casting device have a strong, stable connection to your router."
+        "question": "Can I use Apple AirPlay 2 to stream IPTV to Roku?",
+        "answer": "Yes. Supported Roku devices running Roku OS 9.4 or higher support Apple AirPlay 2. You can play a stream in an IPTV app on an iPhone, iPad, or Mac and beam it to your Roku TV."
+      },
+      {
+        "question": "How do I screen mirror IPTV from an Android device to Roku?",
+        "answer": "Enable Screen Mirroring in your Roku Settings > System > Screen Mirroring. On your compatible Android device, select Smart View or Screen Cast from Quick Settings and choose your Roku."
+      },
+      {
+        "question": "Why might video stutter when mirroring to Roku?",
+        "answer": "Screen mirroring transmits video data wirelessly from your router to your phone, and then from your phone to the Roku. Connecting both devices to 5 GHz Wi-Fi can help reduce wireless congestion."
+      },
+      {
+        "question": "Are non-certified or private IPTV channels available on Roku?",
+        "answer": "No. Roku officially deprecated non-certified channels across its platform in March 2022. Channels must be obtained through the official Roku Channel Store."
       }
     ]
   },
   {
-    "id": "mag-box",
-    "title": "How Do I Configure a MAG Box for IPTV?",
-    "description": "To set up a MAG box, you must provide us with your device's MAC address and then enter the portal URL we provide into your box's server settings. This ensures a stable, EPG-supported connection.",
+    "id": "mag-box-iptv",
+    "title": "How to Configure a MAG Box for IPTV: Stalker Portal Guide",
+    "description": "Configure your Infomir MAG set-top box for IPTV. Learn how to locate your MAC address, access Inner Portal system settings, enter the Portal URL, configure NTP time servers, and resolve loading errors.",
     "primaryKeyword": "MAG Box",
     "keywords": [
-      "IPTV MAG setup",
-      "MAG box portal",
-      "configure MAG device"
+      "mag box iptv",
+      "mag iptv setup",
+      "stalker portal mag",
+      "mag 322 iptv",
+      "mag 524 setup",
+      "infomir mag portal"
     ],
-    "datePublished": "2024-07-28T09:00:00Z",
-    "dateModified": "2024-07-28T09:00:00Z",
-    "totalTime": "PT10M",
+    "datePublished": "2024-07-20T10:00:00Z",
+    "dateModified": "2026-10-04T00:00:00Z",
+    "totalTime": "PT15M",
     "steps": [
       {
-        "title": "Find & Provide Your MAC Address",
-        "description": "<ol><li>Connect your MAG box to your TV and internet.</li><li>Find the unique MAC address on the sticker on the bottom of the device (it starts with <strong>00:1A:79</strong>).</li><li>Provide this full MAC address to us when you order your subscription.</li></ol>"
+        "title": "Locate your MAG MAC address on the device label",
+        "description": "<p>MAG set-top boxes authenticate via hardware MAC address registered with your service provider. Turn your box over and find the MAC address on the barcode sticker: authentic Infomir MAG devices typically begin with the IEEE vendor prefix <strong>00:1A:79</strong>.</p>"
       },
       {
-        "title": "Access the 'Inner Portal'",
-        "description": "Restart your MAG box. While it's loading, press the <strong>'SET' or 'GEAR' button</strong> on your remote repeatedly to enter the 'Inner Portal' settings menu."
+        "title": "Connect your MAG box using a wired Ethernet cable",
+        "description": "<p>While select MAG models support Wi-Fi adapters, <strong>a wired Ethernet cable is strongly recommended</strong>. Dedicated set-top boxes are designed for consistent wired network throughput, helping prevent packet loss during live streaming.</p>"
       },
       {
-        "title": "Configure the Server Portal",
-        "description": "<ol><li>Using your remote, navigate to <strong>'Servers' &gt; 'Portals'</strong>.</li><li>In the 'Portal 1 URL' field, enter the portal address from your subscription email.</li><li>Press 'OK' to save.</li></ol>"
+        "title": "Access the Inner Portal system settings during boot",
+        "description": "<p>Power on your MAG box. To access embedded system settings: if the box is on a loading screen, press and hold the <strong>Setup / Gear button</strong> on your remote. Alternatively, reboot the box and press the <strong>SET</strong> button while the loading bar appears until the <strong>Inner Portal</strong> screen is displayed.</p>"
       },
       {
-        "title": "Reboot and Launch",
-        "description": "Press 'EXIT' to return to the main menu, then select the option to 'Reboot Portal' or 'Reboot Device'. The device will restart and automatically load the IPTV portal."
+        "title": "Enter the Server Portal URL",
+        "description": "<p>From the Inner Portal home screen, navigate to <strong>System Settings &gt; Servers &gt; Portals</strong>. In the <strong>Portal 1 Name</strong> field, enter a label such as <code>TryIPTV</code>. In the <strong>Portal 1 URL</strong> field, enter the exact portal address provided in your activation email (e.g., <code>http://portal.example.com/c/</code>). Verify all punctuation and trailing slashes.</p>"
+      },
+      {
+        "title": "Configure the NTP Time Server",
+        "description": "<p>In <strong>Servers &gt; General</strong>, verify the <strong>NTP server</strong> setting (such as <code>pool.ntp.org</code>). Infomir recommends maintaining accurate network time synchronization to ensure proper operation of electronic program guide (EPG) schedules and secure network connections.</p>"
+      },
+      {
+        "title": "Save settings and reload into the service portal",
+        "description": "<p>Press <strong>Exit</strong> until you return to the main System Settings menu. Select <strong>Reboot device</strong> (or <em>Reload Portal</em>). The box will restart, connect to the provider middleware, and load your channel directory and guide.</p>"
+      }
+    ],
+    "extraSections": [
+      {
+        "id": "mag-hardware-architecture",
+        "title": "Infomir MAG Set-Top Box Architecture",
+        "content": "<p>Infomir MAG set-top boxes are dedicated Linux-based appliances designed specifically for IPTV and telecommunications operators:</p><ul><li><strong>Middleware Integration:</strong> MAG boxes run native client software designed to communicate with carrier middleware servers (such as Ministra / Stalker).</li><li><strong>MAC Authentication:</strong> Account access is tied directly to the device's registered network MAC address rather than a standard username and password login screen.</li><li><strong>Dedicated Remote Navigation:</strong> Dedicated buttons on the MAG remote (EPG, Channel List, Audio, and colored function keys) provide direct hardware-level navigation.</li></ul>"
+      },
+      {
+        "id": "inner-vs-outer-portal",
+        "title": "Inner Portal vs Outer Portal",
+        "content": "<p>Understanding the distinction between portals helps during configuration and troubleshooting:</p><ul><li><strong>Inner Portal (Embedded Firmware):</strong> The local firmware interface provided by Infomir on the device. It contains hardware diagnostics, network configuration, video resolution settings, and portal URL entry fields.</li><li><strong>Outer Portal (Service Portal):</strong> The remote interactive interface loaded from the service provider's middleware server once connected.</li></ul><p>To access the Inner Portal to adjust settings after a portal has loaded, restart the box and press the <strong>SET</strong> button during startup.</p>"
+      },
+      {
+        "id": "ntp-clock-importance",
+        "title": "Configuring NTP for Time Synchronization on MAG Boxes",
+        "content": "<p>Setting an active Network Time Protocol (NTP) server is a recommended configuration step on MAG set-top boxes:</p><ul><li>MAG boxes synchronize their system clock over the network upon startup. If the device clock is out of sync, timestamps on SSL connections may fail validation, and the electronic program guide (EPG) can display incorrect program schedules.</li><li>Infomir recommends configuring an active NTP server address (such as <code>pool.ntp.org</code>) under <strong>Settings &gt; Servers &gt; General</strong> and selecting your local timezone.</li></ul>"
+      },
+      {
+        "id": "troubleshooting-mag-errors",
+        "title": "Troubleshooting Common MAG Box Status Messages",
+        "content": "<p>If your MAG box encounters an issue during startup, reference these common scenarios:</p><ul><li><strong>'Your STB is blocked. Call the provider':</strong> Indicates that the device's MAC address is not currently recognized or activated on the provider middleware. Confirm that the MAC address registered on your account matches your device label.</li><li><strong>'Page loading error':</strong> The portal URL was entered incorrectly or the device cannot reach the internet. Check the portal address spelling, including protocol and trailing slashes, and verify local network connectivity.</li><li><strong>Display aspect ratio issues:</strong> In Inner Portal <strong>Settings &gt; Video</strong>, set <em>Graphic Resolution</em> to <strong>Same as Video</strong> or match your television's native display mode.</li></ul>"
+      },
+      {
+        "id": "mag-model-compatibility",
+        "title": "MAG Hardware Compatibility and Video Codecs",
+        "content": "<p>Hardware capabilities vary across MAG generations:</p><ul><li><strong>Legacy Models (e.g., MAG 250, 254, 322):</strong> Older generation devices support H.264 video decoding up to 1080p Full HD, but do not support newer HEVC (H.265) 4K compression standards.</li><li><strong>Modern Models (e.g., MAG 520, 524, 540):</strong> Powered by modern Amlogic chipsets supporting 4K resolution and HEVC (H.265) video decoding.</li></ul><p>If you use an older legacy model, upgrading to a modern MAG model or an <a href='/devices/android-tv-iptv'>Android TV device</a> provides support for modern video codecs.</p>"
       }
     ],
     "faqs": [
       {
-        "question": "Why is my MAG box stuck on the 'Loading' screen?",
-        "answer": "This is a very common issue that almost always means one of two things: either the portal URL was entered incorrectly, or your device's MAC address has not yet been activated on our server. First, please double-check the portal URL for any typos. If it is correct, contact our support team to verify that your MAC address has been successfully activated."
+        "question": "Where do I find my MAG MAC address?",
+        "answer": "A MAG MAC address is a 12-character hardware identifier typically beginning with 00:1A:79. It is printed on the barcode label on the underside of your MAG box and is also visible in System Settings > System Info."
       },
       {
-        "question": "Can I use an M3U link with my MAG box instead of a portal?",
-        "answer": "No. MAG boxes are specialized devices designed to work with IPTV portals. They do not function well with M3U links. The portal method is the only one we support for these devices as it ensures a stable connection, a user-friendly interface, and a fully functional EPG (TV Guide)."
+        "question": "How do I access the Inner Portal on a MAG box?",
+        "answer": "Reboot your MAG box and repeatedly press the 'SET' or 'Gear' button on your remote while the initial loading bar appears until the Inner Portal settings screen opens."
+      },
+      {
+        "question": "What does 'Your STB is blocked. Call the provider' mean?",
+        "answer": "This status message indicates that the MAC address of your device is not currently active on the provider's server. Verify that your registered MAC address matches your physical device label and contact support."
+      },
+      {
+        "question": "Why should I configure an NTP server on a MAG box?",
+        "answer": "Configuring an NTP server (such as pool.ntp.org) in System Settings allows the MAG box to keep its internal clock synchronized over the network, ensuring accurate EPG schedule timing."
+      },
+      {
+        "question": "Which MAG models support 4K and HEVC video?",
+        "answer": "Modern models such as the MAG 520, 524, and 540 support 4K UHD and HEVC/H.265 video. Older models like the MAG 250, 254, and 322 are limited to 1080p resolution."
       }
     ]
   }

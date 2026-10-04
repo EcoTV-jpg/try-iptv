@@ -1,6 +1,3 @@
-import React from "react";
-import { GuideScreenshot } from "./GuideScreenshot";
-
 export interface StepItem {
   title: string;
   description: string;
@@ -22,43 +19,6 @@ export function GuideStepList({
   primaryKeyword = "Fire TV Stick",
   className,
 }: GuideStepListProps) {
-  // Real screenshot slots populated from verified visual evidence
-  // Missing or undefined slots safely return null in GuideScreenshot (no broken boxes)
-  const screenshotSlots: Record<
-    number,
-    {
-      src?: string;
-      alt: string;
-      caption: string;
-      width?: number;
-      height?: number;
-    }
-  > = {
-    3: {
-      src: "/images/guides/firestick/firestick-downloader-url-screen.webp",
-      alt: "Downloader home screen showing URL or search field on Fire TV",
-      caption:
-        "Downloader on Fire TV showing the URL or search field used to open an official app download source.",
-      width: 970,
-      height: 560,
-    },
-    4: {
-      src: "/images/guides/firestick/firestick-apps-and-games.webp",
-      alt: "Fire TV Your Apps and Games library showing IPTV Smarters and Downloader",
-      caption:
-        "IPTV Smarters and Downloader visible in the Fire TV Apps & Games library.",
-      width: 750,
-      height: 370,
-    },
-    5: {
-      src: "/images/guides/firestick/firestick-xtream-login-fields.webp",
-      alt: "Xtream Codes login screen on Fire TV IPTV player",
-      caption:
-        "Xtream Codes login screen showing the playlist name, username, password, and server URL fields.",
-      width: 1024,
-      height: 544,
-    },
-  };
 
   return (
     <div id="setup-steps" className={`scroll-mt-28 my-10 ${className || ""}`}>
@@ -76,7 +36,6 @@ export function GuideStepList({
         {steps.map((step, index) => {
           const stepNumber = String(index + 1).padStart(2, "0");
           const isLast = index === steps.length - 1;
-          const slot = screenshotSlots[index];
 
           return (
             <div
@@ -112,15 +71,6 @@ export function GuideStepList({
                   className="text-xs sm:text-sm leading-relaxed text-muted-foreground space-y-2.5 [&>p]:leading-relaxed [&>ul]:space-y-1.5 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:space-y-1.5 [&>ol]:list-decimal [&>ol]:pl-5 [&>strong]:text-foreground [&>strong]:font-semibold [&>a]:text-primary [&>a]:underline [&>a]:underline-offset-4"
                   dangerouslySetInnerHTML={{ __html: step.description }}
                 />
-
-                {/* Priority Screenshot Slot — renders only when real src is present */}
-                {slot?.src && (
-                  <GuideScreenshot
-                    src={slot.src}
-                    alt={slot.alt}
-                    caption={slot.caption}
-                  />
-                )}
               </div>
             </div>
           );
