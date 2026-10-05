@@ -19,7 +19,10 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -112,12 +115,12 @@ export default function IptvBufferingPage() {
             ]}
             align="center"
           />
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">Diagnostic Guide</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
               How to Troubleshoot and Fix IPTV Buffering
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               Buffering occurs when media data does not reach your player fast enough to maintain
               continuous playback. Learn how to distinguish network starvation from decoder stutter,
               isolate network bottlenecks, and resolve playback interruptions methodically.
@@ -127,47 +130,45 @@ export default function IptvBufferingPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                The Core Mechanism: What Buffering Actually Means
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary
+              title="The Core Mechanism: What Buffering Actually Means"
+              className="mb-10 sm:mb-12"
+            >
+              <p>
                 In digital video playback, a media player preloads upcoming audio and video samples into
                 a temporary memory reserve known as a buffer. Playback continues uninterrupted as long as
                 incoming data fills the buffer at or above the rate the player consumes it.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p className="mt-3">
                 When that memory reserve empties—a condition known as{" "}
-                <strong className="text-foreground font-semibold">buffer underrun</strong>—playback
+                <strong className="font-semibold text-foreground">buffer underrun</strong>—playback
                 must pause until enough new data arrives to resume. Crucially, visual stuttering can also
-                stem from <strong className="text-foreground font-semibold">decoder or rendering lag</strong>,
+                stem from <strong className="font-semibold text-foreground">decoder or rendering lag</strong>,
                 where your device struggles to process frames even though the network is supplying data
                 without interruption.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Step 1: Identify the Symptom First</h2>
               <p>
                 Before altering router settings, changing cables, or switching applications, observe
                 the exact playback behavior. Users often describe any playback irregularity as
                 &quot;buffering,&quot; but distinct symptoms point to entirely different underlying causes.
               </p>
-            </div>
+            </ArticleProse>
 
-            <div className="my-8 grid gap-6 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Activity className="h-5 w-5 text-amber-400" />
-                    Likely Network Starvation (Rebuffering)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
+            <div className="my-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Activity className="h-5 w-5 text-amber-400" />
+                  Likely Network Starvation (Rebuffering)
+                </div>
+                <div className="mt-3 space-y-3 text-sm leading-6 text-muted-foreground">
                   <p>
                     These symptoms often point toward a transport or network arrival bottleneck:
                   </p>
@@ -177,17 +178,15 @@ export default function IptvBufferingPage() {
                     <li>Playback halts for several seconds, resumes briefly, and halts again repeatedly.</li>
                     <li>The stream plays normally during early morning hours but stutters during evening peak times.</li>
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Cpu className="h-5 w-5 text-sky-400" />
-                    Likely Decoder or Rendering Stutter
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Cpu className="h-5 w-5 text-sky-400" />
+                  Likely Decoder or Rendering Stutter
+                </div>
+                <div className="mt-3 space-y-3 text-sm leading-6 text-muted-foreground">
                   <p>
                     These symptoms often point toward hardware decoding or processing limits:
                   </p>
@@ -197,11 +196,11 @@ export default function IptvBufferingPage() {
                     <li>Audio and video gradually drift out of synchronization over time.</li>
                     <li>The screen turns black, but channel audio remains completely audible.</li>
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Step 2: Local Network Diagnostics and Stability</h2>
               <p>
                 A high speed test result does not guarantee smooth real-time video streaming. Speed tests
@@ -393,10 +392,10 @@ export default function IptvBufferingPage() {
                 origin server and global distribution points. In these cases, local configuration adjustments
                 cannot resolve the issue.
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
                 A Practical Note on Service Reliability
               </h3>
@@ -422,9 +421,9 @@ export default function IptvBufferingPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

@@ -2,16 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
-  Database,
   Globe,
-  HelpCircle,
   Key,
-  Layers,
   Lock,
-  Server,
-  ShieldAlert,
-  Tv,
 } from "lucide-react";
 import { FaqList } from "@/components/sections/FAQ";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
@@ -19,7 +12,11 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleCodeBlock,
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -132,15 +129,12 @@ export default function WhatAreXtreamCodesPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Quick Summary: What Is the Xtream Codes Format?
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary title="Quick Summary: What Is the Xtream Codes Format?">
+              <p>
                 In modern IPTV, <strong className="text-foreground font-semibold">Xtream Codes</strong> refers
                 to a structured client-server login format that uses a{" "}
                 <span className="text-foreground font-medium">Server URL</span>,{" "}
@@ -148,16 +142,16 @@ export default function WhatAreXtreamCodesPage() {
                 <span className="text-foreground font-medium">Password</span> to connect your player app to an
                 IPTV service.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p>
                 Instead of reading a single static text playlist, an Xtream-compatible player issues
                 lightweight HTTP/HTTPS requests to retrieve structured JSON data—allowing it to fetch
                 categories, channel lists, on-demand movies, and TV guide (EPG) schedules dynamically. It is
                 not a formal standards body specification, but rather a de facto compatibility convention
                 adopted across third-party IPTV software.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Origins and Evolution of the Format</h2>
               <p>
                 To understand why Xtream Codes exists, it helps to look at its history. In the mid-2010s, a
@@ -185,49 +179,55 @@ export default function WhatAreXtreamCodesPage() {
                 When you configure an IPTV player using an Xtream Codes login option, the application typically
                 presents a login dialog requesting three primary credentials:
               </p>
-            </div>
+            </ArticleProse>
 
-            <div className="my-8 grid gap-4 sm:grid-cols-3">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-3">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Globe className="h-5 w-5 text-primary" />
+            <div className="my-8 sm:my-10 grid gap-4 sm:grid-cols-3">
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-colors hover:border-white/[0.14]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-primary/[0.08] text-primary">
+                    <Globe className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-headline text-base font-bold text-foreground">
                     Server URL
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+                  </h3>
+                </div>
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-muted-foreground">
                   The base web address of the streaming server (e.g., <code>http://tv.example.com:8080</code>).
                   It points your player to the provider&apos;s API endpoint.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-3">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Key className="h-5 w-5 text-primary" />
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-colors hover:border-white/[0.14]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-primary/[0.08] text-primary">
+                    <Key className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-headline text-base font-bold text-foreground">
                     Username
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+                  </h3>
+                </div>
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-muted-foreground">
                   Your unique account identifier assigned by your IPTV service provider to track your
                   subscription profile.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-3">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Lock className="h-5 w-5 text-primary" />
+              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] transition-colors hover:border-white/[0.14]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-primary/[0.08] text-primary">
+                    <Lock className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <h3 className="font-headline text-base font-bold text-foreground">
                     Password
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+                  </h3>
+                </div>
+                <p className="mt-3 text-xs sm:text-sm leading-relaxed text-muted-foreground">
                   The secret authentication token or passphrase associated with your account username.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <p>
                 <strong>Port Handling Varies by App:</strong> Some older tutorials claim that four separate
                 fields are universally mandatory: Server, Port, Username, and Password. In reality, field
@@ -252,9 +252,14 @@ export default function WhatAreXtreamCodesPage() {
                 In a standard initial handshake, the player sends an authentication request structured
                 similarly to this conceptual example:
               </p>
-              <pre className="overflow-x-auto rounded-lg border border-white/[0.08] bg-[#07080a] p-4 text-xs sm:text-sm text-foreground">
-                <code>{`GET /player_api.php?username=EXAMPLE_USER&password=EXAMPLE_PASS HTTP/1.1\nHost: example.com`}</code>
-              </pre>
+            </ArticleProse>
+
+            <ArticleCodeBlock
+              title="Illustrative API Handshake Request"
+              code={`GET /player_api.php?username=EXAMPLE_USER&password=EXAMPLE_PASS HTTP/1.1\nHost: example.com`}
+            />
+
+            <ArticleProse>
               <p className="text-sm text-muted-foreground">
                 <em>Note: The URL above is a sanitized illustrative example. Never share your active provider
                 credentials publicly.</em>
@@ -319,63 +324,59 @@ export default function WhatAreXtreamCodesPage() {
 
               <h3>1. Query String Credentials (RFC 9110 Considerations)</h3>
               <p>
-                In standard Xtream implementations, your username and password are transmitted as query
-                parameters in the URI string (<code>?username=...&amp;password=...</code>).
+                The legacy Xtream Codes design transmits the username and password directly within the URL
+                query string. In standard web security architectures (such as those outlined in RFC 9110
+                Section 4.3), sending sensitive secrets in URLs is discouraged because query strings can be
+                recorded in server access logs, browser histories, and proxy caches.
               </p>
               <p>
-                As documented in Section 9.3.1 of RFC 9110 (HTTP Semantics), placing sensitive authentication
-                information inside URIs introduces security risks:
-              </p>
-              <ul>
-                <li>URIs are frequently logged in plain text by web servers, reverse proxies, and firewalls.</li>
-                <li>URIs appear in browser histories, application logs, and clipboard managers.</li>
-                <li>If a user shares a raw stream URL with a friend, their embedded username and password are exposed.</li>
-              </ul>
-
-              <h3>2. The Role of HTTPS (TLS Encryption)</h3>
-              <p>
-                If your provider&apos;s server URL uses <code>https://</code>, the connection between your device
-                and the server is encrypted using Transport Layer Security (TLS). This prevents third parties
-                on your local network, your router, or intermediate internet nodes from eavesdropping on your
-                credentials in transit.
-              </p>
-              <p>
-                However, if your server URL uses unencrypted <code>http://</code>, query parameters are
-                transmitted in plain text across your local network and the public internet.
+                To minimize exposure, always ensure your provider supports connection via encrypted{" "}
+                <strong>HTTPS</strong> rather than plain HTTP, and never share full API query URLs in public
+                forums or support threads.
               </p>
 
-              <h3>3. Dispelling Security Myths</h3>
+              <h3>2. Concurrent Connection Limits</h3>
               <p>
-                Several widespread claims regarding Xtream Codes security are technically inaccurate:
+                Because the API server tracks active sessions, IPTV providers typically enforce strict
+                concurrent connection caps (for example, two or three active devices simultaneously). If you
+                attempt to stream on more devices than your subscription allows, the server will either drop the
+                oldest stream or return an authentication refusal on the new device.
+              </p>
+
+              <h2>Player Compatibility: Players That Support Xtream Codes</h2>
+              <p>
+                Almost all major dedicated IPTV applications feature native support for Xtream-style API
+                logins:
               </p>
               <ul>
                 <li>
-                  <strong>No Universal Token Rotation:</strong> Baseline Xtream Codes does not feature
-                  automatic token expiration or OAuth-style rolling tokens; it relies on static credentials
-                  unless a specific modern panel implements proprietary extensions.
+                  <strong>TiviMate:</strong> Supports adding multiple Xtream Codes accounts with full category
+                  selection and automated guide sync.
                 </li>
                 <li>
-                  <strong>No Built-In Encryption Layer:</strong> The protocol itself does not encrypt data;
-                  all transit protection depends entirely on whether the server operates over standard HTTPS.
+                  <strong>IPTV Smarters Pro:</strong> Built around the Xtream interface, offering dedicated
+                  Live, VOD, and Series dashboards.
+                </li>
+                <li>
+                  <strong>Televizo:</strong> Lightweight and responsive player for Android that supports both
+                  Xtream API logins and M3U playlists.
+                </li>
+                <li>
+                  <strong>XCIPTV:</strong> A feature-rich player designed for Android TV and Firestick with
+                  customizable home screens based on Xtream API categories.
                 </li>
               </ul>
-
-              <h2>Xtream Codes vs. The IPTV Player App</h2>
               <p>
-                Newcomers frequently confuse the API connection with the player software. It is important to
-                recognize that:
+                <strong>General Media Players:</strong> General-purpose media players like VLC or Kodi can play
+                individual stream URLs generated by an Xtream server, but they do not natively parse the
+                multi-category API menus without specialized third-party add-ons.
               </p>
-              <ul>
-                <li>
-                  <strong>The Player (e.g., TiviMate, Smarters):</strong> Is the software program running on
-                  your device (Fire TV, Android TV, phone). It handles the user interface, video decoding, and
-                  remote control navigation.
-                </li>
-                <li>
-                  <strong>Xtream Codes:</strong> Is the communication format that allows that player to talk to
-                  your provider&apos;s server.
-                </li>
-              </ul>
+
+              <h2>What Xtream Codes Does Not Do</h2>
+              <p>
+                A common misconception among new IPTV users is that Xtream Codes is a provider or service. It is
+                important to distinguish the connection protocol from content:
+              </p>
               <p>
                 Having an Xtream-compatible player does not provide any video content on its own. You must have
                 an active subscription with an IPTV service provider to supply valid server, username, and
@@ -383,53 +384,53 @@ export default function WhatAreXtreamCodesPage() {
               </p>
 
               <h2>Summary: What Xtream Codes Is and Is Not</h2>
-              <div className="overflow-hidden rounded-lg border border-white/[0.08] not-prose my-6">
-                <table className="w-full text-left text-sm">
-                  <thead className="bg-card px-4 py-3 font-semibold text-foreground border-b border-white/[0.08]">
+              <div className="not-prose my-6 sm:my-8 overflow-x-auto rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+                <table className="w-full min-w-[500px] text-left text-sm">
+                  <thead className="bg-[#07080a] px-4 py-3 font-semibold text-foreground border-b border-white/[0.08]">
                     <tr>
-                      <th className="p-3">Xtream Codes Is:</th>
-                      <th className="p-3">Xtream Codes Is NOT:</th>
+                      <th className="p-3.5">Xtream Codes Is:</th>
+                      <th className="p-3.5">Xtream Codes Is NOT:</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/[0.08] text-muted-foreground">
+                  <tbody className="divide-y divide-white/[0.06] text-muted-foreground">
                     <tr>
-                      <td className="p-3">A widely supported client-server API format</td>
-                      <td className="p-3">An official IETF, W3C, or ISO standard</td>
+                      <td className="p-3.5">A widely supported client-server API format</td>
+                      <td className="p-3.5">An official IETF, W3C, or ISO standard</td>
                     </tr>
                     <tr>
-                      <td className="p-3">A login method using Server, Username, and Password</td>
-                      <td className="p-3">A standalone IPTV player application</td>
+                      <td className="p-3.5">A login method using Server, Username, and Password</td>
+                      <td className="p-3.5">A standalone IPTV player application</td>
                     </tr>
                     <tr>
-                      <td className="p-3">A way to query categorized JSON channel and EPG data</td>
-                      <td className="p-3">An IPTV subscription or media content provider</td>
+                      <td className="p-3.5">A way to query categorized JSON channel and EPG data</td>
+                      <td className="p-3.5">An IPTV subscription or media content provider</td>
                     </tr>
                     <tr>
-                      <td className="p-3">Protected in transit only when configured with HTTPS</td>
-                      <td className="p-3">Inherently encrypted or self-securing by default</td>
+                      <td className="p-3.5">Protected in transit only when configured with HTTPS</td>
+                      <td className="p-3.5">Inherently encrypted or self-securing by default</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
-              <h3 className="text-lg font-bold text-foreground">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              <h3 className="font-headline text-lg sm:text-xl font-bold text-foreground">
                 Connecting Your IPTV Service
               </h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-muted-foreground">
                 Whether you prefer the structured navigation of an Xtream-compatible login or the simplicity of
                 an M3U playlist, TryIPTV supports both connection methods. You can choose whichever format best
                 matches your preferred player application, operating system, and streaming hardware.
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button asChild size="sm" variant="outline">
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Button asChild size="sm" variant="outline" className="border-white/[0.14] bg-white/[0.03] text-foreground hover:bg-white/[0.08]">
                   <Link href="/iptv-free-trial">
                     Test With a Free Trial <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                   </Link>
                 </Button>
-                <Button asChild size="sm" variant="ghost">
+                <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
                   <Link href="/help/iptv-login-not-working">Troubleshoot Login Issues</Link>
                 </Button>
               </div>
@@ -439,9 +440,9 @@ export default function WhatAreXtreamCodesPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

@@ -21,7 +21,11 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleCodeBlock,
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -124,12 +128,12 @@ export default function WhatIsEpgPage() {
             ]}
             align="center"
           />
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">IPTV Guide Architecture</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
               What Is an EPG? How IPTV TV Guides Work
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               An Electronic Programme Guide transforms a raw list of live video streams into a familiar,
               navigable television guide. Understand how guide data is structured, how IPTV players ingest
               schedules, and how streams and metadata interact.
@@ -139,28 +143,28 @@ export default function WhatIsEpgPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Quick Summary: What Is an Electronic Programme Guide?
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
-                An <strong className="text-foreground font-semibold">EPG (Electronic Programme Guide)</strong> is
+            <ArticleSummary
+              title="Quick Summary: What Is an Electronic Programme Guide?"
+              className="mb-10 sm:mb-12"
+            >
+              <p>
+                An <strong className="font-semibold text-foreground">EPG (Electronic Programme Guide)</strong> is
                 structured schedule metadata used by media players and television software to display what is
                 currently airing and what is scheduled next across broadcast channels.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
-                In modern IPTV systems, <strong className="text-foreground font-semibold">EPG data is completely separate from the video stream itself</strong>.
+              <p className="mt-3">
+                In modern IPTV systems, <strong className="font-semibold text-foreground">EPG data is completely separate from the video stream itself</strong>.
                 A video channel can stream video and audio flawlessly even when its EPG data is missing,
                 outdated, mismatched to the wrong channel, or offset by several hours. Understanding this
                 separation is key to diagnosing guide issues quickly.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Core Concepts: What Information Does an EPG Contain?</h2>
               <p>
                 In traditional cable and satellite broadcasting, schedule data is transmitted alongside video
@@ -211,60 +215,54 @@ export default function WhatIsEpgPage() {
                 player application and service configuration, EPG data is usually delivered through one of
                 three ingestion mechanisms:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Ingestion Methods Grid */}
-            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Database className="h-5 w-5 text-primary" />
-                    Provider API Integration
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+            <div className="my-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-5 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Database className="h-5 w-5 text-primary" />
+                  Provider API Integration
+                </div>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">
                   When connecting via an{" "}
                   <Link href="/guides/what-are-xtream-codes" className="text-primary hover:underline">
                     Xtream-compatible API login
                   </Link>
                   , the player queries dedicated server endpoints that return structured EPG data directly
                   alongside the channel list, without requiring a separate guide URL.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <FileCode className="h-5 w-5 text-primary" />
-                    Dedicated XMLTV URL
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-5 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <FileCode className="h-5 w-5 text-primary" />
+                  Dedicated XMLTV URL
+                </div>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">
                   When using an{" "}
                   <Link href="/guides/what-is-m3u" className="text-primary hover:underline">
                     M3U playlist
                   </Link>
                   , the player downloads an external XML file (or a compressed <code>.xml.gz</code> archive)
                   from a specified web address and parses its listings into device memory.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <ListFilter className="h-5 w-5 text-primary" />
-                    Third-Party Guide Sources
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-5 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <ListFilter className="h-5 w-5 text-primary" />
+                  Third-Party Guide Sources
+                </div>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">
                   Advanced players allow users to add secondary or custom guide sources. If a provider&apos;s
                   feed lacks data for specific regional channels, users can map external XMLTV feeds to
                   supplement missing listings.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <p>
                 The completeness of the guide depends on the player and service implementation. Even when a
                 service supports Xtream-compatible APIs, the provider must actively curate and maintain
@@ -275,7 +273,7 @@ export default function WhatIsEpgPage() {
               <h2>XMLTV at a Glance: The Common Language of TV Guides</h2>
               <p>
                 The most widely supported open standard for distributing television listings across the
-                internet is <strong className="text-foreground font-semibold">XMLTV</strong>. Originally developed
+                internet is <strong className="font-semibold text-foreground">XMLTV</strong>. Originally developed
                 as an open-source project to gather TV listings, XMLTV defines an XML document structure
                 containing two primary elements:
               </p>
@@ -292,31 +290,26 @@ export default function WhatIsEpgPage() {
               <p>
                 A simplified conceptual snippet of XMLTV data looks like this:
               </p>
+            </ArticleProse>
 
-              {/* Code Snippet */}
-              <div className="my-6 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/40 p-4 font-mono text-xs leading-5 text-slate-300">
-                <div className="text-slate-500">&lt;!-- Simplified XMLTV Document Structure --&gt;</div>
-                <div>&lt;tv&gt;</div>
-                <div className="pl-4">
-                  &lt;channel id=&quot;espn.us&quot;&gt;
-                </div>
-                <div className="pl-8">
-                  &lt;display-name&gt;ESPN HD&lt;/display-name&gt;
-                </div>
-                <div className="pl-4">&lt;/channel&gt;</div>
-                <div className="pl-4">
-                  &lt;programme start=&quot;20261005180000 +0000&quot; stop=&quot;20261005200000 +0000&quot; channel=&quot;espn.us&quot;&gt;
-                </div>
-                <div className="pl-8">
-                  &lt;title&gt;SportsCenter Live&lt;/title&gt;
-                </div>
-                <div className="pl-8">
-                  &lt;desc&gt;Live sports news, scores, and in-depth highlights from around the league.&lt;/desc&gt;
-                </div>
-                <div className="pl-4">&lt;/programme&gt;</div>
-                <div>&lt;/tv&gt;</div>
-              </div>
+            {/* Code Snippet */}
+            <div className="my-6">
+              <ArticleCodeBlock
+                title="Simplified XMLTV Document Structure"
+                code={`<!-- Simplified XMLTV Document Structure -->
+<tv>
+  <channel id="espn.us">
+    <display-name>ESPN HD</display-name>
+  </channel>
+  <programme start="20261005180000 +0000" stop="20261005200000 +0000" channel="espn.us">
+    <title>SportsCenter Live</title>
+    <desc>Live sports news, scores, and in-depth highlights from around the league.</desc>
+  </programme>
+</tv>`}
+              />
+            </div>
 
+            <ArticleProse>
               <p>
                 Because complete television listings for hundreds of channels can span tens of megabytes of raw
                 text, XMLTV files are frequently compressed using gzip into <code>.xml.gz</code> files to reduce
@@ -416,18 +409,16 @@ export default function WhatIsEpgPage() {
                 A fundamental concept in IPTV architecture is the complete operational independence of stream
                 playback and guide metadata:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Video vs EPG Comparison Cards */}
-            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Tv className="h-5 w-5 text-primary" />
-                    The Video Stream Layer
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+            <div className="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Tv className="h-5 w-5 text-primary" />
+                  The Video Stream Layer
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>
                     Delivers raw media packets (MPEG Transport Stream or HLS video segments) from the media
                     streaming server to your device&apos;s hardware video decoder.
@@ -436,17 +427,15 @@ export default function WhatIsEpgPage() {
                     If this layer fails, the symptom is buffering, freezing, or a black screen. It operates
                     independently of whether a guide exists.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Calendar className="h-5 w-5 text-primary" />
-                    The EPG Metadata Layer
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Calendar className="h-5 w-5 text-primary" />
+                  The EPG Metadata Layer
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>
                     Delivers structured textual listings (XML or JSON) containing show titles, air times, and
                     channel IDs to populate the on-screen guide grid.
@@ -455,21 +444,21 @@ export default function WhatIsEpgPage() {
                     If this layer fails, the symptom is &quot;No Information&quot; or incorrect broadcast times.
                     The video stream itself remains unaffected.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <p>
                 Recognizing this separation prevents misplaced troubleshooting. If a channel plays smoothly but
                 its guide line is empty, restarting your Wi-Fi router or tweaking stream buffer settings will
                 have zero effect. The solution lies entirely within EPG source configuration and channel
                 mapping.
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
                 Consistent Guide Integration with TryIPTV
               </h3>
@@ -494,9 +483,9 @@ export default function WhatIsEpgPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

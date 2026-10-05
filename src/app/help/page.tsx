@@ -120,7 +120,7 @@ export default function HelpPage() {
         <Container>
           {/* Master Triage Hero Card */}
           <div className="mb-14">
-            <Card className="relative overflow-hidden border-primary/30 bg-primary/[0.03] p-6 shadow-lg sm:p-8">
+            <Card className="relative overflow-hidden rounded-2xl border-primary/30 bg-primary/[0.04] p-6 shadow-lg sm:p-8">
               <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-2xl">
                   <div className="mb-3 flex items-center gap-2">
@@ -166,7 +166,7 @@ export default function HelpPage() {
               return (
                 <Card
                   key={guide.href}
-                  className="group flex flex-col justify-between border-white/[0.08] bg-card/60 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:bg-card/80"
+                  className="group flex flex-col justify-between rounded-2xl border-white/[0.08] bg-[#07080a] transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:bg-[#07080a] shadow-sm"
                 >
                   <CardHeader className="pb-3">
                     <div className="mb-3 flex items-center justify-between gap-2">
@@ -204,7 +204,7 @@ export default function HelpPage() {
           </div>
 
           {/* Cross-Directory Navigation Banner */}
-          <div className="mt-16 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+          <div className="mt-16 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="eyebrow mb-1">Looking for Explanations &amp; Specs?</p>

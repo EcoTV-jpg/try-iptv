@@ -27,7 +27,10 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -125,12 +128,12 @@ export default function IptvNotWorkingPage() {
             ]}
             align="center"
           />
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">Master Diagnostic Router</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
               IPTV Not Working? Start With This Troubleshooting Checklist
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               When television playback fails, the broad symptom &quot;IPTV not working&quot; can stem from six
               completely different failure points. Use this triage guide to pinpoint the exact failure layer
               and route directly to the right diagnostic solution.
@@ -140,150 +143,150 @@ export default function IptvNotWorkingPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Immediate Action: Identify Your Failure Layer First
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary
+              title="Immediate Action: Identify Your Failure Layer First"
+              className="mb-10 sm:mb-12"
+            >
+              <p>
                 Saying &quot;my IPTV is not working&quot; is like saying &quot;my internet is broken.&quot; The failure
-                could be in your <strong className="text-foreground font-semibold">streaming app</strong>, your{" "}
-                <strong className="text-foreground font-semibold">account authentication</strong>, your{" "}
-                <strong className="text-foreground font-semibold">playlist download</strong>, the{" "}
-                <strong className="text-foreground font-semibold">video playback stream</strong>, or the{" "}
-                <strong className="text-foreground font-semibold">schedule guide</strong>.
+                could be in your <strong className="font-semibold text-foreground">streaming app</strong>, your{" "}
+                <strong className="font-semibold text-foreground">account authentication</strong>, your{" "}
+                <strong className="font-semibold text-foreground">playlist download</strong>, the{" "}
+                <strong className="font-semibold text-foreground">video playback stream</strong>, or the{" "}
+                <strong className="font-semibold text-foreground">schedule guide</strong>.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p className="mt-3">
                 Do not attempt dozens of random fixes—such as resetting your TV or re-entering URLs repeatedly—before
                 identifying your exact symptom. Match your problem against the six symptoms below to jump straight to
                 the specialized guide designed for your issue.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Master Triage: Match Your Symptom to the Right Fix</h2>
               <p>
                 Review the six primary failure symptoms below. Each card links directly to our dedicated,
                 in-depth technical guide for that specific layer:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Master Triage Router Cards */}
-            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <Card className="flex flex-col justify-between border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
+            <div className="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div>
+                  <div className="flex items-center gap-2 text-base font-bold text-foreground">
                     <Lock className="h-5 w-5 text-amber-400" />
                     Symptom 1: Login Rejected or Auth Failed
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    <strong>What happens:</strong> The player displays &quot;Invalid Details,&quot;
-                    &quot;Authentication Failed,&quot; &quot;Account Expired,&quot; or an HTTP 401/403 error when
-                    entering credentials.
-                  </p>
-                  <p>
-                    <strong>Typical causes:</strong> Hidden trailing spaces, case-sensitivity mistakes, missing port
-                    numbers, or exceeding active device connection limits.
-                  </p>
-                  <div className="pt-2">
-                    <Button asChild size="sm" variant="outline" className="w-full justify-between">
-                      <Link href="/help/iptv-login-not-working">
-                        <span>Fix Login Errors</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
+                    <p>
+                      <strong>What happens:</strong> The player displays &quot;Invalid Details,&quot;
+                      &quot;Authentication Failed,&quot; &quot;Account Expired,&quot; or an HTTP 401/403 error when
+                      entering credentials.
+                    </p>
+                    <p>
+                      <strong>Typical causes:</strong> Hidden trailing spaces, case-sensitivity mistakes, missing port
+                      numbers, or exceeding active device connection limits.
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-4">
+                  <Button asChild size="sm" variant="outline" className="w-full justify-between">
+                    <Link href="/help/iptv-login-not-working">
+                      <span>Fix Login Errors</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
 
-              <Card className="flex flex-col justify-between border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
+              <div className="flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div>
+                  <div className="flex items-center gap-2 text-base font-bold text-foreground">
                     <FileText className="h-5 w-5 text-blue-400" />
                     Symptom 2: Playlist Won&apos;t Load (0 Channels)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    <strong>What happens:</strong> The app shows &quot;Download Error,&quot; &quot;Failed to Load
-                    Playlist,&quot; a permanent loading spinner during import, or loads zero channels.
-                  </p>
-                  <p>
-                    <strong>Typical causes:</strong> URL syntax typos, DNS resolution failures, unparseable playlist
-                    headers, or device memory exhaustion on massive playlists.
-                  </p>
-                  <div className="pt-2">
-                    <Button asChild size="sm" variant="outline" className="w-full justify-between">
-                      <Link href="/help/m3u-not-loading">
-                        <span>Fix Playlist Loading</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
+                    <p>
+                      <strong>What happens:</strong> The app shows &quot;Download Error,&quot; &quot;Failed to Load
+                      Playlist,&quot; a permanent loading spinner during import, or loads zero channels.
+                    </p>
+                    <p>
+                      <strong>Typical causes:</strong> URL syntax typos, DNS resolution failures, unparseable playlist
+                      headers, or device memory exhaustion on massive playlists.
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-4">
+                  <Button asChild size="sm" variant="outline" className="w-full justify-between">
+                    <Link href="/help/m3u-not-loading">
+                      <span>Fix Playlist Loading</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
 
-              <Card className="flex flex-col justify-between border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
+              <div className="flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div>
+                  <div className="flex items-center gap-2 text-base font-bold text-foreground">
                     <PlaySquare className="h-5 w-5 text-rose-400" />
                     Symptom 3: Channels Load but Freeze or Buffer
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    <strong>What happens:</strong> Channels start playing, but playback stutters, loops every few
-                    seconds, pauses with a spinning buffer icon, or drops audio.
-                  </p>
-                  <p>
-                    <strong>Typical causes:</strong> Local Wi-Fi jitter, hardware decoder bottlenecks, ISP transit
-                    congestion, or server streaming endpoint overload.
-                  </p>
-                  <div className="pt-2">
-                    <Button asChild size="sm" variant="outline" className="w-full justify-between">
-                      <Link href="/help/iptv-buffering">
-                        <span>Fix Buffering Issues</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
+                    <p>
+                      <strong>What happens:</strong> Channels start playing, but playback stutters, loops every few
+                      seconds, pauses with a spinning buffer icon, or drops audio.
+                    </p>
+                    <p>
+                      <strong>Typical causes:</strong> Local Wi-Fi jitter, hardware decoder bottlenecks, ISP transit
+                      congestion, or server streaming endpoint overload.
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-4">
+                  <Button asChild size="sm" variant="outline" className="w-full justify-between">
+                    <Link href="/help/iptv-buffering">
+                      <span>Fix Buffering Issues</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
 
-              <Card className="flex flex-col justify-between border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
+              <div className="flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div>
+                  <div className="flex items-center gap-2 text-base font-bold text-foreground">
                     <ListFilter className="h-5 w-5 text-emerald-400" />
                     Symptom 4: Video Works but Guide Is Blank or Wrong
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    <strong>What happens:</strong> Video plays smoothly, but the TV guide displays &quot;No
-                    Information,&quot; shows an empty grid, or listings are shifted by several hours.
-                  </p>
-                  <p>
-                    <strong>Typical causes:</strong> EPG source URL unreachable, channel identifier mismatch,
-                    corrupted EPG database cache, or streaming device system clock offset.
-                  </p>
-                  <div className="pt-2">
-                    <Button asChild size="sm" variant="outline" className="w-full justify-between">
-                      <Link href="/help/epg-not-working">
-                        <span>Fix TV Guide Issues</span>
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
+                    <p>
+                      <strong>What happens:</strong> Video plays smoothly, but the TV guide displays &quot;No
+                      Information,&quot; shows an empty grid, or listings are shifted by several hours.
+                    </p>
+                    <p>
+                      <strong>Typical causes:</strong> EPG source URL unreachable, channel identifier mismatch,
+                      corrupted EPG database cache, or streaming device system clock offset.
+                    </p>
+                  </div>
+                </div>
+                <div className="pt-4">
+                  <Button asChild size="sm" variant="outline" className="w-full justify-between">
+                    <Link href="/help/epg-not-working">
+                      <span>Fix TV Guide Issues</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h3>Symptom 5: The Player App Won&apos;t Open or Crashes on Launch</h3>
               <p>
                 If the media player application itself crashes back to your streaming device&apos;s home screen,
@@ -344,11 +347,11 @@ export default function IptvNotWorkingPage() {
                 To isolate where the breakdown is occurring in under two minutes, work through this rapid sequential
                 diagnostic:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Two-Minute Checklist Table */}
-            <div className="my-8 overflow-hidden rounded-xl border border-white/[0.08]">
-              <div className="grid grid-cols-1 bg-card px-4 py-3 text-xs sm:text-sm font-bold text-foreground sm:grid-cols-12 border-b border-white/[0.08]">
+            <div className="my-8 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#07080a]">
+              <div className="grid grid-cols-1 bg-white/[0.03] px-4 py-3 text-xs sm:text-sm font-bold text-foreground sm:grid-cols-12 border-b border-white/[0.08]">
                 <div className="sm:col-span-1">#</div>
                 <div className="sm:col-span-5">Check Point</div>
                 <div className="sm:col-span-6">Diagnostic Routing</div>
@@ -403,7 +406,7 @@ export default function IptvNotWorkingPage() {
                   key={item.step}
                   className={`grid grid-cols-1 gap-2 px-4 py-3.5 text-xs sm:text-sm leading-6 sm:grid-cols-12 ${
                     idx !== 0 ? "border-t border-white/[0.08]" : ""
-                  } ${idx % 2 === 1 ? "bg-white/[0.01]" : ""}`}
+                  } ${idx % 2 === 1 ? "bg-white/[0.02]" : ""}`}
                 >
                   <div className="font-bold text-primary sm:col-span-1">{item.step}</div>
                   <div className="font-semibold text-foreground sm:col-span-5">{item.check}</div>
@@ -420,7 +423,7 @@ export default function IptvNotWorkingPage() {
               ))}
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Rapid Network Baseline Check</h2>
               <p>
                 Before assuming a subscription or server failure, take 60 seconds to verify basic local network
@@ -452,18 +455,16 @@ export default function IptvNotWorkingPage() {
                 To avoid wasting time debugging the wrong system, use this isolation framework to distinguish between
                 local problems and upstream server problems:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Local vs Upstream Isolation Grid */}
-            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Smartphone className="h-5 w-5 text-primary" />
-                    Indicators of a Local Issue
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+            <div className="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Smartphone className="h-5 w-5 text-primary" />
+                  Indicators of a Local Issue
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>The failure is likely local to your device, network, or app when:</p>
                   <ul className="list-disc space-y-1 pl-5">
                     <li>The service works normally on your phone but fails on your TV.</li>
@@ -472,17 +473,15 @@ export default function IptvNotWorkingPage() {
                     <li>Your device system clock or timezone is out of sync.</li>
                     <li>Credentials contain a typographical mistake or trailing space.</li>
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Server className="h-5 w-5 text-amber-400" />
-                    Indicators of an Upstream Issue
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Server className="h-5 w-5 text-amber-400" />
+                  Indicators of an Upstream Issue
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>The failure is likely upstream at the provider or network transit when:</p>
                   <ul className="list-disc space-y-1 pl-5">
                     <li>The service fails across multiple devices and separate networks (Wi-Fi and mobile data).</li>
@@ -490,11 +489,11 @@ export default function IptvNotWorkingPage() {
                     <li>A specific single channel is completely black while all others stream smoothly.</li>
                     <li>Login was accepted previously but was abruptly rejected across all apps.</li>
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>How to Contact Support with Useful Information</h2>
               <p>
                 If your troubleshooting indicates an upstream provider or account issue, reaching out to customer
@@ -529,7 +528,7 @@ export default function IptvNotWorkingPage() {
                 </li>
               </ul>
 
-              <div className="my-6 rounded-xl border border-red-500/30 bg-red-500/10 p-5 text-sm leading-6 text-muted-foreground">
+              <div className="my-6 rounded-2xl border border-red-500/25 bg-red-500/[0.04] p-5 text-sm leading-6 text-muted-foreground">
                 <div className="flex items-center gap-2 font-semibold text-foreground">
                   <ShieldAlert className="h-5 w-5 text-red-400" />
                   Security Warning: Never Share Passwords Publicly
@@ -540,10 +539,10 @@ export default function IptvNotWorkingPage() {
                   through their official, authenticated customer support portal.
                 </p>
               </div>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
                 Dependable Streaming Architecture with TryIPTV
               </h3>
@@ -568,9 +567,9 @@ export default function IptvNotWorkingPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

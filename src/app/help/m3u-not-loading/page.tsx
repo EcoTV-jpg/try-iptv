@@ -25,7 +25,10 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -118,12 +121,12 @@ export default function M3uNotLoadingPage() {
             ]}
             align="center"
           />
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">Playlist Ingestion Diagnostics</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
               M3U Playlist Not Loading? How to Diagnose and Fix It
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               When an IPTV player fails to load an M3U playlist, the problem may stem from URL syntax
               defects, network reachability, server response codes, or memory constraints during parsing.
               Use this guide to pinpoint the exact failure layer.
@@ -133,82 +136,76 @@ export default function M3uNotLoadingPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Diagnostic Starting Point: Isolate the Failure Layer
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary
+              title="Diagnostic Starting Point: Isolate the Failure Layer"
+              className="mb-10 sm:mb-12"
+            >
+              <p>
                 An <Link href="/guides/what-is-m3u" className="text-primary hover:underline">M3U playlist</Link>{" "}
                 is a plain-text file listing channel stream URLs and metadata tags. Loading a playlist
                 involves three distinct phases: downloading the text file over the network, parsing the
                 metadata lines into memory, and playing the resulting stream addresses.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p className="mt-3">
                 Before changing settings, determine which specific layer is failing: Did the player fail to
                 reach the server entirely? Did the server return an HTTP error code? Did the app freeze while
                 parsing thousands of lines? Or did the playlist load completely while individual streams fail
                 to play?
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Step 1: Identify Your Specific Failure Type</h2>
               <p>
                 Observing the exact behavior of your player application reveals where the ingestion process
                 is breaking down:
               </p>
-            </div>
+            </ArticleProse>
 
             <div className="my-8 grid gap-4 sm:grid-cols-3">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-3">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Globe className="h-5 w-5 text-amber-400" />
-                    Network &amp; HTTP Errors
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-5 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Globe className="h-5 w-5 text-amber-400" />
+                  Network &amp; HTTP Errors
+                </div>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">
                   The player displays messages like &quot;Download failed,&quot; &quot;Server returned error
                   404/401,&quot; or &quot;Host not found.&quot; The text file was never successfully downloaded.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-3">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Cpu className="h-5 w-5 text-sky-400" />
-                    Parser &amp; Memory Freezes
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-5 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Cpu className="h-5 w-5 text-sky-400" />
+                  Parser &amp; Memory Freezes
+                </div>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">
                   The download begins or reaches 100%, but the player becomes unresponsive, restarts, or
                   crashes to the home screen while processing lines into channel groups.
-                </CardContent>
-              </Card>
+                </p>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-3">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Tv className="h-5 w-5 text-purple-400" />
-                    Stream Playback Failures
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-5 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Tv className="h-5 w-5 text-purple-400" />
+                  Stream Playback Failures
+                </div>
+                <p className="mt-2.5 text-sm leading-6 text-muted-foreground">
                   The channel list loads completely with categories and names visible, but selecting a stream
                   results in an infinite loading spinner or playback error (see{" "}
                   <Link href="/help/iptv-buffering" className="text-primary hover:underline">
                     buffering troubleshooting
                   </Link>
                   ).
-                </CardContent>
-              </Card>
+                </p>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Step 2: Verify URL Integrity and Character Encoding</h2>
               <p>
                 M3U links supplied by IPTV services are often complex URLs containing hostnames, ports, and
@@ -365,10 +362,10 @@ export default function M3uNotLoadingPage() {
                 setting for services that explicitly require it. It is not a universal fix and will not resolve
                 genuine credential, syntax, or network errors.
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
                 Reliable Playlist Delivery
               </h3>
@@ -394,9 +391,9 @@ export default function M3uNotLoadingPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

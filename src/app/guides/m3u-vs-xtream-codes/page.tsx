@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Code2,
-  FileText,
-  HelpCircle,
-  KeyRound,
-  Layers,
-  ListFilter,
-  MonitorPlay,
-  Server,
-  Tv,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FaqList } from "@/components/sections/FAQ";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -175,30 +166,27 @@ export default function M3uVsXtreamCodesPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                The Core Distinction: Delivery Models Compared
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary title="The Core Distinction: Delivery Models Compared">
+              <p>
                 In most IPTV setups, an <strong className="text-foreground font-semibold">M3U playlist</strong> and
                 an <strong className="text-foreground font-semibold">Xtream Codes login</strong> provide access
                 to the exact same channel streams and video library. The primary difference is how that data is
                 delivered to and ingested by your media player.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p>
                 An M3U connection provides a text file listing stream URLs and associated channel tags. An
                 Xtream-compatible login allows the player to communicate with the provider&apos;s server via
                 structured API queries, fetching categories, account status, and guide data interactively.
                 Neither format is universally superior; your choice depends on the capabilities of your
                 player application and your device requirements.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <p>
                 To understand the underlying specifications of each format in detail, you can read our
                 dedicated technical guides on{" "}
@@ -217,11 +205,11 @@ export default function M3uVsXtreamCodesPage() {
                 The table below outlines how M3U playlists and Xtream-compatible connections handle common
                 aspects of media delivery:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Comparison Table */}
-            <div className="my-8 overflow-hidden rounded-xl border border-white/[0.08]">
-              <div className="grid grid-cols-1 bg-card px-4 py-3 text-xs sm:text-sm font-bold text-foreground sm:grid-cols-12 border-b border-white/[0.08]">
+            <div className="my-8 sm:my-10 overflow-hidden rounded-xl border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              <div className="grid grid-cols-1 bg-[#07080a] px-4 py-3 text-xs sm:text-sm font-bold text-foreground sm:grid-cols-12 border-b border-white/[0.08]">
                 <div className="sm:col-span-3">Feature</div>
                 <div className="sm:col-span-4">M3U Playlist</div>
                 <div className="sm:col-span-5">Xtream-Compatible API</div>
@@ -240,7 +228,7 @@ export default function M3uVsXtreamCodesPage() {
               ))}
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Architectural Ingestion Models</h2>
               <p>
                 The fundamental technical divergence between these two approaches lies in their ingestion
@@ -249,134 +237,106 @@ export default function M3uVsXtreamCodesPage() {
 
               <h3>The M3U File Ingestion Model</h3>
               <p>
-                When a player connects via M3U, it typically requests a single text document containing every
-                available channel. The player&apos;s internal parser must:
-              </p>
-              <ul>
-                <li>Download the playlist text over HTTP or HTTPS (or read it from local disk).</li>
-                <li>Iterate through lines sequentially, reading directives such as <code>#EXTINF</code>.</li>
-                <li>Extract metadata attributes (such as <code>group-title</code> and <code>tvg-id</code>).</li>
-                <li>Instantiate in-memory objects or store entries into an internal application cache.</li>
-              </ul>
-              <p>
-                Because this model is self-contained in a standard text file, it requires no special API logic.
-                Any player capable of reading URLs and parsing plain text can open an M3U file.
-              </p>
-
-              <h3>The Xtream API Query Model</h3>
-              <p>
-                An Xtream-compatible connection functions as an interactive client-server dialogue. Instead of
-                downloading every entry in one monolithic document, the player sends structured HTTP requests
-                to API endpoints (commonly <code>/player_api.php</code>):
-              </p>
-              <ul>
-                <li>An initial authentication request checks subscription validity and server metadata.</li>
-                <li>Subsequent requests query specific category lists on demand (e.g., Live Categories).</li>
-                <li>Stream lists and program schedule data are retrieved in structured JSON blocks.</li>
-              </ul>
-              <p>
-                <strong>Architectural Note:</strong> These represent two different software designs. While some
-                users observe performance differences between apps when loading large libraries, actual
-                startup times and responsiveness depend on how efficiently an individual application indexes
-                data and manages device memory, rather than an inherent superiority of either protocol.
-              </p>
-
-              <h2>Electronic Programme Guide (EPG) Integration</h2>
-              <p>
-                Displaying an on-screen TV guide schedule is central to the television viewing experience, but
-                the two formats coordinate guide data differently:
+                An M3U setup operates around a static file ingestion pattern. When your player loads the
+                playlist URL, it initiates an HTTP GET request to download the complete text file:
               </p>
               <ul>
                 <li>
-                  <strong>With M3U:</strong> The playlist file supplies channel entries with an identifying tag
-                  (commonly <code>tvg-id</code>). To display schedules, the user or player commonly pairs the
-                  playlist with a separate XMLTV guide link. While this requires managing two data sources, it
-                  gives users the flexibility to attach custom or third-party EPG sources if a provider&apos;s
-                  default listings are incomplete.
+                  <strong>Bulk Parsing:</strong> The application must read through every directive line (e.g.,{" "}
+                  <code>#EXTINF</code> tags), parse metadata using string tokenizers, and construct in-memory
+                  channel objects before populating the channel grid.
                 </li>
                 <li>
-                  <strong>With Xtream Codes:</strong> Common server implementations expose built-in guide data
-                  directly through the API. When supported, the player maps guide data automatically using
-                  internal stream identifiers, reducing manual configuration. However, guide data accuracy
-                  remains dependent on the provider maintaining valid listings on their server.
+                  <strong>Static Snapshots:</strong> Once the file is parsed, the channel list remains fixed
+                  until the application triggers a manual or scheduled refresh.
+                </li>
+                <li>
+                  <strong>Decoupled Guide Metadata:</strong> Programme guide (EPG) schedules are typically not
+                  embedded within the M3U playlist file itself. Players must be supplied with a secondary XMLTV
+                  URL and cross-reference channel names or <code>tvg-id</code> values to match schedule data.
                 </li>
               </ul>
 
-              <h2>Video on Demand and TV Series Presentation</h2>
+              <h3>The Xtream API Ingestion Model</h3>
               <p>
-                How on-demand movies and episodic series appear inside your player depends heavily on the
-                connection method:
+                An Xtream-compatible setup functions on a dynamic client-server pattern. Instead of downloading
+                a massive text file all at once, the application interacts with dedicated API endpoints:
               </p>
               <ul>
                 <li>
-                  <strong>M3U Playlists:</strong> On-demand titles appear as individual stream entries within
-                  the text file. A provider can group them into categories using <code>group-title</code> tags,
-                  but standard M3U directives do not natively define hierarchical relationships between TV
-                  shows, seasons, and episodes. How effectively these titles are organized depends on how the
-                  playlist was generated and how intelligently the player interprets title strings.
+                  <strong>Categorized Requests:</strong> The player first queries category lists (e.g., via{" "}
+                  <code>action=get_live_categories</code>). Streams within specific bouquets are queried
+                  on demand or cached locally in lightweight SQLite databases.
                 </li>
                 <li>
-                  <strong>Xtream-Compatible APIs:</strong> Common implementations provide dedicated API actions
-                  specifically designed for on-demand catalogs (such as <code>get_vod_categories</code> and{" "}
-                  <code>get_series</code>). This allows compatible players to present dedicated movie and series
-                  interfaces, complete with season folders, episode ordering, and movie poster artwork where
-                  supported.
+                  <strong>Account Telemetry:</strong> The initial authentication response returns real-time
+                  subscription parameters, including expiration dates and concurrent connection limits.
+                </li>
+                <li>
+                  <strong>Integrated EPG Endpoints:</strong> Many Xtream implementations provide server-side EPG
+                  endpoints (<code>action=get_short_epg</code>) tied directly to stream IDs, enabling automatic
+                  guide retrieval without secondary XMLTV configuration.
                 </li>
               </ul>
 
-              <h2>Player and Hardware Compatibility</h2>
+              <h2>Video-on-Demand (VOD) and Series Organization</h2>
               <p>
-                Compatibility is a primary factor when choosing between connection methods:
+                Content structure differences become particularly noticeable when browsing movie and TV series
+                libraries:
               </p>
-            </div>
+              <ul>
+                <li>
+                  <strong>VOD in M3U:</strong> Movies and TV episodes must be represented as individual stream
+                  lines within the playlist text. Without standardized episodic attributes, multi-season TV shows
+                  frequently appear as long, unorganized channel lists unless the player features advanced custom
+                  sorting algorithms.
+                </li>
+                <li>
+                  <strong>VOD in Xtream Codes:</strong> Modern Xtream APIs provide structured endpoints for
+                  series organization (e.g., <code>action=get_series</code> and{" "}
+                  <code>action=get_series_info</code>). Compatible player applications can display Netflix-style
+                  interfaces with seasons, episode lists, descriptions, and cover artwork automatically arranged.
+                </li>
+              </ul>
 
-            <div className="my-8 grid gap-4 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <FileText className="h-5 w-5 text-primary" />
-                    Broad Portability with M3U
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    M3U is supported across virtually the entire media landscape, including:
-                  </p>
-                  <ul className="list-disc space-y-1 pl-5">
-                    <li>Universal desktop players (VLC, MPV, PotPlayer).</li>
-                    <li>Home theater software (Kodi with PVR IPTV Simple Client).</li>
-                    <li>Smart TV apps and legacy media set-top boxes.</li>
-                    <li>Local network media servers and custom automation scripts.</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <KeyRound className="h-5 w-5 text-primary" />
-                    Interactive Features with Xtream
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
-                  <p>
-                    Xtream-compatible logins are supported by specialized IPTV players, including:
-                  </p>
-                  <ul className="list-disc space-y-1 pl-5">
-                    <li>Dedicated TV apps (TiviMate, IPTV Smarters Pro).</li>
-                    <li>Modern multi-platform clients (Televizo, XCIPTV).</li>
-                    <li>Advanced Android TV players with multi-screen support.</li>
-                    <li>Applications with dedicated VOD and series browsing tabs.</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <h2>Which Method Should You Choose?</h2>
+              <h2>Player Compatibility: Which Formats Do Apps Support?</h2>
               <p>
-                Because most IPTV subscriptions support both methods simultaneously, your choice should be
-                guided by your current viewing context:
+                Application support is a primary deciding factor for most users:
+              </p>
+              <ul>
+                <li>
+                  <strong>Dedicated IPTV Applications:</strong> Advanced television players such as{" "}
+                  <Link href="/players/tivimate" className="text-primary hover:underline">
+                    TiviMate
+                  </Link>
+                  ,{" "}
+                  <Link href="/players/iptv-smarters" className="text-primary hover:underline">
+                    IPTV Smarters Pro
+                  </Link>
+                  ,{" "}
+                  <Link href="/players/televizo" className="text-primary hover:underline">
+                    Televizo
+                  </Link>
+                  , and XCIPTV natively support both connection methods. You can choose either option based on
+                  your organizational preference.
+                </li>
+                <li>
+                  <strong>General-Purpose Media Players:</strong> Applications such as VLC, Kodi, and mpv
+                  excel at parsing standard M3U and M3U8 files. They do not natively support Xtream API query
+                  structures without specialized third-party community add-ons.
+                </li>
+                <li>
+                  <strong>Older or Legacy Hardware:</strong> On legacy set-top boxes or low-memory streaming
+                  sticks, loading very large M3U files (containing 50,000+ lines) can cause significant interface
+                  lag during parsing. An API-based login that fetches only active categories often performs more
+                  responsively.
+                </li>
+              </ul>
+
+              <h2>How to Choose Between M3U and Xtream Codes</h2>
+              <p>
+                Neither connection format changes the underlying video stream quality. Use these practical
+                guidelines to choose:
               </p>
 
               <h3>Choose an M3U Playlist When:</h3>
@@ -394,25 +354,25 @@ export default function M3uVsXtreamCodesPage() {
                 <li>You prefer automated guide matching without needing to copy and manage secondary XMLTV guide links.</li>
                 <li>You want to monitor your subscription expiration date and active connection status directly within your player&apos;s settings menu.</li>
               </ul>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
-              <h3 className="text-lg font-bold text-foreground">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              <h3 className="font-headline text-lg sm:text-xl font-bold text-foreground">
                 Dual-Format Access with TryIPTV
               </h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-muted-foreground">
                 TryIPTV provides both standard Extended M3U playlist links and Xtream-compatible credentials
                 with every subscription. You can test both connection formats during our free trial to decide
                 which interface delivers the most comfortable experience on your television or mobile setup.
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button asChild size="sm" variant="outline">
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Button asChild size="sm" variant="outline" className="border-white/[0.14] bg-white/[0.03] text-foreground hover:bg-white/[0.08]">
                   <Link href="/iptv-free-trial">
                     Explore Free Trial <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                   </Link>
                 </Button>
-                <Button asChild size="sm" variant="ghost">
+                <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
                   <Link href="/pricing">View Subscription Plans</Link>
                 </Button>
               </div>
@@ -422,9 +382,9 @@ export default function M3uVsXtreamCodesPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

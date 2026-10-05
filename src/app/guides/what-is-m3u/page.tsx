@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Code,
-  FileText,
-  FolderOpen,
-  Globe,
-  HardDrive,
-  HelpCircle,
-  Layers,
-  List,
-  Tv,
-} from "lucide-react";
+import { ArrowRight, Code, Globe, List, Tv } from "lucide-react";
 import { FaqList } from "@/components/sections/FAQ";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleCodeBlock,
+  ArticleProse,
+  ArticleSummary,
+  ArticleTermGrid,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -137,30 +130,27 @@ export default function WhatIsM3uPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Quick Summary: What Is an M3U Playlist?
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary title="Quick Summary: What Is an M3U Playlist?">
+              <p>
                 An <strong className="text-foreground font-semibold">M3U playlist</strong> is a plain-text
                 file containing an ordered list of media resources and URLs. It contains no video or audio data
                 itself; rather, it acts as an index instructing media players where to locate streams on a
                 local storage drive or across the internet.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p>
                 In IPTV, services use an evolved format known as{" "}
                 <strong className="text-foreground font-semibold">Extended M3U</strong>. By placing metadata
                 tags (such as <code>#EXTINF</code>) before each stream address, an Extended M3U playlist
                 supplies channel names, genre categories, program guide IDs, and station logos to compatible
                 IPTV applications.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>The Evolution of M3U and M3U8</h2>
               <p>
                 The M3U format originated in the late 1990s as a simple playlist format for desktop audio
@@ -226,19 +216,15 @@ export default function WhatIsM3uPage() {
                 television channels rather than brief segmented video files. A typical IPTV playlist entry
                 consists of a metadata directive line followed immediately by the stream destination URL:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Code Block Example */}
-            <div className="my-6 overflow-hidden rounded-xl border border-white/[0.08] bg-[#07080a]">
-              <div className="border-b border-white/[0.08] bg-card px-4 py-2 text-xs font-semibold text-muted-foreground">
-                Example: Extended M3U Channel Syntax
-              </div>
-              <pre className="overflow-x-auto p-4 text-xs sm:text-sm text-foreground">
-                <code>{`#EXTM3U\n#EXTINF:-1 tvg-id="example.news" tvg-name="Example News" tvg-logo="https://example.com/logo.png" group-title="News",Example News HD\nhttps://stream.example.com/live/channel.m3u8`}</code>
-              </pre>
-            </div>
+            <ArticleCodeBlock
+              title="Example: Extended M3U Channel Syntax"
+              code={`#EXTM3U\n#EXTINF:-1 tvg-id="example.news" tvg-name="Example News" tvg-logo="https://example.com/logo.png" group-title="News",Example News HD\nhttps://stream.example.com/live/channel.m3u8`}
+            />
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h3>Deconstructing the Entry Directives</h3>
               <p>
                 Each component of the entry serves a distinct technical role for the player&apos;s parser:
@@ -277,63 +263,39 @@ export default function WhatIsM3uPage() {
                 these are community conventions rather than IETF standards, they are widely recognized by
                 modern IPTV applications:
               </p>
-            </div>
+            </ArticleProse>
 
-            <div className="my-8 grid gap-4 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Code className="h-4 w-4 text-primary" />
-                    tvg-id
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
-                  The unique channel identifier used to match this stream with an Electronic Programme Guide
-                  (EPG) entry in an associated XMLTV schedule file.
-                </CardContent>
-              </Card>
+            {/* Term / Attribute Cards */}
+            <ArticleTermGrid
+              items={[
+                {
+                  name: "tvg-id",
+                  icon: Code,
+                  description:
+                    "The unique channel identifier used to match this stream with an Electronic Programme Guide (EPG) entry in an associated XMLTV schedule file.",
+                },
+                {
+                  name: "group-title",
+                  icon: List,
+                  description:
+                    'The category or genre name (such as "Sports," "News," or a country region) used by player apps to sort channels into organized menu folders.',
+                },
+                {
+                  name: "tvg-logo",
+                  icon: Globe,
+                  description:
+                    "A direct web URL pointing to a PNG or JPG image of the network's official station logo, which the player downloads and renders in the guide grid.",
+                },
+                {
+                  name: "tvg-chno",
+                  icon: Tv,
+                  description:
+                    "A suggested numerical channel position (logical channel number) to allow numeric keypad remote control tuning.",
+                },
+              ]}
+            />
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <List className="h-4 w-4 text-primary" />
-                    group-title
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
-                  The category or genre name (such as &quot;Sports,&quot; &quot;News,&quot; or a country
-                  region) used by player apps to sort channels into organized menu folders.
-                </CardContent>
-              </Card>
-
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Globe className="h-4 w-4 text-primary" />
-                    tvg-logo
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
-                  A direct web URL pointing to a PNG or JPG image of the network&apos;s official station logo,
-                  which the player downloads and renders in the guide grid.
-                </CardContent>
-              </Card>
-
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Tv className="h-4 w-4 text-primary" />
-                    tvg-chno
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm leading-6 text-muted-foreground">
-                  A suggested numerical channel position (logical channel number) to allow numeric keypad
-                  remote control tuning.
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Remote URLs vs. Downloaded Local Files</h2>
               <p>
                 IPTV providers typically supply an M3U playlist as a web link (e.g.,{" "}
@@ -404,25 +366,25 @@ export default function WhatIsM3uPage() {
                   download and parse than trimmed playlists focused on specific regional categories.
                 </li>
               </ul>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
-              <h3 className="text-lg font-bold text-foreground">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              <h3 className="font-headline text-lg sm:text-xl font-bold text-foreground">
                 Flexible Playlist Integration
               </h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-muted-foreground">
                 TryIPTV provides both standard Extended M3U playlist URLs and Xtream-compatible API logins.
                 Whether you are using a dedicated television app like TiviMate or a media player like VLC, you
                 can choose the connection format that best suits your player application and hardware setup.
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button asChild size="sm" variant="outline">
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Button asChild size="sm" variant="outline" className="border-white/[0.14] bg-white/[0.03] text-foreground hover:bg-white/[0.08]">
                   <Link href="/iptv-free-trial">
                     Explore Free Trial <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
                   </Link>
                 </Button>
-                <Button asChild size="sm" variant="ghost">
+                <Button asChild size="sm" variant="ghost" className="text-muted-foreground hover:text-foreground">
                   <Link href="/help/m3u-not-loading">Troubleshoot Playlist Loading</Link>
                 </Button>
               </div>
@@ -432,9 +394,9 @@ export default function WhatIsM3uPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

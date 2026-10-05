@@ -25,7 +25,10 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -123,12 +126,12 @@ export default function EpgNotWorkingPage() {
             ]}
             align="center"
           />
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">Electronic Programme Guide Diagnostics</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
               EPG Not Working? How to Fix Missing or Incorrect IPTV Guide Data
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               When your TV guide shows &quot;No Information,&quot; displays listings with the wrong broadcast
               hours, or drops channels entirely, use this structured diagnostic sequence to isolate the
               metadata failure and restore accurate schedules.
@@ -138,15 +141,15 @@ export default function EpgNotWorkingPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Diagnostic Starting Point: Isolate Metadata from Playback
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary
+              title="Diagnostic Starting Point: Isolate Metadata from Playback"
+              className="mb-10 sm:mb-12"
+            >
+              <p>
                 When an on-screen guide fails, your primary instinct might be to restart your router or adjust
                 video buffers. However, because{" "}
                 <Link href="/guides/what-is-epg" className="text-primary hover:underline">
@@ -154,31 +157,29 @@ export default function EpgNotWorkingPage() {
                 </Link>
                 , video playback and guide metadata operate on different pathways.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p className="mt-3">
                 Before changing player settings at random, identify which of the four distinct failure types
                 describes your situation below. Pinpointing the specific symptom pattern prevents unnecessary
                 resets and points directly to the root cause.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Identify Your EPG Failure Type</h2>
               <p>
                 EPG issues fall into four distinct categories, each pointing to a different point in the
                 ingestion pipeline:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* Failure Types Grid */}
-            <div className="my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <AlertCircle className="h-5 w-5 text-amber-400" />
-                    Type A: Complete Guide Blackout (No Channels)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+            <div className="my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <AlertCircle className="h-5 w-5 text-amber-400" />
+                  Type A: Complete Guide Blackout (No Channels)
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong>Symptom:</strong> Every channel shows &quot;No Information,&quot; an empty timeline, or
                     a permanent loading spinner across the entire guide grid.
@@ -188,17 +189,15 @@ export default function EpgNotWorkingPage() {
                     EPG server endpoint is unreachable, authentication credentials expired, or local database
                     corruption prevented parsing.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <ListFilter className="h-5 w-5 text-primary" />
-                    Type B: Partial Coverage (Some Channels Only)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <ListFilter className="h-5 w-5 text-primary" />
+                  Type B: Partial Coverage (Some Channels Only)
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong>Symptom:</strong> Major broadcast networks display complete program grids, but specialty,
                     international, or regional channels remain blank.
@@ -208,17 +207,15 @@ export default function EpgNotWorkingPage() {
                     feed, missing <code>tvg-id</code> attributes, or the upstream provider simply lacks listing data
                     for those specific channels.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Clock className="h-5 w-5 text-blue-400" />
-                    Type C: Present but Time Is Shifted (Offset)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Clock className="h-5 w-5 text-blue-400" />
+                  Type C: Present but Time Is Shifted (Offset)
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong>Symptom:</strong> Correct program titles appear, but the timeline is shifted one, two, or
                     several hours ahead or behind live broadcast.
@@ -227,17 +224,15 @@ export default function EpgNotWorkingPage() {
                     <strong>Common Indicators:</strong> Streaming device system clock or timezone mismatch, daylight
                     saving time transitions, or misconfigured manual time offsets in the player application.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader>
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <RefreshCw className="h-5 w-5 text-emerald-400" />
-                    Type D: Stale or Frozen Listings (Outdated)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <RefreshCw className="h-5 w-5 text-emerald-400" />
+                  Type D: Stale or Frozen Listings (Outdated)
+                </div>
+                <div className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong>Symptom:</strong> The guide displays yesterday&apos;s or last week&apos;s programming, or
                     abruptly cuts off with no upcoming listings past a certain hour.
@@ -246,11 +241,11 @@ export default function EpgNotWorkingPage() {
                     <strong>Common Indicators:</strong> The player failed its automated background update, local cache
                     retention expired, or the upstream provider feed has stopped publishing new schedules.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <p className="text-sm text-muted-foreground">
                 <em>Note:</em> These symptom mappings are practical diagnostic indicators rather than absolute
                 guarantees. Work through the following five verification steps in order.
@@ -278,7 +273,7 @@ export default function EpgNotWorkingPage() {
                 </li>
               </ul>
 
-              <div className="my-6 rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 text-sm leading-6 text-muted-foreground">
+              <div className="my-6 rounded-2xl border border-amber-500/25 bg-amber-500/[0.04] p-5 text-sm leading-6 text-muted-foreground">
                 <div className="flex items-center gap-2 font-semibold text-foreground">
                   <ShieldAlert className="h-5 w-5 text-amber-400" />
                   Crucial Security Rule: Avoid Third-Party Online Validators
@@ -452,10 +447,10 @@ export default function EpgNotWorkingPage() {
                   .
                 </li>
               </ul>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
                 Reliable Guide Data with TryIPTV
               </h3>
@@ -480,9 +475,9 @@ export default function EpgNotWorkingPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

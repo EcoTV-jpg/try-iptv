@@ -22,7 +22,10 @@ import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  ArticleProse,
+  ArticleSummary,
+} from "@/components/guide";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
@@ -115,12 +118,12 @@ export default function IptvLoginNotWorkingPage() {
             ]}
             align="center"
           />
-          <div className="mx-auto max-w-4xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">Authentication Diagnostics</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
               IPTV Login Not Working? How to Diagnose Authentication Errors
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               Authentication errors can stem from typographical mistakes, server reachability issues,
               middleware status codes, or account limits. Follow this systematic sequence to identify the
               exact cause and restore access safely.
@@ -130,15 +133,15 @@ export default function IptvLoginNotWorkingPage() {
       </Section>
 
       {/* Main Content Article */}
-      <Section>
+      <Section className="pt-10 pb-12 sm:pt-14 sm:pb-16 lg:pb-16">
         <Container>
-          <article className="mx-auto max-w-4xl">
+          <article className="mx-auto max-w-3xl">
             {/* Quick Answer Callout */}
-            <div className="mb-10 rounded-xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Immediate Triage: How to Approach Login Failures
-              </h2>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+            <ArticleSummary
+              title="Immediate Triage: How to Approach Login Failures"
+              className="mb-10 sm:mb-12"
+            >
+              <p>
                 An IPTV login failure means your media player was unable to complete an authentication
                 handshake with your provider&apos;s server. In most setups, this involves an{" "}
                 <Link href="/guides/what-are-xtream-codes" className="text-primary hover:underline">
@@ -146,15 +149,15 @@ export default function IptvLoginNotWorkingPage() {
                 </Link>{" "}
                 using a Server URL, Username, and Password.
               </p>
-              <p className="mt-3 text-base leading-7 text-muted-foreground">
+              <p className="mt-3">
                 Instead of making repeated rapid login attempts—which can trigger automated security lockouts
                 on some server firewalls—follow a methodical diagnosis: first verify input precision, then
                 isolate whether the issue is local to the player, examine HTTP response status codes, and
                 finally test server reachability.
               </p>
-            </div>
+            </ArticleSummary>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Step 1: Recheck Entered Credentials for Subtle Formatting Errors</h2>
               <p>
                 The vast majority of login rejections are caused by minor formatting discrepancies. On
@@ -224,18 +227,16 @@ export default function IptvLoginNotWorkingPage() {
                 code as defined by Internet standards (RFC 9110). Understanding the formal meaning of these
                 codes clarifies what the server is communicating:
               </p>
-            </div>
+            </ArticleProse>
 
             {/* HTTP Code Cards */}
             <div className="my-8 grid gap-4 sm:grid-cols-2">
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <KeyRound className="h-4 w-4 text-amber-400" />
-                    HTTP 401 Unauthorized
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <KeyRound className="h-4 w-4 text-amber-400" />
+                  HTTP 401 Unauthorized
+                </div>
+                <div className="mt-3 space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong className="text-foreground">Standard Meaning (RFC 9110):</strong> The request lacks
                     valid authentication credentials for the target resource.
@@ -245,17 +246,15 @@ export default function IptvLoginNotWorkingPage() {
                     evaluated the submitted username and password and rejected them. Possible causes may include
                     a mistyped password, an accidental trailing space, or deactivated account credentials.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Lock className="h-4 w-4 text-rose-400" />
-                    HTTP 403 Forbidden
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Lock className="h-4 w-4 text-rose-400" />
+                  HTTP 403 Forbidden
+                </div>
+                <div className="mt-3 space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong className="text-foreground">Standard Meaning (RFC 9110):</strong> The server
                     understood the request, but refuses to authorize access.
@@ -265,17 +264,15 @@ export default function IptvLoginNotWorkingPage() {
                     recognized, but access is blocked. Possible causes may include an expired subscription date,
                     reaching simultaneous connection limits, or an IP geolocation block on the server.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Globe className="h-4 w-4 text-sky-400" />
-                    HTTP 404 Not Found
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Globe className="h-4 w-4 text-sky-400" />
+                  HTTP 404 Not Found
+                </div>
+                <div className="mt-3 space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong className="text-foreground">Standard Meaning (RFC 9110):</strong> The origin server
                     did not find a current representation for the target URI.
@@ -285,17 +282,15 @@ export default function IptvLoginNotWorkingPage() {
                     server, but the expected API script (e.g., <code>/player_api.php</code>) does not exist at
                     that path. Possible causes may include a mistyped Server URL, wrong port, or migrated domain.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-white/[0.08] bg-card/60">
-                <CardHeader className="pb-2">
-                  <CardTitle as="h3" className="flex items-center gap-2 text-base font-bold text-foreground">
-                    <Server className="h-4 w-4 text-purple-400" />
-                    HTTP 5xx Server Errors (500, 502, 503)
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 shadow-sm transition-all hover:border-white/[0.14]">
+                <div className="flex items-center gap-2 text-base font-bold text-foreground">
+                  <Server className="h-4 w-4 text-purple-400" />
+                  HTTP 5xx Server Errors (500, 502, 503)
+                </div>
+                <div className="mt-3 space-y-2 text-xs sm:text-sm leading-6 text-muted-foreground">
                   <p>
                     <strong className="text-foreground">Standard Meaning (RFC 9110):</strong> The server
                     encountered an unexpected condition or failed to fulfill an apparently valid request.
@@ -305,11 +300,11 @@ export default function IptvLoginNotWorkingPage() {
                     backend database, reverse proxy, or streaming middleware is temporarily overloaded or
                     undergoing maintenance. This indicates an upstream issue rather than a client-side error.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
 
-            <div className="prose prose-lg max-w-none dark:prose-invert">
+            <ArticleProse>
               <h2>Step 4: Distinguish Transport and Reachability Failures</h2>
               <p>
                 If your player app displays an error such as &quot;Connection Failed,&quot; &quot;Server Not
@@ -407,10 +402,10 @@ export default function IptvLoginNotWorkingPage() {
                   verify account standing.
                 </li>
               </ul>
-            </div>
+            </ArticleProse>
 
             {/* Contextual TryIPTV Note */}
-            <div className="my-10 rounded-xl border border-white/[0.08] bg-card/40 p-6 sm:p-8">
+            <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
                 Account Activation & Support
               </h3>
@@ -436,9 +431,9 @@ export default function IptvLoginNotWorkingPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="border-t border-white/[0.07] bg-black/20">
+      <Section className="border-t border-white/[0.07] bg-black/20 pt-12 pb-16 sm:pt-14 sm:pb-20">
         <Container>
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-3xl">
             <div className="mb-8 text-center sm:text-left">
               <p className="eyebrow mb-2">Frequently Asked Questions</p>
               <h2 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">
