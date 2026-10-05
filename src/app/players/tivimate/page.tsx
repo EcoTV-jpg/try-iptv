@@ -341,7 +341,7 @@ export default function TivimatePage() {
                       <Settings className="h-4 w-4 text-primary" /> Buffer Size Configuration
                     </h3>
                     <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Go to <strong>Settings &gt; Playback &gt; Buffer size</strong>. Default is &ldquo;None&rdquo;. If your connection suffers from momentary ping spikes or Wi-Fi packet drops, selecting <strong>Small</strong> or <strong>Medium</strong> instructs the playback pipeline to maintain an extra buffer before displaying frames. Avoid &ldquo;Large&rdquo; under normal circumstances, as larger buffer targets increase channel-switching zap times. Read our full <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">IPTV Buffering Checklist</Link> for additional network diagnostics.
+                      Go to <strong>Settings &gt; Playback &gt; Buffer size</strong>. Default is &ldquo;None&rdquo;. If your connection suffers from momentary ping spikes or Wi-Fi packet drops, selecting <strong>Small</strong> or <strong>Medium</strong> instructs the playback pipeline to maintain an extra buffer before displaying frames. Avoid &ldquo;Large&rdquo; under normal circumstances, as larger buffer targets increase channel-switching zap times.
                     </p>
                   </div>
 
@@ -407,7 +407,7 @@ export default function TivimatePage() {
                       <tr>
                         <td className="p-3.5 sm:p-4 font-medium text-foreground">EPG Show Times are Incorrect</td>
                         <td className="p-3.5 sm:p-4">Timezone offset mismatch between server and local device.</td>
-                        <td className="p-3.5 sm:p-4">In Settings &gt; EPG &gt; EPG sources &gt; [Source], adjust &ldquo;Time offset&rdquo; by +X or -X hours until guide aligns with local time.</td>
+                        <td className="p-3.5 sm:p-4">In Settings &gt; EPG &gt; EPG sources &gt; [Source], adjust &ldquo;Time offset&rdquo; by +X or -X hours until guide aligns with local time. See our <Link href="/help/epg-not-working" className="text-primary underline">EPG troubleshooting guide</Link> for detailed time offset diagnosis.</td>
                       </tr>
                       <tr>
                         <td className="p-3.5 sm:p-4 font-medium text-foreground">Multi-View Streams Freezing</td>

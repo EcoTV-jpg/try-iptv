@@ -338,6 +338,20 @@ export default function PlayersHubPage() {
                       Choose <Link href="/players/ott-navigator" className="text-primary underline">OTT Navigator</Link>. Its native Auto Frame Rate (AFR) switching synchronizes HDMI refresh rates to eliminate micro-stutters, and its MPV engine provides hardware deinterlacing for 1080i sports feeds.
                     </p>
                   </div>
+
+                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
+                    <h3 className="font-semibold text-foreground text-base">If You Prefer Web-Portal Setup or Scheduled DVR Recording:</h3>
+                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Consider <Link href="/players/iptv-extreme" className="text-primary underline">IPTV Extreme</Link>. It allows uploading playlists remotely via its web portal and includes granular manual stream buffer configuration for Android devices.
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
+                    <h3 className="font-semibold text-foreground text-base">If You Are Using Older Legacy Hardware:</h3>
+                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Consult our <Link href="/players/perfect-player" className="text-primary underline">Perfect Player guide</Link>. Although Perfect Player is a legacy application no longer actively maintained on Google Play, its low memory footprint suits older Android set-top boxes.
+                    </p>
+                  </div>
                 </div>
               </div>
 

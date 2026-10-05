@@ -20,12 +20,19 @@ export function Devices() {
             <DeviceIcon key={device.name} name={device.name} iconName={device.icon} href={device.href} />
           ))}
         </div>
-        <div className="mt-8 text-center">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
           <Link
             href="/devices"
             className="inline-flex items-center gap-2 text-[15px] font-semibold text-primary hover:underline"
           >
             <span>View all step-by-step device setup guides</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/players"
+            className="inline-flex items-center gap-2 text-[15px] font-semibold text-primary hover:underline"
+          >
+            <span>Browse compatible IPTV players</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

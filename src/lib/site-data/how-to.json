@@ -17,7 +17,7 @@
     "steps": [
       {
         "title": "Search the Amazon Appstore for your preferred player",
-        "description": "<p>From the Fire TV home screen, open <strong>Find</strong> (search icon) and enter the name of your chosen player (such as IPTV Smarters Pro). If the app is available in your regional Appstore, select <strong>Download</strong> or <strong>Get</strong> to install it directly without modifying device settings.</p>"
+        "description": "<p>From the Fire TV home screen, open <strong>Find</strong> (search icon) and enter the name of your chosen player (such as <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a>). If the app is available in your regional Appstore, select <strong>Download</strong> or <strong>Get</strong> to install it directly without modifying device settings.</p>"
       },
       {
         "title": "Enable installation permissions if sideloading is required",
@@ -29,7 +29,7 @@
       },
       {
         "title": "Open the player and select your login method",
-        "description": "<p>Launch your player from <strong>Your Apps &amp; Games</strong>. Select <strong>Login with Xtream Codes API</strong> (recommended) or <strong>Load M3U Playlist</strong> depending on your subscription format.</p>"
+        "description": "<p>Launch your player from <strong>Your Apps &amp; Games</strong>. Select <strong>Login with <a href='/guides/what-are-xtream-codes'>Xtream Codes API</a></strong> (recommended) or <strong>Load M3U Playlist</strong> depending on your subscription format.</p>"
       },
       {
         "title": "Enter your server URL, username, and password",
@@ -53,7 +53,7 @@
       {
         "id": "service-vs-player",
         "title": "IPTV Service vs IPTV Player App",
-        "content": "<p>A common source of confusion is the difference between the service provider and the player application:</p><ul><li><strong>The IPTV service (such as TryIPTV):</strong> Provides the streaming feeds, account credentials, and on-demand catalog.</li><li><strong>The IPTV player (such as IPTV Smarters Pro or TiviMate):</strong> Is the software installed on your Fire TV that decodes the stream, renders the guide, and accepts remote navigation.</li></ul><p>If you encounter playback or login errors, identifying whether the issue relates to the app or the server credentials speeds up resolution. Read more in our guide on <a href='/guides/what-is-iptv'>what IPTV is</a>.</p>"
+        "content": "<p>A common source of confusion is the difference between the service provider and the player application:</p><ul><li><strong>The IPTV service (such as TryIPTV):</strong> Provides the streaming feeds, account credentials, and on-demand catalog.</li><li><strong>The IPTV player (such as <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a> or <a href=\"/players/tivimate\">TiviMate</a>):</strong> Is the software installed on your Fire TV that decodes the stream, renders the guide, and accepts remote navigation.</li></ul><p>If you encounter playback or login errors, identifying whether the issue relates to the app or the server credentials speeds up resolution. Read more in our guide on <a href='/guides/what-is-iptv'>what IPTV is</a>.</p>"
       },
       {
         "id": "m3u-vs-xtream",
@@ -83,7 +83,7 @@
       {
         "id": "troubleshooting",
         "title": "Troubleshooting Fire TV Playback Issues",
-        "content": "<p>If you experience streaming interruptions on Fire TV:</p><ul><li><strong>Buffering:</strong> Connect to 5 GHz Wi-Fi or use an Ethernet adapter. Review our <a href='/help/iptv-buffering'>IPTV buffering guide</a> for network diagnostics.</li><li><strong>App freezing:</strong> Go to <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>, select your player, and click <strong>Clear Cache</strong> and <strong>Force Stop</strong>.</li><li><strong>Audio with black screen:</strong> In player settings, test switching the video decoder from Hardware to Software or an alternate player engine.</li></ul>"
+        "content": "<p>If you experience streaming interruptions on Fire TV:</p><ul><li><strong>Buffering:</strong> Connect to 5 GHz Wi-Fi or use an Ethernet adapter. Review our <a href='/help/iptv-buffering'>IPTV buffering troubleshooting guide</a> for network diagnostics.</li><li><strong>App freezing:</strong> Go to <strong>Settings &gt; Applications &gt; Manage Installed Applications</strong>, select your player, and click <strong>Clear Cache</strong> and <strong>Force Stop</strong>.</li><li><strong>Audio with black screen:</strong> In player settings, test switching the video decoder from Hardware to Software or an alternate player engine.</li></ul>"
       },
       {
         "id": "two-firesticks",
@@ -148,7 +148,7 @@
     "steps": [
       {
         "title": "Search for a player in the Google Play Store",
-        "description": "<p>From your Android TV or Google TV home screen, open the <strong>Google Play Store</strong> (or use the Search tab on Google TV). Search for a dedicated TV player such as <strong>TiviMate IPTV Player</strong> or <strong>IPTV Smarters Pro</strong>.</p>"
+        "description": "<p>From your Android TV or Google TV home screen, open the <strong>Google Play Store</strong> (or use the Search tab on Google TV). Search for a dedicated TV player such as <strong><a href=\"/players/tivimate\">TiviMate IPTV Player</a></strong> or <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong>.</p>"
       },
       {
         "title": "Install the player directly on your device",
@@ -164,7 +164,7 @@
       },
       {
         "title": "Synchronize channel categories and EPG data",
-        "description": "<p>Allow the app a moment to download channel bouquets and guide data. In player settings, ensure your EPG source is assigned to update automatically on app launch or at regular intervals.</p>"
+        "description": "<p>Allow the app a moment to download channel bouquets and guide data. In player settings, ensure your <a href='/guides/what-is-epg'>EPG (electronic programme guide)</a> source is assigned to update automatically on app launch or at regular intervals.</p>"
       },
       {
         "title": "Check video decoder settings",
@@ -184,7 +184,7 @@
       {
         "id": "best-android-tv-players",
         "title": "Popular IPTV Players for Android TV",
-        "content": "<p>Top players available directly in the Google Play Store include:</p><ul><li><strong>TiviMate:</strong> Renowned for its cable-like EPG grid, customizable channel groups, multi-screen viewing, and responsive remote control navigation.</li><li><strong>IPTV Smarters Pro:</strong> Versatile player supporting Xtream Codes, multi-user playlists, and organized movie and series sections.</li><li><strong>Televizo:</strong> Lightweight player with comprehensive subtitle support and low resource usage.</li></ul>"
+        "content": "<p>Top players available directly in the Google Play Store include:</p><ul><li><strong><a href=\"/players/tivimate\">TiviMate</a>:</strong> Renowned for its cable-like EPG grid, customizable channel groups, multi-screen viewing, and responsive remote control navigation.</li><li><strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a>:</strong> Versatile player supporting Xtream Codes, multi-user playlists, and organized movie and series sections.</li><li><strong><a href=\"/players/televizo\">Televizo</a>:</strong> Lightweight player with comprehensive subtitle support and low resource usage.</li></ul>"
       },
       {
         "id": "hardware-decoding-buffer",
@@ -248,7 +248,7 @@
       },
       {
         "title": "Method A (Dedicated Player): Install IPTV Smarters Pro for Windows",
-        "description": "<p>Download the official Windows installer (.exe) for IPTV Smarters Pro from the developer's verified site. Run the installer, select <strong>Login with Xtream Codes API</strong>, enter your Server URL, Username, and Password, and select <strong>Add User</strong> to load live channels and the EPG.</p>"
+        "description": "<p>Download the official Windows installer (.exe) for <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a> from the developer's verified site. Run the installer, select <strong>Login with Xtream Codes API</strong>, enter your Server URL, Username, and Password, and select <strong>Add User</strong> to load live channels and the EPG.</p>"
       },
       {
         "title": "Method B (Microsoft Store): Install MyIPTV Player",
@@ -344,7 +344,7 @@
       },
       {
         "title": "Method B (DMG Installer): Install IPTV Smarters Pro",
-        "description": "<p>Download the official macOS disk image (<code>.dmg</code>) file from the developer's verified website. Open the DMG file, drag <strong>IPTV Smarters Pro</strong> into your Applications folder, and launch the application to enter your Xtream Codes credentials.</p>"
+        "description": "<p>Download the official macOS disk image (<code>.dmg</code>) file from the developer's verified website. Open the DMG file, drag <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> into your Applications folder, and launch the application to enter your Xtream Codes credentials.</p>"
       },
       {
         "title": "Authorize macOS Gatekeeper security if prompted",
@@ -529,7 +529,7 @@
       },
       {
         "title": "Search for a compatible webOS IPTV player",
-        "description": "<p>Search for an approved webOS player such as <strong>IPTV Smarters Pro</strong> or <strong>IBO Player</strong>. Note that LG Smart TVs run webOS; Android APK packages and sideloading tools cannot be installed on LG TVs.</p>"
+        "description": "<p>Search for an approved webOS player such as <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> or <strong>IBO Player</strong>. Note that LG Smart TVs run webOS; Android APK packages and sideloading tools cannot be installed on LG TVs.</p>"
       },
       {
         "title": "Install and launch the player on your LG TV",
@@ -621,7 +621,7 @@
       },
       {
         "title": "Download a compatible tvOS player",
-        "description": "<p>Search for a tvOS IPTV client designed for Apple TV remote navigation, such as <strong>iPlayTV</strong>, <strong>UHF - IPTV Client</strong>, or <strong>Smarters Player Lite</strong>.</p>"
+        "description": "<p>Search for a tvOS IPTV client designed for Apple TV remote navigation, such as <strong>iPlayTV</strong>, <strong>UHF - IPTV Client</strong>, or <strong><a href=\"/players/iptv-smarters\">Smarters Player Lite</a></strong>.</p>"
       },
       {
         "title": "Open the player and choose your login format",
@@ -644,7 +644,7 @@
       {
         "id": "top-tvos-players",
         "title": "Popular Apple TV IPTV Players",
-        "content": "<p>The tvOS App Store hosts several IPTV player choices:</p><ul><li><strong>iPlayTV:</strong> Established player on Apple TV offering multi-playlist support, EPG timeline display, and audio track selection.</li><li><strong>UHF - IPTV Client:</strong> Built in modern Swift, featuring iCloud synchronization so playlists and favorites configured on an iPhone or Mac can synchronize with Apple TV.</li><li><strong>Smarters Player Lite:</strong> A widely used option supporting Xtream Codes API login.</li></ul>"
+        "content": "<p>The tvOS App Store hosts several IPTV player choices:</p><ul><li><strong>iPlayTV:</strong> Established player on Apple TV offering multi-playlist support, EPG timeline display, and audio track selection.</li><li><strong>UHF - IPTV Client:</strong> Built in modern Swift, featuring iCloud synchronization so playlists and favorites configured on an iPhone or Mac can synchronize with Apple TV.</li><li><strong><a href=\"/players/iptv-smarters\">Smarters Player Lite</a>:</strong> A widely used option supporting Xtream Codes API login.</li></ul>"
       },
       {
         "id": "match-frame-rate-detail",
@@ -704,7 +704,7 @@
     "steps": [
       {
         "title": "Identify your Chromecast setup method",
-        "description": "<p>Determine your hardware before starting: <strong>Chromecast with Google TV</strong> (includes remote) supports installing native TV apps directly from the Google Play Store. <strong>Legacy Chromecast</strong> (no remote) requires casting streams from a phone, tablet, or PC browser via the Google Cast protocol.</p>"
+        "description": "<p>Determine your hardware before starting: <strong>Chromecast with Google TV</strong> (includes remote) supports installing native TV apps directly from the Google Play Store (see our <a href=\"/devices/android-tv-iptv\">Android TV and Google TV guide</a> for standalone app setup). <strong>Legacy Chromecast</strong> (no remote) requires casting streams from a phone, tablet, or PC browser via the Google Cast protocol.</p>"
       },
       {
         "title": "Method A (Chromecast with Google TV): Install a native player",

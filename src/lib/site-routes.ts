@@ -70,23 +70,23 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/players/iptv-extreme',   section: 'players', indexable: true,  lastModified: '2026-10-04' },
 
   // ── Guides hub + guide pages ──────────────────────────────────────────────
-  { path: '/guides',                     section: 'guides', indexable: false },
+  { path: '/guides',                     section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/what-is-iptv',        section: 'guides', indexable: true,  lastModified: '2026-10-04' },
   { path: '/guides/how-does-iptv-work',  section: 'guides', indexable: false },
-  { path: '/guides/what-is-m3u',         section: 'guides', indexable: false },
-  { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: false },
-  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: false },
-  { path: '/guides/what-is-epg',         section: 'guides', indexable: false },
+  { path: '/guides/what-is-m3u',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/guides/what-is-epg',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/iptv-internet-speed', section: 'guides', indexable: false },
   { path: '/guides/iptv-vs-cable',       section: 'guides', indexable: false },
 
   // ── Help hub + help pages ─────────────────────────────────────────────────
-  { path: '/help',                        section: 'help', indexable: false },
-  { path: '/help/iptv-buffering',         section: 'help', indexable: false },
-  { path: '/help/iptv-not-working',       section: 'help', indexable: false },
-  { path: '/help/iptv-login-not-working', section: 'help', indexable: false },
-  { path: '/help/m3u-not-loading',        section: 'help', indexable: false },
-  { path: '/help/epg-not-working',        section: 'help', indexable: false },
+  { path: '/help',                        section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/iptv-buffering',         section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/iptv-not-working',       section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/iptv-login-not-working', section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/m3u-not-loading',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/epg-not-working',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
 
   // ── Utility ───────────────────────────────────────────────────────────────
   { path: '/faq',        section: 'utility', indexable: true, lastModified: '2026-10-04' },
