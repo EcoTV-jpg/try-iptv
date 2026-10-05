@@ -350,19 +350,19 @@ export default function WhatAreXtreamCodesPage() {
               </p>
               <ul>
                 <li>
-                  <strong>TiviMate:</strong> Supports adding multiple Xtream Codes accounts with full category
+                  <strong><Link href="/players/tivimate">TiviMate</Link>:</strong> Supports adding multiple Xtream Codes accounts with full category
                   selection and automated guide sync.
                 </li>
                 <li>
-                  <strong>IPTV Smarters Pro:</strong> Built around the Xtream interface, offering dedicated
+                  <strong><Link href="/players/iptv-smarters">IPTV Smarters Pro</Link>:</strong> Built around the Xtream interface, offering dedicated
                   Live, VOD, and Series dashboards.
                 </li>
                 <li>
-                  <strong>Televizo:</strong> Lightweight and responsive player for Android that supports both
+                  <strong><Link href="/players/televizo">Televizo</Link>:</strong> Lightweight and responsive player for Android that supports both
                   Xtream API logins and M3U playlists.
                 </li>
                 <li>
-                  <strong>XCIPTV:</strong> A feature-rich player designed for Android TV and Firestick with
+                  <strong><Link href="/players/xciptv">XCIPTV</Link>:</strong> A feature-rich player designed for Android TV and Firestick with
                   customizable home screens based on Xtream API categories.
                 </li>
               </ul>
@@ -421,7 +421,7 @@ export default function WhatAreXtreamCodesPage() {
               </h3>
               <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-muted-foreground">
                 Whether you prefer the structured navigation of an Xtream-compatible login or the simplicity of
-                an M3U playlist, TryIPTV supports both connection methods. You can choose whichever format best
+                an <Link href="/guides/m3u-vs-xtream-codes">M3U playlist</Link>, TryIPTV supports both connection methods. You can choose whichever format best
                 matches your preferred player application, operating system, and streaming hardware.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">

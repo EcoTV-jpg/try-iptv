@@ -708,7 +708,7 @@
       },
       {
         "title": "Method A (Chromecast with Google TV): Install a native player",
-        "description": "<p>If you have Chromecast with Google TV: From the Google TV home screen, go to <strong>Apps &gt; Search for apps</strong>. Search for <strong>TiviMate IPTV Player</strong> or <strong>IPTV Smarters Pro</strong> and click <strong>Install</strong>. This provides an independent TV experience operated with your remote.</p>"
+        "description": "<p>If you have Chromecast with Google TV: From the Google TV home screen, go to <strong>Apps &gt; Search for apps</strong>. Search for <strong><a href=\"/players/tivimate\">TiviMate IPTV Player</a></strong> or <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> and click <strong>Install</strong>. This provides an independent TV experience operated with your remote.</p>"
       },
       {
         "title": "Method B (Legacy Chromecast): Set up casting from mobile or PC",
@@ -838,7 +838,7 @@
       {
         "id": "why-dedicated-streaming-sticks-win",
         "title": "Considering a Dedicated Streaming Device",
-        "content": "<p>If you regularly watch live television and prefer a native on-screen interface operated entirely with a single TV remote, an external streaming device may offer a more streamlined experience:</p><ul><li>Devices such as an <a href='/devices/firestick-iptv'>Amazon Fire TV Stick</a> or <a href='/devices/android-tv-iptv'>Chromecast with Google TV</a> connect to an available HDMI port on your TV.</li><li>They provide access to app stores hosting dedicated TV players like TiviMate and IPTV Smarters Pro, offering on-screen channel guides and direct remote control zapping.</li></ul>"
+        "content": "<p>If you regularly watch live television and prefer a native on-screen interface operated entirely with a single TV remote, an external streaming device may offer a more streamlined experience:</p><ul><li>Devices such as an <a href='/devices/firestick-iptv'>Amazon Fire TV Stick</a> or <a href='/devices/android-tv-iptv'>Chromecast with Google TV</a> connect to an available HDMI port on your TV.</li><li>They provide access to app stores hosting <a href='/players'>dedicated TV players</a> like TiviMate and IPTV Smarters Pro, offering on-screen channel guides and direct remote control zapping.</li></ul>"
       },
       {
         "id": "troubleshooting-roku-casting",

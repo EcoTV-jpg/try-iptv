@@ -8,7 +8,6 @@ export const REDIRECTED_DEVICE_SLUGS: Record<string, string> = {
   // Legacy aliases (direct to new -iptv routes to prevent redirect chains)
   'fire-tv': 'firestick-iptv',
   'android': 'android-tv-iptv',
-  'ios': 'iphone-ipad',
   'macos': 'mac-iptv',
   'mag': 'mag-box-iptv',
   // Old device routes to new SEO-friendly routes

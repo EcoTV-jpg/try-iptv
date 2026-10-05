@@ -305,8 +305,8 @@ export default function WhatIsM3uPage() {
 
               <h3>1. Loading via Remote URL</h3>
               <p>
-                When you paste the remote URL directly into an application like TiviMate, Televizo, or
-                IPTV Smarters, the player contacts the server over HTTP or HTTPS and downloads the current
+                When you paste the remote URL directly into an application like <Link href="/players/tivimate">TiviMate</Link>, Televizo, or
+                <Link href="/players/iptv-smarters">IPTV Smarters</Link>, the player contacts the server over HTTP or HTTPS and downloads the current
                 lineup into memory.
               </p>
               <ul>
@@ -374,7 +374,7 @@ export default function WhatIsM3uPage() {
                 Flexible Playlist Integration
               </h3>
               <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-muted-foreground">
-                TryIPTV provides both standard Extended M3U playlist URLs and Xtream-compatible API logins.
+                TryIPTV provides both standard <Link href="/guides/m3u-vs-xtream-codes">Extended M3U playlist URLs and Xtream-compatible API logins</Link>.
                 Whether you are using a dedicated television app like TiviMate or a media player like VLC, you
                 can choose the connection format that best suits your player application and hardware setup.
               </p>

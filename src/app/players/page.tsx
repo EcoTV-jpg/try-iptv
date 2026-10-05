@@ -358,7 +358,7 @@ export default function PlayersHubPage() {
               {/* Protocol Guides */}
               <div>
                 <h3 className="font-headline text-xl font-bold tracking-tight text-foreground">
-                  Essential Streaming Guides
+                  <Link href="/guides">Essential Streaming Guides</Link>
                 </h3>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 text-xs">
                   <Link href="/guides/what-are-xtream-codes" className="rounded-lg border border-white/[0.06] p-3 hover:bg-white/[0.03] transition-colors block">

@@ -285,7 +285,7 @@ export default function IptvBufferingPage() {
               <p>
                 <strong>Diagnostic Practice:</strong> If an individual channel displays audio with no video or
                 suffers severe rendering stutter, check your player&apos;s playback settings (such as in
-                TiviMate, Televizo, or IPTV Smarters) and test switching between Hardware and Software
+                <Link href="/players/tivimate">TiviMate</Link>, Televizo, or <Link href="/players/iptv-smarters">IPTV Smarters</Link>) and test switching between Hardware and Software
                 decoders. Neither mode is universally superior; their performance depends on stream encoding
                 and device hardware.
               </p>
