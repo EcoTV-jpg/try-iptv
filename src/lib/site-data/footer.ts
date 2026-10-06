@@ -10,13 +10,15 @@ export const footerLinks = {
     ],
     supportedLinks: [
         { name: "Fire TV Stick", href: "/devices/firestick-iptv" },
-        { name: "Android", href: "/devices/android-tv-iptv" },
+        { name: "Android TV", href: "/devices/android-tv-iptv" },
         { name: "Apple TV", href: "/devices/apple-tv-iptv" },
         { name: "Samsung TV", href: "/devices/samsung-tv-iptv" },
         { name: "LG TV", href: "/devices/lg-tv-iptv" },
+        { name: "Chromecast", href: "/devices/chromecast-iptv" },
+        { name: "MAG Box", href: "/devices/mag-box-iptv" },
+        { name: "Roku", href: "/devices/roku-iptv" },
         { name: "Windows", href: "/devices/windows-iptv" },
         { name: "macOS", href: "/devices/mac-iptv" },
-        { name: "MAG Box", href: "/devices/mag-box-iptv" },
     ],
     legalLinks: [
         { name: "Privacy Policy", href: "/privacy-policy" },

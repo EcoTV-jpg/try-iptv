@@ -63,17 +63,25 @@ https://www.tryiptv.com/iptv-free-trial
 
 Following payment or trial registration, typical credential delivery and service activation takes approximately 5–15 minutes via email or support channels. This timeframe represents a typical operational target and is not an instant or absolute guarantee.
 
-### Supported Login Methods
+### Supported Credential Methods
 
-TryIPTV delivers credentials that can be loaded into compatible third-party IPTV player applications using two standard connection protocols:
+TryIPTV delivers credentials that can be loaded into compatible third-party IPTV player applications using two standard credential and delivery methods:
 
-1. Xtream Codes API:
-   - Server URL (Portal address)
-   - Username
-   - Password
+1. Xtream Codes-Style API Login:
+   - API-based credential/login method commonly supported by modern IPTV players
+   - Parameters: Server URL (Portal address), Username, Password
 
 2. M3U Playlist:
-   - Complete M3U URL / playlist link (including integrated EPG parameters)
+   - Playlist format / playlist delivery method containing direct media stream links
+   - Delivered as a complete M3U playlist URL (with optional integrated EPG parameters)
+
+### Core Architectural Definitions
+
+- **M3U**: A multimedia playlist format and delivery method containing a structured list of media stream URLs. Not a network transport protocol.
+- **Xtream Codes-Style Login**: An API-based credential and login method commonly supported by IPTV player applications to fetch channels, categories, and guide data. Not a network protocol.
+- **EPG (Electronic Program Guide)**: Interactive schedule metadata (commonly in XMLTV format) mapping programming grids to channels.
+- **IPTV Player**: An independent, third-party software application used on client devices to load playlists or credentials, manage navigation, and decode media streams.
+- **IPTV Service**: The subscription and content-access infrastructure providing streaming feeds, account authentication, and channel lists.
 
 ---
 

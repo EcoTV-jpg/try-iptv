@@ -108,6 +108,65 @@ const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?
   },
 };
 
+interface DeviceQuickSpecs {
+  setupMethod: string;
+  loginFormat: string;
+  difficulty: string;
+}
+
+const DEVICE_QUICK_SPECS: Record<string, DeviceQuickSpecs> = {
+  'firestick-iptv': {
+    setupMethod: 'Downloader Sideloading',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+  'android-tv-iptv': {
+    setupMethod: 'Google Play / Sideload',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+  'samsung-tv-iptv': {
+    setupMethod: 'Tizen App + Web Upload',
+    loginFormat: 'Xtream Codes, M3U, or Portal',
+    difficulty: 'Simple Guided Setup',
+  },
+  'lg-tv-iptv': {
+    setupMethod: 'LG Content Store App',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+  'apple-tv-iptv': {
+    setupMethod: 'tvOS App Store Player',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+  'chromecast-iptv': {
+    setupMethod: 'Google TV App or Casting',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+  'mag-box-iptv': {
+    setupMethod: 'Stalker / Ministra Portal',
+    loginFormat: 'MAC Address + Portal URL',
+    difficulty: 'Moderate (Inner Portal Setup)',
+  },
+  'roku-iptv': {
+    setupMethod: 'AirPlay 2 / Screen Mirroring',
+    loginFormat: 'Casting from Phone or PC',
+    difficulty: 'Moderate (No Native Sideloading)',
+  },
+  'windows-iptv': {
+    setupMethod: 'Windows App or VLC Player',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+  'mac-iptv': {
+    setupMethod: 'macOS App or IINA / VLC',
+    loginFormat: 'Xtream Codes or M3U',
+    difficulty: 'Simple Guided Setup',
+  },
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { device } = await params;
   const canonicalSlug = getDeviceSlug(device);
@@ -190,12 +249,21 @@ export default async function HowToPage({ params }: Props) {
               </p>
 
               {/* Informational Specs Rail */}
-              <GuideQuickInfo
-                device={primaryKeyword}
-                setupMethod="IPTV Player + Credentials"
-                loginFormat="Xtream Codes or M3U"
-                difficulty="Simple Guided Setup"
-              />
+              {(() => {
+                const deviceSpecs = DEVICE_QUICK_SPECS[id] || {
+                  setupMethod: "IPTV Player + Credentials",
+                  loginFormat: "Xtream Codes or M3U",
+                  difficulty: "Simple Guided Setup",
+                };
+                return (
+                  <GuideQuickInfo
+                    device={primaryKeyword}
+                    setupMethod={deviceSpecs.setupMethod}
+                    loginFormat={deviceSpecs.loginFormat}
+                    difficulty={deviceSpecs.difficulty}
+                  />
+                );
+              })()}
 
               {/* Badges: Time & Last Reviewed */}
               <div className="mt-5 flex flex-wrap justify-center items-center gap-3 text-xs">

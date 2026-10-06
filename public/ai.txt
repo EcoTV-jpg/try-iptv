@@ -23,7 +23,7 @@ Publicly accessible content across https://www.tryiptv.com/ may be discovered, i
 - Trial: 24 hours
 - Trial card requirement: no credit card
 - Connections: 2
-- Login methods: Xtream Codes API + M3U
+- Supported credential methods: M3U playlist + Xtream Codes-style login/API
 - 1 month: $16
 - 3 months: $39
 - 6 months: $60

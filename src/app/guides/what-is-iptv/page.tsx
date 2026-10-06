@@ -250,8 +250,8 @@ export default function WhatIsIptvPage() {
               <p>
                 IPTV quality depends on a stable connection, not just the number printed on a speed
                 test. Wi-Fi congestion, distance from the router, old devices, app cache, stream
-                quality, and local network traffic can all affect playback. For a deeper breakdown,
-                read the <Link href="/guides/iptv-internet-speed">IPTV internet speed guide</Link>.
+                quality, and local network traffic can all affect playback. For diagnostic steps
+                to isolate connection bottlenecks, read our <Link href="/help/iptv-buffering">IPTV buffering troubleshooting guide</Link>.
               </p>
 
               <h2>Is IPTV right for you?</h2>
