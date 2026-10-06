@@ -77,8 +77,8 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/what-is-epg',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: false },
-  { path: '/guides/iptv-vs-cable',       section: 'guides', indexable: false },
+  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: true,  lastModified: '2026-10-06' },
+  { path: '/guides/iptv-vs-cable',       section: 'guides', indexable: true,  lastModified: '2026-10-06' },
 
   // ── Help hub + help pages ─────────────────────────────────────────────────
   { path: '/help',                        section: 'help', indexable: true,  lastModified: '2026-10-05' },

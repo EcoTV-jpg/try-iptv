@@ -477,8 +477,11 @@ export default function HowDoesIptvWorkPage() {
               </p>
               <ol>
                 <li>
-                  <strong>A Stable Broadband Connection:</strong> We recommend a minimum of 25 Mbps for 1080p Full HD streams and 50+ Mbps
-                  for 4K Ultra HD live broadcasts. A wired Ethernet cable is always preferred over Wi-Fi when possible.
+                  <strong>A Stable Broadband Connection:</strong> While individual streams use 5–25 Mbps, we recommend plan speeds of at least 25 Mbps for 1080p Full HD and 50+ Mbps for 4K to leave ample headroom for household devices. For detailed bandwidth planning, see our complete guide on{" "}
+                  <Link href="/guides/iptv-internet-speed" className="text-primary hover:underline">
+                    IPTV internet speed requirements
+                  </Link>
+                  . A wired Ethernet cable is always preferred over Wi-Fi when possible.
                 </li>
                 <li>
                   <strong>A Compatible Device:</strong> Amazon Fire TV Stick, Android TV box, Smart TV (Samsung or LG), Apple TV, Windows PC,

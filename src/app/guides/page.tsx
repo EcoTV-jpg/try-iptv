@@ -4,13 +4,16 @@ import {
   ArrowLeftRight,
   ArrowRight,
   BookOpen,
+  Cable,
   Calendar,
+  Cpu,
   FileText,
   HelpCircle,
   KeyRound,
   Layers,
   Radio,
   Tv,
+  Wifi,
 } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
@@ -51,6 +54,24 @@ const coreGuides = [
     readTime: "6 min read",
   },
   {
+    title: "How Does IPTV Work? From Server to Screen",
+    href: "/guides/how-does-iptv-work",
+    description:
+      "A technical walkthrough of linear video streaming over IP networks: ingestion, transcoding, packaging, unicast delivery, client-side buffering, and playback decoders.",
+    badge: "Delivery Architecture",
+    icon: Cpu,
+    readTime: "8 min read",
+  },
+  {
+    title: "IPTV Internet Speed: How Much Bandwidth Do You Need?",
+    href: "/guides/iptv-internet-speed",
+    description:
+      "A practical bandwidth planning guide covering bitrate vs plan speed, HD and 4K requirements, two simultaneous streams, Wi-Fi stability, and hourly data consumption.",
+    badge: "Network Planning",
+    icon: Wifi,
+    readTime: "7 min read",
+  },
+  {
     title: "What Is an M3U Playlist? Structure, Syntax, and IPTV Usage",
     href: "/guides/what-is-m3u",
     description:
@@ -88,6 +109,15 @@ const comparisonGuides = [
     badge: "Format Comparison",
     icon: ArrowLeftRight,
     readTime: "9 min read",
+  },
+  {
+    title: "IPTV vs. Cable: What's the Difference?",
+    href: "/guides/iptv-vs-cable",
+    description:
+      "A balanced side-by-side comparison between IPTV and traditional cable TV: network delivery architectures, equipment costs, internet dependencies, and decision criteria.",
+    badge: "Service Comparison",
+    icon: Cable,
+    readTime: "8 min read",
   },
 ];
 

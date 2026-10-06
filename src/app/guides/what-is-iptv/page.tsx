@@ -157,7 +157,12 @@ export default function WhatIsIptvPage() {
                 Traditional TV systems are built around dedicated delivery networks. Cable TV arrives
                 through coaxial or fiber infrastructure, satellite TV arrives from a dish, and
                 broadcast TV arrives over the air. IPTV uses the same general internet connection you
-                use for websites, apps, and video calls.
+                use for websites, apps, and video calls. For an in-depth side-by-side breakdown of costs,
+                equipment, contracts, and reliability tradeoffs, see our complete guide on{" "}
+                <Link href="/guides/iptv-vs-cable" className="text-primary hover:underline">
+                  IPTV vs. cable TV
+                </Link>
+                .
               </p>
             </div>
 
@@ -250,8 +255,9 @@ export default function WhatIsIptvPage() {
               <p>
                 IPTV quality depends on a stable connection, not just the number printed on a speed
                 test. Wi-Fi congestion, distance from the router, old devices, app cache, stream
-                quality, and local network traffic can all affect playback. For diagnostic steps
-                to isolate connection bottlenecks, read our <Link href="/help/iptv-buffering">IPTV buffering troubleshooting guide</Link>.
+                quality, and local network traffic can all affect playback. For recommended bandwidth
+                targets and multi-device planning, read our <Link href="/guides/iptv-internet-speed">IPTV internet speed guide</Link>,
+                or consult our <Link href="/help/iptv-buffering">IPTV buffering troubleshooting checklist</Link> to resolve active freezing.
               </p>
 
               <h2>Is IPTV right for you?</h2>

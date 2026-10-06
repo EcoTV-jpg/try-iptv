@@ -206,7 +206,12 @@ export default function IptvBufferingPage() {
                 A high speed test result does not guarantee smooth real-time video streaming. Speed tests
                 typically measure aggregate throughput using multiple parallel TCP streams over a brief
                 interval to a nearby server. In contrast, live IPTV streams rely on a continuous,
-                single-source stream where consistency matters far more than peak capacity.
+                single-source stream where consistency matters far more than peak capacity. For baseline
+                bandwidth benchmarks and simultaneous stream calculations, review our guide on{" "}
+                <Link href="/guides/iptv-internet-speed" className="text-primary hover:underline">
+                  IPTV internet speed requirements
+                </Link>
+                .
               </p>
 
               <h3>Why Packet Loss and Jitter Matter</h3>

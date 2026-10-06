@@ -122,6 +122,8 @@ TryIPTV publishes comprehensive, technical educational resources:
 - What are Xtream Codes: https://www.tryiptv.com/guides/what-are-xtream-codes
 - M3U vs Xtream Codes Comparison: https://www.tryiptv.com/guides/m3u-vs-xtream-codes
 - What is an EPG (Electronic Program Guide): https://www.tryiptv.com/guides/what-is-epg
+- IPTV Internet Speed & Bandwidth Planning: https://www.tryiptv.com/guides/iptv-internet-speed
+- IPTV vs Cable TV Model Comparison: https://www.tryiptv.com/guides/iptv-vs-cable
 
 ### Hardware Device Setup Guides
 

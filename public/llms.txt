@@ -46,6 +46,8 @@ TryIPTV operates on flat prepaid plans with zero recurring contracts or auto-ren
 - [What are Xtream Codes?](https://www.tryiptv.com/guides/what-are-xtream-codes)
 - [M3U vs Xtream Codes Comparison](https://www.tryiptv.com/guides/m3u-vs-xtream-codes)
 - [What is an EPG?](https://www.tryiptv.com/guides/what-is-epg)
+- [IPTV Internet Speed Requirements](https://www.tryiptv.com/guides/iptv-internet-speed)
+- [IPTV vs Cable Comparison](https://www.tryiptv.com/guides/iptv-vs-cable)
 
 ## Troubleshooting
 
