@@ -436,7 +436,7 @@ export default function PlayersHubPage() {
                       </Link>
                     </Button>
                     <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Instant setup credentials delivered via email
+                      Setup credentials typically delivered by email within 5–15 minutes
                     </p>
                   </div>
                 </CardContent>

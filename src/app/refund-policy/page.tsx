@@ -49,7 +49,7 @@ export default function RefundPolicyPage() {
             <div>
               <p className="text-xs font-semibold text-primary">Last Updated: {formatLegalDate(PAGE_LAST_MODIFIED["/refund-policy"])}</p>
               <p className="mt-2">
-                At TryIPTV, we prioritize delivering an exceptional streaming experience. Because digital service credentials are delivered immediately upon payment, we urge all prospective users to test our service via the 24-hour free trial prior to purchasing a long-term plan.
+                At TryIPTV, we prioritize delivering an exceptional streaming experience. Because digital service credentials are typically delivered within 5–15 minutes after payment confirmation, we urge all prospective users to test our service via the 24-hour free trial prior to purchasing a long-term plan.
               </p>
             </div>
 

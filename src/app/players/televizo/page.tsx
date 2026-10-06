@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Smartphone, Tv, Cast, Sparkles, HelpCircle, Download, FileText, Sliders } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function TelevizoPage() {
                 <Download className="h-3.5 w-3.5 text-primary" /> Sideloadable on Fire OS
               </span>
             </div>
+            <PlayerQuickAnswer player="Televizo" summary="Televizo is an IPTV player used to organize and play a provider's playlists. Install the compatible app for your device, add the supplied M3U or Xtream Codes details, allow the playlist and EPG to update, then test several channels." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }, { href: "/devices/chromecast-iptv", label: "Chromecast setup" }]} guides={[{ href: "/guides/m3u-vs-xtream-codes", label: "Choose a login format" }, { href: "/guides/what-is-epg", label: "Understand EPG data" }]} help={[{ href: "/help/m3u-not-loading", label: "Playlist troubleshooting" }]} />
           </div>
         </Container>
       </Section>
@@ -437,7 +439,7 @@ export default function TelevizoPage() {
                       </Link>
                     </Button>
                     <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Instant credentials delivery via email
+                      Credentials typically delivered by email within 5–15 minutes
                     </p>
                   </div>
                 </CardContent>

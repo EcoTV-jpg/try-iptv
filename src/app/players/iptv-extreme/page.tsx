@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, Globe, HardDrive, Calendar, HelpCircle, Laptop, Settings, Play } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function IptvExtremePage() {
                 <HardDrive className="h-3.5 w-3.5 text-primary" /> Android TV &amp; Fire OS
               </span>
             </div>
+            <PlayerQuickAnswer player="IPTV Extreme" summary="IPTV Extreme is an IPTV player with a browser-based playlist workflow. Install it on a supported Android-based TV device, use its configuration method with the credentials or playlist supplied by your service, and verify that channels and guide data appear on the TV." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-is-m3u", label: "M3U playlist guide" }, { href: "/guides/what-is-epg", label: "EPG guide" }]} help={[{ href: "/help/iptv-not-working", label: "Playback troubleshooting" }]} />
           </div>
         </Container>
       </Section>
@@ -394,7 +396,7 @@ export default function IptvExtremePage() {
                       </Link>
                     </Button>
                     <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Instant credentials delivery via email
+                      Credentials typically delivered by email within 5–15 minutes
                     </p>
                   </div>
                 </CardContent>

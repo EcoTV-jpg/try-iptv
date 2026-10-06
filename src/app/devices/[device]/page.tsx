@@ -1,5 +1,6 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
@@ -167,6 +168,62 @@ const DEVICE_QUICK_SPECS: Record<string, DeviceQuickSpecs> = {
   },
 };
 
+type SetupLink = { href: string; label: string };
+
+const DEVICE_NEXT_STEPS: Record<string, SetupLink[]> = {
+  "firestick-iptv": [
+    { href: "/players/iptv-smarters", label: "IPTV Smarters Pro for Fire TV" },
+    { href: "/guides/m3u-vs-xtream-codes", label: "Choose M3U or Xtream Codes" },
+    { href: "/help/iptv-buffering", label: "Fix buffering during playback" },
+  ],
+  "android-tv-iptv": [
+    { href: "/players/tivimate", label: "TiviMate for Android TV" },
+    { href: "/guides/what-are-xtream-codes", label: "Enter Xtream Codes credentials" },
+    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+    { href: "/help/iptv-buffering", label: "Fix buffering during playback" },
+  ],
+  "samsung-tv-iptv": [
+    { href: "/players/iptv-smarters", label: "Choose a Smart TV player" },
+    { href: "/guides/what-is-m3u", label: "Use an M3U playlist" },
+    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+  ],
+  "lg-tv-iptv": [
+    { href: "/players/iptv-smarters", label: "Choose a Smart TV player" },
+    { href: "/guides/what-are-xtream-codes", label: "Enter Xtream Codes credentials" },
+    { href: "/help/iptv-buffering", label: "Fix buffering during playback" },
+  ],
+  "apple-tv-iptv": [
+    { href: "/players/iptv-smarters", label: "Choose an Apple TV player" },
+    { href: "/guides/m3u-vs-xtream-codes", label: "Choose a playlist format" },
+    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+  ],
+  "chromecast-iptv": [
+    { href: "/devices/android-tv-iptv", label: "Set up native Google TV apps" },
+    { href: "/players/tivimate", label: "Use TiviMate on Google TV" },
+    { href: "/help/iptv-buffering", label: "Fix casting and playback buffering" },
+  ],
+  "mag-box-iptv": [
+    { href: "/guides/what-are-xtream-codes", label: "Understand IPTV credentials" },
+    { href: "/guides/what-is-epg", label: "Configure the EPG guide" },
+    { href: "/help/iptv-not-working", label: "Diagnose IPTV playback issues" },
+  ],
+  "roku-iptv": [
+    { href: "/devices/chromecast-iptv", label: "Compare casting setup options" },
+    { href: "/guides/what-is-m3u", label: "Use an M3U playlist" },
+    { href: "/help/iptv-buffering", label: "Fix streaming interruptions" },
+  ],
+  "windows-iptv": [
+    { href: "/players/iptv-smarters", label: "Use a dedicated IPTV player" },
+    { href: "/guides/what-is-m3u", label: "Load an M3U playlist" },
+    { href: "/help/m3u-not-loading", label: "Fix a playlist that will not load" },
+  ],
+  "mac-iptv": [
+    { href: "/players/iptv-smarters", label: "Choose a compatible player" },
+    { href: "/guides/m3u-vs-xtream-codes", label: "Choose a playlist format" },
+    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { device } = await params;
   const canonicalSlug = getDeviceSlug(device);
@@ -229,6 +286,7 @@ export default async function HowToPage({ params }: Props) {
   ];
 
   const tocItems = isFirestick ? firestickTocItems : defaultTocItems;
+  const nextSteps = DEVICE_NEXT_STEPS[id] ?? [];
 
   return (
     <>
@@ -290,6 +348,29 @@ export default async function HowToPage({ params }: Props) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-14 items-start">
               {/* Main Reading Column (capped at comfortable reading width ~760-820px) */}
               <div className="lg:col-span-8 w-full max-w-[820px] space-y-12 sm:space-y-14">
+                <section className="rounded-xl border border-primary/20 bg-primary/[0.05] p-5 sm:p-6" aria-labelledby="quick-answer">
+                  <p className="eyebrow mb-2">Quick answer</p>
+                  <h2 id="quick-answer" className="font-headline text-xl sm:text-2xl font-extrabold text-foreground">
+                    How to set up IPTV on {primaryKeyword}
+                  </h2>
+                  <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                    Install a compatible IPTV player, enter the Xtream Codes or M3U details supplied with your subscription, let the playlist and EPG finish loading, then test several channels. The steps below cover the device-specific setup and the most common fixes.
+                  </p>
+                  {nextSteps.length > 0 && (
+                    <nav className="mt-4 border-t border-primary/15 pt-4" aria-label="Related setup resources">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-foreground">Continue with</p>
+                      <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                        {nextSteps.map((step) => (
+                          <li key={step.href}>
+                            <Link href={step.href} className="text-primary underline underline-offset-4 hover:text-foreground">
+                              {step.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  )}
+                </section>
                 {/* Prerequisites Grid */}
                 <GuideRequirements primaryKeyword={primaryKeyword} />
 

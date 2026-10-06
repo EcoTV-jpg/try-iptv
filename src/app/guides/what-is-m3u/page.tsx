@@ -148,6 +148,9 @@ export default function WhatIsM3uPage() {
                 supplies channel names, genre categories, program guide IDs, and station logos to compatible
                 IPTV applications.
               </p>
+              <p>
+                M3U is a playlist format, while <Link href="/guides/what-are-xtream-codes" className="text-primary hover:underline">Xtream Codes</Link> is a structured login method that many IPTV players use to request channel and guide data. For the practical choice between them, see the <Link href="/guides/m3u-vs-xtream-codes" className="text-primary hover:underline">M3U vs Xtream Codes comparison</Link>.
+              </p>
             </ArticleSummary>
 
             <ArticleProse>

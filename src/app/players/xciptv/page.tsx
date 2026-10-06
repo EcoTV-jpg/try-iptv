@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, Monitor, Sliders, Volume2, HelpCircle, Gauge, SplitSquareVertical, RefreshCw } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function XciptvPage() {
                 <Gauge className="h-3.5 w-3.5 text-primary" /> Built-in Speed Test
               </span>
             </div>
+            <PlayerQuickAnswer player="XCIPTV" summary="XCIPTV is an Android-oriented IPTV player that accepts provider credentials and organizes live TV, VOD, series, and guide data. Install it on a compatible Android-based device, add the supplied Xtream Codes or M3U details, and test playback before changing decoder settings." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-are-xtream-codes", label: "Xtream Codes guide" }, { href: "/guides/what-is-epg", label: "EPG guide" }]} help={[{ href: "/help/iptv-buffering", label: "Buffering troubleshooting" }]} />
           </div>
         </Container>
       </Section>
@@ -439,7 +441,7 @@ export default function XciptvPage() {
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">TryIPTV + XCIPTV</CardTitle>
                   <CardDescription className="text-xs">
-                    Optimized Xtream Codes streaming with zero buffering
+                    Xtream Codes streaming with playback settings for your connection
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -469,7 +471,7 @@ export default function XciptvPage() {
                       </Link>
                     </Button>
                     <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Instant credentials delivery via email
+                      Credentials typically delivered by email within 5–15 minutes
                     </p>
                   </div>
                 </CardContent>

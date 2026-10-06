@@ -411,8 +411,8 @@ export default function IptvLoginNotWorkingPage() {
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 Before seeking new services, systematically verify your login formatting, server ports, and
-                network connection. If you are setting up with TryIPTV, our automated provisioning system
-                delivers verified credentials immediately upon order, and our support team is available to assist
+                network connection. If you are setting up with TryIPTV, credentials are typically delivered
+                within 5–15 minutes after order confirmation, and our support team is available to assist
                 with account activation questions.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">

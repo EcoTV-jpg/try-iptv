@@ -1,72 +1,49 @@
 # TryIPTV
 
-> TryIPTV is an independent prepaid IPTV subscription service providing streaming access to live television channels, live sports, and on-demand movies and series with 2 simultaneous connections across compatible devices and third-party IPTV players.
+> TryIPTV is a prepaid IPTV subscription service offering live television and on-demand access through compatible devices and independent IPTV player apps.
 
-TryIPTV operates on flat prepaid plans with zero recurring contracts or auto-renewals. Subscriptions support both M3U playlist delivery and Xtream Codes-style API logins. A 24-hour evaluation trial is available with no credit card required.
+Use the linked website pages for current facts. Pricing, trial terms, and refund conditions are governed by their respective pages. Device pages cover platform setup; player pages cover app configuration; guides explain concepts; help pages diagnose problems.
 
-## Core Pages
+## Service
 
-- [Home](https://www.tryiptv.com/)
-- [Pricing](https://www.tryiptv.com/pricing)
-- [Free Trial](https://www.tryiptv.com/iptv-free-trial)
-- [Universal Setup Hub](https://www.tryiptv.com/setup)
-- [Frequently Asked Questions](https://www.tryiptv.com/faq)
-- [Contact Support](https://www.tryiptv.com/contact-us)
+- [TryIPTV](https://www.tryiptv.com/): Service overview.
+- [Pricing](https://www.tryiptv.com/pricing): Current prepaid plans, prices, and included connections.
+- [Free trial](https://www.tryiptv.com/iptv-free-trial): Trial duration, access, and request process.
+- [FAQ](https://www.tryiptv.com/faq): Common service and account questions.
 
-## Setup & Devices
+## Setup
 
-- [Devices Hub](https://www.tryiptv.com/devices)
-- [Amazon Fire TV Stick Setup](https://www.tryiptv.com/devices/firestick-iptv)
-- [Android TV & Google TV Setup](https://www.tryiptv.com/devices/android-tv-iptv)
-- [Samsung Smart TV (Tizen) Setup](https://www.tryiptv.com/devices/samsung-tv-iptv)
-- [LG Smart TV (webOS) Setup](https://www.tryiptv.com/devices/lg-tv-iptv)
-- [Apple TV (tvOS) Setup](https://www.tryiptv.com/devices/apple-tv-iptv)
-- [Google Chromecast Setup](https://www.tryiptv.com/devices/chromecast-iptv)
-- [MAG Box Stalker Portal Setup](https://www.tryiptv.com/devices/mag-box-iptv)
-- [Roku Screen Mirroring Guide](https://www.tryiptv.com/devices/roku-iptv)
-- [Windows PC Setup](https://www.tryiptv.com/devices/windows-iptv)
-- [macOS Setup](https://www.tryiptv.com/devices/mac-iptv)
+- [Setup overview](https://www.tryiptv.com/setup): General setup path from credentials to playback.
+- [Device guides](https://www.tryiptv.com/devices): Choose instructions for a specific device or platform.
+- [Android TV and Google TV](https://www.tryiptv.com/devices/android-tv-iptv): Platform-specific setup example.
+- [Fire TV Stick](https://www.tryiptv.com/devices/firestick-iptv): Fire TV setup and installation steps.
 
-## Players
+## Player configuration
 
-- [IPTV Players Hub](https://www.tryiptv.com/players)
-- [IPTV Smarters Pro Setup Guide](https://www.tryiptv.com/players/iptv-smarters)
-- [TiviMate IPTV Player Setup Guide](https://www.tryiptv.com/players/tivimate)
-- [XCIPTV Player Setup Guide](https://www.tryiptv.com/players/xciptv)
-- [Televizo IPTV Player Setup Guide](https://www.tryiptv.com/players/televizo)
-- [Perfect Player IPTV Guide](https://www.tryiptv.com/players/perfect-player)
-- [OTT Navigator IPTV Setup Guide](https://www.tryiptv.com/players/ott-navigator)
-- [IPTV Extreme Setup Guide](https://www.tryiptv.com/players/iptv-extreme)
+- [Player guides](https://www.tryiptv.com/players): Choose a third-party IPTV player guide.
+- [TiviMate](https://www.tryiptv.com/players/tivimate): Configure TiviMate on compatible TV devices.
+- [IPTV Smarters Pro](https://www.tryiptv.com/players/iptv-smarters): Configure IPTV Smarters and its login methods.
 
-## Educational Guides
+## IPTV concepts
 
-- [What is IPTV?](https://www.tryiptv.com/guides/what-is-iptv)
-- [How Does IPTV Work?](https://www.tryiptv.com/guides/how-does-iptv-work)
-- [What is an M3U Playlist?](https://www.tryiptv.com/guides/what-is-m3u)
-- [What are Xtream Codes?](https://www.tryiptv.com/guides/what-are-xtream-codes)
-- [M3U vs Xtream Codes Comparison](https://www.tryiptv.com/guides/m3u-vs-xtream-codes)
-- [What is an EPG?](https://www.tryiptv.com/guides/what-is-epg)
-- [IPTV Internet Speed Requirements](https://www.tryiptv.com/guides/iptv-internet-speed)
-- [IPTV vs Cable Comparison](https://www.tryiptv.com/guides/iptv-vs-cable)
+- [Guides](https://www.tryiptv.com/guides): Browse educational explanations.
+- [What is IPTV?](https://www.tryiptv.com/guides/what-is-iptv): Definition and basic viewing requirements.
+- [What is M3U?](https://www.tryiptv.com/guides/what-is-m3u): Playlist format and stream entries.
+- [What are Xtream Codes?](https://www.tryiptv.com/guides/what-are-xtream-codes): Server URL, username, and password login method.
+- [M3U vs Xtream Codes](https://www.tryiptv.com/guides/m3u-vs-xtream-codes): Comparison and choice of connection method.
+- [What is EPG?](https://www.tryiptv.com/guides/what-is-epg): Programme schedule data and its relationship to XMLTV.
 
 ## Troubleshooting
 
-- [IPTV Buffering Diagnosis](https://www.tryiptv.com/help/iptv-buffering)
-- [IPTV Not Working Checklist](https://www.tryiptv.com/help/iptv-not-working)
-- [IPTV Login & Authentication Fixes](https://www.tryiptv.com/help/iptv-login-not-working)
-- [M3U Playlist Loading Fixes](https://www.tryiptv.com/help/m3u-not-loading)
-- [EPG TV Guide Fixes](https://www.tryiptv.com/help/epg-not-working)
+- [Help](https://www.tryiptv.com/help): Find the guide matching the failure symptom.
+- [IPTV not working](https://www.tryiptv.com/help/iptv-not-working): Triage for a general failure.
+- [Login not working](https://www.tryiptv.com/help/iptv-login-not-working): Diagnose rejected credentials or server access.
+- [M3U not loading](https://www.tryiptv.com/help/m3u-not-loading): Diagnose playlist download or parsing failures.
+- [EPG not working](https://www.tryiptv.com/help/epg-not-working): Diagnose missing or incorrect guide data.
+- [IPTV buffering](https://www.tryiptv.com/help/iptv-buffering): Diagnose interrupted playback.
 
-## Policies
+## Policies and contact
 
-- [Terms & Conditions](https://www.tryiptv.com/terms-conditions)
-- [Privacy Policy](https://www.tryiptv.com/privacy-policy)
-- [Refund Policy](https://www.tryiptv.com/refund-policy)
-- [Disclaimer](https://www.tryiptv.com/disclaimer)
-- [DMCA Policy](https://www.tryiptv.com/dmca-report)
-
-## Machine-readable resources
-
-- [Full AI Context](https://www.tryiptv.com/llms-full.txt)
-- [XML Sitemap](https://www.tryiptv.com/sitemap.xml)
-- [Robots Directives](https://www.tryiptv.com/robots.txt)
+- [Refund policy](https://www.tryiptv.com/refund-policy): Current refund eligibility and request conditions.
+- [Terms and conditions](https://www.tryiptv.com/terms-conditions): Subscription terms.
+- [Contact](https://www.tryiptv.com/contact-us): Official support channels.

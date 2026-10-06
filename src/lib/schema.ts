@@ -13,6 +13,7 @@ import type {
   WithContext,
 } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
+import { publicBrandSocialLinks } from '@/lib/site-data/socials';
 
 export const organizationId = `${siteConfig.url}/#organization`;
 const websiteId = `${siteConfig.url}/#website`;
@@ -50,15 +51,7 @@ export function generateOrganizationSchema(): WithContext<Organization> {
       'width': 1024 as any,
       'height': 1024 as any,
     },
-    'sameAs': [
-      'https://x.com/tryiptv',
-      'https://www.instagram.com/tryiptvofficial',
-      'https://www.facebook.com/tryiptv/',
-      'https://www.youtube.com/@TryIPTV',
-      'https://www.reddit.com/user/tryiptv/',
-      'https://medium.com/@tryiptv',
-      'https://t.me/tryiptvofficial',
-    ],
+    'sameAs': [...publicBrandSocialLinks],
   };
 }
 

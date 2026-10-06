@@ -406,8 +406,8 @@ export default function EpgNotWorkingPage() {
                 </li>
               </ul>
               <p className="text-sm text-muted-foreground">
-                <em>Note:</em> For an in-depth exploration of XMLTV schema definitions, DTD structure, and custom
-                generator tools, consult our dedicated guide on XMLTV specifications.
+                <em>Note:</em> XMLTV is a structured format commonly used to carry programme schedule data to an
+                IPTV player. This page focuses on diagnosing missing, stale, or incorrectly mapped guide data.
               </p>
 
               <h2>When the EPG Is Not the Real Problem</h2>

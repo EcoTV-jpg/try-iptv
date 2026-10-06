@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, HardDrive, History, ArrowUpRight, HelpCircle, Monitor, Sliders, AlertCircle } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function PerfectPlayerPage() {
                 <HardDrive className="h-3.5 w-3.5 text-primary" /> Ultra-Low Memory Usage
               </span>
             </div>
+            <PlayerQuickAnswer player="Perfect Player" summary="Perfect Player is a lightweight IPTV client for loading and organizing playlist-based television streams. Install it on a compatible device, add the playlist format provided by your service, configure guide data when available, and test playback before adjusting decoder options." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-is-m3u", label: "M3U playlist guide" }, { href: "/guides/m3u-vs-xtream-codes", label: "M3U vs Xtream Codes" }]} help={[{ href: "/help/m3u-not-loading", label: "Playlist troubleshooting" }]} />
           </div>
         </Container>
       </Section>
@@ -412,7 +414,7 @@ export default function PerfectPlayerPage() {
                       </Link>
                     </Button>
                     <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Instant credentials delivery via email
+                      Credentials typically delivered by email within 5–15 minutes
                     </p>
                   </div>
                 </CardContent>

@@ -149,6 +149,9 @@ export default function WhatAreXtreamCodesPage() {
                 not a formal standards body specification, but rather a de facto compatibility convention
                 adopted across third-party IPTV software.
               </p>
+              <p>
+                The main alternative is an <Link href="/guides/what-is-m3u" className="text-primary hover:underline">M3U playlist</Link>: M3U gives the player a list of stream URLs, while Xtream Codes gives it separate login fields and an API-style way to request organized data. The <Link href="/guides/m3u-vs-xtream-codes" className="text-primary hover:underline">M3U vs Xtream Codes guide</Link> compares the two methods without replacing this definition.
+              </p>
             </ArticleSummary>
 
             <ArticleProse>

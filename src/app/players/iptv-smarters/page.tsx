@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, Smartphone, Monitor, Clock, HelpCircle, Layers, Settings, Globe, PlayCircle } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function IptvSmartersPage() {
                 <PlayCircle className="h-3.5 w-3.5 text-primary" /> External Player Integration
               </span>
             </div>
+            <PlayerQuickAnswer player="IPTV Smarters Pro" summary="IPTV Smarters Pro is a multi-platform IPTV player, not a content provider. Install the app for your device, choose the login method your service supplied, enter the credentials or playlist, and then check channel and EPG loading." devices={[{ href: "/devices/firestick-iptv", label: "Firestick setup" }, { href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/samsung-tv-iptv", label: "Samsung TV setup" }, { href: "/devices/lg-tv-iptv", label: "LG TV setup" }]} guides={[{ href: "/guides/m3u-vs-xtream-codes", label: "Choose M3U or Xtream Codes" }, { href: "/guides/what-is-epg", label: "Understand EPG data" }]} help={[{ href: "/help/iptv-login-not-working", label: "Login troubleshooting" }]} />
           </div>
         </Container>
       </Section>
@@ -453,7 +455,7 @@ export default function IptvSmartersPage() {
                   <ul className="space-y-2 text-xs text-muted-foreground">
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                      <span>Instant Xtream Codes credentials</span>
+                      <span>Xtream Codes credentials typically delivered within 5–15 minutes</span>
                     </li>
                     <li className="flex items-center gap-2">
                       <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />

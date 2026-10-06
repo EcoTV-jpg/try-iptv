@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, Sliders, Cpu, Activity, HelpCircle, Layers, Film, RotateCcw } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function OttNavigatorPage() {
                 <Film className="h-3.5 w-3.5 text-primary" /> Hardware Deinterlacing
               </span>
             </div>
+            <PlayerQuickAnswer player="OTT Navigator" summary="OTT Navigator is a configurable IPTV player for Android-based devices. Install it on the relevant device, add the playlist format provided by your service, then confirm that channels and EPG data load before tuning playback options." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-are-xtream-codes", label: "Xtream Codes guide" }, { href: "/guides/what-is-m3u", label: "M3U playlist guide" }]} help={[{ href: "/help/epg-not-working", label: "EPG troubleshooting" }]} />
           </div>
         </Container>
       </Section>
@@ -421,7 +423,7 @@ export default function OttNavigatorPage() {
                       </Link>
                     </Button>
                     <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Instant credentials delivery via email
+                      Credentials typically delivered by email within 5–15 minutes
                     </p>
                   </div>
                 </CardContent>

@@ -162,6 +162,9 @@ export default function WhatIsEpgPage() {
                 outdated, mismatched to the wrong channel, or offset by several hours. Understanding this
                 separation is key to diagnosing guide issues quickly.
               </p>
+              <p className="mt-3">
+                EPG describes the user-facing schedule; <strong className="font-semibold text-foreground">XMLTV</strong> is one common structured data format used to carry that schedule to a player. If channels play but listings are missing or shifted, use the <Link href="/help/epg-not-working" className="text-primary hover:underline">EPG troubleshooting guide</Link> for diagnosis.
+              </p>
             </ArticleSummary>
 
             <ArticleProse>

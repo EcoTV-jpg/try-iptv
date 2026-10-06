@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, HardDrive, Clock, HelpCircle, Layers, Settings, Radio } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
+import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
@@ -116,6 +117,7 @@ export default function TivimatePage() {
                 <Layers className="h-3.5 w-3.5 text-primary" /> 5-Device License
               </span>
             </div>
+            <PlayerQuickAnswer player="TiviMate" summary="TiviMate is a TV-focused IPTV player. Install it on a compatible Android TV or Fire TV device, then add the Xtream Codes or M3U details supplied by your IPTV service and verify that channels and the EPG load." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-are-xtream-codes", label: "Xtream Codes login" }, { href: "/guides/what-is-m3u", label: "M3U playlist guide" }]} help={[{ href: "/help/iptv-buffering", label: "Buffering troubleshooting" }]} />
           </div>
         </Container>
       </Section>
