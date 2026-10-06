@@ -21,7 +21,7 @@ export function Hero() {
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           {/* Eyebrow Pill */}
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
-            Prepaid IPTV Streaming • 2 Connections Included
+            Best IPTV Streaming • 2 Connections Included
           </div>
 
           {/* Dominant H1 */}
