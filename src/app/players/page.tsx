@@ -448,6 +448,9 @@ export default function PlayersHubPage() {
                   <CardTitle className="text-base text-foreground">Device Installation Guides</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 text-xs">
+                  <Link href="/setup" className="block text-primary font-semibold hover:underline">
+                    → Universal IPTV Setup Guide
+                  </Link>
                   <Link href="/devices/firestick-iptv" className="block text-muted-foreground hover:text-primary">
                     → Amazon Firestick IPTV Setup
                   </Link>

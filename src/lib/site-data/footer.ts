@@ -1,6 +1,7 @@
 export const footerLinks = {
     quickLinks: [
         { name: "Home", href: "/" },
+        { name: "Setup Hub", href: "/setup" },
         { name: "Pricing", href: "/pricing" },
         { name: "Free Trial", href: "/iptv-free-trial" },
         { name: "FAQ", href: "/faq" },

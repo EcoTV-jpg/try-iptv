@@ -44,7 +44,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/',                  section: 'commercial', indexable: true,  lastModified: '2026-10-04' },
   { path: '/pricing',           section: 'commercial', indexable: true,  lastModified: '2026-10-04' },
   { path: '/iptv-free-trial',   section: 'commercial', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/setup',             section: 'commercial', indexable: false },
+  { path: '/setup',             section: 'commercial', indexable: true,  lastModified: '2026-10-06' },
 
   // ── Devices hub + device pages ────────────────────────────────────────────
   { path: '/devices',                section: 'devices', indexable: true,  lastModified: '2026-10-04' },
@@ -72,7 +72,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   // ── Guides hub + guide pages ──────────────────────────────────────────────
   { path: '/guides',                     section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/what-is-iptv',        section: 'guides', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/guides/how-does-iptv-work',  section: 'guides', indexable: false },
+  { path: '/guides/how-does-iptv-work',  section: 'guides', indexable: true,  lastModified: '2026-10-06' },
   { path: '/guides/what-is-m3u',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-05' },

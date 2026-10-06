@@ -95,10 +95,10 @@ export default function DevicesPage() {
 
           <div className="mt-10 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6 text-center max-w-2xl mx-auto">
             <h3 className="font-headline text-base sm:text-lg font-bold text-foreground">
-              Looking for player software recommendations?
+              New to IPTV or need a general installation overview?
             </h3>
             <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Once your streaming device is configured, <Link href="/players" className="text-primary font-semibold hover:underline">browse IPTV player guides</Link> to choose a compatible application like TiviMate, IPTV Smarters Pro, or XCIPTV.
+              Check our <Link href="/setup" className="text-primary font-semibold hover:underline">universal IPTV setup hub</Link> for general walkthroughs and credential tips, or <Link href="/players" className="text-primary font-semibold hover:underline">browse player guides</Link> to configure apps like TiviMate, IPTV Smarters Pro, and XCIPTV.
             </p>
           </div>
 

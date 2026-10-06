@@ -19,36 +19,16 @@ const baseUrl = SITE_URL;
  * - API endpoints
  * - /thank-you (noindex technical page)
  *
+ * Conforms to modern SEO best practices:
+ * - Emits clean <loc> and truthful <lastmod>
+ * - Omits deprecated/ignored priority and changefreq tags
+ *
  * Source of truth: src/lib/site-routes.ts
  * Do NOT add URLs here manually — update site-routes.ts instead.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return INDEXABLE_ROUTES.map((route) => {
-    let changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] = 'monthly';
-    let priority = 0.6;
-
-    if (route.path === '/') {
-      changeFrequency = 'daily';
-      priority = 1.0;
-    } else if (route.path === '/pricing' || route.path === '/iptv-free-trial') {
-      changeFrequency = 'weekly';
-      priority = 0.9;
-    } else if (route.section === 'devices') {
-      changeFrequency = 'weekly';
-      priority = route.path === '/devices' ? 0.85 : 0.8;
-    } else if (route.section === 'players') {
-      changeFrequency = 'weekly';
-      priority = route.path === '/players' ? 0.85 : 0.8;
-    } else if (route.path === '/contact-us' || route.path === '/faq') {
-      changeFrequency = 'monthly';
-      priority = 0.7;
-    }
-
-    return {
-      url: route.path === '/' ? baseUrl : `${baseUrl}${route.path}`,
-      lastModified: route.lastModified ? new Date(route.lastModified) : undefined,
-      changeFrequency,
-      priority,
-    };
-  });
+  return INDEXABLE_ROUTES.map((route) => ({
+    url: route.path === '/' ? baseUrl : `${baseUrl}${route.path}`,
+    lastModified: route.lastModified ? new Date(route.lastModified) : undefined,
+  }));
 }

@@ -1,90 +1,90 @@
 # TryIPTV
 
-> TryIPTV is a prepaid IPTV subscription service offering live TV, sports, movies, series, and on-demand streaming with support for popular streaming devices and IPTV players.
+> TryIPTV is a premier prepaid IPTV subscription service providing access to live television channels, sports broadcasts, on-demand movies, and series with multi-device compatibility and third-party IPTV player support.
 
 Official website: https://www.tryiptv.com/
 
 ## Core Pages
 
-- https://www.tryiptv.com/
-- https://www.tryiptv.com/pricing
-- https://www.tryiptv.com/iptv-free-trial
-- https://www.tryiptv.com/setup
-- https://www.tryiptv.com/faq
-- https://www.tryiptv.com/contact-us
-- https://www.tryiptv.com/players
+- Home: https://www.tryiptv.com/
+- Pricing: https://www.tryiptv.com/pricing
+- Free Trial: https://www.tryiptv.com/iptv-free-trial
+- Setup: https://www.tryiptv.com/setup
+- FAQ: https://www.tryiptv.com/faq
+- Contact: https://www.tryiptv.com/contact-us
+
+## Hubs
+
+- Devices Hub: https://www.tryiptv.com/devices
+- Players Hub: https://www.tryiptv.com/players
+- Guides Hub: https://www.tryiptv.com/guides
+- Help Hub: https://www.tryiptv.com/help
 
 ## Device Setup Guides
 
-- https://www.tryiptv.com/devices/firestick-iptv
-- https://www.tryiptv.com/devices/android-tv-iptv
-- https://www.tryiptv.com/devices/samsung-tv-iptv
-- https://www.tryiptv.com/devices/lg-tv-iptv
-- https://www.tryiptv.com/devices/apple-tv-iptv
-- https://www.tryiptv.com/devices/chromecast-iptv
-- https://www.tryiptv.com/devices/mag-box-iptv
-- https://www.tryiptv.com/devices/roku-iptv
-- https://www.tryiptv.com/devices/windows-iptv
-- https://www.tryiptv.com/devices/mac-iptv
+- Amazon Firestick: https://www.tryiptv.com/devices/firestick-iptv
+- Android TV / Google TV: https://www.tryiptv.com/devices/android-tv-iptv
+- Samsung Smart TV: https://www.tryiptv.com/devices/samsung-tv-iptv
+- LG Smart TV: https://www.tryiptv.com/devices/lg-tv-iptv
+- Apple TV: https://www.tryiptv.com/devices/apple-tv-iptv
+- Google Chromecast: https://www.tryiptv.com/devices/chromecast-iptv
+- MAG Box: https://www.tryiptv.com/devices/mag-box-iptv
+- Roku: https://www.tryiptv.com/devices/roku-iptv
+- Windows PC: https://www.tryiptv.com/devices/windows-iptv
+- Mac (macOS): https://www.tryiptv.com/devices/mac-iptv
 
 ## IPTV Player Guides
 
-- https://www.tryiptv.com/players/iptv-smarters
-- https://www.tryiptv.com/players/tivimate
-- https://www.tryiptv.com/players/xciptv
-- https://www.tryiptv.com/players/televizo
-- https://www.tryiptv.com/players/perfect-player
-- https://www.tryiptv.com/players/ott-navigator
-- https://www.tryiptv.com/players/iptv-extreme
+- IPTV Smarters Pro: https://www.tryiptv.com/players/iptv-smarters
+- TiviMate: https://www.tryiptv.com/players/tivimate
+- XCIPTV: https://www.tryiptv.com/players/xciptv
+- Televizo: https://www.tryiptv.com/players/televizo
+- Perfect Player: https://www.tryiptv.com/players/perfect-player
+- OTT Navigator: https://www.tryiptv.com/players/ott-navigator
+- IPTV Extreme: https://www.tryiptv.com/players/iptv-extreme
 
-## IPTV Guides
+## Published Educational Guides
 
-- https://www.tryiptv.com/guides/what-is-iptv
-- https://www.tryiptv.com/guides/how-does-iptv-work
-- https://www.tryiptv.com/guides/what-is-m3u
-- https://www.tryiptv.com/guides/what-are-xtream-codes
-- https://www.tryiptv.com/guides/m3u-vs-xtream-codes
-- https://www.tryiptv.com/guides/what-is-epg
-- https://www.tryiptv.com/guides/xmltv-epg
-- https://www.tryiptv.com/guides/iptv-internet-speed
-- https://www.tryiptv.com/guides/iptv-connections-explained
-- https://www.tryiptv.com/guides/do-i-need-a-vpn-for-iptv
+- What is IPTV: https://www.tryiptv.com/guides/what-is-iptv
+- How Does IPTV Work: https://www.tryiptv.com/guides/how-does-iptv-work
+- What is an M3U Playlist: https://www.tryiptv.com/guides/what-is-m3u
+- What are Xtream Codes: https://www.tryiptv.com/guides/what-are-xtream-codes
+- M3U vs Xtream Codes: https://www.tryiptv.com/guides/m3u-vs-xtream-codes
+- What is an EPG: https://www.tryiptv.com/guides/what-is-epg
 
-## Troubleshooting
+## Troubleshooting & Help
 
-- https://www.tryiptv.com/help/iptv-buffering
-- https://www.tryiptv.com/help/iptv-not-working
-- https://www.tryiptv.com/help/iptv-login-not-working
-- https://www.tryiptv.com/help/m3u-not-loading
-- https://www.tryiptv.com/help/epg-not-working
+- IPTV Buffering: https://www.tryiptv.com/help/iptv-buffering
+- IPTV Not Working: https://www.tryiptv.com/help/iptv-not-working
+- IPTV Login Not Working: https://www.tryiptv.com/help/iptv-login-not-working
+- M3U Not Loading: https://www.tryiptv.com/help/m3u-not-loading
+- EPG Not Working: https://www.tryiptv.com/help/epg-not-working
 
-## Service Information
+## Service Facts
 
 - Brand: TryIPTV
-- Subscription model: prepaid
-- Automatic renewal: no
+- Model: prepaid
+- Auto renewal: no
 - Trial: 24 hours
-- Typical activation target: approximately 5–15 minutes
-- Login methods: Xtream Codes API and M3U
-- Simultaneous connections: 2
+- Trial card requirement: no credit card
+- Connections: 2
+- Login methods: Xtream Codes API + M3U
 - 1 month: $16
 - 3 months: $39
 - 6 months: $60
 - 12 months: $90
+- Activation: typically 5–15 minutes
 
 ## Policies
 
-- https://www.tryiptv.com/terms-conditions
-- https://www.tryiptv.com/privacy-policy
-- https://www.tryiptv.com/refund-policy
-- https://www.tryiptv.com/disclaimer
-- https://www.tryiptv.com/dmca-report
+- Terms & Conditions: https://www.tryiptv.com/terms-conditions
+- Privacy Policy: https://www.tryiptv.com/privacy-policy
+- Refund Policy: https://www.tryiptv.com/refund-policy
+- Disclaimer: https://www.tryiptv.com/disclaimer
+- DMCA Notice: https://www.tryiptv.com/dmca-report
 
-Full AI context:
-https://www.tryiptv.com/llms-full.txt
+## Discovery Files
 
-Sitemap:
-https://www.tryiptv.com/sitemap.xml
-
-Robots:
-https://www.tryiptv.com/robots.txt
+- Full AI Context: https://www.tryiptv.com/llms-full.txt
+- Canonical Sitemap: https://www.tryiptv.com/sitemap.xml
+- Robots Directives: https://www.tryiptv.com/robots.txt
