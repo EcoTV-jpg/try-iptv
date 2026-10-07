@@ -439,8 +439,8 @@
         "description": "<p>Select <strong>Install</strong> to download the application to your TV. When you launch the app, it will display a device identifier: for <strong>Smart IPTV</strong>, note the <strong>MAC Address</strong>; for <strong>IBO Player</strong>, note the <strong>Device ID</strong> and <strong>Device Key</strong>.</p>"
       },
       {
-        "title": "Upload credentials via the developer's web portal",
-        "description": "<p>Because typing long URLs on a TV remote is error-prone, Tizen players manage playlists through developer web portals:</p><ol><li>On your phone or computer browser, open the player developer's portal (e.g., <code>iboplayer.com/device</code> or <code>siptv.app/mylist</code>).</li><li>Enter your TV's identifier (MAC address or Device ID &amp; Key).</li><li>Enter your TryIPTV credentials (Xtream Codes server URL, username, and password, or M3U playlist link).</li><li>Click <strong>Save</strong> or <strong>Send</strong>.</li></ol>"
+        "title": "Enter credentials on-screen or via developer web portal",
+        "description": "<p>Depending on your chosen app, enter credentials on-screen or via a developer web portal (popular apps like IBO Player and Smart IPTV manage playlists through web activation portals to avoid typing long URLs with a remote):</p><ol><li>If using a portal-based app, open the developer's portal (e.g., <code>iboplayer.com/device</code> or <code>siptv.app/mylist</code>) on your phone or computer.</li><li>Enter your TV app's identifier (MAC address or Device ID &amp; Key).</li><li>Enter your TryIPTV credentials (Xtream Codes server URL, username, and password, or M3U playlist link).</li><li>Click <strong>Save</strong> or <strong>Send</strong>. If your app supports direct on-screen login, you can alternatively enter your credentials into the app settings.</li></ol>"
       },
       {
         "title": "Reload the application on your Samsung TV",
@@ -815,8 +815,8 @@
         "description": "<p>On your Roku, search the Channel Store for <strong>Web Video Caster Receiver</strong> and install it if available in your region. Install the companion <strong>Web Video Caster</strong> application on your mobile device, load your M3U playlist, and route the video feed to your Roku.</p>"
       },
       {
-        "title": "Connect devices to 5 GHz Wi-Fi",
-        "description": "<p>Because screen mirroring transmits video wirelessly from your source device through your local network to your Roku, connecting both devices to the <strong>5 GHz Wi-Fi band</strong> of your router helps prevent video stutter and latency.</p>"
+        "title": "Connect devices to stable Wi-Fi (5 GHz recommended)",
+        "description": "<p>Because screen mirroring transmits video wirelessly from your source device through your local network to your Roku, connecting both devices to the <strong>5 GHz Wi-Fi band</strong> (where supported by both your router and Roku model) helps reduce wireless congestion and prevent video stutter.</p>"
       }
     ],
     "extraSections": [
@@ -888,7 +888,7 @@
     "steps": [
       {
         "title": "Locate your MAG MAC address on the device label",
-        "description": "<p>MAG set-top boxes authenticate via hardware MAC address registered with your service provider. Turn your box over and find the MAC address on the barcode sticker: authentic Infomir MAG devices typically begin with the IEEE vendor prefix <strong>00:1A:79</strong>.</p>"
+        "description": "<p>MAG set-top boxes authenticate via hardware MAC address registered with your service provider. Turn your box over and find the MAC address on the barcode sticker (many Infomir MAG models begin with the IEEE vendor prefix <strong>00:1A:79</strong>, though specific prefixes may vary depending on hardware revision and manufacturer).</p>"
       },
       {
         "title": "Connect your MAG box using a wired Ethernet cable",

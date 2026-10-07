@@ -6,7 +6,18 @@ import { Section } from "@/components/shared/Section";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { FaqList } from "@/components/sections/FAQ";
 import { howToArticles, getSafeArticleData, isRedirectedDevice, getDeviceSlug } from "@/lib/how-to";
-import { Clock, Calendar } from "lucide-react";
+import {
+  Clock,
+  Calendar,
+  Tv,
+  Wifi,
+  Layers,
+  KeyRound,
+  Monitor,
+  Laptop,
+  Smartphone,
+  HardDrive,
+} from "lucide-react";
 import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
 import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
@@ -21,6 +32,7 @@ import {
   GuideCallout,
   GuideToc,
   GuideCta,
+  type RequirementItem,
   type TocItem,
 } from "@/components/guide";
 
@@ -170,57 +182,375 @@ const DEVICE_QUICK_SPECS: Record<string, DeviceQuickSpecs> = {
 
 type SetupLink = { href: string; label: string };
 
+const DEVICE_QUICK_ANSWERS: Record<string, string> = {
+  "firestick-iptv":
+    "Install Downloader from the Amazon Appstore, sideload a dedicated IPTV player like IPTV Smarters Pro or TiviMate, enter your Xtream Codes API credentials, and optimize Fire TV remote navigation and buffer settings.",
+  "android-tv-iptv":
+    "Download a native TV player like TiviMate or IPTV Smarters directly from the Google Play Store, connect with your Xtream Codes credentials, and verify hardware video decoding for fluid channel switching.",
+  "samsung-tv-iptv":
+    "Install a supported Tizen OS player like IBO Player or Smart IPTV from the Samsung Smart Hub, connect using your Xtream Codes or M3U playlist (either directly on-screen or via the developer's web activation portal depending on the player), and reload your channels on your TV.",
+  "lg-tv-iptv":
+    "Install a webOS-compatible player from the LG Content Store, input your Xtream Codes or M3U playlist, filter unwanted bouquet categories to conserve webOS system memory, and fine-tune audio sync settings.",
+  "apple-tv-iptv":
+    "Download a native tvOS client like UHF, iPlayTV, or Smarters Player Lite from the Apple TV App Store, enter your Xtream Codes credentials using iPhone Continuity Keyboard or local web upload, and enable Match Frame Rate for judder-free playback.",
+  "chromecast-iptv":
+    "For Chromecast with Google TV or Google TV Streamer, install a standalone player from Google Play and use the remote control. For legacy Cast-only dongles, initiate streams inside a compatible mobile IPTV app and cast over your local Wi-Fi network.",
+  "mag-box-iptv":
+    "Register your MAG set-top box's hardware MAC address (found on the device barcode label) with your provider for middleware authorization, enter the Server Portal URL into the Inner Portal system settings, and verify system clock synchronization for accurate EPG schedules.",
+  "roku-iptv":
+    "Because Roku OS does not support Android APK sideloading or native uncertified IPTV player apps, stream using Apple AirPlay 2 (on supported models) or screen mirror via Miracast/Smart View from a mobile device or PC over a stable local Wi-Fi connection.",
+  "windows-iptv":
+    "Install a dedicated desktop app like IPTV Smarters Pro or stream your M3U network URL through VLC Media Player, enable hardware video acceleration in player settings if desired, and verify Windows Defender Firewall allows streaming traffic.",
+  "mac-iptv":
+    "Download a native client like UHF from the Mac App Store or install players like IPTV Smarters/IINA (authorizing Gatekeeper only if installing standalone DMG packages), and use Picture-in-Picture for flexible desktop multitasking.",
+};
+
+const DEVICE_REQUIREMENTS: Record<string, RequirementItem[]> = {
+  "firestick-iptv": [
+    {
+      title: "Fire TV Stick / Cube",
+      desc: "Connected to HDMI input, powered by the included wall adapter, and signed into an Amazon account.",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "5 GHz Wi-Fi or Ethernet",
+      desc: "Reliable wireless signal or an Amazon Ethernet Adapter for stable 4K sports streaming.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Downloader or Native Player",
+      desc: "Downloader utility from the Amazon Appstore or a player supporting Fire OS remote navigation.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Xtream Credentials",
+      desc: "Server URL, username, and password received in your activation email.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "android-tv-iptv": [
+    {
+      title: "Android TV / Google TV",
+      desc: "Smart TV or streaming box (Nvidia Shield, Chromecast, Mi Box) with Google Play access.",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "High-Speed Internet",
+      desc: "Wired Ethernet cable or 5 GHz Wi-Fi to minimize packet loss during peak broadcast hours.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Google Play IPTV Player",
+      desc: "TiviMate, IPTV Smarters Pro, or XCIPTV installed directly from the official store.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Connection Details",
+      desc: "Xtream Codes API details or M3U playlist link from your subscription confirmation.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "samsung-tv-iptv": [
+    {
+      title: "Samsung Smart TV (Tizen OS)",
+      desc: "Samsung television model (2016 or newer) with active Samsung Smart Hub access.",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "Home Broadband Connection",
+      desc: "Wired Ethernet to your router or strong home Wi-Fi signal to prevent video buffering.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Tizen Player Application",
+      desc: "IBO Player, Smart IPTV, or Nanomid Player installed from the Samsung App Store.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Subscription Details",
+      desc: "Xtream Codes login or M3U link, entered directly on-screen or uploaded via developer portal (using your app's MAC or Device ID/Key).",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "lg-tv-iptv": [
+    {
+      title: "LG Smart TV (webOS)",
+      desc: "LG webOS television (version 3.0 or later) with an active LG Account (operated via standard remote or LG Magic Remote).",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "High-Bandwidth Network",
+      desc: "Ethernet cable or 5 GHz Wi-Fi to ensure consistent throughput for 4K streams.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "LG Content Store Player",
+      desc: "IPTV Smarters, IBO Player, or Smart IPTV downloaded from the LG Content Store.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Xtream or M3U Data",
+      desc: "Xtream Codes login parameters or M3U playlist URL supplied upon service activation.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "apple-tv-iptv": [
+    {
+      title: "Apple TV HD / 4K (tvOS)",
+      desc: "Apple TV running tvOS 14 or later, paired with a Siri Remote and linked Apple ID.",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "Gigabit Ethernet or 5 GHz Wi-Fi",
+      desc: "Stable home network supporting high bitrates for Match Frame Rate 4K playback.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "tvOS App Store Player",
+      desc: "Native tvOS player such as UHF, iPlayTV, or Smarters Player Lite from the App Store.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Xtream Codes",
+      desc: "Server URL, username, and password entered via iPhone keyboard or web upload.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "chromecast-iptv": [
+    {
+      title: "Chromecast Device & AC Power",
+      desc: "Chromecast with Google TV / Google TV Streamer (includes remote) or legacy Cast-only dongle powered by an external AC wall adapter.",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "Stable Local Wi-Fi Network",
+      desc: "Stable home Wi-Fi (5 GHz recommended where supported; legacy casting requires both mobile device and Chromecast on the same network).",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Native TV App or Casting Client",
+      desc: "Standalone TV player from Google Play (Chromecast with Google TV) or casting app like Web Video Caster (legacy Chromecast dongles).",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Service Credentials",
+      desc: "Xtream Codes API details or M3U playlist URL for mobile casting or native app login.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "mag-box-iptv": [
+    {
+      title: "Infomir MAG Set-Top Box",
+      desc: "MAG 322, 420, 520, 524, 540 or compatible STB with original remote and HDMI cable.",
+      icon: HardDrive,
+      tag: "Hardware",
+    },
+    {
+      title: "Wired Ethernet Connection",
+      desc: "Direct LAN cable from your router to the MAG box (strongly recommended over USB Wi-Fi).",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Portal Middleware Firmware",
+      desc: "Built-in Stalker / Ministra portal middleware with correct time zone and optional NTP server synchronization.",
+      icon: Layers,
+      tag: "System",
+    },
+    {
+      title: "Registered MAC & Portal URL",
+      desc: "Your box's physical MAC address registered with TryIPTV, paired with the Server Portal URL provided in your activation details.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "roku-iptv": [
+    {
+      title: "Roku Device or Roku TV",
+      desc: "Roku Streaming Stick, Express, Ultra, or Roku TV (AirPlay 2 and screen mirroring availability varies by model and Roku OS version).",
+      icon: Tv,
+      tag: "Hardware",
+    },
+    {
+      title: "Stable Local Wi-Fi (5 GHz Recommended)",
+      desc: "Both your sending device and Roku connected to the same local Wi-Fi network (5 GHz band recommended where supported to reduce mirroring latency; router AP Isolation must be disabled).",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Source Casting Player",
+      desc: "Source IPTV player on iPhone/iPad (for AirPlay 2), Android device (Smart View / Miracast), or a companion receiver like Web Video Caster.",
+      icon: Smartphone,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Credentials on Mobile",
+      desc: "Active TryIPTV subscription configured inside your mobile or desktop streaming application.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "windows-iptv": [
+    {
+      title: "Windows 10 / 11 PC or Laptop",
+      desc: "Desktop or laptop running Windows 10 or 11 with integrated or discrete graphics capable of standard video decoding (hardware acceleration supported).",
+      icon: Monitor,
+      tag: "Hardware",
+    },
+    {
+      title: "Broadband Internet Connection",
+      desc: "Ethernet or Wi-Fi connection with Windows Defender Firewall permissions allowed.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "Windows IPTV Application",
+      desc: "IPTV Smarters Pro for Windows, MyIPTV Player (Microsoft Store), or VLC Media Player.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Xtream or M3U Link",
+      desc: "Xtream Codes credentials or M3U playlist link for direct stream loading.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+  "mac-iptv": [
+    {
+      title: "Apple Mac (macOS)",
+      desc: "MacBook, iMac, Mac Studio, or Mac mini running macOS 11 or later (compatible with both Apple Silicon and Intel processors).",
+      icon: Laptop,
+      tag: "Hardware",
+    },
+    {
+      title: "High-Speed Mac Internet",
+      desc: "Stable Wi-Fi or Thunderbolt Ethernet adapter for uninterrupted HD and 4K playback.",
+      icon: Wifi,
+      tag: "Network",
+    },
+    {
+      title: "macOS Player Application",
+      desc: "UHF - IPTV Client (Mac App Store), IPTV Smarters DMG, or open-source IINA media player.",
+      icon: Layers,
+      tag: "Application",
+    },
+    {
+      title: "TryIPTV Xtream or M3U Data",
+      desc: "Xtream Codes API details or M3U playlist URL for instant channel synchronization.",
+      icon: KeyRound,
+      tag: "Service",
+    },
+  ],
+};
+
+const DEVICE_CTA_DESCRIPTIONS: Record<string, string> = {
+  "firestick-iptv":
+    "Verify channel loading speed, Fire TV remote navigation, Downloader setup, and EPG guide stability with our full-access 24-hour evaluation pass.",
+  "android-tv-iptv":
+    "Test TiviMate or Smarters playback, electronic programme guide (EPG) grid speed, and hardware video decoding on your Android TV.",
+  "samsung-tv-iptv":
+    "Test Tizen app responsiveness, post-2018 audio output, and live channel stability on your Samsung Smart TV before committing.",
+  "lg-tv-iptv":
+    "Evaluate webOS channel zapping, LG Magic Remote navigation, and audio synchronization on your LG Smart TV with zero financial risk.",
+  "apple-tv-iptv":
+    "Experience Match Frame Rate, fluid tvOS Siri Remote navigation, and 4K picture clarity on Apple TV with our 24-hour evaluation pass.",
+  "chromecast-iptv":
+    "Test Google TV remote responsiveness or wireless casting playback performance from your mobile device before choosing a subscription plan.",
+  "mag-box-iptv":
+    "Test Stalker portal loading, MAC authentication, physical remote zapping, and channel stability on your Infomir MAG set-top box.",
+  "roku-iptv":
+    "Test AirPlay 2 or screen mirroring playback stability, audio synchronization, and wireless connection performance on your Roku TV with our 24-hour evaluation pass.",
+  "windows-iptv":
+    "Test multi-monitor playback, GPU hardware acceleration, and channel switching on your Windows PC with our full-access trial.",
+  "mac-iptv":
+    "Test native macOS player performance, Picture-in-Picture multitasking, and Apple Silicon efficiency with our 24-hour evaluation pass.",
+};
+
 const DEVICE_NEXT_STEPS: Record<string, SetupLink[]> = {
   "firestick-iptv": [
     { href: "/players/iptv-smarters", label: "IPTV Smarters Pro for Fire TV" },
     { href: "/guides/m3u-vs-xtream-codes", label: "Choose M3U or Xtream Codes" },
-    { href: "/help/iptv-buffering", label: "Fix buffering during playback" },
+    { href: "/help/iptv-buffering", label: "Troubleshoot Firestick buffering" },
+    { href: "/iptv-free-trial", label: "Start 24-hour Fire TV trial" },
   ],
   "android-tv-iptv": [
-    { href: "/players/tivimate", label: "TiviMate for Android TV" },
+    { href: "/players/tivimate", label: "TiviMate setup on Android TV" },
     { href: "/guides/what-are-xtream-codes", label: "Enter Xtream Codes credentials" },
     { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
-    { href: "/help/iptv-buffering", label: "Fix buffering during playback" },
+    { href: "/iptv-free-trial", label: "Test Android TV with a free trial" },
   ],
   "samsung-tv-iptv": [
-    { href: "/players/iptv-smarters", label: "Choose a Smart TV player" },
-    { href: "/guides/what-is-m3u", label: "Use an M3U playlist" },
-    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+    { href: "/players/iptv-smarters", label: "IPTV Smarters Smart TV guide" },
+    { href: "/guides/what-is-m3u", label: "Upload M3U playlists via web portal" },
+    { href: "/devices/firestick-iptv", label: "Compare with Fire TV Stick" },
+    { href: "/help/iptv-buffering", label: "Fix Smart TV streaming stutter" },
   ],
   "lg-tv-iptv": [
-    { href: "/players/iptv-smarters", label: "Choose a Smart TV player" },
-    { href: "/guides/what-are-xtream-codes", label: "Enter Xtream Codes credentials" },
-    { href: "/help/iptv-buffering", label: "Fix buffering during playback" },
+    { href: "/players/iptv-smarters", label: "IPTV Smarters on webOS" },
+    { href: "/guides/what-are-xtream-codes", label: "Connect via Xtream Codes" },
+    { href: "/devices/android-tv-iptv", label: "Compare with Android TV streaming" },
+    { href: "/help/iptv-buffering", label: "Fix webOS buffering issues" },
   ],
   "apple-tv-iptv": [
-    { href: "/players/iptv-smarters", label: "Choose an Apple TV player" },
-    { href: "/guides/m3u-vs-xtream-codes", label: "Choose a playlist format" },
-    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+    { href: "/players/iptv-smarters", label: "Smarters Player Lite on tvOS" },
+    { href: "/guides/m3u-vs-xtream-codes", label: "Choose M3U or Xtream Codes" },
+    { href: "/help/iptv-login-not-working", label: "Troubleshoot Apple TV login errors" },
+    { href: "/iptv-free-trial", label: "Test Apple TV with 24-hour trial" },
   ],
   "chromecast-iptv": [
-    { href: "/devices/android-tv-iptv", label: "Set up native Google TV apps" },
-    { href: "/players/tivimate", label: "Use TiviMate on Google TV" },
-    { href: "/help/iptv-buffering", label: "Fix casting and playback buffering" },
+    { href: "/devices/android-tv-iptv", label: "Explore native Android TV features" },
+    { href: "/players/tivimate", label: "Install TiviMate on Google TV" },
+    { href: "/help/iptv-buffering", label: "Fix casting Wi-Fi buffering" },
+    { href: "/iptv-free-trial", label: "Request a free test line" },
   ],
   "mag-box-iptv": [
-    { href: "/guides/what-are-xtream-codes", label: "Understand IPTV credentials" },
-    { href: "/guides/what-is-epg", label: "Configure the EPG guide" },
-    { href: "/help/iptv-not-working", label: "Diagnose IPTV playback issues" },
+    { href: "/guides/what-are-xtream-codes", label: "Xtream Codes vs Stalker Portals" },
+    { href: "/guides/what-is-epg", label: "Configure MAG EPG time zones" },
+    { href: "/help/iptv-not-working", label: "Diagnose MAG status messages" },
+    { href: "/iptv-free-trial", label: "Activate MAG trial with MAC address" },
   ],
   "roku-iptv": [
-    { href: "/devices/chromecast-iptv", label: "Compare casting setup options" },
-    { href: "/guides/what-is-m3u", label: "Use an M3U playlist" },
-    { href: "/help/iptv-buffering", label: "Fix streaming interruptions" },
+    { href: "/devices/chromecast-iptv", label: "Compare with Chromecast casting" },
+    { href: "/devices/firestick-iptv", label: "Why Firestick offers native TV apps" },
+    { href: "/guides/what-is-m3u", label: "Understand M3U playlist format" },
+    { href: "/help/iptv-buffering", label: "Fix screen mirroring stutter" },
   ],
   "windows-iptv": [
-    { href: "/players/iptv-smarters", label: "Use a dedicated IPTV player" },
-    { href: "/guides/what-is-m3u", label: "Load an M3U playlist" },
-    { href: "/help/m3u-not-loading", label: "Fix a playlist that will not load" },
+    { href: "/players/iptv-smarters", label: "IPTV Smarters Pro for Windows" },
+    { href: "/guides/what-is-m3u", label: "Load M3U streams in VLC" },
+    { href: "/help/m3u-not-loading", label: "Fix M3U playlist loading errors" },
+    { href: "/iptv-free-trial", label: "Test on Windows with a free trial" },
   ],
   "mac-iptv": [
-    { href: "/players/iptv-smarters", label: "Choose a compatible player" },
-    { href: "/guides/m3u-vs-xtream-codes", label: "Choose a playlist format" },
-    { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
+    { href: "/players/iptv-smarters", label: "IPTV Smarters for macOS" },
+    { href: "/guides/m3u-vs-xtream-codes", label: "Choose M3U or Xtream Codes" },
+    { href: "/help/iptv-login-not-working", label: "Resolve macOS player login errors" },
+    { href: "/iptv-free-trial", label: "Test on Mac with a free trial" },
   ],
 };
 
@@ -287,6 +617,11 @@ export default async function HowToPage({ params }: Props) {
 
   const tocItems = isFirestick ? firestickTocItems : defaultTocItems;
   const nextSteps = DEVICE_NEXT_STEPS[id] ?? [];
+  const quickAnswerText =
+    DEVICE_QUICK_ANSWERS[id] ??
+    `Install a compatible IPTV player on ${primaryKeyword}, connect with your subscription credentials, and test your channels.`;
+  const deviceRequirements = DEVICE_REQUIREMENTS[id];
+  const ctaDescription = DEVICE_CTA_DESCRIPTIONS[id];
 
   return (
     <>
@@ -354,7 +689,7 @@ export default async function HowToPage({ params }: Props) {
                     How to set up IPTV on {primaryKeyword}
                   </h2>
                   <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground">
-                    Install a compatible IPTV player, enter the Xtream Codes or M3U details supplied with your subscription, let the playlist and EPG finish loading, then test several channels. The steps below cover the device-specific setup and the most common fixes.
+                    {quickAnswerText}
                   </p>
                   {nextSteps.length > 0 && (
                     <nav className="mt-4 border-t border-primary/15 pt-4" aria-label="Related setup resources">
@@ -372,7 +707,7 @@ export default async function HowToPage({ params }: Props) {
                   )}
                 </section>
                 {/* Prerequisites Grid */}
-                <GuideRequirements primaryKeyword={primaryKeyword} />
+                <GuideRequirements primaryKeyword={primaryKeyword} items={deviceRequirements} />
 
                 {/* Step-by-Step Sequence */}
                 <GuideStepList steps={steps} primaryKeyword={primaryKeyword} />
@@ -606,7 +941,7 @@ export default async function HowToPage({ params }: Props) {
                 )}
 
                 {/* Integrated Technical CTA Box */}
-                <GuideCta primaryKeyword={primaryKeyword} />
+                <GuideCta primaryKeyword={primaryKeyword} description={ctaDescription} />
 
                 {/* Frequently Asked Questions */}
                 {faqs && (

@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,31 +14,15 @@ import { SectionHeader } from "../shared/SectionHeader";
 import Link from "next/link";
 import { Section } from "../shared/Section";
 
-interface PricingProps {
-  showHeader?: boolean;
-  title?: string;
-  subtitle?: string;
-  eyebrow?: string;
-  className?: string;
-}
-
-export function Pricing({
-  showHeader = true,
-  title = "Compare IPTV Plans & Select Your Duration",
-  subtitle = "All plans are one-time prepaid subscriptions with no hidden fees and no automatic renewals. Every package includes full access to 24,000+ live channels, VOD, and 2 simultaneous connections.",
-  eyebrow = "Prepaid IPTV Plans",
-  className,
-}: PricingProps = {}) {
+export function HomePricing() {
   return (
-    <Section id="pricing-plans" className={cn("bg-[#050706]", className)}>
+    <Section id="pricing" className="bg-[#050706]">
       <Container>
-        {showHeader && (
-          <SectionHeader
-            title={title}
-            subtitle={subtitle}
-            eyebrow={eyebrow}
-          />
-        )}
+        <SectionHeader
+          title="TryIPTV Subscription Plans"
+          subtitle="Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 24,000+ live channels, and HD & 4K streams."
+          eyebrow="Prepaid Subscriptions"
+        />
         <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {plans.map((plan, i) => (
             <Card
@@ -53,7 +37,7 @@ export function Pricing({
                   Best Value
                 </div>
               )}
-              <CardHeader className="p-6 pb-5 sm:p-7 sm:pb-5">
+              <CardHeader className="p-6 pb-4 sm:p-7 sm:pb-4">
                 <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
                   {String(i + 1).padStart(2, '0')} / Plan
                 </p>
@@ -62,7 +46,7 @@ export function Pricing({
                 </CardTitle>
                 <div className="pt-3">
                   <div className="flex items-baseline gap-1.5">
-                    <span className="font-headline text-[40px] sm:text-[44px] font-bold tracking-tight text-foreground leading-none">
+                    <span className="font-headline text-[38px] sm:text-[42px] font-bold tracking-tight text-foreground leading-none">
                       ${plan.price}
                     </span>
                     <span className="text-xs font-medium text-muted-foreground">prepaid</span>
@@ -84,19 +68,29 @@ export function Pricing({
                 </div>
               </CardHeader>
               <CardContent className="flex-1 px-6 sm:px-7">
-                <ul className="space-y-3 border-t border-white/[0.08] pt-5">
-                  {plan.features.slice(0, 6).map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-left">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-[14px] leading-snug text-muted-foreground/90">{feature}</span>
-                    </li>
-                  ))}
+                <ul className="space-y-2.5 border-t border-white/[0.08] pt-4 text-[13px] text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-primary" />
+                    <span>2 Simultaneous Connections</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-primary" />
+                    <span>24,000+ Live Channels</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-primary" />
+                    <span>80,000+ Movies &amp; Series</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-primary" />
+                    <span>Zero Contracts / No Auto-Renewal</span>
+                  </li>
                 </ul>
               </CardContent>
-              <CardFooter className="px-6 pb-6 pt-5 sm:px-7 sm:pb-7">
+              <CardFooter className="px-6 pb-6 pt-4 sm:px-7 sm:pb-7">
                 <Button
                   asChild
-                  className="w-full h-12 min-h-[48px] rounded-xl text-[15px] font-semibold"
+                  className="w-full h-11 min-h-[44px] rounded-xl text-sm font-semibold"
                   variant={plan.isPopular ? "default" : "outline"}
                 >
                   <Link href={plan.checkoutUrl}>Choose {plan.name}</Link>
@@ -105,8 +99,20 @@ export function Pricing({
             </Card>
           ))}
         </div>
-        <div className="mt-8 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 text-center text-xs text-muted-foreground sm:text-sm">
-          Every plan includes identical service features: 24,000+ live channels, 80,000+ VOD titles, EPG TV guide, and 2 simultaneous device connections. Only duration and prepaid savings differ.
+
+        {/* Clear bridge to detailed pricing comparison and free trial */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-5 text-xs sm:text-sm text-muted-foreground">
+          <div>
+            Need detailed monthly vs. yearly breakdown and cost comparison?{" "}
+            <Link href="/pricing" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
+              Compare all plans on our Pricing page <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+          <div className="shrink-0">
+            <Link href="/iptv-free-trial" className="font-medium text-muted-foreground hover:text-foreground underline underline-offset-4">
+              Or test with a 24-hour free trial &rarr;
+            </Link>
+          </div>
         </div>
       </Container>
     </Section>

@@ -6,11 +6,13 @@ import { Check, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 interface GuideCtaProps {
   primaryKeyword?: string;
   className?: string;
+  description?: string;
 }
 
 export function GuideCta({
   primaryKeyword = "Fire TV Stick",
   className,
+  description,
 }: GuideCtaProps) {
   const highlights = [
     "24-Hour Free Trial",
@@ -30,7 +32,7 @@ export function GuideCta({
             Test TryIPTV on Your {primaryKeyword}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Verify channel loading speed, electronic programme guide (EPG) stability, and remote navigation on your device with our full-access 24-hour trial.
+            {description || `Verify channel loading speed, electronic programme guide (EPG) stability, and remote navigation on your device with our full-access 24-hour trial.`}
           </p>
 
           <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground">

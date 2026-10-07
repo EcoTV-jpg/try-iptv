@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
-import { Pricing } from "@/components/sections/Pricing";
+import { HomePricing } from "@/components/sections/HomePricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Devices } from "@/components/sections/Devices";
 import { CTA } from "@/components/sections/CTA";
@@ -31,7 +31,7 @@ export default function Home() {
       <Schema id="faq-page" schema={generateFAQPageSchema(faqs)} />
       <Hero />
       <WhyChooseTryIPTV />
-      <Pricing />
+      <HomePricing />
       <HowItWorks />
       <Devices />
       <CTA />

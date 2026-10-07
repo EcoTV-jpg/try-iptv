@@ -1,31 +1,40 @@
 import React from "react";
 import { Tv, Wifi, Layers, KeyRound } from "lucide-react";
 
+export interface RequirementItem {
+  title: string;
+  desc: string;
+  icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
+  tag: string;
+}
+
 interface GuideRequirementsProps {
   primaryKeyword?: string;
   className?: string;
+  items?: RequirementItem[];
 }
 
 export function GuideRequirements({
   primaryKeyword = "Fire TV Stick",
   className,
+  items,
 }: GuideRequirementsProps) {
-  const requirements = [
+  const defaultRequirements: RequirementItem[] = [
     {
       title: `${primaryKeyword} Device`,
-      desc: "Connected to power, HDMI input, and logged into your account.",
+      desc: "Connected to power, display output, and signed into your account.",
       icon: Tv,
       tag: "Hardware",
     },
     {
       title: "Stable Internet Connection",
-      desc: "Ethernet adapter (recommended for 4K) or reliable Wi-Fi signal.",
+      desc: "Ethernet adapter (recommended for 4K) or reliable 5 GHz Wi-Fi signal.",
       icon: Wifi,
       tag: "Network",
     },
     {
       title: "Compatible IPTV Player",
-      desc: "Third-party player from Amazon Appstore or official developer source.",
+      desc: "Platform-compatible player from the official app store or developer website.",
       icon: Layers,
       tag: "Application",
     },
@@ -36,6 +45,8 @@ export function GuideRequirements({
       tag: "Service",
     },
   ];
+
+  const requirements = items && items.length > 0 ? items : defaultRequirements;
 
   return (
     <div id="what-you-need" className={`scroll-mt-24 my-8 ${className || ""}`}>

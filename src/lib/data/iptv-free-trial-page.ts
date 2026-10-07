@@ -1,42 +1,54 @@
-
 import { unstable_cache as cache } from 'next/cache';
-import { generateBreadcrumbSchema, generateFAQPageSchema, generateServiceSchema } from '@/lib/schema';
-import type { BreadcrumbList, FAQPage, Service } from 'schema-dts';
+import { generateBreadcrumbSchema, generateServiceSchema } from '@/lib/schema';
+import type { BreadcrumbList, Service } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
 
-const trialFaqs = [
-    {
-        question: "How long does the TryIPTV free trial last?",
-        answer: "The TryIPTV free trial provides 24 hours of full access, starting from the moment your login credentials are delivered and activated."
-    },
-    {
-        question: "Do I need a credit card for the IPTV free trial?",
-        answer: "No. TryIPTV does not collect credit card details or payment information to start a free trial. The trial is completely free with zero auto-renewals or hidden commitments."
-    },
-    {
-        question: "How do I receive my free trial login credentials?",
-        answer: "After submitting your trial request via WhatsApp or email, our support team provides your M3U playlist URL, Xtream Codes credentials (server URL, username, and password), and step-by-step setup instructions."
-    },
-    {
-        question: "What is the difference between Xtream Codes and M3U setup?",
-        answer: "Xtream Codes API uses a Server URL, Username, and Password to automatically organize channels, VOD categories, and EPG data in modern player apps like TiviMate and IPTV Smarters. An M3U playlist is a single web link that loads the complete stream directory, universally compatible with media players like VLC and GSE Smart IPTV."
-    },
-    {
-        question: "What devices and apps work with the free trial?",
-        answer: "TryIPTV works on Amazon Fire TV, Android TV and mobile, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, Roku, and MAG boxes using standard IPTV players like TiviMate, IPTV Smarters, or GSE Smart IPTV."
-    },
-    {
-        question: "Is any content locked or downgraded during the free trial?",
-        answer: "No. The 24-hour trial provides complete, unrestricted access to our full catalog of 24,000+ live channels, 80,000+ movies and series, 4K streams, and the EPG TV guide, exactly like a paid subscription."
-    },
-    {
-        question: "What happens when the 24-hour trial ends?",
-        answer: "When your 24 hours conclude, trial access automatically stops. You cannot be charged because no payment information was collected. If you choose to continue, you can purchase any prepaid plan starting at $16."
-    },
-    {
-        question: "How many devices can stream simultaneously during the trial?",
-        answer: "The TryIPTV free trial includes 2 simultaneous device connections, allowing you to test streaming across two screens in your household at the same time."
-    }
+export const trialFaqs = [
+  {
+    question: "Is the TryIPTV trial really free?",
+    answer:
+      "Yes, the trial is 100% free with a cost of $0. We do not ask for credit card numbers, billing addresses, or payment details. It is a genuine 24-hour evaluation pass so you can test stream stability and channel selection before deciding whether to purchase a plan.",
+  },
+  {
+    question: "Do I need a credit card to start the trial?",
+    answer:
+      "No credit card is required. You can request your 24-hour trial access directly via WhatsApp or email with just your device type. We never collect payment details for free trials.",
+  },
+  {
+    question: "How long does the IPTV free trial last?",
+    answer:
+      "The free trial lasts for 24 continuous hours. The 24-hour countdown begins the moment your trial credentials are generated, activated, and delivered to you by our support team.",
+  },
+  {
+    question: "Which devices and player apps can I use during the trial?",
+    answer:
+      "The trial works across all major hardware including Amazon Firestick & Fire TV, Android TV boxes, Google TV, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, and MAG boxes. You can use any standard IPTV player such as TiviMate, IPTV Smarters Pro, XCIPTV, or GSE Smart IPTV.",
+  },
+  {
+    question: "Do I receive Xtream Codes or an M3U playlist URL?",
+    answer:
+      "You receive both. Your activation email or WhatsApp message includes your Xtream Codes API login (Server URL, Username, and Password) for dedicated IPTV apps, as well as an M3U playlist URL and XMLTV EPG guide link for universal media players like VLC.",
+  },
+  {
+    question: "How quickly are trial credentials sent?",
+    answer:
+      "Trial details are typically generated and delivered within 5–15 minutes during active support hours. If you request trial credentials via email, please check your spam or junk folder in case our message is filtered.",
+  },
+  {
+    question: "Does the free trial automatically become a paid subscription?",
+    answer:
+      "No. Because no payment information or credit card was ever collected, it is impossible for the trial to automatically convert into a paid subscription. You will never be billed automatically.",
+  },
+  {
+    question: "What should I test during my 24-hour trial?",
+    answer:
+      "We recommend testing on your main viewing screen during peak evening hours (7–11 PM). Check channel zapping speed on your must-have sports and local feeds, verify audio and video sync, test VOD playback, and ensure the EPG guide populates correctly.",
+  },
+  {
+    question: "What happens when the 24-hour trial expires?",
+    answer:
+      "When the 24-hour period concludes, your stream access simply turns off. If you are satisfied with the performance, you can choose any prepaid plan starting at $16 on our pricing page. Our team can renew your existing trial line so you do not have to reconfigure your player app.",
+  },
 ];
 
 export const getIptvFreeTrialPageData = cache(
@@ -44,41 +56,29 @@ export const getIptvFreeTrialPageData = cache(
     const baseUrl = siteConfig.url;
     const pageUrl = `${baseUrl}/iptv-free-trial`;
 
-    const breadcrumbSchemaPromise: Promise<BreadcrumbList> = Promise.resolve(generateBreadcrumbSchema([
-        { name: "Home", item: `${baseUrl}/` },
-        { name: "IPTV Free Trial", item: pageUrl }
-    ]));
-
-    const faqSchemaPromise: Promise<FAQPage> = Promise.resolve(generateFAQPageSchema(trialFaqs));
-
-    const serviceSchemaPromise: Promise<Service> = Promise.resolve(generateServiceSchema({
-        serviceType: "Free IPTV Trial",
-        providerName: "TryIPTV",
-        name: "24-Hour IPTV Free Trial",
-        description: "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
-        areaServed: { type: "Country", name: "Worldwide" },
-        offers: {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-        }
-    }));
-    
-    const [
-      breadcrumbSchema,
-      faqSchema,
-      serviceSchema
-    ] = await Promise.all([
-      breadcrumbSchemaPromise,
-      faqSchemaPromise,
-      serviceSchemaPromise,
+    const breadcrumbSchema: BreadcrumbList = generateBreadcrumbSchema([
+      { name: "Home", item: `${baseUrl}/` },
+      { name: "IPTV Free Trial", item: pageUrl },
     ]);
 
-    return { 
+    const serviceSchema: Service = generateServiceSchema({
+      serviceType: "Free IPTV Trial",
+      providerName: "TryIPTV",
+      name: "24-Hour IPTV Free Trial",
+      description:
+        "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
+      areaServed: { type: "Country", name: "Worldwide" },
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    });
+
+    return {
       breadcrumbSchema,
-      faqSchema,
       serviceSchema,
-      trialFaqs
+      trialFaqs,
     };
   },
   ['iptv-free-trial-page-data'],
@@ -87,5 +87,3 @@ export const getIptvFreeTrialPageData = cache(
     tags: ['pages', 'iptv-free-trial-page'],
   }
 );
-
-    
