@@ -7,7 +7,6 @@ import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { FaqList } from "@/components/sections/FAQ";
 import {
   Check,
   Tv,
@@ -26,6 +25,7 @@ import {
   Sliders,
   Layers,
   HelpCircle,
+  ChevronDown,
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
@@ -262,6 +262,17 @@ export default async function IptvFreeTrialPage() {
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
             Test TryIPTV on your own devices before spending a dollar. Our 24-hour free trial unlocks 24,000+ live channels, 80,000+ movies and series, 4K picture quality, and 2 simultaneous connections. No credit card required, zero contracts, and no automatic rebilling.
           </p>
+          <div className="mx-auto mt-6 max-w-2xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
+            <h2 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
+              Quick Answer
+            </h2>
+            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+              <strong className="text-foreground">Quick Answer:</strong> TryIPTV offers a 24-hour IPTV free trial with no credit card required. The trial lets you test the service on your own device before choosing a paid plan, including live TV, on-demand content, EPG access, and supported M3U or Xtream Codes setup. Up to 2 simultaneous connections are supported, and trial credentials are typically delivered within 5–15 minutes.
+            </p>
+            <p className="mt-2.5 border-t border-white/[0.06] pt-2.5 text-xs leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">Important:</strong> This is a temporary 24-hour trial of the TryIPTV subscription service, not a permanently free streaming service.
+            </p>
+          </div>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg">
               <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
@@ -321,6 +332,51 @@ export default async function IptvFreeTrialPage() {
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{feature.description}</p>
               </div>
             ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* What You Need to Start Your Free Trial */}
+      <Section className="border-t border-white/[0.06]">
+        <Container>
+          <SectionHeader
+            eyebrow="Prerequisites"
+            title="What You Need to Start Your Free Trial"
+            subtitle="Make sure you have these essentials ready before requesting your evaluation pass."
+          />
+          <div className="mx-auto max-w-3xl rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
+            <ul className="space-y-3.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+                <span>
+                  <strong className="text-foreground">Your streaming device:</strong> Such as Firestick, Android TV, Samsung TV, LG TV, Apple TV, Windows, or Mac.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+                <span>
+                  <strong className="text-foreground">Your preferred IPTV player:</strong> If you already use an app such as TiviMate, IPTV Smarters Pro, or XCIPTV.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+                <span>
+                  <strong className="text-foreground">A stable internet connection:</strong> Recommended 15–30+ Mbps for uninterrupted HD and 4K streaming.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+                <span>
+                  <strong className="text-foreground">Zero billing information:</strong> No credit card or billing information is required to start.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
+                <span>
+                  <strong className="text-foreground">Device identifier (only when needed):</strong> If a specific player or portal setup requires device details such as a MAC address, provide them only when needed.
+                </span>
+              </li>
+            </ul>
           </div>
         </Container>
       </Section>
@@ -551,7 +607,22 @@ export default async function IptvFreeTrialPage() {
             title="Frequently Asked Questions About the 24-Hour Free Trial"
             subtitle="Direct answers to common questions about trial setup, credential delivery, compatibility, and expiration."
           />
-          <FaqList items={trialFaqs} />
+          <div className="mx-auto max-w-[880px] overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+            {trialFaqs.map((faq, index) => (
+              <details
+                key={index}
+                className="group border-b border-white/[0.07] px-6 sm:px-8 last:border-b-0"
+              >
+                <summary className="flex min-h-[68px] cursor-pointer list-none items-center justify-between gap-4 py-5 sm:py-6 text-left text-[16px] font-semibold leading-snug text-foreground/90 hover:text-foreground transition-colors sm:text-[17px] [&::-webkit-details-marker]:hidden">
+                  <span>{faq.question}</span>
+                  <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground">
+                  <p>{faq.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
           <div className="mt-10 text-center">
             <p className="text-sm text-muted-foreground sm:text-base">
               Have a question not listed here?{" "}

@@ -68,17 +68,13 @@ export function Pricing({
                     <span className="text-xs font-medium text-muted-foreground">prepaid</span>
                   </div>
                   <p className="mt-1.5 text-xs text-muted-foreground">
-                    {plan.price_monthly !== plan.price ? (
-                      <>
-                        <span className="text-foreground/90 font-medium">${plan.price_monthly.toFixed(2)}/mo</span>
-                        {plan.savings && (
-                          <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.2 text-[10px] font-semibold text-primary">
-                            {plan.savings}
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      <>Standard 1-month prepaid access</>
+                    <span className="text-foreground/90 font-medium">
+                      equivalent to ${plan.price_monthly.toFixed(2)}/month
+                    </span>
+                    {plan.savings && (
+                      <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.2 text-[10px] font-semibold text-primary">
+                        {plan.savings}
+                      </span>
                     )}
                   </p>
                 </div>
