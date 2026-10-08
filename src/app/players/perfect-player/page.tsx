@@ -1,515 +1,99 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, HardDrive, History, ArrowUpRight, HelpCircle, Monitor, Sliders, AlertCircle } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
-import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
-import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "Perfect Player IPTV Guide: Legacy Setup, Decoder Settings & Migration";
-const description =
-  "Technical review and setup guide for Perfect Player IPTV by Niklabs Software. Learn how to construct M3U links, adjust HW decoders, and migrate to modern alternatives.";
+const title = "Perfect Player IPTV Guide: Legacy Setup, M3U, EPG & Migration";
+const description = "Learn how to configure legacy Perfect Player by Niklabs with M3U and EPG, troubleshoot playback issues, and migrate safely to a maintained IPTV player.";
 const canonical = "/players/perfect-player";
-const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
-  return {
-    ...generatePageMetadata({
-      title,
-      description,
-      canonical,
-    }),
-    title: {
-      absolute: title,
-    },
-  };
+  return { ...generatePageMetadata({ title, description, canonical }), title: { absolute: title } };
 }
 
-const faqs = [
-  {
-    question: "Is Perfect Player IPTV still being updated, and can I get it on Google Play?",
-    answer:
-      "No. Perfect Player IPTV (developed by Niklabs Software, niklabs.com) is legacy software. Historical store records indicate it was removed from the Google Play Store in late 2021 and has received no official updates since version 1.6.0.1. Because official app store distribution has ceased, downloading APK files from unknown third-party websites presents security risks. This guide is provided for educational and legacy reference for existing installations.",
-  },
-  {
-    question: "Can I log in using Xtream Codes API username and password in Perfect Player?",
-    answer:
-      "No. Perfect Player does not feature a dedicated Xtream Codes API login dialog with separate Server, Username, and Password fields. To use an Xtream Codes subscription, you must manually construct an M3U Plus URL using the provider's standard syntax (http://server:port/get.php?username=YOUR_USER&password=YOUR_PASS&type=m3u_plus&output=ts) and paste the entire string into Perfect Player's Main Playlist field.",
-  },
-  {
-    question: "Why does Perfect Player show a black screen or stutter on 4K and HEVC streams?",
-    answer:
-      "Because Perfect Player has not been updated since 2021, its internal media framework lacks modern ExoPlayer or LibVLC decoding pipelines for newer video containers and high-efficiency codecs like HEVC / H.265 and AV1. In Perfect Player Settings > Playback > Decoder, you can toggle between 'HW' (Hardware), 'HW+' (Hardware Plus), and 'SW' (Software). If a stream stutters on HW, switching to HW+ or SW may restore video, but 4K playback will often overwhelm older device processors.",
-  },
-  {
-    question: "Why should users migrate from Perfect Player to modern IPTV players?",
-    answer:
-      "Modern IPTV players like TiviMate, Televizo, and IPTV Smarters offer significant advantages over Perfect Player: native Xtream Codes authentication, automatic multi-day EPG scheduling, VOD movie and TV series organization with IMDb poster walls, subtitle language selection, SMB network recording, and regular security updates. For users with recent streaming devices (Firestick 4K Max, Chromecast with Google TV, Nvidia Shield), modern players deliver far superior performance and stability.",
-  },
-  {
-    question: "What is UDPXY in Perfect Player settings?",
-    answer:
-      "UDPXY is a proxy setting used when an Internet Service Provider or telco delivers multicast IPTV streams over local UDP sockets. Because mobile and Wi-Fi devices struggle with raw multicast UDP packets, a UDPXY proxy converts the multicast feed into unicast HTTP streams. For standard over-the-top internet IPTV services like TryIPTV, UDPXY is not required and should be left blank.",
-  },
-];
-
 const articleSchema = generateArticleSchema({
-  headline: title,
-  description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
-  url: `${SITE_URL}${canonical}`,
+  headline: title, description, datePublished: "2026-10-04", dateModified: "2026-10-08", url: `${SITE_URL}${canonical}`,
 });
-
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", item: `${SITE_URL}/` },
   { name: "Players", item: `${SITE_URL}/players` },
   { name: "Perfect Player", item: `${SITE_URL}${canonical}` },
 ]);
-
-const faqSchema = generateFAQPageSchema(faqs);
+const h2 = "font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl";
+const p = "mt-4 text-sm leading-7 text-muted-foreground sm:text-base";
+const a = "text-primary underline underline-offset-4 hover:text-primary/80";
 
 export default function PerfectPlayerPage() {
-  return (
-    <>
-      <Schema id="article" schema={articleSchema} />
-      <Schema id="breadcrumb" schema={breadcrumbSchema} />
-      <Schema id="faq" schema={faqSchema} />
-
-      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-        <Container className="relative">
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Players", href: "/players" },
-              { label: "Perfect Player" },
-            ]}
-          />
-
-          <div className="mt-8 max-w-4xl">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-              IPTV Player Architecture &amp; Legacy Guide
-            </span>
-            <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Perfect Player IPTV: Legacy Setup, Decoder Settings &amp; Migration
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Perfect Player IPTV (developed by Niklabs Software) holds a storied place in streaming history as one of the pioneers of digital set-top box On-Screen Display (OSD) interfaces. While no longer actively maintained, its ultra-lightweight footprint keeps it in service on legacy Android boxes. Here is how it functions, how to configure it, and why modern alternatives should be considered.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/5 px-3 py-1 font-medium text-amber-400">
-                <History className="h-3.5 w-3.5" /> Legacy Status (Unmaintained)
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Tv className="h-3.5 w-3.5 text-primary" /> Set-Top Box OSD Interface
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Sliders className="h-3.5 w-3.5 text-primary" /> HW / HW+ / SW Decoders
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <HardDrive className="h-3.5 w-3.5 text-primary" /> Ultra-Low Memory Usage
-              </span>
-            </div>
-            <PlayerQuickAnswer player="Perfect Player" summary="Perfect Player is a lightweight IPTV client for loading and organizing playlist-based television streams. Install it on a compatible device, add the playlist format provided by your service, configure guide data when available, and test playback before adjusting decoder options." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-is-m3u", label: "M3U playlist guide" }, { href: "/guides/m3u-vs-xtream-codes", label: "M3U vs Xtream Codes" }]} help={[{ href: "/help/m3u-not-loading", label: "Playlist troubleshooting" }]} />
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="py-12 sm:py-16">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-12">
-            <div className="space-y-12 lg:col-span-8">
-              {/* Legacy Status Notice */}
-              <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-5">
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
-                  <div>
-                    <h3 className="font-semibold text-amber-300 text-sm">Important Note on Software Status</h3>
-                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                      Niklabs Software ceased active updates to Perfect Player IPTV in late 2021, and the app was subsequently delisted from Google Play. If you already have it installed on legacy hardware (such as Android 7/8/9 TV boxes), it remains functional for standard M3U streams. However, for new installations on contemporary streaming hardware, we strongly recommend evaluating modern active players like{" "}
-                      <Link href="/players/tivimate" className="text-primary underline hover:text-primary/80">
-                        TiviMate
-                      </Link>{" "}
-                      or{" "}
-                      <Link href="/players/televizo" className="text-primary underline hover:text-primary/80">
-                        Televizo
-                      </Link>.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Architecture & OSD */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Architecture &amp; Set-Top Box OSD Heritage
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    Perfect Player was designed during an era when Android TV boxes had minimal computing power (often 1 GB of RAM and basic quad-core ARM Cortex-A53 processors). While heavy, graphic-rich applications struggled to render on such hardware, Perfect Player used a native C++ rendering pipeline that drew minimal CPU overhead.
-                  </p>
-                  <p>
-                    Its user interface intentionally replicated the classic On-Screen Display (OSD) of digital satellite and cable receivers:
-                  </p>
-                  <ul className="list-inside list-disc space-y-2 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm">
-                    <li><strong className="text-foreground">Transparent Channel List:</strong> A transparent left-side channel column that allows video to continue playing unobstructed in the background.</li>
-                    <li><strong className="text-foreground">Dual Playlist Slots:</strong> Fields for a Main and Backup playlist URL, allowing automatic failover if a primary stream server drops offline.</li>
-                    <li><strong className="text-foreground">Adjustable OSD Scaling:</strong> Granular control over on-screen font sizes, transparency percentages, and info bar display duration.</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Technical Profile Table */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Perfect Player Technical Specification &amp; Protocols
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Reference specifications based on the final public release (v1.6.0) by Niklabs Software.
-                </p>
-                <div className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  <table className="w-full text-left text-sm">
-                    <tbody className="divide-y divide-white/[0.06]">
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Original Developer</td>
-                        <td className="p-4 font-medium text-foreground">Niklabs Software (niklabs.com)</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Maintenance Status</td>
-                        <td className="p-4 text-amber-400 font-medium">Unmaintained (Final release v1.6.0.1; delisted from Google Play late 2021)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Supported Operating Systems</td>
-                        <td className="p-4 text-muted-foreground">Android (v4.0 through v9.0 native; sideloaded on newer versions), Windows PC (Legacy)</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Playlist Input Protocols</td>
-                        <td className="p-4 text-muted-foreground">M3U / M3U8 URLs, Local M3U Files, XSPF (No native Xtream Codes login dialog)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">EPG Protocols</td>
-                        <td className="p-4 text-muted-foreground">XMLTV (HTTP URL, local file, or .xml.gz archive), JTV format</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Decoder Options</td>
-                        <td className="p-4 text-muted-foreground">Hardware (HW), Hardware Plus (HW+), Software (SW)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Specialized Network Tools</td>
-                        <td className="p-4 text-muted-foreground">UDPXY proxy integration for multicast UDP IPTV feeds</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Step-by-Step Setup */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Step-by-Step: Adding TryIPTV to Perfect Player
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Because Perfect Player lacks an Xtream Codes login form, you must enter your M3U URL manually:
-                </p>
-
-                <div className="mt-6 space-y-6">
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      1
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Construct Your Complete M3U URL
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Obtain your M3U Plus URL from your TryIPTV activation email. If you only received Xtream Codes credentials, format the URL as follows:
-                      </p>
-                      <div className="rounded bg-black/40 p-3 font-mono text-xs text-primary">
-                        http://[SERVER_DOMAIN]:[PORT]/get.php?username=[USERNAME]&amp;password=[PASSWORD]&amp;type=m3u_plus&amp;output=ts
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      2
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Navigate to Settings &gt; General
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Launch Perfect Player. Press the gear icon on the main menu bar, then open <strong>General</strong>.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      3
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Input Playlist &amp; EPG URLs
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Click on <strong>Playlist 1</strong>, paste your M3U URL, and verify the format is set to <em>M3U</em>. Next, click <strong>EPG 1</strong> and enter your XMLTV guide link to populate channel schedule data.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      4
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Return to Home and Sync
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Press back to the main screen. Perfect Player will display a progress bar in the top-right corner while downloading and indexing your channel list.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decoder Settings */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Tuning HW, HW+, and SW Video Decoders
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    If you experience black screens or frozen video on specific high-definition channels, adjusting decoder modes in <strong>Settings &gt; Playback &gt; Decoder</strong> is essential:
-                  </p>
-                  <div className="grid gap-4 sm:grid-cols-3">
-                    <Card className="border-white/[0.08] bg-white/[0.02]">
-                      <CardHeader className="p-4">
-                        <CardTitle className="text-sm text-foreground">HW (Hardware)</CardTitle>
-                      </CardHeader>
-                      <CardContent className="p-4 pt-0 text-xs text-muted-foreground">
-                        Default setting. Uses the device GPU directly. Best for standard H.264 streams and minimal CPU heat.
-                      </CardContent>
-                    </Card>
-                    <Card className="border-white/[0.08] bg-white/[0.02]">
-                      <CardHeader className="p-4">
-                        <CardTitle className="text-sm text-foreground">HW+ (Hardware Plus)</CardTitle>
-                      </CardHeader>
-                      <CardContent className="p-4 pt-0 text-xs text-muted-foreground">
-                        Alternative hardware pipeline. Useful if standard HW fails on interlaced 1080i sports feeds.
-                      </CardContent>
-                    </Card>
-                    <Card className="border-white/[0.08] bg-white/[0.02]">
-                      <CardHeader className="p-4">
-                        <CardTitle className="text-sm text-foreground">SW (Software)</CardTitle>
-                      </CardHeader>
-                      <CardContent className="p-4 pt-0 text-xs text-muted-foreground">
-                        CPU-based decoding. Reliable fallback for unsupported audio codecs, but causes high CPU load on 1080p/4K.
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-              </div>
-
-              {/* Migration Guide */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Why and How to Migrate to Modern IPTV Players
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    If you are using a modern television device (such as an Amazon Firestick 4K Max, Google TV, or modern Android TV), moving to an actively supported player delivers immediate quality-of-life benefits:
-                  </p>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                      <h4 className="font-semibold text-foreground text-sm flex items-center gap-2">
-                        <ArrowUpRight className="h-4 w-4 text-primary" /> Migrate to TiviMate
-                      </h4>
-                      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                        If you loved Perfect Player&apos;s clean television guide,{" "}
-                        <Link href="/players/tivimate" className="text-primary underline hover:text-primary/80">
-                          TiviMate
-                        </Link>{" "}
-                        is the direct modern evolution. It adds modern multi-day EPG grids, SMB recording, multi-view, and flawless HEVC playback.
-                      </p>
-                    </div>
-
-                    <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                      <h4 className="font-semibold text-foreground text-sm flex items-center gap-2">
-                        <ArrowUpRight className="h-4 w-4 text-primary" /> Migrate to Televizo
-                      </h4>
-                      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                        If you prefer a lightweight, responsive player with zero monthly subscriptions,{" "}
-                        <Link href="/players/televizo" className="text-primary underline hover:text-primary/80">
-                          Televizo
-                        </Link>{" "}
-                        offers active updates, native Google Cast, and seamless touch/remote navigation.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQs */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Frequently Asked Questions About Perfect Player
-                </h2>
-                <div className="mt-6 divide-y divide-white/[0.06] rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="p-5">
-                      <h3 className="font-headline text-base font-semibold text-foreground">
-                        {faq.question}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6 lg:col-span-4">
-              <Card className="border-primary/20 bg-primary/[0.03]">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">TryIPTV Compatibility</CardTitle>
-                  <CardDescription className="text-xs">
-                    Universal M3U Plus streaming on any player
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>{PRODUCT_TRUTHS.connections} simultaneous stream connections</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Over {PRODUCT_TRUTHS.channels} live TV channels</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Compatible with legacy and modern players</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Standard M3U Plus URL generation</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <Button asChild className="w-full">
-                      <Link href="/iptv-free-trial">
-                        Start 24-Hour Free Trial <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Credentials typically delivered by email within 5–15 minutes
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Related Player Comparisons */}
-              <Card className="border-white/[0.08] bg-white/[0.02]">
-                <CardHeader>
-                  <CardTitle className="text-base text-foreground">Modern Player Alternatives</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Link
-                    href="/players/tivimate"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      TiviMate IPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      The premier TV remote interface and modern EPG grid.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/iptv-smarters"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      IPTV Smarters Pro
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Universal compatibility on iOS, Samsung, LG, and Fire TV.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/xciptv"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      XCIPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Dual playback engines (ExoPlayer &amp; VLC) with multi-screen.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/televizo"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      Televizo IPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Clean hybrid mobile/TV interface with Chromecast streaming.
-                    </div>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Protocol Guides */}
-              <Card className="border-white/[0.08] bg-white/[0.02]">
-                <CardHeader>
-                  <CardTitle className="text-base text-foreground">Guides &amp; Resources</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs">
-                  <Link href="/guides/what-is-m3u" className="block text-muted-foreground hover:text-primary">
-                    → What Is an M3U Playlist &amp; How Does It Work?
-                  </Link>
-                  <Link href="/guides/m3u-vs-xtream-codes" className="block text-muted-foreground hover:text-primary">
-                    → M3U vs. Xtream Codes API Compared
-                  </Link>
-                  <Link href="/guides/what-is-epg" className="block text-muted-foreground hover:text-primary">
-                    → How Electronic Program Guides (EPG) Work
-                  </Link>
-                  <Link href="/help/iptv-buffering" className="block text-muted-foreground hover:text-primary">
-                    → How to Stop IPTV Buffering
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Official Verification Reference */}
-              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
-                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Legacy Developer Resource</span>
-                <p>
-                  Original developer: Niklabs Software.<br />
-                  Official website: <a href="http://niklabs.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">niklabs.com</a>.<br />
-                  Status: Delisted late 2021; unmaintained since v1.6.0.1. Unofficial APK mirrors not recommended.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-    </>
-  );
+  return <>
+    <Schema id="article" schema={articleSchema} />
+    <Schema id="breadcrumb" schema={breadcrumbSchema} />
+    <Section className="border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20"><Container>
+      <Breadcrumb items={[{ label: "Players", href: "/players" }, { label: "Perfect Player" }]} />
+      <div className="mt-8 max-w-4xl">
+        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">Legacy player guide</span>
+        <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Perfect Player IPTV Guide: Legacy Setup, M3U, EPG &amp; Migration</h1>
+        <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">Perfect Player IPTV by Niklabs Software is a legacy media player with no channels included. Existing installations can still load an M3U playlist and a separate EPG source. The original Niklabs Android app is no longer available on Google Play, so verify the developer before trusting a similarly named app or download.</p>
+      </div>
+    </Container></Section>
+    <Section className="py-12 sm:py-16"><Container><article className="mx-auto max-w-4xl space-y-12">
+      <section><h2 className={h2}>Is Perfect Player Still Available?</h2>
+        <p className={p}>The original Perfect Player IPTV was developed by Niklabs Software. <a href="https://www.appbrain.com/app/perfect-player-iptv/com.niklabs.pp" target="_blank" rel="noopener noreferrer" className={a}>AppBrain&apos;s historical record</a> lists package <code>com.niklabs.pp</code>, last recorded Android version 1.6.0.1, last update in October 2021, and removal from Google Play on December 16, 2021. That record does not establish an active distribution channel today. This guide covers an existing installation, not a fresh APK download.</p>
+      </section>
+      <section><h2 className={h2}>How to Identify the Original Perfect Player</h2>
+        <p className={p}>Check three things together: the developer name <strong className="text-foreground">Niklabs Software</strong>, Android package <code>com.niklabs.pp</code>, and the source of the app. A current listing with “Perfect Player” in its title may belong to another developer. Do not treat a similar name as proof it is the Niklabs app, and do not install a random APK just to follow an old setup guide.</p>
+      </section>
+      <section><h2 className={h2}>If Perfect Player Is Already Installed</h2>
+        <p className={p}>You can keep configuring an existing Niklabs installation with a playlist and guide source you are authorized to use. Record or back up the source details before changing settings. Avoid uninstalling merely to troubleshoot a playlist: obtaining the original app again may be difficult. First determine whether the failure is in the playlist download, playback, or EPG stage.</p>
+      </section>
+      <section><h2 className={h2}>How to Add an M3U Playlist to Perfect Player</h2>
+        <p className={p}>In the original Niklabs Android app, the historical path is <strong className="text-foreground">Settings → General → Playlist</strong>. Enter the complete M3U URL supplied by your provider, give it a recognizable name if prompted, select M3U when a format choice appears, and save. Return to the main interface and allow the channel list to load. Menu wording can differ between legacy versions.</p>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-7 text-muted-foreground sm:text-base">
+          <li>Confirm that your provider supplied an M3U URL rather than only separate account credentials.</li>
+          <li>Open Settings, General, then Playlist; enter the URL exactly and save the entry.</li>
+          <li>Return to the channel view. If groups or channels appear, the playlist was likely downloaded and parsed; test a stream next.</li>
+        </ol>
+        <p className={p}>See <Link href="/guides/what-is-m3u" className={a}>what an M3U playlist contains</Link> if you need to identify the correct link. Do not guess a provider-specific URL from a username and password.</p>
+      </section>
+      <section><h2 className={h2}>How to Add EPG to Perfect Player</h2>
+        <p className={p}>The guide is separate from the channel playlist. The original app supports XMLTV and JTV EPG formats; XMLTV is common for provider guide URLs. In the historical interface, open <strong className="text-foreground">Settings → General → EPG</strong>, enter the supplied guide URL, select its format if prompted, and allow it to load. Working video does not prove the guide source is valid. Missing listings can also mean channel identifiers or names do not match the EPG entries.</p>
+        <p className={p}>Read <Link href="/guides/what-is-epg" className={a}>what EPG data does</Link> for the distinction between streams and schedules.</p>
+      </section>
+      <section><h2 className={h2}>How Channel Groups Work in Perfect Player</h2>
+        <p className={p}>Perfect Player reads channel groups from the playlist. A legacy GUI option called <strong className="text-foreground">Show channels groups as folder</strong> can display those categories as folders, which helps with large playlists. It changes navigation, not which channels your provider includes.</p>
+      </section>
+      <section><h2 className={h2}>Perfect Player Decoder Settings</h2>
+        <p className={p}>Decoder selection changes how the device processes video, not the speed of your internet connection. The historical app exposes decoder choices in <strong className="text-foreground">Settings → Playback → Decoder</strong>. If a stream freezes, shows a black screen, or renders incorrectly, comparing hardware and software decoding can help isolate a device playback problem. A different decoder cannot repair a provider outage or insufficient bandwidth.</p>
+      </section>
+      <section><h2 className={h2}>What Buffer Settings Can and Cannot Do</h2>
+        <p className={p}>Where the installed version exposes buffering controls, a larger buffer may absorb short network fluctuations but can delay startup. Persistent stalls can still come from an unstable connection, provider stream, overloaded server, device limits, or playback compatibility. Test several channels and the network before treating the buffer setting as the cause. See <Link href="/help/iptv-buffering" className={a}>IPTV buffering checks</Link>.</p>
+      </section>
+      <section><h2 className={h2}>How to Diagnose Perfect Player Setup Problems</h2>
+        <p className={p}>Follow the loading sequence: playlist configuration → playlist download → channel groups → stream playback → EPG mapping. If the playlist URL is rejected, check the URL, format, provider response, and account. If channels appear, parsing likely succeeded; a failed stream points next to playback, provider, or network checks. If channels play but schedules are empty, check the EPG source and mapping separately.</p>
+      </section>
+      <section><h2 className={h2}>Perfect Player Troubleshooting</h2>
+        <p className={p}>Use the first stage that fails to narrow the investigation. Avoid deleting an existing installation until you have saved its settings and confirmed a trusted way to restore the app.</p>
+        <div className="mt-5 space-y-6">
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Playlist Will Not Load</h3><p className={p}>Check the full M3U URL, subscription status, accidental spaces, provider response, and device network access. A URL that fails outside the app may be a source problem. See <Link href="/help/m3u-not-loading" className={a}>M3U loading troubleshooting</Link>.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Channels Appear but Do Not Play</h3><p className={p}>Try several channels. Check provider stream availability, account status, network stability, and device decoder compatibility. A visible channel list does not guarantee a working stream. See <Link href="/help/iptv-not-working" className={a}>IPTV service checks</Link>.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">EPG Is Empty</h3><p className={p}>Verify the EPG URL and XMLTV or JTV format, then check whether the provider has guide data and whether channel names or IDs match. See <Link href="/help/epg-not-working" className={a}>EPG troubleshooting</Link>.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Video Freezes or Displays Incorrectly</h3><p className={p}>Compare decoder options on the same channel, if your version offers them. If several channels stall in every mode, test the network and ask the provider about stream health; decoder switching alone will not resolve those causes.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Perfect Player Is No Longer Available</h3><p className={p}>Do not assume a similarly named app is Niklabs Perfect Player or download an unverified APK. If a fresh installation is required, consider moving your authorized playlist to a currently distributed player instead.</p></div>
+        </div>
+      </section>
+      <section><h2 className={h2}>Moving from Perfect Player to a Modern IPTV Player</h2>
+        <p className={p}>Changing player apps does not usually require a new IPTV subscription. Save your provider-issued M3U URL or account details first, then check which formats the replacement accepts. An M3U URL may work in another compatible player; Xtream Codes credentials may be accepted directly where that method is supported. Provider restrictions can still apply, and features will differ between apps.</p>
+        <p className={p}>Compare setup guides for <Link href="/players/tivimate" className={a}>TiviMate</Link>, <Link href="/players/ott-navigator" className={a}>OTT Navigator</Link>, and <Link href="/players/iptv-smarters" className={a}>IPTV Smarters</Link>. Confirm availability and compatibility for your device before removing the legacy app.</p>
+        <div className="mt-5 overflow-x-auto rounded-xl border border-white/[0.08]"><table className="w-full min-w-[520px] text-left text-sm"><thead className="bg-white/[0.05] text-foreground"><tr><th className="p-3">Aspect</th><th className="p-3">Original Perfect Player</th><th className="p-3">Currently distributed compatible player</th></tr></thead><tbody className="divide-y divide-white/[0.08] text-muted-foreground">
+          <tr><td className="p-3">Status</td><td className="p-3">Legacy Niklabs app</td><td className="p-3">Check current developer releases</td></tr>
+          <tr><td className="p-3">Setup</td><td className="p-3">M3U playlist and separate EPG</td><td className="p-3">Choose a player supporting your provider format</td></tr>
+          <tr><td className="p-3">Installation</td><td className="p-3">Existing installs may remain usable; original Play listing unavailable</td><td className="p-3">Use a verified official listing or developer source</td></tr>
+        </tbody></table></div>
+      </section>
+      <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">Need IPTV credentials for an existing player or a replacement? <Link href="/iptv-free-trial" className={a}>Start with a 24-hour IPTV trial</Link>. TryIPTV is independent of Niklabs.</div>
+    </article></Container></Section>
+  </>;
 }

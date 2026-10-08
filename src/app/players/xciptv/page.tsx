@@ -1,68 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, Monitor, Sliders, Volume2, HelpCircle, Gauge, SplitSquareVertical, RefreshCw } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
-import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
-import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "XCIPTV Player Setup Guide: Dual-Engine Playback, Multi-Screen & Troubleshooting";
+const title = "XCIPTV Player Setup Guide: Xtream Codes, M3U & Troubleshooting";
 const description =
-  "Complete guide to setting up and optimizing XCIPTV Player on Android TV and Firestick. Learn how to configure Xtream Codes, switch between ExoPlayer and VLC engines, fix audio sync, and use 4-way multi-screen.";
+  "Install and set up XCIPTV with Xtream Codes or M3U, understand EPG and playback engines, and diagnose login, channel, or playback problems.";
 const canonical = "/players/xciptv";
 const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
   return {
-    ...generatePageMetadata({
-      title,
-      description,
-      canonical,
-    }),
-    title: {
-      absolute: title,
-    },
+    ...generatePageMetadata({ title, description, canonical }),
+    title: { absolute: title },
   };
 }
-
-const faqs = [
-  {
-    question: "What is the difference between ExoPlayer and VLC Player inside XCIPTV?",
-    answer:
-      "XCIPTV includes two pre-installed internal media playback engines: Google ExoPlayer and VLC (LibVLC). In XCIPTV Settings > Player, you can assign different players to Live TV, Movies, and TV Series. ExoPlayer is lightweight and hardware-accelerated, providing rapid channel zap times on modern Android TV chipsets. VLC has wider native container and codec compatibility (handling legacy AC3/EAC3 audio, unusual aspect ratios, and interlaced streams) without crashing. If a live stream or movie experiences black screens or audio sync drift in ExoPlayer, switching that category to VLC resolves the issue in most cases.",
-  },
-  {
-    question: "Can I watch 4 channels simultaneously with XCIPTV's Multi-Screen feature?",
-    answer:
-      "Yes, XCIPTV has a built-in Multi-Screen feature that splits your television display into 2, 3, or 4 simultaneous live channel feeds. However, each active video pane consumes an independent stream connection from your IPTV provider. Standard single-connection IPTV subscriptions will immediately buffer or drop streams if more than one pane is opened. TryIPTV includes 2 simultaneous connections standard on all plans, allowing 2 active screens side-by-side. To run all 4 screens simultaneously, ensure your provider account has 4 active connections enabled.",
-  },
-  {
-    question: "How do I fix audio out of sync or delayed sound on XCIPTV?",
-    answer:
-      "Audio desynchronization in XCIPTV usually occurs when the device's hardware audio decoder mishandles surround sound (Dolby Digital Plus / EAC3) passed through ExoPlayer. To fix this: First, go to XCIPTV Settings > Player and change the Live TV player engine to VLC. Second, in your Firestick or Android TV system settings (Display & Sounds > Audio > Surround Sound), change the setting from 'Best Available' to 'PCM' or 'Stereo'. This forces the media stick to decode the audio stream internally before sending it to your TV speakers or soundbar.",
-  },
-  {
-    question: "Is XCIPTV Player free, and does it contain ads?",
-    answer:
-      "The official XCIPTV Player (developed by OTTRUN) is free to install from Google Play and sideload onto Amazon Fire TV devices. The base public version may display occasional banner ads or prompts in menu screens unless customized. Unlike players requiring subscription companions or Google Play billing, core features such as Xtream Codes login, dual player assignment, EPG integration, and multi-screen are fully operational in the free tier.",
-  },
-  {
-    question: "Why do I get 'Invalid Server URL or Authentication Failed' on XCIPTV?",
-    answer:
-      "This error occurs during the initial login screen. Verify that the Server URL includes the protocol (e.g., http:// or https://) and the exact port number (e.g., :8080 or :2095) provided in your activation email. Ensure you do not add a trailing slash ('/') at the end of the server URL. Also check that your username and password are typed with exact casing, as IPTV streaming credentials are case-sensitive.",
-  },
-];
 
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
   datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: "2026-10-08",
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -72,499 +34,178 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "XCIPTV Player", item: `${SITE_URL}${canonical}` },
 ]);
 
-const faqSchema = generateFAQPageSchema(faqs);
+const headingClass = "font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl";
+const textClass = "mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base";
+const listClass = "mt-4 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-muted-foreground sm:text-base";
+const linkClass = "text-primary underline underline-offset-4 hover:text-foreground";
 
 export default function XciptvPage() {
   return (
     <>
       <Schema id="article" schema={articleSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
-      <Schema id="faq" schema={faqSchema} />
 
-      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-        <Container className="relative">
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Players", href: "/players" },
-              { label: "XCIPTV" },
-            ]}
-          />
-
-          <div className="mt-8 max-w-4xl">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-              IPTV Player Architecture & Guide
-            </span>
-            <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              XCIPTV Player Setup: Dual Engines, Multi-Screen & Optimization
+      <Section className="border-b border-white/[0.07] py-12 sm:py-16">
+        <Container>
+          <Breadcrumb items={[{ label: "Players", href: "/players" }, { label: "XCIPTV" }]} />
+          <div className="mt-8 max-w-3xl">
+            <h1 className="font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              XCIPTV Player Setup Guide: Xtream Codes, M3U &amp; Troubleshooting
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              XCIPTV Player (developed by OTTRUN) is one of the most recognizable Android set-top box media players. Featuring a modular tiled dashboard, native Xtream Codes API architecture, an integrated multi-screen video wall, and hot-swappable dual playback engines (ExoPlayer and VLC), XCIPTV gives streamers granular control over hardware codecs without requiring third-party modifications.
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              XCIPTV is an IPTV media player and does not include channels or subscriptions. You need an M3U playlist URL or compatible login details from your IPTV provider. Install XCIPTV, enter those details, allow the available channels and EPG data to load, then test playback on several channels.
             </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Tv className="h-3.5 w-3.5 text-primary" /> Android TV & Fire OS
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Sliders className="h-3.5 w-3.5 text-primary" /> Dual Engines: ExoPlayer & VLC
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <SplitSquareVertical className="h-3.5 w-3.5 text-primary" /> 2 to 4-Way Multi-Screen
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Gauge className="h-3.5 w-3.5 text-primary" /> Built-in Speed Test
-              </span>
-            </div>
-            <PlayerQuickAnswer player="XCIPTV" summary="XCIPTV is an Android-oriented IPTV player that accepts provider credentials and organizes live TV, VOD, series, and guide data. Install it on a compatible Android-based device, add the supplied Xtream Codes or M3U details, and test playback before changing decoder settings." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-are-xtream-codes", label: "Xtream Codes guide" }, { href: "/guides/what-is-epg", label: "EPG guide" }]} help={[{ href: "/help/iptv-buffering", label: "Buffering troubleshooting" }]} />
           </div>
         </Container>
       </Section>
 
       <Section className="py-12 sm:py-16">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-12">
-            <div className="space-y-12 lg:col-span-8">
-              {/* Architecture Overview */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  XCIPTV Architecture: Why the Dual Player System Matters
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    Most television media players rely on a single playback library. When an IPTV provider serves a live channel with an unusual audio container (such as multi-channel AC3 or raw AAC) or a high-framerate sports stream formatted in interlaced MPEG-TS, single-engine players either drop audio, stutter, or display a black screen.
-                  </p>
-                  <p>
-                    XCIPTV solves this architectural constraint by integrating two distinct internal playback libraries directly into the APK:
-                  </p>
-                  <div className="grid gap-4 pt-2 sm:grid-cols-2">
-                    <Card className="border-white/[0.08] bg-white/[0.02]">
-                      <CardHeader className="p-4">
-                        <CardTitle className="text-base text-foreground">Built-in ExoPlayer</CardTitle>
-                        <CardDescription className="text-xs">Google&apos;s Native Android Media Engine</CardDescription>
-                      </CardHeader>
-                      <CardContent className="p-4 pt-0 text-xs text-muted-foreground">
-                        Extremely low memory footprint with direct hardware-accelerated GPU pipelines. Best for rapid channel switching, standard 1080p60 H.264 streams, and minimal CPU utilization on budget streaming sticks.
-                      </CardContent>
-                    </Card>
-                    <Card className="border-white/[0.08] bg-white/[0.02]">
-                      <CardHeader className="p-4">
-                        <CardTitle className="text-base text-foreground">Built-in VLC (LibVLC)</CardTitle>
-                        <CardDescription className="text-xs">VideoLAN Open Source Media Core</CardDescription>
-                      </CardHeader>
-                      <CardContent className="p-4 pt-0 text-xs text-muted-foreground">
-                        Includes extensive software decoders for exotic audio tracks (EAC3, DTS), progressive/interlaced conversions, and HEVC/H.265 video. Best when an audio track fails or video desynchronizes in ExoPlayer.
-                      </CardContent>
-                    </Card>
-                  </div>
-                  <p>
-                    Crucially, XCIPTV allows users to route these engines independently: you can assign ExoPlayer to Live TV for millisecond channel changes, while assigning VLC to VOD Movies and Series to ensure perfect audio synchronization across 4K Dolby digital film tracks.
-                  </p>
+          <article className="max-w-3xl space-y-12">
+            <section>
+              <h2 className={headingClass}>What Is XCIPTV?</h2>
+              <p className={textClass}>
+                XCIPTV Player by OTTRUN organizes and plays media sources supplied by users. Its official Google Play listing covers Android phones, tablets, and Android TV devices, including remote navigation. OTTRUN also documents Fire TV support. An Android TV or Google TV device runs a different platform from Samsung Tizen or LG webOS; the Android app listing does not establish native support for those TV systems.
+              </p>
+              <p className={textClass}>
+                OTTRUN&apos;s documentation also refers to “OTR Player” as formerly XCIPTV Player. Check the publisher and source when choosing an app, because a similarly named or provider-branded player may have different settings.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Install XCIPTV on Android and Android TV</h2>
+              <p className={textClass}>
+                Install “XCIPTV PLAYER” by OTTRUN from Google Play when it is available on your Android phone, tablet, Android TV, or Google TV device. Confirm the publisher before installing. On a TV, use the remote&apos;s directional controls to enter provider details and check long URLs carefully before saving them.
+              </p>
+              <ol className={listClass}>
+                <li>Open Google Play on the Android device and find XCIPTV PLAYER by OTTRUN.</li>
+                <li>Install and open the app.</li>
+                <li>Choose the provider login or M3U URL method that matches the details you received.</li>
+              </ol>
+              <p className={textClass}>For device preparation, see the <Link href="/devices/android-tv-iptv" className={linkClass}>Android TV setup guide</Link>.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Install XCIPTV on Firestick / Fire TV</h2>
+              <p className={textClass}>
+                OTTRUN documents Fire TV support, but its current public Android page directs users to Google Play and does not provide a stable Fire TV APK address that we can verify. Check the Amazon Appstore for a listing from OTTRUN on your device. If none appears, ask OTTRUN for its current official Fire TV installation source before sideloading; avoid APK mirrors and copied Downloader codes.
+              </p>
+              <p className={textClass}>
+                If OTTRUN supplies an official APK for your model, follow the Fire TV installation prompts and allow installation by the download app where the device requires it. Developer Options and “Install Unknown Apps” menus vary by Fire OS version. The <Link href="/devices/firestick-iptv" className={linkClass}>Firestick setup guide</Link> covers device preparation.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Set Up XCIPTV with Xtream Codes</h2>
+              <p className={textClass}>
+                To set up XCIPTV with Xtream Codes, enter the server or portal address, username, and password supplied by your IPTV provider. OTTRUN&apos;s documentation confirms these login fields for compatible server connections. A profile label may appear in some versions, but it is only a name for the entry. XCIPTV does not issue the IPTV credentials or control the provider account.
+              </p>
+              <ol className={listClass}>
+                <li>Choose the Xtream Codes or compatible API login in your XCIPTV version.</li>
+                <li>Enter the complete server address, including its protocol and port if your provider supplied one.</li>
+                <li>Enter the provider-issued username and password exactly and submit the login.</li>
+                <li>Wait for categories and channels to load before testing streams.</li>
+              </ol>
+              <p className={textClass}>If login fails, compare the server address, protocol, port, account status, and any spaces copied with the credentials. Do not put a complete M3U URL in the server-address field. See <Link href="/guides/what-are-xtream-codes" className={linkClass}>what Xtream Codes login details mean</Link>.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Add an M3U Playlist to XCIPTV</h2>
+              <p className={textClass}>
+                XCIPTV supports M3U URLs in addition to compatible server logins. Use M3U when your IPTV provider gives you one direct playlist link instead of a server address, username, and password. OTTRUN&apos;s documentation directs users to select M3U URL from Settings and enter the URL; the exact screen labels may vary by app version.
+              </p>
+              <ol className={listClass}>
+                <li>Open XCIPTV Settings and select the M3U URL option.</li>
+                <li>Paste the complete provider-issued playlist URL; use a profile name if your version asks for one.</li>
+                <li>Save the playlist and allow the channel list to load.</li>
+              </ol>
+              <p className={textClass}>Treat an M3U URL as private account information if it contains credentials. See <Link href="/guides/what-is-m3u" className={linkClass}>what an M3U playlist contains</Link> for help identifying the correct link.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>What XCIPTV Loads After You Sign In</h2>
+              <p className={textClass}>
+                XCIPTV first checks the provider login or playlist URL, then loads the available categories and channel entries. Live streams, movies, series, and EPG schedules are separate data or playback stages supplied by the provider. A successful login does not guarantee working streams, and playable channels do not guarantee valid guide data.
+              </p>
+              <div className="mt-5 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm leading-relaxed text-muted-foreground">
+                <p><strong className="text-foreground">Login rejected:</strong> check credentials, server address, and account access.</p>
+                <p className="mt-2"><strong className="text-foreground">Login accepted, empty library:</strong> check provider playlist data, permissions, or sync.</p>
+                <p className="mt-2"><strong className="text-foreground">Channels listed, no playback:</strong> test the stream source, device/network, account limit, and player engine.</p>
+                <p className="mt-2"><strong className="text-foreground">Channels play, EPG empty:</strong> check guide availability and channel mapping.</p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>ExoPlayer vs VLC in XCIPTV</h2>
+              <p className={textClass}>
+                OTTRUN confirms that XCIPTV includes ExoPlayer and VLC playback engines. If a channel appears in the list but fails to play, test that same channel with the other engine where your XCIPTV version exposes a player choice. A difference between the two is useful evidence of stream-format or device-decoding compatibility; it does not prove the provider is healthy or guarantee a fix.
+              </p>
+              <p className={textClass}>
+                Keep the stream and network unchanged for the comparison, then note whether the failure is video, audio, or both. If both engines fail on the same channel, test another channel and another compatible player before changing more settings. Neither engine is universally better, and switching engines does not repair buffering caused by a weak connection or unavailable stream.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>XCIPTV: Player, Provider, or Network?</h2>
+              <p className={textClass}>
+                Use the first failing stage to choose a test, not to declare a definite cause. Compare several channels and, when possible, the same provider details in another compatible player. If credentials fail everywhere, contact the provider. If they work elsewhere but fail in XCIPTV, compare the XCIPTV login format, app version, and copied fields.
+              </p>
+              <div className="mt-5 overflow-x-auto rounded-xl border border-white/[0.08]">
+                <table className="w-full min-w-[32rem] text-left text-sm text-muted-foreground">
+                  <thead className="bg-white/[0.03] text-foreground"><tr><th className="p-3 font-semibold">Symptom</th><th className="p-3 font-semibold">Likely area to check</th></tr></thead>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    <tr><td className="p-3">App will not open</td><td className="p-3">App version or device</td></tr>
+                    <tr><td className="p-3">Login rejected</td><td className="p-3">Credentials, server, or account</td></tr>
+                    <tr><td className="p-3">Login accepted, no content</td><td className="p-3">Provider playlist or sync</td></tr>
+                    <tr><td className="p-3">Channels listed, none play</td><td className="p-3">Streams, network, account limit, or engine</td></tr>
+                    <tr><td className="p-3">Only some channels fail</td><td className="p-3">Provider channel sources</td></tr>
+                    <tr><td className="p-3">Channels play, EPG missing</td><td className="p-3">EPG source or mapping</td></tr>
+                    <tr><td className="p-3">Only one engine fails</td><td className="p-3">Playback compatibility or stream format</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>XCIPTV Troubleshooting</h2>
+              <p className={textClass}>
+                Diagnose the first point of failure and record the exact error, device model, app version, playlist type, and affected channels. XCIPTV can display a provider&apos;s content, but it cannot restore a failed provider server or fix expired credentials. Separate playlist, playback, EPG, and network problems before reinstalling the app.
+              </p>
+              <div className="mt-6 space-y-7">
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Login Failed</h3>
+                  <p className={textClass}>Recheck the server URL, protocol, port if supplied, exact username and password, accidental spaces, and account status. Ask the provider whether its endpoint is available. See <Link href="/help/iptv-login-not-working" className={linkClass}>IPTV login troubleshooting</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Login Works but No Channels Appear</h3>
+                  <p className={textClass}>Refresh the playlist and check whether your account has channel categories assigned. If another compatible player is also empty, report the provider playlist or sync issue. See <Link href="/help/m3u-not-loading" className={linkClass}>playlist loading checks</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Channels Appear but Do Not Play</h3>
+                  <p className={textClass}>Test multiple channels, the network, and the account&apos;s permitted connections. A failed stream source, device limitation, or player-engine mismatch may also matter. See <Link href="/help/iptv-not-working" className={linkClass}>IPTV service checks</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">One Player Engine Works but the Other Does Not</h3>
+                  <p className={textClass}>Keep the same channel and connection while comparing ExoPlayer with VLC. If only one fails, record the engine and whether audio or video is affected for support; stream-format or decoder compatibility is a possible cause. Do not treat the working engine as proof that every provider stream is healthy.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">EPG Is Empty or Wrong</h3>
+                  <p className={textClass}>EPG data loads separately from channels. Refresh the guide if your version offers that control and ask the provider whether its guide source and channel mapping are current. See <Link href="/help/epg-not-working" className={linkClass}>EPG troubleshooting</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Buffering or Stuttering</h3>
+                  <p className={textClass}>Compare channels, test Wi-Fi or wired network stability, and check device resources. The provider stream or playback engine may also matter. Switching engines is one diagnostic test, not a cure for all buffering. See <Link href="/help/iptv-buffering" className={linkClass}>IPTV buffering checks</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">App Crashes or Freezes</h3>
+                  <p className={textClass}>Restart the device, check free storage, and update XCIPTV from the verified source you used to install it. If it still crashes, record the app version and device model before contacting OTTRUN. Preserve your provider details before considering a reinstall.</p>
                 </div>
               </div>
-
-              {/* Technical Profile Table */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  XCIPTV Technical Specification & Compatibility
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Official specifications for XCIPTV Player based on current releases by OTTRUN.
-                </p>
-                <div className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  <table className="w-full text-left text-sm">
-                    <tbody className="divide-y divide-white/[0.06]">
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Primary Developer</td>
-                        <td className="p-4 font-medium text-foreground">OTTRUN (ottrun.com)</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Supported Platforms</td>
-                        <td className="p-4 text-muted-foreground">Android TV, Google TV, Android Phones/Tablets, Amazon Fire OS (Firestick & Fire TV Cube)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Login Protocols</td>
-                        <td className="p-4 text-muted-foreground">Xtream Codes API (Native Primary), M3U Playlist URL, Local M3U File</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Internal Video Engines</td>
-                        <td className="p-4 text-muted-foreground">ExoPlayer (v2.x) and VLC (LibVLC Android) with independent category assignment</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Multi-Screen Grid</td>
-                        <td className="p-4 text-muted-foreground">2-screen, 3-screen, and 4-screen simultaneous live channel layouts (requires matching stream connections)</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Diagnostic Tools</td>
-                        <td className="p-4 text-muted-foreground">Integrated network speed test (Ping, Jitter, Download Mb/s)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Metadata Providers</td>
-                        <td className="p-4 text-muted-foreground">TMDB / IMDb API integration for VOD movie posters, cast lists, ratings, and synopsis</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">EPG Architecture</td>
-                        <td className="p-4 text-muted-foreground">Auto-sync with Xtream Codes EPG; manual XMLTV URL support with cache clear function</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+              <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">
+                Need IPTV credentials for XCIPTV? <Link href="/iptv-free-trial" className={linkClass}>Start with a 24-hour IPTV trial</Link>. TryIPTV is an independent provider, not the developer of XCIPTV.
               </div>
-
-              {/* Step-by-Step Setup */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Step-by-Step: Connecting TryIPTV to XCIPTV Player
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  XCIPTV is designed primarily around the Xtream Codes API. Follow these steps to configure your service securely:
-                </p>
-
-                <div className="mt-6 space-y-6">
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      1
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Install XCIPTV onto your Streaming Device
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        On <Link href="/devices/android-tv-iptv" className="text-primary underline hover:text-primary/80">Android TV or Google TV</Link> (Chromecast, Sony TV, Nvidia Shield), install &quot;XCIPTV Player&quot; directly from Google Play. On Amazon Fire TV, enter the official download URL from OTTRUN into the Downloader app following our <Link href="/devices/firestick-iptv" className="text-primary underline hover:text-primary/80">Firestick IPTV setup guide</Link>.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      2
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Select Xtream Codes API Login
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Upon launching the app, select the primary login option: <strong>Xtream Codes API</strong> (or &quot;Enter Xtream API Details&quot;). Do not choose M3U unless you have an explicit standalone file, as Xtream Codes API automatically maps live channels, on-demand movies, series, and the EPG into dedicated categories.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      3
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Input Your TryIPTV Credentials
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Enter the three parameters from your TryIPTV activation confirmation:
-                      </p>
-                      <ul className="list-inside list-disc space-y-1 text-xs text-muted-foreground sm:text-sm">
-                        <li><strong>Server URL:</strong> The server domain and port (e.g., <code className="rounded bg-white/[0.05] px-1.5 py-0.5 text-foreground">http://line.tryiptv.com:8080</code>). Ensure there is no trailing slash.</li>
-                        <li><strong>Username:</strong> Your assigned IPTV service username.</li>
-                        <li><strong>Password:</strong> Your case-sensitive password.</li>
-                      </ul>
-                      <p className="text-xs text-muted-foreground">
-                        For an overview of how this authentication protocol operates behind the scenes, read our guide on{" "}
-                        <Link href="/guides/what-are-xtream-codes" className="text-primary underline hover:text-primary/80">
-                          What Are Xtream Codes
-                        </Link>.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      4
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Authorize &amp; Wait for Database Synchronization
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Click <strong>Sign In</strong>. XCIPTV will query the server, download category indexes, and populate your Live TV, VOD, Series, and Electronic Program Guide cards. This initial sync typically takes 15 to 45 seconds depending on connection speed.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Optimizing Dual Engines & Audio Sync */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Optimizing Dual Playback Engines & Audio Sync
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    One of the most frequent support tickets in IPTV streaming is audio-video drift—where actors&apos; lips do not match dialogue on high-profile sports or cinema channels. In XCIPTV, this is resolved directly in player settings:
-                  </p>
-                  <ol className="list-inside list-decimal space-y-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm">
-                    <li>
-                      <strong className="text-foreground">Navigate to Settings:</strong> On the main XCIPTV dashboard, select the gear icon in the top right corner.
-                    </li>
-                    <li>
-                      <strong className="text-foreground">Open Player Selection:</strong> Select <strong>Player</strong> from the settings menu.
-                    </li>
-                    <li>
-                      <strong className="text-foreground">Assign Players by Stream Type:</strong>
-                      <ul className="mt-2 ml-4 list-disc space-y-1 text-xs text-muted-foreground sm:text-sm">
-                        <li><strong>Live TV:</strong> Set to <em>ExoPlayer</em>. If audio sync drifts or certain channels buffer continually, toggle Live TV to <em>VLC</em>.</li>
-                        <li><strong>VOD (Movies):</strong> Set to <em>VLC Player</em>. VLC contains wider audio codec decoders for DTS and multi-channel AC3 files.</li>
-                        <li><strong>Series:</strong> Set to <em>VLC Player</em>.</li>
-                      </ul>
-                    </li>
-                    <li>
-                      <strong className="text-foreground">Configure Hardware Acceleration:</strong> Under Player settings, verify that <em>Hardware Acceleration</em> is enabled. If you run XCIPTV on an older 1st-generation Fire TV Stick with limited GPU power, turning off Hardware Acceleration allows the CPU to decode via software fallback.
-                    </li>
-                  </ol>
-                </div>
-              </div>
-
-              {/* Multi-Screen Feature Explained */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Configuring Multi-Screen (2 to 4 Channel Grid)
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    XCIPTV includes a built-in Multi-Screen feature ideal for sports enthusiasts who want to follow multiple live matches at the same time:
-                  </p>
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 space-y-4">
-                    <div className="flex items-start gap-3">
-                      <SplitSquareVertical className="h-5 w-5 shrink-0 text-primary mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-foreground text-sm">How Multi-Screen Works in XCIPTV</h4>
-                        <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                          From the home dashboard, click <strong>Multi Screen</strong>. Choose your layout (2-Screen Top/Bottom, 2-Screen Side-by-Side, 3-Screen, or 4-Screen Quad). In each quadrant, click the &quot;+&quot; icon to assign any live channel from your playlist. Use your remote D-pad to switch active audio between panes.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3 border-t border-white/[0.06] pt-4">
-                      <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400 mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-amber-300 text-sm">Important: Concurrent Connection Limits</h4>
-                        <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                          Every active pane in a multi-screen layout requests an independent concurrent stream from your IPTV provider. If your subscription is restricted to a single connection, the server will terminate secondary feeds or refuse new requests. All TryIPTV subscriptions include{" "}
-                          <strong className="text-foreground">{PRODUCT_TRUTHS.connections} simultaneous connections</strong>, enabling 2-screen side-by-side viewing without purchasing supplementary lines.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Troubleshooting Matrix */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  XCIPTV Real-World Troubleshooting Matrix
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Isolate whether issues originate from the player application, streaming credentials, or local hardware:
-                </p>
-
-                <div className="mt-6 space-y-4">
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <span className="font-mono text-xs font-semibold text-red-400">Issue: Audio Out of Sync / Lips Moving Before Sound</span>
-                        <h4 className="mt-1 font-semibold text-foreground text-base">Audio Desynchronization in ExoPlayer</h4>
-                      </div>
-                      <Volume2 className="h-5 w-5 shrink-0 text-red-400" />
-                    </div>
-                    <div className="mt-3 space-y-2 text-xs text-muted-foreground">
-                      <p><strong>Troubleshooting Context:</strong> Playback engines handle audio decoding and hardware passthrough differently depending on device firmware, particularly with multichannel EAC3 or AC3 tracks.</p>
-                      <p><strong>Common Solutions:</strong> 1) In XCIPTV Settings &gt; Player, toggle Live TV player to <em>VLC</em>. 2) In device OS audio settings (e.g. Fire TV Display &amp; Sounds &gt; Audio), change surround sound output to PCM/Stereo to let the local streaming device handle decoding directly.</p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <span className="font-mono text-xs font-semibold text-amber-400">Issue: Continuous Buffering on Live Channels</span>
-                        <h4 className="mt-1 font-semibold text-foreground text-base">Network Jitter or Low Cache Allocation</h4>
-                      </div>
-                      <Gauge className="h-5 w-5 shrink-0 text-amber-400" />
-                    </div>
-                    <div className="mt-3 space-y-2 text-xs text-muted-foreground">
-                      <p><strong>Root Cause:</strong> Local Wi-Fi interference or ISP bandwidth throttling during peak sports broadcast hours.</p>
-                      <p><strong>Resolution:</strong> Use XCIPTV&apos;s built-in <strong>Speed Test</strong> (found on the main menu). If download speed is below 25 Mb/s or jitter exceeds 20ms, connect via Ethernet or 5GHz Wi-Fi. Consult our detailed{" "}
-                      <Link href="/help/iptv-buffering" className="text-primary underline hover:text-primary/80">
-                        IPTV Buffering Diagnosis Guide
-                      </Link> for step-by-step ISP throttling bypass techniques.</p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <span className="font-mono text-xs font-semibold text-blue-400">Issue: Electronic Program Guide (EPG) Empty or Missing</span>
-                        <h4 className="mt-1 font-semibold text-foreground text-base">Outdated or Corrupted EPG Database Cache</h4>
-                      </div>
-                      <RefreshCw className="h-5 w-5 shrink-0 text-blue-400" />
-                    </div>
-                    <div className="mt-3 space-y-2 text-xs text-muted-foreground">
-                      <p><strong>Root Cause:</strong> Android cached an expired XMLTV index, preventing fresh schedule queries.</p>
-                      <p><strong>Resolution:</strong> In XCIPTV, navigate to Settings &gt; EPG &gt; click <strong>Update EPG</strong> or <strong>Clear EPG Cache</strong>. Restart the application. Review our complete{" "}
-                      <Link href="/help/epg-not-working" className="text-primary underline hover:text-primary/80">
-                        EPG Troubleshooting Guide
-                      </Link> for additional XMLTV recovery steps.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQs */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Frequently Asked Questions About XCIPTV
-                </h2>
-                <div className="mt-6 divide-y divide-white/[0.06] rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="p-5">
-                      <h3 className="font-headline text-base font-semibold text-foreground">
-                        {faq.question}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6 lg:col-span-4">
-              <Card className="border-primary/20 bg-primary/[0.03]">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">TryIPTV + XCIPTV</CardTitle>
-                  <CardDescription className="text-xs">
-                    Xtream Codes streaming with playback settings for your connection
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>{PRODUCT_TRUTHS.connections} simultaneous streams for Multi-Screen</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>{PRODUCT_TRUTHS.channels} live channels with full EPG</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>High-bitrate FHD &amp; 4K sports servers</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Full Xtream Codes API compatibility</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <Button asChild className="w-full">
-                      <Link href="/iptv-free-trial">
-                        Start 24-Hour Free Trial <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Credentials typically delivered by email within 5–15 minutes
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Related Player Comparisons */}
-              <Card className="border-white/[0.08] bg-white/[0.02]">
-                <CardHeader>
-                  <CardTitle className="text-base text-foreground">Compare Other IPTV Players</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Link
-                    href="/players/tivimate"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      TiviMate IPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Best dedicated TV remote interface and SMB DVR recording.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/iptv-smarters"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      IPTV Smarters Pro
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Broadest cross-platform compatibility (iOS, Samsung, LG).
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/televizo"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      Televizo IPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Clean hybrid mobile/TV interface with Chromecast streaming.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/ott-navigator"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      OTT Navigator IPTV
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Advanced codecs, Studio Mode, and deep customization.
-                    </div>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Protocol Guides */}
-              <Card className="border-white/[0.08] bg-white/[0.02]">
-                <CardHeader>
-                  <CardTitle className="text-base text-foreground">Streaming Knowledge Base</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs">
-                  <Link href="/guides/what-are-xtream-codes" className="block text-muted-foreground hover:text-primary">
-                    → What Are Xtream Codes API Credentials?
-                  </Link>
-                  <Link href="/guides/m3u-vs-xtream-codes" className="block text-muted-foreground hover:text-primary">
-                    → M3U Playlist vs. Xtream Codes Comparison
-                  </Link>
-                  <Link href="/guides/what-is-epg" className="block text-muted-foreground hover:text-primary">
-                    → How Electronic Program Guides (EPG) Work
-                  </Link>
-                  <Link href="/help/iptv-buffering" className="block text-muted-foreground hover:text-primary">
-                    → How to Stop IPTV Buffering Permanently
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Official Verification Reference */}
-              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
-                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
-                <p>
-                  Official developer: OTTRUN.<br />
-                  Official site: <a href="https://ottrun.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">ottrun.com</a>.<br />
-                  Distributed on Google Play Store under OTTRUN / OTR Player.
-                </p>
-              </div>
-            </div>
-          </div>
+            </section>
+          </article>
         </Container>
       </Section>
     </>

@@ -67,7 +67,7 @@ export const getIptvFreeTrialPageData = cache(
       name: "24-Hour IPTV Free Trial",
       description:
         "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
-      areaServed: { type: "Country", name: "Worldwide" },
+      areaServed: "Worldwide",
       offers: {
         "@type": "Offer",
         price: "0",

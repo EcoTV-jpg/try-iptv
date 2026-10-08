@@ -628,7 +628,7 @@ export default async function HowToPage({ params }: Props) {
       <StructuredData article={article} />
       <Section className="pt-8 pb-16 sm:pt-12 sm:pb-24">
         <Container>
-          <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Devices", href: "/devices" }, { label: title }]} />
+          <Breadcrumb items={[{ label: "Devices", href: "/devices" }, { label: title }]} />
           
           <article className="mt-6">
             {/* Editorial Header */}

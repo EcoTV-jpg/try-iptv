@@ -175,7 +175,6 @@ export default function PlayersHubPage() {
         <Container className="relative">
           <Breadcrumb
             items={[
-              { label: "Home", href: "/" },
               { label: "Players" },
             ]}
           />

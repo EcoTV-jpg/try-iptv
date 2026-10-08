@@ -1,497 +1,128 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, Globe, HardDrive, Calendar, HelpCircle, Laptop, Settings, Play } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
-import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
-import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "IPTV Extreme Setup Guide: Web Portal Upload, Recording & Multi-EPG";
-const description =
-  "Complete guide to IPTV Extreme & IPTV Extreme Pro by Paolo Turatti. Learn how to upload playlists via iptvextreme.eu, schedule live recordings, and configure Multi-EPG.";
+const title = "IPTV Extreme Setup Guide: M3U, Xtream Codes & MAG/Stalker";
+const description = "Learn how to set up IPTV Extreme with M3U, Xtream Codes or MAG/Stalker, configure EPG, and diagnose playlist, login and playback problems.";
 const canonical = "/players/iptv-extreme";
-const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
-  return {
-    ...generatePageMetadata({
-      title,
-      description,
-      canonical,
-    }),
-    title: {
-      absolute: title,
-    },
-  };
+  return { ...generatePageMetadata({ title, description, canonical }), title: { absolute: title } };
 }
 
-const faqs = [
-  {
-    question: "Who develops IPTV Extreme, and what makes the web portal feature so useful?",
-    answer:
-      "IPTV Extreme is developed by Italian developer Paolo Turatti. Its standout feature is remote web portal management via iptvextreme.eu. Rather than forcing users to type complex, 80-character M3U URLs or server links using a clumsy television remote on-screen keyboard, IPTV Extreme displays a unique MAC address on screen. You simply open iptvextreme.eu on your laptop or smartphone, enter that MAC address, and paste your TryIPTV playlist or Xtream Codes details. The playlist synchronizes directly to your TV over the cloud.",
-  },
-  {
-    question: "How does live stream recording work in IPTV Extreme, and why do recordings fail?",
-    answer:
-      "IPTV Extreme includes a built-in DVR recording engine that can record live broadcasts on demand or schedule recordings based on EPG program schedules. Recordings fail most often due to two issues: first, on modern Android 11+ and Fire OS devices, Android's Scoped Storage restricts apps from writing to arbitrary folders; you must configure the recording folder inside the app's accessible internal storage directory. Second, recording requires an active streaming connection; if you watch one channel while recording another on a single-connection IPTV plan, the provider server will terminate one of the streams.",
-  },
-  {
-    question: "Is the MAC address shown in IPTV Extreme the same as my TV's physical hardware MAC?",
-    answer:
-      "Not necessarily. IPTV Extreme generates its own software-level virtual MAC address identifier upon installation. When logging into iptvextreme.eu to upload your playlist, always copy the exact MAC address displayed inside the IPTV Extreme settings screen (Settings > About or on the initial welcome screen), rather than checking your television's network hardware settings.",
-  },
-  {
-    question: "What is Multi-EPG support in IPTV Extreme?",
-    answer:
-      "Many IPTV players only permit a single Electronic Program Guide URL. IPTV Extreme allows users to add up to 10 independent EPG sources simultaneously. If an IPTV provider's EPG has missing schedules for specific sports or regional channels, you can add an external secondary XMLTV guide and manually map it to those specific channels.",
-  },
-  {
-    question: "What is the difference between IPTV Extreme Free and IPTV Extreme Pro?",
-    answer:
-      "Both versions share identical core playback engines, recording functions, and web portal integration. The free version displays banner advertisements in menu interfaces, while IPTV Extreme Pro is an affordable one-time purchase from the Google Play Store that permanently eliminates all advertising for a clean viewing experience.",
-  },
-];
-
 const articleSchema = generateArticleSchema({
-  headline: title,
-  description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
-  url: `${SITE_URL}${canonical}`,
+  headline: title, description, datePublished: "2026-10-04", dateModified: "2026-10-08", url: `${SITE_URL}${canonical}`,
 });
-
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", item: `${SITE_URL}/` },
   { name: "Players", item: `${SITE_URL}/players` },
   { name: "IPTV Extreme", item: `${SITE_URL}${canonical}` },
 ]);
-
-const faqSchema = generateFAQPageSchema(faqs);
+const h2 = "font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl";
+const p = "mt-4 text-sm leading-7 text-muted-foreground sm:text-base";
+const a = "text-primary underline underline-offset-4 hover:text-primary/80";
+const cases = [
+  ["App does not open", "App or device"],
+  ["Playlist is rejected", "URL, credentials, or chosen format"],
+  ["MAG portal fails", "Portal URL, MAG MAC, or provider authorization"],
+  ["Playlist loads but has no channels", "Provider response, playlist contents, or account access"],
+  ["Channels appear but none play", "Streams, account limit, network, or player mode"],
+  ["Advanced works but Light does not", "Playback compatibility"],
+  ["Channels work but EPG is empty", "EPG source, update, or channel mapping"],
+  ["Only one channel or group fails", "That stream or category source"],
+];
 
 export default function IptvExtremePage() {
-  return (
-    <>
-      <Schema id="article" schema={articleSchema} />
-      <Schema id="breadcrumb" schema={breadcrumbSchema} />
-      <Schema id="faq" schema={faqSchema} />
-
-      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-        <Container className="relative">
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Players", href: "/players" },
-              { label: "IPTV Extreme" },
-            ]}
-          />
-
-          <div className="mt-8 max-w-4xl">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-              IPTV Player Architecture & Guide
-            </span>
-            <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              IPTV Extreme Setup: Web Portal Upload, DVR Recording &amp; Multi-EPG
-            </h1>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              IPTV Extreme (developed by Paolo Turatti) eliminates the single most frustrating part of television streaming: typing long playlist URLs with a remote control. Through its dedicated cloud portal (iptvextreme.eu), built-in scheduled DVR recording engine, and 10-source Multi-EPG manager, IPTV Extreme provides veteran streamers with robust functionality.
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Globe className="h-3.5 w-3.5 text-primary" /> Web Portal Management (iptvextreme.eu)
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Calendar className="h-3.5 w-3.5 text-primary" /> Scheduled DVR Recording
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Tv className="h-3.5 w-3.5 text-primary" /> Multi-EPG (Up to 10 Sources)
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <HardDrive className="h-3.5 w-3.5 text-primary" /> Android TV &amp; Fire OS
-              </span>
-            </div>
-            <PlayerQuickAnswer player="IPTV Extreme" summary="IPTV Extreme is an IPTV player with a browser-based playlist workflow. Install it on a supported Android-based TV device, use its configuration method with the credentials or playlist supplied by your service, and verify that channels and guide data appear on the TV." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-is-m3u", label: "M3U playlist guide" }, { href: "/guides/what-is-epg", label: "EPG guide" }]} help={[{ href: "/help/iptv-not-working", label: "Playback troubleshooting" }]} />
-          </div>
-        </Container>
-      </Section>
-
-      <Section className="py-12 sm:py-16">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-12">
-            <div className="space-y-12 lg:col-span-8">
-              {/* Web Portal Architecture */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Remote Cloud Management: How iptvextreme.eu Works
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    Anyone who has ever set up an IPTV player on a Firestick or Android TV knows the pain of typing complicated server URLs, alphanumeric usernames, and 16-character passwords using directional arrow keys on a remote.
-                  </p>
-                  <p>
-                    Paolo Turatti solved this problem by creating an online configuration bridge:
-                  </p>
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 space-y-4">
-                    <div className="flex items-start gap-3">
-                      <Laptop className="h-5 w-5 shrink-0 text-primary mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-foreground text-sm">Browser-to-TV Synchronization</h4>
-                        <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                          When IPTV Extreme is installed, it registers a unique MAC identifier. You open <strong className="text-foreground">iptvextreme.eu</strong> on any desktop, tablet, or phone browser, submit your MAC address, and paste your TryIPTV M3U or Xtream Codes details. The web server relays the configuration directly to your television app within seconds.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <p>
-                    This browser-first workflow allows you to copy-paste activation emails directly from your computer without risk of remote-control typos.
-                  </p>
-                </div>
-              </div>
-
-              {/* Technical Profile Table */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  IPTV Extreme Technical Specification &amp; Architecture
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Official specifications for IPTV Extreme &amp; IPTV Extreme Pro based on releases by Paolo Turatti.
-                </p>
-                <div className="mt-6 overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  <table className="w-full text-left text-sm">
-                    <tbody className="divide-y divide-white/[0.06]">
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Lead Developer</td>
-                        <td className="p-4 font-medium text-foreground">Paolo Turatti</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Supported Platforms</td>
-                        <td className="p-4 text-muted-foreground">Android TV, Google TV, Android Phones/Tablets, <Link href="/devices/firestick-iptv" className="text-primary underline">Amazon Fire TV</Link> (Sideloaded APK)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">iOS / Apple TV / Windows</td>
-                        <td className="p-4 text-muted-foreground">The developer&apos;s official channels do not list iOS, Apple TV, or Windows applications</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Remote Configuration Portal</td>
-                        <td className="p-4 text-muted-foreground">Official web portal at iptvextreme.eu (Synchronize by software MAC address)</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Recording Engine</td>
-                        <td className="p-4 text-muted-foreground">Built-in live stream DVR with scheduled timers and EPG program time integration</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">EPG Architecture</td>
-                        <td className="p-4 text-muted-foreground">Multi-EPG engine supporting up to 10 simultaneous XMLTV sources with manual channel mapping</td>
-                      </tr>
-                      <tr>
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Internal Player Modes</td>
-                        <td className="p-4 text-muted-foreground">Advanced Player (LibVLC core) and Light Player (Android MediaCodec framework)</td>
-                      </tr>
-                      <tr className="bg-white/[0.01]">
-                        <td className="p-4 font-mono text-xs font-medium text-muted-foreground">Licensing Structure</td>
-                        <td className="p-4 text-muted-foreground">Free (Ad-supported) or IPTV Extreme Pro (One-time Google Play purchase for ad removal)</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Step-by-Step Setup */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Step-by-Step: Adding TryIPTV via iptvextreme.eu
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  The easiest way to configure IPTV Extreme is through the official web portal:
-                </p>
-
-                <div className="mt-6 space-y-6">
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      1
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Find Your Virtual MAC Address
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Launch IPTV Extreme on your television. Upon opening, the app displays your unique virtual MAC address (formatted as <code className="rounded bg-white/[0.05] px-1 py-0.5 text-foreground">XX:XX:XX:XX:XX:XX</code>). Write this down or keep the screen visible.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      2
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Open iptvextreme.eu on Your Computer or Phone
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        On your laptop or mobile browser, navigate to <strong>https://iptvextreme.eu</strong>.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      3
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Submit Your Playlist Details
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Enter your MAC Address. Under &quot;Playlist Name&quot;, enter <strong>TryIPTV</strong>. Under &quot;Playlist Link&quot;, paste your complete TryIPTV M3U URL, or enter your Xtream Codes credentials. Check the reCAPTCHA box and click <strong>Save</strong>.
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        Need help understanding your playlist structure? Read our guide on{" "}
-                        <Link href="/guides/what-is-m3u" className="text-primary underline hover:text-primary/80">
-                          What Is an M3U Playlist
-                        </Link>.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-sm font-bold text-primary">
-                      4
-                    </div>
-                    <div className="space-y-2">
-                      <h3 className="font-headline text-base font-bold text-foreground">
-                        Reload the TV App
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Return to your TV screen. Press the menu button on your remote and select <strong>Reload Playlists</strong>, or simply exit and reopen IPTV Extreme. Your channels, categories, and EPG schedules will load immediately.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* DVR Recording Guide */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Configuring the Scheduled DVR Recording Engine
-                </h2>
-                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  <p>
-                    IPTV Extreme allows you to record live broadcasts directly to your device storage:
-                  </p>
-                  <ol className="list-inside list-decimal space-y-3 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm">
-                    <li>
-                      <strong className="text-foreground">Schedule via EPG:</strong> In the channel guide, select an upcoming sporting event or TV show, press and hold the OK button, and choose <strong>Record Program</strong>. IPTV Extreme creates a background timer that will automatically awaken the stream and write the video file to disk.
-                    </li>
-                    <li>
-                      <strong className="text-foreground">Configure the Recording Folder:</strong> Navigate to <strong>Settings &gt; Recording &gt; Recording Folder</strong>. On Android 11+ and modern Fire OS, choose an app-specific directory (such as <code className="rounded bg-white/[0.05] px-1 py-0.5 text-foreground">/Android/data/com.pecana.iptvextreme/files/</code>) to avoid Android Scoped Storage write permission denials.
-                    </li>
-                    <li>
-                      <strong className="text-foreground">Monitor Simultaneous Stream Limits:</strong> Recording a channel while streaming another channel uses 2 simultaneous connections. TryIPTV includes <strong className="text-foreground">{PRODUCT_TRUTHS.connections} connections standard</strong>, allowing you to watch and record simultaneously without server blocks.
-                    </li>
-                  </ol>
-                </div>
-              </div>
-
-              {/* Troubleshooting Matrix */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  IPTV Extreme Real-World Troubleshooting Matrix
-                </h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Common operational errors in IPTV Extreme and verified fixes:
-                </p>
-
-                <div className="mt-6 space-y-4">
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <span className="font-mono text-xs font-semibold text-red-400">Issue: Recording Aborted / Storage Write Failed</span>
-                        <h4 className="mt-1 font-semibold text-foreground text-base">Android Scoped Storage Permission Denial</h4>
-                      </div>
-                      <HardDrive className="h-5 w-5 shrink-0 text-red-400" />
-                    </div>
-                    <div className="mt-3 space-y-2 text-xs text-muted-foreground">
-                      <p><strong>Root Cause:</strong> The chosen folder on your USB drive or internal flash memory was blocked by Android 11+ security sandbox rules.</p>
-                      <p><strong>Resolution:</strong> In IPTV Extreme Settings &gt; Recording &gt; Recording Folder, select the app&apos;s default internal storage directory or grant &quot;Manage All Files&quot; permission under Android System Settings &gt; Apps &gt; IPTV Extreme &gt; Permissions.</p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <span className="font-mono text-xs font-semibold text-amber-400">Issue: iptvextreme.eu Reports &quot;MAC Address Not Found&quot;</span>
-                        <h4 className="mt-1 font-semibold text-foreground text-base">Virtual MAC vs Hardware MAC Mismatch</h4>
-                      </div>
-                      <Globe className="h-5 w-5 shrink-0 text-amber-400" />
-                    </div>
-                    <div className="mt-3 space-y-2 text-xs text-muted-foreground">
-                      <p><strong>Root Cause:</strong> Submitting your TV&apos;s physical Wi-Fi/Ethernet MAC address rather than the virtual identifier generated by the app.</p>
-                      <p><strong>Resolution:</strong> Launch IPTV Extreme &gt; select Settings &gt; About. Copy the exact 12-character hexadecimal string shown under &quot;Application MAC&quot;.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQs */}
-              <div>
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Frequently Asked Questions About IPTV Extreme
-                </h2>
-                <div className="mt-6 divide-y divide-white/[0.06] rounded-xl border border-white/[0.08] bg-white/[0.02]">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="p-5">
-                      <h3 className="font-headline text-base font-semibold text-foreground">
-                        {faq.question}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="space-y-6 lg:col-span-4">
-              <Card className="border-primary/20 bg-primary/[0.03]">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">TryIPTV + IPTV Extreme</CardTitle>
-                  <CardDescription className="text-xs">
-                    Easy web configuration with scheduled DVR streaming
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>{PRODUCT_TRUTHS.connections} simultaneous stream connections</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Full compatibility with iptvextreme.eu</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Over {PRODUCT_TRUTHS.channels} live TV channels</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Reliable XMLTV EPG schedule sources</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <Button asChild className="w-full">
-                      <Link href="/iptv-free-trial">
-                        Start 24-Hour Free Trial <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <p className="mt-2 text-center text-[11px] text-muted-foreground">
-                      Credentials typically delivered by email within 5–15 minutes
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Related Player Comparisons */}
-              <Card className="border-white/[0.08] bg-white/[0.02]">
-                <CardHeader>
-                  <CardTitle className="text-base text-foreground">Explore Other IPTV Players</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Link
-                    href="/players/tivimate"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      TiviMate IPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Dedicated TV remote interface and SMB network DVR.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/xciptv"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      XCIPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Dual playback engines (ExoPlayer &amp; VLC) with multi-screen grid.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/televizo"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      Televizo IPTV Player
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Clean hybrid mobile/TV interface with Chromecast streaming.
-                    </div>
-                  </Link>
-
-                  <Link
-                    href="/players/ott-navigator"
-                    className="group block rounded-lg border border-white/[0.06] p-3 transition-colors hover:border-white/[0.15] hover:bg-white/[0.03]"
-                  >
-                    <div className="font-semibold text-foreground group-hover:text-primary text-sm">
-                      OTT Navigator IPTV
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      Advanced codecs, Studio Mode, and deep customization.
-                    </div>
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Protocol Guides */}
-              <Card className="border-white/[0.08] bg-white/[0.02]">
-                <CardHeader>
-                  <CardTitle className="text-base text-foreground">Setup Guides</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 text-xs">
-                  <Link href="/guides/what-is-m3u" className="block text-muted-foreground hover:text-primary">
-                    → What Is an M3U Playlist &amp; How Does It Work?
-                  </Link>
-                  <Link href="/guides/what-is-epg" className="block text-muted-foreground hover:text-primary">
-                    → How Electronic Program Guides (EPG) Work
-                  </Link>
-                  <Link href="/devices/firestick-iptv" className="block text-muted-foreground hover:text-primary">
-                    → Firestick IPTV Setup &amp; Sideloading Guide
-                  </Link>
-                  <Link href="/help/iptv-buffering" className="block text-muted-foreground hover:text-primary">
-                    → How to Stop IPTV Buffering
-                  </Link>
-                </CardContent>
-              </Card>
-
-              {/* Official Verification Reference */}
-              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
-                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
-                <p>
-                  Lead developer: Paolo Turatti.<br />
-                  Official web portal: <a href="https://iptvextreme.eu" target="_blank" rel="noopener noreferrer" className="text-primary underline">iptvextreme.eu</a>.<br />
-                  Distributed on Google Play Store (Free and Pro versions).
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
-    </>
-  );
+  return <>
+    <Schema id="article" schema={articleSchema} />
+    <Schema id="breadcrumb" schema={breadcrumbSchema} />
+    <Section className="border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20"><Container>
+      <Breadcrumb items={[{ label: "Players", href: "/players" }, { label: "IPTV Extreme" }]} />
+      <div className="mt-8 max-w-4xl">
+        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">IPTV Extreme guide</span>
+        <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">IPTV Extreme Setup Guide: M3U, Xtream Codes &amp; MAG/Stalker</h1>
+        <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">IPTV Extreme is a playlist player; it does not include channels or a subscription. Add your own compatible M3U playlist or, on supported versions, an Xtream Codes or MAG/Stalker configuration. The app can then load the channels, on-demand items, and EPG data available from that source. Check each stage separately if setup stops working.</p>
+      </div>
+    </Container></Section>
+    <Section className="py-12 sm:py-16"><Container><article className="mx-auto max-w-4xl space-y-12">
+      <section><h2 className={h2}>What Is IPTV Extreme?</h2>
+        <p className={p}>IPTV Extreme is Paolo Turatti&apos;s Android playlist and media player. The official <a href="https://play.google.com/store/apps/details?id=com.pecana.iptvextreme" target="_blank" rel="noopener noreferrer" className={a}>Google Play listing for package com.pecana.iptvextreme</a> says a playlist is required and no channels are included. Confirm the developer and package on the listing before installing; similarly named apps are not necessarily the same product.</p>
+      </section>
+      <section><h2 className={h2}>How to Install IPTV Extreme on Android / Android TV</h2>
+        <p className={p}>On an Android phone, tablet, Android TV, or Google TV, open the official Google Play listing for <strong className="text-foreground">IPTV Extreme by Paolo Turatti</strong> and install it if your device offers it. Store availability and compatibility can vary by device. After launch, keep the app&apos;s displayed MAC address available if you plan to use its web portal.</p>
+        <p className={p}>See the <Link href="/devices/android-tv-iptv" className={a}>Android TV setup guide</Link> for device basics.</p>
+      </section>
+      <section><h2 className={h2}>IPTV Extreme on Firestick / Fire TV</h2>
+        <p className={p}>Check the Amazon Appstore on your Fire TV first. If the app is unavailable there, the developer&apos;s <a href="https://react.iptvextreme.eu/downloads" target="_blank" rel="noopener noreferrer" className={a}>official APK downloads page</a> is the source to check for an Android package. Fire TV permits installation of compatible Android apps outside the Appstore, but compatibility can vary. Follow your device&apos;s current installation prompts and use the <Link href="/devices/firestick-iptv" className={a}>Firestick setup guide</Link> for device preparation. Avoid unverified Downloader codes and APK mirrors.</p>
+      </section>
+      <section><h2 className={h2}>M3U, Xtream Codes or MAG/Stalker?</h2>
+        <p className={p}>Choose the format that matches what your provider supplied. An M3U source is a playlist link or file. Xtream Codes normally uses a server URL, username, and password. MAG/Stalker uses a portal URL and a MAG MAC address authorized by the provider. IPTV Extreme&apos;s official portal has separate forms for these methods; choosing the wrong one can fail even with an active account.</p>
+        <div className="mt-5 overflow-x-auto rounded-xl border border-white/[0.08]"><table className="w-full min-w-[580px] text-left text-sm"><thead className="bg-white/[0.05] text-foreground"><tr><th className="p-3">What you received</th><th className="p-3">Setup path</th><th className="p-3">Key check</th></tr></thead><tbody className="divide-y divide-white/[0.08] text-muted-foreground">
+          <tr><td className="p-3">Playlist URL or file</td><td className="p-3">M3U</td><td className="p-3">Complete, reachable playlist</td></tr>
+          <tr><td className="p-3">Server URL, username, password</td><td className="p-3">Xtream Codes</td><td className="p-3">Exact credentials and active account</td></tr>
+          <tr><td className="p-3">Portal URL and authorized MAG MAC</td><td className="p-3">MAG/Stalker</td><td className="p-3">Provider has registered the MAG MAC</td></tr>
+        </tbody></table></div>
+      </section>
+      <section><h2 className={h2}>How to Add an M3U Playlist to IPTV Extreme</h2>
+        <p className={p}>The official portal&apos;s <strong className="text-foreground">Add Playlist</strong> form accepts a device MAC address, playlist name, and playlist link. A direct M3U URL is easiest to enter there. If your provider gave you a local file, use the app&apos;s playlist import option when available; the portal asks for a link. Labels inside the app may differ by version.</p>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-7 text-muted-foreground sm:text-base">
+          <li>Copy the MAC address shown by IPTV Extreme and open the <a href="https://react.iptvextreme.eu/" target="_blank" rel="noopener noreferrer" className={a}>official IPTV Extreme portal</a>.</li>
+          <li>Choose <strong className="text-foreground">Add Playlist</strong>, enter that device MAC, give the playlist a recognizable name, and paste the complete M3U link.</li>
+          <li>Save the playlist, then return to the app and allow it to load or refresh its playlists. Confirm that channel groups and channels appear before testing playback.</li>
+        </ol><p className={p}>For the link format, see <Link href="/guides/what-is-m3u" className={a}>what an M3U playlist contains</Link>.</p>
+      </section>
+      <section><h2 className={h2}>How to Add Xtream Codes to IPTV Extreme</h2>
+        <p className={p}>IPTV Extreme&apos;s official portal offers an <strong className="text-foreground">Add Xtream Codes Playlist</strong> form for app version 107 and later. It asks for the IPTV Extreme device MAC, a playlist name, server URL, username, and password. These credentials are different from the MAC used to identify the device in the portal.</p>
+        <ol className="mt-4 list-decimal space-y-2 pl-6 text-sm leading-7 text-muted-foreground sm:text-base">
+          <li>Open the official portal and choose <strong className="text-foreground">Add Xtream Codes Playlist</strong>.</li>
+          <li>Enter the MAC displayed in IPTV Extreme, a playlist name, and the provider&apos;s server URL, username, and password.</li>
+          <li>Save, then refresh or reopen the app and check whether channels load. If rejected, verify the provider type, server URL, account status, exact credentials, and accidental spaces.</li>
+        </ol><p className={p}>Read <Link href="/guides/what-are-xtream-codes" className={a}>what Xtream Codes credentials mean</Link> if you are unsure which details you received.</p>
+      </section>
+      <section><h2 className={h2}>How MAG / Stalker Setup Works in IPTV Extreme</h2>
+        <p className={p}>IPTV Extreme&apos;s official portal lists a <strong className="text-foreground">MAG / Stalker Playlist</strong> form for app version 109 and later. It has separate fields for the IPTV Extreme device MAC, playlist name, MAG portal URL, and MAG MAC address. The device MAC identifies where the portal sends the configuration; the MAG MAC is the identity the provider may need to authorize. Confirm the portal and authorized MAG MAC with your provider before saving. Not every provider supports this format.</p>
+      </section>
+      <section><h2 className={h2}>Why IPTV Extreme Shows a MAC Address</h2>
+        <p className={p}>The IPTV Extreme portal uses the MAC address displayed by the app to target a device when adding playlists. MAG/Stalker can additionally require a <em>different</em> MAG MAC address for provider authorization. Copy each value into its matching portal field. If your provider gave you a server URL, username, and password, do not assume you also need provider-side MAC activation.</p>
+      </section>
+      <section><h2 className={h2}>What IPTV Extreme Loads After You Add a Playlist</h2>
+        <p className={p}>Saving a configuration is only the first check. The app must then download the playlist or authenticate with the provider, read any channel groups and channels, and load available on-demand and EPG data before you test a stream. A saved playlist with no channels points to a different stage than channels that appear but will not play. Working channels with an empty guide point to EPG data or matching instead.</p>
+        <p className="mt-4 rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 text-sm leading-7 text-muted-foreground">Configuration → playlist download or authentication → channel groups → channels → on-demand content where supplied → EPG → playback test</p>
+      </section>
+      <section><h2 className={h2}>Advanced vs Light Player in IPTV Extreme</h2>
+        <p className={p}>Google Play lists two integrated player modes, <strong className="text-foreground">Advanced</strong> and <strong className="text-foreground">Light</strong>. If a channel plays in one mode but not the other, that is useful evidence of playback compatibility. It does not prove a particular codec problem, and switching modes is not a universal cure for buffering. Compare the same channel in both modes before changing provider settings.</p>
+      </section>
+      <section><h2 className={h2}>EPG Setup and EPG Alias Problems</h2>
+        <p className={p}>IPTV Extreme lists Multi EPG support, automatic EPG updates, and EPG alias management. A channel can play while its schedule remains empty because guide data is a separate source. Check that an EPG source is configured and updated, then compare missing channels with guide entries. Aliases can help match a playlist channel to a guide entry when their names or identifiers differ. See the <Link href="/guides/what-is-epg" className={a}>EPG guide</Link> for the basics.</p>
+      </section>
+      <section><h2 className={h2}>Useful IPTV Extreme Features After Setup</h2>
+        <p className={p}>The official listing confirms settings backup and restore, remote control support, live recording with a time limit, and recording timers. A backup can spare you from re-entering settings after changing devices or reinstalling. Recording still depends on a playable stream and suitable device storage; first confirm normal playback before diagnosing a recording failure.</p>
+      </section>
+      <section><h2 className={h2}>IPTV Extreme Free vs Pro</h2>
+        <p className={p}>Paolo Turatti&apos;s <a href="https://play.google.com/store/apps/details?id=com.pecana.iptvextremepro" target="_blank" rel="noopener noreferrer" className={a}>official IPTV Extreme Pro listing</a> is a separate app in the same developer family. The developer describes Pro as ad free. Check the store in your region for current price and availability, and verify the developer before purchasing a similarly named app.</p>
+      </section>
+      <section><h2 className={h2}>IPTV Extreme: Player, Provider or Network?</h2>
+        <p className={p}>Use the stage that failed to choose your next check. These are likely areas, not definite causes: a rejected configuration differs from a loaded channel that will not play, and both differ from a missing schedule.</p>
+        <div className="mt-5 overflow-x-auto rounded-xl border border-white/[0.08]"><table className="w-full min-w-[580px] text-left text-sm"><thead className="bg-white/[0.05] text-foreground"><tr><th className="p-3">Symptom</th><th className="p-3">Likely area to check</th></tr></thead><tbody className="divide-y divide-white/[0.08] text-muted-foreground">{cases.map(([symptom, area]) => <tr key={symptom}><td className="p-3">{symptom}</td><td className="p-3">{area}</td></tr>)}</tbody></table></div>
+      </section>
+      <section><h2 className={h2}>IPTV Extreme Troubleshooting</h2>
+        <p className={p}>First note whether the app opens, accepts the playlist, shows channels, plays a channel, and displays EPG. That sequence keeps a login or source problem separate from a playback or guide problem.</p>
+        <div className="mt-5 space-y-6">
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Playlist Will Not Add</h3><p className={p}>Confirm M3U, Xtream, or MAG/Stalker was selected to match your provider details. Recheck the complete link or portal/server URL, credentials, account status, and provider availability. For login checks, see <Link href="/help/iptv-login-not-working" className={a}>IPTV login troubleshooting</Link>.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Playlist Loads but No Channels Appear</h3><p className={p}>The source response may be empty, malformed, or limited by account permissions or categories. Refresh once and confirm what the provider actually supplies. See <Link href="/help/m3u-not-loading" className={a}>M3U loading checks</Link> for a playlist URL.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Channels Appear but Do Not Play</h3><p className={p}>Try several channels, check account connection limits and network stability, then compare Advanced and Light playback. If the same channels fail elsewhere, ask the provider about the streams. See <Link href="/help/iptv-not-working" className={a}>IPTV service checks</Link>.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Advanced Works but Light Does Not</h3><p className={p}>That difference narrows the investigation toward playback compatibility for that stream and device. Keep the working mode for the test and report the specific channel and mode behavior if requesting support.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">EPG Missing</h3><p className={p}>Check the EPG source, its update state, provider guide availability, and channel mapping or aliases. Working video alone does not establish that EPG data exists. See <Link href="/help/epg-not-working" className={a}>EPG troubleshooting</Link>.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">Only Some Channels Fail</h3><p className={p}>Test another channel in the same group and one in a different group. A limited failure points toward individual streams or category data more than complete installation failure.</p></div>
+          <div><h3 className="font-headline text-lg font-semibold text-foreground">App Is Slow, Freezes or Crashes</h3><p className={p}>Check for an app update, available device storage and memory, and whether a very large playlist is slowing loading. Restart the app and device. Consider reinstalling only after preserving settings with backup if available. For stuttering video after the app opens, see <Link href="/help/iptv-buffering" className={a}>buffering checks</Link>.</p></div>
+        </div>
+        <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">Need IPTV credentials for IPTV Extreme? <Link href="/iptv-free-trial" className={a}>Start with a 24-hour IPTV trial</Link>. TryIPTV is independent of IPTV Extreme and Paolo Turatti.</div>
+      </section>
+    </article></Container></Section>
+  </>;
 }

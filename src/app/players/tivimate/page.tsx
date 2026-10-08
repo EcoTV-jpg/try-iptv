@@ -1,68 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, AlertTriangle, ShieldCheck, Tv, HardDrive, Clock, HelpCircle, Layers, Settings, Radio } from "lucide-react";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
-import { PlayerQuickAnswer } from "@/components/players/PlayerQuickAnswer";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
-import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "TiviMate IPTV Player Setup Guide: Features, Settings & Troubleshooting";
+const title = "TiviMate IPTV Player Setup Guide: Install, M3U & Xtream Codes";
 const description =
-  "Learn how to set up and optimize TiviMate on Fire TV and Android TV. Detailed walkthrough for Xtream Codes login, EPG setup, SMB recording, buffer tuning, and error resolution.";
+  "Install and set up TiviMate on Android TV, Google TV or Fire TV. Add Xtream Codes or M3U, configure EPG, and troubleshoot common issues.";
 const canonical = "/players/tivimate";
 const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
   return {
-    ...generatePageMetadata({
-      title,
-      description,
-      canonical,
-    }),
-    title: {
-      absolute: title,
-    },
+    ...generatePageMetadata({ title, description, canonical }),
+    title: { absolute: title },
   };
 }
-
-const faqs = [
-  {
-    question: "Is TiviMate available on iPhone, iPad, Apple TV, or Windows PC?",
-    answer:
-      "Armobsoft FZE develops TiviMate specifically for Android TV, Google TV, and Amazon Fire OS devices with television remote controls. The developer's official distribution channels do not list native applications for iOS, iPadOS, tvOS, Windows, or Roku. Users should exercise caution regarding third-party websites claiming to offer unofficial Windows or Apple downloads, as these are not affiliated with the developer.",
-  },
-  {
-    question: "How do I purchase and activate TiviMate Premium on a Fire TV Stick without Google Play?",
-    answer:
-      "Because Fire TV devices use the Amazon Appstore rather than the Google Play Store, users can activate Premium on Fire TV using the official 'TiviMate Companion' app available on Google Play via an Android phone, tablet, or Android emulator. After purchasing a subscription or one-time license in Companion, open TiviMate on your Fire TV, navigate to Settings > Unlock Premium, and log in with your account credentials. The developer confirms one account authorizes up to 5 devices.",
-  },
-  {
-    question: "Why does my recording in TiviMate stop after just a few minutes?",
-    answer:
-      "Recording interruptions typically stem from two common constraints: concurrent connection limits and local storage limits. First, recording a live channel while watching another channel requires multiple simultaneous streams from your IPTV service; if your provider account allows only one connection, the server will terminate the older stream. Second, streaming sticks frequently have limited available internal storage; high-definition recordings can quickly fill available flash memory, prompting the operating system to stop the write process. Configuring an SMB network share on a home PC or NAS provides a reliable storage target.",
-  },
-  {
-    question: "What causes 'An error occurred: Code 401' or 'Code 403' in TiviMate?",
-    answer:
-      "HTTP error codes 401 (Unauthorized) and 403 (Forbidden) indicate an authentication or server-side access block. Common causes include an incorrect username or password, an expired subscription, or exceeding allowed simultaneous connections. If credentials and subscription status are verified, community discussions on r/TiviMate note that some intermediate server firewalls filter generic player request headers; setting a custom User-Agent (such as 'VLC') under Settings > Playlists > [Your Playlist] > User-Agent is a community-reported troubleshooting step.",
-  },
-  {
-    question: "What is the best Buffer Size setting in TiviMate to eliminate stuttering?",
-    answer:
-      "In TiviMate (Settings > Playback > Buffer size), options include 'None', 'Small', 'Medium', and 'Large'. For stable, high-speed wired connections, 'None' or 'Small' yields the fastest channel zap times. If you experience occasional micro-stutters over Wi-Fi, increasing the buffer to 'Medium' provides additional playback buffering against packet latency. If buffering persists regardless of buffer size, consult our IPTV buffering troubleshooting guide to diagnose network or server congestion.",
-  },
-];
 
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
   datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: "2026-10-08",
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -72,457 +34,183 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "TiviMate", item: `${SITE_URL}${canonical}` },
 ]);
 
-const faqSchema = generateFAQPageSchema(faqs);
+const headingClass = "font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl";
+const textClass = "mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base";
+const listClass = "mt-4 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-muted-foreground sm:text-base";
+const linkClass = "text-primary underline underline-offset-4 hover:text-foreground";
 
 export default function TivimatePage() {
   return (
     <>
       <Schema id="article" schema={articleSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
-      <Schema id="faq" schema={faqSchema} />
 
-      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-        <Container className="relative">
-          <Breadcrumb
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Players", href: "/players" },
-              { label: "TiviMate" },
-            ]}
-          />
-
-          <div className="mt-8 max-w-4xl">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-              IPTV Player Architecture & Guide
-            </span>
-            <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              TiviMate IPTV Player: Complete Technical Setup, Configuration & Troubleshooting
+      <Section className="border-b border-white/[0.07] py-12 sm:py-16">
+        <Container>
+          <Breadcrumb items={[{ label: "Players", href: "/players" }, { label: "TiviMate" }]} />
+          <div className="mt-8 max-w-3xl">
+            <h1 className="font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              TiviMate IPTV Player Setup Guide: Install, M3U &amp; Xtream Codes
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              TiviMate IPTV Player (developed by Armobsoft FZE) is widely regarded as the gold standard among dedicated television IPTV interfaces. Unlike generic media players adapted from smartphone layouts, TiviMate was engineered from the ground up specifically for TV screens, remote control D-pads, and high-density Electronic Program Guides (EPG).
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              TiviMate is an IPTV media player, not a source of channels or subscriptions. You need your own compatible playlist or login details from an IPTV provider. Install TiviMate, add an Xtream Codes login or M3U playlist, then allow channels and any available EPG data to load.
             </p>
-
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Tv className="h-3.5 w-3.5 text-primary" /> Android TV & Fire OS
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Radio className="h-3.5 w-3.5 text-primary" /> Xtream Codes & M3U
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <HardDrive className="h-3.5 w-3.5 text-primary" /> SMB Network DVR
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium text-foreground">
-                <Layers className="h-3.5 w-3.5 text-primary" /> 5-Device License
-              </span>
-            </div>
-            <PlayerQuickAnswer player="TiviMate" summary="TiviMate is a TV-focused IPTV player. Install it on a compatible Android TV or Fire TV device, then add the Xtream Codes or M3U details supplied by your IPTV service and verify that channels and the EPG load." devices={[{ href: "/devices/android-tv-iptv", label: "Android TV setup" }, { href: "/devices/firestick-iptv", label: "Firestick setup" }]} guides={[{ href: "/guides/what-are-xtream-codes", label: "Xtream Codes login" }, { href: "/guides/what-is-m3u", label: "M3U playlist guide" }]} help={[{ href: "/help/iptv-buffering", label: "Buffering troubleshooting" }]} />
           </div>
         </Container>
       </Section>
 
       <Section className="py-12 sm:py-16">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_320px]">
-            {/* Main Article Content */}
-            <div className="space-y-12">
-              {/* Critical Clarification: Player vs Service */}
-              <div className="rounded-xl border border-primary/20 bg-primary/[0.04] p-6 sm:p-7">
-                <div className="flex items-start gap-3.5">
-                  <ShieldCheck className="h-6 w-6 text-primary shrink-0 mt-0.5" />
-                  <div className="space-y-2">
-                    <h2 className="font-headline text-lg font-bold text-foreground">
-                      Important Official Distinction: TiviMate Is a Player Only
-                    </h2>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      TiviMate does not host, provide, or sell any channels, live sports, or video-on-demand content. It is strictly a client playback software developed by <strong>Armobsoft FZE</strong>. Websites claiming to sell &ldquo;TiviMate Subscriptions with 20,000 Channels&rdquo; are unauthorized third parties. To stream content, you must supply your own valid subscription credentials—such as an <Link href="/guides/what-are-xtream-codes" className="text-primary underline underline-offset-4">Xtream Codes login</Link> or an <Link href="/guides/what-is-m3u" className="text-primary underline underline-offset-4">M3U playlist URL</Link> provided by a legitimate service like <Link href="/" className="text-primary underline underline-offset-4">TryIPTV</Link>.
-                    </p>
-                  </div>
+          <article className="max-w-3xl space-y-12">
+            <section>
+              <h2 className={headingClass}>What Is TiviMate?</h2>
+              <p className={textClass}>
+                TiviMate is a TV-focused IPTV player by Armobsoft FZE. It organizes playlists you supply; it does not provide streams or endorse a provider. Before setup, get a direct M3U URL, Xtream Codes server URL and account details, or a Stalker Portal address if your provider supports that method. These are separate from any TiviMate Premium account.
+              </p>
+              <p className={textClass}>
+                The official app listing confirms support for M3U, Xtream Codes, and Stalker Portal. If you only have a provider website login, ask the provider which playlist method to use. <Link href="/guides/what-are-xtream-codes" className={linkClass}>Xtream Codes credentials</Link> are one common option.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Install TiviMate on Android TV and Google TV</h2>
+              <p className={textClass}>
+                TiviMate is designed for Android TV and remote control navigation. On an Android TV or Google TV device with Google Play, install “TiviMate IPTV Player” from the listing by Armobsoft FZE. Launch it with your TV remote and have your provider&apos;s playlist details ready. The app is not optimized for touch-only phones or tablets.
+              </p>
+              <ol className={listClass}>
+                <li>Open Google Play on the TV and search for TiviMate IPTV Player.</li>
+                <li>Check that Armobsoft FZE is the developer, then install and open the app.</li>
+                <li>Select Add Playlist and choose the format your provider supplied.</li>
+              </ol>
+              <p className={textClass}>For TV preparation, see the <Link href="/devices/android-tv-iptv" className={linkClass}>Android TV setup guide</Link>.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Install TiviMate on Firestick / Fire TV</h2>
+              <p className={textClass}>
+                For a compatible Android-based Fire TV device, TiviMate provides an official APK at <a href="https://tivimate.com/apk" className={linkClass} target="_blank" rel="noopener noreferrer">tivimate.com/apk</a>. Use the Downloader app to open that address, then install the APK. Fire TV menus vary by model and Fire OS version; use the device&apos;s current app-installation permission flow rather than an unofficial APK or a copied short code.
+              </p>
+              <ol className={listClass}>
+                <li>Install Downloader from the Amazon Appstore if it is available on your device.</li>
+                <li>Where your Fire TV offers it, open Settings → My Fire TV (or Device &amp; Software) → Developer Options → Install Unknown Apps and allow Downloader. If Developer Options is hidden, check the device&apos;s About screen and current Amazon instructions for your model.</li>
+                <li>In Downloader, enter <code className="break-all text-foreground">https://tivimate.com/apk</code>, follow the official download, and approve installation.</li>
+                <li>Open TiviMate and add the playlist details from your IPTV provider.</li>
+              </ol>
+              <p className={textClass}>See the <Link href="/devices/firestick-iptv" className={linkClass}>Firestick setup guide</Link> for device-specific preparation. Some newer Fire OS interfaces use different controls, so follow the settings shown on your device.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Set Up TiviMate with Xtream Codes</h2>
+              <p className={textClass}>
+                To connect TiviMate with Xtream Codes, select Add Playlist and choose Xtream Codes. Enter the server URL, username, and password supplied by your IPTV provider, then save the playlist and wait for channels to load. The server URL identifies the service endpoint; the username and password identify your IPTV account. TiviMate does not issue those credentials.
+              </p>
+              <ol className={listClass}>
+                <li>From the first-run screen, select Add Playlist. For an existing setup, open Settings → Playlists → Add playlist.</li>
+                <li>Choose Xtream Codes and enter the complete server URL, including the protocol and port if supplied.</li>
+                <li>Enter the provider-issued username and password exactly, checking for spaces and mistyped characters.</li>
+                <li>Continue, name the playlist, save it, and allow the channel list to load.</li>
+              </ol>
+              <p className={textClass}>A provider website password may differ from the IPTV password. If the details work in one player but fail here, compare the exact server address and port used in both apps.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Add an M3U Playlist to TiviMate</h2>
+              <p className={textClass}>
+                M3U setup uses one direct playlist URL instead of separate Xtream Codes fields. Choose an M3U playlist in TiviMate, paste the full URL provided by your IPTV provider, and save it. Do not paste a provider homepage or shorten the address. Because an M3U URL may contain account information, keep it private.
+              </p>
+              <ol className={listClass}>
+                <li>Select Add Playlist, then choose M3U playlist.</li>
+                <li>Enter the complete provider-issued playlist URL.</li>
+                <li>Save the playlist and wait for its channels to load before testing playback.</li>
+              </ol>
+              <p className={textClass}>For help identifying the URL, see <Link href="/guides/what-is-m3u" className={linkClass}>what an M3U playlist is</Link>.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>TiviMate Stalker Portal Setup</h2>
+              <p className={textClass}>
+                TiviMate&apos;s official Google Play listing includes Stalker Portal among its supported playlist formats. Choose this method only when your provider specifically gives you a Stalker Portal address and any required device or MAC-related details. A regular Xtream Codes server address is not interchangeable with a Stalker Portal URL.
+              </p>
+              <ol className={listClass}>
+                <li>Select Add Playlist, then Stalker Portal.</li>
+                <li>Enter the exact portal URL from your provider.</li>
+                <li>Enter or confirm MAC-related details only as directed by your provider and the fields shown in your app version, then save.</li>
+              </ol>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Configure EPG in TiviMate</h2>
+              <p className={textClass}>
+                EPG is the electronic program guide that displays schedules beside channels. TiviMate supports an EPG grid, but guide entries depend on the provider&apos;s data and channel mapping. A playlist may already carry an associated guide source. If schedules stay blank and your provider supplied a separate EPG or XMLTV URL, add it in TiviMate&apos;s EPG source settings and update the guide.
+              </p>
+              <p className={textClass}>
+                Check the URL, source assignment, update status, and channel IDs before changing playback settings. Channels can work while EPG data fails independently. See the <Link href="/help/epg-not-working" className={linkClass}>EPG troubleshooting guide</Link> for missing or stale schedules.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>TiviMate Free vs Premium</h2>
+              <p className={textClass}>
+                TiviMate can be installed and used as a player without buying a channel subscription from its developer. Premium is an upgrade for app features; it does not include IPTV content. TiviMate officially lists multiple playlists, favorites, catch-up, recording, search, parental controls, personalization, and multiview as app capabilities, but access to individual features may depend on the current app version and entitlement.
+              </p>
+              <p className={textClass}>
+                To activate Premium, use TiviMate&apos;s own purchase or sign-in flow and follow its on-screen instructions. Check the current feature list, device terms, and price in that official flow before purchasing; published prices and entitlements can change. Your IPTV provider login remains separate from the TiviMate account.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>Useful TiviMate Settings</h2>
+              <p className={textClass}>
+                There is no single best TiviMate setting for every stream. Start with default playback settings, then change one control at a time for a specific problem. Use playlist and EPG update controls when channels or guide data are stale; use favorites and group organization to make navigation easier. TiviMate also lists personalization and parental controls among its app features.
+              </p>
+              <p className={textClass}>
+                If only one channel fails, test another channel before altering playback. If every stream buffers, check the network and provider status first. A player setting cannot restore a provider outage or an expired account. The <Link href="/help/iptv-buffering" className={linkClass}>IPTV buffering guide</Link> helps separate network and source problems.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>How to Add or Organize Channels in TiviMate</h2>
+              <p className={textClass}>
+                You normally do not install channels individually in TiviMate. Channels arrive through the M3U, Xtream Codes, or Stalker Portal playlist supplied by your IPTV provider. Refresh the playlist when the provider changes its lineup; if a channel is still absent, ask the provider whether it belongs to your account. TiviMate can help you navigate the channels it receives with favorites and playlist organization.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>TiviMate Troubleshooting</h2>
+              <p className={textClass}>
+                First identify whether TiviMate cannot load the playlist, can load it but cannot authenticate or play streams, or can play streams without guide data. Record the error text, playlist type, device model, and a few affected channel names before contacting support. If the same playlist fails in another compatible player, the provider or connection is a stronger suspect than TiviMate.
+              </p>
+              <div className="mt-6 space-y-7">
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Playlist Not Loading</h3>
+                  <p className={textClass}>Check the complete M3U or portal URL and your internet connection, then refresh the playlist. An expired URL or unavailable provider endpoint can prevent loading. See <Link href="/help/m3u-not-loading" className={linkClass}>M3U playlist loading fixes</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Xtream Codes Login Not Working</h3>
+                  <p className={textClass}>Re-enter the exact server URL, port, username, and password supplied by the provider. Check whether the account is active; the TiviMate Premium login is a different account. See <Link href="/help/iptv-login-not-working" className={linkClass}>IPTV login troubleshooting</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Channels Not Loading</h3>
+                  <p className={textClass}>If the playlist appears but channels fail, test several streams and refresh the playlist. One broken channel may be a source issue; widespread failures may involve provider access or the network. See <Link href="/help/iptv-not-working" className={linkClass}>IPTV service checks</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">EPG Not Updating</h3>
+                  <p className={textClass}>Update the guide source and verify its URL and assignment to the playlist. Working video with missing schedules points to guide data or channel mapping. See <Link href="/guides/what-is-epg" className={linkClass}>how IPTV EPG works</Link>.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">Buffering or Playback Problems</h3>
+                  <p className={textClass}>Compare multiple channels and test the network connection. Restart the app and device before changing playback options; persistent failure across players should be reported to the provider. A larger buffer cannot fix an unavailable stream.</p>
+                </div>
+                <div>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">TiviMate App Not Opening or Updating</h3>
+                  <p className={textClass}>Restart the device, check available storage, and update through Google Play or the official TiviMate site, matching the installation method you used. If an update fails, note the app version and device model before contacting TiviMate support.</p>
                 </div>
               </div>
-
-              {/* Distinctive Features */}
-              <div className="space-y-6">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  What Makes TiviMate Different From Other IPTV Players?
-                </h2>
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  While apps like VLC or generic mobile media players treat an IPTV playlist as a flat list of media files, TiviMate emulates the polished operational experience of high-end traditional cable or satellite set-top boxes:
-                </p>
-
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <Card className="border-white/[0.08] bg-card/60">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base font-bold text-foreground flex items-center gap-2">
-                        <Tv className="h-4 w-4 text-primary" /> Full-Grid Electronic Program Guide
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Horizontal time-based TV guide with channel bouquets, instant category filters, timeline scrubbing, and automatic EPG synchronization. Supports custom EPG time offsets to fix timezone mismatches.
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-white/[0.08] bg-card/60">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base font-bold text-foreground flex items-center gap-2">
-                        <Layers className="h-4 w-4 text-primary" /> Multi-Screen (Multi-View)
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Watch up to 9 channels simultaneously in customizable split-screen grids. Perfect for tracking concurrent live sports games. (Note: each active quadrant consumes 1 connection from your provider).
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-white/[0.08] bg-card/60">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base font-bold text-foreground flex items-center gap-2">
-                        <HardDrive className="h-4 w-4 text-primary" /> Scheduled Network DVR (SMB)
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Schedule one-time or recurring recordings directly from the EPG. In addition to local storage, TiviMate supports recording over LAN directly to an SMB share on a home PC, NAS, or network drive.
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-white/[0.08] bg-card/60">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base font-bold text-foreground flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-primary" /> Catch-Up TV Integration
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Browse past broadcasts in the guide timeline and launch archived streams with rewind, fast-forward, and pause support for channels configured with catch-up on your IPTV server.
-                    </CardContent>
-                  </Card>
-                </div>
+              <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">
+                Need IPTV credentials for TiviMate? <Link href="/iptv-free-trial" className={linkClass}>Start with a 24-hour IPTV trial</Link>. TryIPTV is an independent IPTV provider, not the developer of TiviMate.
               </div>
-
-              {/* Free vs Premium Breakdown */}
-              <div className="space-y-6">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  TiviMate Free vs. TiviMate Premium
-                </h2>
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  TiviMate can be downloaded free of charge from the Google Play Store or sideloaded onto Fire TV devices, but its capabilities differ significantly between the free base version and the unlocked Premium version:
-                </p>
-
-                <div className="overflow-x-auto rounded-lg border border-white/[0.08]">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="border-b border-white/[0.08] bg-white/[0.02] text-foreground">
-                      <tr>
-                        <th className="p-3.5 sm:p-4 font-semibold">Feature</th>
-                        <th className="p-3.5 sm:p-4 font-semibold">TiviMate Free</th>
-                        <th className="p-3.5 sm:p-4 font-semibold text-primary">TiviMate Premium</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/[0.06] text-muted-foreground">
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Maximum Playlists</td>
-                        <td className="p-3.5 sm:p-4">1 Playlist only</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Multiple playlists supported</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Favorites & Custom Grouping</td>
-                        <td className="p-3.5 sm:p-4">Limited</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Unlimited custom groups & favorites</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Catch-Up & Timeline Scrubbing</td>
-                        <td className="p-3.5 sm:p-4">No</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Full catch-up TV support</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Scheduled Recording (DVR)</td>
-                        <td className="p-3.5 sm:p-4">No</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Local & SMB network recording</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Multi-View (Multi-Screen)</td>
-                        <td className="p-3.5 sm:p-4">No</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Up to 9 split-screen channels</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Channel Search & Sorting</td>
-                        <td className="p-3.5 sm:p-4">Basic channel list</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Manual reordering, search & hide groups</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Settings Backup & Restore</td>
-                        <td className="p-3.5 sm:p-4">No</td>
-                        <td className="p-3.5 sm:p-4 text-foreground font-medium">Export/import configuration file</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <p className="text-xs text-muted-foreground">
-                  * Pricing is handled through Google Play in-app purchases (annual subscription or a one-time lifetime license). A single license authorizes up to 5 devices simultaneously.
-                </p>
-              </div>
-
-              {/* Setup Walkthrough */}
-              <div className="space-y-6">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Step-by-Step Setup: Adding TryIPTV to TiviMate
-                </h2>
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  We strongly recommend connecting via the <strong>Xtream Codes API</strong> rather than a raw M3U URL. Xtream Codes queries channel categories and VOD entries dynamically on demand, which avoids memory lag when updating large channel lineups:
-                </p>
-
-                <div className="space-y-4">
-                  <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5">
-                    <span className="font-mono text-xs font-bold text-primary">STEP 1</span>
-                    <h3 className="mt-1 font-headline text-base font-bold text-foreground">
-                      Install TiviMate on Your Device
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      On television devices running Android (such as Chromecast with Google TV, NVIDIA Shield, or Sony TV), install directly from Google Play—refer to our dedicated <Link href="/devices/android-tv-iptv" className="text-primary underline underline-offset-4">Android TV IPTV setup guide</Link>. On <strong>Amazon Fire TV Stick</strong>, use the Downloader app following our <Link href="/devices/firestick-iptv" className="text-primary underline underline-offset-4">Firestick installation guide</Link> to enter the official TiviMate download code or URL.
-                    </p>
-                  </div>
-
-                  <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5">
-                    <span className="font-mono text-xs font-bold text-primary">STEP 2</span>
-                    <h3 className="mt-1 font-headline text-base font-bold text-foreground">
-                      Add a New Playlist via Xtream Codes
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Launch TiviMate and click <strong>Add Playlist</strong>. Select <strong>Xtream Codes</strong>. (If you already have a playlist loaded, go to Settings &gt; Playlists &gt; Add playlist &gt; Xtream Codes).
-                    </p>
-                  </div>
-
-                  <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5">
-                    <span className="font-mono text-xs font-bold text-primary">STEP 3</span>
-                    <h3 className="mt-1 font-headline text-base font-bold text-foreground">
-                      Enter Server URL, Username, and Password
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Enter the server details provided in your TryIPTV activation email:
-                    </p>
-                    <ul className="mt-2.5 space-y-1.5 text-xs sm:text-sm text-muted-foreground list-disc pl-5">
-                      <li><strong>Server address:</strong> The URL (including protocol and port, e.g., <code className="text-primary font-mono text-xs bg-white/[0.04] px-1 py-0.5 rounded">http://line.tryiptv.com:80</code>). Ensure there is no trailing space or slash.</li>
-                      <li><strong>Username:</strong> Your assigned username.</li>
-                      <li><strong>Password:</strong> Your assigned password.</li>
-                      <li><strong>Include VOD:</strong> Check the box if you want access to Movies and TV Series on demand.</li>
-                    </ul>
-                  </div>
-
-                  <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5">
-                    <span className="font-mono text-xs font-bold text-primary">STEP 4</span>
-                    <h3 className="mt-1 font-headline text-base font-bold text-foreground">
-                      Assign EPG &amp; Initialize Channel Guide
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Click <strong>Next</strong>, name the playlist &ldquo;TryIPTV&rdquo;, and click <strong>Done</strong>. TiviMate will process the channel bouquet and automatically assign the server EPG source. Allow 60–120 seconds for the initial guide data to download and index into the TV grid.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Essential Configuration Tweaks */}
-              <div className="space-y-6">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  Recommended TiviMate Settings for Maximum Stability
-                </h2>
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  Fine-tuning these specific parameters in TiviMate solves the majority of playback and buffering complaints:
-                </p>
-
-                <div className="space-y-4">
-                  <div className="rounded-lg border border-white/[0.07] bg-white/[0.015] p-4 sm:p-5">
-                    <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
-                      <Settings className="h-4 w-4 text-primary" /> Stream Output Format: MPEG-TS vs. HLS
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Navigate to <strong>Settings &gt; Playlists &gt; TryIPTV &gt; Xtream Codes parameters &gt; Output format</strong>. If you experience recurring micro-freezes during live events, switch from <code className="font-mono text-xs text-primary">MPEG-TS</code> to <code className="font-mono text-xs text-primary">HLS</code>. HLS transmits video in segmented chunks that better handle Wi-Fi jitter. For complete network and bandwidth diagnostics, see our <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">IPTV Buffering Checklist</Link>.
-                    </p>
-                  </div>
-
-                  <div className="rounded-lg border border-white/[0.07] bg-white/[0.015] p-4 sm:p-5">
-                    <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
-                      <Settings className="h-4 w-4 text-primary" /> Buffer Size Configuration
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Go to <strong>Settings &gt; Playback &gt; Buffer size</strong>. Default is &ldquo;None&rdquo;. If your connection suffers from momentary ping spikes or Wi-Fi packet drops, selecting <strong>Small</strong> or <strong>Medium</strong> instructs the playback pipeline to maintain an extra buffer before displaying frames. Avoid &ldquo;Large&rdquo; under normal circumstances, as larger buffer targets increase channel-switching zap times.
-                    </p>
-                  </div>
-
-                  <div className="rounded-lg border border-white/[0.07] bg-white/[0.015] p-4 sm:p-5">
-                    <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
-                      <Settings className="h-4 w-4 text-primary" /> Custom User-Agent Field
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Under <strong>Settings &gt; General &gt; User-Agent</strong> (or per-playlist under Playlist settings), you can define a custom client identifier. Entering strings such as <code className="font-mono text-xs text-primary">VLC</code> or <code className="font-mono text-xs text-primary">IPTVSmartersPlayer</code> is a proven solution if your stream encounters HTTP 403 authorization blocks from intermediate server filters.
-                    </p>
-                  </div>
-
-                  <div className="rounded-lg border border-white/[0.07] bg-white/[0.015] p-4 sm:p-5">
-                    <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
-                      <Settings className="h-4 w-4 text-primary" /> Setting Up SMB Network Share for Recording
-                    </h3>
-                    <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      To prevent Firestick storage exhaustion, open a shared folder on your PC or NAS with read/write permissions. In TiviMate, go to <strong>Settings &gt; Other &gt; Recording &gt; Recording folder &gt; Select folder &gt; LAN/SMB</strong>. Enter the local IP address of your computer, shared folder name, and Windows/SMB login credentials. All future scheduled recordings will save directly to your computer hard drive without consuming device memory.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Troubleshooting Matrix */}
-              <div className="space-y-6">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-                  TiviMate Troubleshooting Matrix: Isolating Common Errors
-                </h2>
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  When a stream or guide fails in TiviMate, isolate the issue systematically rather than assuming the app or server is permanently down:
-                </p>
-
-                <div className="overflow-x-auto rounded-lg border border-white/[0.08]">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="border-b border-white/[0.08] bg-white/[0.02] text-foreground">
-                      <tr>
-                        <th className="p-3.5 sm:p-4 font-semibold">Symptom / Code</th>
-                        <th className="p-3.5 sm:p-4 font-semibold">Probable Root Cause</th>
-                        <th className="p-3.5 sm:p-4 font-semibold">Actionable Resolution</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/[0.06] text-muted-foreground">
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">&ldquo;An error occurred: Code 401&rdquo;</td>
-                        <td className="p-3.5 sm:p-4">Unauthorized credentials or expired account token.</td>
-                        <td className="p-3.5 sm:p-4">Re-verify username and password in Xtream Codes parameters. Check for accidental spaces.</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">&ldquo;An error occurred: Code 403&rdquo;</td>
-                        <td className="p-3.5 sm:p-4">Forbidden: connection limit exceeded or User-Agent header blocked.</td>
-                        <td className="p-3.5 sm:p-4">Ensure no more than 2 devices are streaming simultaneously. Add &ldquo;VLC&rdquo; into the User-Agent field.</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">&ldquo;ParserException&rdquo; during update</td>
-                        <td className="p-3.5 sm:p-4">Corrupted M3U playlist data or incomplete XMLTV response.</td>
-                        <td className="p-3.5 sm:p-4">Switch connection type to Xtream Codes API. Clear TiviMate app cache in Android device settings.</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">No Information (Blank EPG)</td>
-                        <td className="p-3.5 sm:p-4">EPG source not linked to playlist, or update timed out.</td>
-                        <td className="p-3.5 sm:p-4">Go to Settings &gt; EPG &gt; EPG sources &gt; Update now. Ensure playlist has &ldquo;Default EPG source&rdquo; assigned. See <Link href="/help/epg-not-working" className="text-primary underline">EPG fix guide</Link>.</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">EPG Show Times are Incorrect</td>
-                        <td className="p-3.5 sm:p-4">Timezone offset mismatch between server and local device.</td>
-                        <td className="p-3.5 sm:p-4">In Settings &gt; EPG &gt; EPG sources &gt; [Source], adjust &ldquo;Time offset&rdquo; by +X or -X hours until guide aligns with local time. See our <Link href="/help/epg-not-working" className="text-primary underline">EPG troubleshooting guide</Link> for detailed time offset diagnosis.</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3.5 sm:p-4 font-medium text-foreground">Multi-View Streams Freezing</td>
-                        <td className="p-3.5 sm:p-4">Local hardware decoder overload or provider connection cap.</td>
-                        <td className="p-3.5 sm:p-4">Running 4+ 4K streams can exceed Firestick GPU capacity. Keep multi-view to 2 streams (TryIPTV includes 2 connections) and reduce resolution if needed.</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* FAQs Section */}
-              <div className="space-y-6 pt-4">
-                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl flex items-center gap-2">
-                  <HelpCircle className="h-6 w-6 text-primary" /> Frequently Asked Questions About TiviMate
-                </h2>
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5 sm:p-6">
-                      <h3 className="font-headline text-base sm:text-lg font-bold text-foreground">
-                        {faq.question}
-                      </h3>
-                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Related Educational Guides */}
-              <div className="border-t border-white/[0.08] pt-8">
-                <h3 className="font-headline text-lg font-bold text-foreground mb-4">
-                  Related IPTV Guides &amp; Resources
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                  <Link href="/devices/firestick-iptv" className="flex items-center justify-between p-3 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-primary/40 transition-colors">
-                    <span>How to Install IPTV on Firestick</span>
-                    <ArrowRight className="h-4 w-4 text-primary" />
-                  </Link>
-                  <Link href="/devices/android-tv-iptv" className="flex items-center justify-between p-3 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-primary/40 transition-colors">
-                    <span>How to Install IPTV on Android TV</span>
-                    <ArrowRight className="h-4 w-4 text-primary" />
-                  </Link>
-                  <Link href="/guides/what-are-xtream-codes" className="flex items-center justify-between p-3 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-primary/40 transition-colors">
-                    <span>What Are Xtream Codes API Logins?</span>
-                    <ArrowRight className="h-4 w-4 text-primary" />
-                  </Link>
-                  <Link href="/help/iptv-buffering" className="flex items-center justify-between p-3 rounded-lg border border-white/[0.06] bg-white/[0.02] hover:border-primary/40 transition-colors">
-                    <span>IPTV Buffering Diagnosis &amp; Fixes</span>
-                    <ArrowRight className="h-4 w-4 text-primary" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar Column */}
-            <aside className="space-y-6 lg:sticky lg:top-24 self-start">
-              <Card className="border-primary/20 bg-[#07080a] shadow-[0_0_24px_rgba(0,240,120,0.04)]">
-                <CardHeader className="pb-3">
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-primary">
-                    Test With TryIPTV
-                  </span>
-                  <CardTitle className="font-headline text-xl font-extrabold text-foreground">
-                    24-Hour Free Trial
-                  </CardTitle>
-                  <CardDescription className="text-xs text-muted-foreground">
-                    Verify TiviMate performance on your television with real live sports and 4K streams before paying for any subscription.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-2 text-xs text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                      <span>{PRODUCT_TRUTHS.channels} live channels &amp; {PRODUCT_TRUTHS.vod} VOD</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                      <span>{PRODUCT_TRUTHS.connections} simultaneous connections included</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                      <span>Full Xtream Codes &amp; M3U EPG delivery</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                      <span>No credit card required for trial</span>
-                    </li>
-                  </ul>
-
-                  <Button asChild className="w-full bg-primary text-black font-semibold hover:bg-primary/90">
-                    <Link href="/iptv-free-trial">
-                      Get 24h Free Trial <ArrowRight className="ml-1.5 h-4 w-4" />
-                    </Link>
-                  </Button>
-
-                  <p className="text-[11px] text-center text-muted-foreground">
-                    Looking for pricing? Plans start at $16/mo. <Link href="/pricing" className="text-primary underline">View plans</Link>.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Official Verification Reference */}
-              <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 text-xs text-muted-foreground space-y-2">
-                <span className="font-mono text-[10px] uppercase font-bold text-foreground">Official Developer Resource</span>
-                <p>
-                  Official developer: Armobsoft FZE.<br />
-                  Official site: <a href="https://tivimate.com" target="_blank" rel="noopener noreferrer" className="text-primary underline">tivimate.com</a>.<br />
-                  Companion app available on Google Play Store for Android.
-                </p>
-              </div>
-            </aside>
-          </div>
+            </section>
+          </article>
         </Container>
       </Section>
     </>

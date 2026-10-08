@@ -469,7 +469,7 @@ export default async function IptvFreeTrialPage() {
 
           <div className="mt-8 text-center">
             <Button asChild variant="outline">
-              <Link href="/pricing">
+              <Link href="/pricing" className="max-w-full" style={{ whiteSpace: "normal" }}>
                 Compare All Prepaid Plans on Our Pricing Page <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

@@ -196,7 +196,7 @@ export function generateHowToSchema(props: HowToSchemaProps): WithContext<HowTo>
 interface ServiceSchemaProps {
     serviceType: string;
     providerName: string;
-    areaServed: { type: string, name: string};
+    areaServed: string;
     name: string;
     description: string;
     offers?: Offer | AggregateOffer;
@@ -208,10 +208,7 @@ export function generateServiceSchema(props: ServiceSchemaProps): WithContext<Se
         '@type': 'Service',
         serviceType: props.serviceType,
         provider: organizationReference,
-        areaServed: {
-            '@type': props.areaServed.type as any,
-            name: props.areaServed.name,
-        },
+        areaServed: props.areaServed,
         name: props.name,
         description: props.description,
         offers: props.offers
