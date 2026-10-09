@@ -77,29 +77,45 @@ export async function processContactSubmission(rawInput: {
     const resend = new Resend(apiKey);
     const escapedName = escapeHtml(name);
     const escapedEmail = escapeHtml(email);
-    const escapedMessage = escapeHtml(message).replace(/\r?\n/g, '<br />');
+    const escapedMessage = escapeHtml(message).replace(/\r?\n/g, '<br>');
     const timestamp = new Date().toUTCString();
 
     const subject = name
-      ? `TryIPTV Contact — ${name}`
-      : 'New TryIPTV Contact Message';
+      ? `TryIPTV Support — ${name}`
+      : 'New TryIPTV Support Request';
 
-    const html = `<h2>New TryIPTV Contact Request</h2>
+    const html = `<h2>New TryIPTV Support Request</h2>
 
-<p><strong>Name:</strong> ${escapedName}</p>
-<p><strong>Email:</strong> ${escapedEmail}</p>
+<p>
+A new message was submitted through the TryIPTV contact page.
+</p>
 
-<h3>Message</h3>
+<table style="border-collapse: collapse; margin-bottom: 20px;">
+  <tr>
+    <td style="padding: 6px 16px 6px 0; vertical-align: top;"><strong>Name</strong></td>
+    <td style="padding: 6px 0; vertical-align: top;">${escapedName}</td>
+  </tr>
+  <tr>
+    <td style="padding: 6px 16px 6px 0; vertical-align: top;"><strong>Email</strong></td>
+    <td style="padding: 6px 0; vertical-align: top;">${escapedEmail}</td>
+  </tr>
+</table>
 
-<p>${escapedMessage}</p>
+<h3>Customer Message</h3>
 
-<hr style="margin: 24px 0; border: none; border-top: 1px solid #e5e7eb;" />
-<p style="font-size: 12px; color: #6b7280;">
-  <strong>Page:</strong> /contact-us<br />
-  <strong>Submitted At:</strong> ${timestamp}
+<div style="margin-bottom: 20px; line-height: 1.5;">
+${escapedMessage}
+</div>
+
+<hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
+
+<p style="font-size: 13px; color: #4b5563; line-height: 1.5;">
+<strong>Source:</strong> TryIPTV Contact Page<br>
+<strong>Page:</strong> https://www.tryiptv.com/contact-us<br>
+<strong>Submitted:</strong> ${timestamp}
 </p>`;
 
-    const text = `New TryIPTV Contact Request
+    const text = `New TryIPTV Support Request
 
 Name: ${name}
 Email: ${email}
@@ -107,8 +123,10 @@ Email: ${email}
 Message:
 ${message}
 
-Page: /contact-us
-Submitted At: ${timestamp}`;
+Source: TryIPTV Contact Page
+Page: https://www.tryiptv.com/contact-us
+Submitted: ${timestamp}`;
+
 
     const { error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
