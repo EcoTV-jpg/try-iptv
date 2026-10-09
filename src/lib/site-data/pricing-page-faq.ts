@@ -17,7 +17,7 @@ export const pricingPageFaqs = [
     },
     {
         question: "What payment methods are accepted for prepaid IPTV plans?",
-        answer: "TryIPTV accepts secure cryptocurrency payment and prepaid checkout methods. Because all plans are prepaid for fixed durations, you are never charged unexpected renewal fees or recurring monthly subscription charges."
+        answer: "Available payment methods include Cryptocurrency, PayPal, and Stripe. All orders are one-time prepaid purchases with no automatic renewals or recurring charges."
     },
     {
         question: "What happens after I purchase, and how quickly do I receive credentials?",

@@ -7,7 +7,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Pricing } from "@/components/sections/Pricing";
 import { getPricingPageData } from "@/lib/data/pricing-page";
 import { Schema } from "@/components/shared/Schema";
-import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { PRODUCT_TRUTHS, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { plans } from "@/lib/site-data/pricing";
 import {
   Check,
@@ -227,7 +227,7 @@ export default async function IPTVSubscription() {
                 12-Month Plan: Lowest Subscription Cost
               </h3>
               <p className="text-sm leading-6 text-muted-foreground mb-4">
-                Our most popular subscription. At $90 for an entire year ($7.50/month equivalent), you save 53% compared to monthly renewals—giving your household 365 days of 4K live TV and sports at the lowest cost.
+                Our lowest effective monthly rate. At $90 for an entire year ($7.50/month equivalent), you save 53% compared to monthly renewals—giving your household 365 days of 4K live TV and sports at the lowest cost.
               </p>
               <ul className="space-y-2 text-xs text-muted-foreground border-t border-white/[0.08] pt-4">
                 <li className="flex items-center gap-2">
@@ -237,7 +237,7 @@ export default async function IPTVSubscription() {
                   <Check className="h-4 w-4 text-primary shrink-0" /> Uninterrupted streaming with zero monthly rebilling
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Dedicated priority 24/7 technical customer support
+                  <Check className="h-4 w-4 text-primary shrink-0" /> Standard 24/7 technical customer support included
                 </li>
               </ul>
             </Card>
@@ -330,7 +330,7 @@ export default async function IPTVSubscription() {
                 2. Complete Checkout
               </h3>
               <p className="text-xs leading-5 text-muted-foreground">
-                Complete the available checkout process for your one-time prepaid order. No credit card is stored for recurring debits.
+                Complete your one-time prepaid order using {PRODUCT_TRUTHS.paymentMethods.join(", ")}. No payment details are stored for recurring debits.
               </p>
             </div>
             <div className="rounded-xl border border-white/[0.08] bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">

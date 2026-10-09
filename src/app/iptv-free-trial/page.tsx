@@ -56,12 +56,12 @@ const quickFacts = [
   {
     metric: "24 Hours",
     label: "Trial Duration",
-    description: "Begins the moment your login credentials are delivered and activated.",
+    description: "The stated duration of the trial offer.",
   },
   {
     metric: "$0 Free",
     label: "Zero Cost",
-    description: "No credit card, banking, or billing details are ever requested.",
+    description: "The trial is listed as $0 with no credit card required.",
   },
   {
     metric: "2 Screens",
@@ -78,9 +78,9 @@ const quickFacts = [
 const trialInclusions = [
   {
     icon: Tv,
-    title: "24,000+ Live Channels Worldwide",
+    title: "24,000+ Live Channels",
     description:
-      "Access live sports, international feeds, national news networks, and regional channels across USA, UK, Canada, and global broadcast regions.",
+      "Use the trial to check the live channels you want to watch on your own device.",
   },
   {
     icon: Film,
@@ -104,7 +104,7 @@ const trialInclusions = [
     icon: KeyRound,
     title: "Xtream Codes API & M3U Link",
     description:
-      "Receive both connection formats: Xtream Codes login for dedicated IPTV player apps and M3U playlist URLs for universal media players.",
+      "Receive both connection formats: Xtream Codes login for supported IPTV player apps and an M3U playlist URL for players that accept M3U.",
   },
   {
     icon: MessageCircle,
@@ -119,13 +119,13 @@ const trialWorkflowSteps = [
     number: "01",
     title: "Request Your Free Trial",
     description:
-      "Send a message via WhatsApp or email with your preferred device type. We do not ask for credit card numbers, billing addresses, or payment details.",
+      "Send a WhatsApp message with your preferred device type. The stated trial offer is $0 with no credit card required.",
   },
   {
     number: "02",
-    title: "Receive Credentials in 5–15 Minutes",
+    title: "Estimated Credential Delivery",
     description:
-      "Our support team activates your trial line and provides your unique Xtream Codes credentials (server URL, username, password) and M3U playlist URL.",
+      "The stated estimate is 5–15 minutes after trial confirmation. Support provides Xtream Codes credentials (server URL, username, password) and an M3U playlist URL.",
   },
   {
     number: "03",
@@ -143,7 +143,7 @@ const trialWorkflowSteps = [
     number: "05",
     title: "Decide Whether to Subscribe",
     description:
-      "When your 24 hours finish, stream access simply stops with zero auto-billing. If satisfied, manually pick a prepaid plan on our pricing page.",
+      "The trial is listed as a 24-hour offer. If satisfied, choose a prepaid plan on our pricing page.",
   },
 ];
 
@@ -260,14 +260,14 @@ export default async function IptvFreeTrialPage() {
             24-Hour IPTV Free Trial: Test TryIPTV with No Credit Card
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-            Test TryIPTV on your own devices before spending a dollar. Our 24-hour free trial unlocks 24,000+ live channels, 80,000+ movies and series, 4K picture quality, and 2 simultaneous connections. No credit card required, zero contracts, and no automatic rebilling.
+            Test TryIPTV on your own device before choosing a paid plan. The stated trial offer is 24 hours at $0 with no credit card required. Use it to check the channels and viewing quality that matter to you.
           </p>
           <div className="mx-auto mt-6 max-w-2xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
             <h2 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
               Quick Answer
             </h2>
             <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              <strong className="text-foreground">Quick Answer:</strong> TryIPTV offers a 24-hour IPTV free trial with no credit card required. The trial lets you test the service on your own device before choosing a paid plan, including live TV, on-demand content, EPG access, and supported M3U or Xtream Codes setup. Up to 2 simultaneous connections are supported, and trial credentials are typically delivered within 5–15 minutes.
+              <strong className="text-foreground">Quick Answer:</strong> TryIPTV lists a 24-hour IPTV free trial at $0 with no credit card required. Use it to check live TV, on-demand content, EPG access, and M3U or Xtream Codes setup on your own device. The stated credential delivery estimate is 5–15 minutes after trial confirmation.
             </p>
             <p className="mt-2.5 border-t border-white/[0.06] pt-2.5 text-xs leading-relaxed text-muted-foreground">
               <strong className="text-foreground">Important:</strong> This is a temporary 24-hour trial of the TryIPTV subscription service, not a permanently free streaming service.
@@ -285,7 +285,7 @@ export default async function IptvFreeTrialPage() {
             </Button>
           </div>
           <p className="mt-4 text-xs font-semibold text-muted-foreground">
-            $0 Cost • No credit card required • Fast activation within 5–15 minutes • Never automatically renewed
+            $0 trial offer • No credit card required • Estimated credential delivery: 5–15 minutes after confirmation
           </p>
         </Container>
       </Section>
@@ -317,7 +317,7 @@ export default async function IptvFreeTrialPage() {
           <SectionHeader
             eyebrow="Trial Inclusions"
             title="What the 24-Hour Free Trial Includes"
-            subtitle="Everything available to our paying subscribers is fully unlocked during your 24 hours. Nothing is behind a paywall and stream bitrates are never restricted."
+            subtitle="Use the 24-hour trial to check the channels, on-demand titles, and playback quality that matter to you."
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {trialInclusions.map((feature, index) => (
@@ -367,7 +367,7 @@ export default async function IptvFreeTrialPage() {
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Zero billing information:</strong> No credit card or billing information is required to start.
+                  <strong className="text-foreground">Trial request:</strong> The stated offer requires no credit card; the request button opens WhatsApp.
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -387,7 +387,7 @@ export default async function IptvFreeTrialPage() {
           <SectionHeader
             eyebrow="5-Step Trial Process"
             title="How the IPTV Free Trial Works"
-            subtitle="Starting your test takes under two minutes. Follow this straightforward trial workflow from request to decision."
+            subtitle="Follow the trial workflow from request to evaluation and your decision about a paid plan."
           />
           <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-5 md:divide-x md:divide-white/[0.09]">
             {trialWorkflowSteps.map((step) => (
@@ -449,7 +449,7 @@ export default async function IptvFreeTrialPage() {
           <SectionHeader
             eyebrow="Device Compatibility"
             title="Compatible Devices &amp; Player Applications"
-            subtitle="TryIPTV works across all popular hardware and IPTV players. Review your platform below or explore our detailed configuration guides."
+            subtitle="Browse our device and player setup guides, then use the trial to check your own configuration."
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {supportedDeviceCategories.map((device) => (
@@ -487,18 +487,18 @@ export default async function IptvFreeTrialPage() {
       <Section className="border-t border-white/[0.06]">
         <Container>
           <SectionHeader
-            eyebrow="Zero Risk Guarantee"
+            eyebrow="After the Trial"
             title="What Happens After Your 24-Hour Trial Ends?"
-            subtitle="When your trial finishes, access expires cleanly. There are no automatic charges, no unexpected contracts, and no hidden obligations."
+            subtitle="The trial is listed as a 24-hour evaluation period. You can decide whether to buy a prepaid plan afterward."
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
               <div className="mb-4 grid h-10 w-10 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
                 <Clock className="h-5 w-5" />
               </div>
-              <h3 className="font-headline text-lg font-extrabold text-foreground mb-2">1. Access Simply Stops</h3>
+              <h3 className="font-headline text-lg font-extrabold text-foreground mb-2">1. Trial Window Ends</h3>
               <p className="text-sm leading-6 text-muted-foreground">
-                When your 24 hours conclude, stream access stops automatically. Because no billing details were ever collected, it is impossible for you to be charged.
+                The stated trial duration is 24 hours. Contact support if you need to confirm when your access ends.
               </p>
             </div>
 
@@ -539,7 +539,7 @@ export default async function IptvFreeTrialPage() {
           <SectionHeader
             eyebrow="Evaluation vs Subscription"
             title="Free Trial vs. Paid Subscription"
-            subtitle="The free trial is designed to evaluate performance risk-free. A paid plan provides continuous, uninterrupted access for your household."
+            subtitle="Use the free trial to evaluate the service before deciding whether to choose a prepaid plan."
           />
           <div className="overflow-x-auto rounded-lg border border-white/[0.09] bg-card max-w-3xl mx-auto shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
             <table className="w-full text-left text-sm">
@@ -563,7 +563,7 @@ export default async function IptvFreeTrialPage() {
                 </tr>
                 <tr>
                   <td className="py-3 px-6 font-semibold text-foreground">Payment Required</td>
-                  <td className="py-3 px-6">None (No card collected)</td>
+                  <td className="py-3 px-6">$0 trial request via WhatsApp</td>
                   <td className="py-3 px-6">One-time prepaid checkout (no auto-charges)</td>
                 </tr>
                 <tr>
@@ -580,11 +580,6 @@ export default async function IptvFreeTrialPage() {
                   <td className="py-3 px-6 font-semibold text-foreground">Simultaneous Streams</td>
                   <td className="py-3 px-6">2 Connections</td>
                   <td className="py-3 px-6">2 Connections Included</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-6 font-semibold text-foreground">Auto-Renewal</td>
-                  <td className="py-3 px-6">Never (Expires automatically)</td>
-                  <td className="py-3 px-6">Never (Strictly prepaid plans)</td>
                 </tr>
               </tbody>
             </table>
@@ -648,7 +643,7 @@ export default async function IptvFreeTrialPage() {
                 Start Your 24-Hour IPTV Free Trial Today
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground lg:mx-0">
-                24 hours of unrestricted access to 24,000+ live channels, sports, and 80,000+ movies on your own TV. No credit card required, zero contracts, and no obligation.
+                Use the 24-hour trial to check live channels, sports, and on-demand viewing on your own TV before choosing a paid plan.
               </p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:ml-10 lg:mt-0 lg:shrink-0">

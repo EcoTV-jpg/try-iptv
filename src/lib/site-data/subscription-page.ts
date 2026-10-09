@@ -49,7 +49,7 @@ export const pageData = {
         },
         {
             question: "Is this subscription recurring?",
-            answer: "No. All TryIPTV subscriptions are prepaid one-time payments with crypto. There are no automatic renewals or recurring charges."
+            answer: "No. All TryIPTV subscriptions are prepaid one-time payments via Cryptocurrency, PayPal, and Stripe. There are no automatic renewals or recurring charges."
         },
         {
             question: "What devices are compatible?",

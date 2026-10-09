@@ -7,37 +7,37 @@ export const trialFaqs = [
   {
     question: "Is the TryIPTV trial really free?",
     answer:
-      "Yes, the trial is 100% free with a cost of $0. We do not ask for credit card numbers, billing addresses, or payment details. It is a genuine 24-hour evaluation pass so you can test stream stability and channel selection before deciding whether to purchase a plan.",
+      "The trial is listed at $0 for 24 hours, with no credit card required. Use it to check stream stability and channel selection before deciding whether to purchase a plan.",
   },
   {
     question: "Do I need a credit card to start the trial?",
     answer:
-      "No credit card is required. You can request your 24-hour trial access directly via WhatsApp or email with just your device type. We never collect payment details for free trials.",
+      "The stated trial offer requires no credit card. Use the WhatsApp trial request button and include your device type; the button does not open a checkout.",
   },
   {
     question: "How long does the IPTV free trial last?",
     answer:
-      "The free trial lasts for 24 continuous hours. The 24-hour countdown begins the moment your trial credentials are generated, activated, and delivered to you by our support team.",
+      "The stated trial duration is 24 hours. Contact support if you need to confirm the start or end time for your access.",
   },
   {
     question: "Which devices and player apps can I use during the trial?",
     answer:
-      "The trial works across all major hardware including Amazon Firestick & Fire TV, Android TV boxes, Google TV, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, and MAG boxes. You can use any standard IPTV player such as TiviMate, IPTV Smarters Pro, XCIPTV, or GSE Smart IPTV.",
+      "Our setup guides cover Fire TV, Android TV, Apple TV, Windows, macOS, Samsung and LG Smart TVs, and other listed platforms. Check the guide for your device and test your chosen player during the trial.",
   },
   {
     question: "Do I receive Xtream Codes or an M3U playlist URL?",
     answer:
-      "You receive both. Your activation email or WhatsApp message includes your Xtream Codes API login (Server URL, Username, and Password) for dedicated IPTV apps, as well as an M3U playlist URL and XMLTV EPG guide link for universal media players like VLC.",
+      "You receive both. Your trial details include your Xtream Codes API login (Server URL, Username, and Password) for supported IPTV apps, as well as an M3U playlist URL and XMLTV EPG guide link for players that accept those formats, such as VLC.",
   },
   {
     question: "How quickly are trial credentials sent?",
     answer:
-      "Trial details are typically generated and delivered within 5–15 minutes during active support hours. If you request trial credentials via email, please check your spam or junk folder in case our message is filtered.",
+      "The stated estimate is 5–15 minutes after trial confirmation. Actual delivery time may vary.",
   },
   {
     question: "Does the free trial automatically become a paid subscription?",
     answer:
-      "No. Because no payment information or credit card was ever collected, it is impossible for the trial to automatically convert into a paid subscription. You will never be billed automatically.",
+      "The trial request button opens WhatsApp, not a paid checkout. Paid plans are selected separately on the pricing page.",
   },
   {
     question: "What should I test during my 24-hour trial?",
@@ -45,9 +45,9 @@ export const trialFaqs = [
       "We recommend testing on your main viewing screen during peak evening hours (7–11 PM). Check channel zapping speed on your must-have sports and local feeds, verify audio and video sync, test VOD playback, and ensure the EPG guide populates correctly.",
   },
   {
-    question: "What happens when the 24-hour trial expires?",
+    question: "What happens after the stated 24-hour trial period?",
     answer:
-      "When the 24-hour period concludes, your stream access simply turns off. If you are satisfied with the performance, you can choose any prepaid plan starting at $16 on our pricing page. Our team can renew your existing trial line so you do not have to reconfigure your player app.",
+      "The stated trial duration is 24 hours. If you are satisfied, you can choose a prepaid plan on our pricing page. Contact support to confirm your access end time or next steps.",
   },
 ];
 
@@ -67,7 +67,6 @@ export const getIptvFreeTrialPageData = cache(
       name: "24-Hour IPTV Free Trial",
       description:
         "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
-      areaServed: "Worldwide",
       offers: {
         "@type": "Offer",
         price: "0",

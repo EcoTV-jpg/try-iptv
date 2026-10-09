@@ -38,7 +38,7 @@ export function Hero() {
           {/* CTA Button Group */}
           <div className="mt-8 flex w-full flex-col items-center justify-center gap-3.5 sm:w-auto sm:flex-row">
             <Button asChild size="lg" className="h-12 min-h-[48px] w-full px-8 text-base font-semibold sm:w-auto">
-              <Link href="#pricing">
+              <Link href="/pricing">
                 View IPTV Plans <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
             </Button>

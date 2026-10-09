@@ -1,10 +1,18 @@
 
+import Link from "next/link";
+import type React from "react";
 import { CheckCircle, Package, Tv } from "lucide-react";
 import { Container } from "../shared/Container";
 import { SectionHeader } from "../shared/SectionHeader";
 import { Section } from "../shared/Section";
 
-const steps = [
+interface Step {
+  icon: typeof Package;
+  title: string;
+  description: React.ReactNode;
+}
+
+const steps: Step[] = [
     {
         icon: Package,
         title: "Choose Your IPTV Plan",
@@ -18,9 +26,17 @@ const steps = [
     {
         icon: Tv,
         title: "Set Up & Start Watching",
-        description: "Enter your credentials into your preferred IPTV player using our step-by-step device guides and start streaming live TV immediately."
+        description: (
+          <>
+            Enter your credentials into your preferred IPTV player using our universal{" "}
+            <Link href="/setup" className="font-semibold text-primary hover:underline">
+              IPTV setup guide
+            </Link>{" "}
+            and start streaming live TV immediately.
+          </>
+        )
     }
-]
+];
 
 export function HowItWorks() {
   return (

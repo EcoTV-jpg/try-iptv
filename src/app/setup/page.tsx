@@ -195,7 +195,7 @@ const setupSteps = [
     step: "05",
     title: "Synchronize Channels & Categories",
     description:
-      "Click 'Login' or 'Save'. The player will connect to the server and download channel lists, VOD directories, and category groups. Initial synchronization takes 15–60 seconds.",
+      "Click 'Login' or 'Save'. The player will connect to the server and download channel lists, VOD directories, and category groups. Initial synchronization time varies based on playlist size and network connection.",
   },
   {
     step: "06",
@@ -268,7 +268,7 @@ const setupFaqs: FaqItem[] = [
   {
     question: "How long does it take to activate and configure my subscription?",
     answer:
-      "Credentials are automatically prepared and typically delivered within 5–15 minutes following order or trial confirmation. Once you receive your credentials, entering them into an IPTV player usually takes less than 3 minutes.",
+      "Credentials are automatically prepared and typically delivered within 5–15 minutes following order or trial confirmation. Once you receive your credentials, entering your Server URL, Username, and Password into your player completes the initial connection.",
   },
   {
     question: "Does TryIPTV lock me into a recurring contract?",
@@ -350,7 +350,7 @@ export default function SetupPage() {
                   What You Need Before Starting
                 </h2>
                 <p className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-6">
-                  Having everything prepared ensures your IPTV installation takes less than five minutes. Review this checklist before configuring your application.
+                  Having everything prepared ensures a smooth, straightforward installation. Review this checklist before configuring your application.
                 </p>
                 <div className="rounded-xl border border-primary/20 bg-primary/[0.04] p-5 space-y-3">
                   <div className="flex items-center gap-2 text-xs font-bold text-primary">
@@ -452,7 +452,7 @@ export default function SetupPage() {
                 Choose Your Device
               </h2>
               <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground max-w-xl">
-                Select your streaming hardware below for a tested step-by-step installation walkthrough with device-specific screenshots and menu navigation.
+                Select your streaming hardware below for a step-by-step installation walkthrough with device-specific menu navigation.
               </p>
             </div>
             <Button asChild variant="outline" size="sm" className="self-start sm:self-auto shrink-0">
@@ -708,7 +708,7 @@ export default function SetupPage() {
                 Having Setup or Playback Problems?
               </h2>
               <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground max-w-xl">
-                Most setup hurdles are resolved in under two minutes by checking network latency, credential formatting, or decoder settings.
+                Most setup hurdles can be resolved by checking network stability, credential formatting, or decoder settings.
               </p>
             </div>
             <Button asChild variant="outline" size="sm" className="self-start sm:self-auto shrink-0">

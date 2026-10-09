@@ -11,7 +11,11 @@ export const PRODUCT_TRUTHS = {
   trialCost: "$0 (Free, no credit card required)",
   activationTime: "5–15 minutes",
   billing: "Prepaid plans, no automatic renewal",
-  paymentMethods: "Crypto payment & prepaid checkout",
+  paymentMethods: [
+    "Cryptocurrency",
+    "PayPal",
+    "Stripe",
+  ] as const,
   plans: [
     { duration: "1 Month", price: 16.00, monthlyEquivalent: 16.00 },
     { duration: "3 Months", price: 39.00, monthlyEquivalent: 13.00 },

@@ -62,8 +62,8 @@ export default function TermsConditionsPage() {
               <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground">2. Subscription Plans & Billing</h2>
               <ul className="list-disc pl-5 space-y-1.5">
                 <li><strong className="text-foreground">Prepaid Terms:</strong> All subscriptions (1, 3, 6, or 12 months) are one-time prepaid purchases. There are no recurring auto-debits or automated renewals.</li>
-                <li><strong className="text-foreground">Crypto Payments:</strong> Payments are processed via cryptocurrency. You are responsible for ensuring transaction network details and wallet addresses are accurately submitted.</li>
-                <li><strong className="text-foreground">Activation:</strong> Account credentials are confirmed and delivered typically within 5–15 minutes following receipt and blockchain verification of payment.</li>
+                <li><strong className="text-foreground">Payment Methods:</strong> Available payment methods include cryptocurrency, PayPal, and Stripe. For cryptocurrency payments, you are responsible for ensuring transaction network details and wallet addresses are accurately submitted.</li>
+                <li><strong className="text-foreground">Activation:</strong> Account credentials are confirmed and delivered typically within 5–15 minutes following receipt and confirmation of payment.</li>
               </ul>
             </div>
 

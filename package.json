@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "typecheck": "tsc --noEmit",
+    "content:audit": "node scripts/content-audit.mjs",
     "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {

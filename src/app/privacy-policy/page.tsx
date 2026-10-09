@@ -57,7 +57,7 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-5 space-y-1.5">
                 <li><strong className="text-foreground">Contact Information:</strong> When you contact support or submit a form, we may collect your email address or messaging handle (such as WhatsApp).</li>
                 <li><strong className="text-foreground">Order & Activation Data:</strong> Subscription tier chosen, activation timestamps, and device type information provided to assist with troubleshooting.</li>
-                <li><strong className="text-foreground">Payment Details:</strong> We process transactions via cryptocurrency. We do not collect or store credit card numbers, bank account numbers, or traditional financial credentials on our servers.</li>
+                <li><strong className="text-foreground">Payment Details:</strong> Checkout and payment processing are handled externally by payment providers. TryIPTV does not host payment processing forms or store payment card or bank account details on this website.</li>
               </ul>
             </div>
 

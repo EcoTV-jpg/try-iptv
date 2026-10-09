@@ -89,7 +89,7 @@ export default function RefundPolicyPage() {
             <div className="space-y-3">
               <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground">4. Refund Processing</h2>
               <p>
-                Approved refunds are returned via the original cryptocurrency payment method (excluding network miner fees) or applied as service credit. Processing typically takes 24–48 hours after technical confirmation.
+                Approved refunds are processed following technical confirmation by our support desk or applied as service credit. For cryptocurrency transactions, approved refunds exclude network miner fees.
               </p>
             </div>
 

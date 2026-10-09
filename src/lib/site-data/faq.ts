@@ -2,11 +2,11 @@
 export const faqs = [
     {
         question: "What is TryIPTV?",
-        answer: "TryIPTV is a prepaid IPTV subscription service available at tryiptv.com. The service provides live TV, sports, and on-demand streaming across compatible IPTV devices and apps, with fixed-term prepaid plans, 2 simultaneous connections, a 24-hour trial with no card required, and no automatic renewal."
+        answer: "TryIPTV is a prepaid IPTV subscription service available at tryiptv.com. The service provides live TV, sports, and on-demand streaming across compatible IPTV devices and apps, with fixed-term prepaid plans, 2 simultaneous connections, a 24-hour trial ($0), and no automatic renewal."
     },
     {
         question: "Does TryIPTV offer a free trial?",
-        answer: "Yes. TryIPTV offers a 24-hour free trial with no credit card required so you can test the channel lineup, picture quality, and device compatibility before purchasing. You can request trial access through our <a href=\"/iptv-free-trial\" class=\"text-primary hover:underline\">free trial page</a> or support team to get started."
+        answer: "Yes. TryIPTV offers a 24-hour free trial at $0 so you can test the channel lineup, picture quality, and device compatibility before purchasing. You can request trial access through our <a href=\"/iptv-free-trial\" class=\"text-primary hover:underline\">free trial page</a> or support team to get started."
     },
     {
         question: "How much does TryIPTV cost?",
@@ -26,7 +26,7 @@ export const faqs = [
     },
     {
         question: "How do I set up TryIPTV?",
-        answer: "To set up TryIPTV, install a compatible IPTV player application on your device and enter the account details or M3U playlist URL provided after order confirmation. We provide step-by-step setup guides for Fire TV, Android, Apple, Windows, and Smart TVs, and our support team is available 24/7 to assist."
+        answer: "To set up TryIPTV, install a compatible IPTV player application on your device and enter the account details or M3U playlist URL provided after order confirmation. Follow our universal <a href=\"/setup\" class=\"text-primary hover:underline\">IPTV setup guide</a> for step-by-step instructions across Fire TV, Android, Apple, Windows, and Smart TVs, and our support team is available 24/7 to assist."
     },
     {
         question: "How do I get customer support for TryIPTV?",
