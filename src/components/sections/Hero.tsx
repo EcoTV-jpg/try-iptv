@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CirclePlay } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/shared/Container';
@@ -53,6 +54,21 @@ export function Hero() {
             2 simultaneous connections • Flat prepaid pricing • No auto-renewal
           </p>
 
+          {/* Hero Image */}
+          <div className="mt-8 w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-[#07080a] p-2 shadow-[0_0_40px_rgba(0,240,120,0.06),inset_0_1px_0_rgba(255,255,255,0.04)] sm:mt-10 sm:p-2.5">
+            <div className="relative overflow-hidden rounded-xl bg-black/40">
+              <Image
+                src="/images/best-iptv-service.png"
+                alt="Couple watching TV with TryIPTV streaming service"
+                width={1024}
+                height={682}
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 768px, 768px"
+                className="h-[260px] w-full object-cover sm:h-[320px] md:h-[360px]"
+              />
+            </div>
+          </div>
+
           {/* 4 Clean Factual Stats */}
           <div className="mt-12 grid w-full grid-cols-2 gap-3 sm:mt-14 sm:grid-cols-4 sm:gap-4">
             {stats.map((stat) => (
@@ -74,4 +90,3 @@ export function Hero() {
     </section>
   );
 }
-

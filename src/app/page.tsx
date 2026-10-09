@@ -15,11 +15,31 @@ import { faqs } from "@/lib/site-data/faq";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
-  return generatePageMetadata({
+  const baseMetadata = generatePageMetadata({
     title: "TryIPTV — Best IPTV Service in USA, UK & Worldwide",
     description: "TryIPTV is a premier prepaid IPTV service featuring 24,000+ live channels, sports, and 80,000+ movies and series in HD & 4K across all devices. Plans start at $16 with a 24-hour free trial available.",
     canonical: "/",
+    image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
+
+  return {
+    ...baseMetadata,
+    openGraph: {
+      ...baseMetadata.openGraph,
+      images: [
+        {
+          url: "https://www.tryiptv.com/images/best-iptv-service.png",
+          width: 1024,
+          height: 682,
+          alt: "Couple watching TV with TryIPTV streaming service",
+        },
+      ],
+    },
+    twitter: {
+      ...baseMetadata.twitter,
+      images: ["https://www.tryiptv.com/images/best-iptv-service.png"],
+    },
+  };
 }
 
 export default function Home() {
