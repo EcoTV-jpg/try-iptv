@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useEffect, useActionState } from 'react';
+import { useEffect, useActionState, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 import { submitContactForm } from '@/app/actions';
 import { Button } from '@/components/ui/button';
@@ -21,7 +21,8 @@ function SubmitButton() {
 
 export function ContactForm() {
   const { toast } = useToast();
-  const initialState = { message: null, errors: null };
+  const formRef = useRef<HTMLFormElement>(null);
+  const initialState = { success: false, message: null, errors: null };
   const [state, dispatch] = useActionState(submitContactForm, initialState);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export function ContactForm() {
         title: 'Success!',
         description: state.message,
       });
+      formRef.current?.reset();
     } else if (state.message && state.errors) {
       toast({
         variant: 'destructive',
@@ -40,7 +42,17 @@ export function ContactForm() {
   }, [state, toast]);
 
   return (
-    <form action={dispatch} className="space-y-4">
+    <form ref={formRef} action={dispatch} className="space-y-4">
+      {state.message && !state.errors && (
+        <div className="rounded-lg border border-primary/20 bg-primary/10 p-3 text-sm text-primary">
+          {state.message}
+        </div>
+      )}
+      {state.errors?.form && (
+        <div className="rounded-lg border border-destructive/20 bg-destructive/10 p-3 text-sm text-destructive">
+          {state.errors.form[0]}
+        </div>
+      )}
       <div className="space-y-2">
         <Label htmlFor="name-form">Name</Label>
         <Input id="name-form" name="name" placeholder="Your Name" />

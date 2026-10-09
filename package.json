@@ -63,6 +63,7 @@
     "react-icons": "latest",
     "react-id-swiper": "latest",
     "recharts": "latest",
+    "resend": "^6.32.1",
     "schema-dts": "^2.0.0",
     "sharp": "latest",
     "swiper": "latest",
