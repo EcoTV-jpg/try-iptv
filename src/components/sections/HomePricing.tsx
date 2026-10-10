@@ -19,8 +19,8 @@ export function HomePricing() {
     <Section id="pricing" className="bg-[#050706]">
       <Container>
         <SectionHeader
-          title="TryIPTV Subscription Plans"
-          subtitle="Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 24,000+ live channels, and HD & 4K streams."
+          title="Try IPTV Subscription Plans"
+          subtitle="Simple prepaid IPTV plans with no hidden fees and no automatic renewals. Every plan includes 2 simultaneous connections, access to 24,000+ live channels, and HD & 4K streaming across supported devices."
           eyebrow="Prepaid Subscriptions"
         />
         <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
