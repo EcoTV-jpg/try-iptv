@@ -67,7 +67,7 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   experimental: {
-    optimizePackageImports: ['lucide-react', 'react-icons'],
+    optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion'],
   },
   async headers() {
     return [

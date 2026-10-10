@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle } from "lucide-react";
+
 import { Container } from "./Container";
 import { Logo } from "./Logo";
+import { TextHoverEffect } from "@/components/velora/text-hover-effect";
 import { footerLinks } from "@/lib/site-data/footer";
 import { socialLinks } from "@/lib/site-data/socials";
 
@@ -87,95 +89,143 @@ function SocialIcon({ name }: { name: SocialIconName }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-[#040506]">
+    <footer className="relative isolate overflow-hidden border-t border-white/[0.08] bg-[#040506] px-4 pt-14 pb-6 sm:pt-16 sm:pb-8 lg:px-8">
+      {/* Faint brand glow rising behind the wordmark */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-56 bg-gradient-to-t from-primary/[0.04] via-primary/[0.01] to-transparent blur-3xl"
+      />
+
       <Container>
-        <div className="grid gap-10 py-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 lg:gap-8 lg:py-16">
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
+          {/* Brand statement */}
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Logo />
-            <p className="mt-4 max-w-sm text-[14.5px] leading-relaxed text-muted-foreground">
+            <p className="mt-3.5 max-w-sm text-[13.5px] leading-relaxed text-muted-foreground/90">
               Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 24,000+ live channels and 80,000+ VOD titles.
             </p>
-          </div>
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Explore</h3>
-            <ul className="space-y-2.5">
-              {footerLinks.quickLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Device Guides</h3>
-            <ul className="space-y-2.5">
-              {footerLinks.supportedLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Legal & Trust</h3>
-            <ul className="space-y-2.5">
-              {footerLinks.legalLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="lg:col-span-2">
-            <h3 className="mb-4 font-mono text-xs font-bold uppercase tracking-wider text-foreground/90">Support</h3>
-            <address className="space-y-2.5 text-[13.5px] not-italic text-muted-foreground">
+            <div className="mt-5 flex flex-col gap-2 text-sm">
               <span
                 dangerouslySetInnerHTML={{
-                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="flex items-center gap-2 transition-colors duration-150 hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}</a><!--/email_off-->`,
+                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="group/email inline-flex items-center gap-2 font-medium text-muted-foreground/90 transition-colors hover:text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover/email:translate-x-0.5 group-hover/email:-translate-y-0.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><!--/email_off-->`,
                 }}
               />
-              <a href="https://wa.me/447848197761" className="flex items-center gap-2 transition-colors duration-150 hover:text-foreground" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-3.5 w-3.5 text-primary shrink-0" />WhatsApp Support
+              <a
+                href="https://wa.me/447848197761"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/wa inline-flex items-center gap-2 font-medium text-muted-foreground/90 transition-colors hover:text-primary"
+              >
+                <MessageCircle className="h-3.5 w-3.5 text-primary shrink-0" />
+                <span>WhatsApp Support</span>
+                <ArrowUpRight className="size-3.5 transition-transform group-hover/wa:translate-x-0.5 group-hover/wa:-translate-y-0.5" />
               </a>
-            </address>
-            <div className="mt-6">
-              <h4 className="mb-3 font-mono text-xs font-bold uppercase tracking-wider text-foreground/80">Social</h4>
-              <ul className="flex flex-wrap gap-2" aria-label="TryIPTV social links">
-                {socialFooterLinks.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      aria-label={link.ariaLabel}
-                      title={link.name}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-muted-foreground transition-colors duration-150 hover:border-primary/30 hover:bg-primary/[0.08] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-                    >
-                      <SocialIcon name={link.icon} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
+
+          {/* Explore */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+              Explore
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-[13.5px] text-muted-foreground/90 transition-colors duration-150 hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Device Guides */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+              Device Guides
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.supportedLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-[13.5px] text-muted-foreground/90 transition-colors duration-150 hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal & Trust */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+              Legal &amp; Trust
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.legalLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-[13.5px] text-muted-foreground/90 transition-colors duration-150 hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support & Social */}
+          <div className="lg:col-span-2">
+            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+              Social
+            </h3>
+            <ul className="flex flex-wrap gap-2" aria-label="TryIPTV social links">
+              {socialFooterLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    aria-label={link.ariaLabel}
+                    title={link.name}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-muted-foreground transition-colors duration-150 hover:border-primary/30 hover:bg-primary/[0.08] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                  >
+                    <SocialIcon name={link.icon} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 border-t border-white/[0.06] py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            &copy; {new Date().getFullYear()} TryIPTV. All rights reserved.
-          </p>
+
+        {/* Bottom copyright and legal bar */}
+        <div className="mt-10 flex flex-col-reverse gap-4 border-t border-white/[0.06] pt-6 text-xs text-muted-foreground/80 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; {new Date().getFullYear()} TryIPTV. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {footerLinks.legalLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="transition-colors hover:text-foreground">
+              <Link
+                key={link.name}
+                href={link.href}
+                className="transition-colors hover:text-foreground"
+              >
                 {link.name}
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Interactive outlined wordmark with ambient opacity */}
+        <div className="mt-6 sm:mt-8 overflow-hidden opacity-50 hover:opacity-75 transition-opacity">
+          <TextHoverEffect
+            text="tryiptv"
+            className="h-16 sm:h-20 md:h-24"
+          />
         </div>
       </Container>
     </footer>

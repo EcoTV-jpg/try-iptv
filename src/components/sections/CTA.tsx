@@ -5,6 +5,8 @@ import { ArrowRight, CircleCheck } from "lucide-react";
 import { Section } from "../shared/Section";
 import type React from "react";
 
+import { cn } from "@/lib/utils";
+
 interface CTAProps {
   title?: string;
   subtitle?: string;
@@ -32,49 +34,49 @@ export function CTA({
   const shouldShowPills = showTrustPills ?? buttonHref.includes("trial");
 
   return (
-    <Section className={className}>
+    <Section className={cn("py-12 sm:py-16 lg:py-18", className)}>
       <Container>
-        <div className="relative overflow-hidden rounded-[20px] border border-primary/30 bg-[linear-gradient(135deg,#07130b_0%,#050807_50%,#040506_100%)] p-7 sm:p-9 md:p-11 shadow-[inset_0_1px_0_rgba(0,240,120,0.12)] lg:flex lg:items-center lg:justify-between lg:text-left">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl sm:rounded-[22px] border border-primary/25 bg-[linear-gradient(135deg,#07130b_0%,#050807_50%,#040506_100%)] p-6 sm:p-8 lg:p-9 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] lg:flex lg:items-center lg:justify-between lg:text-left gap-8">
           <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
           <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl" />
           
-          <div className="relative z-10 max-w-2xl">
+          <div className="relative z-10 max-w-xl lg:max-w-2xl">
             {eyebrow && (
-              <p className="mb-3 flex items-center justify-start gap-2 font-mono text-xs font-bold uppercase tracking-wider text-primary">
+              <p className="mb-2.5 flex items-center justify-start gap-2 font-mono text-xs font-bold uppercase tracking-wider text-primary">
                 {badgeIcon}
                 {eyebrow}
               </p>
             )}
-            <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[34px] leading-tight">
+            <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-[32px] leading-tight">
               {title}
             </h2>
-            <p className="mt-3.5 text-[15px] sm:text-base leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-foreground/90">
               {subtitle}
             </p>
 
             {shouldShowPills && (
-              <div className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3 text-[13px] text-muted-foreground">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1 font-medium">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              <div className="mt-5 flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs sm:text-[13px] text-muted-foreground/95">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium">
+                  <span className="size-1.5 rounded-full bg-primary" />
                   24-Hour Trial — $0
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1 font-medium">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium">
+                  <span className="size-1.5 rounded-full bg-primary" />
                   24-hour access
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-3.5 py-1 font-medium">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium">
+                  <span className="size-1.5 rounded-full bg-primary" />
                   Fast activation
                 </span>
               </div>
             )}
           </div>
 
-          <div className="relative z-10 mt-8 lg:ml-10 lg:mt-0 lg:shrink-0">
+          <div className="relative z-10 mt-7 lg:mt-0 lg:shrink-0">
             <Button
               asChild
               size="lg"
-              className="h-12 min-h-[48px] px-8 text-[15px] font-semibold rounded-xl"
+              className="h-11 min-h-[44px] px-7.5 text-sm font-semibold rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20"
             >
               <LinkComp href={buttonHref} {...externalProps}>
                 {buttonText} <ArrowRight className="ml-1.5 h-4 w-4" />
