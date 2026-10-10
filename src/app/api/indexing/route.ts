@@ -46,6 +46,19 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(options.data),
     });
 
+    if (!response.ok) {
+      let errorDetails: unknown;
+      try {
+        errorDetails = await response.json();
+      } catch {
+        errorDetails = await response.text();
+      }
+      return NextResponse.json(
+        { error: 'Indexing API Error', details: errorDetails },
+        { status: response.status }
+      );
+    }
+
     const result = await response.json();
 
     return NextResponse.json(result);

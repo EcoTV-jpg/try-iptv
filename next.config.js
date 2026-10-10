@@ -1,4 +1,6 @@
 
+import { withSentryConfig } from '@sentry/nextjs/config';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: [
@@ -241,4 +243,8 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  org: 'etru',
+  project: 'javascript-nextjs',
+  silent: !process.env.CI,
+});

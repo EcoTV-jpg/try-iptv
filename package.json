@@ -40,6 +40,7 @@
     "@radix-ui/react-tabs": "latest",
     "@radix-ui/react-toast": "latest",
     "@radix-ui/react-tooltip": "latest",
+    "@sentry/nextjs": "^11.6.0",
     "@tanstack/react-query": "latest",
     "class-variance-authority": "latest",
     "clsx": "latest",

@@ -51,7 +51,7 @@ export function HomePricing() {
                     </span>
                     <span className="text-xs font-medium text-muted-foreground">prepaid</span>
                   </div>
-                  <p className="mt-1.5 text-xs text-muted-foreground">
+                  <div className="mt-1.5 flex min-h-[22px] items-center text-xs text-muted-foreground">
                     {plan.price_monthly !== plan.price ? (
                       <>
                         <span className="text-foreground/90 font-medium">${plan.price_monthly.toFixed(2)}/mo</span>
@@ -64,7 +64,7 @@ export function HomePricing() {
                     ) : (
                       <>Standard 1-month prepaid access</>
                     )}
-                  </p>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent className="flex-1 px-6 sm:px-7">
@@ -90,10 +90,10 @@ export function HomePricing() {
               <CardFooter className="px-6 pb-6 pt-4 sm:px-7 sm:pb-7">
                 <Button
                   asChild
-                  className="w-full h-11 min-h-[44px] rounded-xl text-sm font-semibold"
+                  className="w-full h-12 min-h-[48px] rounded-xl text-sm font-semibold"
                   variant={plan.isPopular ? "default" : "outline"}
                 >
-                  <Link href={plan.checkoutUrl}>Choose {plan.name}</Link>
+                  <a href={plan.checkoutUrl}>Choose {plan.name}</a>
                 </Button>
               </CardFooter>
             </Card>

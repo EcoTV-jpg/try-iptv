@@ -71,6 +71,7 @@ export function ClientCarousel({
                       size="icon"
                       variant="ghost"
                       className="h-8 w-8 rounded-full border-0 bg-card/50 backdrop-blur hover:bg-card/70"
+                      aria-label="Add to favorites"
                     >
                       <Heart className="h-4 w-4" />
                     </Button>
@@ -78,6 +79,7 @@ export function ClientCarousel({
                       size="icon"
                       variant="ghost"
                       className="h-8 w-8 rounded-full border-0 bg-card/50 backdrop-blur hover:bg-card/70"
+                      aria-label="Bookmark"
                     >
                       <Bookmark className="h-4 w-4" />
                     </Button>
