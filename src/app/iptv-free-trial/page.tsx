@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -247,46 +248,61 @@ export default async function IptvFreeTrialPage() {
       {/* 1. Hero Section */}
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-        <Container className="relative text-center">
-          <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.06] px-3.5 py-1.5 text-xs font-extrabold text-primary">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-40" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-            </span>
-            24-Hour Evaluation Pass • Zero Commitment
-          </div>
-          <h1 className="font-headline text-3xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl max-w-4xl mx-auto text-foreground">
-            24-Hour IPTV Free Trial: Test TryIPTV with No Credit Card
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-            Test TryIPTV on your own device before choosing a paid plan. The stated trial offer is 24 hours at $0 with no credit card required. Use it to check the channels and viewing quality that matter to you.
-          </p>
-          <div className="mx-auto mt-6 max-w-2xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
-            <h2 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
-              Quick Answer
-            </h2>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              <strong className="text-foreground">Quick Answer:</strong> TryIPTV lists a 24-hour IPTV free trial at $0 with no credit card required. Use it to check live TV, on-demand content, EPG access, and M3U or Xtream Codes setup on your own device. The stated credential delivery estimate is 5–15 minutes after trial confirmation.
+        <Container className="relative flex flex-col items-center justify-center">
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+            <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.06] px-3.5 py-1.5 text-xs font-extrabold text-primary">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              24-Hour Evaluation Pass • Zero Commitment
+            </div>
+            <h1 className="font-headline text-3xl font-extrabold leading-[1.08] sm:text-5xl lg:text-6xl max-w-4xl mx-auto text-foreground">
+              24-Hour IPTV Free Trial: Test TryIPTV with No Credit Card
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
+              Test TryIPTV on your own device before choosing a paid plan. The stated trial offer is 24 hours at $0 with no credit card required. Use it to check the channels and viewing quality that matter to you.
             </p>
-            <p className="mt-2.5 border-t border-white/[0.06] pt-2.5 text-xs leading-relaxed text-muted-foreground">
-              <strong className="text-foreground">Important:</strong> This is a temporary 24-hour trial of the TryIPTV subscription service, not a permanently free streaming service.
+            <div className="mx-auto mt-6 max-w-2xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
+              <h2 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
+                Quick Answer
+              </h2>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                <strong className="text-foreground">Quick Answer:</strong> TryIPTV lists a 24-hour IPTV free trial at $0 with no credit card required. Use it to check live TV, on-demand content, EPG access, and M3U or Xtream Codes setup on your own device. The stated credential delivery estimate is 5–15 minutes after trial confirmation.
+              </p>
+              <p className="mt-2.5 border-t border-white/[0.06] pt-2.5 text-xs leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">Important:</strong> This is a temporary 24-hour trial of the TryIPTV subscription service, not a permanently free streaming service.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button asChild size="lg">
+                <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                  <SiWhatsapp className="mr-2 h-4 w-4" />
+                  Start Free Trial on WhatsApp
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/pricing">See Plans &amp; Pricing</Link>
+              </Button>
+            </div>
+            <p className="mt-4 text-xs font-semibold text-muted-foreground">
+              $0 trial offer • No credit card required • Estimated credential delivery: 5–15 minutes after confirmation
             </p>
+            <div className="mt-8 w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-[#07080a] p-2 shadow-[0_0_40px_rgba(0,240,120,0.06),inset_0_1px_0_rgba(255,255,255,0.04)] sm:mt-10 sm:p-2.5">
+              <div className="relative overflow-hidden rounded-xl bg-black/40">
+                <Image
+                  src="/iptv-free-trial.png"
+                  alt="TryIPTV 24-hour free trial displayed on a smart TV"
+                  width={1672}
+                  height={941}
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 768px, 768px"
+                  className="h-[260px] w-full object-cover sm:h-[320px] md:h-[360px]"
+                />
+              </div>
+            </div>
           </div>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg">
-              <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                <SiWhatsapp className="mr-2 h-4 w-4" />
-                Start Free Trial on WhatsApp
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/pricing">See Plans &amp; Pricing</Link>
-            </Button>
-          </div>
-          <p className="mt-4 text-xs font-semibold text-muted-foreground">
-            $0 trial offer • No credit card required • Estimated credential delivery: 5–15 minutes after confirmation
-          </p>
         </Container>
       </Section>
 
