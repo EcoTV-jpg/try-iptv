@@ -70,6 +70,22 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion'],
   },
   async headers() {
+    const cspReportOnlyHeader = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://analytics.ahrefs.com https://*.google-analytics.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://images.unsplash.com https://iptvwell.com https://image.tmdb.org https://r2.thesportsdb.com https://images-cdn.ubuy.co.in",
+      "font-src 'self' data:",
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://analytics.ahrefs.com https://*.ingest.us.sentry.io https://*.sentry.io",
+      "frame-src 'none'",
+      "media-src 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'self'",
+      "upgrade-insecure-requests",
+    ].join('; ');
+
     return [
       {
         source: '/:path*',
@@ -101,6 +117,10 @@ const nextConfig = {
           {
             key: 'X-Frame-Options',
             value: 'SAMEORIGIN'
+          },
+          {
+            key: 'Content-Security-Policy-Report-Only',
+            value: cspReportOnlyHeader
           },
         ],
       },

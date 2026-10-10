@@ -48,7 +48,17 @@ export async function processContactSubmission(rawInput: {
   name?: unknown;
   email?: unknown;
   message?: unknown;
+  company?: unknown;
 }): Promise<ContactResult> {
+  const honeypot = typeof rawInput.company === 'string' ? rawInput.company.trim() : '';
+  if (honeypot.length > 0) {
+    return {
+      success: true,
+      message: "Message sent successfully. We'll get back to you as soon as possible.",
+      errors: null,
+    };
+  }
+
   const validation = contactSchema.safeParse(rawInput);
 
   if (!validation.success) {
@@ -80,8 +90,9 @@ export async function processContactSubmission(rawInput: {
     const escapedMessage = escapeHtml(message).replace(/\r?\n/g, '<br>');
     const timestamp = new Date().toUTCString();
 
-    const subject = name
-      ? `TryIPTV Support — ${name}`
+    const safeSubjectName = name.replace(/[\r\n]+/g, ' ').trim();
+    const subject = safeSubjectName
+      ? `TryIPTV Support — ${safeSubjectName}`
       : 'New TryIPTV Support Request';
 
     const html = `<h2>New TryIPTV Support Request</h2>

@@ -10,6 +10,7 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     name: formData.get('name'),
     email: formData.get('email'),
     message: formData.get('message'),
+    company: formData.get('company'),
   };
 
   return await processContactSubmission(rawInput);

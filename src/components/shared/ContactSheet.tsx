@@ -70,6 +70,20 @@ export function ContactSheet() {
             </SheetDescription>
           </SheetHeader>
           <form action={dispatch} className="mt-8 space-y-4">
+            <div
+              className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
+              aria-hidden="true"
+            >
+              <label htmlFor="company-sheet">Company</label>
+              <input
+                id="company-sheet"
+                name="company"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="name-sheet">Name</Label>
               <Input id="name-sheet" name="name" placeholder="Your Name" />

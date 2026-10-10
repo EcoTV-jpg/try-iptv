@@ -1,4 +1,3 @@
-'use server';
 /**
  * @fileoverview A flow for generating semantic content analysis for a given topic.
  *

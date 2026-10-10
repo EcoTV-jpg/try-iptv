@@ -31,6 +31,20 @@ export function ContactForm() {
 
   return (
     <form ref={formRef} action={dispatch} className="space-y-4">
+      <div
+        className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
+        aria-hidden="true"
+      >
+        <label htmlFor="company-form">Company</label>
+        <input
+          id="company-form"
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
+      </div>
       {state.message && !state.errors && (
         <div className="rounded-lg border border-primary/20 bg-primary/10 p-3 text-sm text-primary">
           {state.message}
