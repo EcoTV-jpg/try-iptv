@@ -5,7 +5,7 @@ export const pricingPageFaqs = [
     },
     {
         question: "What is the difference between monthly and yearly IPTV plans?",
-        answer: "All TryIPTV plans include the exact same service features: 24,000+ live channels, 80,000+ VOD movies and series, HD & 4K quality, EPG TV guide, and 2 simultaneous connections. The difference is duration and prepaid savings: the 1-month plan ($16) offers flexible short-term viewing, while the 12-month plan ($90) reduces your effective monthly cost to $7.50 per month (a 53% savings compared to twelve monthly renewals)."
+        answer: "All TryIPTV plans include the same core service features: access to the available 24,000+ live channels, 80,000+ VOD movies and series, HD and select 4K streams where available, EPG TV guide, and 2 simultaneous connections. The difference is duration and prepaid savings: the 1-month plan ($16) offers flexible short-term viewing, while the 12-month plan ($90) reduces your effective monthly cost to $7.50 per month (a 53% savings compared to twelve monthly renewals)."
     },
     {
         question: "Is the subscription billed monthly, or does it renew automatically?",
@@ -17,11 +17,11 @@ export const pricingPageFaqs = [
     },
     {
         question: "What payment methods are accepted for prepaid IPTV plans?",
-        answer: "Available payment methods include Cryptocurrency, PayPal, and Stripe. All orders are one-time prepaid purchases with no automatic renewals or recurring charges."
+        answer: "Available payment methods are shown at checkout. All orders are one-time prepaid purchases with no automatic renewals or recurring charges."
     },
     {
         question: "What happens after I purchase, and how quickly do I receive credentials?",
-        answer: "After completing checkout, your IPTV subscription details are dispatched to your email typically within 5–15 minutes. This includes your M3U playlist URL, Xtream Codes credentials (server URL, username, password), and setup instructions. If you do not see the confirmation email in your inbox, check your spam or junk folder or contact our 24/7 support team."
+        answer: "After completing checkout, your IPTV subscription details are dispatched to your email typically within 5–15 minutes. This includes your M3U playlist URL, Xtream Codes credentials (server URL, username, password), and setup instructions. If you do not see the confirmation email in your inbox, check your spam or junk folder or contact our support team via WhatsApp or email."
     },
     {
         question: "Is there a free trial available before purchasing a plan?",

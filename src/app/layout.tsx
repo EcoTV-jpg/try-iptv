@@ -137,6 +137,11 @@ export default function RootLayout({
           <Schema id="website" schema={generateWebSiteSchema()} />
         </head>
       <body>
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          async
+          defer
+        />
         <Analytics />
         {isProduction ? (
           <Script

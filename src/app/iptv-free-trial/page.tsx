@@ -27,6 +27,7 @@ import {
   Layers,
   HelpCircle,
   ChevronDown,
+  AlertCircle,
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
@@ -57,22 +58,22 @@ const quickFacts = [
   {
     metric: "24 Hours",
     label: "Trial Duration",
-    description: "The stated duration of the trial offer.",
+    description: "Complete 24-hour evaluation pass from the moment credentials are activated.",
   },
   {
     metric: "$0 Free",
     label: "Zero Cost",
-    description: "The trial is listed as $0 with no credit card required.",
+    description: "Complimentary access with no credit card or billing details collected.",
   },
   {
     metric: "2 Screens",
     label: "Simultaneous Streams",
-    description: "Stream across two devices at the same time in your household.",
+    description: "Stream concurrently on up to two devices within your household.",
   },
   {
-    metric: "100% Open",
-    label: "Full Catalog Access",
-    description: "All 24,000+ live channels and 80,000+ VOD titles are fully unlocked.",
+    metric: "Live & VOD",
+    label: "Service Access",
+    description: "24-hour access to test the available live TV and on-demand service.",
   },
 ];
 
@@ -81,74 +82,82 @@ const trialInclusions = [
     icon: Tv,
     title: "24,000+ Live Channels",
     description:
-      "Use the trial to check the live channels you want to watch on your own device.",
+      "Use the trial to verify specific live channels, regional programming, and sports networks on your own device.",
   },
   {
     icon: Film,
     title: "80,000+ Movies & Series on Demand",
     description:
-      "The complete on-demand VOD library is fully unlocked during your 24 hours, exactly as paying subscribers see it.",
+      "Test on-demand movie and series playback during your 24 hours, including subtitle options and audio tracks where available.",
   },
   {
     icon: Zap,
-    title: "HD & 4K Ultra HD Streaming Quality",
+    title: "HD & 4K Streaming Quality",
     description:
-      "Streams play at native broadcast resolution (HD, Full HD, and 4K where available) so you can evaluate picture clarity and stability.",
+      "Test the picture quality and stream resolution that matter to you (HD, Full HD, and 4K where available on native broadcast feeds).",
   },
   {
     icon: Calendar,
     title: "Smart EPG TV Guide Included",
     description:
-      "Electronic Program Guide schedule listings are active so you can verify that channel timelines accurately match live broadcast schedules.",
+      "Check electronic program guide data where available to see how channel timelines and schedule listings populate in your player.",
   },
   {
     icon: KeyRound,
     title: "Xtream Codes API & M3U Link",
     description:
-      "Receive both connection formats: Xtream Codes login for supported IPTV player apps and an M3U playlist URL for players that accept M3U.",
+      "Receive both standard IPTV delivery formats: Xtream Codes credentials (Server URL, Username, Password) and an M3U playlist URL for flexible player setup.",
   },
   {
     icon: MessageCircle,
-    title: "2 Streams & 24/7 Setup Assistance",
+    title: "2 Streams & Technical Assistance",
     description:
-      "Stream simultaneously on two devices with technical assistance available via WhatsApp and email whenever you need setup guidance.",
+      "Stream simultaneously on two devices in your household with technical support available via WhatsApp and email whenever you need setup guidance.",
   },
 ];
 
 const trialWorkflowSteps = [
   {
     number: "01",
-    title: "Request Your Free Trial",
+    title: "Request Your Evaluation Pass",
     description:
-      "Send a WhatsApp message with your preferred device type. The stated trial offer is $0 with no credit card required.",
+      "Message our team on WhatsApp with your streaming device and player app. No credit card or billing details are required.",
   },
   {
     number: "02",
-    title: "Estimated Credential Delivery",
+    title: "Receive Login Credentials (5–15 Min)",
     description:
-      "The stated estimate is 5–15 minutes after trial confirmation. Support provides Xtream Codes credentials (server URL, username, password) and an M3U playlist URL.",
+      "Trial credentials are typically delivered within 5–15 minutes after confirmation. You receive Xtream Codes API details (server URL, username, password) and an M3U playlist URL.",
   },
   {
     number: "03",
-    title: "Add Credentials to Your Device / Player",
+    title: "Configure Your Preferred Player App",
     description:
-      "Enter your login details into any compatible IPTV player on your TV, streaming stick, phone, or computer using our step-by-step setup guides.",
+      "Open your IPTV player (such as TiviMate or IPTV Smarters), select Xtream Codes API or M3U, and enter your details using our step-by-step setup guides.",
   },
   {
     number: "04",
-    title: "Test Streaming & Features for 24 Hours",
+    title: "Evaluate Streams for 24 Hours",
     description:
-      "Watch live sports, test channel zapping speed, browse the EPG TV guide, and stream on-demand movies on your home network during peak hours.",
+      "Test channel zapping, live broadcasts during the times you normally watch (including busier periods), VOD titles, and EPG schedules across up to 2 simultaneous devices.",
   },
   {
     number: "05",
-    title: "Decide Whether to Subscribe",
+    title: "Zero-Pressure Decision or Expiration",
     description:
-      "The trial is listed as a 24-hour offer. If satisfied, choose a prepaid plan on our pricing page.",
+      "Access closes automatically after 24 hours with no recurring charges. If you decide to continue, support will provide the appropriate paid subscription credentials or renewal instructions.",
   },
 ];
 
-const testingGuide = [
+interface TestingGuideItem {
+  number: string;
+  title: string;
+  description: string;
+  linkUrl?: string;
+  linkText?: string;
+}
+
+const testingGuide: TestingGuideItem[] = [
   {
     number: "01",
     title: "Test on Your Primary Television Screen",
@@ -157,46 +166,42 @@ const testingGuide = [
   },
   {
     number: "02",
-    title: "Stream During Peak Hours (7–11 PM)",
+    title: "Test During Your Normal Viewing Times",
     description:
-      "Test live television during busy residential evening hours when ISP network congestion peaks to confirm stream smoothness and server stability.",
+      "Test during the times you normally watch, including busier periods if that reflects your typical usage, to evaluate stream smoothness and playback stability.",
   },
   {
     number: "03",
-    title: "Check Channel Switching & Zapping Speed",
+    title: "Check Channel Switching & Playback Sync",
     description:
-      "Zap through sports networks, news feeds, and international channels to evaluate how quickly streams buffer and lock on your player.",
+      "Zap through sports networks, news feeds, and live channels to evaluate channel change speed, stream locking, and audio/video synchronization on your player.",
   },
   {
     number: "04",
     title: "Test On-Demand VOD Playback",
     description:
-      "Play movies and multi-episode series in the VOD library to test fast-forwarding, resuming playback, and subtitle rendering.",
+      "Test the on-demand features that matter to you where available, including playback resuming, seeking, and subtitle support across movies or series.",
   },
   {
     number: "05",
-    title: "Verify Audio & Video Synchronization",
+    title: "Verify the Electronic Program Guide (EPG)",
     description:
-      "Check live sports commentary, high-framerate broadcasts, and news feeds to ensure audio and video remain in tight synchronization.",
+      "Check EPG guide loading where available to confirm program timelines, channel descriptions, and upcoming schedules display as expected.",
   },
   {
     number: "06",
-    title: "Verify the Electronic Program Guide (EPG)",
+    title: "Verify Connection & Network Stability",
     description:
-      "Confirm that program timelines, current show descriptions, and channel listings load correctly in your IPTV player's EPG grid.",
-  },
-  {
-    number: "07",
-    title: "Check Internet & Wi-Fi Quality First",
-    description:
-      "Confirm a stable 15–30+ Mbps download speed and use 5GHz Wi-Fi or Ethernet before assuming stream issues, as local packet loss causes buffering.",
+      "Use a stable internet connection. Ethernet can be useful for testing connection stability when available. Wi-Fi performance depends on signal quality, distance, interference, and device capabilities. For troubleshooting steps, see our",
+    linkUrl: "/help/iptv-buffering",
+    linkText: "IPTV buffering guide",
   },
 ];
 
 const supportedDeviceCategories = [
   {
     name: "Amazon Fire TV & Fire Stick",
-    apps: "TiviMate, IPTV Smarters Pro, Downloader",
+    apps: "TiviMate, IPTV Smarters, Downloader",
     guideUrl: "/devices/firestick-iptv",
   },
   {
@@ -211,7 +216,7 @@ const supportedDeviceCategories = [
   },
   {
     name: "Samsung Smart TVs (Tizen)",
-    apps: "IPTV Smarters Pro, IBO Player",
+    apps: "IPTV Smarters, IBO Player",
     guideUrl: "/devices/samsung-tv-iptv",
   },
   {
@@ -221,12 +226,12 @@ const supportedDeviceCategories = [
   },
   {
     name: "Windows PC & Laptops",
-    apps: "IPTV Smarters Pro, VLC Media Player",
+    apps: "IPTV Smarters, VLC Media Player",
     guideUrl: "/devices/windows-iptv",
   },
   {
     name: "Apple Mac (macOS)",
-    apps: "VLC, IPTV Smarters Pro for Mac",
+    apps: "VLC, IPTV Smarters for Mac",
     guideUrl: "/devices/mac-iptv",
   },
   {
@@ -269,10 +274,10 @@ export default async function IptvFreeTrialPage() {
                 Quick Answer
               </h2>
               <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                <strong className="text-foreground">Quick Answer:</strong> TryIPTV lists a 24-hour IPTV free trial at $0 with no credit card required. Use it to check live TV, on-demand content, EPG access, and M3U or Xtream Codes setup on your own device. The stated credential delivery estimate is 5–15 minutes after trial confirmation.
+                <strong className="text-foreground">Quick Answer:</strong> When you request the TryIPTV free trial, support provides Xtream Codes API credentials (Server URL, Username, Password) and an M3U playlist link—typically delivered within 5–15 minutes via WhatsApp. The trial provides 24-hour access to test the available live TV and on-demand service across up to 2 simultaneous screens with zero credit card required and no automatic renewal.
               </p>
               <p className="mt-2.5 border-t border-white/[0.06] pt-2.5 text-xs leading-relaxed text-muted-foreground">
-                <strong className="text-foreground">Important:</strong> This is a temporary 24-hour trial of the TryIPTV subscription service, not a permanently free streaming service.
+                <strong className="text-foreground">Evaluation Notice:</strong> This is a temporary 24-hour evaluation pass to test stream quality, device compatibility, and channel availability before deciding whether to purchase a prepaid plan.
               </p>
             </div>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -307,22 +312,28 @@ export default async function IptvFreeTrialPage() {
       </Section>
 
       {/* 2. Quick Trial Facts */}
-      <Section className="border-b border-white/[0.06] bg-[#070a08] py-10">
+      <Section className="border-b border-white/[0.06] bg-[#070a08] py-6 sm:py-7">
         <Container>
           <h2 className="sr-only">Key Free Trial Details</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {quickFacts.map((fact) => (
-              <div
-                key={fact.label}
-                className="rounded-lg border border-white/[0.09] bg-card p-5 text-center shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
-              >
-                <span className="font-headline text-3xl font-extrabold text-foreground">{fact.metric}</span>
-                <h3 className="mt-1 font-headline text-sm font-extrabold text-primary uppercase tracking-wider">
-                  {fact.label}
-                </h3>
-                <p className="mt-1.5 text-xs leading-5 text-muted-foreground">{fact.description}</p>
-              </div>
-            ))}
+          <div className="rounded-lg border border-white/[0.08] bg-card/60 p-4 sm:p-5">
+            <div className="grid grid-cols-2 gap-4 divide-y-0 sm:grid-cols-4 sm:divide-x sm:divide-white/[0.08]">
+              {quickFacts.map((fact, index) => (
+                <div
+                  key={fact.label}
+                  className={`text-center ${index > 0 ? "sm:pl-4" : ""} ${index < quickFacts.length - 1 ? "sm:pr-4" : ""}`}
+                >
+                  <span className="font-headline text-2xl font-extrabold text-foreground sm:text-3xl">
+                    {fact.metric}
+                  </span>
+                  <h3 className="mt-0.5 font-headline text-xs font-extrabold uppercase tracking-wider text-primary">
+                    {fact.label}
+                  </h3>
+                  <p className="mt-1 text-[11px] leading-4 text-muted-foreground sm:text-xs sm:leading-5">
+                    {fact.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </Container>
       </Section>
@@ -357,39 +368,43 @@ export default async function IptvFreeTrialPage() {
         <Container>
           <SectionHeader
             eyebrow="Prerequisites"
-            title="What You Need to Start Your Free Trial"
-            subtitle="Make sure you have these essentials ready before requesting your evaluation pass."
+            title="What You Need Before Requesting Your Trial"
+            subtitle="Having your device and IPTV player app ready before requesting ensures you maximize your 24-hour evaluation window."
           />
           <div className="mx-auto max-w-3xl rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
             <ul className="space-y-3.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Your streaming device:</strong> Such as Firestick, Android TV, Samsung TV, LG TV, Apple TV, Windows, or Mac.
+                  <strong className="text-foreground">Your streaming hardware:</strong> A supported device such as an Amazon Firestick, Android TV / Google TV box, Apple TV, Smart TV (Samsung Tizen or LG webOS), Windows PC, or Mac.
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Your preferred IPTV player:</strong> If you already use an app such as TiviMate, IPTV Smarters Pro, or XCIPTV.
+                  <strong className="text-foreground">An IPTV player app installed:</strong> Installing your preferred player app (such as TiviMate, IPTV Smarters, or XCIPTV) beforehand ensures your 24 hours are spent evaluating content rather than downloading apps.
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                 <span>
-                  <strong className="text-foreground">A stable internet connection:</strong> Recommended 15–30+ Mbps for uninterrupted HD and 4K streaming.
+                  <strong className="text-foreground">Use a stable internet connection:</strong> Ethernet can be useful for testing connection stability when available. Wi-Fi performance depends on signal quality, distance, interference, and device capabilities. See our{" "}
+                  <Link href="/guides/iptv-internet-speed" className="text-primary font-semibold underline underline-offset-4">
+                    IPTV internet speed guide
+                  </Link>{" "}
+                  for detailed bandwidth guidance.
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Trial request:</strong> The stated offer requires no credit card; the request button opens WhatsApp.
+                  <strong className="text-foreground">Zero payment details needed:</strong> No credit card, bank details, or deposits are required. The trial request opens WhatsApp directly with support.
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-primary mt-0.5" />
                 <span>
-                  <strong className="text-foreground">Device identifier (only when needed):</strong> If a specific player or portal setup requires device details such as a MAC address, provide them only when needed.
+                  <strong className="text-foreground">Device identifier (only if using MAG or portal):</strong> If you use a MAG set-top box or portal-based app that authorizes by hardware MAC address, have that address handy when messaging support.
                 </span>
               </li>
             </ul>
@@ -402,8 +417,8 @@ export default async function IptvFreeTrialPage() {
         <Container>
           <SectionHeader
             eyebrow="5-Step Trial Process"
-            title="How the IPTV Free Trial Works"
-            subtitle="Follow the trial workflow from request to evaluation and your decision about a paid plan."
+            title="What Exactly Happens When You Request the Free Trial"
+            subtitle="Follow the step-by-step workflow from initial WhatsApp request to credential delivery, testing, and your final decision."
           />
           <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-5 md:divide-x md:divide-white/[0.09]">
             {trialWorkflowSteps.map((step) => (
@@ -424,12 +439,54 @@ export default async function IptvFreeTrialPage() {
               </div>
             ))}
           </div>
-          <div className="mt-8 rounded-lg border border-white/[0.08] bg-card/60 p-4 text-center text-xs text-muted-foreground sm:text-sm">
-            Need help configuring your app? Check our{" "}
-            <Link href="/setup" className="text-primary font-semibold underline underline-offset-4">
-              universal IPTV setup guide
-            </Link>{" "}
-            or contact support for live assistance.
+
+          {/* Practical Connection Guidance & Troubleshooting */}
+          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
+            <div className="rounded-lg border border-white/[0.09] bg-card p-5">
+              <div className="mb-3 flex items-center gap-2">
+                <AlertCircle className="h-4 w-4 text-primary" />
+                <h3 className="font-headline text-sm font-extrabold uppercase tracking-wider text-foreground">
+                  If Credentials Do Not Connect Immediately
+                </h3>
+              </div>
+              <ul className="space-y-2 text-xs leading-relaxed text-muted-foreground">
+                <li>
+                  <strong className="text-foreground">Case sensitivity:</strong> Xtream Codes usernames and passwords are case-sensitive. Check for accidental capital letters or trailing spaces copied from clipboard.
+                </li>
+                <li>
+                  <strong className="text-foreground">Server URL protocol:</strong> Enter the exact server URL protocol (<code className="rounded bg-white/[0.06] px-1 py-0.5 text-foreground">http://</code> or <code className="rounded bg-white/[0.06] px-1 py-0.5 text-foreground">https://</code>) and port number provided by support.
+                </li>
+                <li>
+                  <strong className="text-foreground">Force playlist refresh:</strong> In your IPTV player settings, select &quot;Update Playlist&quot; or &quot;Reload EPG&quot; to fetch the latest channel manifest.
+                </li>
+                <li>
+                  <strong className="text-foreground">Immediate support check:</strong> If an authorization or timeout error persists, reply to the WhatsApp dispatch message for a rapid line re-check.
+                </li>
+              </ul>
+            </div>
+
+            <div className="rounded-lg border border-white/[0.09] bg-card p-5">
+              <div className="mb-3 flex items-center gap-2">
+                <KeyRound className="h-4 w-4 text-primary" />
+                <h3 className="font-headline text-sm font-extrabold uppercase tracking-wider text-foreground">
+                  Setup Guides &amp; Supported Formats
+                </h3>
+              </div>
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                Your trial dispatch includes both Xtream Codes API parameters and a standard M3U playlist URL. For step-by-step player installation and credential entry walkthroughs:
+              </p>
+              <div className="mt-3.5 flex flex-col gap-2 text-xs font-semibold">
+                <Link href="/setup" className="inline-flex items-center gap-1.5 text-primary hover:underline">
+                  <span>Universal IPTV Setup Walkthrough</span> <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link href="/players" className="inline-flex items-center gap-1.5 text-primary hover:underline">
+                  <span>Compare Top IPTV Player Applications</span> <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link href="/help/iptv-buffering" className="inline-flex items-center gap-1.5 text-primary hover:underline">
+                  <span>Buffering &amp; Network Diagnostic Guide</span> <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
@@ -452,7 +509,21 @@ export default async function IptvFreeTrialPage() {
                   TEST {item.number}
                 </span>
                 <h3 className="font-headline text-lg font-extrabold leading-6 text-foreground">{item.title}</h3>
-                <p className="mt-2 text-xs leading-5 text-muted-foreground">{item.description}</p>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                  {item.description}
+                  {item.linkUrl && item.linkText && (
+                    <>
+                      {" "}
+                      <Link
+                        href={item.linkUrl}
+                        className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80"
+                      >
+                        {item.linkText}
+                      </Link>
+                      .
+                    </>
+                  )}
+                </p>
               </div>
             ))}
           </div>
@@ -499,64 +570,49 @@ export default async function IptvFreeTrialPage() {
         </Container>
       </Section>
 
-      {/* 7. What Happens After 24 Hours? */}
-      <Section className="border-t border-white/[0.06]">
-        <Container>
-          <SectionHeader
-            eyebrow="After the Trial"
-            title="What Happens After Your 24-Hour Trial Ends?"
-            subtitle="The trial is listed as a 24-hour evaluation period. You can decide whether to buy a prepaid plan afterward."
-          />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-              <div className="mb-4 grid h-10 w-10 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
-                <Clock className="h-5 w-5" />
-              </div>
-              <h3 className="font-headline text-lg font-extrabold text-foreground mb-2">1. Trial Window Ends</h3>
-              <p className="text-sm leading-6 text-muted-foreground">
-                The stated trial duration is 24 hours. Contact support if you need to confirm when your access ends.
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-              <div className="mb-4 grid h-10 w-10 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <h3 className="font-headline text-lg font-extrabold text-foreground mb-2">2. Subscribing Is 100% Optional</h3>
-              <p className="text-sm leading-6 text-muted-foreground">
-                If the service earns your business, plans start at $16 for 1 month down to $7.50 per month equivalent on the 12-month plan. You decide if and when to purchase.
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-              <div className="mb-4 grid h-10 w-10 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary">
-                <Layers className="h-5 w-5" />
-              </div>
-              <h3 className="font-headline text-lg font-extrabold text-foreground mb-2">3. Keep Your Player Setup</h3>
-              <p className="text-sm leading-6 text-muted-foreground">
-                When purchasing, contact our team and we can renew your existing trial line directly so you do not have to re-enter credentials across your devices.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <Button asChild variant="outline">
-              <Link href="/pricing" className="max-w-full" style={{ whiteSpace: "normal" }}>
-                Compare All Prepaid Plans on Our Pricing Page <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 8. Trial vs Paid Subscription Summary */}
+      {/* 7. Free Trial vs. Paid Subscription & Post-Trial Reality */}
       <Section variant="alt" className="border-t border-white/[0.06] bg-[#070a08]">
         <Container>
           <SectionHeader
             eyebrow="Evaluation vs Subscription"
             title="Free Trial vs. Paid Subscription"
-            subtitle="Use the free trial to evaluate the service before deciding whether to choose a prepaid plan."
+            subtitle="The trial is a strictly non-recurring 24-hour evaluation pass. You decide whether to purchase a prepaid subscription afterward."
           />
+
+          {/* Concise Post-Trial Policy Block */}
+          <div className="mx-auto mb-8 max-w-3xl rounded-lg border border-white/[0.08] bg-card/60 p-4 sm:p-5 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
+            <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-3 sm:divide-x sm:divide-white/[0.08]">
+              <div className="sm:pr-4">
+                <div className="mb-1 flex items-center gap-2 text-foreground font-semibold text-xs sm:text-sm">
+                  <Clock className="h-4 w-4 text-primary shrink-0" />
+                  <span>Automatic Expiry</span>
+                </div>
+                <p className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                  Access closes automatically after 24 hours. With no credit card collected, there are zero recurring charges or cancellation steps.
+                </p>
+              </div>
+
+              <div className="sm:px-4">
+                <div className="mb-1 flex items-center gap-2 text-foreground font-semibold text-xs sm:text-sm">
+                  <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
+                  <span>100% Optional</span>
+                </div>
+                <p className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                  Subscribing is entirely your choice. Plans start at $16 for 1 month down to $7.50/mo equivalent on the 12-month tier.
+                </p>
+              </div>
+
+              <div className="sm:pl-4">
+                <div className="mb-1 flex items-center gap-2 text-foreground font-semibold text-xs sm:text-sm">
+                  <Layers className="h-4 w-4 text-primary shrink-0" />
+                  <span>Renewal Setup</span>
+                </div>
+                <p className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+                  If you decide to continue, support will provide the appropriate paid subscription credentials or renewal instructions.
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="overflow-x-auto rounded-lg border border-white/[0.09] bg-card max-w-3xl mx-auto shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase text-muted-foreground">
@@ -579,7 +635,7 @@ export default async function IptvFreeTrialPage() {
                 </tr>
                 <tr>
                   <td className="py-3 px-6 font-semibold text-foreground">Payment Required</td>
-                  <td className="py-3 px-6">$0 trial request via WhatsApp</td>
+                  <td className="py-3 px-6">None ($0 request via WhatsApp)</td>
                   <td className="py-3 px-6">One-time prepaid checkout (no auto-charges)</td>
                 </tr>
                 <tr>
@@ -589,8 +645,8 @@ export default async function IptvFreeTrialPage() {
                 </tr>
                 <tr>
                   <td className="py-3 px-6 font-semibold text-foreground">Channels &amp; VOD</td>
-                  <td className="py-3 px-6">24,000+ Channels &amp; 80,000+ VOD</td>
-                  <td className="py-3 px-6">24,000+ Channels &amp; 80,000+ VOD</td>
+                  <td className="py-3 px-6">Available live TV &amp; on-demand library</td>
+                  <td className="py-3 px-6">Full ongoing service catalog</td>
                 </tr>
                 <tr>
                   <td className="py-3 px-6 font-semibold text-foreground">Simultaneous Streams</td>

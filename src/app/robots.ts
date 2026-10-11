@@ -62,6 +62,11 @@ export default function robots(): MetadataRoute.Robots {
         disallow: standardDisallow,
       },
       {
+        userAgent: 'Bingbot',
+        allow: publicAllow,
+        disallow: standardDisallow,
+      },
+      {
         userAgent: 'OAI-SearchBot',
         allow: publicAllow,
         disallow: standardDisallow,
@@ -82,7 +87,17 @@ export default function robots(): MetadataRoute.Robots {
         disallow: standardDisallow,
       },
       {
-        userAgent: 'anthropic-ai',
+        userAgent: 'ClaudeBot',
+        allow: publicAllow,
+        disallow: standardDisallow,
+      },
+      {
+        userAgent: 'Claude-User',
+        allow: publicAllow,
+        disallow: standardDisallow,
+      },
+      {
+        userAgent: 'Claude-SearchBot',
         allow: publicAllow,
         disallow: standardDisallow,
       },

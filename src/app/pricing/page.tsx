@@ -7,7 +7,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Pricing } from "@/components/sections/Pricing";
 import { getPricingPageData } from "@/lib/data/pricing-page";
 import { Schema } from "@/components/shared/Schema";
-import { PRODUCT_TRUTHS, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { plans } from "@/lib/site-data/pricing";
 import {
   Check,
@@ -53,7 +53,7 @@ export default async function IPTVSubscription() {
       <Schema id="faq" schema={faqSchema} />
 
       {/* 1. Header Section */}
-      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
+      <Section className="relative overflow-hidden border-b border-white/[0.07] pt-8 pb-10 sm:pt-12 sm:pb-14">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
         <Container className="relative">
           <Breadcrumb items={[{ label: "Pricing" }]} align="center" />
@@ -61,9 +61,9 @@ export default async function IPTVSubscription() {
             as="h1"
             eyebrow="IPTV Pricing & Subscription Plans"
             title="TryIPTV Pricing & Subscription Plans"
-            subtitle="Compare prepaid IPTV subscription plans from $16 for one month down to $7.50 per month equivalent on our 12-month prepaid plan. All plans include 2 simultaneous connections, 24,000+ live channels, and HD & 4K streams with no contracts and zero auto-renewals."
+            subtitle="Compare prepaid IPTV subscription plans from $16 for one month down to $7.50 per month equivalent on our 12-month prepaid plan. All plans include 2 simultaneous connections, 24,000+ live channels, and HD and available 4K streams with no contracts and zero auto-renewals."
           />
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-3 text-xs font-semibold sm:text-sm">
+          <div className="mt-5 sm:mt-6 flex flex-wrap justify-center items-center gap-2.5 text-xs font-semibold sm:text-sm">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
               <Check className="h-4 w-4 text-primary" /> 2 Simultaneous Connections
             </div>
@@ -82,7 +82,7 @@ export default async function IPTVSubscription() {
           </div>
 
           {/* Answer-First Pricing Summary */}
-          <div className="mx-auto mt-8 max-w-3xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
+          <div className="mx-auto mt-6 max-w-3xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
             <h2 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
               IPTV Subscription Pricing
             </h2>
@@ -169,7 +169,7 @@ export default async function IPTVSubscription() {
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground">
                   Flexible Option
                 </span>
-                <span className="font-headline text-lg font-bold text-foreground">$16 / Month</span>
+                <span className="font-headline text-lg font-bold text-foreground">$16 / 1 Month (Prepaid)</span>
               </div>
               <h3 className="font-headline text-xl font-extrabold text-foreground mb-2.5">
                 1-Month Plan: Maximum Flexibility
@@ -179,10 +179,10 @@ export default async function IPTVSubscription() {
               </p>
               <ul className="space-y-2 text-xs text-muted-foreground border-t border-white/[0.08] pt-4">
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Full access to all 24,000+ live channels &amp; VOD
+                  <Check className="h-4 w-4 text-primary shrink-0" /> Month-to-month flexibility without multi-month prepayment
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> 2 simultaneous device streams included
+                  <Check className="h-4 w-4 text-primary shrink-0" /> Test your channel lineup and devices post-trial
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-4 w-4 text-primary shrink-0" /> No long-term commitment or cancellation hassle
@@ -208,10 +208,10 @@ export default async function IPTVSubscription() {
                   <Check className="h-4 w-4 text-primary shrink-0" /> Saves $9 on 3 months, $36 on 6 months vs monthly renewals
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Premium PPV events and smart EPG guide included
+                  <Check className="h-4 w-4 text-primary shrink-0" /> Lower effective monthly cost than renewing the 1-month plan
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Seamless renewal without changing player credentials
+                  <Check className="h-4 w-4 text-primary shrink-0" /> Renewal options are available when your current plan ends
                 </li>
               </ul>
             </Card>
@@ -227,7 +227,7 @@ export default async function IPTVSubscription() {
                 12-Month Plan: Lowest Subscription Cost
               </h3>
               <p className="text-sm leading-6 text-muted-foreground mb-4">
-                Our lowest effective monthly rate. At $90 for an entire year ($7.50/month equivalent), you save 53% compared to monthly renewals—giving your household 365 days of 4K live TV and sports at the lowest cost.
+                Our lowest effective monthly rate. At $90 for an entire year ($7.50/month equivalent), you save 53% compared to monthly renewals—giving your household 365 days of HD and select 4K live TV and sports at the lowest cost.
               </p>
               <ul className="space-y-2 text-xs text-muted-foreground border-t border-white/[0.08] pt-4">
                 <li className="flex items-center gap-2">
@@ -237,7 +237,7 @@ export default async function IPTVSubscription() {
                   <Check className="h-4 w-4 text-primary shrink-0" /> Uninterrupted streaming with zero monthly rebilling
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Standard 24/7 technical customer support included
+                  <Check className="h-4 w-4 text-primary shrink-0" /> Lowest effective rate at $7.50 per month equivalent
                 </li>
               </ul>
             </Card>
@@ -251,7 +251,7 @@ export default async function IPTVSubscription() {
           <SectionHeader
             eyebrow="Universal Features"
             title="What’s Included with Every Plan"
-            subtitle="Every TryIPTV prepaid subscription includes identical full-access features regardless of duration."
+            subtitle="Every TryIPTV prepaid subscription includes the same core service features regardless of duration."
           />
           <div className="mx-auto max-w-3xl rounded-xl border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
             <ul className="grid grid-cols-1 gap-3.5 text-xs text-muted-foreground sm:grid-cols-2 sm:text-sm">
@@ -292,21 +292,7 @@ export default async function IPTVSubscription() {
         </Container>
       </Section>
 
-      {/* 6. How Much Does a TryIPTV Subscription Cost? */}
-      <Section className="border-t border-white/[0.06]">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-              How Much Does a TryIPTV Subscription Cost?
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-              A TryIPTV subscription costs $16 for 1 month, $39 for 3 months, $60 for 6 months, or $90 for 12 months. Because the plans are prepaid, longer plans reduce the effective monthly cost from $16 per month on the 1-month plan to $7.50 per month on the 12-month plan.
-            </p>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 7. How to Start */}
+      {/* 6. How to Start */}
       <Section className="border-t border-white/[0.06] bg-[#070a08]">
         <Container>
           <SectionHeader
@@ -330,7 +316,7 @@ export default async function IPTVSubscription() {
                 2. Complete Checkout
               </h3>
               <p className="text-xs leading-5 text-muted-foreground">
-                Complete your one-time prepaid order using {PRODUCT_TRUTHS.paymentMethods.join(", ")}. No payment details are stored for recurring debits.
+                Complete your one-time prepaid order. Available payment methods are shown at checkout. No payment details are stored for recurring debits.
               </p>
             </div>
             <div className="rounded-xl border border-white/[0.08] bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
@@ -346,7 +332,7 @@ export default async function IPTVSubscription() {
         </Container>
       </Section>
 
-      {/* 8. Risk-Free Trial Callout */}
+      {/* 7. Risk-Free Trial Callout */}
       <Section className="border-t border-white/[0.06]">
         <Container>
           <div className="relative overflow-hidden rounded-xl border border-primary/25 bg-[#0b100d] p-7 sm:p-8 md:p-10 lg:flex lg:items-center lg:justify-between lg:text-left">
@@ -359,7 +345,7 @@ export default async function IPTVSubscription() {
                 Want to Test TryIPTV Before Choosing a Plan?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground lg:mx-0">
-                Not ready to choose a plan? Test the service first with the 24-hour IPTV free trial. Experience all 24,000+ live channels, 80,000+ movies and series, 4K picture quality, and 2 connections on your own TV. No credit card required.
+                Not ready to choose a plan? Test the service first with the 24-hour IPTV free trial. Test the available live TV channels, on-demand movies and series, HD and available 4K streams, and 2 connections on your own TV. No credit card required.
               </p>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:ml-10 lg:mt-0 lg:shrink-0">
@@ -378,7 +364,7 @@ export default async function IPTVSubscription() {
         </Container>
       </Section>
 
-      {/* 9. Frequently Asked Questions (Targeted to Pricing Intent) */}
+      {/* 8. Frequently Asked Questions (Targeted to Pricing Intent) */}
       <Section id="faq" className="border-t border-white/[0.06] bg-[#070a08]">
         <Container>
           <SectionHeader
@@ -409,7 +395,7 @@ export default async function IPTVSubscription() {
               <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
                 Contact our support team
               </Link>
-              . Available 24/7 via WhatsApp and email.
+              . Technical support is available via WhatsApp and email.
             </p>
           </div>
         </Container>

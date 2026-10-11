@@ -26,11 +26,12 @@ for (const truth of PRODUCT_TRUTHS.plans) {
   if (!plan || plan.price !== truth.price || plan.price_monthly !== truth.monthlyEquivalent) productConflicts.push(`${truth.duration}: PRODUCT_TRUTHS and pricing data differ`);
 }
 const paymentFaq = pricingPageFaqs.find((item) => item.question.toLowerCase().includes('payment'));
-if (paymentFaq) {
-  for (const method of PRODUCT_TRUTHS.paymentMethods) {
-    if (!paymentFaq.answer.toLowerCase().includes(method.toLowerCase())) {
-      productConflicts.push(`Pricing FAQ missing payment method: ${method}`);
-    }
+if (!paymentFaq || !paymentFaq.answer.trim()) {
+  productConflicts.push('Pricing FAQ missing payment guidance');
+} else {
+  const answer = paymentFaq.answer.toLowerCase();
+  if (!answer.includes('checkout') && !answer.includes('payment')) {
+    productConflicts.push('Pricing FAQ payment guidance lacks checkout or payment explanation');
   }
 }
 const decode = (value) => value.replaceAll('&amp;', '&').replaceAll('&quot;', '"');

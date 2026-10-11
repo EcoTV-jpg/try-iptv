@@ -1,6 +1,4 @@
 
-import { withSentryConfig } from '@sentry/nextjs/config';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   serverExternalPackages: [
@@ -72,12 +70,12 @@ const nextConfig = {
   async headers() {
     const cspReportOnlyHeader = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://analytics.ahrefs.com https://*.google-analytics.com",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://analytics.ahrefs.com https://*.google-analytics.com https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://images.unsplash.com https://iptvwell.com https://image.tmdb.org https://r2.thesportsdb.com https://images-cdn.ubuy.co.in",
       "font-src 'self' data:",
       "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://analytics.ahrefs.com https://*.ingest.us.sentry.io https://*.sentry.io",
-      "frame-src 'none'",
+      "frame-src https://challenges.cloudflare.com",
       "media-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -263,8 +261,4 @@ const nextConfig = {
   },
 };
 
-export default withSentryConfig(nextConfig, {
-  org: 'etru',
-  project: 'javascript-nextjs',
-  silent: !process.env.CI,
-});
+export default nextConfig;

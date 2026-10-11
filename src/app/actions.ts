@@ -11,11 +11,11 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     email: formData.get('email'),
     message: formData.get('message'),
     company: formData.get('company'),
+    turnstileToken: formData.get('cf-turnstile-response'),
   };
 
   return await processContactSubmission(rawInput);
 }
-
 
 export async function getRelatedPostsAction(currentId: string) {
     try {

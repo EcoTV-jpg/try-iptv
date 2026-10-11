@@ -33,6 +33,43 @@ export type ContactResult = {
   } | null;
 };
 
+const GENERIC_FORM_ERROR = 'Something went wrong. Please try again.';
+
+async function verifyTurnstileToken(token: unknown): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (typeof token !== 'string' || !token || !secret) {
+    return false;
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, response: token }),
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const result: unknown = await response.json();
+    return Boolean(
+      result &&
+        typeof result === 'object' &&
+        'success' in result &&
+        result.success === true,
+    );
+  } catch {
+    return false;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 function escapeHtml(text: string): string {
   const map: Record<string, string> = {
     '&': '&amp;',
@@ -49,6 +86,7 @@ export async function processContactSubmission(rawInput: {
   email?: unknown;
   message?: unknown;
   company?: unknown;
+  turnstileToken?: unknown;
 }): Promise<ContactResult> {
   const honeypot = typeof rawInput.company === 'string' ? rawInput.company.trim() : '';
   if (honeypot.length > 0) {
@@ -70,15 +108,24 @@ export async function processContactSubmission(rawInput: {
   }
 
   const { name, email, message } = validation.data;
+
+  if (!(await verifyTurnstileToken(rawInput.turnstileToken))) {
+    return {
+      success: false,
+      message: GENERIC_FORM_ERROR,
+      errors: { form: [GENERIC_FORM_ERROR] },
+    };
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
     console.error('RESEND_API_KEY is not defined in the environment.');
     return {
       success: false,
-      message: 'Something went wrong. Please try again.',
+      message: GENERIC_FORM_ERROR,
       errors: {
-        form: ['Something went wrong. Please try again.'],
+        form: [GENERIC_FORM_ERROR],
       },
     };
   }
@@ -152,9 +199,9 @@ Submitted: ${timestamp}`;
       console.error('Resend delivery failure:', error);
       return {
         success: false,
-        message: 'Something went wrong. Please try again.',
+        message: GENERIC_FORM_ERROR,
         errors: {
-          form: ['Something went wrong. Please try again.'],
+          form: [GENERIC_FORM_ERROR],
         },
       };
     }
@@ -168,9 +215,9 @@ Submitted: ${timestamp}`;
     console.error('Unexpected error while sending contact email:', err);
     return {
       success: false,
-      message: 'Something went wrong. Please try again.',
+      message: GENERIC_FORM_ERROR,
       errors: {
-        form: ['Something went wrong. Please try again.'],
+        form: [GENERIC_FORM_ERROR],
       },
     };
   }
