@@ -5,6 +5,7 @@ import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { HomePricing } from "@/components/sections/HomePricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Devices } from "@/components/sections/Devices";
+import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
 import { CTA } from "@/components/sections/CTA";
 
 const FAQ = dynamic(() => import("@/components/sections/FAQ").then((mod) => mod.FAQ));
@@ -51,6 +52,7 @@ export default function Home() {
       <HomePricing />
       <HowItWorks />
       <Devices />
+      <CustomerFeedback />
       <CTA />
       <FAQ />
     </>
