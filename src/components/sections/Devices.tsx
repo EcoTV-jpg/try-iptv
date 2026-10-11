@@ -34,7 +34,7 @@ export function Devices() {
       <Container>
         <SectionHeader
           title="One IPTV Subscription. All Your Favorite Devices."
-          subtitle="Stream your TryIPTV subscription across your preferred hardware. Our service supports popular IPTV player apps on Amazon Fire TV, Android TV and mobile, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, Roku, and MAG boxes with simple setup guides for every platform."
+          subtitle="Stream TryIPTV across your preferred hardware. Compatible with leading IPTV player applications on Fire TV, Android TV, Apple TV, mobile devices, PC, and Smart TVs with step-by-step setup guides."
           eyebrow="Device Compatibility"
           className="mb-0 max-w-3xl"
         />

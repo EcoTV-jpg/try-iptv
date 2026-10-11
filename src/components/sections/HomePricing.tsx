@@ -24,8 +24,8 @@ const PLANS = [
     badge: null,
     features: [
       "2 Simultaneous Connections",
-      "24,000+ Live Channels",
-      "80,000+ Movies & Series",
+      "Full Live TV & VOD Catalog",
+      "Monthly Commitment Freedom",
       "Zero Contracts / No Auto-Renewal",
     ],
   },
@@ -43,8 +43,8 @@ const PLANS = [
     badge: null,
     features: [
       "2 Simultaneous Connections",
-      "24,000+ Live Channels",
-      "80,000+ Movies & Series",
+      "Full Live TV & VOD Catalog",
+      "$13.00 / month equivalent",
       "Zero Contracts / No Auto-Renewal",
     ],
   },
@@ -62,8 +62,8 @@ const PLANS = [
     badge: null,
     features: [
       "2 Simultaneous Connections",
-      "24,000+ Live Channels",
-      "80,000+ Movies & Series",
+      "Full Live TV & VOD Catalog",
+      "$10.00 / month equivalent",
       "Zero Contracts / No Auto-Renewal",
     ],
   },
@@ -81,8 +81,8 @@ const PLANS = [
     badge: "Best Value",
     features: [
       "2 Simultaneous Connections",
-      "24,000+ Live Channels",
-      "80,000+ Movies & Series",
+      "Full Live TV & VOD Catalog",
+      "$7.50 / month equivalent",
       "Zero Contracts / No Auto-Renewal",
     ],
   },

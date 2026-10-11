@@ -58,15 +58,15 @@ export function CTA({
               <div className="mt-5 flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs sm:text-[13px] text-muted-foreground/95">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium">
                   <span className="size-1.5 rounded-full bg-primary" />
-                  24-Hour Trial — $0
+                  24-Hour Trial ($0)
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium">
                   <span className="size-1.5 rounded-full bg-primary" />
-                  24-hour access
+                  No Credit Card Required
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-medium">
                   <span className="size-1.5 rounded-full bg-primary" />
-                  Fast activation
+                  5–15 Min Activation
                 </span>
               </div>
             )}

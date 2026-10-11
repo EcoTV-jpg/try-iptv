@@ -9,27 +9,27 @@ import { Section } from "../shared/Section";
 const benefits = [
   {
     icon: Tv,
-    title: "24,000+ Live Channels",
+    title: "Live Sports & PPV Networks",
     description:
-      "Stream live sports, international networks, news channels, and major PPV events with complete EPG TV guide listings included.",
+      "Stream live sports, international coverage, and major pay-per-view events with integrated electronic program guide (EPG) schedules.",
   },
   {
     icon: Zap,
-    title: "80,000+ Movies & Series",
+    title: "Extensive On-Demand Library",
     description:
-      "Access an expansive on-demand VOD library in HD and 4K resolution where available from broadcast sources, with zero rental fees.",
+      "Explore thousands of movies and multi-season series updated regularly in HD and 4K resolution, with zero pay-per-view or rental fees.",
   },
   {
     icon: Smartphone,
-    title: "Broad Device Support",
+    title: "Universal Device Compatibility",
     description:
-      "Stream across your preferred hardware: Amazon Fire TV, Android, Apple TV, Smart TVs, Windows, macOS, and MAG boxes.",
+      "Stream across your preferred hardware: Fire TV, Android TV, Apple TV, Smart TVs, Windows, macOS, and compatible IPTV players.",
   },
   {
     icon: CalendarCheck,
-    title: "2 Streams & Prepaid Plans",
+    title: "Prepaid Freedom & Flexibility",
     description:
-      "Plans start at $16 for one month. Every package includes 2 simultaneous device connections, no contracts, and no auto-renewals.",
+      "Choose straightforward prepaid access with no long-term contracts. Every package includes 2 simultaneous streams and zero automatic renewal.",
   },
 ];
 

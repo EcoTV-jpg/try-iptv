@@ -24,7 +24,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-              Best IPTV Streaming • 2 Connections Included
+              Prepaid Streaming • 2 Connections Included
             </div>
 
             <h1 className="mt-4 font-headline text-[32px] sm:text-[42px] lg:text-[48px] font-bold leading-[1.1] tracking-tight text-foreground">
@@ -32,7 +32,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 max-w-xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground/90">
-              Tired of expensive TV packages and juggling multiple streaming apps? TryIPTV brings 24,000+ live channels, sports, movies and series together in one IPTV subscription, with HD &amp; 4K streaming on your favorite devices. Plans start at $16 with a 24-hour free trial available.
+              Replace bloated cable bills and fragmented streaming apps with one simple prepaid service. Access international live channels, major sports events, and on-demand entertainment with fast activation and zero contracts.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -95,7 +95,7 @@ export function Hero() {
                 2
               </span>
               <span className="mt-0.5 text-[12px] sm:text-[12.5px] font-medium text-muted-foreground/85">
-                Connections
+                Simultaneous Connections
               </span>
             </div>
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 py-1 sm:py-0">
@@ -103,7 +103,7 @@ export function Hero() {
                 HD &amp; 4K
               </span>
               <span className="mt-0.5 text-[12px] sm:text-[12.5px] font-medium text-muted-foreground/85">
-                Quality
+                Stream Quality
               </span>
             </div>
           </div>

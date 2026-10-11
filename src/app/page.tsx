@@ -10,14 +10,12 @@ import { CTA } from "@/components/sections/CTA";
 const FAQ = dynamic(() => import("@/components/sections/FAQ").then((mod) => mod.FAQ));
 import { getHomePageData } from "@/lib/data/home-page";
 import { Schema } from "@/components/shared/Schema";
-import { generateFAQPageSchema } from "@/lib/schema";
-import { faqs } from "@/lib/site-data/faq";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
   const baseMetadata = generatePageMetadata({
     title: "TryIPTV — Best IPTV Service in USA, UK & Worldwide",
-    description: "TryIPTV is a premier prepaid IPTV service featuring 24,000+ live channels, sports, and 80,000+ movies and series in HD & 4K across all devices. Plans start at $16 with a 24-hour free trial available.",
+    description: "Prepaid IPTV streaming featuring 24,000+ live channels, sports, and 80,000+ VOD titles across all devices. 2 connections included. Plans from $16 with a 24-hour trial.",
     canonical: "/",
     image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
@@ -48,7 +46,6 @@ export default function Home() {
   return (
     <>
       <Schema id="product" schema={productSchema} />
-      <Schema id="faq-page" schema={generateFAQPageSchema(faqs)} />
       <Hero />
       <WhyChooseTryIPTV />
       <HomePricing />
