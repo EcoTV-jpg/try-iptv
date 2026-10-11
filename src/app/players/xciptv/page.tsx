@@ -7,9 +7,9 @@ import { Section } from "@/components/shared/Section";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "XCIPTV Player Setup Guide: Xtream Codes, M3U & Troubleshooting";
+const title = "XCIPTV Player: App Availability, Setup & Features";
 const description =
-  "Install and set up XCIPTV with Xtream Codes or M3U, understand EPG and playback engines, and diagnose login, channel, or playback problems.";
+  "Learn where XCIPTV Player by OTTRUN is available, how to connect with Xtream Codes or M3U, and how its ExoPlayer and VLC playback engines work.";
 const canonical = "/players/xciptv";
 const publishedDate = "2026-10-04";
 
@@ -24,7 +24,7 @@ const articleSchema = generateArticleSchema({
   headline: title,
   description,
   datePublished: publishedDate,
-  dateModified: "2026-10-08",
+  dateModified: "2026-10-11",
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -50,7 +50,7 @@ export default function XciptvPage() {
           <Breadcrumb items={[{ label: "Players", href: "/players" }, { label: "XCIPTV" }]} />
           <div className="mt-8 max-w-3xl">
             <h1 className="font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              XCIPTV Player Setup Guide: Xtream Codes, M3U &amp; Troubleshooting
+              XCIPTV Player: App Availability, Setup &amp; Features
             </h1>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               XCIPTV is an IPTV media player and does not include channels or subscriptions. You need an M3U playlist URL or compatible login details from your IPTV provider. Install XCIPTV, enter those details, allow the available channels and EPG data to load, then test playback on several channels.
@@ -65,10 +65,53 @@ export default function XciptvPage() {
             <section>
               <h2 className={headingClass}>What Is XCIPTV?</h2>
               <p className={textClass}>
-                XCIPTV Player by OTTRUN organizes and plays media sources supplied by users. Its official Google Play listing covers Android phones, tablets, and Android TV devices, including remote navigation. OTTRUN also documents Fire TV support. An Android TV or Google TV device runs a different platform from Samsung Tizen or LG webOS; the Android app listing does not establish native support for those TV systems.
+                XCIPTV Player by OTTRUN is a media player interface designed to organize and stream IPTV content supplied by users. It provides an interface tailored for television screens and remote-control navigation, as well as touchscreen mobile devices. Like other standalone IPTV players, XCIPTV contains no built-in channels, media playlists, or streaming servers.
               </p>
               <p className={textClass}>
-                OTTRUN&apos;s documentation also refers to “OTR Player” as formerly XCIPTV Player. Check the publisher and source when choosing an app, because a similarly named or provider-branded player may have different settings.
+                Users connect XCIPTV to their chosen service using standard credentials—either Xtream Codes API (server URL, username, and password) or an M3U playlist URL. The app then parses the channel list, categories, on-demand libraries, and electronic program guide (EPG) schedules supplied by that provider.
+              </p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>XCIPTV Platform Availability &amp; App Stores</h2>
+              <p className={textClass}>
+                App store availability varies across operating systems. When searching for XCIPTV, verify the publisher name to ensure you install the genuine application rather than an unverified copy.
+              </p>
+              <div className="mt-5 overflow-x-auto rounded-xl border border-white/[0.08]">
+                <table className="w-full min-w-[32rem] text-left text-sm text-muted-foreground">
+                  <thead className="bg-white/[0.03] text-foreground">
+                    <tr>
+                      <th className="p-3 font-semibold">Platform / Store</th>
+                      <th className="p-3 font-semibold">Availability Status</th>
+                      <th className="p-3 font-semibold">Notes &amp; Publisher Verification</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Google Play Store (Android TV, Google TV, Android Phones &amp; Tablets)</td>
+                      <td className="p-3 font-semibold text-emerald-400">Available</td>
+                      <td className="p-3">Official listing titled &ldquo;XCIPTV PLAYER&rdquo; published by OTTRUN. Supports remote navigation and touchscreens.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Apple App Store (iOS, iPadOS, Apple TV)</td>
+                      <td className="p-3 font-semibold text-amber-400">Not Available</td>
+                      <td className="p-3">No official OTTRUN Apple App Store listing was identified during this review. Be cautious of unrelated third-party apps using similar names.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Amazon Fire TV / Firestick</td>
+                      <td className="p-3 font-semibold text-amber-400">Documented by Developer</td>
+                      <td className="p-3">OTTRUN documents Fire TV support, but no verified public Amazon Appstore listing exists. Avoid third-party APK mirrors or untrusted Downloader codes. See the <Link href="/devices/firestick-iptv" className={linkClass}>Firestick setup guide</Link>.</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-medium text-foreground">Smart TVs (Samsung Tizen, LG webOS)</td>
+                      <td className="p-3 font-semibold text-rose-400">Not Supported</td>
+                      <td className="p-3">XCIPTV is an Android application and is not natively available on Samsung Tizen or LG webOS. Requires an external streaming device such as an Android TV box or Fire TV.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className={textClass}>
+                <strong className="text-foreground">Brand &amp; publisher note:</strong> OTTRUN documentation also references &ldquo;OTR Player&rdquo; across some materials. On Google Play, the official package remains titled &ldquo;XCIPTV PLAYER&rdquo; with developer &ldquo;OTTRUN&rdquo;. Verify the publisher details prior to installing.
               </p>
             </section>
 
@@ -120,6 +163,39 @@ export default function XciptvPage() {
                 <li>Save the playlist and allow the channel list to load.</li>
               </ol>
               <p className={textClass}>Treat an M3U URL as private account information if it contains credentials. See <Link href="/guides/what-is-m3u" className={linkClass}>what an M3U playlist contains</Link> for help identifying the correct link.</p>
+            </section>
+
+            <section>
+              <h2 className={headingClass}>Core Features &amp; Multi-Screen Streaming</h2>
+              <p className={textClass}>
+                XCIPTV provides interface features tailored for remote-control and touch-based IPTV navigation:
+              </p>
+              <div className="mt-5 space-y-4">
+                <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm leading-relaxed text-muted-foreground">
+                  <h3 className="font-headline text-base font-semibold text-foreground">Multi-Screen Viewing</h3>
+                  <p className="mt-2">
+                    XCIPTV includes a multi-screen grid feature that lets you display multiple live channels simultaneously on compatible screens. Opening multiple live streams at the same time may use multiple concurrent connections, depending on the IPTV provider&apos;s connection policy. TryIPTV includes 2 simultaneous connections.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm leading-relaxed text-muted-foreground">
+                  <h3 className="font-headline text-base font-semibold text-foreground">Dual Built-in Players (ExoPlayer &amp; VLC)</h3>
+                  <p className="mt-2">
+                    XCIPTV integrates two major Android media frameworks: ExoPlayer and VLC. Users can test playback across both engines if a specific stream format or audio codec encounters decoding issues.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm leading-relaxed text-muted-foreground">
+                  <h3 className="font-headline text-base font-semibold text-foreground">EPG Guide &amp; Catch-Up Support</h3>
+                  <p className="mt-2">
+                    The interface supports XMLTV-formatted program guides and past broadcast catch-up when provided by your subscription. Guide schedules load independently from live stream connections.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm leading-relaxed text-muted-foreground">
+                  <h3 className="font-headline text-base font-semibold text-foreground">VOD Management &amp; DVR Recording</h3>
+                  <p className="mt-2">
+                    Video on demand (movies and series) is organized with category listings, episode details, and artwork when connected via Xtream Codes. Scheduled recording functionality requires sufficient local device storage and appropriate operating system storage permissions.
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section>

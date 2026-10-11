@@ -119,6 +119,14 @@ const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?
     seoTitle: 'How to Install IPTV on Firestick (2026 Setup Guide)',
     metaDescription: 'Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.',
   },
+  'android-tv-iptv': {
+    seoTitle: 'IPTV on Android TV: Apps & Setup Guide (2026)',
+    metaDescription: 'Learn how to set up IPTV on Android TV and Google TV, choose a compatible player, install it from Google Play, and connect with Xtream Codes or M3U.',
+  },
+  'windows-iptv': {
+    seoTitle: 'IPTV on Windows: Players & PC Setup Guide',
+    metaDescription: 'Learn how to use IPTV on Windows, choose a compatible PC player, connect with Xtream Codes or M3U, and download apps from trusted sources.',
+  },
 };
 
 interface DeviceQuickSpecs {
@@ -186,7 +194,7 @@ const DEVICE_QUICK_ANSWERS: Record<string, string> = {
   "firestick-iptv":
     "Install Downloader from the Amazon Appstore, sideload a dedicated IPTV player like IPTV Smarters Pro or TiviMate, enter your Xtream Codes API credentials, and optimize Fire TV remote navigation and buffer settings.",
   "android-tv-iptv":
-    "Download a native TV player like TiviMate or IPTV Smarters directly from the Google Play Store, connect with your Xtream Codes credentials, and verify hardware video decoding for fluid channel switching.",
+    "To use IPTV on Android TV or Google TV: (1) install a compatible TV player from Google Play; (2) open the player and choose Xtream Codes or M3U; (3) enter the credentials supplied by your IPTV provider and load your playlist.",
   "samsung-tv-iptv":
     "Install a supported Tizen OS player like IBO Player or Smart IPTV from the Samsung Smart Hub, connect using your Xtream Codes or M3U playlist (either directly on-screen or via the developer's web activation portal depending on the player), and reload your channels on your TV.",
   "lg-tv-iptv":
@@ -200,7 +208,7 @@ const DEVICE_QUICK_ANSWERS: Record<string, string> = {
   "roku-iptv":
     "Because Roku OS does not support Android APK sideloading or native uncertified IPTV player apps, stream using Apple AirPlay 2 (on supported models) or screen mirror via Miracast/Smart View from a mobile device or PC over a stable local Wi-Fi connection.",
   "windows-iptv":
-    "Install a dedicated desktop app like IPTV Smarters Pro or stream your M3U network URL through VLC Media Player, enable hardware video acceleration in player settings if desired, and verify Windows Defender Firewall allows streaming traffic.",
+    "To use IPTV on a Windows PC: (1) install a compatible player from the Microsoft Store or the player's verified developer website; (2) open the player and enter your provider's Xtream Codes credentials or M3U playlist URL; (3) allow the playlist and EPG to load, then test a channel.",
   "mac-iptv":
     "Download a native client like UHF from the Mac App Store or install players like IPTV Smarters/IINA (authorizing Gatekeeper only if installing standalone DMG packages), and use Picture-in-Picture for flexible desktop multitasking.",
 };

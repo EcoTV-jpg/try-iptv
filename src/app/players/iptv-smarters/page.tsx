@@ -7,9 +7,9 @@ import { Section } from "@/components/shared/Section";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "IPTV Smarters Pro Setup Guide: Xtream Codes, M3U & Devices";
+const title = "IPTV Smarters Pro & Lite: App Setup Guide";
 const description =
-  "Set up IPTV Smarters with Xtream Codes or M3U on supported TVs, mobile devices and computers, and diagnose login, EPG and playback problems.";
+  "Learn how to set up IPTV Smarters Pro and Smarters Player Lite with Xtream Codes or M3U across Apple, Android, Fire TV, Windows, and supported TVs.";
 const canonical = "/players/iptv-smarters";
 const publishedDate = "2026-10-04";
 
@@ -24,7 +24,7 @@ const articleSchema = generateArticleSchema({
   headline: title,
   description,
   datePublished: publishedDate,
-  dateModified: "2026-10-08",
+  dateModified: "2026-10-11",
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -53,8 +53,25 @@ export default function IptvSmartersPage() {
               IPTV Smarters Pro Setup Guide: Xtream Codes, M3U &amp; Devices
             </h1>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              IPTV Smarters is a media player, not an IPTV provider; it includes no channels or subscriptions. To set it up, use Xtream Codes credentials or an M3U playlist supplied by your provider. After login, the app can load the provider&apos;s live channels, movies, series, and EPG data where those are available.
+              IPTV Smarters is a media player, not an IPTV provider; it includes no channels or subscriptions. Users can connect compatible sources using supported API credentials or M3U playlists supplied by their provider. After login, the app can load the provider&apos;s live channels, movies, series, and EPG data where those are available.
             </p>
+            <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              <p className="font-semibold text-foreground">Official App Name &amp; Platform Availability</p>
+              <ul className="mt-3 list-disc space-y-2 pl-5">
+                <li>
+                  <strong className="text-foreground">Apple (iPhone, iPad, Apple TV):</strong> On iPhone, iPad, and Apple TV, WHMCS SMARTERS currently distributes the app through Apple&apos;s App Store as <a href="https://apps.apple.com/us/app/smarters-player-lite/id1628995509" target="_blank" rel="noopener noreferrer" className={linkClass}>“Smarters Player Lite”</a>.
+                </li>
+                <li>
+                  <strong className="text-foreground">Android &amp; Android TV:</strong> For Android and Android TV, IPTV Smarters Pro is available from the <a href="https://getiptvsmarters.com/download" target="_blank" rel="noopener noreferrer" className={linkClass}>developer&apos;s official download portal</a>. Google Play results may include similarly named third-party apps, so verify the publisher before installing.
+                </li>
+                <li>
+                  <strong className="text-foreground">Windows &amp; macOS:</strong> The developer&apos;s download portal currently provides Windows and macOS desktop installers.
+                </li>
+                <li>
+                  <strong className="text-foreground">Fire TV:</strong> Fire TV availability in the Amazon Appstore can vary; if unavailable, the developer provides compatible Android downloads.
+                </li>
+              </ul>
+            </div>
           </div>
         </Container>
       </Section>
@@ -65,18 +82,18 @@ export default function IptvSmartersPage() {
             <section>
               <h2 className={headingClass}>IPTV Smarters Pro, Smarters Player Lite, and Similar Names</h2>
               <p className={textClass}>
-                The developer&apos;s download page calls its main app IPTV Smarters Pro and links Apple users to “Smarters Player Lite” by WHMCS SMARTERS. Those names do not mean that every similarly named store listing is the same app. Check the developer and follow the <a href="https://getiptvsmarters.com/download" target="_blank" rel="noopener noreferrer" className={linkClass}>developer&apos;s current download page</a> for the version offered on your device.
+                The developer&apos;s download page calls its main app IPTV Smarters Pro and links Apple users to “Smarters Player Lite” by WHMCS SMARTERS. Smarters Player Lite is the Apple App Store listing published by WHMCS SMARTERS for iPhone, iPad, and Apple TV. Those names do not mean that every similarly named store listing is the same app. Check the developer and follow the <a href="https://getiptvsmarters.com/download" target="_blank" rel="noopener noreferrer" className={linkClass}>developer&apos;s current download page</a> for the version offered on your device.
               </p>
             </section>
 
             <section>
               <h2 className={headingClass}>How to Install IPTV Smarters on Android TV / Google TV</h2>
               <p className={textClass}>
-                The developer lists Android TV as a supported download platform. Check your TV&apos;s app store for a listing from the verified developer; if no matching listing is available, use the Android TV download from the developer&apos;s site and follow your device&apos;s installation instructions. Use the remote to move between login fields and double-check long URLs before submitting them.
+                The developer lists Android TV as a supported download platform. For Android and Android TV, IPTV Smarters Pro is available from the <a href="https://getiptvsmarters.com/download" target="_blank" rel="noopener noreferrer" className={linkClass}>developer&apos;s official download portal</a>. Google Play results may include similarly named third-party apps, so verify the publisher before installing. If no matching verified listing is available in your TV&apos;s app store, use the Android TV download from the developer&apos;s site and follow your device&apos;s installation instructions. Use the remote to move between login fields and double-check long URLs before submitting them.
               </p>
               <ol className={listClass}>
-                <li>Check the TV app store and verify the app publisher before installing.</li>
-                <li>If the official listing is unavailable, get the Android TV version from the developer&apos;s download page.</li>
+                <li>Check your TV app store and verify the app publisher before installing.</li>
+                <li>If a verified listing is unavailable, get the Android TV version from the <a href="https://getiptvsmarters.com/download" target="_blank" rel="noopener noreferrer" className={linkClass}>developer&apos;s official download portal</a>.</li>
                 <li>Open the app and choose the login method your IPTV provider supplied.</li>
               </ol>
               <p className={textClass}>See the <Link href="/devices/android-tv-iptv" className={linkClass}>Android TV setup guide</Link> for device preparation.</p>
@@ -106,7 +123,7 @@ export default function IptvSmartersPage() {
             <section>
               <h2 className={headingClass}>IPTV Smarters on iPhone, iPad and Apple TV</h2>
               <p className={textClass}>
-                Apple lists <a href="https://apps.apple.com/us/app/smarters-player-lite/id1628995509" target="_blank" rel="noopener noreferrer" className={linkClass}>Smarters Player Lite by WHMCS SMARTERS</a> for iPhone, iPad, and Apple TV. Install it through the App Store on your device, then use the playlist or login option that appears in that app version. Its name and interface may differ from Android instructions, so do not assume every screen or field is identical.
+                On iPhone, iPad, and Apple TV, WHMCS SMARTERS currently distributes the app through Apple&apos;s App Store as <a href="https://apps.apple.com/us/app/smarters-player-lite/id1628995509" target="_blank" rel="noopener noreferrer" className={linkClass}>Smarters Player Lite</a>. Smarters Player Lite is the Apple App Store listing published by WHMCS SMARTERS for iPhone, iPad, and Apple TV. Install it through the App Store on your device, then use the playlist or login option that appears in that app version. Its interface and navigation may differ from Android releases, so do not assume every screen or setting is identical.
               </p>
               <p className={textClass}>The <Link href="/devices/apple-tv-iptv" className={linkClass}>Apple TV IPTV guide</Link> covers remote-based setup.</p>
             </section>
@@ -114,7 +131,7 @@ export default function IptvSmartersPage() {
             <section>
               <h2 className={headingClass}>IPTV Smarters on Windows and macOS</h2>
               <p className={textClass}>
-                The developer&apos;s download page lists separate Windows and macOS installers. Choose the installer for your operating system from that page, install it, and add the credentials or playlist supplied by your IPTV provider. On some Apple silicon Macs, Apple also lists Smarters Player Lite as a compatible iPad app; that is a different installation path from the developer&apos;s desktop download.
+                The developer&apos;s download portal currently provides Windows and macOS desktop installers. Choose the installer for your operating system from that page, install it, and add the credentials or playlist supplied by your IPTV provider. On Apple silicon Macs, Apple&apos;s App Store lists Smarters Player Lite as “Designed for iPad” and “Not verified for macOS”; that iPad compatibility mode is a separate path from the developer&apos;s standalone macOS desktop installer.
               </p>
               <p className={textClass}>See the <Link href="/devices/windows-iptv" className={linkClass}>Windows IPTV guide</Link> or <Link href="/devices/mac-iptv" className={linkClass}>macOS IPTV guide</Link> for device context.</p>
             </section>

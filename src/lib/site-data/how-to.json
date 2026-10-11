@@ -172,7 +172,7 @@
       },
       {
         "title": "Test channels across multiple bouquets",
-        "description": "<p>Test several channels to confirm smooth playback. If one channel encounters downtime while others play normally, the issue is stream-specific.</p>"
+        "description": "<p>Test several channels to confirm playback is working properly. If one channel encounters downtime while others play normally, the issue is stream-specific.</p>"
       }
     ],
     "extraSections": [
@@ -184,7 +184,7 @@
       {
         "id": "best-android-tv-players",
         "title": "Popular IPTV Players for Android TV",
-        "content": "<p>Top players available directly in the Google Play Store include:</p><ul><li><strong><a href=\"/players/tivimate\">TiviMate</a>:</strong> Renowned for its cable-like EPG grid, customizable channel groups, multi-screen viewing, and responsive remote control navigation.</li><li><strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a>:</strong> Versatile player supporting Xtream Codes, multi-user playlists, and organized movie and series sections.</li><li><strong><a href=\"/players/televizo\">Televizo</a>:</strong> Lightweight player with comprehensive subtitle support and low resource usage.</li></ul>"
+        "content": "<p>Popular players used on Android TV and Google TV include:</p><ul><li><strong><a href=\"/players/tivimate\">TiviMate</a>:</strong> Provides a TV guide EPG grid, customizable channel groups, and remote-control navigation.</li><li><strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a>:</strong> Supports Xtream Codes API login, multiple playlists, and separate live TV and on-demand categories.</li><li><strong><a href=\"/players/televizo\">Televizo</a>:</strong> Provides an interface adapted for TV remotes with subtitle selection and playlist management.</li></ul><p>To evaluate features, supported devices, and interface layouts in detail, <a href=\"/players\">compare IPTV players</a> across our directory.</p>"
       },
       {
         "id": "hardware-decoding-buffer",
@@ -236,19 +236,19 @@
       "vlc iptv windows",
       "watch iptv on pc",
       "myiptv player windows",
-      "best iptv player windows 11"
+      "iptv player windows 11"
     ],
     "datePublished": "2024-07-20T10:00:00Z",
-    "dateModified": "2026-10-04T00:00:00Z",
+    "dateModified": "2026-10-11T00:00:00Z",
     "totalTime": "PT15M",
     "steps": [
       {
         "title": "Choose the Windows IPTV application for your workflow",
-        "description": "<p>Windows supports different streaming software: <strong>Dedicated IPTV Players</strong> like <strong>IPTV Smarters Pro for Windows</strong> or <strong>MyIPTV Player</strong> (Microsoft Store) offer structured channel categories and EPG grids. <strong>VLC Media Player</strong> is a versatile tool for opening raw network streams and testing stream connectivity.</p>"
+        "description": "<p>Windows supports different streaming software depending on your viewing habits. Windows 11 is the mainstream supported platform; Windows 10 can still run compatible IPTV applications, but Microsoft ended standard Windows 10 support on October 14, 2025. Eligible Windows 10 PCs can receive Extended Security Updates while users transition to Windows 11.</p><p>Users can select from: <strong>Dedicated IPTV Players</strong> like <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> (television-style categories and EPG grids), <strong>MyIPTV Player</strong> in the Microsoft Store, or <strong>VLC Media Player</strong> for direct stream diagnostics. You can also <a href=\"/players\">browse all compatible IPTV players</a>.</p>"
       },
       {
         "title": "Method A (Dedicated Player): Install IPTV Smarters Pro for Windows",
-        "description": "<p>Download the official Windows installer (.exe) for <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a> from the developer's verified site. Run the installer, select <strong>Login with Xtream Codes API</strong>, enter your Server URL, Username, and Password, and select <strong>Add User</strong> to load live channels and the EPG.</p>"
+        "description": "<p>Download Windows players from the Microsoft Store or the developer's verified website. Check the publisher and destination domain before running an installer, and avoid unofficial repack or mirror downloads. If Windows Defender SmartScreen displays an unrecognized publisher prompt, verify the source URL and publisher before proceeding.</p><p>Once installed, open <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a>, select <strong>Login with Xtream Codes API</strong>, enter your Server URL, Username, and Password (<a href=\"/guides/what-are-xtream-codes\">what Xtream Codes login credentials mean</a>), and select <strong>Add User</strong> to load live channels and the EPG.</p>"
       },
       {
         "title": "Method B (Microsoft Store): Install MyIPTV Player",
@@ -256,11 +256,11 @@
       },
       {
         "title": "Method C (Diagnostic Utility): Stream via VLC Media Player",
-        "description": "<p>In VLC Media Player: Press <strong>Ctrl + N</strong> (Media &gt; Open Network Stream), paste your M3U playlist URL, and select <strong>Play</strong>. Press <strong>Ctrl + L</strong> to open the playlist panel and view channel entries.</p>"
+        "description": "<p>In VLC Media Player: Press <strong>Ctrl + N</strong> (Media &gt; Open Network Stream), paste your M3U playlist URL (<a href=\"/guides/what-is-m3u\">what an M3U playlist URL contains</a>), and select <strong>Play</strong>. Press <strong>Ctrl + L</strong> to open the playlist panel and view channel entries.</p>"
       },
       {
         "title": "Enable GPU Hardware Acceleration",
-        "description": "<p>To reduce CPU load when playing high-definition or 4K streams: in VLC, go to <strong>Tools &gt; Preferences &gt; Input / Codecs</strong> and verify that <strong>Hardware-accelerated decoding</strong> is set to <strong>Automatic</strong> or <strong>DirectX Video Acceleration (DXVA 2.0)</strong>.</p>"
+        "description": "<p>Supported players can use Windows hardware video decoding when the GPU, codec, driver, and player configuration support it. In VLC, go to <strong>Tools &gt; Preferences &gt; Input / Codecs</strong> and verify whether <strong>Hardware-accelerated decoding</strong> is enabled (such as Automatic or DirectX Video Acceleration).</p>"
       },
       {
         "title": "Adjust network caching settings in VLC if needed",
@@ -271,7 +271,7 @@
       {
         "id": "windows-software-comparison",
         "title": "Dedicated IPTV Applications vs General Media Players",
-        "content": "<p>Windows users have several software options depending on their viewing habits:</p><ul><li><strong>IPTV Smarters Pro:</strong> Provides a television-style interface with categorized live channels, movies, series, search functions, and multi-screen viewing.</li><li><strong>MyIPTV Player:</strong> A lightweight application available in the Microsoft Store with built-in EPG parsing and clean channel navigation.</li><li><strong>VLC Media Player:</strong> The open-source media player by VideoLAN. VLC is widely used for stream diagnostics and playing raw network links, though its playlist panel is simpler than a dedicated TV guide.</li></ul>"
+        "content": "<p>Windows users have several software options depending on their viewing habits:</p><ul><li><strong>IPTV Smarters Pro:</strong> Suited for users wanting a television-style interface with categorized live channels, movies, series, and an EPG grid. It connects using Xtream Codes API or M3U credentials supplied by your provider. Windows installers are distributed directly by the developer at iptvsmarters.com.</li><li><strong>MyIPTV Player:</strong> An option available in the Microsoft Store for Windows 10 and 11. It supports M3U playlist URLs and Xtream Codes connections with basic EPG parsing, providing installation directly through the store.</li><li><strong>VLC Media Player:</strong> An open-source media player by VideoLAN. VLC is well-suited for stream diagnostics, network troubleshooting, and playing direct M3U stream URLs, though it does not provide a television-style guide interface or full Xtream Codes portal navigation.</li></ul><p>Download Windows players from the Microsoft Store or the developer's verified website. Check the publisher and destination domain before running an installer, and avoid unofficial repack or mirror downloads.</p><p>MCT IPTV Player is another third-party Windows player that supports user-supplied M3U playlists and Xtream Codes credentials. Because most users reach this page for general Windows setup, it remains a secondary option rather than the focus of this guide.</p>"
       },
       {
         "id": "vlc-caching-tuning",
@@ -281,12 +281,12 @@
       {
         "id": "gpu-acceleration-windows",
         "title": "GPU Hardware Decoding on Windows",
-        "content": "<p>Modern streaming video commonly utilizes high-compression codecs such as <strong>HEVC (H.265)</strong>. Leveraging GPU hardware decoding helps maintain smooth playback while minimizing CPU utilization:</p><ul><li>Ensure your graphics drivers (NVIDIA, AMD, or Intel) are up to date.</li><li>In supported media players, verify that hardware decoding is enabled via <strong>DirectX Video Acceleration (DXVA2)</strong> or <strong>Direct3D 11 Video Acceleration (D3D11VA)</strong>.</li><li>You can monitor hardware decoding in Windows Task Manager (<strong>Ctrl + Shift + Esc</strong>) under the <em>Performance &gt; GPU</em> tab.</li></ul>"
+        "content": "<p>Supported players can use Windows hardware video decoding when the GPU, codec, driver, and player configuration support it:</p><ul><li>Ensure graphics drivers (NVIDIA, AMD, or Intel) are up to date.</li><li>Supported media players may offer hardware decoding options via <strong>DirectX Video Acceleration (DXVA2)</strong> or <strong>Direct3D 11 Video Acceleration (D3D11VA)</strong>.</li><li>You can observe whether video decoding utilizes your GPU in Windows Task Manager (<strong>Ctrl + Shift + Esc</strong>) under the <em>Performance &gt; GPU</em> tab.</li></ul>"
       },
       {
         "id": "firewall-antivirus-notes",
         "title": "Windows Firewall and Security Considerations",
-        "content": "<p>On Windows 10 and 11, firewall rules or security software can occasionally manage incoming network connections:</p><ul><li>If a media player cannot establish a network connection, verify that the application has appropriate permissions under <strong>Windows Security &gt; Firewall &amp; network protection &gt; Allow an app through firewall</strong>.</li><li>If using security suites with active web shields or VPNs, test streaming with those features temporarily adjusted to rule out network filtering delays.</li></ul>"
+        "content": "<p>Standard outbound IPTV playback does not normally require modifying Windows Firewall settings. However, if a newly installed player cannot establish a network connection while other applications connect normally, or if local-network discovery behavior is involved:</p><ul><li>Check whether the application was blocked under <strong>Windows Security &gt; Firewall &amp; network protection &gt; Allow an app through firewall</strong>, and ensure the player has permission for your active network profile.</li><li>Do not disable your firewall or antivirus protection. If connection issues persist, see our <a href='/help/iptv-login-not-working'>IPTV login troubleshooting guide</a> to verify provider endpoint availability and account credentials.</li></ul>"
       },
       {
         "id": "troubleshooting-windows",
@@ -297,19 +297,19 @@
     "faqs": [
       {
         "question": "What IPTV applications are available for Windows 10 and 11?",
-        "answer": "IPTV Smarters Pro for Windows is popular for its TV-style interface and EPG support. MyIPTV Player in the Microsoft Store and VLC Media Player are also widely used."
+        "answer": "IPTV Smarters Pro is widely used for television-style navigation and EPG support. MyIPTV Player is available in the Microsoft Store, and VLC Media Player is available for direct stream playback and diagnostics."
       },
       {
         "question": "How do I open an IPTV playlist stream in VLC Media Player?",
         "answer": "Open VLC, press Ctrl+N (Media > Open Network Stream), paste your TryIPTV M3U playlist URL, and select Play. Press Ctrl+L to view the playlist panel."
       },
       {
-        "question": "How do I enable GPU hardware acceleration in Windows media players?",
-        "answer": "In VLC, go to Tools > Preferences > Input / Codecs and verify that Hardware-accelerated decoding is set to Automatic or DXVA 2.0. In dedicated players like IPTV Smarters, check the video decoder setting in preferences."
+        "question": "Does hardware acceleration work in Windows IPTV players?",
+        "answer": "Supported players can use Windows hardware video decoding when the GPU, codec, driver, and player configuration support it. In VLC, hardware decoding options are under Tools > Preferences > Input / Codecs."
       },
       {
-        "question": "Can Windows Defender Firewall block IPTV streams?",
-        "answer": "Yes, if the application was not granted appropriate network permissions. Check Windows Security > Firewall & network protection > Allow an app through firewall to confirm permissions."
+        "question": "Does Windows Firewall normally block IPTV streams?",
+        "answer": "Standard media players connect over regular outbound web protocols and do not usually require firewall adjustments. However, if an app was restricted upon first launch, check Windows Security > Firewall & network protection > Allow an app through firewall to confirm the app has network access."
       },
       {
         "question": "Does VLC include an interactive EPG TV guide grid?",

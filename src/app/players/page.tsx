@@ -7,6 +7,7 @@ import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { ArticleSummary } from "@/components/guide";
 import { generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
@@ -35,9 +36,9 @@ const playersList = [
     developer: "Armobsoft FZE",
     platforms: "Android TV, Google TV, Fire TV",
     protocols: "Xtream Codes, M3U / M3U8",
-    pricing: "Free / Premium ($33.99 Lifetime or $9.99/yr)",
-    bestFor: "Best Overall TV Experience",
-    description: "The gold standard for television screens. Features a broadcast-grade EPG timeline grid, SMB network DVR recording, multi-view, and rapid channel switching.",
+    pricing: "Free/basic access with paid Premium options",
+    bestFor: "Television EPG & Remote Navigation",
+    description: "Designed specifically for television screens with native D-pad remote control navigation, customizable EPG timeline grid, SMB network recording, and multi-view.",
     icon: Tv,
     badgeColor: "text-primary border-primary/20 bg-primary/10",
   },
@@ -47,21 +48,21 @@ const playersList = [
     developer: "WHMCS SMARTERS",
     platforms: "iOS, Android, Fire TV, Samsung Tizen, LG webOS, Windows, Mac",
     protocols: "Xtream Codes API, M3U Playlist",
-    pricing: "Free / Smarters Pro Premium In-App",
+    pricing: "Free download; optional in-app Premium features",
     bestFor: "Broadest Multi-Device Ecosystem",
-    description: "The most widely deployed multi-platform IPTV application. Works across iPhone, Apple TV, Smart TVs (Samsung & LG), and Firestick with a unified interface.",
+    description: "Broadest multi-platform device availability. Works across iPhone, Apple TV, Smart TVs (Samsung Tizen & LG webOS), Android, and Firestick with a unified interface.",
     icon: Globe,
     badgeColor: "text-blue-400 border-blue-400/20 bg-blue-400/10",
   },
   {
-    name: "XCIPTV Player",
+    name: "XCIPTV Player (OTR Player)",
     slug: "xciptv",
     developer: "OTTRUN",
     platforms: "Android TV, Google TV, Android Mobile, Fire TV",
     protocols: "Xtream Codes API (Native), M3U",
-    pricing: "Free (Ad-Supported) / Customizable",
+    pricing: "Free (ad-supported)",
     bestFor: "Dual Playback Engines & Multi-Screen",
-    description: "Features hot-swappable dual media engines (Google ExoPlayer and VideoLAN VLC) to eliminate audio sync drift, alongside a 4-channel live sports multi-screen wall.",
+    description: "Features selectable dual media engines (Google ExoPlayer and VideoLAN VLC) to help with compatibility or playback issues, alongside a 4-channel live sports multi-screen grid.",
     icon: Sliders,
     badgeColor: "text-purple-400 border-purple-400/20 bg-purple-400/10",
   },
@@ -71,8 +72,8 @@ const playersList = [
     developer: "Andrey Menscikov",
     platforms: "Android TV, Android Phones/Tablets, Fire TV (Sideload)",
     protocols: "Xtream Codes API, M3U / M3U8",
-    pricing: "Free / One-Time Lifetime In-App Purchase",
-    bestFor: "Cleanest Hybrid Mobile & TV Interface",
+    pricing: "Free tier; optional paid Premium upgrade",
+    bestFor: "Hybrid Mobile & TV Interface",
     description: "A fast, modern Kotlin-based media player that adapts gracefully between touch gestures and TV remote D-pads, featuring native Google Cast streaming.",
     icon: Smartphone,
     badgeColor: "text-emerald-400 border-emerald-400/20 bg-emerald-400/10",
@@ -83,9 +84,9 @@ const playersList = [
     developer: "SIA Scillarium Studio",
     platforms: "Android TV, Google TV, Android Mobile, Fire TV (Sideload)",
     protocols: "Xtream Codes, M3U, Stalker Portal",
-    pricing: "Free / In-App Premium",
+    pricing: "Free tier; optional in-app Premium license",
     bestFor: "Videophiles & High-End Codec Control",
-    description: "Unmatched configuration depth with the MPV media core, Auto Frame Rate (AFR) HDMI matching, hardware deinterlacing for 1080i sports, and 9-channel Studio Mode.",
+    description: "Advanced playback configuration with the MPV media core, Auto Frame Rate (AFR) HDMI matching, hardware deinterlacing for 1080i sports, and 9-channel Studio Mode.",
     icon: Layers,
     badgeColor: "text-amber-400 border-amber-400/20 bg-amber-400/10",
   },
@@ -95,7 +96,7 @@ const playersList = [
     developer: "Paolo Turatti",
     platforms: "Android TV, Android Mobile, Fire TV (Sideload)",
     protocols: "M3U / M3U8, Xtream Codes",
-    pricing: "Free / IPTV Extreme Pro (One-Time)",
+    pricing: "Free (ad-supported); optional paid Pro version",
     bestFor: "Web Portal Setup & Scheduled DVR",
     description: "Upload and manage playlists remotely from your laptop or phone via iptvextreme.eu using your TV's virtual MAC address. Includes scheduled DVR recording timers.",
     icon: HardDrive,
@@ -107,7 +108,7 @@ const playersList = [
     developer: "Niklabs Software",
     platforms: "Android (Legacy), Fire TV, Windows (Legacy)",
     protocols: "M3U / M3U8, XSPF",
-    pricing: "Free (Delisted from Google Play)",
+    pricing: "Free (legacy software; delisted from Google Play)",
     bestFor: "Legacy Hardware & Set-Top Box OSD",
     description: "Historical pioneer of set-top box On-Screen Display styling. Lightweight footprint for older 1GB RAM Android boxes, with UDPXY proxy integration.",
     icon: History,
@@ -119,22 +120,22 @@ const faqs = [
   {
     question: "What is the difference between an IPTV player and an IPTV provider?",
     answer:
-      "An IPTV player (such as TiviMate, IPTV Smarters, or XCIPTV) is software that renders video streams, organizes playlists into categories, and displays Electronic Program Guides (EPG). IPTV players do not provide or host any television content on their own. TryIPTV is the service provider that delivers the actual high-bitrate live channel streams, VOD movies, series, and server infrastructure. You log into the player application using your TryIPTV credentials (Xtream Codes API or M3U link).",
+      "An IPTV player (such as TiviMate, IPTV Smarters Pro, or XCIPTV Player (OTR Player)) is software that renders video streams, organizes playlists into categories, and displays Electronic Program Guides (EPG). IPTV players do not provide or host any television content on their own. TryIPTV is the service provider that delivers live channel streams, VOD movies, series, and server infrastructure. You log into the player application using your TryIPTV credentials (Xtream Codes API or M3U link).",
   },
   {
     question: "Which IPTV player is best for Firestick and Android TV?",
     answer:
-      "For televisions connected to an Amazon Fire TV Stick, Google TV, or Android TV box, TiviMate is widely considered the top choice due to its full-screen EPG grid, remote-control responsiveness, and SMB network recording. If you want a player with built-in multi-screen sports viewing without purchasing a premium subscription, XCIPTV and Televizo are excellent alternatives.",
+      "For televisions connected to an Amazon Fire TV Stick, Google TV, or Android TV box, TiviMate is a common choice due to its full-screen EPG grid, remote-control responsiveness, and SMB network recording. If you want a player with built-in multi-screen sports viewing without purchasing a premium subscription, XCIPTV Player (OTR Player) and Televizo are practical alternatives.",
   },
   {
     question: "Which IPTV player should I use on iPhone, iPad, or Apple TV?",
     answer:
-      "TiviMate, XCIPTV, and Televizo are not available on Apple platforms. For iOS, iPadOS, and tvOS (Apple TV), IPTV Smarters (Smarters Player Lite on the App Store) or GSE Smart IPTV are the most popular choices because they provide native iOS apps with full Xtream Codes API support.",
+      "TiviMate, XCIPTV, and Televizo are not available on Apple platforms. For iOS, iPadOS, and tvOS (Apple TV), IPTV Smarters (Smarters Player Lite on the App Store) and GSE Smart IPTV are widely used options because they provide native iOS apps with full Xtream Codes API support.",
   },
   {
     question: "Do I need to pay for an IPTV player?",
     answer:
-      "Most IPTV players offer free tiers that allow unrestricted stream playback. Free versions typically include banner ads or reserve advanced power-user features (such as scheduled DVR recording, multi-screen grids, or multiple playlist slots) for a one-time purchase or nominal annual license. TryIPTV works seamlessly with both free and premium player versions.",
+      "Most IPTV players offer free tiers that allow basic stream playback. Free versions typically include banner ads or reserve advanced features (such as scheduled DVR recording, multi-screen grids, or multiple playlist slots) for a paid upgrade or nominal license. TryIPTV is compatible with both free and premium player versions.",
   },
   {
     question: "Can I watch live streams on multiple devices at the same time?",
@@ -187,8 +188,33 @@ export default function PlayersHubPage() {
               Best IPTV Players for 2026: Technical Guides &amp; Comparison
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              An IPTV player is the software interface that turns raw stream URLs into an effortless television viewing experience. From broadcast-grade EPG grids on Android TV to universal apps across Apple, Samsung, and LG ecosystems, compare the top seven IPTV players compatible with TryIPTV.
+              An IPTV player is the software interface that turns raw stream URLs into an organized television viewing experience. From grid-based EPG guides on Android TV to apps across Apple, Samsung, and LG ecosystems, compare seven major IPTV players compatible with TryIPTV.
             </p>
+          </div>
+
+          <div className="mt-10 max-w-4xl">
+            <ArticleSummary title="Quick Guide: What is an IPTV Player and How to Choose">
+              <p>
+                An <strong className="text-foreground font-semibold">IPTV player</strong> is a media application (such as TiviMate, IPTV Smarters Pro, or XCIPTV) that renders live video streams, organizes playlists into channel categories, and parses Electronic Program Guides (EPG). <strong className="text-foreground font-semibold">IPTV players do not provide television content by default.</strong> To stream live channels and movies, you enter your service credentials (an Xtream Codes API username and password or an M3U playlist link) into the player.
+              </p>
+              <p>
+                To choose the right application for your streaming setup:
+              </p>
+              <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm">
+                <li>
+                  <strong className="text-foreground font-semibold">Amazon Firestick, Android TV &amp; Google TV:</strong> Choose <Link href="/players/tivimate" className="text-primary underline">TiviMate</Link> for television EPG navigation, or <Link href="/players/xciptv" className="text-primary underline">XCIPTV Player (OTR Player)</Link> for dual ExoPlayer and VLC playback engines.
+                </li>
+                <li>
+                  <strong className="text-foreground font-semibold">Apple Devices (iPhone, iPad, Apple TV):</strong> Choose <Link href="/players/iptv-smarters" className="text-primary underline">IPTV Smarters Pro</Link> (Smarters Player Lite) for native iOS and tvOS App Store availability.
+                </li>
+                <li>
+                  <strong className="text-foreground font-semibold">Smart TVs (Samsung Tizen &amp; LG webOS):</strong> Choose <Link href="/players/iptv-smarters" className="text-primary underline">IPTV Smarters Pro</Link> via your TV&apos;s native app store.
+                </li>
+                <li>
+                  <strong className="text-foreground font-semibold">Windows PC &amp; Mac:</strong> Choose <Link href="/players/iptv-smarters" className="text-primary underline">IPTV Smarters Pro</Link> or standard desktop media players such as VLC.
+                </li>
+              </ul>
+            </ArticleSummary>
           </div>
         </Container>
       </Section>
@@ -320,21 +346,21 @@ export default function PlayersHubPage() {
                   <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
                     <h3 className="font-semibold text-foreground text-base">If You Have an Amazon Firestick or Android TV:</h3>
                     <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Choose <Link href="/players/tivimate" className="text-primary underline">TiviMate</Link> if you want the most refined television guide experience with SMB recording. Choose <Link href="/players/xciptv" className="text-primary underline">XCIPTV</Link> if you want multi-screen sports viewing, or <Link href="/players/televizo" className="text-primary underline">Televizo</Link> for an uncluttered interface without subscriptions.
+                      Choose <Link href="/players/tivimate" className="text-primary underline">TiviMate</Link> if you want a dedicated television EPG grid layout with SMB network recording. Choose <Link href="/players/xciptv" className="text-primary underline">XCIPTV Player (OTR Player)</Link> if you want multi-screen sports viewing or selectable playback engines, or <Link href="/players/televizo" className="text-primary underline">Televizo</Link> for an uncluttered interface with a functional free tier. (See our step-by-step <Link href="/devices/firestick-iptv" className="text-primary underline">Firestick setup</Link> and <Link href="/devices/android-tv-iptv" className="text-primary underline">Android TV setup</Link> guides.)
                     </p>
                   </div>
 
                   <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
                     <h3 className="font-semibold text-foreground text-base">If You Stream on Apple Devices, Samsung, or LG Smart TVs:</h3>
                     <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Choose <Link href="/players/iptv-smarters" className="text-primary underline">IPTV Smarters Pro</Link>. It is one of the only major players natively available in the Apple App Store, Samsung Smart Hub (Tizen), and LG Content Store (webOS).
+                      Choose <Link href="/players/iptv-smarters" className="text-primary underline">IPTV Smarters Pro</Link>. It is natively available in the Apple App Store, Samsung Smart Hub (Tizen), and LG Content Store (webOS). For device-specific setup, consult our walkthroughs for <Link href="/devices/apple-tv-iptv" className="text-primary underline">Apple TV</Link>, <Link href="/devices/samsung-tv-iptv" className="text-primary underline">Samsung Smart TV</Link>, or <Link href="/devices/lg-tv-iptv" className="text-primary underline">LG Smart TV</Link>.
                     </p>
                   </div>
 
                   <div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5">
                     <h3 className="font-semibold text-foreground text-base">If You Watch High-Framerate 50fps Sports on a 4K OLED TV:</h3>
                     <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Choose <Link href="/players/ott-navigator" className="text-primary underline">OTT Navigator</Link>. Its native Auto Frame Rate (AFR) switching synchronizes HDMI refresh rates to eliminate micro-stutters, and its MPV engine provides hardware deinterlacing for 1080i sports feeds.
+                      Choose <Link href="/players/ott-navigator" className="text-primary underline">OTT Navigator</Link>. Its native Auto Frame Rate (AFR) switching synchronizes HDMI refresh rates to reduce frame-rate pacing stutter, and its MPV engine provides hardware deinterlacing for 1080i sports feeds.
                     </p>
                   </div>
 
@@ -374,7 +400,15 @@ export default function PlayersHubPage() {
                   </Link>
                   <Link href="/help/iptv-buffering" className="rounded-lg border border-white/[0.06] p-3 hover:bg-white/[0.03] transition-colors block">
                     <div className="font-semibold text-foreground">How to Fix IPTV Buffering</div>
-                    <div className="text-muted-foreground mt-1">Eliminating jitter, packet loss, and ISP throttling.</div>
+                    <div className="text-muted-foreground mt-1">Diagnosing jitter, packet loss, and possible ISP-related issues.</div>
+                  </Link>
+                  <Link href="/guides/iptv-internet-speed" className="rounded-lg border border-white/[0.06] p-3 hover:bg-white/[0.03] transition-colors block">
+                    <div className="font-semibold text-foreground">Internet Speed Requirements</div>
+                    <div className="text-muted-foreground mt-1">Bandwidth guidance for HD, FHD, and 4K streaming.</div>
+                  </Link>
+                  <Link href="/setup" className="rounded-lg border border-white/[0.06] p-3 hover:bg-white/[0.03] transition-colors block">
+                    <div className="font-semibold text-foreground">Universal IPTV Setup Guide</div>
+                    <div className="text-muted-foreground mt-1">Step-by-step credentials entry and playlist configuration.</div>
                   </Link>
                 </div>
               </div>
@@ -405,7 +439,7 @@ export default function PlayersHubPage() {
                 <CardHeader>
                   <CardTitle className="text-lg text-foreground">Test with TryIPTV</CardTitle>
                   <CardDescription className="text-xs">
-                    Compatible with every player on this page
+                    Compatible with players that support Xtream Codes or M3U credentials.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -421,10 +455,6 @@ export default function PlayersHubPage() {
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
                       <span>Full Xtream Codes API &amp; M3U Plus URLs</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                      <span>Anti-freeze server network</span>
                     </div>
                   </div>
 

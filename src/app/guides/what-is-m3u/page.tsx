@@ -48,7 +48,7 @@ const faqs = [
   {
     question: "What is the difference between an M3U and an M3U8 file?",
     answer:
-      "Both formats are text-based playlists that list media stream locations. The primary distinction relates to character encoding conventions. The .m3u8 extension is used specifically to indicate that the file is encoded using UTF-8 Unicode, allowing it to correctly display international characters, non-Latin scripts, and accents. While modern .m3u files often use UTF-8 as well, historically they could use legacy local character sets. In HTTP Live Streaming (HLS, RFC 8216), UTF-8 encoding is strictly mandatory.",
+      "Both formats are text-based playlists that list media stream locations. The primary distinction relates to character encoding conventions. The .m3u8 extension is commonly used for UTF-8 encoded M3U playlists, allowing it to display international characters, non-Latin scripts, and accents. While modern .m3u files often use UTF-8 as well, legacy files sometimes relied on local system character sets. In HTTP Live Streaming (HLS, RFC 8216), UTF-8 encoding is required.",
   },
   {
     question: "Is an M3U file an actual video or media file?",
@@ -58,17 +58,17 @@ const faqs = [
   {
     question: "What does the #EXTM3U tag mean at the top of the file?",
     answer:
-      "The #EXTM3U tag is a mandatory opening directive that identifies the text file as an Extended M3U playlist rather than a simple, unadorned list of file paths. Under media standards such as RFC 8216, it must appear on the very first line of the playlist file.",
+      "The #EXTM3U tag is an opening directive that identifies the text file as an Extended M3U playlist rather than a simple list of file paths. In RFC 8216 HLS playlists, it is required on the first line of the file.",
   },
   {
     question: "What does #EXTINF:-1 signify in an IPTV playlist?",
     answer:
-      "In standard HTTP Live Streaming (HLS), the number following #EXTINF indicates the duration of a video segment in seconds. In live IPTV broadcasting, streams are ongoing broadcasts without a predetermined duration. The IPTV community adopted the convention of setting this value to -1 (or sometimes 0) to indicate to player parsers that the media is an open-ended live linear channel.",
+      "In HTTP Live Streaming (RFC 8216), the number following #EXTINF indicates the duration of a media segment in seconds. In live IPTV broadcasting, streams are ongoing broadcasts without a predetermined duration. The IPTV community adopted the convention of setting this value to -1 (or sometimes 0) to indicate to player parsers that the media is an open-ended live linear channel.",
   },
   {
     question: "Are tags like tvg-id, tvg-logo, and group-title official Internet standards?",
     answer:
-      "No. These tags are not defined in official IETF standards such as RFC 8216. They are community extensions popularized by open-source media centers (including MythTV, Kodi, and VLC) to allow players to pair live streams with TV guide (EPG) schedules, display station logos, and organize channels into genre categories.",
+      "No. These tags are not defined in IETF standards such as RFC 8216. They are community extensions popularized by open-source media centers (including MythTV, Kodi, and VLC) to allow players to pair live streams with TV guide (EPG) schedules, display station logos, and organize channels into genre categories.",
   },
   {
     question: "Can I download an M3U playlist and save it locally on my computer or device?",
@@ -156,26 +156,25 @@ export default function WhatIsM3uPage() {
             <ArticleProse>
               <h2>The Evolution of M3U and M3U8</h2>
               <p>
-                The M3U format originated in the late 1990s as a simple playlist format for desktop audio
-                players (such as Winamp) to organize MP3 audio files. In its earliest and simplest form, a basic
+                The M3U format originated as a plain-text playlist format for desktop media
+                players to organize media files. In its simplest form, a basic
                 M3U file was merely a text file containing file paths or URLs, with each entry placed on a new
                 line.
               </p>
               <p>
-                As digital media evolved, the format developed into two distinct branches that are widely used
-                today:
+                In common practice, two related formats are widely used:
               </p>
               <ul>
                 <li>
-                  <strong>Extended M3U:</strong> Added structured comment directives beginning with{" "}
-                  <code>#EXT</code>, allowing playlist creators to specify track titles, durations, and
+                  <strong>Extended M3U:</strong> Uses structured comment directives beginning with{" "}
+                  <code>#EXT</code>, allowing playlist creators to specify titles, durations, and
                   metadata before each media location.
                 </li>
                 <li>
-                  <strong>M3U8:</strong> Adopted the <code>.m3u8</code> file extension specifically to signal
-                  that the text file is encoded using the UTF-8 Unicode character set. This distinction ensures
-                  that international channel titles, non-Latin alphabets, and special characters render
-                  reliably across different operating systems.
+                  <strong>M3U8:</strong> <code>.m3u8</code> is commonly used for UTF-8 encoded M3U playlists.
+                  In contrast to legacy text files that relied on local system character sets, UTF-8 encoding
+                  allows international titles and special characters to be read consistently across operating
+                  systems. RFC 8216 requires HLS playlists to be UTF-8.
                 </li>
               </ul>
 
@@ -190,29 +189,84 @@ export default function WhatIsM3uPage() {
                 derived from the older informal format.
               </p>
               <p>
-                Under RFC 8216, specific rules are formally standardized for HLS streaming:
+                Under RFC 8216, specific rules are specified for HLS streaming:
               </p>
               <ul>
                 <li>
-                  <strong>Mandatory UTF-8:</strong> Section 4.1 mandates that HLS playlists MUST be encoded in
+                  <strong>UTF-8 Encoding:</strong> Section 4.1 specifies that HLS playlists MUST be encoded in
                   UTF-8.
                 </li>
                 <li>
                   <strong>Opening Header Directive:</strong> Section 4.3.1.1 defines <code>#EXTM3U</code>,
-                  which must appear on the first line of every valid extended playlist.
+                  which must appear on the first line of each HLS playlist.
                 </li>
                 <li>
                   <strong>Segment Duration Tag:</strong> Section 4.3.2.1 defines <code>#EXTINF</code> to
-                  specify the exact duration (often as a floating-point number of seconds) of a media segment
-                  chunk, followed by an optional title.
+                  specify the duration (as a non-negative decimal floating-point or integer number of seconds)
+                  of a media segment chunk, followed by an optional title.
                 </li>
               </ul>
               <p>
-                <strong>Critical Scope Distinction:</strong> RFC 8216 specifies how video players ingest
-                short, chunked media segments for adaptive streaming. It does <em>not</em> define or govern
-                broadcaster-level IPTV channel playlists, channel category groups, or TV guide metadata tags.
+                <strong>Critical Scope Distinction:</strong> RFC 8216 specifies HTTP Live Streaming playlists
+                for segmented media delivery. It does <em>not</em> define or govern the broader generic IPTV
+                Extended M3U ecosystem, channel category groups, or TV guide metadata tags.
               </p>
 
+              <h2>HLS RFC 8216 vs. Common IPTV Extended M3U Conventions</h2>
+              <p>
+                Because RFC 8216 defines segmented streaming rather than multi-channel television directories,
+                IPTV applications rely on de facto conventions developed across media player ecosystems.
+                The table below outlines how formal HLS specifications differ from common IPTV Extended M3U
+                conventions:
+              </p>
+            </ArticleProse>
+
+            {/* Standards vs IPTV Table */}
+            <div className="my-6 overflow-x-auto rounded-xl border border-white/[0.08] bg-[#07080a]">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-white/[0.08] bg-white/[0.02] text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  <tr>
+                    <th className="px-4 py-3">Directive / Field</th>
+                    <th className="px-4 py-3">HLS Specification (RFC 8216)</th>
+                    <th className="px-4 py-3">Common IPTV Extended M3U Convention</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/[0.06] text-muted-foreground">
+                  <tr>
+                    <td className="px-4 py-3 font-mono font-semibold text-foreground">#EXTM3U</td>
+                    <td className="px-4 py-3">Defined by RFC 8216 §4.3.1.1; must be the first line of HLS Media and Master playlists.</td>
+                    <td className="px-4 py-3">Commonly used as the Extended M3U opening marker.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono font-semibold text-foreground">#EXTINF:&lt;duration&gt;</td>
+                    <td className="px-4 py-3">Specifies segment duration (§4.3.2.1); duration must be non-negative.</td>
+                    <td className="px-4 py-3">Common implementations often use <code className="text-foreground">#EXTINF:-1</code> for live channels. The negative <code className="text-foreground">-1</code> is an IPTV convention and is not a valid RFC 8216 HLS segment duration.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono font-semibold text-foreground">tvg-id, tvg-name</td>
+                    <td className="px-4 py-3">Not defined in RFC 8216.</td>
+                    <td className="px-4 py-3">Common IPTV Extended M3U conventions used by implementations such as Kodi PVR IPTV Simple to match channels with external XMLTV guide schedules.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono font-semibold text-foreground">group-title</td>
+                    <td className="px-4 py-3">Not defined in RFC 8216.</td>
+                    <td className="px-4 py-3">Common IPTV Extended M3U convention for organizing channels into category groups or folders.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono font-semibold text-foreground">tvg-logo</td>
+                    <td className="px-4 py-3">Not defined in RFC 8216.</td>
+                    <td className="px-4 py-3">Common IPTV Extended M3U convention providing an image URL for station icons in guide grids.</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono font-semibold text-foreground">tvg-chno</td>
+                    <td className="px-4 py-3">Not defined in RFC 8216.</td>
+                    <td className="px-4 py-3">Common IPTV Extended M3U convention suggesting a logical channel number for remote-control keypad navigation.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ArticleProse>
               <h2>Anatomy of an Extended M3U Playlist in IPTV</h2>
               <p>
                 In IPTV environments, media players adapted the Extended M3U syntax to describe entire live
@@ -234,16 +288,16 @@ export default function WhatIsM3uPage() {
               </p>
               <ul>
                 <li>
-                  <strong><code>#EXTM3U</code>:</strong> Declares the file as an Extended M3U playlist. Most
-                  parsers reject playlists that do not begin with this header.
+                  <strong><code>#EXTM3U</code>:</strong> Declares the file as an Extended M3U playlist;
+                  commonly used as the opening marker indicating an Extended M3U file.
                 </li>
                 <li>
                   <strong><code>#EXTINF</code>:</strong> The &quot;Extended Information&quot; tag that begins
                   the metadata block for the upcoming stream.
                 </li>
                 <li>
-                  <strong>The <code>-1</code> Duration Flag:</strong> While RFC 8216 uses positive numbers to
-                  denote finite segment durations (e.g., <code>#EXTINF:6.008</code>), IPTV playlists use the
+                  <strong>The <code>-1</code> Duration Flag:</strong> While RFC 8216 uses non-negative numbers to
+                  denote finite segment durations (e.g., <code>#EXTINF:6.008</code>), IPTV playlists commonly use the
                   community convention of <code>-1</code> (or occasionally <code>0</code>) to signify an
                   open-ended, continuous live stream with no fixed end time.
                 </li>
@@ -259,12 +313,46 @@ export default function WhatIsM3uPage() {
                 </li>
               </ul>
 
+              <h3>Stream Delivery Paths</h3>
+              <p>
+                An IPTV M3U entry can point to different kinds of stream URLs. The outer IPTV M3U playlist acts
+                as a directory of channel URIs, while the URI for an individual channel determines the actual
+                delivery mechanism:
+              </p>
+              <div className="my-5 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 sm:p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-primary">Path A: HLS Stream</p>
+                  <p className="mt-2 font-mono text-xs text-foreground/90">
+                    M3U channel directory<br />
+                    ↳ HLS .m3u8 playlist<br />
+                    ↳ Media segments (.ts / .m4s)
+                  </p>
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                    The playlist entry points to an HTTP Live Streaming manifest, which supplies segmented chunks for playback.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 sm:p-5">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-primary">Path B: Direct Transport Stream</p>
+                  <p className="mt-2 font-mono text-xs text-foreground/90">
+                    M3U channel directory<br />
+                    ↳ Direct MPEG-TS stream URL
+                  </p>
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                    The playlist entry points directly to a continuous MPEG Transport Stream connection without an intermediate segment manifest.
+                  </p>
+                </div>
+              </div>
+              <p>
+                Because the delivery mechanism depends on the individual channel URI, an M3U playlist file itself
+                does not dictate whether playback uses segmented HLS or continuous transport streams.
+              </p>
+
               <h2>Common IPTV Metadata Attributes</h2>
               <p>
                 Over time, open-source media player communities (such as MythTV, VideoLAN VLC, and Kodi&apos;s
                 IPTV Simple Client) introduced attribute tags inside the <code>#EXTINF</code> line. Although
-                these are community conventions rather than IETF standards, they are widely recognized by
-                modern IPTV applications:
+                these are community conventions rather than IETF standards, they are commonly recognized by
+                many modern IPTV applications:
               </p>
             </ArticleProse>
 
@@ -275,7 +363,7 @@ export default function WhatIsM3uPage() {
                   name: "tvg-id",
                   icon: Code,
                   description:
-                    "The unique channel identifier used to match this stream with an Electronic Programme Guide (EPG) entry in an associated XMLTV schedule file.",
+                    "The channel identifier used by applications (such as Kodi PVR IPTV Simple) to match this stream with an Electronic Programme Guide (EPG) entry in an associated XMLTV schedule file.",
                 },
                 {
                   name: "group-title",
@@ -287,7 +375,7 @@ export default function WhatIsM3uPage() {
                   name: "tvg-logo",
                   icon: Globe,
                   description:
-                    "A direct web URL pointing to a PNG or JPG image of the network's official station logo, which the player downloads and renders in the guide grid.",
+                    "A direct web URL pointing to an image of the station logo, which the player downloads and renders in the guide grid.",
                 },
                 {
                   name: "tvg-chno",
@@ -320,7 +408,7 @@ export default function WhatIsM3uPage() {
                 </li>
                 <li>
                   <strong>Application-Dependent Caching:</strong> Applications manage local caching
-                  differently; some cache the list for 24 hours, while others check upon every startup.
+                  differently; some cache the list for a set period, while others check upon application startup.
                 </li>
               </ul>
 
@@ -336,18 +424,42 @@ export default function WhatIsM3uPage() {
                   online.
                 </li>
                 <li>
-                  <strong>Static Limitation:</strong> A downloaded file is a fixed snapshot in time. It will
-                  never update automatically. If your provider modifies stream ports, migrates servers, or
-                  updates channel lineups, the static local file will point to obsolete URLs until you
-                  manually replace it.
+                  <strong>Static Limitation:</strong> A downloaded file is a fixed snapshot in time. It does not
+                  update when remote channel addresses change. If your provider modifies stream ports, migrates servers,
+                  or updates channel lineups, the static local file points to outdated URLs until manually replaced.
                 </li>
               </ul>
 
+              <h2>What Does type=m3u_plus Mean?</h2>
+              <p>
+                Some Xtream-compatible IPTV panel implementations generate playlist URLs structured with specific query parameters, such as:
+              </p>
+              <div className="my-4 overflow-x-auto rounded-lg border border-white/[0.08] bg-black/40 p-3 font-mono text-xs text-foreground/90 sm:text-sm">
+                https://example.com/get.php?username=USER&amp;password=PASS&amp;type=m3u_plus&amp;output=ts
+              </div>
+              <p>
+                In those implementations, the parameters convey specific formatting instructions to the server:
+              </p>
+              <ul>
+                <li>
+                  <strong><code>type=m3u_plus</code>:</strong> Requests an Extended M3U playlist containing richer channel metadata. Depending on the server configuration, this metadata may include common fields such as <code>tvg-id</code>, <code>tvg-name</code>, <code>tvg-logo</code>, and <code>group-title</code>.
+                </li>
+                <li>
+                  <strong><code>type=m3u</code>:</strong> Requests a simpler M3U representation, often omitting extended guide and categorization attributes.
+                </li>
+                <li>
+                  <strong><code>output=ts</code> vs. <code>output=m3u8</code>:</strong> In many Xtream-compatible playlist generators, <code>output=ts</code> produces channel URLs using MPEG-TS delivery, while <code>output=m3u8</code> produces HLS-style playlist URLs. Exact behavior can vary by panel implementation.
+                </li>
+              </ul>
+              <p>
+                <strong>Implementation Scope:</strong> <code>m3u_plus</code> is an implementation convention used by Xtream-compatible systems; it is not an IETF M3U or HLS standard. Not all IPTV providers use this convention, and player applications interpret returned attributes according to their own parsing rules.
+              </p>
+
               <h2>Large Playlist Ingestion and Device Considerations</h2>
               <p>
-                Because an M3U file is plain text, every channel entry requires reading lines, extracting
-                metadata attributes via regular expressions or string tokenizers, and instantiating channel
-                objects in the device&apos;s memory.
+                Because an M3U file is plain text, parsing channel entries involves reading lines, extracting
+                metadata attributes via tokenizers or string parsing, and creating channel objects in
+                device memory.
               </p>
               <p>
                 How smoothly this process occurs depends on several factors:
@@ -358,10 +470,10 @@ export default function WhatIsM3uPage() {
                   budget TV sticks) must balance playlist object allocation with active video decoding buffers.
                 </li>
                 <li>
-                  <strong>Parser Efficiency:</strong> Optimized media player applications process playlists
-                  as streaming token streams and cache entries into lightweight local SQLite databases,
-                  avoiding memory spikes. Less optimized parsers attempt to load the entire text file into
-                  RAM at once, which can lead to application pauses during initial startup.
+                  <strong>Parser Implementation:</strong> Player applications vary in how they process large
+                  playlists. Some parse playlist entries progressively and cache channel data locally, while
+                  others attempt to load and parse large text files entirely in memory, which can lead to
+                  temporary interface pauses during initial startup.
                 </li>
                 <li>
                   <strong>Playlist Scope:</strong> Unfiltered playlists that include tens of thousands of
@@ -377,7 +489,7 @@ export default function WhatIsM3uPage() {
                 Flexible Playlist Integration
               </h3>
               <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-muted-foreground">
-                TryIPTV provides both standard <Link href="/guides/m3u-vs-xtream-codes">Extended M3U playlist URLs and Xtream-compatible API logins</Link>.
+                TryIPTV provides both <Link href="/guides/m3u-vs-xtream-codes">Extended M3U playlist URLs and Xtream-compatible API logins</Link>.
                 Whether you are using a dedicated television app like TiviMate or a media player like VLC, you
                 can choose the connection format that best suits your player application and hardware setup.
               </p>

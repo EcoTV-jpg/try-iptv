@@ -52,3 +52,6 @@ tryiptv.com-audit/
 .audit/
 # Sentry Config File
 .env.sentry-build-plugin
+
+# credentials & secrets
+credentials/
