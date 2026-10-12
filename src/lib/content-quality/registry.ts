@@ -486,7 +486,7 @@ const editorialOverrides: Record<string, Partial<Omit<ContentQualityEntry, 'url'
         ],
         unsupportedClaims: [],
         materialBlockers: [],
-        notes: 'Catalog counts (24,000+ live channels, 80,000+ VOD) and broadcast resolutions (HD & 4K) are asserted in copy but lack empirical repository verification logs. Under the materiality rule, these qualified claims surface as a warning rather than blocking commercial overview.',
+        notes: 'Catalog counts (25,000+ live channels worldwide, 120,000+ movies and TV shows) and broadcast resolutions (4K Ultra HD) are asserted in copy but lack empirical repository verification logs. Under the materiality rule, these qualified claims surface as a warning rather than blocking commercial overview.',
       },
     },
     trust: {
@@ -918,11 +918,11 @@ const editorialOverrides: Record<string, Partial<Omit<ContentQualityEntry, 'url'
           'src/lib/data/iptv-free-trial-page.ts:69',
         ],
         claims: [
-          '24,000+ live channels',
-          '80,000+ movies & series on demand',
+          '25,000+ live channels worldwide',
+          '120,000+ movies & TV shows on demand',
         ],
         unsupportedClaims: [],
-        notes: 'Catalog volume assertions (24,000+ live channels, 80,000+ VOD) are publicly asserted in copy and schema but lack auditable provider export, backend inventory logs, or central database counts. Under the materiality policy, these count assertions surface as a non-blocking warning rather than halting trial evaluation.',
+        notes: 'Catalog volume assertions (25,000+ live channels worldwide, 120,000+ movies and TV shows) are publicly asserted in copy and schema but lack auditable provider export, backend inventory logs, or central database counts. Under the materiality policy, these count assertions surface as a non-blocking warning rather than halting trial evaluation.',
       },
       accessParity: {
         completed: false,

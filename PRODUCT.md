@@ -10,7 +10,7 @@ web
 Cord-cutters, sports fans, and international television viewers seeking reliable live TV and on-demand entertainment across personal streaming hardware (Amazon Fire TV Stick, Android TV, Apple TV, iOS, Android, Windows, and Smart TVs) without traditional long-term cable contracts or hardware rental fees.
 
 ## Product Purpose
-Deliver high-performance, contract-free IPTV streaming with extensive global coverage (24,000+ live channels, 80,000+ VOD titles). Success means frictionless setup and activation (5–15 minutes), zero unexpected rebilling, dependable multi-screen streaming (2 simultaneous connections included by default), and comprehensive self-service device setup guidance.
+Deliver high-performance, contract-free IPTV streaming with extensive global coverage (25,000+ live channels worldwide, 120,000+ movies and TV shows). Success means frictionless setup and activation (5–15 minutes), zero unexpected rebilling, dependable multi-screen streaming (2 simultaneous connections included by default), and comprehensive self-service device setup guidance.
 
 ## Positioning
 Prepaid, contract-free IPTV streaming featuring 2 concurrent connections included standard on all tiers, an authentic 24-hour free trial with no credit card required, and strictly no automatic renewal or surprise recurring billing.
@@ -21,7 +21,7 @@ Prepaid, contract-free IPTV streaming featuring 2 concurrent connections include
 - Customers evaluate services based on stream stability during live sports events, channel breadth, fast activation delivery, and honest pricing.
 
 ## Capabilities and Constraints
-- **Channels & VOD**: 24,000+ live HD/4K channels and 80,000+ movies/series.
+- **Channels & VOD**: 25,000+ live channels worldwide and 120,000+ movies/TV shows with 4K Ultra HD streaming.
 - **Connections**: 2 simultaneous streams included on every subscription plan.
 - **Free Trial**: 24-hour full access trial with no credit card required ($0).
 - **Billing**: 1, 3, 6, and 12-month prepaid tiers ($16, $39, $60, $90). No auto-renewal.

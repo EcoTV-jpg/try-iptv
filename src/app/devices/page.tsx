@@ -109,7 +109,7 @@ export default function DevicesPage() {
               Ready to Start Watching on Any Device?
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm sm:text-base leading-6 text-muted-foreground">
-              Get full access to 24,000+ live channels and 80,000+ VOD movies and series with 2 simultaneous connections on all your devices.
+              Get access to 25,000+ live channels worldwide and 120,000+ movies and TV shows with 2 simultaneous connections on all your devices.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Button asChild size="lg">

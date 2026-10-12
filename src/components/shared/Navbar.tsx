@@ -37,7 +37,7 @@ export function Navbar() {
             ))}
           </nav>
           <div className="ml-auto flex items-center gap-2">
-            <Button asChild size="sm" className="hidden sm:inline-flex">
+            <Button asChild size="sm" variant="outline" className="hidden border-primary/30 bg-primary/[0.08] text-foreground hover:border-primary/50 hover:bg-primary/[0.14] sm:inline-flex">
               <Link href="/iptv-free-trial">
                 Start free trial
                 <ArrowUpRight />

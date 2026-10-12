@@ -28,7 +28,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export function generateMetadata(): Metadata {
   const title = "TryIPTV IPTV Pricing & Subscription Plans — From $16";
   const description =
-    "Compare TryIPTV subscription plans and pricing. Monthly and yearly prepaid IPTV plans from $16 (or $7.50/mo on 12 months) with 24,000+ channels, 2 connections, and zero auto-renewals.";
+    "Compare TryIPTV subscription plans and pricing. Monthly and yearly prepaid IPTV plans from $16 (or $7.50/mo on 12 months) with 25,000+ live channels worldwide, 2 connections, and zero auto-renewals.";
 
   return {
     ...generatePageMetadata({
@@ -61,17 +61,17 @@ export default async function IPTVSubscription() {
             as="h1"
             eyebrow="IPTV Pricing & Subscription Plans"
             title="TryIPTV Pricing & Subscription Plans"
-            subtitle="Compare prepaid IPTV subscription plans from $16 for one month down to $7.50 per month equivalent on our 12-month prepaid plan. All plans include 2 simultaneous connections, 24,000+ live channels, and HD and available 4K streams with no contracts and zero auto-renewals."
+            subtitle="Compare prepaid IPTV subscription plans from $16 for one month down to $7.50 per month equivalent on our 12-month prepaid plan. All plans include 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming where available with no contracts and zero auto-renewals."
           />
           <div className="mt-5 sm:mt-6 flex flex-wrap justify-center items-center gap-2.5 text-xs font-semibold sm:text-sm">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
               <Check className="h-4 w-4 text-primary" /> 2 Simultaneous Connections
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> 24,000+ Live Channels
+              <Check className="h-4 w-4 text-primary" /> 25,000+ Live Channels Worldwide
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> 80,000+ Movies &amp; Series
+              <Check className="h-4 w-4 text-primary" /> 120,000+ Movies &amp; TV Shows
             </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
               <Check className="h-4 w-4 text-primary" /> 24-Hour Free Trial
@@ -261,11 +261,11 @@ export default async function IPTVSubscription() {
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">24,000+ live TV channels</strong> with sports &amp; news</span>
+                <span><strong className="text-foreground">25,000+ live TV channels worldwide</strong> with sports &amp; news</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">80,000+ movies &amp; series</strong> on demand (VOD)</span>
+                <span><strong className="text-foreground">120,000+ movies &amp; TV shows</strong> on demand (VOD)</span>
               </li>
               <li className="flex items-start gap-2.5">
                 <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />

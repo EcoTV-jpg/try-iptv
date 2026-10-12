@@ -103,7 +103,7 @@ export function FAQ() {
   return (
     <Section id="faq" className="bg-[#050706] py-14 sm:py-18 lg:py-20 border-t border-white/[0.06]">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Left Column: Heading & Support Channels */}
           <div className="lg:col-span-5">
             <BlurFade className="lg:sticky lg:top-24">
@@ -117,7 +117,7 @@ export function FAQ() {
                 Have questions? We&apos;ve got answers. If you can&apos;t find what you&apos;re looking for, feel free to contact us.
               </p>
 
-              <SpotlightCard className="mt-6 sm:mt-8 p-1.5 rounded-2xl border border-white/[0.07] bg-[#07080a]">
+              <SpotlightCard className="mt-6 p-1.5 rounded-2xl border border-white/[0.07] bg-[#07080a]">
                 <ul className="divide-y divide-white/[0.06]">
                   {CONTACTS.map(({ icon: Icon, label, detail, href, isExternal }) => {
                     const Component = isExternal ? "a" : Link;
@@ -164,7 +164,7 @@ export function FAQ() {
                   value={`item-${i}`}
                   className="border-b border-white/[0.07]"
                 >
-                  <AccordionTrigger className="gap-3.5 py-3.5 sm:py-4 text-left hover:no-underline group">
+                  <AccordionTrigger className="gap-3.5 py-3 sm:py-3.5 text-left hover:no-underline group">
                     <span className="flex items-start gap-3.5 sm:gap-5">
                       <span
                         aria-hidden

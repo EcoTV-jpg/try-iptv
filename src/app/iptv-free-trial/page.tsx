@@ -40,7 +40,7 @@ const freeTrialWhatsAppUrl =
 export function generateMetadata(): Metadata {
   const title = "24-Hour IPTV Free Trial — Test TryIPTV with No Credit Card";
   const description =
-    "Get a 24-hour IPTV free trial with zero commitment. Test 24,000+ live channels, 80,000+ VOD movies and series, 4K streams, and 2 connections on your device. No credit card required.";
+    "Get a 24-hour IPTV free trial with zero commitment. Test 25,000+ live channels worldwide, 120,000+ movies and TV shows, 4K Ultra HD streaming, and 2 connections on your device. No credit card required.";
 
   return {
     ...generatePageMetadata({
@@ -80,13 +80,13 @@ const quickFacts = [
 const trialInclusions = [
   {
     icon: Tv,
-    title: "24,000+ Live Channels",
+    title: "25,000+ Live Channels Worldwide",
     description:
       "Use the trial to verify specific live channels, regional programming, and sports networks on your own device.",
   },
   {
     icon: Film,
-    title: "80,000+ Movies & Series on Demand",
+    title: "120,000+ Movies & TV Shows",
     description:
       "Test on-demand movie and series playback during your 24 hours, including subtitle options and audio tracks where available.",
   },

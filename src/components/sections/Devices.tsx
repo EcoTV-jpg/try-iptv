@@ -30,7 +30,7 @@ const deviceIconMap: Record<string, ComponentType<{ className?: string }>> = {
 
 export function Devices() {
   return (
-    <Section id="devices" className="border-y border-white/[0.06] bg-[#070a08] py-14 sm:py-18 lg:py-20">
+    <Section id="devices" className="border-y border-white/[0.06] bg-[#070a08] py-12 sm:py-14 lg:py-16">
       <Container>
         <SectionHeader
           title="One IPTV Subscription. All Your Favorite Devices."
@@ -39,7 +39,7 @@ export function Devices() {
           className="mb-0 max-w-3xl"
         />
 
-        <div className="relative mt-8 sm:mt-10">
+        <div className="relative mt-6 sm:mt-8">
           {/* Top border line with gradient fade */}
           <div
             aria-hidden
@@ -61,7 +61,7 @@ export function Devices() {
             repeat={4}
             role="list"
             aria-label="Supported devices"
-            className="py-5 sm:py-6 [--duration:38s] [--gap:1.25rem] sm:[--gap:1.5rem]"
+            className="py-4 sm:py-5 [--duration:38s] [--gap:1rem] sm:[--gap:1.25rem]"
           >
             {devices.map((device) => {
               const Icon = deviceIconMap[device.icon] || Tv;
@@ -91,7 +91,7 @@ export function Devices() {
           />
         </div>
 
-        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
+        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
           <Link
             href="/devices"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"

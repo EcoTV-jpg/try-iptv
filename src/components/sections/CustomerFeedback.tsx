@@ -3,7 +3,7 @@ import { Container } from "../shared/Container";
 import { SectionHeader } from "../shared/SectionHeader";
 import { Section } from "../shared/Section";
 import { Marquee } from "../velora/marquee";
-import { MessageSquareCheck, ShieldCheck } from "lucide-react";
+import { MessageSquareCheck } from "lucide-react";
 
 export const customerFeedbackItems = [
   {
@@ -73,24 +73,20 @@ export function CustomerFeedback() {
 
           <Marquee
             pauseOnHover
-            repeat={3}
-            className="py-4 [--duration:45s] [--gap:1.25rem] sm:[--gap:1.5rem]"
+            repeat={2}
+            className="py-5 [--duration:70s] [--gap:1rem] sm:[--gap:1.25rem]"
           >
             {customerFeedbackItems.map((item) => (
               <figure
                 key={item.id}
-                className="group relative flex w-[260px] sm:w-[280px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#07090b] shadow-md transition-all duration-200 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
+                className="group relative flex w-[min(82vw,360px)] sm:w-[360px] lg:w-[380px] shrink-0 flex-col overflow-hidden rounded-2xl border border-white/[0.07] bg-[#07090b] shadow-md transition-all duration-200 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
               >
                 {/* Header label */}
-                <div className="flex items-center justify-between border-b border-white/[0.06] bg-white/[0.02] px-3.5 py-2.5">
+                <div className="flex items-center border-b border-white/[0.06] bg-white/[0.02] px-3.5 py-2.5">
                   <div className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
                     <MessageSquareCheck className="size-3.5 text-primary shrink-0" aria-hidden="true" />
                     <span className="truncate">{item.title}</span>
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-mono font-medium text-primary">
-                    <ShieldCheck className="size-2.5" aria-hidden="true" />
-                    Verified
-                  </span>
                 </div>
 
                 {/* Full-resolution Screenshot (525x1024 native) */}
@@ -101,7 +97,7 @@ export function CustomerFeedback() {
                     width={525}
                     height={1024}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-                    sizes="(max-width: 640px) 260px, 280px"
+                    sizes="(max-width: 640px) 82vw, (max-width: 1024px) 360px, 380px"
                     loading="lazy"
                   />
                 </div>

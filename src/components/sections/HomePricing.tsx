@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BlurFade } from "@/components/velora/blur-fade";
-import { BorderBeam } from "@/components/velora/border-beam";
 import { DotPattern } from "@/components/velora/grid-pattern";
 import { Container } from "../shared/Container";
 import { cn } from "@/lib/utils";
@@ -22,12 +21,7 @@ const PLANS = [
     checkoutUrl: "https://flujipay.com/payment/e1JWrpo7MBOGuaq0axpgtaxxIBTcFRoj",
     featured: false,
     badge: null,
-    features: [
-      "2 Simultaneous Connections",
-      "Full Live TV & VOD Catalog",
-      "Monthly Commitment Freedom",
-      "Zero Contracts / No Auto-Renewal",
-    ],
+    features: [],
   },
   {
     index: "02 / Plan",
@@ -41,12 +35,7 @@ const PLANS = [
     checkoutUrl: "https://flujipay.com/payment/npi8bNFKa60nGloEpZuBguh6tBFSueUN",
     featured: false,
     badge: null,
-    features: [
-      "2 Simultaneous Connections",
-      "Full Live TV & VOD Catalog",
-      "$13.00 / month equivalent",
-      "Zero Contracts / No Auto-Renewal",
-    ],
+    features: [],
   },
   {
     index: "03 / Plan",
@@ -60,12 +49,7 @@ const PLANS = [
     checkoutUrl: "https://flujipay.com/payment/DkNU7UJ2dliHkpGRF7HHhW3JJajmwi3m",
     featured: false,
     badge: null,
-    features: [
-      "2 Simultaneous Connections",
-      "Full Live TV & VOD Catalog",
-      "$10.00 / month equivalent",
-      "Zero Contracts / No Auto-Renewal",
-    ],
+    features: [],
   },
   {
     index: "04 / Plan",
@@ -79,13 +63,19 @@ const PLANS = [
     checkoutUrl: "https://flujipay.com/payment/y59giDeQUiwnLBXIMYDo4ZRbLBpjeNmG",
     featured: true,
     badge: "Best Value",
-    features: [
-      "2 Simultaneous Connections",
-      "Full Live TV & VOD Catalog",
-      "$7.50 / month equivalent",
-      "Zero Contracts / No Auto-Renewal",
-    ],
+    features: [],
   },
+] as const;
+
+const INCLUDED_FEATURES = [
+  "4K Ultra HD Streaming Quality",
+  "25,000+ Live Channels Worldwide",
+  "120,000+ Movies & TV Shows",
+  "Premium PPV Events Included",
+  "Instant VOD Access",
+  "Smart EPG & Catch-Up TV",
+  "24/7 TryIPTV Support",
+  "Multi-Device Compatibility",
 ] as const;
 
 export function HomePricing() {
@@ -109,11 +99,11 @@ export function HomePricing() {
             TryIPTV Subscription Plans
           </h2>
           <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-foreground/90">
-            Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 24,000+ live channels, and HD &amp; 4K streams.
+            Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming.
           </p>
         </BlurFade>
 
-        <div className="mx-auto mt-10 sm:mt-12 grid max-w-md items-stretch gap-5 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <div className="mx-auto mt-8 sm:mt-10 grid max-w-md grid-cols-1 items-stretch gap-4 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
           {PLANS.map((plan, i) => (
             <BlurFade
               key={plan.name}
@@ -122,13 +112,11 @@ export function HomePricing() {
             >
               <article
                 className={cn(
-                  "relative flex h-full w-full flex-col justify-between rounded-2xl border border-white/[0.07] bg-[#07080a]/95 p-5.5 sm:p-6 shadow-sm transition-all duration-200 hover:border-white/[0.14] hover:bg-[#090b0d]",
+                  "relative flex h-full w-full flex-col justify-between rounded-2xl border border-white/[0.06] bg-[#07080a]/90 p-5 sm:p-6 shadow-sm transition-all duration-200 hover:border-white/[0.14] hover:bg-[#090b0d]",
                   plan.featured &&
-                    "border-primary/25 bg-gradient-to-b from-primary/[0.06] via-[#07080a] to-[#07080a] shadow-xl shadow-primary/5 hover:border-primary/45"
+                    "border-primary/30 bg-gradient-to-b from-primary/[0.05] via-[#07080a] to-[#07080a] shadow-lg shadow-primary/5 hover:border-primary/45"
                 )}
               >
-                {plan.featured && <BorderBeam size={120} duration={8} />}
-
                 <div>
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
@@ -187,8 +175,8 @@ export function HomePricing() {
                     </a>
                   </Button>
 
-                  <ul className="mt-5 space-y-2.5 border-t border-white/[0.07] pt-5 text-sm">
-                    {plan.features.map((feature) => (
+                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-sm">
+                    {[...plan.features, ...INCLUDED_FEATURES].map((feature) => (
                       <li key={feature} className="flex items-center gap-2.5 text-[13.5px] sm:text-[14px] leading-relaxed text-muted-foreground/95">
                         <CheckIcon
                           aria-hidden
@@ -206,6 +194,10 @@ export function HomePricing() {
             </BlurFade>
           ))}
         </div>
+
+        <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-muted-foreground/70">
+          Every plan includes 2 simultaneous connections, the full live TV and VOD catalog, and zero auto-renewal.
+        </p>
 
         {/* Clear bridge to detailed pricing comparison and free trial */}
         <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-4.5 text-xs sm:text-sm text-muted-foreground">

@@ -9,7 +9,7 @@ export const pageData = {
             description: "Round-the-clock customer support whenever you need assistance"
         },
         {
-            title: "24,000+ Channels",
+            title: "25,000+ Live Channels Worldwide",
             description: "Access to live channels from around the world"
         },
         {
@@ -39,7 +39,7 @@ export const pageData = {
         {
             name: "Maria L.",
             title: "Verified Customer",
-            quote: "Amazing value. With TryIPTV, I get 24,000+ channels and 80,000+ VOD titles."
+            quote: "Amazing value. With TryIPTV, I get 25,000+ live channels worldwide and 120,000+ movies and TV shows."
         }
     ],
     faqs: [

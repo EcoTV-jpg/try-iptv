@@ -12,7 +12,7 @@ export const getPricingPageData = cache(
 
     const productSchema: Product = generateProductSchema({
       name: "TryIPTV Subscription",
-      description: "Prepaid IPTV subscription featuring 24,000+ live channels, 80,000+ VOD movies and series, HD & 4K streams, and 2 simultaneous connections across compatible devices.",
+      description: "Prepaid IPTV subscription featuring 25,000+ live channels worldwide, 120,000+ movies and TV shows, 4K Ultra HD streaming, and 2 simultaneous connections across compatible devices.",
       image: `${siteConfig.url}/api/og`,
       brand: {
         "@id": organizationId,

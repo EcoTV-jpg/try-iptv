@@ -102,7 +102,7 @@ export function Footer() {
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Logo />
             <p className="mt-3.5 max-w-sm text-[13.5px] leading-relaxed text-muted-foreground/90">
-              Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 24,000+ live channels and 80,000+ VOD titles.
+              Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 25,000+ live channels worldwide and 120,000+ movies and TV shows.
             </p>
             <div className="mt-5 flex flex-col gap-2 text-sm">
               <span
@@ -207,17 +207,6 @@ export function Footer() {
         {/* Bottom copyright and legal bar */}
         <div className="mt-10 flex flex-col-reverse gap-4 border-t border-white/[0.06] pt-6 text-xs text-muted-foreground/80 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} TryIPTV. All rights reserved.</p>
-          <div className="flex flex-wrap gap-4">
-            {footerLinks.legalLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="transition-colors hover:text-foreground"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* Interactive outlined wordmark with ambient opacity */}

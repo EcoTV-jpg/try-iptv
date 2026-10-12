@@ -52,7 +52,7 @@ export function HowItWorks() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="group relative flex flex-col justify-between rounded-2xl border border-white/[0.06] bg-[#050706] p-5.5 sm:p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] transition-all duration-200 hover:border-white/[0.13] hover:bg-[#07090b]"
+              className="group relative flex flex-col justify-between rounded-2xl border border-white/[0.04] bg-[#050706]/70 p-5.5 sm:p-6 transition-all duration-200 hover:border-white/[0.12] hover:bg-[#07090b]"
             >
               <div>
                 <div className="mb-4 sm:mb-5 flex items-center justify-between">

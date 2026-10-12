@@ -63,7 +63,7 @@ export function WhyChooseTryIPTV() {
             const Icon = benefit.icon;
             return (
               <BlurFade key={benefit.title} delay={0.06 + i * 0.04} className="h-full">
-                <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/[0.06] bg-[#060807]/90 p-5 sm:p-5.5 shadow-sm transition-all duration-200 hover:border-white/[0.14] hover:bg-[#080a09]">
+                <div className="group relative flex h-full flex-col justify-between rounded-2xl border border-white/[0.04] bg-transparent p-5 sm:p-5.5 transition-all duration-200 hover:border-white/[0.1] hover:bg-white/[0.015]">
                   <div>
                     <div className="mb-4 inline-flex size-9.5 sm:size-10 items-center justify-center rounded-xl bg-white/[0.025] text-foreground/85 border border-white/[0.07] transition-colors group-hover:border-primary/30 group-hover:bg-primary/[0.08] group-hover:text-primary">
                       <Icon className="size-4.5 sm:size-5" />

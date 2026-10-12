@@ -5,7 +5,7 @@ export const pricingPageFaqs = [
     },
     {
         question: "What is the difference between monthly and yearly IPTV plans?",
-        answer: "All TryIPTV plans include the same core service features: access to the available 24,000+ live channels, 80,000+ VOD movies and series, HD and select 4K streams where available, EPG TV guide, and 2 simultaneous connections. The difference is duration and prepaid savings: the 1-month plan ($16) offers flexible short-term viewing, while the 12-month plan ($90) reduces your effective monthly cost to $7.50 per month (a 53% savings compared to twelve monthly renewals)."
+        answer: "All TryIPTV plans include the same core service features: access to 25,000+ live channels worldwide, 120,000+ movies and TV shows, 4K Ultra HD streaming where available, Smart EPG, and 2 simultaneous connections. The difference is duration and prepaid savings: the 1-month plan ($16) offers flexible short-term viewing, while the 12-month plan ($90) reduces your effective monthly cost to $7.50 per month (a 53% savings compared to twelve monthly renewals)."
     },
     {
         question: "Is the subscription billed monthly, or does it renew automatically?",

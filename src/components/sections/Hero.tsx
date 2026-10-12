@@ -48,7 +48,7 @@ export function Hero() {
               </Button>
             </div>
 
-            <p className="mt-3.5 text-xs font-medium text-muted-foreground/85">
+            <p className="mt-3 text-[11px] font-medium tracking-wide text-muted-foreground/65">
               2 simultaneous connections • Flat prepaid pricing • No auto-renewal
             </p>
           </div>
@@ -76,7 +76,7 @@ export function Hero() {
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.05]">
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 py-1 sm:py-0">
               <span className="font-headline text-xl sm:text-[22px] font-bold tracking-tight text-foreground">
-                24,000+
+                25,000+
               </span>
               <span className="mt-0.5 text-[12px] sm:text-[12.5px] font-medium text-muted-foreground/85">
                 Live Channels
@@ -84,7 +84,7 @@ export function Hero() {
             </div>
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 py-1 sm:py-0">
               <span className="font-headline text-xl sm:text-[22px] font-bold tracking-tight text-foreground">
-                80,000+
+                120,000+
               </span>
               <span className="mt-0.5 text-[12px] sm:text-[12.5px] font-medium text-muted-foreground/85">
                 Movies &amp; Series

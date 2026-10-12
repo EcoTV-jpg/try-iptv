@@ -1,8 +1,6 @@
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -79,16 +77,6 @@ export function Pricing({
                   </p>
                 </div>
               </CardHeader>
-              <CardContent className="flex-1 px-6 sm:px-7">
-                <ul className="space-y-2.5 border-t border-white/[0.08] pt-4">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2.5 text-left">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span className="text-[14px] leading-snug text-muted-foreground/90">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
               <CardFooter className="px-6 pb-6 pt-4 sm:px-7 sm:pb-7">
                 <Button
                   asChild
@@ -102,7 +90,7 @@ export function Pricing({
           ))}
         </div>
         <div className="mt-6 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 text-center text-xs text-muted-foreground sm:text-sm">
-          Every plan includes the same core service features: access to the available 24,000+ live channels, 80,000+ VOD titles, EPG TV guide, and 2 simultaneous device connections. Only duration and prepaid savings differ.
+          Every plan includes the same core service features: access to 25,000+ live channels worldwide, 120,000+ movies and TV shows, Smart EPG, and 2 simultaneous device connections. Only duration and prepaid savings differ.
         </div>
       </Container>
     </Section>

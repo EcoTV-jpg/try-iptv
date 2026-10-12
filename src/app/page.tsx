@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { HomePricing } from "@/components/sections/HomePricing";
+import { Comparison } from "@/components/sections/Comparison";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Devices } from "@/components/sections/Devices";
 import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
@@ -16,7 +17,7 @@ import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 export function generateMetadata(): Metadata {
   const baseMetadata = generatePageMetadata({
     title: "TryIPTV — Best IPTV Service in USA, UK & Worldwide",
-    description: "Best IPTV streaming featuring 24,000+ live channels, sports, and 80,000+ VOD titles across all devices. 2 connections included. Plans from $16 with a IPTV Free Trial.",
+    description: "Best IPTV streaming featuring 25,000+ live channels worldwide, sports, and 120,000+ movies and TV shows across all devices. 2 connections included. Plans from $16 with a IPTV Free Trial.",
     canonical: "/",
     image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
@@ -50,6 +51,7 @@ export default function Home() {
       <Hero />
       <WhyChooseTryIPTV />
       <HomePricing />
+      <Comparison />
       <HowItWorks />
       <Devices />
       <CustomerFeedback />

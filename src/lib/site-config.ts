@@ -4,8 +4,8 @@ export const SITE_URL = "https://www.tryiptv.com";
 export const PRODUCT_TRUTHS = {
   brand: "TryIPTV",
   domain: SITE_URL,
-  channels: "24,000+",
-  vod: "80,000+",
+  channels: "25,000+",
+  vod: "120,000+",
   connections: 2,
   trialDuration: "24 Hours",
   trialCost: "$0 (Free, no credit card required)",
@@ -28,7 +28,7 @@ export const siteConfig = {
   name: "TryIPTV",
   url: SITE_URL,
   ogImage: "/api/og",
-  description: "TryIPTV is a premier prepaid IPTV service featuring 24,000+ live channels, sports, and 80,000+ movies and series in HD & 4K across all devices. Plans start at $16 with a 24-hour free trial available.",
+  description: "TryIPTV is a premier prepaid IPTV service featuring 25,000+ live channels worldwide, sports, and 120,000+ movies and TV shows in 4K Ultra HD across all devices. Plans start at $16 with a 24-hour free trial available.",
   links: {
     email: "support@tryiptv.com",
     whatsapp: "+447848197761",
