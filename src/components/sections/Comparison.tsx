@@ -89,7 +89,7 @@ export function Comparison() {
         </div>
 
         <p className="mx-auto mt-4 max-w-4xl text-center text-sm leading-relaxed text-muted-foreground/85">
-          TryIPTV works with Fire TV, Android TV, Samsung TV, LG TV, Apple TV, Chromecast, Roku, Windows, Mac, and other supported devices.
+          TryIPTV works with supported TVs, streaming devices, computers, and IPTV players.
         </p>
       </Container>
     </Section>

@@ -17,19 +17,19 @@ const benefits = [
     icon: Zap,
     title: "Extensive On-Demand Library",
     description:
-      "Explore thousands of movies and multi-season series updated regularly in HD and 4K resolution, with zero pay-per-view or rental fees.",
+      "Browse movies and series in HD and 4K, with no pay-per-view or rental fees.",
   },
   {
     icon: Smartphone,
     title: "Universal Device Compatibility",
     description:
-      "Stream across your preferred hardware: Fire TV, Android TV, Apple TV, Smart TVs, Windows, macOS, and compatible IPTV players.",
+      "Use compatible IPTV players across your preferred TV, mobile, and desktop devices.",
   },
   {
     icon: CalendarCheck,
     title: "Prepaid Freedom & Flexibility",
     description:
-      "Choose straightforward prepaid access with no long-term contracts. Every package includes 2 simultaneous streams and zero automatic renewal.",
+      "Choose fixed-term prepaid access with no automatic renewal.",
   },
 ];
 
