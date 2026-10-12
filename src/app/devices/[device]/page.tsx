@@ -32,6 +32,7 @@ import {
   GuideCallout,
   GuideToc,
   GuideCta,
+  GuideScreenshot,
   type RequirementItem,
   type TocItem,
 } from "@/components/guide";
@@ -478,7 +479,7 @@ const DEVICE_REQUIREMENTS: Record<string, RequirementItem[]> = {
 
 const DEVICE_CTA_DESCRIPTIONS: Record<string, string> = {
   "firestick-iptv":
-    "Verify channel loading speed, Fire TV remote navigation, Downloader setup, and EPG guide stability with our full-access 24-hour evaluation pass.",
+    "Verify channel loading speed, Fire TV remote navigation, Downloader setup, and EPG guide behavior during the stated 24-hour evaluation period.",
   "android-tv-iptv":
     "Test TiviMate or Smarters playback, electronic programme guide (EPG) grid speed, and hardware video decoding on your Android TV.",
   "samsung-tv-iptv":
@@ -782,6 +783,38 @@ export default async function HowToPage({ params }: Props) {
                             __html: extraSections.find((s) => s.id === "developer-options")?.content || "",
                           }}
                         />
+
+                        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                          <GuideScreenshot
+                            src="/images/firestick/settings-home.jpeg"
+                            alt="Fire TV Settings home screen with the Settings gear selected"
+                            caption="Open Settings from the Fire TV home screen."
+                            width={1200}
+                            height={675}
+                          />
+                          <GuideScreenshot
+                            src="/images/firestick/my-fire-tv-developer-options.jpeg"
+                            alt="Fire TV My Fire TV menu with Developer Options highlighted"
+                            caption="Open Developer Options under My Fire TV."
+                            width={1024}
+                            height={627}
+                          />
+                          <GuideScreenshot
+                            src="/images/firestick/about-device-name.jpeg"
+                            alt="Fire TV About screen with the Fire TV Stick device name highlighted"
+                            caption="Select the device name in About when Developer Options is hidden."
+                            note="Account and serial fields are redacted in this supplied capture."
+                            width={960}
+                            height={540}
+                          />
+                          <GuideScreenshot
+                            src="/images/firestick/install-unknown-apps-downloader-on.jpeg"
+                            alt="Fire TV Install Unknown Apps screen with Downloader enabled"
+                            caption="Allow Downloader to install apps from unknown sources."
+                            width={800}
+                            height={521}
+                          />
+                        </div>
 
                         <GuideCallout type="security" title="Sideloading Permission Control">
                           <p>

@@ -58,7 +58,7 @@ const quickFacts = [
   {
     metric: "24 Hours",
     label: "Trial Duration",
-    description: "Complete 24-hour evaluation pass from the moment credentials are activated.",
+    description: "Stated 24-hour evaluation period; confirm the access start and end time with support.",
   },
   {
     metric: "$0 Free",
@@ -68,7 +68,7 @@ const quickFacts = [
   {
     metric: "2 Screens",
     label: "Simultaneous Streams",
-    description: "Stream concurrently on up to two devices within your household.",
+    description: "The service lists 2 simultaneous connections; confirm trial access for your setup with support.",
   },
   {
     metric: "Live & VOD",
@@ -92,21 +92,21 @@ const trialInclusions = [
   },
   {
     icon: Zap,
-    title: "HD & 4K Streaming Quality",
+    title: "Available Stream Quality",
     description:
       "Test the picture quality and stream resolution that matter to you (HD, Full HD, and 4K where available on native broadcast feeds).",
   },
   {
     icon: Calendar,
-    title: "Smart EPG TV Guide Included",
+    title: "EPG Guide Where Available",
     description:
-      "Check electronic program guide data where available to see how channel timelines and schedule listings populate in your player.",
+      "Check electronic program guide data where available; this page does not claim that EPG listings are populated for every trial.",
   },
   {
     icon: KeyRound,
-    title: "Xtream Codes API & M3U Link",
+    title: "Xtream Codes API & M3U Formats",
     description:
-      "Receive both standard IPTV delivery formats: Xtream Codes credentials (Server URL, Username, Password) and an M3U playlist URL for flexible player setup.",
+      "The documented setup formats are Xtream Codes credentials (Server URL, Username, Password) and an M3U playlist URL; confirm which details are issued for your trial.",
   },
   {
     icon: MessageCircle,
@@ -139,13 +139,13 @@ const trialWorkflowSteps = [
     number: "04",
     title: "Evaluate Streams for 24 Hours",
     description:
-      "Test channel zapping, live broadcasts during the times you normally watch (including busier periods), VOD titles, and EPG schedules across up to 2 simultaneous devices.",
+      "Test channel zapping, live broadcasts during the times you normally watch (including busier periods), VOD titles, and EPG schedules. If you need simultaneous-device testing, confirm the trial allowance with support.",
   },
   {
     number: "05",
     title: "Zero-Pressure Decision or Expiration",
     description:
-      "Access closes automatically after 24 hours with no recurring charges. If you decide to continue, support will provide the appropriate paid subscription credentials or renewal instructions.",
+      "The stated trial period is 24 hours. Confirm the access end time and any next steps with support; paid plans are selected separately and are prepaid without automatic renewal.",
   },
 ];
 
@@ -588,7 +588,7 @@ export default async function IptvFreeTrialPage() {
                   <span>Automatic Expiry</span>
                 </div>
                 <p className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
-                  Access closes automatically after 24 hours. With no credit card collected, there are zero recurring charges or cancellation steps.
+                  The stated trial period is 24 hours. Confirm the access end time with support; paid plans are selected separately and are prepaid without automatic renewal.
                 </p>
               </div>
 
@@ -650,7 +650,7 @@ export default async function IptvFreeTrialPage() {
                 </tr>
                 <tr>
                   <td className="py-3 px-6 font-semibold text-foreground">Simultaneous Streams</td>
-                  <td className="py-3 px-6">2 Connections</td>
+                  <td className="py-3 px-6">Confirm with support</td>
                   <td className="py-3 px-6">2 Connections Included</td>
                 </tr>
               </tbody>

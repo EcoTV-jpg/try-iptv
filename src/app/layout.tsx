@@ -139,6 +139,7 @@ export default function RootLayout({
       <body>
         <Script
           src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          strategy="lazyOnload"
           async
           defer
         />

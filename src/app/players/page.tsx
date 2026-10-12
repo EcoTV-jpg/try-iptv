@@ -13,7 +13,7 @@ import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } fr
 
 const title = "Best IPTV Players for 2026: Comparison & Setup Guides";
 const description =
-  "Comprehensive comparison and setup guides for the top IPTV players. Compare TiviMate, IPTV Smarters Pro, XCIPTV, Televizo, OTT Navigator, IPTV Extreme, and Perfect Player.";
+  "Compare IPTV players by device, M3U and Xtream Codes support, EPG features, and setup needs. Find the right app for Fire TV, Android TV, Apple, Smart TV, Windows, and Mac.";
 const canonical = "/players";
 
 export function generateMetadata(): Metadata {

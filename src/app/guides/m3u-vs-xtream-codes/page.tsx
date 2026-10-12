@@ -327,9 +327,9 @@ export default function M3uVsXtreamCodesPage() {
                 </li>
                 <li>
                   <strong>Older or Legacy Hardware:</strong> On legacy set-top boxes or low-memory streaming
-                  sticks, loading very large M3U files (containing 50,000+ lines) can cause significant interface
-                  lag during parsing. An API-based login that fetches only active categories often performs more
-                  responsively.
+                  sticks, very large playlists may be harder for a particular player to parse or navigate. The
+                  effect depends on playlist size, metadata, device resources, and the player&apos;s implementation;
+                  no repository benchmark establishes a universal line-count or responsiveness threshold.
                 </li>
               </ul>
 

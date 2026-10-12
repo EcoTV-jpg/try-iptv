@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Container } from "@/components/shared/Container";
 import { Schema } from "@/components/shared/Schema";
 import { Section } from "@/components/shared/Section";
+import { GuideScreenshot } from "@/components/guide";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
@@ -110,6 +111,14 @@ export default function TivimatePage() {
                 <li>Enter the provider-issued username and password exactly, checking for spaces and mistyped characters.</li>
                 <li>Continue, name the playlist, save it, and allow the channel list to load.</li>
               </ol>
+              <GuideScreenshot
+                src="/images/tivimate/xtream-codes-login.jpeg"
+                alt="TiviMate Xtream Codes login screen with separate server address, username, and password fields"
+                caption="TiviMate's Xtream Codes login form. Enter provider-issued values only in the app."
+                note="The supplied capture shows empty credential fields; no account data is displayed."
+                width={687}
+                height={390}
+              />
               <p className={textClass}>A provider website password may differ from the IPTV password. If the details work in one player but fail here, compare the exact server address and port used in both apps.</p>
             </section>
 
@@ -146,6 +155,14 @@ export default function TivimatePage() {
               <p className={textClass}>
                 Check the URL, source assignment, update status, and channel IDs before changing playback settings. Channels can work while EPG data fails independently. See the <Link href="/help/epg-not-working" className={linkClass}>EPG troubleshooting guide</Link> for missing or stale schedules.
               </p>
+              <GuideScreenshot
+                src="/images/tivimate/epg-tv-guide.webp"
+                alt="TiviMate electronic programme guide grid showing channel rows and schedule time slots"
+                caption="TiviMate's EPG grid view."
+                note="This supplied capture visibly shows several ‘No information’ entries, so it demonstrates the guide layout rather than verified schedule completeness."
+                width={640}
+                height={480}
+              />
             </section>
 
             <section>
@@ -163,6 +180,14 @@ export default function TivimatePage() {
               <p className={textClass}>
                 There is no single best TiviMate setting for every stream. Start with default playback settings, then change one control at a time for a specific problem. Use playlist and EPG update controls when channels or guide data are stale; use favorites and group organization to make navigation easier. TiviMate also lists personalization and parental controls among its app features.
               </p>
+              <GuideScreenshot
+                src="/images/tivimate/playlist-epg-settings.jpg"
+                alt="TiviMate playlist settings screen showing EPG sources and playlist options"
+                caption="TiviMate playlist settings with EPG source and playlist controls."
+                note="The supplied capture was taken in BlueStacks App Player; menu placement may differ by device and app version."
+                width={1280}
+                height={720}
+              />
               <p className={textClass}>
                 If only one channel fails, test another channel before altering playback. If every stream buffers, check the network and provider status first. A player setting cannot restore a provider outage or an expired account. The <Link href="/help/iptv-buffering" className={linkClass}>IPTV buffering guide</Link> helps separate network and source problems.
               </p>

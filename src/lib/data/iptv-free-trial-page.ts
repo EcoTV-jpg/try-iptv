@@ -27,7 +27,7 @@ export const trialFaqs = [
   {
     question: "Do I receive Xtream Codes or an M3U playlist URL?",
     answer:
-      "You receive both. Your trial details include your Xtream Codes API login (Server URL, Username, and Password) for supported IPTV apps, as well as an M3U playlist URL and XMLTV EPG guide link for players that accept those formats, such as VLC.",
+      "The documented setup formats are Xtream Codes API credentials (Server URL, Username, and Password) and an M3U playlist URL. Confirm which details and EPG information are issued for your trial with support.",
   },
   {
     question: "How quickly are trial credentials sent?",
@@ -37,7 +37,7 @@ export const trialFaqs = [
   {
     question: "Does the free trial automatically become a paid subscription?",
     answer:
-      "The trial request button opens WhatsApp, not a paid checkout. Paid plans are selected separately on the pricing page.",
+      "The trial request button opens WhatsApp, not a paid checkout. Paid plans are selected separately on the pricing page, and the paid plans are prepaid without automatic renewal. Confirm trial end-of-access details with support.",
   },
   {
     question: "What should I test during my 24-hour trial?",
@@ -47,7 +47,7 @@ export const trialFaqs = [
   {
     question: "What happens after the stated 24-hour trial period?",
     answer:
-      "The stated trial duration is 24 hours. If you are satisfied, you can choose a prepaid plan on our pricing page. Contact support to confirm your access end time or next steps.",
+      "The stated trial duration is 24 hours. Contact support to confirm your access end time or next steps, then choose a prepaid plan on the pricing page if you decide to continue.",
   },
 ];
 
@@ -66,7 +66,7 @@ export const getIptvFreeTrialPageData = cache(
       providerName: "TryIPTV",
       name: "24-Hour IPTV Free Trial",
       description:
-        "24-hour free trial of TryIPTV with full access to 24,000+ live channels, 80,000+ on-demand movies and series, 4K streams, and 2 simultaneous connections. No credit card required.",
+        "24-hour free trial of TryIPTV to evaluate available live TV and on-demand viewing on a compatible device. No credit card required.",
       offers: {
         "@type": "Offer",
         price: "0",

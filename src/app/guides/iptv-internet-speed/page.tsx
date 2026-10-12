@@ -298,8 +298,8 @@ export default function IptvInternetSpeedPage() {
 
               <h2>Wi-Fi vs. Ethernet: Why Connection Stability Outweighs Raw Speed</h2>
               <p>
-                Many users assume that if their Wi-Fi speed test reads 150 Mbps, playback will automatically be flawless. Yet in
-                real-world testing, a hardwired 30 Mbps Ethernet connection frequently outperforms a 200 Mbps Wi-Fi connection for live television.
+                Many users assume that if their Wi-Fi speed test reads 150 Mbps, playback will automatically be flawless. Yet a
+                wired connection can sometimes provide more consistent live playback than a faster Wi-Fi connection when interference or packet delay affects the wireless link. This is a diagnostic observation, not a benchmark or guarantee.
               </p>
               <div className="my-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="rounded-xl border border-white/[0.08] bg-[#0c100d] p-4 sm:p-5">
@@ -366,10 +366,10 @@ export default function IptvInternetSpeedPage() {
               </p>
               <ul>
                 <li>
-                  <strong className="text-foreground font-semibold">Latency (Ping):</strong> The time in milliseconds (ms) it takes for a data packet to travel from your device to the server and back. A latency under 50–70 ms is optimal, although video streaming can comfortably tolerate moderate static latency.
+                  <strong className="text-foreground font-semibold">Latency (Ping):</strong> The time in milliseconds (ms) it takes for a data packet to travel from your device to the server and back. Lower and more stable latency can help interactive playback, but there is no single universal IPTV cutoff: the route, server, player buffer, and stream design all matter.
                 </li>
                 <li>
-                  <strong className="text-foreground font-semibold">Jitter:</strong> The variance or instability in latency over time. A connection with a steady 45 ms ping streams smoothly, whereas a connection that bounces between 30 ms and 250 ms creates severe playback interruptions.
+                  <strong className="text-foreground font-semibold">Jitter:</strong> The variance or instability in latency over time. Look for recurring spikes or large swings rather than treating one fixed millisecond value as a universal pass/fail rule. A steady connection is generally easier for a player buffer to absorb than one with repeated delay variation.
                 </li>
                 <li>
                   <strong className="text-foreground font-semibold">Packet Loss:</strong> The percentage of data packets that are dropped in transit. Unlike web browsing, where dropped packets simply cause a brief delay, live video streams can stutter or freeze when lost packets must be recovered.

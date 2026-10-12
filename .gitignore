@@ -55,3 +55,7 @@ tryiptv.com-audit/
 
 # credentials & secrets
 credentials/
+
+# local agent & impeccable
+.agent/
+.impeccable/

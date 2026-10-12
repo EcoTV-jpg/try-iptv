@@ -50,7 +50,7 @@ export function WhyChooseTryIPTV() {
             </p>
           </div>
           <Button variant="outline" asChild className="self-start lg:self-auto rounded-xl h-10 px-5 text-sm font-semibold border-white/[0.12] bg-[#07080a] hover:bg-white/[0.05]">
-            <Link href="/iptv-free-trial" className="inline-flex items-center gap-2">
+            <Link href="/iptv-free-trial">
               <span>Test with a 24h Free Trial</span>
               <ArrowRight className="size-4 text-primary" />
             </Link>
