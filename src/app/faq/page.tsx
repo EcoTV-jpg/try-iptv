@@ -51,8 +51,8 @@ export default async function FaqPage() {
 
       <CTA
         title="Still Have Questions?"
-        subtitle="Our dedicated support team is available 24/7. Reach out via WhatsApp or submit a request directly."
-        eyebrow="Always here to help"
+        subtitle="Customer support is available via WhatsApp or direct request for account, setup, and service questions."
+        eyebrow="Customer Support"
         buttonText="Contact Support"
         buttonHref="/contact-us"
       />

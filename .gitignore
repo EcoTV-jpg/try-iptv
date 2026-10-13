@@ -56,6 +56,10 @@ tryiptv.com-audit/
 # credentials & secrets
 credentials/
 
+# local Search Console monitoring output
+/data/gsc-monitoring/
+/reports/gsc/
+
 # local agent & impeccable
 .agent/
 .impeccable/

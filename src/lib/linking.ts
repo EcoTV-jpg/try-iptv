@@ -16,7 +16,6 @@ export async function getAllPosts(): Promise<Post[]> {
     description: p.description,
     primaryKeyword: p.primaryKeyword,
     keywords: p.keywords,
-    datePublished: p.datePublished,
     dateModified: p.dateModified,
     totalTime: p.totalTime,
     steps: p.steps,

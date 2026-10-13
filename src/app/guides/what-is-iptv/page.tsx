@@ -14,7 +14,7 @@ const title = "What Is IPTV? A Clear Beginner's Guide";
 const description =
   "Learn what IPTV means, how internet-based TV differs from cable or satellite, and how playlists, players, EPG data, and devices fit together.";
 const canonical = "/guides/what-is-iptv";
-const publishedDate = "2026-10-01";
+const modifiedDate = "2026-10-06";
 
 export function generateMetadata(): Metadata {
   return {
@@ -32,8 +32,7 @@ export function generateMetadata(): Metadata {
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 

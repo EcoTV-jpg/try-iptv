@@ -24,7 +24,7 @@ const title = "What Is an M3U Playlist? Structure, Syntax, and IPTV Usage";
 const description =
   "A comprehensive technical guide to M3U and M3U8 playlists in IPTV: header syntax, #EXTINF tags, community metadata attributes, and file handling.";
 const canonical = "/guides/what-is-m3u";
-const publishedDate = "2026-10-04";
+const modifiedDate = "2026-10-11";
 
 /**
  * What Is M3U Guide
@@ -85,8 +85,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 

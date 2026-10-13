@@ -71,7 +71,7 @@ export default function DisclaimerPage() {
             <div className="space-y-3">
               <h2 className="font-headline text-xl sm:text-2xl font-bold text-foreground">3. Stream Availability & Broadcast Feeds</h2>
               <p>
-                Channel lineups, electronic program guides (EPG), and on-demand titles are subject to ongoing network availability and server updates. While TryIPTV maintains redundant infrastructure to minimize downtime, temporary maintenance windows or upstream broadcast alterations may occur without prior notice.
+                Channel lineups, electronic program guides (EPG), and on-demand titles are subject to ongoing network availability and server updates. Temporary maintenance windows or upstream broadcast alterations may occur without prior notice.
               </p>
             </div>
 

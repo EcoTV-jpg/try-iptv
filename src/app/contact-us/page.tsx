@@ -53,8 +53,8 @@ export default async function ContactPage() {
                             <Card>
                                 <CardHeader>
                                     <p className="eyebrow mb-1">Direct support</p>
-                                    <CardTitle as="h2" className="font-headline text-2xl font-extrabold">Instant Assistance</CardTitle>
-                                    <CardDescription>Connect directly with our support specialists for setup, billing, or technical help.</CardDescription>
+                                    <CardTitle as="h2" className="font-headline text-2xl font-extrabold">Customer Support</CardTitle>
+                                    <CardDescription>Contact our support team for setup, billing, or technical help.</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                     <a
@@ -73,13 +73,13 @@ export default async function ContactPage() {
                                                     <span className="h-1.5 w-1.5 rounded-full bg-primary" /> Online
                                                 </span>
                                             </div>
-                                            <p className="mt-1 text-xs text-muted-foreground">Fastest response time, typically under 5 minutes.</p>
+                                            <p className="mt-1 text-xs text-muted-foreground">Contact us with your account, setup, or service question.</p>
                                         </div>
                                     </a>
 
                                     <div
                                         dangerouslySetInnerHTML={{
-                                            __html: `<!--email_off--><a href="mailto:support@tryiptv.com" class="group flex items-start gap-4 rounded-lg border border-white/[0.08] bg-[#101512] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.05]"><div class="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div class="flex-1"><p class="text-sm font-extrabold text-foreground group-hover:text-primary">Email Support</p><p class="mt-1 text-xs text-muted-foreground">support@tryiptv.com • Checked around the clock.</p></div></a><!--/email_off-->`,
+                                            __html: `<!--email_off--><a href="mailto:support@tryiptv.com" class="group flex items-start gap-4 rounded-lg border border-white/[0.08] bg-[#101512] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.05]"><div class="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-primary/20 bg-primary/[0.06] text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div class="flex-1"><p class="text-sm font-extrabold text-foreground group-hover:text-primary">Email Support</p><p class="mt-1 text-xs text-muted-foreground">support@tryiptv.com • Contact us with your question.</p></div></a><!--/email_off-->`,
                                         }}
                                     />
                                 </CardContent>
@@ -88,7 +88,7 @@ export default async function ContactPage() {
                             <div className="rounded-lg border border-white/[0.09] bg-[#070a08] p-6 space-y-4">
                                 <div className="flex items-center gap-3 text-xs font-semibold text-muted-foreground">
                                     <Clock className="h-4 w-4 text-primary" />
-                                    <span>24/7 / 365 Days Availability</span>
+                                    <span>Support for account, setup, and service questions</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-xs font-semibold text-muted-foreground">
                                     <ShieldCheck className="h-4 w-4 text-primary" />

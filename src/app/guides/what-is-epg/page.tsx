@@ -37,7 +37,7 @@ const title = "What Is an EPG? How IPTV TV Guides Work";
 const description =
   "A clear guide to Electronic Programme Guides (EPG) in IPTV: how TV guide data works, XMLTV and provider ingestion, channel matching, and time offsets.";
 const canonical = "/guides/what-is-epg";
-const publishedDate = "2026-10-05";
+const modifiedDate = "2026-10-06";
 
 /**
  * What Is EPG Guide
@@ -98,8 +98,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -466,9 +465,8 @@ export default function WhatIsEpgPage() {
                 Consistent Guide Integration with TryIPTV
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                TryIPTV provides synchronized EPG metadata across our linear channel lineup. Whether you
-                connect via Xtream-compatible credentials in TiviMate or an Extended M3U playlist with an
-                external XMLTV URL, our schedules are aligned for fast loading and accurate time display.
+                EPG data may be available through Xtream-compatible credentials in TiviMate or an Extended M3U
+                playlist with an external XMLTV URL; loading and time display depend on the source and player.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button asChild size="sm" variant="outline">

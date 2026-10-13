@@ -40,7 +40,7 @@ const title = "M3U Playlist Not Loading? How to Diagnose and Fix It";
 const description =
   "A systematic troubleshooting guide to diagnose M3U playlist loading errors, verify URL syntax and encoding, identify parser crashes, and restore access.";
 const canonical = "/help/m3u-not-loading";
-const publishedDate = "2026-10-05";
+const modifiedDate = "2026-10-05";
 
 /**
  * M3U Not Loading Troubleshooting Guide
@@ -91,8 +91,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -367,13 +366,12 @@ export default function M3uNotLoadingPage() {
             {/* Contextual TryIPTV Note */}
             <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
-                Reliable Playlist Delivery
+                Playlist Delivery with TryIPTV
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 Before altering your player settings or device configurations, verify that your playlist URL
-                is complete and active. TryIPTV provides clean, verified M3U and M3U8 links alongside
-                Xtream-compatible logins, and our support team can verify your playlist status if you encounter
-                loading issues.
+                is complete and active. TryIPTV provides M3U and M3U8 links alongside Xtream-compatible logins,
+                and our support team can help with playlist loading issues.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button asChild size="sm" variant="outline">
@@ -383,6 +381,9 @@ export default function M3uNotLoadingPage() {
                 </Button>
                 <Button asChild size="sm" variant="ghost">
                   <Link href="/guides/m3u-vs-xtream-codes">Compare M3U vs Xtream Codes</Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/help">Back to Help Directory</Link>
                 </Button>
               </div>
             </div>

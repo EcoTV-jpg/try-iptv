@@ -5,8 +5,8 @@ export const pageData = {
             description: "Stream in High Definition and 4K resolution where available"
         },
         {
-            title: "24/7 Support",
-            description: "Round-the-clock customer support whenever you need assistance"
+            title: "Customer Support",
+            description: "Help with account, setup, and service questions"
         },
         {
             title: "25,000+ Live Channels Worldwide",

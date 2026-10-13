@@ -40,7 +40,7 @@ const title = "EPG Not Working? How to Fix Missing or Incorrect IPTV Guide Data"
 const description =
   "A systematic diagnostic guide to resolve IPTV EPG errors: missing guide data, 'No Information' messages, wrong broadcast times, and channel mapping mismatches.";
 const canonical = "/help/epg-not-working";
-const publishedDate = "2026-10-05";
+const modifiedDate = "2026-10-06";
 
 /**
  * EPG Not Working Troubleshooting Guide
@@ -96,8 +96,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -452,12 +451,11 @@ export default function EpgNotWorkingPage() {
             {/* Contextual TryIPTV Note */}
             <div className="mt-12 sm:mt-14 mb-0 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
               <h3 className="text-lg font-bold text-foreground">
-                Reliable Guide Data with TryIPTV
+                Guide Data with TryIPTV
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Tired of empty &quot;No Information&quot; bars and shifted program hours? TryIPTV provides
-                meticulously maintained EPG feeds with synchronized UTC timestamps, comprehensive channel ID
-                matching, and fast XMLTV endpoints across all supported applications.
+                Tired of empty &quot;No Information&quot; bars and shifted program hours? EPG data may be available
+                through supported player integrations and XMLTV-compatible endpoints where supported.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button asChild size="sm" variant="outline">
@@ -467,6 +465,9 @@ export default function EpgNotWorkingPage() {
                 </Button>
                 <Button asChild size="sm" variant="ghost">
                   <Link href="/pricing">View Subscription Plans</Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/help">Back to Help Directory</Link>
                 </Button>
               </div>
             </div>

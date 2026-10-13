@@ -106,10 +106,10 @@ export default function DevicesPage() {
             <div className="absolute inset-x-0 top-0 h-1 bg-primary sm:inset-y-0 sm:left-0 sm:h-full sm:w-1" />
             <p className="eyebrow mb-2">Ready to Stream</p>
             <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground">
-              Ready to Start Watching on Any Device?
+              Ready to Start Watching on a Compatible Device?
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm sm:text-base leading-6 text-muted-foreground">
-              Get access to 25,000+ live channels worldwide and 120,000+ movies and TV shows with 2 simultaneous connections on all your devices.
+              Get access to 25,000+ live channels worldwide and 120,000+ movies and TV shows with 2 simultaneous connections on compatible devices and supported player apps.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Button asChild size="lg">

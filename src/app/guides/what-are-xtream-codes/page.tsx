@@ -28,7 +28,7 @@ const title = "What Are Xtream Codes? The IPTV API Login Format Explained";
 const description =
   "A clear guide explaining what Xtream Codes credentials are, how the API-based login format works in IPTV players, and essential security considerations.";
 const canonical = "/guides/what-are-xtream-codes";
-const publishedDate = "2026-10-04";
+const modifiedDate = "2026-10-06";
 
 /**
  * What Are Xtream Codes Guide
@@ -84,8 +84,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 

@@ -33,7 +33,7 @@ const title = "How Does IPTV Work? From Server to Screen | TryIPTV";
 const description =
   "Learn how IPTV works, from servers and internet delivery to IPTV players, M3U playlists, Xtream Codes, EPG, live TV and on-demand streaming.";
 const canonical = "/guides/how-does-iptv-work";
-const publishedDate = "2026-10-06";
+const modifiedDate = "2026-10-06";
 
 export function generateMetadata(): Metadata {
   return {
@@ -142,8 +142,7 @@ const faqs: FaqItem[] = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -481,7 +480,7 @@ export default function HowDoesIptvWorkPage() {
                   <Link href="/guides/iptv-internet-speed" className="text-primary hover:underline">
                     IPTV internet speed requirements
                   </Link>
-                  . A wired Ethernet cable is always preferred over Wi-Fi when possible.
+                  . A wired Ethernet cable is often preferred over Wi-Fi when possible.
                 </li>
                 <li>
                   <strong>A Compatible Device:</strong> Amazon Fire TV Stick, Android TV box, Smart TV (Samsung or LG), Apple TV, Windows PC,

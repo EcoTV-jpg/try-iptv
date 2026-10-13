@@ -42,7 +42,7 @@ const title = "IPTV Not Working? Start With This Troubleshooting Checklist";
 const description =
   "A master troubleshooting checklist to isolate why your IPTV is not working: authentication errors, playlist failures, buffering streams, blank guides, or app crashes.";
 const canonical = "/help/iptv-not-working";
-const publishedDate = "2026-10-05";
+const modifiedDate = "2026-10-05";
 
 /**
  * IPTV Not Working Master Troubleshooting Router
@@ -91,15 +91,14 @@ const faqs = [
   {
     question: "What details should I provide when contacting IPTV customer support?",
     answer:
-      "To receive fast, accurate assistance, provide your device model, the exact name and version of your player app, the connection format used (Xtream Codes API or M3U), the specific error message displayed, and whether you tested the service on an alternate device or network. Never post or share your account password in support tickets or public forums.",
+      "To receive accurate assistance, provide your device model, the exact name and version of your player app, the connection format used (Xtream Codes API or M3U), the specific error message displayed, and whether you tested the service on an alternate device or network. Never post or share your account password in support tickets or public forums.",
   },
 ];
 
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -547,9 +546,8 @@ export default function IptvNotWorkingPage() {
                 Dependable Streaming Architecture with TryIPTV
               </h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                Experiencing persistent downtime or unreliable connections? TryIPTV is built on redundant server
-                clusters designed to minimize stream dropouts, provide fast playlist synchronization, and deliver
-                responsive technical support. Test our infrastructure with a free trial.
+                Experiencing persistent downtime or unreliable connections? Use the free trial to test playback
+                on your own devices and networks.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button asChild size="sm" variant="outline">
@@ -559,6 +557,9 @@ export default function IptvNotWorkingPage() {
                 </Button>
                 <Button asChild size="sm" variant="ghost">
                   <Link href="/pricing">View Subscription Plans</Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/help">Back to Help Directory</Link>
                 </Button>
               </div>
             </div>

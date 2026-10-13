@@ -11,7 +11,6 @@ const title = "Televizo IPTV Player Setup Guide: M3U & Xtream Codes";
 const description =
   "Set up Televizo with an M3U playlist or Xtream Codes, add EPG, and troubleshoot playlist, login, and playback problems.";
 const canonical = "/players/televizo";
-const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
   return {
@@ -23,7 +22,6 @@ export function generateMetadata(): Metadata {
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
   dateModified: "2026-10-08",
   url: `${SITE_URL}${canonical}`,
 });

@@ -29,9 +29,9 @@ import { FaqList, type FaqItem } from "@/components/sections/FAQ";
 import { generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "How to Set Up IPTV: Device & Player Setup Guide | TryIPTV";
+const title = "IPTV Setup Hub: From Credentials to Your Device | TryIPTV";
 const description =
-  "Step-by-step universal IPTV setup guide. Learn how to configure your subscription using Xtream Codes API or M3U playlists on Firestick, Android TV, Smart TVs, Apple TV, PC, and mobile.";
+  "Start with your TryIPTV credentials, choose a compatible device and player, and follow the correct setup path for Firestick, Android TV, Smart TVs, Apple TV, PC, or mobile.";
 const canonical = "/setup";
 
 export function generateMetadata(): Metadata {
@@ -248,7 +248,7 @@ const setupFaqs: FaqItem[] = [
   {
     question: "Should I set up using Xtream Codes API or M3U playlist?",
     answer:
-      "We recommend using Xtream Codes API whenever your player application supports it. Xtream Codes separates your login into Server URL, Username, and Password, which loads channels faster, automatically organizes Live TV, Movies, and Series into clean categories, and syncs the EPG guide automatically. M3U playlist URLs are an excellent universal alternative for software like VLC or older media players that lack API support.",
+      "We recommend using Xtream Codes API whenever your player application supports it. Xtream Codes separates your login into Server URL, Username, and Password, automatically organizes Live TV, Movies, and Series into clean categories, and can sync the EPG guide. M3U playlist URLs are an alternative for software like VLC or older media players that lack API support.",
   },
   {
     question: "Can I set up IPTV directly on a Smart TV without an external stick?",
@@ -261,19 +261,9 @@ const setupFaqs: FaqItem[] = [
       "Yes. You can install your subscription credentials on as many devices as you like (such as your living room TV, bedroom TV, computer, and mobile phone). Every TryIPTV subscription includes 2 simultaneous connections, allowing two devices to stream concurrently at the exact same time.",
   },
   {
-    question: "Why does my player show an 'Authorization Failed' or 'Invalid Details' error?",
-    answer:
-      "Authentication errors are almost always caused by a minor typographical mistake in the Server URL, Username, or Password. Double-check for accidental trailing spaces, verify uppercase vs. lowercase characters, and ensure your device has an active internet connection. If the issue continues, consult our login troubleshooting guide.",
-  },
-  {
     question: "How long does it take to activate and configure my subscription?",
     answer:
       "Credentials are automatically prepared and typically delivered within 5–15 minutes following order or trial confirmation. Once you receive your credentials, entering your Server URL, Username, and Password into your player completes the initial connection.",
-  },
-  {
-    question: "Does TryIPTV lock me into a recurring contract?",
-    answer:
-      "No. All TryIPTV plans are 100% prepaid with flat, one-time pricing for 1, 3, 6, or 12 months. There is no automatic renewal, recurring billing, or hidden charges. When your period ends, you decide whether to extend your service.",
   },
 ];
 
@@ -300,8 +290,8 @@ export default function SetupPage() {
           <SectionHeader
             as="h1"
             eyebrow="Universal Installation Directory"
-            title="How to Set Up IPTV on Your Device"
-            subtitle="The complete guide to activating your IPTV subscription. Select your hardware, choose a compatible player application, and connect using your Xtream Codes API or M3U playlist credentials."
+            title="Start Here: Set Up Your IPTV Service"
+            subtitle="Use this onboarding path to go from your TryIPTV credentials to the right device and player setup. Choose your hardware, select a compatible app, and follow the linked platform guide."
           />
         </Container>
       </Section>

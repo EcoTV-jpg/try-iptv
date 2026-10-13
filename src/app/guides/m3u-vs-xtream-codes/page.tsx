@@ -22,7 +22,7 @@ const title = "M3U vs Xtream Codes: What's the Difference?";
 const description =
   "A neutral comparison between M3U playlists and Xtream-compatible API logins for IPTV: data delivery models, content organization, player support, and practical trade-offs.";
 const canonical = "/guides/m3u-vs-xtream-codes";
-const publishedDate = "2026-10-05";
+const modifiedDate = "2026-10-12";
 
 /**
  * M3U vs Xtream Codes Comparison Guide
@@ -121,8 +121,7 @@ const comparisonRows = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 

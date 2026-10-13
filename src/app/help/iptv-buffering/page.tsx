@@ -38,7 +38,7 @@ const title = "How to Troubleshoot and Fix IPTV Buffering: Practical Diagnostic 
 const description =
   "A systematic troubleshooting guide to diagnose IPTV buffering, distinguish network starvation from decoder stutter, and stabilize your playback setup.";
 const canonical = "/help/iptv-buffering";
-const publishedDate = "2026-10-04";
+const modifiedDate = "2026-10-11";
 
 /**
  * IPTV Buffering Troubleshooting Guide
@@ -89,8 +89,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 
@@ -458,6 +457,9 @@ export default function IptvBufferingPage() {
                 </Button>
                 <Button asChild size="sm" variant="ghost">
                   <Link href="/help/iptv-not-working">View General Help Triage</Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/help">Back to Help Directory</Link>
                 </Button>
               </div>
             </div>

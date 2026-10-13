@@ -11,7 +11,6 @@ const title = "XCIPTV Player: App Availability, Setup & Features";
 const description =
   "Learn where XCIPTV Player by OTTRUN is available, how to connect with Xtream Codes or M3U, and how its ExoPlayer and VLC playback engines work.";
 const canonical = "/players/xciptv";
-const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
   return {
@@ -23,7 +22,6 @@ export function generateMetadata(): Metadata {
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
   dateModified: "2026-10-11",
   url: `${SITE_URL}${canonical}`,
 });

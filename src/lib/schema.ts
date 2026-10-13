@@ -124,7 +124,6 @@ interface ArticleSchemaProps {
     headline: string;
     description: string;
     image?: string;
-    datePublished: string;
     dateModified: string;
     authorName?: string;
     publisherName?: string;
@@ -138,7 +137,6 @@ export function generateArticleSchema(props: ArticleSchemaProps): WithContext<Ar
         headline: props.headline,
         description: props.description,
         image: props.image,
-        datePublished: props.datePublished,
         dateModified: props.dateModified,
         author: organizationReference,
         publisher: defaultPublisher,

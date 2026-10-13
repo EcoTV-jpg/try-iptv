@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
           {title}
         </p>
         <p style={{ fontSize: 24, color: '#A0A0A0', marginTop: '20px' }}>
-          The world&apos;s most reliable streaming service.
+          IPTV streaming for compatible devices and supported player apps.
         </p>
       </div>
     ),

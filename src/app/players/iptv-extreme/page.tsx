@@ -16,7 +16,7 @@ export function generateMetadata(): Metadata {
 }
 
 const articleSchema = generateArticleSchema({
-  headline: title, description, datePublished: "2026-10-04", dateModified: "2026-10-08", url: `${SITE_URL}${canonical}`,
+  headline: title, description, dateModified: "2026-10-08", url: `${SITE_URL}${canonical}`,
 });
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", item: `${SITE_URL}/` },

@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/accordion";
 import { BlurFade } from "@/components/velora/blur-fade";
 import { SpotlightCard } from "@/components/velora/spotlight-card";
-import { faqs } from "@/lib/site-data/faq";
 import { Container } from "../shared/Container";
 import { Section } from "../shared/Section";
 import { cn } from "@/lib/utils";
@@ -52,6 +51,29 @@ const CONTACTS = [
     detail: "Step-by-step device tutorials",
     href: "/setup",
     isExternal: false,
+  },
+];
+
+const homepageFaqs: FaqItem[] = [
+  {
+    question: "Does TryIPTV offer a free trial?",
+    answer:
+      'Yes. TryIPTV offers a 24-hour free trial at $0 so you can test the service before choosing a plan. <a href="/iptv-free-trial" class="text-primary hover:underline">Request trial access</a>.',
+  },
+  {
+    question: "Which devices can I use?",
+    answer:
+      'TryIPTV works with compatible Smart TVs, streaming devices, computers, phones, and IPTV player apps. <a href="/devices" class="text-primary hover:underline">Browse device setup guides</a>.',
+  },
+  {
+    question: "How do I set up TryIPTV?",
+    answer:
+      'Install a compatible player, then enter the account details or M3U playlist URL provided after confirmation. <a href="/setup" class="text-primary hover:underline">View the setup guide</a>.',
+  },
+  {
+    question: "How many simultaneous connections are included?",
+    answer:
+      "Every standard TryIPTV subscription includes 2 simultaneous connections.",
   },
 ];
 
@@ -158,7 +180,7 @@ export function FAQ() {
               defaultValue={["item-0"]}
               className="border-t border-white/[0.07]"
             >
-              {faqs.map((faq, i) => (
+              {homepageFaqs.map((faq, i) => (
                 <AccordionItem
                   key={faq.question}
                   value={`item-${i}`}

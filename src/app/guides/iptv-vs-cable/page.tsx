@@ -36,7 +36,7 @@ const title = "IPTV vs Cable: What's the Difference? | TryIPTV";
 const description =
   "Compare IPTV and cable TV across cost, setup, devices, internet dependence, reliability, flexibility, and on-demand access to see which model fits you better.";
 const canonical = "/guides/iptv-vs-cable";
-const publishedDate = "2026-10-06";
+const modifiedDate = "2026-10-06";
 
 export function generateMetadata(): Metadata {
   return {
@@ -168,8 +168,7 @@ const faqs: FaqItem[] = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
-  dateModified: publishedDate,
+  dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
 

@@ -11,7 +11,6 @@ const title = "IPTV Smarters Pro & Lite: App Setup Guide";
 const description =
   "Learn how to set up IPTV Smarters Pro and Smarters Player Lite with Xtream Codes or M3U across Apple, Android, Fire TV, Windows, and supported TVs.";
 const canonical = "/players/iptv-smarters";
-const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
   return {
@@ -23,7 +22,6 @@ export function generateMetadata(): Metadata {
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
   dateModified: "2026-10-11",
   url: `${SITE_URL}${canonical}`,
 });

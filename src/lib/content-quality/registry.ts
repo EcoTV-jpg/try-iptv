@@ -267,7 +267,7 @@ const editorialOverrides: Record<string, Partial<Omit<ContentQualityEntry, 'url'
       commonTrustSignals: [
         'Uptime and server stability commitments',
         'Transparent prepaid pricing without recurring auto-renewal',
-        'Responsive customer support channels (e.g. 24/7 WhatsApp, email)',
+        'Responsive customer support channels (e.g. WhatsApp and email)',
         'Documented refund terms and trial periods',
       ],
       commonCommercialElements: [

@@ -11,7 +11,6 @@ const title = "OTT Navigator IPTV Setup Guide: M3U, Xtream Codes & Fixes";
 const description =
   "Set up OTT Navigator with M3U or Xtream Codes, check EPG and connection limits, and diagnose 401, 403, playlist, and playback problems.";
 const canonical = "/players/ott-navigator";
-const publishedDate = "2026-10-04";
 
 export function generateMetadata(): Metadata {
   return {
@@ -23,7 +22,6 @@ export function generateMetadata(): Metadata {
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
-  datePublished: publishedDate,
   dateModified: "2026-10-08",
   url: `${SITE_URL}${canonical}`,
 });

@@ -63,14 +63,13 @@ async function getArticleData(deviceId: string): Promise<ArticleType | undefined
 
 function StructuredData({ article }: { article: ArticleType }) {
     if (!article) return null;
-    const { id, title, description, steps, faqs, image, datePublished, dateModified, totalTime } = article;
+    const { id, title, description, steps, faqs, image, dateModified, totalTime } = article;
     const baseUrl = siteConfig.url;
 
     const articleSchema = generateArticleSchema({
         headline: title,
         description,
         image: image?.imageUrl,
-        datePublished,
         dateModified,
         url: `${baseUrl}/devices/${id}`,
     });
@@ -470,7 +469,7 @@ const DEVICE_REQUIREMENTS: Record<string, RequirementItem[]> = {
     },
     {
       title: "TryIPTV Xtream or M3U Data",
-      desc: "Xtream Codes API details or M3U playlist URL for instant channel synchronization.",
+      desc: "Xtream Codes API details or M3U playlist URL for channel synchronization.",
       icon: KeyRound,
       tag: "Service",
     },

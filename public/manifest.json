@@ -1,7 +1,7 @@
 {
   "name": "TryIPTV",
   "short_name": "TryIPTV",
-  "description": "Subscribe to TryIPTV with 25,000+ live channels worldwide & 120,000+ movies and TV shows. 4K Ultra HD quality, 5-15 min activation & 24/7 TryIPTV Support.",
+  "description": "Subscribe to TryIPTV with 25,000+ live channels worldwide & 120,000+ movies and TV shows. 4K Ultra HD quality, 5-15 min activation & customer support.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

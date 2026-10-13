@@ -13,7 +13,7 @@ const features = [
     { 
         icon: Tv, 
         title: "Smooth Streaming",
-        description: "Optimized streaming infrastructure designed for consistent playback across live sports, news channels, and video on demand."
+        description: "Streaming infrastructure for playback across live sports, news channels, and video on demand."
     },
     { 
         icon: Film, 
@@ -23,7 +23,7 @@ const features = [
     { 
         icon: Calendar, 
         title: "Smart EPG TV Guide",
-        description: "Electronic Program Guide listings included so you can always check current and upcoming programming."
+        description: "Electronic Program Guide listings included so you can check current and upcoming programming where supported."
     },
     { 
         icon: Shield, 
@@ -32,8 +32,8 @@ const features = [
     },
     { 
         icon: MessageCircle, 
-        title: "24/7 Customer Support",
-        description: "Technical assistance available whenever you need help configuring your playlist or player app via WhatsApp and email."
+        title: "Customer Support",
+        description: "Help with account, setup, and service questions via WhatsApp and email."
     },
 ];
 
@@ -44,7 +44,7 @@ export function SubscriptionFeatures() {
             <SectionHeader
               eyebrow="Streaming Features"
               title="Everything You Need to Stream"
-              subtitle="Built for smooth everyday viewing: reliable infrastructure, simple setup, and crystal-clear picture quality."
+              subtitle="Built for everyday viewing: simple setup and picture quality where available."
             />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {features.map((feature, i) => (

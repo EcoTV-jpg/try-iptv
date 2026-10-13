@@ -72,7 +72,7 @@ const INCLUDED_FEATURES = [
   "25,000+ Live Channels Worldwide",
   "120,000+ Movies & TV Shows",
   "Premium PPV Events Included",
-  "Instant VOD Access",
+  "VOD Access",
   "Smart EPG & Catch-Up TV",
   "Customer Support",
   "Multi-Device Compatibility",
