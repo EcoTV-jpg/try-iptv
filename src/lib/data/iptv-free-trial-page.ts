@@ -5,49 +5,54 @@ import { siteConfig } from '@/lib/site-config';
 
 export const trialFaqs = [
   {
-    question: "Is the TryIPTV trial really free?",
+    question: "How long does the TryIPTV free trial last?",
     answer:
-      "The trial is listed at $0 for 24 hours, with no credit card required. Use it to check stream stability and channel selection before deciding whether to purchase a plan.",
+      "The free trial provides 24-hour access at $0 so you can test the service before choosing a paid plan.",
   },
   {
     question: "Do I need a credit card to start the trial?",
     answer:
-      "The stated trial offer requires no credit card. Use the WhatsApp trial request button and include your device type; the button does not open a checkout.",
+      "No. Request the trial through WhatsApp; the request does not open a paid checkout and no credit card is required.",
   },
   {
-    question: "How long does the IPTV free trial last?",
+    question: "How quickly do trial credentials arrive?",
     answer:
-      "The stated trial duration is 24 hours. Contact support if you need to confirm the start or end time for your access.",
+      "Credentials typically arrive within 5–15 minutes after confirmation. Actual delivery time can vary.",
   },
   {
-    question: "Which devices and player apps can I use during the trial?",
+    question: "What is included in the free trial?",
     answer:
-      "Our setup guides cover Fire TV, Android TV, Apple TV, Windows, macOS, Samsung and LG Smart TVs, and other listed platforms. Check the guide for your device and test your chosen player during the trial.",
+      "You can test the available live TV and on-demand service, picture quality where available, EPG data, Xtream Codes or M3U access, and the supported device or player you plan to use.",
   },
   {
-    question: "Do I receive Xtream Codes or an M3U playlist URL?",
+    question: "Can I use the trial on two devices?",
     answer:
-      "The documented setup formats are Xtream Codes API credentials (Server URL, Username, and Password) and an M3U playlist URL. Confirm which details and EPG information are issued for your trial with support.",
+      "The service lists 2 simultaneous connections. Confirm the trial allowance for your specific setup with support.",
   },
   {
-    question: "How quickly are trial credentials sent?",
+    question: "Which devices work with the trial?",
     answer:
-      "The stated estimate is 5–15 minutes after trial confirmation. Actual delivery time may vary.",
+      "Use the device and player guides linked on this page for Fire TV, Android TV, Smart TVs, Apple TV, Chromecast, Roku, MAG, Windows, and Mac.",
   },
   {
-    question: "Does the free trial automatically become a paid subscription?",
+    question: "Do I receive Xtream Codes or M3U?",
     answer:
-      "The trial request button opens WhatsApp, not a paid checkout. Paid plans are selected separately on the pricing page, and the paid plans are prepaid without automatic renewal. Confirm trial end-of-access details with support.",
+      "The documented formats are Xtream Codes API credentials (server URL, username, and password) and an M3U playlist URL. Confirm which details are issued for your trial.",
   },
   {
     question: "What should I test during my 24-hour trial?",
     answer:
-      "We recommend testing on your main viewing screen during peak evening hours (7–11 PM). Check channel zapping speed on your must-have sports and local feeds, verify audio and video sync, test VOD playback, and ensure the EPG guide populates correctly.",
+      "Test your main device during normal viewing hours. Check must-have channels, channel switching, audio/video sync, VOD playback, and EPG loading.",
   },
   {
-    question: "What happens after the stated 24-hour trial period?",
+    question: "Does the free trial automatically renew?",
     answer:
-      "The stated trial duration is 24 hours. Contact support to confirm your access end time or next steps, then choose a prepaid plan on the pricing page if you decide to continue.",
+      "No. The trial does not automatically become a paid subscription. If you want to continue, choose a prepaid plan separately on the pricing page.",
+  },
+  {
+    question: "How much does TryIPTV cost after the trial?",
+    answer:
+      "Paid plans are prepaid and start at $16 for 1 month, with 3-, 6-, and 12-month options. See the pricing page for the current comparison.",
   },
 ];
 
