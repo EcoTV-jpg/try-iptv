@@ -132,17 +132,6 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'tryiptv\\.com',
-          },
-        ],
-        destination: 'https://www.tryiptv.com/:path*',
-        permanent: true,
-      },
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
             value: '(?:www\\.)?iptvprovider\\.me',
           },
         ],
