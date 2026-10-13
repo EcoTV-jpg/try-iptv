@@ -12,7 +12,7 @@ import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 const freeTrialWhatsAppUrl =
-  "https://wa.me/447848197761?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
+  "https://wa.me/15205648298?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
   const title = "24-Hour IPTV Free Trial — Test TryIPTV with No Credit Card";

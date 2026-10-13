@@ -31,7 +31,7 @@ export const siteConfig = {
   description: "TryIPTV is a premier prepaid IPTV service featuring 25,000+ live channels worldwide, sports, and 120,000+ movies and TV shows in 4K Ultra HD across compatible devices and supported player apps. Plans start at $16 with a 24-hour free trial available.",
   links: {
     email: "support@tryiptv.com",
-    whatsapp: "+447848197761",
+    whatsapp: "+15205648298",
   },
 } as const;
 

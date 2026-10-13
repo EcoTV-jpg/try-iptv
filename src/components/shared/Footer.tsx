@@ -111,7 +111,7 @@ export function Footer() {
                 }}
               />
               <a
-                href="https://wa.me/447848197761"
+                href="https://wa.me/15205648298"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group/wa inline-flex items-center gap-2 font-medium text-muted-foreground/90 transition-colors hover:text-primary"

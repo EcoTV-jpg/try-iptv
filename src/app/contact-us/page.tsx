@@ -58,7 +58,7 @@ export default async function ContactPage() {
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                     <a
-                                        href="https://wa.me/447848197761"
+                                        href="https://wa.me/15205648298"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="group flex items-start gap-4 rounded-lg border border-white/[0.08] bg-[#101512] p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/[0.05]"
