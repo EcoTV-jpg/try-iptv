@@ -24,7 +24,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-              Prepaid Streaming • 2 Connections Included
+              Best IPTV Streaming • 2 Connections Included
             </div>
 
             <h1 className="mt-4 font-headline text-[32px] sm:text-[42px] lg:text-[48px] font-bold leading-[1.1] tracking-tight text-foreground">
@@ -32,7 +32,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 max-w-xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground/90">
-              Replace bloated cable bills and fragmented streaming apps with one simple prepaid service. Access international live channels, major sports events, and on-demand entertainment with fast activation and zero contracts.
+              TryIPTV provides prepaid access to 25,000+ live channels and 120,000+ movies and TV shows across supported streaming devices. Every plan includes 2 simultaneous connections, with no automatic renewal.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -49,7 +49,7 @@ export function Hero() {
             </div>
 
             <p className="mt-3 text-[11px] font-medium tracking-wide text-muted-foreground/65">
-              2 simultaneous connections • Flat prepaid pricing • No auto-renewal
+              Plans from $16 • 24-hour free trial • No auto-renewal
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export function Hero() {
                 120,000+
               </span>
               <span className="mt-0.5 text-[12px] sm:text-[12.5px] font-medium text-muted-foreground/85">
-                Movies &amp; Series
+                Movies &amp; TV Shows
               </span>
             </div>
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 py-1 sm:py-0">
@@ -100,10 +100,10 @@ export function Hero() {
             </div>
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 py-1 sm:py-0">
               <span className="font-headline text-xl sm:text-[22px] font-bold tracking-tight text-foreground">
-                HD &amp; 4K
+                From $16
               </span>
               <span className="mt-0.5 text-[12px] sm:text-[12.5px] font-medium text-muted-foreground/85">
-                Stream Quality
+                Starting Price
               </span>
             </div>
           </div>

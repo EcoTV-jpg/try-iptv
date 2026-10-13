@@ -1,8 +1,8 @@
 import { unstable_cache as cache } from 'next/cache';
 import { plans } from "@/lib/site-data/pricing";
 import { pricingPageFaqs } from "@/lib/site-data/pricing-page-faq";
-import { generateProductSchema, generateBreadcrumbSchema, generateFAQPageSchema, organizationId } from "@/lib/schema";
-import type { Product, BreadcrumbList, FAQPage } from 'schema-dts';
+import { generateProductSchema, generateBreadcrumbSchema, organizationId } from "@/lib/schema";
+import type { Product, BreadcrumbList } from 'schema-dts';
 import { siteConfig } from '../site-config';
 
 // This function fetches and processes all data required for the pricing page in a single, cached operation.
@@ -43,12 +43,9 @@ export const getPricingPageData = cache(
         { name: "Pricing", item: `${baseUrl}/pricing` }
     ]);
     
-    const faqSchema: FAQPage = generateFAQPageSchema(pricingPageFaqs);
-
     return { 
       productSchema,
       breadcrumbSchema,
-      faqSchema,
       pricingPageFaqs,
     };
   },

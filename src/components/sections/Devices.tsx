@@ -33,8 +33,8 @@ export function Devices() {
     <Section id="devices" className="border-y border-white/[0.06] bg-[#070a08] py-12 sm:py-14 lg:py-16">
       <Container>
         <SectionHeader
-          title="One IPTV Subscription. All Your Favorite Devices."
-          subtitle="Stream TryIPTV across your preferred hardware. Compatible with leading IPTV player applications on Fire TV, Android TV, Apple TV, mobile devices, PC, and Smart TVs with step-by-step setup guides."
+          title="Watch on Your Preferred Devices"
+          subtitle="TryIPTV works across supported TVs, streaming devices, computers, and IPTV players. Detailed installation steps live in the device guides."
           eyebrow="Device Compatibility"
           className="mb-0 max-w-3xl"
         />
@@ -58,7 +58,7 @@ export function Devices() {
 
           <Marquee
             pauseOnHover
-            repeat={4}
+            repeat={2}
             role="list"
             aria-label="Supported devices"
             className="py-4 sm:py-5 [--duration:38s] [--gap:1rem] sm:[--gap:1.25rem]"
@@ -98,6 +98,9 @@ export function Devices() {
           >
             <span>View all step-by-step device setup guides</span>
             <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link href="/players" className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:underline">
+            Browse IPTV players <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </Container>

@@ -14,24 +14,23 @@ interface Step {
 const steps: Step[] = [
     {
         icon: Package,
-        title: "Choose Your IPTV Plan",
-        description: "Select the prepaid subscription duration that fits your viewing needs, from 1 month to 12 months, with no recurring contracts."
+        title: "Choose a Plan or Start a Trial",
+        description: <>Choose a prepaid plan or start the <Link href="/iptv-free-trial" className="font-semibold text-primary hover:underline">24-hour free trial</Link>.</>
     },
     {
         icon: CheckCircle,
-        title: "Get Your Subscription Details",
-        description: "Receive your M3U playlist URL, Xtream Codes credentials, and account details via email following payment confirmation."
+        title: "Receive Your Login",
+        description: "Credentials are typically delivered within 5–15 minutes after confirmation, including M3U or Xtream Codes details."
     },
     {
         icon: Tv,
-        title: "Set Up & Start Watching",
+        title: "Set Up Your Device",
         description: (
           <>
             Enter your credentials into your preferred IPTV player using our universal{" "}
             <Link href="/setup" className="font-semibold text-primary hover:underline">
-              IPTV setup guide
-            </Link>{" "}
-            and start streaming live TV immediately.
+              IPTV setup guide.
+            </Link>
           </>
         )
     }
@@ -43,8 +42,8 @@ export function HowItWorks() {
       <Container>
         <SectionHeader
           align="left"
-          title="Start Watching with TryIPTV in 3 Simple Steps"
-          subtitle="Getting started with your IPTV subscription is simple. Follow these straightforward steps to set up and stream across your devices."
+          title="How Do I Start With TryIPTV?"
+          subtitle="Choose a plan or trial, receive your login, then follow the setup guide for your device."
           eyebrow="Setup Process"
           className="mb-8 sm:mb-10 max-w-2xl"
         />

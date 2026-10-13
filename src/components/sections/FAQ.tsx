@@ -34,7 +34,7 @@ interface FaqListProps {
 const CONTACTS = [
   {
     icon: MessagesSquare,
-    label: "24/7 Live Support",
+    label: "Customer Support",
     detail: "WhatsApp & chat assistance",
     href: "/contact-us",
     isExternal: false,

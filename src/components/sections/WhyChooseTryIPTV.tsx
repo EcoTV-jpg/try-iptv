@@ -1,7 +1,4 @@
-import { ArrowRight, Tv, Zap, Smartphone, CalendarCheck } from "lucide-react";
-import Link from "next/link";
-
-import { Button } from "@/components/ui/button";
+import { Tv, Zap, Smartphone, CalendarCheck } from "lucide-react";
 import { BlurFade } from "@/components/velora/blur-fade";
 import { Container } from "../shared/Container";
 import { Section } from "../shared/Section";
@@ -9,27 +6,27 @@ import { Section } from "../shared/Section";
 const benefits = [
   {
     icon: Tv,
-    title: "Live Sports & PPV Networks",
+    title: "Live TV & Sports",
     description:
-      "Stream live sports, international coverage, and major pay-per-view events with integrated electronic program guide (EPG) schedules.",
+      "25,000+ live channels across supported regions and categories, with EPG information where available.",
   },
   {
     icon: Zap,
-    title: "Extensive On-Demand Library",
+    title: "Movies & TV Shows",
     description:
-      "Browse movies and series in HD and 4K, with no pay-per-view or rental fees.",
+      "120,000+ on-demand movies and TV shows across supported devices.",
   },
   {
     icon: Smartphone,
-    title: "Universal Device Compatibility",
+    title: "2 Simultaneous Connections",
     description:
-      "Use compatible IPTV players across your preferred TV, mobile, and desktop devices.",
+      "Use the service across supported devices with up to two concurrent streams.",
   },
   {
     icon: CalendarCheck,
-    title: "Prepaid Freedom & Flexibility",
+    title: "Prepaid Without Auto-Renewal",
     description:
-      "Choose fixed-term prepaid access with no automatic renewal.",
+      "Choose a fixed-duration plan and renew manually only when you want to continue.",
   },
 ];
 
@@ -37,7 +34,7 @@ export function WhyChooseTryIPTV() {
   return (
     <Section id="why-tryiptv" className="bg-[#050706] pt-14 pb-10 sm:pt-18 sm:pb-14 lg:pt-20 lg:pb-16">
       <Container>
-        <BlurFade className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <BlurFade>
           <div className="max-w-2xl">
             <p className="text-xs font-mono font-bold uppercase tracking-[0.08em] text-primary">
               Why TryIPTV
@@ -49,12 +46,6 @@ export function WhyChooseTryIPTV() {
               An IPTV service built around extensive channel coverage, HD &amp; 4K streaming, and transparent prepaid plans.
             </p>
           </div>
-          <Button variant="outline" asChild className="self-start lg:self-auto rounded-xl h-10 px-5 text-sm font-semibold border-white/[0.12] bg-[#07080a] hover:bg-white/[0.05]">
-            <Link href="/iptv-free-trial">
-              <span>Test with a 24h Free Trial</span>
-              <ArrowRight className="size-4 text-primary" />
-            </Link>
-          </Button>
         </BlurFade>
 
         {/* 4 Core Value Propositions */}

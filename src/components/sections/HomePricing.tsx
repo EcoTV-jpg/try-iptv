@@ -74,7 +74,7 @@ const INCLUDED_FEATURES = [
   "Premium PPV Events Included",
   "Instant VOD Access",
   "Smart EPG & Catch-Up TV",
-  "24/7 TryIPTV Support",
+  "Customer Support",
   "Multi-Device Compatibility",
 ] as const;
 
@@ -175,20 +175,15 @@ export function HomePricing() {
                     </a>
                   </Button>
 
-                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-sm">
-                    {[...plan.features, ...INCLUDED_FEATURES].map((feature) => (
-                      <li key={feature} className="flex items-center gap-2.5 text-[13.5px] sm:text-[14px] leading-relaxed text-muted-foreground/95">
-                        <CheckIcon
-                          aria-hidden
-                          className={cn(
-                            "size-4 shrink-0",
-                            plan.featured ? "text-primary" : "text-primary/70"
-                          )}
-                        />
+                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-[13.5px] leading-relaxed text-muted-foreground/95">
+                    {INCLUDED_FEATURES.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2.5">
+                        <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary/75" aria-hidden />
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
+
                 </div>
               </article>
             </BlurFade>
@@ -196,20 +191,20 @@ export function HomePricing() {
         </div>
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-muted-foreground/70">
-          Every plan includes 2 simultaneous connections, the full live TV and VOD catalog, and zero auto-renewal.
+          Every plan includes the same core service and 2 simultaneous connections.
         </p>
 
         {/* Clear bridge to detailed pricing comparison and free trial */}
         <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-4.5 text-xs sm:text-sm text-muted-foreground">
           <div>
-            Need detailed monthly vs. yearly breakdown and cost comparison?{" "}
+            Need the full plan comparison?{" "}
             <Link href="/pricing" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
-              Compare all plans on our Pricing page <ArrowRight className="h-3.5 w-3.5" />
+              Compare all plans <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="shrink-0">
             <Link href="/iptv-free-trial" className="font-medium text-muted-foreground/90 hover:text-foreground underline underline-offset-4">
-              Or test with a 24-hour free trial &rarr;
+              Try it free for 24 hours &rarr;
             </Link>
           </div>
         </div>

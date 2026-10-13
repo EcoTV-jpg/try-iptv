@@ -9,7 +9,7 @@ export const customerFeedbackItems = [
   {
     id: "feedback-1",
     src: "/images/feedback/customer-feedback-1.jpg",
-    alt: "TryIPTV customer WhatsApp chat confirming instant Xtream Codes API credentials setup on IPTV Smarters Pro",
+    alt: "TryIPTV customer WhatsApp chat showing Xtream Codes API setup assistance on IPTV Smarters Pro",
     title: "IPTV Smarters Pro Setup",
     highlight: "Xtream Codes API • Verified Working",
   },
@@ -23,9 +23,9 @@ export const customerFeedbackItems = [
   {
     id: "feedback-3",
     src: "/images/feedback/customer-feedback-3.jpg",
-    alt: "TryIPTV subscriber WhatsApp confirmation verifying active M3U playlist link and Xtream Codes service delivery",
+    alt: "TryIPTV subscriber WhatsApp conversation showing M3U playlist and Xtream Codes delivery",
     title: "M3U & Xtream Delivery",
-    highlight: "Account Credentials • Instant Dispatch",
+    highlight: "M3U & Xtream Delivery",
   },
   {
     id: "feedback-4",
@@ -37,9 +37,9 @@ export const customerFeedbackItems = [
   {
     id: "feedback-5",
     src: "/images/feedback/customer-feedback-5.jpg",
-    alt: "TryIPTV customer review on WhatsApp confirming smooth streaming performance without VPN requirement",
+    alt: "TryIPTV customer WhatsApp conversation about streaming setup and playback",
     title: "Stream Stability & Speed",
-    highlight: "No VPN Needed • Buffer-Free Playback",
+    highlight: "Stream Setup Feedback",
   },
 ];
 
@@ -49,7 +49,7 @@ export function CustomerFeedback() {
       <Container>
         <SectionHeader
           title="Real Customer Support & Activation Proof"
-          subtitle="Genuine WhatsApp conversations with active TryIPTV subscribers verifying fast credential delivery, seamless player configuration, and dependable live streaming."
+          subtitle="Genuine WhatsApp conversations with active TryIPTV subscribers showing account setup, credential delivery, and player assistance."
           eyebrow="Verified Customer Proof"
           className="mb-0 max-w-3xl"
         />

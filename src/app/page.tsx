@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { HomePricing } from "@/components/sections/HomePricing";
-import { Comparison } from "@/components/sections/Comparison";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Devices } from "@/components/sections/Devices";
 import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
@@ -51,7 +50,6 @@ export default function Home() {
       <Hero />
       <WhyChooseTryIPTV />
       <HomePricing />
-      <Comparison />
       <HowItWorks />
       <Devices />
       <CustomerFeedback />

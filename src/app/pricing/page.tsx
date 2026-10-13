@@ -1,405 +1,91 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight, Check, ChevronDown, CirclePlay, MessageCircle, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
-import { Pricing } from "@/components/sections/Pricing";
-import { getPricingPageData } from "@/lib/data/pricing-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getPricingPageData } from "@/lib/data/pricing-page";
 import { plans } from "@/lib/site-data/pricing";
-import {
-  Check,
-  ShieldCheck,
-  ArrowRight,
-  CirclePlay,
-  MessageCircle,
-  CreditCard,
-  Tv,
-  Calendar,
-  Sparkles,
-  Zap,
-  ChevronDown,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function generateMetadata(): Metadata {
   const title = "TryIPTV IPTV Pricing & Subscription Plans — From $16";
   const description =
-    "Compare TryIPTV subscription plans and pricing. Monthly and yearly prepaid IPTV plans from $16 (or $7.50/mo on 12 months) with 25,000+ live channels worldwide, 2 connections, and zero auto-renewals.";
+    "Compare TryIPTV prepaid subscription plans from $16 to $90. Choose 1, 3, 6, or 12 months with 2 simultaneous connections, no automatic renewal, and a 24-hour free trial.";
 
   return {
-    ...generatePageMetadata({
-      title,
-      description,
-      canonical: "/pricing",
-    }),
-    title: {
-      absolute: title,
-    },
+    ...generatePageMetadata({ title, description, canonical: "/pricing" }),
+    title: { absolute: title },
   };
 }
 
+const includedFeatures = [
+  "2 simultaneous connections",
+  "25,000+ live channels",
+  "120,000+ movies & TV shows",
+  "Smart EPG",
+  "M3U playlist",
+  "Xtream Codes",
+  "HD / Full HD / 4K where available",
+  "Prepaid billing with no automatic renewal",
+];
+
+const planChoices = [
+  ["1 Month — Best for Flexibility", "Choose this for the smallest upfront commitment after testing the service."],
+  ["3 Months — Short-Term Savings", "Lower the effective monthly cost without committing for six or twelve months."],
+  ["6 Months — Balanced Value", "A middle ground between upfront cost and longer-term savings."],
+  ["12 Months — Lowest Monthly Equivalent", "Best value if you already know the service works well on your devices and connection."],
+];
+
 export default async function IPTVSubscription() {
-  const { productSchema, breadcrumbSchema, faqSchema, pricingPageFaqs } =
+  const { productSchema, breadcrumbSchema, pricingPageFaqs } =
     await getPricingPageData();
 
   return (
     <>
       <Schema id="product" schema={productSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
-      <Schema id="faq" schema={faqSchema} />
 
-      {/* 1. Header Section */}
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-8 pb-10 sm:pt-12 sm:pb-14">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
         <Container className="relative">
           <Breadcrumb items={[{ label: "Pricing" }]} align="center" />
-          <SectionHeader
-            as="h1"
-            eyebrow="IPTV Pricing & Subscription Plans"
-            title="TryIPTV Pricing & Subscription Plans"
-            subtitle="Compare prepaid IPTV subscription plans from $16 for one month down to $7.50 per month equivalent on our 12-month prepaid plan. All plans include 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming where available with no contracts and zero auto-renewals."
-          />
-          <div className="mt-5 sm:mt-6 flex flex-wrap justify-center items-center gap-2.5 text-xs font-semibold sm:text-sm">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> 2 Simultaneous Connections
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> 25,000+ Live Channels Worldwide
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> 120,000+ Movies &amp; TV Shows
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> 24-Hour Free Trial
-            </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground">
-              <Check className="h-4 w-4 text-primary" /> Prepaid (No Auto-Renewal)
-            </div>
-          </div>
-
-          {/* Answer-First Pricing Summary */}
-          <div className="mx-auto mt-6 max-w-3xl rounded-lg border border-primary/20 bg-primary/[0.04] p-4 text-left sm:p-5">
-            <h2 className="font-headline text-xs font-bold uppercase tracking-wider text-primary">
-              IPTV Subscription Pricing
-            </h2>
-            <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              TryIPTV plans start at $16 for 1 month. Longer prepaid plans reduce the effective monthly cost: $39 for 3 months, $60 for 6 months, and $90 for 12 months. Each plan includes 2 simultaneous connections and does not renew automatically.
-            </p>
+          <SectionHeader as="h1" eyebrow="Simple Prepaid Pricing" title="TryIPTV Pricing & Subscription Plans" subtitle="Choose 1, 3, 6, or 12 months of prepaid IPTV access. Plans start at $16, and longer terms reduce the effective monthly cost while every plan keeps the same core service and 2 simultaneous connections." />
+          <div className="mt-5 flex flex-wrap justify-center gap-2.5 text-xs font-semibold sm:mt-6 sm:text-sm">
+            {["From $16", "2 Simultaneous Connections", "Prepaid — No Auto-Renewal", "24-Hour Free Trial Available"].map((fact) => <div key={fact} className="inline-flex items-center gap-2 rounded-full border border-white/[0.09] bg-card px-3.5 py-1.5 text-muted-foreground"><Check className="h-4 w-4 text-primary" /> {fact}</div>)}
           </div>
         </Container>
       </Section>
 
-      {/* 2. Interactive Pricing Plans Cards */}
-      <Pricing showHeader={false} />
-
-      {/* 3. Plan Comparison Table */}
-      <Section className="border-t border-white/[0.06] bg-[#070a08]">
+      <Section id="pricing-plans" className="bg-[#050706]">
         <Container>
-          <SectionHeader
-            eyebrow="Cost Comparison"
-            title="Compare IPTV Subscription Plans"
-            subtitle="A transparent side-by-side comparison of total prepaid costs, equivalent monthly rates, connections, and billing terms across all four durations."
-          />
-          <div className="mx-auto max-w-3xl overflow-hidden rounded-xl border border-white/[0.09] bg-card shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
-                <thead>
-                  <tr className="border-b border-white/[0.09] bg-white/[0.03] text-[11px] sm:text-xs font-extrabold uppercase text-muted-foreground">
-                    <th className="py-3.5 px-4 sm:px-6">Plan</th>
-                    <th className="py-3.5 px-4 sm:px-6">Total Price</th>
-                    <th className="py-3.5 px-4 sm:px-6">Effective Monthly Cost</th>
-                    <th className="py-3.5 px-3 sm:px-6 text-center">Connections</th>
-                    <th className="py-3.5 px-4 sm:px-6">Billing</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/[0.06] text-muted-foreground">
-                  <tr>
-                    <td className="py-3 px-4 sm:px-6 font-semibold text-foreground">1 Month</td>
-                    <td className="py-3 px-4 sm:px-6 font-bold text-foreground">$16</td>
-                    <td className="py-3 px-4 sm:px-6">$16.00/mo</td>
-                    <td className="py-3 px-3 sm:px-6 text-center text-foreground">2</td>
-                    <td className="py-3 px-4 sm:px-6">Prepaid</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 sm:px-6 font-semibold text-foreground">3 Months</td>
-                    <td className="py-3 px-4 sm:px-6 font-bold text-foreground">$39</td>
-                    <td className="py-3 px-4 sm:px-6 text-foreground font-medium">$13.00/mo</td>
-                    <td className="py-3 px-3 sm:px-6 text-center text-foreground">2</td>
-                    <td className="py-3 px-4 sm:px-6">Prepaid</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 sm:px-6 font-semibold text-foreground">6 Months</td>
-                    <td className="py-3 px-4 sm:px-6 font-bold text-foreground">$60</td>
-                    <td className="py-3 px-4 sm:px-6 text-foreground font-medium">$10.00/mo</td>
-                    <td className="py-3 px-3 sm:px-6 text-center text-foreground">2</td>
-                    <td className="py-3 px-4 sm:px-6">Prepaid</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 sm:px-6 font-semibold text-foreground">12 Months</td>
-                    <td className="py-3 px-4 sm:px-6 font-bold text-primary">$90</td>
-                    <td className="py-3 px-4 sm:px-6 text-primary font-bold">$7.50/mo</td>
-                    <td className="py-3 px-3 sm:px-6 text-center text-foreground">2</td>
-                    <td className="py-3 px-4 sm:px-6">Prepaid</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <p className="mt-3.5 text-center text-xs text-muted-foreground">
-            Effective monthly cost is shown for comparison only. Each plan is paid upfront and does not renew automatically.
-          </p>
-        </Container>
-      </Section>
-
-      {/* 4. Which IPTV Plan Should You Choose? (Buyer's Guide) */}
-      <Section className="border-t border-white/[0.06]">
-        <Container>
-          <SectionHeader
-            eyebrow="Plan Selection Guide"
-            title="Which IPTV Plan Should You Choose?"
-            subtitle="Understand how each subscription duration matches your streaming habits, device setup, and household budget."
-          />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <Card className="border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Flexible Option
-                </span>
-                <span className="font-headline text-lg font-bold text-foreground">$16 / 1 Month (Prepaid)</span>
-              </div>
-              <h3 className="font-headline text-xl font-extrabold text-foreground mb-2.5">
-                1-Month Plan: Maximum Flexibility
-              </h3>
-              <p className="text-sm leading-6 text-muted-foreground mb-4">
-                The 1-month plan is ideal if you are new to IPTV, testing our channel lineup on your devices after your 24-hour free trial, or want month-to-month freedom without multi-month prepayment.
-              </p>
-              <ul className="space-y-2 text-xs text-muted-foreground border-t border-white/[0.08] pt-4">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Month-to-month flexibility without multi-month prepayment
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Test your channel lineup and devices post-trial
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> No long-term commitment or cancellation hassle
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Seasonal Option
-                </span>
-                <span className="font-headline text-lg font-bold text-foreground">$13 &amp; $10 / Mo Eq.</span>
-              </div>
-              <h3 className="font-headline text-xl font-extrabold text-foreground mb-2.5">
-                3 &amp; 6-Month Plans: Seasonal Value
-              </h3>
-              <p className="text-sm leading-6 text-muted-foreground mb-4">
-                Prepay $39 for 3 months (save 19%) or $60 for 6 months (save 38%). Perfect for locking in discounted rates during major soccer, football, basketball, or racing seasons without monthly rebilling.
-              </p>
-              <ul className="space-y-2 text-xs text-muted-foreground border-t border-white/[0.08] pt-4">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Saves $9 on 3 months, $36 on 6 months vs monthly renewals
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Lower effective monthly cost than renewing the 1-month plan
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Renewal options are available when your current plan ends
-                </li>
-              </ul>
-            </Card>
-
-            <Card className="border-primary/30 bg-[linear-gradient(180deg,rgba(0,240,120,0.04),rgba(7,8,10,0)_50%),#07080a] p-6 shadow-[0_18px_60px_rgba(0,240,120,0.06)] relative">
-              <div className="mb-4 flex items-center justify-between">
-                <span className="rounded-md border border-primary/25 bg-primary/[0.08] px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">
-                  Best Value
-                </span>
-                <span className="font-headline text-lg font-bold text-primary">$7.50 / Mo Eq.</span>
-              </div>
-              <h3 className="font-headline text-xl font-extrabold text-foreground mb-2.5">
-                12-Month Plan: Lowest Subscription Cost
-              </h3>
-              <p className="text-sm leading-6 text-muted-foreground mb-4">
-                Our lowest effective monthly rate. At $90 for an entire year ($7.50/month equivalent), you save 53% compared to monthly renewals—giving your household 365 days of HD and select 4K live TV and sports at the lowest cost.
-              </p>
-              <ul className="space-y-2 text-xs text-muted-foreground border-t border-white/[0.08] pt-4">
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Maximum annual savings ($102 saved compared to monthly)
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Uninterrupted streaming with zero monthly rebilling
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-4 w-4 text-primary shrink-0" /> Lowest effective rate at $7.50 per month equivalent
-                </li>
-              </ul>
-            </Card>
+          <SectionHeader eyebrow="Prepaid IPTV Plans" title="Choose Your IPTV Plan" subtitle="Compare total prepaid cost, equivalent monthly rate, savings, and duration. Each plan is paid upfront and does not renew automatically." />
+          <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+            {plans.map((plan, index) => {
+              const planNote = plan.id === "1-month" ? "Maximum flexibility" : plan.id === "3-months" ? "Save $9 vs three 1-month purchases" : plan.id === "6-months" ? "Save $36 vs six 1-month purchases" : "Save $102 vs twelve 1-month purchases";
+              return <article key={plan.id} className={`relative flex h-full flex-col justify-between overflow-hidden rounded-[18px] border bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] ${plan.isPopular ? "border-primary/40 bg-[linear-gradient(180deg,rgba(0,240,120,0.05),rgba(7,8,10,0)_42%),#07080a]" : "border-white/[0.08]"}`}>
+                {plan.isPopular && <div className="absolute right-4 top-4 rounded-md border border-primary/25 bg-primary/[0.08] px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">Best Value</div>}
+                <div className="p-6 sm:p-7"><p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">{String(index + 1).padStart(2, "0")} / Plan</p><h3 className="pt-2 font-headline text-xl font-bold tracking-tight text-foreground">{plan.name}</h3><div className="pt-4"><div className="flex items-baseline gap-1.5"><span className="font-headline text-[40px] font-bold leading-none tracking-tight text-foreground sm:text-[44px]">${plan.price}</span><span className="text-xs font-medium text-muted-foreground">prepaid</span></div><p className="mt-2 text-xs text-muted-foreground"><span className="font-medium text-foreground/90">${plan.price_monthly.toFixed(2)}/month equivalent</span>{plan.savings && <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-semibold text-primary">{plan.savings}</span>}</p><p className="mt-3 min-h-10 text-xs leading-5 text-muted-foreground">{planNote}</p></div></div>
+                <div className="px-6 pb-6 sm:px-7 sm:pb-7"><Button asChild className="h-12 min-h-[48px] w-full rounded-xl text-[15px] font-semibold" variant={plan.isPopular ? "default" : "outline"}><Link href={plan.checkoutUrl}>Choose {plan.name}</Link></Button></div>
+                <ul className="mx-6 mb-6 space-y-2 border-t border-white/[0.07] pt-5 text-[13.5px] leading-relaxed text-muted-foreground/95 sm:mx-7 sm:mb-7">
+                  {includedFeatures.map((feature) => <li key={feature} className="flex items-start gap-2.5"><Check className="mt-0.5 h-4 w-4 shrink-0 text-primary/75" /><span>{feature}</span></li>)}
+                </ul>
+              </article>;
+            })}
           </div>
         </Container>
       </Section>
 
-      {/* 5. What's Included with Every Plan */}
-      <Section className="border-t border-white/[0.06] bg-[#070a08]">
-        <Container>
-          <SectionHeader
-            eyebrow="Universal Features"
-            title="What’s Included with Every Plan"
-            subtitle="Every TryIPTV prepaid subscription includes the same core service features regardless of duration."
-          />
-          <div className="mx-auto max-w-3xl rounded-xl border border-white/[0.09] bg-card p-6 shadow-[0_18px_60px_rgba(0,0,0,0.2)]">
-            <ul className="grid grid-cols-1 gap-3.5 text-xs text-muted-foreground sm:grid-cols-2 sm:text-sm">
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">2 simultaneous connections</strong> on every plan</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">25,000+ live TV channels worldwide</strong> with sports &amp; news</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">120,000+ movies &amp; TV shows</strong> on demand (VOD)</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">Smart EPG TV guide</strong> for scheduling and timelines</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">M3U playlist link</strong> for universal media players</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">Xtream Codes API login</strong> for dedicated player apps</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">Compatible with TVs, streaming sticks &amp; computers</strong></span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Check className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-                <span><strong className="text-foreground">No automatic renewal</strong> with strictly prepaid checkout</span>
-              </li>
-            </ul>
-          </div>
-        </Container>
-      </Section>
+      <Section className="border-t border-white/[0.06]"><Container><SectionHeader eyebrow="Plan Selection Guide" title="Which Plan Should You Choose?" subtitle="Pick the duration that best matches your upfront budget and how long you expect to use the service." /><div className="mx-auto grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2">{planChoices.map(([title, description]) => <div key={title} className="rounded-xl border border-white/[0.08] bg-card p-5"><h3 className="font-headline text-base font-extrabold text-foreground">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p></div>)}</div></Container></Section>
 
-      {/* 6. How to Start */}
-      <Section className="border-t border-white/[0.06] bg-[#070a08]">
-        <Container>
-          <SectionHeader
-            eyebrow="Getting Started"
-            title="How to Start"
-            subtitle="Starting your subscription takes only three straightforward steps."
-          />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-white/[0.08] bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
-              <div className="text-xs font-mono font-bold text-primary mb-2">STEP 01</div>
-              <h3 className="font-headline text-base font-extrabold text-foreground mb-2">
-                1. Choose a Prepaid Plan
-              </h3>
-              <p className="text-xs leading-5 text-muted-foreground">
-                Select your preferred subscription duration (1, 3, 6, or 12 months) based on your viewing needs and savings preference.
-              </p>
-            </div>
-            <div className="rounded-xl border border-white/[0.08] bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
-              <div className="text-xs font-mono font-bold text-primary mb-2">STEP 02</div>
-              <h3 className="font-headline text-base font-extrabold text-foreground mb-2">
-                2. Complete Checkout
-              </h3>
-              <p className="text-xs leading-5 text-muted-foreground">
-                Complete your one-time prepaid order. Available payment methods are shown at checkout. No payment details are stored for recurring debits.
-              </p>
-            </div>
-            <div className="rounded-xl border border-white/[0.08] bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.15)]">
-              <div className="text-xs font-mono font-bold text-primary mb-2">STEP 03</div>
-              <h3 className="font-headline text-base font-extrabold text-foreground mb-2">
-                3. Receive Details &amp; Stream
-              </h3>
-              <p className="text-xs leading-5 text-muted-foreground">
-                Receive your Xtream Codes and M3U details by email typically within 5–15 minutes, then enter them into your preferred IPTV player.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <Section className="border-t border-white/[0.06] bg-[#070a08]"><Container><SectionHeader eyebrow="Getting Started" title="How Does Buying a TryIPTV Plan Work?" subtitle="Three straightforward steps take you from plan selection to streaming." /><div className="grid grid-cols-1 gap-4 md:grid-cols-3">{[["STEP 01", "Choose Your Plan", "Select 1, 3, 6, or 12 months."], ["STEP 02", "Complete Your Prepaid Payment", "Use the payment method currently offered at checkout. This is a one-time prepaid purchase and does not automatically renew."], ["STEP 03", "Receive Your IPTV Details", "Credentials are typically sent within 5–15 minutes after payment confirmation. You receive the server URL, username, password, M3U URL, and setup instructions."]].map(([step, title, description]) => <div key={step} className="rounded-xl border border-white/[0.08] bg-card p-5"><div className="mb-2 text-xs font-mono font-bold text-primary">{step}</div><h3 className="mb-2 font-headline text-base font-extrabold text-foreground">{title}</h3><p className="text-xs leading-5 text-muted-foreground">{description}</p></div>)}</div><p className="mt-5 text-center text-sm text-muted-foreground">Need setup help? <Link href="/setup" className="font-semibold text-primary underline underline-offset-4">View the setup guide <ArrowRight className="inline h-3.5 w-3.5" /></Link></p></Container></Section>
 
-      {/* 7. Risk-Free Trial Callout */}
-      <Section className="border-t border-white/[0.06]">
-        <Container>
-          <div className="relative overflow-hidden rounded-xl border border-primary/25 bg-[#0b100d] p-7 sm:p-8 md:p-10 lg:flex lg:items-center lg:justify-between lg:text-left">
-            <div className="absolute inset-y-0 left-0 w-1 bg-primary" />
-            <div className="max-w-2xl">
-              <p className="eyebrow mb-3 flex items-center justify-center gap-2 lg:justify-start">
-                <ShieldCheck className="h-4 w-4 text-primary" /> Evaluate Before Subscribing
-              </p>
-              <h2 className="font-headline text-3xl font-extrabold leading-[1.12] sm:text-4xl text-foreground">
-                Want to Test TryIPTV Before Choosing a Plan?
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground lg:mx-0">
-                Not ready to choose a plan? Test the service first with the 24-hour IPTV free trial. Test the available live TV channels, on-demand movies and series, HD and available 4K streams, and 2 connections on your own TV. No credit card required.
-              </p>
-            </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:ml-10 lg:mt-0 lg:shrink-0">
-              <Button asChild size="lg">
-                <Link href="/iptv-free-trial">
-                  <CirclePlay className="mr-2 h-4 w-4" /> Start 24-Hour Free Trial
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/contact-us">
-                  <MessageCircle className="mr-2 h-4 w-4" /> Contact Support
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <Section className="border-t border-white/[0.06]"><Container><div className="relative overflow-hidden rounded-xl border border-primary/25 bg-[#0b100d] p-7 sm:p-8 md:p-10 lg:flex lg:items-center lg:justify-between lg:text-left"><div className="absolute inset-y-0 left-0 w-1 bg-primary" /><div className="max-w-2xl"><p className="eyebrow mb-3 flex items-center justify-center gap-2 lg:justify-start"><ShieldCheck className="h-4 w-4 text-primary" /> Evaluate Before Subscribing</p><h2 className="font-headline text-3xl font-extrabold leading-[1.12] text-foreground sm:text-4xl">Want to Test TryIPTV Before Paying?</h2><p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted-foreground lg:mx-0">Use the 24-hour free trial to test TryIPTV on your own devices before choosing a prepaid subscription. No credit card and no automatic renewal.</p></div><div className="mt-8 flex flex-col gap-3 sm:flex-row lg:ml-10 lg:mt-0 lg:shrink-0"><Button asChild size="lg"><Link href="/iptv-free-trial"><CirclePlay className="mr-2 h-4 w-4" /> Start 24-Hour Free Trial</Link></Button><Button asChild size="lg" variant="outline"><Link href="/contact-us"><MessageCircle className="mr-2 h-4 w-4" /> Contact Support</Link></Button></div></div></Container></Section>
 
-      {/* 8. Frequently Asked Questions (Targeted to Pricing Intent) */}
-      <Section id="faq" className="border-t border-white/[0.06] bg-[#070a08]">
-        <Container>
-          <SectionHeader
-            eyebrow="Pricing &amp; Cost Questions"
-            title="Frequently Asked Questions About IPTV Pricing"
-            subtitle="Straightforward answers about plan durations, payment methods, renewal policies, and multi-device connections."
-          />
-          <div className="mx-auto max-w-[880px] overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#07080a] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-            {pricingPageFaqs.map((faq, index) => (
-              <details
-                key={index}
-                className="group border-b border-white/[0.07] px-6 sm:px-8 last:border-b-0"
-              >
-                <summary className="flex min-h-[68px] cursor-pointer list-none items-center justify-between gap-4 py-5 sm:py-6 text-left text-[16px] font-semibold leading-snug text-foreground/90 hover:text-foreground transition-colors sm:text-[17px] [&::-webkit-details-marker]:hidden">
-                  <span>{faq.question}</span>
-                  <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
-                </summary>
-                <div className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground">
-                  <p>{faq.answer}</p>
-                </div>
-              </details>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <p className="text-sm text-muted-foreground sm:text-base">
-              Questions about custom connections or payments?{" "}
-              <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4 hover:text-primary/80">
-                Contact our support team
-              </Link>
-              . Technical support is available via WhatsApp and email.
-            </p>
-          </div>
-        </Container>
-      </Section>
+      <Section id="faq" className="border-t border-white/[0.06] bg-[#070a08]"><Container><SectionHeader eyebrow="Pricing & Cost Questions" title="Frequently Asked Questions About IPTV Pricing" subtitle="Straightforward answers about plan durations, payment methods, renewal policies, and connections." /><div className="mx-auto max-w-[880px] overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#07080a]">{pricingPageFaqs.map((faq, index) => <details key={index} className="group border-b border-white/[0.07] px-6 last:border-b-0 sm:px-8"><summary className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-[16px] font-semibold leading-snug text-foreground/90 [&::-webkit-details-marker]:hidden"><span>{faq.question}</span><ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" /></summary><div className="pb-5 pr-4 text-[15px] leading-relaxed text-muted-foreground sm:pr-8"><p>{faq.answer}</p></div></details>)}</div><p className="mt-8 text-center text-sm text-muted-foreground">Questions about payments or connections? <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4">Contact our support team</Link>.</p></Container></Section>
     </>
   );
 }

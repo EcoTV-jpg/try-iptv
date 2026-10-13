@@ -26,11 +26,11 @@ export const faqs = [
     },
     {
         question: "How do I set up TryIPTV?",
-        answer: "To set up TryIPTV, install a compatible IPTV player application on your device and enter the account details or M3U playlist URL provided after order confirmation. Follow our universal <a href=\"/setup\" class=\"text-primary hover:underline\">IPTV setup guide</a> for step-by-step instructions across Fire TV, Android, Apple, Windows, and Smart TVs, and our support team is available 24/7 to assist."
+        answer: "To set up TryIPTV, install a compatible IPTV player application on your device and enter the account details or M3U playlist URL provided after order confirmation. Follow our universal <a href=\"/setup\" class=\"text-primary hover:underline\">IPTV setup guide</a> for step-by-step instructions across Fire TV, Android, Apple, Windows, and Smart TVs. Customer support is available to help with account, setup, and service questions."
     },
     {
         question: "How do I get customer support for TryIPTV?",
-        answer: "TryIPTV provides 24/7 customer support via email at support@tryiptv.com and direct WhatsApp messaging. Our support team can help you with app setup, playlist loading, playlist troubleshooting, and general account questions at any time."
+        answer: "TryIPTV provides customer support via email at support@tryiptv.com and direct WhatsApp messaging. Customer support is available to help with app setup, playlist loading, playlist troubleshooting, and general account questions."
     },
     {
         question: "What is the TryIPTV refund policy?",
