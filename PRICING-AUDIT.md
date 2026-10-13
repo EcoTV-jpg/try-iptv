@@ -53,10 +53,10 @@ Every commercial claim on `/pricing` was audited against codebase records, payme
 
 | Plan / Commercial Element | Claimed Value | Source Reference | Classification | Evidence & Operational Reality |
 | :--- | :--- | :--- | :--- | :--- |
-| **1-Month Plan Price** | $16.00 upfront | `pricing.ts:7`, `PRODUCT_TRUTHS:20` | **Checkout destination verified in source** | Hosted checkout URL (`https://flujipay.com/payment/e1JWrpo7MBOGuaq0axpgtaxxIBTcFRoj`) configured in plan data for $16 duration. |
-| **3-Month Plan Price** | $39.00 upfront | `pricing.ts:27`, `PRODUCT_TRUTHS:21` | **Checkout destination verified in source** | Hosted checkout URL (`https://flujipay.com/payment/npi8bNFKa60nGloEpZuBguh6tBFSueUN`) configured in plan data for $39 duration. |
-| **6-Month Plan Price** | $60.00 upfront | `pricing.ts:47`, `PRODUCT_TRUTHS:22` | **Checkout destination verified in source** | Hosted checkout URL (`https://flujipay.com/payment/DkNU7UJ2dliHkpGRF7HHhW3JJajmwi3m`) configured in plan data for $60 duration. |
-| **12-Month Plan Price** | $90.00 upfront | `pricing.ts:67`, `PRODUCT_TRUTHS:23` | **Checkout destination verified in source** | Hosted checkout URL (`https://flujipay.com/payment/y59giDeQUiwnLBXIMYDo4ZRbLBpjeNmG`) configured in plan data for $90 duration. |
+| **1-Month Plan Price** | $16.00 upfront | `pricing.ts:7`, `PRODUCT_TRUTHS:20` | **Checkout destination verified in source** | Hosted checkout URL (`https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%201%20Month%20IPTV%20plan.`) configured in plan data for $16 duration. |
+| **3-Month Plan Price** | $39.00 upfront | `pricing.ts:27`, `PRODUCT_TRUTHS:21` | **Checkout destination verified in source** | Hosted checkout URL (`https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%203%20Months%20IPTV%20plan.`) configured in plan data for $39 duration. |
+| **6-Month Plan Price** | $60.00 upfront | `pricing.ts:47`, `PRODUCT_TRUTHS:22` | **Checkout destination verified in source** | Hosted checkout URL (`https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%206%20Months%20IPTV%20plan.`) configured in plan data for $60 duration. |
+| **12-Month Plan Price** | $90.00 upfront | `pricing.ts:67`, `PRODUCT_TRUTHS:23` | **Checkout destination verified in source** | Hosted checkout URL (`https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%2012%20Months%20IPTV%20plan.`) configured in plan data for $90 duration. |
 | **Monthly Equivalents** | $16.00, $13.00, $10.00, $7.50 | `pricing.ts`, `pricing/page.tsx:120-148` | **Source-Consistent** | Exact mathematical derivations of upfront cost divided by month count. Explicitly footnoted as comparison figures. |
 | **Simultaneous Connections** | 2 streams on all plans | `PRODUCT_TRUTHS:9`, `pricing/page.tsx:68` | **Source-Consistent** | First-party product truth configured across all plan tiers. |
 | **Billing Model** | Strictly prepaid upfront | `PRODUCT_TRUTHS:13`, `page.tsx:80` | **Source-Consistent** | Hosted gateway orders are one-time invoices; no recurring billing tokens stored. |
@@ -149,7 +149,7 @@ flowchart TD
    * A user who scrolls through the commercial research sections looking for a CTA encounters the **Free Trial CTA** first (`/iptv-free-trial`).
    * This creates accidental leakage: purchase-ready users are nudged to leave the pricing page and start a free trial instead of completing their purchase.
 3. **Flujipay Destination Disclosure:**
-   * Clicking *"Choose 12 Months"* redirects the user directly to `https://flujipay.com/payment/...`.
+   * Clicking *"Choose 12 Months"* redirects the user directly to `https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%2012%20Months%20IPTV%20plan.`.
    * The page does not mention "Flujipay" anywhere in the copy, which can cause surprise or friction when an external payment domain loads. A brief note indicating *"Secure checkout processed via SSL-encrypted payment gateway"* would build trust.
 
 ---
@@ -159,7 +159,7 @@ flowchart TD
 * **Stated Methods in Copy:**
   * Initial copy referenced Cryptocurrency, PayPal, Stripe from project records. Following Phase 7.1 calibration, the pricing page now neutrally states: `"Available payment methods are shown at checkout."`
 * **Checkout Integration:**
-  * All 4 plans route to individual payment tokens on `flujipay.com` (**checkout destination verified in source**).
+  * All 4 plans route to individual payment tokens on `wa.me/15205648298` (**checkout destination verified in source**).
   * Specific active payment methods presented at the time of purchase depend on gateway availability and **need operational verification**.
 * **Findings:**
   * Specific processors (Cryptocurrency, PayPal, Stripe) appear in project configuration records (`PRODUCT_TRUTHS:15-18`) and user specification logs (`registry.ts:798`), but should not be treated as statically guaranteed without live gateway confirmation.

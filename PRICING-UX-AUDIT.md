@@ -175,10 +175,10 @@ flowchart TD
 
 | CTA Label | Destination | Section | Role | Visual Weight |
 | :--- | :--- | :---: | :---: | :---: |
-| `"Choose 1 Month"` | `flujipay.com/payment/...` | Sec 2: Cards | Primary Purchase | Secondary Outline |
-| `"Choose 3 Months"` | `flujipay.com/payment/...` | Sec 2: Cards | Primary Purchase | Secondary Outline |
-| `"Choose 6 Months"` | `flujipay.com/payment/...` | Sec 2: Cards | Primary Purchase | Secondary Outline |
-| `"Choose 12 Months"` | `flujipay.com/payment/...` | Sec 2: Cards | Primary Purchase | **Promoted Solid Green** |
+| `"Choose 1 Month"` | `https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%201%20Month%20IPTV%20plan.` | Sec 2: Cards | Primary Purchase | Secondary Outline |
+| `"Choose 3 Months"` | `https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%203%20Months%20IPTV%20plan.` | Sec 2: Cards | Primary Purchase | Secondary Outline |
+| `"Choose 6 Months"` | `https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%206%20Months%20IPTV%20plan.` | Sec 2: Cards | Primary Purchase | Secondary Outline |
+| `"Choose 12 Months"` | `https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%2012%20Months%20IPTV%20plan.` | Sec 2: Cards | Primary Purchase | **Promoted Solid Green** |
 | `"Start 24-Hour Free Trial"` | `/iptv-free-trial` | Sec 7: Trial Banner | De-escalation Exit Ramp | **Large Solid Green** |
 | `"Contact Support"` | `/contact-us` | Sec 7: Trial Banner | Secondary Assistance | Large Outline |
 | `"Contact our support team"` | `/contact-us` | Sec 8: FAQ Footer | Contextual Link | Inline Text Link |
