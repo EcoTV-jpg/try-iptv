@@ -5,54 +5,64 @@ import { siteConfig } from '@/lib/site-config';
 
 export const trialFaqs = [
   {
-    question: "How long does the TryIPTV free trial last?",
+    question: "How long is the TryIPTV free trial?",
     answer:
-      "The free trial provides 24-hour access at $0 so you can test the service before choosing a paid plan.",
+      "The trial provides access for 24 consecutive hours from the time your credentials are confirmed and generated.",
   },
   {
-    question: "Do I need a credit card to start the trial?",
+    question: "Is the IPTV trial really free?",
     answer:
-      "No. Request the trial through WhatsApp; the request does not open a paid checkout and no credit card is required.",
+      "Yes. The trial costs $0. You are not required to enter payment information, billing details, or future payment commitments.",
   },
   {
-    question: "How quickly do trial credentials arrive?",
+    question: "Do I need a credit card for the IPTV free trial?",
     answer:
-      "Credentials typically arrive within 5–15 minutes after confirmation. Actual delivery time can vary.",
+      "No. Trial access is issued without collecting credit card or payment information.",
   },
   {
-    question: "What is included in the free trial?",
+    question: "How long does trial activation take?",
     answer:
-      "You can test the available live TV and on-demand service, picture quality where available, EPG data, Xtream Codes or M3U access, and the supported device or player you plan to use.",
+      "Credentials typically arrive via WhatsApp within 5–15 minutes after request confirmation.",
   },
   {
-    question: "Can I use the trial on two devices?",
+    question: "Which devices can I use for the trial?",
     answer:
-      "The service lists 2 simultaneous connections. Confirm the trial allowance for your specific setup with support.",
+      "You can test on supported smart TVs, streaming media players, and personal computers, including Firestick, Android TV, Samsung TV, LG TV, Apple TV, Roku, Windows, Mac, and MAG devices.",
   },
   {
-    question: "Which devices work with the trial?",
+    question: "Can I use TiviMate?",
     answer:
-      "Use the device and player guides linked on this page for Fire TV, Android TV, Smart TVs, Apple TV, Chromecast, Roku, MAG, Windows, and Mac.",
+      "Yes. If you use TiviMate on an Android TV or Fire TV device, enter the server URL, username, and password provided with your trial using the Xtream Codes login option.",
   },
   {
-    question: "Do I receive Xtream Codes or M3U?",
+    question: "Can I use IPTV Smarters?",
     answer:
-      "The documented formats are Xtream Codes API credentials (server URL, username, and password) and an M3U playlist URL. Confirm which details are issued for your trial.",
+      "Yes. IPTV Smarters is compatible. Select \"Login with Xtream Codes API\" and enter the trial server address, username, and password issued for your test.",
   },
   {
-    question: "What should I test during my 24-hour trial?",
+    question: "Can I test specific channels before paying?",
     answer:
-      "Test your main device during normal viewing hours. Check must-have channels, channel switching, audio/video sync, VOD playback, and EPG loading.",
+      "Yes. You can use the trial to check whether the specific channels and content you care about are available and play correctly on your setup.",
   },
   {
     question: "Does the free trial automatically renew?",
     answer:
-      "No. The trial does not automatically become a paid subscription. If you want to continue, choose a prepaid plan separately on the pricing page.",
+      "No. The trial does not automatically renew or convert into a paid subscription.",
   },
   {
-    question: "How much does TryIPTV cost after the trial?",
+    question: "What happens when the 24-hour trial ends?",
     answer:
-      "Paid plans are prepaid and start at $16 for 1 month, with 3-, 6-, and 12-month options. See the pricing page for the current comparison.",
+      "Your trial credentials expire and streaming stops. You can choose to purchase a prepaid subscription on the pricing page or simply discontinue use.",
+  },
+  {
+    question: "Is the trial exactly the same as a paid subscription?",
+    answer:
+      "The trial allows you to evaluate stream playback, channel availability, and guide data. However, paid plans include two simultaneous connections, whereas trial connection limits are confirmed upon issuance.",
+  },
+  {
+    question: "What should I test during an IPTV free trial?",
+    answer:
+      "Focus on testing the specific channels you watch most often, verifying picture quality on your main TV screen, observing channel startup time, and confirming that EPG data loads properly.",
   },
 ];
 

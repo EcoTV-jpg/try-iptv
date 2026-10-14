@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Calendar, CheckCircle2, Film, KeyRound, Tv, Wifi } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  CheckCircle2,
+  HelpCircle,
+  Laptop,
+  Monitor,
+  Phone,
+  PlaySquare,
+  ShieldCheck,
+  Smartphone,
+  Tv,
+  Wifi,
+} from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/shared/Container";
@@ -15,9 +28,9 @@ const freeTrialWhatsAppUrl =
   "https://wa.me/15205648298?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
-  const title = "IPTV Free Trial — 24 Hours, No Credit Card | TryIPTV";
+  const title = "24-Hour IPTV Free Trial — Test TryIPTV Before You Pay";
   const description =
-    "Try TryIPTV free for 24 hours with no credit card and no automatic renewal. Test it on your own device before choosing a paid plan.";
+    "Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. 24-hour access, $0, and no credit card required.";
 
   return {
     ...generatePageMetadata({ title, description, canonical: "/iptv-free-trial" }),
@@ -25,48 +38,117 @@ export function generateMetadata(): Metadata {
   };
 }
 
-const inclusions = [
-  [Tv, "25,000+ Live Channels", "Test the specific news, sports, local, or international channels you actually watch."],
-  [Film, "120,000+ Movies & TV Shows", "Check VOD playback, seeking, subtitles, and audio tracks where available."],
-  [Wifi, "HD, Full HD & 4K Where Available", "Evaluate the picture quality and resolution available on your device and chosen stream."],
-  [Calendar, "EPG TV Guide", "Check whether the programme guide information you need loads correctly."],
-  [KeyRound, "Xtream Codes + M3U", "Use the login format issued for your trial in a compatible player."],
-  [CheckCircle2, "2 Simultaneous Connections", "Test the included connection allowance on the devices you plan to use."],
+const quickFacts = [
+  ["Cost", "$0"],
+  ["Trial duration", "24 consecutive hours from activation"],
+  ["Payment details required", "None (no credit card or billing information requested)"],
+  ["Typical activation time", "5–15 minutes after request confirmation"],
+  ["Access formats", "Xtream Codes (Server URL, Username, Password) and M3U playlist URL"],
+  ["Supported devices", "Firestick, Android TV, Smart TVs (Samsung, LG), Apple TV, Roku, Windows, Mac, MAG"],
+  ["Simultaneous connections", "Confirmed when trial credentials are issued (Paid plans include two simultaneous connections)"],
+  ["After the trial", "Access expires automatically. The trial does not automatically renew or convert into a paid subscription."],
 ] as const;
 
-const trialSteps = [
-  ["01", "Request Your Trial", "Open WhatsApp and share the device or player you plan to test. No card or billing details are required."],
-  ["02", "Receive Your Login", "Credentials typically arrive within 5–15 minutes after confirmation and may include a server URL, username, password, and M3U link."],
-  ["03", "Set Up and Test", "Enter the details in your player, then use the setup, device, or player guides if you need installation help."],
+const testingChecklist = [
+  ["Important channels", "Confirm that your preferred local, national, and international channels are available and load and play as expected."],
+  ["Live sports and events", "Observe stream stability and video smoothness during live broadcasts."],
+  ["Picture quality", "Check resolution and visual clarity across available SD, HD, and 4K streams on your primary screen."],
+  ["Channel switching", "Observe channel startup time and transition stability when changing channels."],
+  ["On-demand content (VOD)", "Test playback controls, including play, pause, seeking, and audio track selection where supported."],
+  ["TV guide (EPG)", "Verify that programme schedule data loads correctly in your IPTV player."],
+  ["Player compatibility", "Confirm that your chosen IPTV player works correctly with your trial."],
+  ["Home network performance", "Compare playback over Wi-Fi versus an Ethernet cable if you encounter buffering."],
 ] as const;
 
-const testingChecks = [
-  "Test the channels you actually watch, including sports, news, and local or international programming.",
-  "Test during your normal viewing hours so the trial reflects your real use.",
-  "Use your main TV, streaming device, or player rather than testing only on a secondary screen.",
-  "Check channel switching, startup time, buffering, and audio/video sync.",
-  "Test VOD playback, seeking, subtitles, and audio tracks where available.",
-  "Check that the EPG information important to you loads correctly.",
-];
-
-const supportedDevices = [
-  ["Fire TV / Firestick", "/devices/firestick-iptv"],
-  ["Android TV / Google TV", "/devices/android-tv-iptv"],
-  ["Samsung TV", "/devices/samsung-tv-iptv"],
-  ["LG TV", "/devices/lg-tv-iptv"],
-  ["Apple TV", "/devices/apple-tv-iptv"],
-  ["Chromecast", "/devices/chromecast-iptv"],
-  ["Roku", "/devices/roku-iptv"],
-  ["MAG, Windows & Mac", "/devices"],
+const steps = [
+  {
+    step: "01",
+    title: "Request the Trial",
+    desc: "Send a message via WhatsApp indicating the device and IPTV player app you plan to use. No payment or billing details are required.",
+  },
+  {
+    step: "02",
+    title: "Receive Login Details",
+    desc: "Credentials typically arrive within 5–15 minutes. Depending on your player, support will provide an Xtream Codes login (Server URL, Username, Password) or an M3U playlist URL.",
+  },
+  {
+    step: "03",
+    title: "Configure Your Player",
+    desc: "Open your IPTV app, enter the issued credentials, and allow the playlist and guide data to load. Follow the Universal IPTV Setup Guide if you need step-by-step assistance.",
+  },
+  {
+    step: "04",
+    title: "Evaluate Playback",
+    desc: "Test your preferred channels, features, and EPG during your normal viewing hours before the 24-hour period ends.",
+  },
 ] as const;
 
-const trialFacts = [
-  ["24 Hours", "Trial duration"],
-  ["$0", "Trial cost"],
-  ["No Card", "Credit card not required"],
-  ["No Auto-Renewal", "No automatic billing"],
-  ["2 Connections*", "Service allowance"],
-  ["5–15 Minutes*", "Typical credential delivery"],
+const coreRequirements = [
+  {
+    title: "Compatible Streaming Device",
+    description:
+      "You need a supported streaming device, smart TV, or computer connected to your home network. Supported systems include Amazon Fire TV devices, Android TV, Google TV, Samsung Smart TVs, LG Smart TVs, Apple TV, Roku, Windows, and Mac.",
+  },
+  {
+    title: "IPTV Player Application",
+    description:
+      "TryIPTV provides the IPTV service. You use a compatible IPTV player app to load and watch the service. Popular choices include TiviMate, IPTV Smarters, and Televizo.",
+  },
+  {
+    title: "Xtream Codes Credentials",
+    description:
+      "Xtream Codes is a connection format consisting of three fields: Server URL, Username, and Password. Most modern IPTV players support this format.",
+    linkText: "Read our Xtream Codes Guide",
+    linkHref: "/guides/what-are-xtream-codes",
+  },
+  {
+    title: "M3U Playlist URL",
+    description:
+      "An M3U playlist is a web link containing channel stream addresses and category metadata. Some media players use this format instead of Xtream Codes.",
+    linkText: "Read our M3U Playlist Guide",
+    linkHref: "/guides/what-is-m3u",
+  },
+  {
+    title: "Electronic Programme Guide (EPG)",
+    description:
+      "The EPG provides schedule listings and show descriptions inside your player's channel guide where available.",
+    linkText: "Learn how guide data functions in our EPG Guide",
+    linkHref: "/guides/what-is-epg",
+  },
+] as const;
+
+const deviceGuides = [
+  { name: "Amazon Firestick & Fire TV", href: "/devices/firestick-iptv", note: "Setup guide for Amazon Fire TV Stick and Fire TV devices." },
+  { name: "Android TV & Google TV", href: "/devices/android-tv-iptv", note: "Setup guide for Android TV and Google TV streaming devices and smart TVs." },
+  { name: "Samsung Smart TV", href: "/devices/samsung-tv-iptv", note: "Configuration instructions for compatible players on Samsung smart TVs." },
+  { name: "LG Smart TV", href: "/devices/lg-tv-iptv", note: "Setup guide for supported IPTV players on LG smart TVs." },
+  { name: "Apple TV", href: "/devices/apple-tv-iptv", note: "Setup steps for compatible media players on Apple TV (tvOS)." },
+  { name: "Windows PC", href: "/devices/windows-iptv", note: "Setup guide for IPTV player software on Windows computers." },
+  { name: "Apple Mac", href: "/devices/mac-iptv", note: "Configuration instructions for compatible players on macOS." },
+] as const;
+
+const playerGuides = [
+  { name: "TiviMate Setup Guide", href: "/players/tivimate", note: "Guide for configuring playlists and EPG in TiviMate for Android TV and Firestick." },
+  { name: "IPTV Smarters Pro Setup Guide", href: "/players/iptv-smarters", note: "Setup walkthrough for Xtream Codes on IPTV Smarters across supported platforms." },
+  { name: "View All Player Guides", href: "/players", note: "Compare and configure all supported third-party IPTV players." },
+] as const;
+
+const troubleshootingLinks = [
+  { issue: "Buffering or stuttering", label: "IPTV Buffering Guide", href: "/help/iptv-buffering" },
+  { issue: "Login details not working", label: "IPTV Login Troubleshooting Guide", href: "/help/iptv-login-not-working" },
+  { issue: "M3U playlist not loading", label: "M3U Troubleshooting Guide", href: "/help/m3u-not-loading" },
+  { issue: "EPG programme guide missing", label: "EPG Troubleshooting Guide", href: "/help/epg-not-working" },
+  { issue: "Streams not playing", label: "IPTV Not Working Guide", href: "/help/iptv-not-working" },
+] as const;
+
+const planComparisonRows = [
+  ["Cost", "$0", "From $16 (1 Month) to $90 (12 Months)"],
+  ["Duration", "24 consecutive hours", "1, 3, 6, or 12 months prepaid"],
+  ["Credit card required", "No", "Current payment instructions are provided when ordering"],
+  ["Simultaneous connections", "Confirmed when trial is issued", "2 simultaneous connections included on all plans"],
+  ["Automatic renewal", "No", "No (prepaid plans do not auto-renew)"],
+  ["Access format", "Xtream Codes / M3U", "Xtream Codes / M3U"],
+  ["When access ends", "Service stops automatically", "Access expires at the end of the prepaid period"],
 ] as const;
 
 export default async function IptvFreeTrialPage() {
@@ -77,163 +159,450 @@ export default async function IptvFreeTrialPage() {
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       <Schema id="service" schema={serviceSchema} />
 
+      {/* Hero Section */}
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
         <Container className="relative">
           <div className="mx-auto max-w-4xl text-center">
             <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
-            <p className="eyebrow mb-3">24 Hours · Full Access · No Credit Card</p>
+            <p className="eyebrow mb-3">24-Hour Evaluation · $0 Cost · No Credit Card</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-              24-Hour IPTV Free Trial — No Credit Card Required
+              24-Hour IPTV Free Trial — Test TryIPTV Before You Pay
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              Try TryIPTV free for 24 hours before choosing a paid plan. No credit card is required, there is no automatic renewal, and trial credentials are typically delivered within 5–15 minutes.
+              Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. The trial lasts 24 hours, costs $0, requires no credit card, and does not automatically convert into a paid subscription.
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg"><a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer"><SiWhatsapp className="mr-2 h-4 w-4" /> Start My Free Trial</a></Button>
-              <Button asChild size="lg" variant="outline"><Link href="/pricing">See Plans &amp; Pricing</Link></Button>
+              <Button asChild size="lg">
+                <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                  <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link href="/setup">View Setup Guide</Link>
+              </Button>
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-muted-foreground">
-              <span>No credit card</span><span>No auto-renewal</span><span>24-hour access</span>
+              <span>24-Hour Access</span>
+              <span>$0 Cost</span>
+              <span>No Credit Card</span>
+              <span>No Auto-Renewal</span>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="border-b border-white/[0.06] bg-[#070a08] py-7 sm:py-9">
-        <Container>
-          <div className="mx-auto grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/[0.09] bg-white/[0.09] sm:grid-cols-3">
-            {trialFacts.map(([value, label]) => (
-              <div key={value} className="bg-card px-4 py-4 text-center sm:px-5">
-                <p className="font-headline text-base font-extrabold text-foreground sm:text-lg">{value}</p>
-                <p className="mt-1 text-xs leading-5 text-muted-foreground">{label}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mx-auto mt-3 max-w-4xl text-center text-xs leading-5 text-muted-foreground">* The service lists 2 simultaneous connections; confirm the trial allowance for your setup. Credential delivery is a typical 5–15 minute estimate and can vary.</p>
-        </Container>
-      </Section>
-
+      {/* Section 1: Quick Overview */}
       <Section className="border-b border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
         <Container>
-          <article className="mx-auto max-w-3xl">
-            <SectionHeader eyebrow="Quick Answer" title="How Does the TryIPTV Free Trial Work?" />
-            <p className="text-base leading-8 text-muted-foreground sm:text-lg">
-              Request the trial through WhatsApp and share your device or player when useful. After confirmation, support typically sends your Xtream Codes credentials and/or M3U playlist within 5–15 minutes. Enter the details in a compatible player and test the available live TV, VOD, EPG, and picture quality for 24 hours. The trial costs $0, requires no payment method, and does not automatically convert to a paid subscription.
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Quick Overview"
+              title="How the TryIPTV Free Trial Works"
+              subtitle="Key facts about testing the service before deciding on a paid plan."
+            />
+            <p className="text-base leading-7 text-muted-foreground sm:text-lg">
+              The TryIPTV free trial provides temporary 24-hour access so you can evaluate stream playback, device compatibility, and available channels on your home network before spending money. Testing on your own device and home connection gives you the most realistic view of how the service works in your setup.
             </p>
-          </article>
-        </Container>
-      </Section>
 
-      <Section>
-        <Container>
-          <SectionHeader eyebrow="Trial Inclusions" title="What Do You Get With the 24-Hour IPTV Free Trial?" subtitle="Use the trial to evaluate the parts of the service that matter to your viewing setup." />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {inclusions.map(([Icon, title, description]) => (
-              <div key={title} className="rounded-lg border border-white/[0.09] bg-card p-5">
-                <Icon className="mb-3 h-5 w-5 text-primary" aria-hidden="true" />
-                <h3 className="font-headline text-lg font-extrabold text-foreground">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
+            <div className="mt-6 overflow-hidden rounded-lg border border-white/[0.09] bg-card">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[560px] text-left text-sm">
+                  <caption className="sr-only">TryIPTV free trial details and specifications</caption>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {quickFacts.map(([label, value]) => (
+                      <tr key={label} className="transition-colors hover:bg-white/[0.02]">
+                        <th scope="row" className="w-1/3 px-5 py-3.5 font-semibold text-foreground">
+                          {label}
+                        </th>
+                        <td className="px-5 py-3.5 text-muted-foreground">{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section variant="alt" className="border-y border-white/[0.06] bg-[#070a08]">
-        <Container>
-          <SectionHeader eyebrow="Start Here" title="How the IPTV Free Trial Works" subtitle="A short path from the WhatsApp request to testing the service." />
-          <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-3 md:divide-x md:divide-white/[0.09]">
-            {trialSteps.map(([number, title, description]) => (
-              <div key={number} className="border-b border-white/[0.09] px-5 py-6 last:border-b-0 md:border-b-0 md:px-6 md:py-7">
-                <span className="font-mono text-xs font-bold text-primary">{number}</span>
-                <h3 className="mt-3 font-headline text-lg font-extrabold text-foreground">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold">
-            <Link href="/setup" className="inline-flex items-center gap-1.5 text-primary hover:underline">Universal setup guide <ArrowRight className="h-4 w-4" /></Link>
-            <Link href="/devices" className="inline-flex items-center gap-1.5 text-primary hover:underline">Device guides <ArrowRight className="h-4 w-4" /></Link>
-            <Link href="/players" className="inline-flex items-center gap-1.5 text-primary hover:underline">Player guides <ArrowRight className="h-4 w-4" /></Link>
-          </div>
-        </Container>
-      </Section>
-
-      <Section variant="alt" className="border-y border-white/[0.06] bg-[#070a08]">
-        <Container>
-          <SectionHeader eyebrow="Login Formats" title="M3U or Xtream Codes?" subtitle="Both documented formats can be used in compatible IPTV players. Confirm which details are issued for your trial." />
-          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-white/[0.09] bg-card p-5">
-              <h3 className="font-headline text-lg font-extrabold text-foreground">M3U playlist</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">M3U is a playlist URL or file that tells a compatible player where streams are located. Read the <Link href="/guides/what-is-m3u" className="font-semibold text-primary underline underline-offset-4">M3U playlist guide</Link> for the format details.</p>
-            </div>
-            <div className="rounded-lg border border-white/[0.09] bg-card p-5">
-              <h3 className="font-headline text-lg font-extrabold text-foreground">Xtream Codes</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">An Xtream Codes-style login uses a server URL, username, and password in a compatible player. See the <Link href="/guides/what-are-xtream-codes" className="font-semibold text-primary underline underline-offset-4">Xtream Codes guide</Link> for context.</p>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section>
+      {/* Section 2: What to Test During Your 24-Hour Trial */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
         <Container>
-          <SectionHeader eyebrow="Practical Checklist" title="What Should You Test During the 24 Hours?" subtitle="Test the service under the same conditions you expect to use after purchase." />
-          <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2">
-            {testingChecks.map((check, index) => (
-              <div key={check} className="flex items-start gap-3 rounded-lg border border-white/[0.08] bg-card/60 p-4">
-                <span className="font-mono text-xs font-bold text-primary">{String(index + 1).padStart(2, "0")}</span>
-                <p className="text-sm leading-6 text-muted-foreground">{check}</p>
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Evaluation Checklist"
+              title="What to Test During Your 24-Hour Trial"
+              subtitle="Use the 24-hour testing period to evaluate the specific channels, categories, and features you plan to watch regularly."
+            />
+
+            <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[560px] text-left text-sm">
+                  <caption className="sr-only">Trial testing priorities and checklist</caption>
+                  <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+                    <tr>
+                      <th scope="col" className="w-1/3 px-5 py-3 text-primary">What to Test</th>
+                      <th scope="col" className="px-5 py-3">What to Check</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {testingChecklist.map(([item, check]) => (
+                      <tr key={item} className="transition-colors hover:bg-white/[0.02]">
+                        <th scope="row" className="px-5 py-3.5 font-semibold text-foreground align-top">
+                          {item}
+                        </th>
+                        <td className="px-5 py-3.5 text-muted-foreground">{check}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-            ))}
+            </div>
           </div>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-muted-foreground">If playback issues persist, use the <Link href="/help/iptv-buffering" className="font-semibold text-primary underline underline-offset-4">IPTV buffering guide</Link> to separate device, network, player, and stream-source factors.</p>
         </Container>
       </Section>
 
-      <Section variant="alt" className="border-y border-white/[0.06] bg-[#070a08]">
+      {/* Section 3: How to Request and Start Your Free Trial */}
+      <Section variant="alt" className="border-b border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
         <Container>
-          <SectionHeader eyebrow="Device Compatibility" title="Which Devices Can I Use for the IPTV Free Trial?" subtitle="Use the trial on a supported TV, streaming device, computer, or player, then open the relevant guide if you need setup help." />
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {supportedDevices.map(([name, href]) => (
-              <Link key={name} href={href} className="group rounded-lg border border-white/[0.09] bg-card p-4 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:text-primary">{name} <ArrowRight className="ml-1 inline h-3.5 w-3.5" /></Link>
-            ))}
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Simple Steps"
+              title="How to Request and Start Your Free Trial"
+              subtitle="Four straightforward steps from request to evaluation."
+            />
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {steps.map((s) => (
+                <div key={s.step} className="rounded-lg border border-white/[0.09] bg-card p-5">
+                  <span className="font-mono text-xs font-bold text-primary">{s.step}</span>
+                  <h3 className="mt-2 font-headline text-lg font-extrabold text-foreground">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {s.desc}
+                    {s.step === "03" && (
+                      <>
+                        {" "}
+                        Follow the{" "}
+                        <Link href="/setup" className="font-semibold text-primary underline underline-offset-4">
+                          Universal IPTV Setup Guide
+                        </Link>{" "}
+                        if you need step-by-step assistance.
+                      </>
+                    )}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-          <p className="mt-5 text-center text-sm text-muted-foreground">Compare compatible apps in the <Link href="/players" className="font-semibold text-primary underline underline-offset-4">IPTV player guides</Link> or follow the <Link href="/setup" className="font-semibold text-primary underline underline-offset-4">universal setup path</Link>.</p>
         </Container>
       </Section>
 
-      <Section>
+      {/* Section 4: What You Need Before You Begin */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
         <Container>
-          <SectionHeader eyebrow="After the Trial" title="What Happens After the 24-Hour Trial?" subtitle="The trial ends after its 24-hour access period and does not automatically become a paid subscription." />
-          <div className="mx-auto max-w-3xl overflow-x-auto rounded-lg border border-white/[0.09] bg-card">
-            <table className="w-full min-w-[560px] text-left text-sm">
-              <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase text-muted-foreground"><tr><th className="px-5 py-3">Free Trial</th><th className="px-5 py-3 text-primary">Paid Plans</th></tr></thead>
-              <tbody className="divide-y divide-white/[0.06] text-muted-foreground"><tr><td className="px-5 py-3">$0 · 24 hours · no card</td><td className="px-5 py-3">$16 / 1 month · $39 / 3 months · $60 / 6 months · $90 / 12 months</td></tr><tr><td className="px-5 py-3">No automatic renewal</td><td className="px-5 py-3">Prepaid · 2 simultaneous connections</td></tr></tbody>
-            </table>
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Core Requirements"
+              title="What You Need Before You Begin"
+              subtitle="Three components are required to stream: a device, a player app, and account credentials."
+            />
+
+            <div className="space-y-4">
+              {coreRequirements.map((req) => (
+                <div key={req.title} className="rounded-lg border border-white/[0.09] bg-card p-5">
+                  <h3 className="font-headline text-lg font-extrabold text-foreground">{req.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                    {req.description}
+                    {"linkText" in req && req.linkText && req.linkHref && (
+                      <>
+                        {" "}
+                        <Link href={req.linkHref} className="font-semibold text-primary underline underline-offset-4">
+                          {req.linkText}
+                        </Link>
+                        .
+                      </>
+                    )}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-5 text-center"><Link href="/pricing" className="font-semibold text-primary underline underline-offset-4">View all plans and pricing</Link></div>
         </Container>
       </Section>
 
-      <Section className="border-t border-white/[0.06] bg-[#070a08]">
+      {/* Section 5: Device and Player Setup Guides */}
+      <Section variant="alt" className="border-b border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
         <Container>
-          <SectionHeader eyebrow="Trial Questions" title="Frequently Asked Questions About the Free Trial" subtitle="Short answers about access, setup, testing, and what happens next." />
-          <div className="mx-auto max-w-[880px] overflow-hidden rounded-lg border border-white/[0.08] bg-[#07080a]">
-            {trialFaqs.map((faq) => (
-              <details key={faq.question} className="group border-b border-white/[0.07] px-5 last:border-b-0 sm:px-7"><summary className="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-sm font-semibold text-foreground sm:text-base [&::-webkit-details-marker]:hidden">{faq.question}<span className="text-primary transition-transform group-open:rotate-45">+</span></summary><p className="pb-5 pr-6 text-sm leading-6 text-muted-foreground">{faq.answer}</p></details>
-            ))}
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Setup Guides"
+              title="Device and Player Setup Guides"
+              subtitle="Follow the setup guide for your specific device or media player."
+            />
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              {/* Devices */}
+              <div>
+                <h3 className="mb-4 font-headline text-lg font-extrabold text-foreground">Device Setup Guides</h3>
+                <div className="space-y-3">
+                  {deviceGuides.map((d) => (
+                    <Link
+                      key={d.name}
+                      href={d.href}
+                      className="group block rounded-lg border border-white/[0.09] bg-card p-4 transition-colors hover:border-primary/40"
+                    >
+                      <p className="font-headline text-sm font-bold text-foreground group-hover:text-primary">
+                        {d.name} <ArrowRight className="ml-1 inline h-3.5 w-3.5" />
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-muted-foreground">{d.note}</p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Players */}
+              <div>
+                <h3 className="mb-4 font-headline text-lg font-extrabold text-foreground">Player Setup Guides</h3>
+                <div className="space-y-3">
+                  {playerGuides.map((p) => (
+                    <Link
+                      key={p.name}
+                      href={p.href}
+                      className="group block rounded-lg border border-white/[0.09] bg-card p-4 transition-colors hover:border-primary/40"
+                    >
+                      <p className="font-headline text-sm font-bold text-foreground group-hover:text-primary">
+                        {p.name} <ArrowRight className="ml-1 inline h-3.5 w-3.5" />
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-muted-foreground">{p.note}</p>
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="mt-6 rounded-lg border border-white/[0.08] bg-card/60 p-4 text-xs leading-5 text-muted-foreground">
+                  Looking for general instructions? Follow the{" "}
+                  <Link href="/setup" className="font-semibold text-primary underline underline-offset-4">
+                    Universal IPTV Setup Guide
+                  </Link>
+                  .
+                </div>
+              </div>
+            </div>
           </div>
-          <p className="mt-6 text-center text-sm text-muted-foreground">Need help with a specific issue? <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4">Contact support</Link>.</p>
         </Container>
       </Section>
 
-      <Section className="border-t border-white/[0.06]">
+      {/* Section 6: Is an IPTV Free Trial Worth It? */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
         <Container>
-          <div className="relative overflow-hidden rounded-lg border border-primary/25 bg-[#0b100d] p-7 text-center sm:p-9">
-            <p className="eyebrow mb-3">Test Before You Buy</p>
-            <h2 className="font-headline text-3xl font-extrabold leading-tight text-foreground sm:text-4xl">Test TryIPTV Before You Pay</h2>
-            <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-muted-foreground">24 hours to test the channels, devices, and viewing quality that matter to you. No credit card and no automatic renewal.</p>
-            <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row"><Button asChild size="lg"><a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer"><SiWhatsapp className="mr-2 h-4 w-4" /> Start My Free Trial</a></Button><Button asChild size="lg" variant="outline"><Link href="/pricing">See Plans &amp; Pricing</Link></Button></div>
+          <div className="mx-auto max-w-3xl">
+            <SectionHeader
+              eyebrow="Decision Guide"
+              title="Is an IPTV Free Trial Worth It?"
+            />
+
+            <div className="space-y-4 text-base leading-7 text-muted-foreground sm:text-lg">
+              <p>
+                A free trial helps you evaluate whether your device, player, and home connection work well with the service before paying.
+              </p>
+              <p>
+                Testing on your own equipment during your normal viewing hours lets you check channel startup time, stream smoothness, and guide loading firsthand.
+              </p>
+              <p className="rounded-lg border border-white/[0.09] bg-card p-4 text-sm leading-6 sm:text-base">
+                <strong className="text-foreground">Service Evaluation Note:</strong> A 24-hour test is useful for evaluating current compatibility and playback, but it cannot guarantee how any internet-delivered service will perform over several months. To minimize risk after evaluating the trial, consider starting with a shorter prepaid term (such as a 1-month plan) before selecting a longer subscription.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="font-headline text-xl font-extrabold text-foreground">Who Should Use the Free Trial</h3>
+              <ul className="mt-4 space-y-2.5 text-sm leading-6 text-muted-foreground">
+                <li className="flex items-start gap-2.5">
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                  <span>New viewers testing TryIPTV for the first time.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                  <span>Viewers confirming that their specific TV or streaming player works with the service.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                  <span>Viewers wanting to check specific sports, news, or regional channels before purchasing.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <Check className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                  <span>Users who want to evaluate EPG data loading and VOD playback on their home connection.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 7: Free Trial vs. Paid Subscription */}
+      <Section variant="alt" className="border-b border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Plan Comparison"
+              title="Free Trial vs. Paid Subscription"
+              subtitle="Review how the 24-hour evaluation compares to standard prepaid subscriptions."
+            />
+
+            <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[560px] text-left text-sm">
+                  <caption className="sr-only">Comparison between free trial and paid subscription plans</caption>
+                  <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
+                    <tr>
+                      <th scope="col" className="px-5 py-3">Feature</th>
+                      <th scope="col" className="px-5 py-3 text-primary">24-Hour Free Trial</th>
+                      <th scope="col" className="px-5 py-3">Paid Subscription Plans</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {planComparisonRows.map(([feature, trial, paid]) => (
+                      <tr key={feature} className="transition-colors hover:bg-white/[0.02]">
+                        <th scope="row" className="px-5 py-3.5 font-semibold text-foreground">
+                          {feature}
+                        </th>
+                        <td className="px-5 py-3.5 text-muted-foreground">{trial}</td>
+                        <td className="px-5 py-3.5 text-muted-foreground">{paid}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mt-8 rounded-lg border border-white/[0.09] bg-card p-6">
+              <h3 className="font-headline text-lg font-extrabold text-foreground">What Happens When Your Trial Ends</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                When your 24 hours conclude, trial access expires and streams will stop loading. The trial does not automatically renew or convert into a paid subscription, and no cancellation request is required.
+              </p>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                If you want to continue watching, review the options on our{" "}
+                <Link href="/pricing" className="font-semibold text-primary underline underline-offset-4">
+                  Plans &amp; Pricing Page
+                </Link>
+                . All subscriptions are prepaid upfront with no recurring billing.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 8: Troubleshooting During Your Trial */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="Troubleshooting"
+              title="Troubleshooting During Your Trial"
+              subtitle="If you experience issues during your 24-hour test window, use these direct guides to resolve them:"
+            />
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {troubleshootingLinks.map((t) => (
+                <div key={t.issue} className="rounded-lg border border-white/[0.09] bg-card p-4">
+                  <p className="text-xs font-semibold text-muted-foreground">{t.issue}</p>
+                  <Link
+                    href={t.href}
+                    className="mt-1 inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline"
+                  >
+                    {t.label} <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 9: Frequently Asked Questions */}
+      <Section variant="alt" className="border-b border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader
+              eyebrow="FAQ"
+              title="Frequently Asked Questions About the Free Trial"
+              subtitle="Direct answers to common questions about testing TryIPTV."
+            />
+
+            <div className="overflow-hidden rounded-lg border border-white/[0.08] bg-[#07080a]">
+              {trialFaqs.map((faq) => (
+                <details key={faq.question} className="group border-b border-white/[0.07] px-5 last:border-b-0 sm:px-7">
+                  <summary className="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-sm font-semibold text-foreground sm:text-base [&::-webkit-details-marker]:hidden">
+                    {faq.question}
+                    <span className="text-primary transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="pb-5 pr-6 text-sm leading-6 text-muted-foreground">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Need help with a specific issue?{" "}
+              <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4">
+                Contact Support
+              </Link>
+              .
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 10: About TryIPTV & Final CTA */}
+      <Section className="py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader eyebrow="About TryIPTV" title="About TryIPTV" />
+
+            <div className="space-y-4 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
+              <p>
+                TryIPTV provides prepaid IPTV streaming access for compatible television, mobile, and desktop media players.
+              </p>
+              <p>
+                All paid plans operate strictly on a prepaid basis with no automatic renewal, and all paid subscriptions include two simultaneous connections. Current payment instructions are provided when ordering. We offer a 24-hour free trial so viewers can evaluate stream playback on their own hardware and network before buying.
+              </p>
+
+              <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-sm font-semibold">
+                <Link href="/pricing" className="text-primary hover:underline">
+                  Plans &amp; Pricing Page
+                </Link>
+                <Link href="/setup" className="text-primary hover:underline">
+                  Universal IPTV Setup Guide
+                </Link>
+                <Link href="/contact-us" className="text-primary hover:underline">
+                  Contact Us Page
+                </Link>
+                <Link href="/terms-conditions" className="text-primary hover:underline">
+                  Terms &amp; Conditions
+                </Link>
+                <Link href="/refund-policy" className="text-primary hover:underline">
+                  Refund Policy
+                </Link>
+              </div>
+            </div>
+
+            {/* Closing Call to Action */}
+            <div className="mt-10 overflow-hidden rounded-lg border border-primary/25 bg-[#0b100d] p-7 text-center sm:p-9">
+              <p className="eyebrow mb-2">Test Before You Pay</p>
+              <h3 className="font-headline text-2xl font-extrabold text-foreground sm:text-3xl">
+                Test TryIPTV Before You Pay
+              </h3>
+              <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground sm:text-base">
+                Request a 24-hour trial to evaluate channels, playback, and player compatibility on your own setup.
+              </p>
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <Button asChild size="lg">
+                  <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
+                    <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/setup">View Setup Guide</Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
