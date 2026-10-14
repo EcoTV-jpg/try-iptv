@@ -1,42 +1,57 @@
 export const pricingPageFaqs = [
-    {
-        question: "How much does a TryIPTV subscription cost?",
-        answer: "TryIPTV subscription plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, and $90 for 12 months. All plans are one-time prepaid purchases with no hidden fees, and the 12-month plan offers the lowest equivalent cost at $7.50 per month."
-    },
-    {
-        question: "What is the difference between monthly and yearly IPTV plans?",
-        answer: "All TryIPTV plans include the same core service features: access to 25,000+ live channels worldwide, 120,000+ movies and TV shows, 4K Ultra HD streaming where available, Smart EPG, and 2 simultaneous connections. The difference is duration and prepaid savings: the 1-month plan ($16) offers flexible short-term viewing, while the 12-month plan ($90) reduces your effective monthly cost to $7.50 per month (a 53% savings compared to twelve monthly renewals)."
-    },
-    {
-        question: "Is the subscription billed monthly, or does it renew automatically?",
-        answer: "No. TryIPTV plans are strictly prepaid upfront and never renew automatically or charge your payment method on a recurring basis. All plans are flat prepaid subscriptions for the exact term you select (1, 3, 6, or 12 months), and you decide whether and when to renew."
-    },
-    {
-        question: "How many devices does each plan cover?",
-        answer: "Every standard TryIPTV plan includes 2 simultaneous device connections. You can configure your playlist across all your screens (Firestick, Smart TV, phone, tablet, PC) and stream on up to two devices at the same time in your household."
-    },
-    {
-        question: "What payment methods are accepted for prepaid IPTV plans?",
-        answer: "Available payment methods are shown at checkout. All orders are one-time prepaid purchases with no automatic renewals or recurring charges."
-    },
-    {
-        question: "What happens after I purchase, and how quickly do I receive credentials?",
-        answer: "After completing checkout, your IPTV subscription details are dispatched to your email typically within 5–15 minutes. This includes your M3U playlist URL, Xtream Codes credentials (server URL, username, password), and setup instructions. If you do not see the confirmation email in your inbox, check your spam or junk folder or contact our support team via WhatsApp or email."
-    },
-    {
-        question: "Is there a free trial available before purchasing a plan?",
-        answer: "Yes. TryIPTV offers a 24-hour free trial with no credit card required so you can test channel selection, stream stability, and device compatibility before purchasing. You can request trial access directly on our website or via WhatsApp."
-    },
-    {
-        question: "What happens after the free trial ends?",
-        answer: "The 24-hour trial is an evaluation period and does not automatically become a paid subscription. If you want to continue using TryIPTV, choose a prepaid plan separately from the pricing options above."
-    },
-    {
-        question: "Which devices and apps work with TryIPTV?",
-        answer: "TryIPTV works on Amazon Fire TV, Android TV and mobile, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, Roku, and MAG boxes using standard IPTV players like TiviMate, IPTV Smarters Pro, or XCIPTV with Xtream Codes or M3U."
-    },
-    {
-        question: "Do you offer refunds on subscription plans?",
-        answer: "Yes. TryIPTV provides a 7-day refund policy on all prepaid subscription plans if you experience technical issues that our support team cannot resolve. We also recommend using our 24-hour free trial before purchasing to confirm compatibility."
-    }
+  {
+    question: "How much does TryIPTV cost?",
+    answer:
+      "TryIPTV prepaid plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, and $90 for 12 months. All plans are one-time prepaid purchases with no recurring billing, and longer terms reduce the effective monthly cost down to $7.50 per month.",
+  },
+  {
+    question: "Which plan has the lowest monthly equivalent?",
+    answer:
+      "The 12-month plan has the lowest equivalent monthly cost at $7.50 per month ($90 total upfront), compared to $16.00 per month on the 1-month plan.",
+  },
+  {
+    question: "Are plans prepaid?",
+    answer:
+      "Yes. All TryIPTV plans are paid upfront for the chosen duration (1, 3, 6, or 12 months). There are no recurring fees or ongoing monthly invoices.",
+  },
+  {
+    question: "Do subscriptions automatically renew?",
+    answer:
+      "No. TryIPTV subscriptions do not automatically renew. When your prepaid period ends, access simply expires unless you manually choose to purchase another term.",
+  },
+  {
+    question: "How many simultaneous connections are included?",
+    answer:
+      "Every paid plan includes 2 simultaneous connections. You can set up the service on multiple compatible devices, but streaming is limited to two screens at the same time.",
+  },
+  {
+    question: "How are plan savings calculated?",
+    answer:
+      "Savings are calculated by comparing the total prepaid price against purchasing the 1-month plan ($16) repeatedly. For example, twelve 1-month purchases cost $192, while the 12-month plan costs $90—a savings of $102.",
+  },
+  {
+    question: "What payment methods are available?",
+    answer:
+      "Current payment instructions are provided when ordering at checkout. All orders are one-time prepaid purchases with no automatic renewals or recurring charges.",
+  },
+  {
+    question: "How quickly is an order activated?",
+    answer:
+      "Credentials and setup instructions are typically delivered within 5–15 minutes after payment confirmation.",
+  },
+  {
+    question: "Can I test TryIPTV before buying?",
+    answer:
+      "Yes. You can request a 24-hour free trial with no credit card required to evaluate channels, playback, and device compatibility before choosing a paid plan.",
+  },
+  {
+    question: "What happens when my prepaid term expires?",
+    answer:
+      "When your prepaid term ends, streaming access stops automatically. You are not billed again. To continue using the service, you can purchase a new prepaid term at any time.",
+  },
+  {
+    question: "Is there a refund policy?",
+    answer:
+      "Yes. Technical issues that support cannot resolve may qualify under our 7-day refund policy. Review our refund policy page for specific terms and conditions.",
+  },
 ];
