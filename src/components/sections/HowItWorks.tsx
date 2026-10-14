@@ -43,7 +43,7 @@ export function HowItWorks() {
         <SectionHeader
           align="left"
           title="How Do I Start With TryIPTV?"
-          subtitle="Choose a plan or trial, receive your login, then follow the setup guide for your device."
+          subtitle="Use your TryIPTV access details with a compatible IPTV player, then follow the setup guide for your device."
           eyebrow="Setup Process"
           className="mb-8 sm:mb-10 max-w-2xl"
         />

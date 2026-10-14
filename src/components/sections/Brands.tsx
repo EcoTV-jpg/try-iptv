@@ -36,6 +36,7 @@ const BrandCarousel = ({ images, reverse = false }: { images: typeof brands, rev
                             width={brandImage.width || 150}
                             height={brandImage.height || 46}
                             className="object-contain h-12 w-auto"
+                            sizes="112px"
                             data-ai-hint={brandImage.imageHint}
                             placeholder="blur"
                             blurDataURL={BLUR_DATA_URL}

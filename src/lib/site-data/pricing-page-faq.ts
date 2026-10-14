@@ -28,6 +28,10 @@ export const pricingPageFaqs = [
         answer: "Yes. TryIPTV offers a 24-hour free trial with no credit card required so you can test channel selection, stream stability, and device compatibility before purchasing. You can request trial access directly on our website or via WhatsApp."
     },
     {
+        question: "What happens after the free trial ends?",
+        answer: "The 24-hour trial is an evaluation period and does not automatically become a paid subscription. If you want to continue using TryIPTV, choose a prepaid plan separately from the pricing options above."
+    },
+    {
         question: "Which devices and apps work with TryIPTV?",
         answer: "TryIPTV works on Amazon Fire TV, Android TV and mobile, Apple TV, iPhone, iPad, Windows, macOS, Samsung and LG Smart TVs, Roku, and MAG boxes using standard IPTV players like TiviMate, IPTV Smarters Pro, or XCIPTV with Xtream Codes or M3U."
     },

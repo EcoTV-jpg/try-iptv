@@ -56,9 +56,14 @@ const CONTACTS = [
 
 const homepageFaqs: FaqItem[] = [
   {
+    question: "What is TryIPTV?",
+    answer:
+      'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself.',
+  },
+  {
     question: "Does TryIPTV offer a free trial?",
     answer:
-      'Yes. TryIPTV offers a 24-hour free trial at $0 so you can test the service before choosing a plan. <a href="/iptv-free-trial" class="text-primary hover:underline">Request trial access</a>.',
+      'Yes. TryIPTV offers a 24-hour free trial at $0. <a href="/iptv-free-trial" class="text-primary hover:underline">Request trial access</a>.',
   },
   {
     question: "Which devices can I use?",
@@ -73,7 +78,12 @@ const homepageFaqs: FaqItem[] = [
   {
     question: "How many simultaneous connections are included?",
     answer:
-      "Every standard TryIPTV subscription includes 2 simultaneous connections.",
+      "Every standard TryIPTV subscription includes 2 simultaneous connections, meaning up to two devices can stream at the same time.",
+  },
+  {
+    question: "Do TryIPTV subscriptions renew automatically?",
+    answer:
+      'No. Plans are prepaid for the selected duration and do not automatically renew. <a href="/pricing" class="text-primary hover:underline">Compare plans</a>.',
   },
 ];
 

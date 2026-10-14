@@ -15,9 +15,9 @@ const freeTrialWhatsAppUrl =
   "https://wa.me/15205648298?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
-  const title = "24-Hour IPTV Free Trial — Test TryIPTV with No Credit Card";
+  const title = "IPTV Free Trial — 24 Hours, No Credit Card | TryIPTV";
   const description =
-    "Test TryIPTV free for 24 hours on your own device. No credit card or auto-renewal. Check live channels, VOD, EPG, and available HD or 4K quality before choosing a plan.";
+    "Try TryIPTV free for 24 hours with no credit card and no automatic renewal. Test it on your own device before choosing a paid plan.";
 
   return {
     ...generatePageMetadata({ title, description, canonical: "/iptv-free-trial" }),
@@ -60,6 +60,15 @@ const supportedDevices = [
   ["MAG, Windows & Mac", "/devices"],
 ] as const;
 
+const trialFacts = [
+  ["24 Hours", "Trial duration"],
+  ["$0", "Trial cost"],
+  ["No Card", "Credit card not required"],
+  ["No Auto-Renewal", "No automatic billing"],
+  ["2 Connections*", "Service allowance"],
+  ["5–15 Minutes*", "Typical credential delivery"],
+] as const;
+
 export default async function IptvFreeTrialPage() {
   const { breadcrumbSchema, serviceSchema, trialFaqs } = await getIptvFreeTrialPageData();
 
@@ -74,10 +83,10 @@ export default async function IptvFreeTrialPage() {
             <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
             <p className="eyebrow mb-3">24 Hours · Full Access · No Credit Card</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-              24-Hour IPTV Free Trial — Test TryIPTV Before You Pay
+              24-Hour IPTV Free Trial — No Credit Card Required
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              Test TryIPTV on your own TV or streaming device for 24 hours before choosing a paid plan. Check the channels, picture quality, EPG, VOD, and device compatibility that matter to you. No credit card and no automatic renewal.
+              Try TryIPTV free for 24 hours before choosing a paid plan. No credit card is required, there is no automatic renewal, and trial credentials are typically delivered within 5–15 minutes.
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg"><a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer"><SiWhatsapp className="mr-2 h-4 w-4" /> Start My Free Trial</a></Button>
@@ -87,6 +96,20 @@ export default async function IptvFreeTrialPage() {
               <span>No credit card</span><span>No auto-renewal</span><span>24-hour access</span>
             </div>
           </div>
+        </Container>
+      </Section>
+
+      <Section className="border-b border-white/[0.06] bg-[#070a08] py-7 sm:py-9">
+        <Container>
+          <div className="mx-auto grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/[0.09] bg-white/[0.09] sm:grid-cols-3">
+            {trialFacts.map(([value, label]) => (
+              <div key={value} className="bg-card px-4 py-4 text-center sm:px-5">
+                <p className="font-headline text-base font-extrabold text-foreground sm:text-lg">{value}</p>
+                <p className="mt-1 text-xs leading-5 text-muted-foreground">{label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-3 max-w-4xl text-center text-xs leading-5 text-muted-foreground">* The service lists 2 simultaneous connections; confirm the trial allowance for your setup. Credential delivery is a typical 5–15 minute estimate and can vary.</p>
         </Container>
       </Section>
 
@@ -118,7 +141,7 @@ export default async function IptvFreeTrialPage() {
 
       <Section variant="alt" className="border-y border-white/[0.06] bg-[#070a08]">
         <Container>
-          <SectionHeader eyebrow="Start Here" title="How Do I Start My IPTV Free Trial?" subtitle="A short path from the WhatsApp request to testing the service." />
+          <SectionHeader eyebrow="Start Here" title="How the IPTV Free Trial Works" subtitle="A short path from the WhatsApp request to testing the service." />
           <div className="grid grid-cols-1 border-y border-white/[0.09] md:grid-cols-3 md:divide-x md:divide-white/[0.09]">
             {trialSteps.map(([number, title, description]) => (
               <div key={number} className="border-b border-white/[0.09] px-5 py-6 last:border-b-0 md:border-b-0 md:px-6 md:py-7">
@@ -132,6 +155,22 @@ export default async function IptvFreeTrialPage() {
             <Link href="/setup" className="inline-flex items-center gap-1.5 text-primary hover:underline">Universal setup guide <ArrowRight className="h-4 w-4" /></Link>
             <Link href="/devices" className="inline-flex items-center gap-1.5 text-primary hover:underline">Device guides <ArrowRight className="h-4 w-4" /></Link>
             <Link href="/players" className="inline-flex items-center gap-1.5 text-primary hover:underline">Player guides <ArrowRight className="h-4 w-4" /></Link>
+          </div>
+        </Container>
+      </Section>
+
+      <Section variant="alt" className="border-y border-white/[0.06] bg-[#070a08]">
+        <Container>
+          <SectionHeader eyebrow="Login Formats" title="M3U or Xtream Codes?" subtitle="Both documented formats can be used in compatible IPTV players. Confirm which details are issued for your trial." />
+          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
+            <div className="rounded-lg border border-white/[0.09] bg-card p-5">
+              <h3 className="font-headline text-lg font-extrabold text-foreground">M3U playlist</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">M3U is a playlist URL or file that tells a compatible player where streams are located. Read the <Link href="/guides/what-is-m3u" className="font-semibold text-primary underline underline-offset-4">M3U playlist guide</Link> for the format details.</p>
+            </div>
+            <div className="rounded-lg border border-white/[0.09] bg-card p-5">
+              <h3 className="font-headline text-lg font-extrabold text-foreground">Xtream Codes</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">An Xtream Codes-style login uses a server URL, username, and password in a compatible player. See the <Link href="/guides/what-are-xtream-codes" className="font-semibold text-primary underline underline-offset-4">Xtream Codes guide</Link> for context.</p>
+            </div>
           </div>
         </Container>
       </Section>

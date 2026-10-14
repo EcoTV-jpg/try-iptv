@@ -191,20 +191,20 @@ export function HomePricing() {
         </div>
 
         <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-muted-foreground/70">
-          Every plan includes the same core service and 2 simultaneous connections.
+          Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
         </p>
 
         {/* Clear bridge to detailed pricing comparison and free trial */}
         <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-4.5 text-xs sm:text-sm text-muted-foreground">
           <div>
-            Need the full plan comparison?{" "}
+            Want the full plan comparison?{" "}
             <Link href="/pricing" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
               Compare all plans <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="shrink-0">
             <Link href="/iptv-free-trial" className="font-medium text-muted-foreground/90 hover:text-foreground underline underline-offset-4">
-              Try it free for 24 hours &rarr;
+              24-hour free trial available &rarr;
             </Link>
           </div>
         </div>

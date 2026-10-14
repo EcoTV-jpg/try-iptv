@@ -32,7 +32,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 max-w-xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground/90">
-              TryIPTV provides prepaid access to 25,000+ live channels and 120,000+ movies and TV shows across supported streaming devices. Every plan includes 2 simultaneous connections, with no automatic renewal.
+              TryIPTV is an IPTV service and provider for viewers in the USA, UK, and supported regions. It provides live TV, sports, movies, and TV shows through compatible devices and IPTV player apps—not a player app itself. Choose a prepaid plan or use the free trial to see whether the service fits your setup.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -49,7 +49,7 @@ export function Hero() {
             </div>
 
             <p className="mt-3 text-[11px] font-medium tracking-wide text-muted-foreground/65">
-              Plans from $16 • 24-hour free trial • No auto-renewal
+              Plans from $16 • Prepaid • No auto-renewal
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export function Hero() {
                   alt="Couple watching TV with TryIPTV streaming service"
                   width={1024}
                   height={682}
-                  priority
+                  preload
                   className="h-auto w-full object-cover transition-transform duration-300 hover:scale-[1.01]"
                   sizes="(min-width: 1024px) 460px, (min-width: 640px) 512px, 100vw"
                 />

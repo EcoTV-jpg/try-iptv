@@ -12,7 +12,7 @@ import { getPricingPageData } from "@/lib/data/pricing-page";
 import { plans } from "@/lib/site-data/pricing";
 
 export function generateMetadata(): Metadata {
-  const title = "TryIPTV IPTV Pricing & Subscription Plans — From $16";
+  const title = "TryIPTV Pricing & IPTV Subscription Plans From $16";
   const description =
     "Compare TryIPTV prepaid subscription plans from $16 to $90. Choose 1, 3, 6, or 12 months with 2 simultaneous connections, no automatic renewal, and a 24-hour free trial.";
 
@@ -34,11 +34,18 @@ const includedFeatures = [
 ];
 
 const planChoices = [
-  ["1 Month — Best for Flexibility", "Choose this for the smallest upfront commitment after testing the service."],
-  ["3 Months — Short-Term Savings", "Lower the effective monthly cost without committing for six or twelve months."],
+  ["1 Month — Best for Testing", "Try a paid plan without making a longer commitment."],
+  ["3 Months — Short-Term Savings", "A lower monthly equivalent for short-term use."],
   ["6 Months — Balanced Value", "A middle ground between upfront cost and longer-term savings."],
-  ["12 Months — Lowest Monthly Equivalent", "Best value if you already know the service works well on your devices and connection."],
+  ["12 Months — Lowest Monthly Equivalent", "The lowest effective monthly price for a longer-term plan."],
 ];
+
+const planBestFor: Record<string, string> = {
+  "1-month": "Testing short-term",
+  "3-months": "Short-term savings",
+  "6-months": "Balanced value",
+  "12-months": "Lowest monthly equivalent",
+};
 
 export default async function IPTVSubscription() {
   const { productSchema, breadcrumbSchema, pricingPageFaqs } =
@@ -75,6 +82,46 @@ export default async function IPTVSubscription() {
                 </ul>
               </article>;
             })}
+          </div>
+
+          <div className="mt-8 rounded-xl border border-white/[0.08] bg-card">
+            <div className="border-b border-white/[0.07] px-5 py-4 sm:px-6">
+              <h2 className="font-headline text-xl font-extrabold text-foreground">TryIPTV Plan Comparison</h2>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">Every plan includes the same 2 simultaneous connections. Only the term and prepaid total change.</p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-left text-sm">
+                <caption className="sr-only">TryIPTV prepaid plan prices and best use cases</caption>
+                <thead className="border-b border-white/[0.07] text-xs uppercase tracking-wide text-muted-foreground">
+                  <tr>
+                    <th className="px-5 py-3 font-semibold sm:px-6">Plan</th>
+                    <th className="px-5 py-3 font-semibold">Total price</th>
+                    <th className="px-5 py-3 font-semibold">Monthly equivalent</th>
+                    <th className="px-5 py-3 font-semibold">Connections</th>
+                    <th className="px-5 py-3 font-semibold">Best for</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/[0.06] text-muted-foreground">
+                  {plans.map((plan) => (
+                    <tr key={`comparison-${plan.id}`}>
+                      <th scope="row" className="whitespace-nowrap px-5 py-3 font-semibold text-foreground sm:px-6">{plan.name}</th>
+                      <td className="whitespace-nowrap px-5 py-3 text-foreground">${plan.price % 1 === 0 ? plan.price.toFixed(0) : plan.price.toFixed(2)}</td>
+                      <td className="whitespace-nowrap px-5 py-3">${plan.price_monthly % 1 === 0 ? plan.price_monthly.toFixed(0) : plan.price_monthly.toFixed(2)}/month</td>
+                      <td className="whitespace-nowrap px-5 py-3">2 simultaneous</td>
+                      <td className="px-5 py-3">{planBestFor[plan.id]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="border-t border-white/[0.07] px-5 py-4 text-sm leading-6 text-muted-foreground sm:px-6"><span className="font-semibold text-foreground">What does 2 connections mean?</span> Up to two devices can stream at the same time. You can configure the service across more than two devices; the limit applies to simultaneous streams.</p>
+          </div>
+
+          <div className="mt-4 grid gap-3 text-sm leading-6 text-muted-foreground sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-lg border border-white/[0.07] bg-card px-4 py-3"><span className="font-semibold text-foreground">Prepaid billing:</span> Pay once for the selected term; plans do not renew automatically.</div>
+            <div className="rounded-lg border border-white/[0.07] bg-card px-4 py-3"><span className="font-semibold text-foreground">Payment:</span> Contact support through your selected plan button for the currently available payment instructions.</div>
+            <div className="rounded-lg border border-white/[0.07] bg-card px-4 py-3"><span className="font-semibold text-foreground">Activation:</span> Credentials are typically delivered within 5–15 minutes after payment confirmation.</div>
+            <div className="rounded-lg border border-white/[0.07] bg-card px-4 py-3"><span className="font-semibold text-foreground">Refunds:</span> Technical issues that support cannot resolve may qualify under the <Link href="/refund-policy" className="font-semibold text-primary underline underline-offset-4">refund policy</Link>.</div>
           </div>
         </Container>
       </Section>
