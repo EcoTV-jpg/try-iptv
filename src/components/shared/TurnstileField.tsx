@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import Script from "next/script";
 
 type TurnstileApi = {
-  ready: (callback: () => void) => void;
   render: (
     element: HTMLElement,
     options: { sitekey: string; theme?: string },
@@ -26,11 +25,16 @@ type TurnstileFieldProps = {
  * Loads Cloudflare Turnstile only when a contact form mounts (not globally).
  * Uses explicit render so the widget still appears when the script loads after
  * the form (ContactSheet open) or on remount.
+ *
+ * Avoid `turnstile.ready()` — Next.js Script injects api.js with async, and
+ * Cloudflare rejects ready() in that mode.
  */
 export function TurnstileField({ theme = "auto" }: TurnstileFieldProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const sitekey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const reactId = useId();
+  const scriptId = `cf-turnstile-${reactId.replace(/:/g, "")}`;
 
   const renderWidget = () => {
     const container = containerRef.current;
@@ -48,7 +52,7 @@ export function TurnstileField({ theme = "auto" }: TurnstileFieldProps) {
 
   useEffect(() => {
     if (window.turnstile) {
-      window.turnstile.ready(renderWidget);
+      renderWidget();
     }
 
     return () => {
@@ -68,11 +72,10 @@ export function TurnstileField({ theme = "auto" }: TurnstileFieldProps) {
   return (
     <>
       <Script
+        id={scriptId}
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
         strategy="afterInteractive"
-        onLoad={() => {
-          window.turnstile?.ready(renderWidget);
-        }}
+        onLoad={renderWidget}
       />
       <div ref={containerRef} />
     </>
