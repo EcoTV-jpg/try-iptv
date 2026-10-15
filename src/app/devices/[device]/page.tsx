@@ -216,25 +216,25 @@ type SetupLink = { href: string; label: string };
 
 const DEVICE_QUICK_ANSWERS: Record<string, string> = {
   "firestick-iptv":
-    "Install Downloader from the Amazon Appstore, sideload a dedicated IPTV player like IPTV Smarters Pro or TiviMate, enter your Xtream Codes API credentials, and optimize Fire TV remote navigation and buffer settings.",
+    "Install Downloader from the Amazon Appstore, then sideload a dedicated IPTV player such as IPTV Smarters Pro or TiviMate. Open the player, enter your Xtream Codes API credentials, and adjust remote navigation and buffer settings for smooth playback.",
   "android-tv-iptv":
-    "To use IPTV on Android TV or Google TV: (1) install a compatible TV player from Google Play; (2) open the player and choose Xtream Codes or M3U; (3) enter the credentials supplied by your IPTV provider and load your playlist.",
+    "To use IPTV on Android TV or Google TV, install a compatible TV player from Google Play and open it. Choose Xtream Codes or M3U, enter the credentials supplied by your IPTV provider, and load your playlist.",
   "samsung-tv-iptv":
-    "Install a supported Tizen OS player like IBO Player or Smart IPTV from the Samsung Smart Hub, connect using your Xtream Codes or M3U playlist (either directly on-screen or via the developer's web activation portal depending on the player), and reload your channels on your TV.",
+    "Install a supported Tizen OS player such as IBO Player or Smart IPTV from the Samsung Smart Hub. Connect it with your Xtream Codes or M3U playlist, either on-screen or through the developer's web activation portal depending on the player, then reload your channels.",
   "lg-tv-iptv":
-    "Install a webOS-compatible player from the LG Content Store, input your Xtream Codes or M3U playlist, filter unwanted bouquet categories to conserve webOS system memory, and fine-tune audio sync settings.",
+    "Install a webOS-compatible player from the LG Content Store and enter your Xtream Codes or M3U playlist. Filter out categories you do not watch to save webOS memory, then fine-tune audio sync settings.",
   "apple-tv-iptv":
-    "Download a native tvOS client like UHF, iPlayTV, or Smarters Player Lite from the Apple TV App Store, enter your Xtream Codes credentials using iPhone Continuity Keyboard or local web upload, and enable Match Frame Rate for judder-free playback.",
+    "Download a native tvOS player such as UHF, iPlayTV, or Smarters Player Lite from the Apple TV App Store. Enter your Xtream Codes credentials with the iPhone Continuity Keyboard or a local web upload, and turn on Match Frame Rate for judder-free playback.",
   "chromecast-iptv":
-    "For Chromecast with Google TV or Google TV Streamer, install a standalone player from Google Play and use the remote control. For legacy Cast-only dongles, initiate streams inside a compatible mobile IPTV app and cast over your local Wi-Fi network.",
+    "On Chromecast with Google TV or Google TV Streamer, install a standalone player from Google Play and control it with the remote. On older Cast-only dongles, start the stream in a compatible mobile IPTV app and cast it over your local Wi-Fi network.",
   "mag-box-iptv":
-    "Register your MAG set-top box's hardware MAC address (found on the device barcode label) with your provider for middleware authorization, enter the Server Portal URL into the Inner Portal system settings, and verify system clock synchronization for accurate EPG schedules.",
+    "Register your MAG box's MAC address, printed on the device label, with your provider so the portal can authorize it. Then enter the portal URL in the Inner Portal system settings and check that the system clock is synced for accurate EPG schedules.",
   "roku-iptv":
-    "Because Roku OS does not support Android APK sideloading or native uncertified IPTV player apps, stream using Apple AirPlay 2 (on supported models) or screen mirror via Miracast/Smart View from a mobile device or PC over a stable local Wi-Fi connection.",
+    "Roku OS does not support sideloaded Android apps or uncertified IPTV players, so there is no native way to install an IPTV app on Roku. Instead, stream with Apple AirPlay 2 on supported models, or screen mirror from a phone or PC over a stable local Wi-Fi connection.",
   "windows-iptv":
-    "To use IPTV on a Windows PC: (1) install a compatible player from the Microsoft Store or the player's verified developer website; (2) open the player and enter your provider's Xtream Codes credentials or M3U playlist URL; (3) allow the playlist and EPG to load, then test a channel.",
+    "To use IPTV on a Windows PC, install a compatible player from the Microsoft Store or the player's verified developer website. Open it, enter your provider's Xtream Codes credentials or M3U playlist URL, let the playlist and EPG load, and test a channel.",
   "mac-iptv":
-    "Download a native client like UHF from the Mac App Store or install players like IPTV Smarters/IINA (authorizing Gatekeeper only if installing standalone DMG packages), and use Picture-in-Picture for flexible desktop multitasking.",
+    "Download a native player such as UHF from the Mac App Store, or install IPTV Smarters or IINA, approving Gatekeeper only for standalone DMG packages. Add your Xtream Codes or M3U login, and use Picture-in-Picture to keep watching while you work.",
 };
 
 const DEVICE_REQUIREMENTS: Record<string, RequirementItem[]> = {
@@ -727,7 +727,7 @@ export default async function HowToPage({ params }: Props) {
                     <nav className="mt-4 border-t border-primary/15 pt-4" aria-label="Related setup resources">
                       <p className="text-xs font-semibold uppercase tracking-wider text-foreground">Continue with</p>
                       <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                        {nextSteps.map((step) => (
+                        {[...nextSteps, { href: "/devices", label: "All device setup guides" }].map((step) => (
                           <li key={step.href}>
                             <Link href={step.href} className="text-primary underline underline-offset-4 hover:text-foreground">
                               {step.label}
