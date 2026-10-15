@@ -26,6 +26,8 @@ export const footerLinks = {
         { name: "Refund Policy", href: "/refund-policy" },
         { name: "Disclaimer", href: "/disclaimer" },
         { name: "DMCA Notice", href: "/dmca-report" },
+        { name: "About Us", href: "/about" },
+        { name: "Licensing", href: "/licensing" },
     ],
     contact: {
         email: "support@tryiptv.com"

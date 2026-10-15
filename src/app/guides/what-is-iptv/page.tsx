@@ -9,12 +9,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Is IPTV? A Clear Beginner's Guide";
 const description =
   "Learn what IPTV means, how internet-based TV differs from cable or satellite, and how playlists, players, EPG data, and devices fit together.";
 const canonical = "/guides/what-is-iptv";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/guides/what-is-iptv");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 export function generateMetadata(): Metadata {
   return {
@@ -32,6 +37,7 @@ export function generateMetadata(): Metadata {
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -127,6 +133,7 @@ export default function WhatIsIptvPage() {
               satellite dish, or antenna broadcast, IPTV delivers live TV and on-demand video through
               an internet connection to a compatible app or device.
             </p>
+            <LastUpdated date={modifiedDate} />
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild>
                 <Link href="/guides/how-does-iptv-work">
@@ -287,6 +294,7 @@ export default function WhatIsIptvPage() {
                 </Button>
               </div>
             </div>
+            <RelatedSetupLinks devices={["firestick-iptv", "android-tv-iptv", "samsung-tv-iptv", "apple-tv-iptv"]} />
           </article>
         </Container>
       </Section>

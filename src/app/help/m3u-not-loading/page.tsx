@@ -35,12 +35,16 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 
 const title = "M3U Playlist Not Loading? How to Diagnose and Fix It";
 const description =
   "A systematic troubleshooting guide to diagnose M3U playlist loading errors, verify URL syntax and encoding, identify parser crashes, and restore access.";
 const canonical = "/help/m3u-not-loading";
-const modifiedDate = "2026-10-05";
+const modifiedDate = getRouteLastModified("/help/m3u-not-loading");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * M3U Not Loading Troubleshooting Guide
@@ -91,6 +95,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -402,6 +407,7 @@ export default function M3uNotLoadingPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["windows-iptv", "samsung-tv-iptv", "lg-tv-iptv"]} />
           </div>
         </Container>
       </Section>

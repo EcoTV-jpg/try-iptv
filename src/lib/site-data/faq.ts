@@ -39,5 +39,45 @@ export const faqs = [
     {
         question: "Does TryIPTV automatically renew?",
         answer: "No, TryIPTV plans do not automatically renew or charge your payment method on a recurring basis. All subscriptions are strictly prepaid for the duration you select (1, 3, 6, or 12 months), and you decide whether to renew when your subscription term ends."
+    },
+    {
+        question: "Which payment methods does TryIPTV accept?",
+        answer: "TryIPTV accepts cryptocurrency, PayPal, and Stripe. Every plan is a one-time prepaid payment. If you pay with cryptocurrency, double-check the network and wallet address before sending, because crypto transfers cannot be reversed and approved crypto refunds exclude network miner fees."
+    },
+    {
+        question: "How long does activation take after I pay?",
+        answer: "Account credentials are typically delivered within 5–15 minutes after your payment is confirmed. Depending on the player you use, support sends either an Xtream Codes login (server URL, username, and password) or an M3U playlist URL."
+    },
+    {
+        question: "How do I request a refund?",
+        answer: "If a technical problem on a supported app or device cannot be fixed by our support team within 7 days of purchase, contact us by email at support@tryiptv.com or on WhatsApp. Include your order identifier, your MAC address or M3U username, your device model, and a short description of the issue. Approved refunds are processed after technical confirmation or applied as service credit. Full details are in our <a href=\"/refund-policy\" class=\"text-primary hover:underline\">refund policy</a>."
+    },
+    {
+        question: "When is a refund not available?",
+        answer: "Refunds are not granted for a change of mind after credentials have been issued and used, for problems caused by slow home Wi-Fi or ISP throttling when the server is confirmed to be working, for devices not listed in our compatibility guides, or for accounts suspended for breaking the terms, such as exceeding the connection limit or sharing credentials."
+    },
+    {
+        question: "What happens if I use more than 2 connections at once?",
+        answer: "Standard plans allow two simultaneous streams. Opening a third stream at the same time can cause temporary buffering or an account lockout. If your household needs more screens, ask support about a custom multi-connection plan instead of sharing one login."
+    },
+    {
+        question: "Can I share or resell my TryIPTV account?",
+        answer: "No. Subscriptions are for personal household use. Reselling, restreaming, public broadcasting, or passing your credentials to other people without written authorization is not allowed under our <a href=\"/terms-conditions\" class=\"text-primary hover:underline\">terms and conditions</a>."
+    },
+    {
+        question: "What internet speed do I need for IPTV?",
+        answer: "We recommend a stable connection of at least 25 Mbps for HD and 50 Mbps for 4K streams. Stability matters as much as raw speed, so use wired Ethernet or 5 GHz Wi-Fi where possible. Our <a href=\"/guides/iptv-internet-speed\" class=\"text-primary hover:underline\">IPTV internet speed guide</a> explains how to test your line."
+    },
+    {
+        question: "Should I use M3U or Xtream Codes?",
+        answer: "Both work with most players. Xtream Codes is usually easier to type with a TV remote because it splits the login into three short fields, while an M3U link is a single long URL. See our <a href=\"/guides/m3u-vs-xtream-codes\" class=\"text-primary hover:underline\">M3U vs Xtream Codes comparison</a> for the trade-offs."
+    },
+    {
+        question: "Can I watch TryIPTV on a Roku or a MAG box?",
+        answer: "Yes, with different setups. Roku does not support sideloaded IPTV players, so you stream from a phone or computer using AirPlay 2 or screen mirroring, as shown in our <a href=\"/devices/roku-iptv\" class=\"text-primary hover:underline\">Roku guide</a>. A MAG box connects through a portal: you register the box's MAC address with us and enter the portal URL in its settings, as described in our <a href=\"/devices/mag-box-iptv\" class=\"text-primary hover:underline\">MAG box guide</a>."
+    },
+    {
+        question: "Is a credit card required for the free trial?",
+        answer: "No. The 24-hour trial costs $0 and does not require a credit card. Trials are limited to one per household or user, so test on the device you plan to use most."
     }
 ];

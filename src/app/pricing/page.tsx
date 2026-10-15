@@ -74,7 +74,7 @@ const sharedFeatures = [
     desc: "Live sports, news, and entertainment channels where available.",
   },
   {
-    title: "120,000+ Movies & Series",
+    title: "120,000+ Movies & TV Shows",
     desc: "On-demand video catalog with regular updates where available.",
   },
   {

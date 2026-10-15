@@ -102,7 +102,10 @@ export function Footer() {
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Logo />
             <p className="mt-3.5 max-w-sm text-[13.5px] leading-relaxed text-muted-foreground/90">
-              Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 25,000+ live channels worldwide and 120,000+ movies and TV shows.
+              Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 25,000+ live channels worldwide and 120,000+ movies and TV shows.{" "}
+              <Link href="/licensing" className="underline underline-offset-2 hover:text-foreground">
+                Lineups change over time and vary by region.
+              </Link>
             </p>
             <div className="mt-5 flex flex-col gap-2 text-sm">
               <span

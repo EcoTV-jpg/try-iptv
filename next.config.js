@@ -246,8 +246,17 @@ const nextConfig = {
         destination: '/contact-us',
         permanent: true,
       },
-      // /about has no close approved equivalent → intentional 404
-      // (no redirect added intentionally)
+      // Common legal URL aliases → canonical terms page
+      {
+        source: '/terms',
+        destination: '/terms-conditions',
+        permanent: true,
+      },
+      {
+        source: '/terms-of-service',
+        destination: '/terms-conditions',
+        permanent: true,
+      },
     ]
   },
 };

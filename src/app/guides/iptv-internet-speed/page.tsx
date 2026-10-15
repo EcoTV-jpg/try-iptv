@@ -27,12 +27,17 @@ import { ArticleProse, ArticleSummary } from "@/components/guide";
 import { FaqList, type FaqItem } from "@/components/sections/FAQ";
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "IPTV Internet Speed: How Much Bandwidth Do You Need? | TryIPTV";
 const description =
   "Learn how much internet speed IPTV needs for HD, Full HD and 4K streaming, how to plan bandwidth for two streams, and why connection stability matters.";
 const canonical = "/guides/iptv-internet-speed";
-const modifiedDate = "2026-10-12";
+const modifiedDate = getRouteLastModified("/guides/iptv-internet-speed");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 export function generateMetadata(): Metadata {
   return {
@@ -128,6 +133,7 @@ const faqs: FaqItem[] = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -166,6 +172,7 @@ export default function IptvInternetSpeedPage() {
               A practical guide to streaming bandwidth, household connection planning, Wi-Fi versus Ethernet,
               and multi-stream headroom.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -445,6 +452,7 @@ export default function IptvInternetSpeedPage() {
                 </p>
               </div>
               <FaqList items={faqs} />
+              <RelatedSetupLinks devices={["firestick-iptv", "chromecast-iptv", "roku-iptv"]} />
             </div>
 
             {/* Contextual Action / Next Steps Box */}

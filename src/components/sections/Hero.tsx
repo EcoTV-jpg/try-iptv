@@ -63,6 +63,7 @@ export function Hero() {
                   width={1024}
                   height={682}
                   preload
+                  fetchPriority="high"
                   className="h-auto w-full object-cover transition-transform duration-300 hover:scale-[1.01]"
                   sizes="(min-width: 1024px) 460px, (min-width: 640px) 512px, 100vw"
                 />

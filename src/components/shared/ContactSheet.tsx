@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/actions";
+import { TurnstileWidget } from "@/components/shared/TurnstileWidget";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -99,11 +100,7 @@ export function ContactSheet() {
               <Textarea id="message-sheet" name="message" placeholder="How can we help you?" />
               {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
             </div>
-            <div
-              className="cf-turnstile"
-              data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-              data-theme="auto"
-            />
+            <TurnstileWidget />
             <SubmitButton />
           </form>
         </SheetContent>

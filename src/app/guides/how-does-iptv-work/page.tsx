@@ -28,12 +28,17 @@ import { ArticleProse, ArticleSummary } from "@/components/guide";
 import { FaqList, type FaqItem } from "@/components/sections/FAQ";
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "How Does IPTV Work? From Server to Screen | TryIPTV";
 const description =
   "Learn how IPTV works, from servers and internet delivery to IPTV players, M3U playlists, Xtream Codes, EPG, live TV and on-demand streaming.";
 const canonical = "/guides/how-does-iptv-work";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/guides/how-does-iptv-work");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 export function generateMetadata(): Metadata {
   return {
@@ -142,6 +147,7 @@ const faqs: FaqItem[] = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -180,6 +186,7 @@ export default function HowDoesIptvWorkPage() {
               A clear, practical explanation of how television broadcasts travel from media servers across
               broadband networks to your streaming player, screen, and sound system.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -512,6 +519,7 @@ export default function HowDoesIptvWorkPage() {
                 </p>
               </div>
               <FaqList items={faqs} />
+              <RelatedSetupLinks devices={["firestick-iptv", "android-tv-iptv", "windows-iptv"]} />
             </div>
 
             {/* Contextual Next Steps Box */}

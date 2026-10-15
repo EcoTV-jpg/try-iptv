@@ -32,12 +32,17 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Is an EPG? How IPTV TV Guides Work";
 const description =
   "A clear guide to Electronic Programme Guides (EPG) in IPTV: how TV guide data works, XMLTV and provider ingestion, channel matching, and time offsets.";
 const canonical = "/guides/what-is-epg";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/guides/what-is-epg");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * What Is EPG Guide
@@ -98,6 +103,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -137,6 +143,7 @@ export default function WhatIsEpgPage() {
               navigable television guide. Understand how guide data is structured, how IPTV players ingest
               schedules, and how streams and metadata interact.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -494,6 +501,7 @@ export default function WhatIsEpgPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["mag-box-iptv", "android-tv-iptv", "firestick-iptv"]} />
           </div>
         </Container>
       </Section>

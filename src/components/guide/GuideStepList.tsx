@@ -28,17 +28,17 @@ export function GuideStepList({
           Step-by-Step Installation Guide for {primaryKeyword}
         </h2>
         <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground max-w-2xl">
-          Follow this 7-step sequence to configure your IPTV player, load channel bouquets, and verify live stream playback.
+          Follow this {steps.length}-step sequence to configure your IPTV player, load channel bouquets, and verify live stream playback.
         </p>
       </div>
 
-      <div className="relative">
+      <ol className="relative">
         {steps.map((step, index) => {
           const stepNumber = String(index + 1).padStart(2, "0");
           const isLast = index === steps.length - 1;
 
           return (
-            <div
+            <li
               key={index}
               id={`step-${index + 1}`}
               className="group relative flex items-start gap-4 sm:gap-6 scroll-mt-28"
@@ -72,10 +72,10 @@ export function GuideStepList({
                   dangerouslySetInnerHTML={{ __html: step.description }}
                 />
               </div>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
     </div>
   );
 }

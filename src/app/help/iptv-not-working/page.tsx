@@ -37,12 +37,16 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 
 const title = "IPTV Not Working? Start With This Troubleshooting Checklist";
 const description =
-  "A master troubleshooting checklist to isolate why your IPTV is not working: authentication errors, playlist failures, buffering streams, blank guides, or app crashes.";
+  "IPTV not working? Use this troubleshooting checklist to isolate the cause: login errors, playlist failures, buffering streams, blank guides or app crashes.";
 const canonical = "/help/iptv-not-working";
-const modifiedDate = "2026-10-05";
+const modifiedDate = getRouteLastModified("/help/iptv-not-working");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * IPTV Not Working Master Troubleshooting Router
@@ -98,6 +102,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -578,6 +583,7 @@ export default function IptvNotWorkingPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "mag-box-iptv", "samsung-tv-iptv", "lg-tv-iptv"]} />
           </div>
         </Container>
       </Section>

@@ -19,12 +19,17 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Is an M3U Playlist? Structure, Syntax, and IPTV Usage";
 const description =
   "A comprehensive technical guide to M3U and M3U8 playlists in IPTV: header syntax, #EXTINF tags, community metadata attributes, and file handling.";
 const canonical = "/guides/what-is-m3u";
-const modifiedDate = "2026-10-11";
+const modifiedDate = getRouteLastModified("/guides/what-is-m3u");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * What Is M3U Guide
@@ -85,6 +90,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -124,6 +130,7 @@ export default function WhatIsM3uPage() {
               locations. Explore the difference between basic M3U and HLS M3U8, the syntax of Extended M3U
               directives, and how IPTV applications parse channel data.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -518,6 +525,7 @@ export default function WhatIsM3uPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["windows-iptv", "samsung-tv-iptv", "firestick-iptv"]} />
           </div>
         </Container>
       </Section>

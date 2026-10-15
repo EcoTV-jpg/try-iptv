@@ -31,12 +31,17 @@ import { ArticleProse, ArticleSummary } from "@/components/guide";
 import { FaqList, type FaqItem } from "@/components/sections/FAQ";
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "IPTV vs Cable: What's the Difference? | TryIPTV";
 const description =
   "Compare IPTV and cable TV across cost, setup, devices, internet dependence, reliability, flexibility, and on-demand access to see which model fits you better.";
 const canonical = "/guides/iptv-vs-cable";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/guides/iptv-vs-cable");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 export function generateMetadata(): Metadata {
   return {
@@ -168,6 +173,7 @@ const faqs: FaqItem[] = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -206,6 +212,7 @@ export default function IptvVsCablePage() {
               A balanced, side-by-side evaluation of television delivery methods, equipment costs, internet dependencies,
               reliability factors, and flexibility to help you choose the right model.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -515,6 +522,7 @@ export default function IptvVsCablePage() {
                 </p>
               </div>
               <FaqList items={faqs} />
+              <RelatedSetupLinks devices={["firestick-iptv", "samsung-tv-iptv", "lg-tv-iptv", "roku-iptv"]} />
             </div>
 
             {/* Contextual Action / Next Steps Box */}

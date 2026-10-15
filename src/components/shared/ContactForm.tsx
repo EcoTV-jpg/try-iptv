@@ -4,6 +4,7 @@
 import { useEffect, useActionState, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 import { submitContactForm } from '@/app/actions';
+import { TurnstileWidget } from '@/components/shared/TurnstileWidget';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -81,11 +82,7 @@ export function ContactForm() {
           <p className="text-sm text-destructive">{state.errors.message[0]}</p>
         )}
       </div>
-      <div
-        className="cf-turnstile"
-        data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-        data-theme="auto"
-      />
+      <TurnstileWidget />
       <SubmitButton />
     </form>
   );

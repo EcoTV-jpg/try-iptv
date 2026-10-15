@@ -17,12 +17,17 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "M3U vs Xtream Codes: What's the Difference?";
 const description =
-  "A neutral comparison between M3U playlists and Xtream-compatible API logins for IPTV: data delivery models, content organization, player support, and practical trade-offs.";
+  "M3U vs Xtream Codes: a neutral comparison of IPTV playlist files and API logins, covering data delivery, content layout, player support and trade-offs.";
 const canonical = "/guides/m3u-vs-xtream-codes";
-const modifiedDate = "2026-10-12";
+const modifiedDate = getRouteLastModified("/guides/m3u-vs-xtream-codes");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * M3U vs Xtream Codes Comparison Guide
@@ -121,6 +126,7 @@ const comparisonRows = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -160,6 +166,7 @@ export default function M3uVsXtreamCodesPage() {
               playlist or an Xtream-compatible login. Understand how each method operates, where their
               practical differences lie, and how to choose the right format for your setup.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -391,6 +398,7 @@ export default function M3uVsXtreamCodesPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "mag-box-iptv", "apple-tv-iptv"]} />
           </div>
         </Container>
       </Section>

@@ -23,12 +23,17 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
+import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Are Xtream Codes? The IPTV API Login Format Explained";
 const description =
   "A clear guide explaining what Xtream Codes credentials are, how the API-based login format works in IPTV players, and essential security considerations.";
 const canonical = "/guides/what-are-xtream-codes";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/guides/what-are-xtream-codes");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * What Are Xtream Codes Guide
@@ -84,6 +89,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
@@ -123,6 +129,7 @@ export default function WhatAreXtreamCodesPage() {
               Learn how it communicates with streaming servers, what information you enter, and how it
               organizes content.
             </p>
+            <LastUpdated date={modifiedDate} />
           </div>
         </Container>
       </Section>
@@ -452,6 +459,7 @@ export default function WhatAreXtreamCodesPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "android-tv-iptv", "apple-tv-iptv", "mag-box-iptv"]} />
           </div>
         </Container>
       </Section>

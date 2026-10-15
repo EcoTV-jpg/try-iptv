@@ -14,15 +14,20 @@ import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { ContactForm } from '@/components/shared/ContactForm';
 import { getContactPageData } from '@/lib/data/contact-page';
 import { Schema } from '@/components/shared/Schema';
-import { generateMetadata as generatePageMetadata } from '@/lib/site-config';
+import { PRODUCT_TRUTHS, siteConfig, generateMetadata as generatePageMetadata } from '@/lib/site-config';
+import { BUSINESS_INFO } from '@/lib/site-data/business-info';
 import { Mail, MessageCircle, Clock, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export function generateMetadata(): Metadata {
-    return generatePageMetadata({
-        title: "Contact Us",
-        description: "Get in touch with the TryIPTV team. Whether you have questions about device setup, channels, or subscriptions, our support desk is ready to help.",
-        canonical: "/contact-us",
-    });
+    const title = "Contact TryIPTV – IPTV Support via WhatsApp & Email";
+    return {
+        ...generatePageMetadata({
+            title,
+            description: "Get in touch with the TryIPTV team. Whether you have questions about device setup, channels, or subscriptions, our support desk is ready to help.",
+            canonical: "/contact-us",
+        }),
+        title: { absolute: title },
+    };
 }
 
 export default async function ContactPage() {
@@ -86,6 +91,31 @@ export default async function ContactPage() {
                             </Card>
 
                             <div className="rounded-lg border border-white/[0.09] bg-[#070a08] p-6 space-y-4">
+                                <div>
+                                    <h2 className="font-headline text-base font-bold text-foreground">Support details</h2>
+                                    <dl className="mt-3 space-y-2 text-xs text-muted-foreground">
+                                        <div className="flex gap-2">
+                                            <dt className="font-semibold text-foreground">Channels:</dt>
+                                            <dd>WhatsApp ({siteConfig.links.whatsapp}), email (support@tryiptv.com), and the contact form on this page.</dd>
+                                        </div>
+                                        {BUSINESS_INFO.supportHours && (
+                                            <div className="flex gap-2">
+                                                <dt className="font-semibold text-foreground">Business hours:</dt>
+                                                <dd>{BUSINESS_INFO.supportHours}</dd>
+                                            </div>
+                                        )}
+                                        {BUSINESS_INFO.responseTime && (
+                                            <div className="flex gap-2">
+                                                <dt className="font-semibold text-foreground">Response time:</dt>
+                                                <dd>{BUSINESS_INFO.responseTime}</dd>
+                                            </div>
+                                        )}
+                                        <div className="flex gap-2">
+                                            <dt className="font-semibold text-foreground">Activation:</dt>
+                                            <dd>New account credentials typically arrive {PRODUCT_TRUTHS.activationTime} after payment confirmation.</dd>
+                                        </div>
+                                    </dl>
+                                </div>
                                 <div className="flex items-center gap-3 text-xs font-semibold text-muted-foreground">
                                     <Clock className="h-4 w-4 text-primary" />
                                     <span>Support for account, setup, and service questions</span>
