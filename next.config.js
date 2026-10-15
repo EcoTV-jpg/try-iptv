@@ -250,12 +250,12 @@ const nextConfig = {
       {
         source: '/terms',
         destination: '/terms-conditions',
-        statusCode: 301,
+        permanent: true,
       },
       {
         source: '/terms-of-service',
         destination: '/terms-conditions',
-        statusCode: 301,
+        permanent: true,
       },
       // /about has no close approved equivalent → intentional 404
       // (no redirect added intentionally)
