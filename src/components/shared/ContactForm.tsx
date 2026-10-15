@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { TurnstileField } from '@/components/shared/TurnstileField';
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -81,11 +82,7 @@ export function ContactForm() {
           <p className="text-sm text-destructive">{state.errors.message[0]}</p>
         )}
       </div>
-      <div
-        className="cf-turnstile"
-        data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-        data-theme="auto"
-      />
+      <TurnstileField theme="auto" />
       <SubmitButton />
     </form>
   );

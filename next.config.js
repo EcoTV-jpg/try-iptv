@@ -1,3 +1,7 @@
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { withSentryConfig } = require('@sentry/nextjs/config');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,6 +15,10 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [360, 640, 768, 1024, 1280, 1536],
     imageSizes: [32, 48, 64, 96, 128, 192, 256, 320],
+    // Raise optimizer Cache-Control max-age so CDNs can reuse LCP bytes.
+    // Upstream public PNGs currently advertise max-age=0; without this floor
+    // /_next/image also emits max-age=0 (cf-cache-status: DYNAMIC in audit).
+    minimumCacheTTL: 2678400, // 31 days
     remotePatterns: [
       {
         protocol: 'https',
@@ -252,4 +260,17 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  // No auth token in this environment — skip upload; keep tree-shaking only.
+  sourcemaps: {
+    disable: true,
+  },
+  disableLogger: true,
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+      // Client init does not enable tracing/replay; drop unused SDK surface.
+      removeTracing: true,
+    },
+  },
+});
