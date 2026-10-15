@@ -20,7 +20,7 @@ import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-c
 
 const title = "M3U vs Xtream Codes: What's the Difference?";
 const description =
-  "A neutral comparison between M3U playlists and Xtream-compatible API logins for IPTV: data delivery models, content organization, player support, and practical trade-offs.";
+  "M3U vs Xtream Codes: a neutral comparison of IPTV playlist files and API logins, covering data delivery, content layout, player support and trade-offs.";
 const canonical = "/guides/m3u-vs-xtream-codes";
 const modifiedDate = "2026-10-12";
 

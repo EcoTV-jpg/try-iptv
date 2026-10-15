@@ -34,7 +34,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "How to Troubleshoot and Fix IPTV Buffering: Practical Diagnostic Guide";
+const title = "IPTV Buffering: How to Diagnose and Fix It";
 const description =
   "A systematic troubleshooting guide to diagnose IPTV buffering, distinguish network starvation from decoder stutter, and stabilize your playback setup.";
 const canonical = "/help/iptv-buffering";
@@ -53,7 +53,7 @@ export function generateMetadata(): Metadata {
       canonical,
     }),
     title: {
-      absolute: title,
+      absolute: `${title} | TryIPTV`,
     },
   };
 }

@@ -38,7 +38,7 @@ import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-c
 
 const title = "EPG Not Working? How to Fix Missing or Incorrect IPTV Guide Data";
 const description =
-  "A systematic diagnostic guide to resolve IPTV EPG errors: missing guide data, 'No Information' messages, wrong broadcast times, and channel mapping mismatches.";
+  "EPG not working? Fix missing IPTV guide data, 'No Information' messages, wrong programme times and channel mapping mismatches with this step-by-step guide.";
 const canonical = "/help/epg-not-working";
 const modifiedDate = "2026-10-06";
 

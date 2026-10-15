@@ -11,11 +11,15 @@ import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifi
 import { Button } from "@/components/ui/button";
 
 export function generateMetadata(): Metadata {
-  return generatePageMetadata({
-    title: "Refund Policy",
-    description: "Read TryIPTV's refund and cancellation policy, technical assistance guidelines, and 24-hour free trial terms.",
-    canonical: "/refund-policy",
-  });
+  const title = "Refund Policy – TryIPTV Refunds, Cancellations & Trial";
+  return {
+    ...generatePageMetadata({
+      title,
+      description: "Read TryIPTV's refund and cancellation policy, technical assistance guidelines, and 24-hour free trial terms.",
+      canonical: "/refund-policy",
+    }),
+    title: { absolute: title },
+  };
 }
 
 export default function RefundPolicyPage() {

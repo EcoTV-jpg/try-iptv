@@ -9,11 +9,15 @@ import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site
 import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifications";
 
 export function generateMetadata(): Metadata {
-  return generatePageMetadata({
-    title: "Legal Disclaimer",
-    description: "Read TryIPTV's legal disclaimer regarding third-party trademarks, hardware compatibility, and stream feeds.",
-    canonical: "/disclaimer",
-  });
+  const title = "Legal Disclaimer – TryIPTV Trademarks & Service Terms";
+  return {
+    ...generatePageMetadata({
+      title,
+      description: "Read TryIPTV's legal disclaimer regarding third-party trademarks, hardware compatibility, and stream feeds.",
+      canonical: "/disclaimer",
+    }),
+    title: { absolute: title },
+  };
 }
 
 export default function DisclaimerPage() {

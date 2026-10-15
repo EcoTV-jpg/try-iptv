@@ -27,7 +27,7 @@ import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-c
 
 const title = "IPTV Guides & Technical Explainers — TryIPTV Knowledge Base";
 const description =
-  "Comprehensive technical guides explaining IPTV streaming architecture, playlist specifications, API login formats, electronic programme guides, and format comparisons.";
+  "IPTV guides that explain how IPTV works, M3U playlists, Xtream Codes logins, EPG guide data and internet speed, with clear comparisons and setup context.";
 const canonical = "/guides";
 
 export function generateMetadata(): Metadata {

@@ -127,6 +127,30 @@ const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?
     seoTitle: 'IPTV on Windows: Players & PC Setup Guide',
     metaDescription: 'Learn how to use IPTV on Windows, choose a compatible PC player, connect with Xtream Codes or M3U, and download apps from trusted sources.',
   },
+  'samsung-tv-iptv': {
+    metaDescription: 'Samsung TV IPTV setup on Tizen OS: install a Smart Hub player like IBO Player or Smart IPTV, add your Xtream Codes or M3U login, and fix common audio issues.',
+  },
+  'lg-tv-iptv': {
+    metaDescription: 'LG TV IPTV setup on webOS: install a player from the LG Content Store, enter your Xtream Codes or M3U details, keep large playlists light, and fix audio sync.',
+  },
+  'apple-tv-iptv': {
+    metaDescription: 'Apple TV IPTV setup on tvOS: choose a player like UHF or iPlayTV, enter Xtream Codes with your iPhone keyboard or web upload, and turn on Match Frame Rate.',
+  },
+  'chromecast-iptv': {
+    seoTitle: 'IPTV on Chromecast: Google TV & Casting Guide',
+    metaDescription: 'Chromecast IPTV setup: install a player app on Chromecast with Google TV, or cast from a phone to older Cast-only dongles. Step-by-step setup and fixes.',
+  },
+  'mag-box-iptv': {
+    seoTitle: 'MAG Box IPTV Setup: Stalker Portal Guide',
+    metaDescription: 'MAG box IPTV setup: find your MAC address, open Inner Portal settings, enter the portal URL, sync the clock with NTP, and fix common MAG loading errors.',
+  },
+  'roku-iptv': {
+    seoTitle: 'IPTV on Roku: AirPlay & Screen Mirroring Guide',
+    metaDescription: "Roku IPTV setup: Roku can't sideload IPTV players, so stream with Apple AirPlay 2, screen mirroring or casting from your phone or PC. Steps and fixes inside.",
+  },
+  'mac-iptv': {
+    metaDescription: 'Mac IPTV setup: install a macOS player like UHF or IINA, allow it through Gatekeeper, add your Xtream Codes or M3U login, and watch in Picture-in-Picture.',
+  },
 };
 
 interface DeviceQuickSpecs {
