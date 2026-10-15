@@ -99,6 +99,9 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/refund-policy',   section: 'legal', indexable: true, lastModified: '2026-03-01' },
   { path: '/disclaimer',      section: 'legal', indexable: true, lastModified: '2026-03-01' },
   { path: '/dmca-report',     section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  // Noindex until BUSINESS_INFO (src/lib/site-data/business-info.ts) is filled in.
+  { path: '/about',           section: 'legal', indexable: false },
+  { path: '/licensing',       section: 'legal', indexable: false },
 ];
 
 /** All indexable routes that should appear in sitemap.xml */

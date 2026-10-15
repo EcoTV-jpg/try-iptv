@@ -257,8 +257,6 @@ const nextConfig = {
         destination: '/terms-conditions',
         permanent: true,
       },
-      // /about has no close approved equivalent → intentional 404
-      // (no redirect added intentionally)
     ]
   },
 };
