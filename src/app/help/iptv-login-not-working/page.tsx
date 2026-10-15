@@ -32,12 +32,15 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
 
 const title = "IPTV Login Not Working? How to Diagnose Authentication Errors";
 const description =
   "A systematic troubleshooting guide to diagnose IPTV login failures, understand HTTP 401 and 403 response codes, verify server URLs, and restore access.";
 const canonical = "/help/iptv-login-not-working";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/help/iptv-login-not-working");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * IPTV Login Troubleshooting Guide
@@ -88,6 +91,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });

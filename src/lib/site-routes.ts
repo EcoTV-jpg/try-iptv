@@ -48,15 +48,15 @@ export const SITE_ROUTES: SiteRoute[] = [
 
   // ── Devices hub + device pages ────────────────────────────────────────────
   { path: '/devices',                section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/firestick-iptv',  section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/android-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/samsung-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/devices/firestick-iptv',  section: 'devices', indexable: true,  lastModified: '2026-10-12' },
+  { path: '/devices/android-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-11' },
+  { path: '/devices/samsung-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-07' },
   { path: '/devices/lg-tv-iptv',      section: 'devices', indexable: true,  lastModified: '2026-10-04' },
   { path: '/devices/apple-tv-iptv',   section: 'devices', indexable: true,  lastModified: '2026-10-04' },
   { path: '/devices/chromecast-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/mag-box-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/roku-iptv',       section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/windows-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/devices/mag-box-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-07' },
+  { path: '/devices/roku-iptv',       section: 'devices', indexable: true,  lastModified: '2026-10-07' },
+  { path: '/devices/windows-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-11' },
   { path: '/devices/mac-iptv',        section: 'devices', indexable: true,  lastModified: '2026-10-04' },
 
   // ── Players hub + player pages ────────────────────────────────────────────
@@ -71,26 +71,26 @@ export const SITE_ROUTES: SiteRoute[] = [
 
   // ── Guides hub + guide pages ──────────────────────────────────────────────
   { path: '/guides',                     section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/what-is-iptv',        section: 'guides', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/guides/what-is-iptv',        section: 'guides', indexable: true,  lastModified: '2026-10-06' },
   { path: '/guides/how-does-iptv-work',  section: 'guides', indexable: true,  lastModified: '2026-10-06' },
-  { path: '/guides/what-is-m3u',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/what-is-epg',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: true,  lastModified: '2026-10-06' },
+  { path: '/guides/what-is-m3u',         section: 'guides', indexable: true,  lastModified: '2026-10-11' },
+  { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: true,  lastModified: '2026-10-06' },
+  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-12' },
+  { path: '/guides/what-is-epg',         section: 'guides', indexable: true,  lastModified: '2026-10-06' },
+  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: true,  lastModified: '2026-10-12' },
   { path: '/guides/iptv-vs-cable',       section: 'guides', indexable: true,  lastModified: '2026-10-06' },
 
   // ── Help hub + help pages ─────────────────────────────────────────────────
   { path: '/help',                        section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/iptv-buffering',         section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/iptv-buffering',         section: 'help', indexable: true,  lastModified: '2026-10-11' },
   { path: '/help/iptv-not-working',       section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/iptv-login-not-working', section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/iptv-login-not-working', section: 'help', indexable: true,  lastModified: '2026-10-06' },
   { path: '/help/m3u-not-loading',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/epg-not-working',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/epg-not-working',        section: 'help', indexable: true,  lastModified: '2026-10-06' },
 
   // ── Utility ───────────────────────────────────────────────────────────────
-  { path: '/faq',        section: 'utility', indexable: true, lastModified: '2026-10-04' },
-  { path: '/contact-us', section: 'utility', indexable: true, lastModified: '2026-10-04' },
+  { path: '/faq',        section: 'utility', indexable: true, lastModified: '2026-10-15' },
+  { path: '/contact-us', section: 'utility', indexable: true, lastModified: '2026-10-15' },
   { path: '/blog',       section: 'utility', indexable: false },
 
   // ── Legal ─────────────────────────────────────────────────────────────────
@@ -106,6 +106,16 @@ export const SITE_ROUTES: SiteRoute[] = [
 
 /** All indexable routes that should appear in sitemap.xml */
 export const INDEXABLE_ROUTES = SITE_ROUTES.filter((r) => r.indexable);
+
+/**
+ * Content date for an indexable route. Pages use this for their visible
+ * "Last updated" date and Article dateModified so they always match sitemap.xml.
+ */
+export function getRouteLastModified(path: string): string {
+  const lastModified = INDEXABLE_ROUTES.find((r) => r.path === path)?.lastModified;
+  if (!lastModified) throw new Error(`No lastModified in site-routes.ts for ${path}`);
+  return lastModified;
+}
 
 /** All routes regardless of indexability (for completeness checks) */
 export const ALL_APPROVED_PATHS = SITE_ROUTES.map((r) => r.path);

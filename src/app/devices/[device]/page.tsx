@@ -22,6 +22,7 @@ import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
 import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
 import {
   GuideQuickInfo,
   GuideRequirements,
@@ -57,6 +58,7 @@ async function getArticleData(deviceId: string): Promise<ArticleType | undefined
 
     return {
         ...article,
+        dateModified: getRouteLastModified(`/devices/${article.id}`),
         image: undefined,
     };
 }

@@ -35,12 +35,15 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
 
 const title = "EPG Not Working? How to Fix Missing or Incorrect IPTV Guide Data";
 const description =
   "EPG not working? Fix missing IPTV guide data, 'No Information' messages, wrong programme times and channel mapping mismatches with this step-by-step guide.";
 const canonical = "/help/epg-not-working";
-const modifiedDate = "2026-10-06";
+const modifiedDate = getRouteLastModified("/help/epg-not-working");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * EPG Not Working Troubleshooting Guide
@@ -96,6 +99,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });

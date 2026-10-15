@@ -33,12 +33,15 @@ import {
   generateFAQPageSchema,
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { getRouteLastModified } from "@/lib/site-routes";
 
 const title = "IPTV Buffering: How to Diagnose and Fix It";
 const description =
   "A systematic troubleshooting guide to diagnose IPTV buffering, distinguish network starvation from decoder stutter, and stabilize your playback setup.";
 const canonical = "/help/iptv-buffering";
-const modifiedDate = "2026-10-11";
+const modifiedDate = getRouteLastModified("/help/iptv-buffering");
+// First added to the repository on this date; the page could not be live earlier.
+const publishedDate = "2026-10-03";
 
 /**
  * IPTV Buffering Troubleshooting Guide
@@ -89,6 +92,7 @@ const faqs = [
 const articleSchema = generateArticleSchema({
   headline: title,
   description,
+  datePublished: publishedDate,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
 });
