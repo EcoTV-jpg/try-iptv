@@ -32,6 +32,7 @@ import { FaqList, type FaqItem } from "@/components/sections/FAQ";
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "IPTV vs Cable: What's the Difference? | TryIPTV";
@@ -521,6 +522,7 @@ export default function IptvVsCablePage() {
                 </p>
               </div>
               <FaqList items={faqs} />
+              <RelatedSetupLinks devices={["firestick-iptv", "samsung-tv-iptv", "lg-tv-iptv", "roku-iptv"]} />
             </div>
 
             {/* Contextual Action / Next Steps Box */}

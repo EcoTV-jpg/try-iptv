@@ -33,6 +33,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 
 const title = "IPTV Login Not Working? How to Diagnose Authentication Errors";
 const description =
@@ -447,6 +448,7 @@ export default function IptvLoginNotWorkingPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "apple-tv-iptv", "mac-iptv", "android-tv-iptv"]} />
           </div>
         </Container>
       </Section>

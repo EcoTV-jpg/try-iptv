@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Is IPTV? A Clear Beginner's Guide";
@@ -293,6 +294,7 @@ export default function WhatIsIptvPage() {
                 </Button>
               </div>
             </div>
+            <RelatedSetupLinks devices={["firestick-iptv", "android-tv-iptv", "samsung-tv-iptv", "apple-tv-iptv"]} />
           </article>
         </Container>
       </Section>

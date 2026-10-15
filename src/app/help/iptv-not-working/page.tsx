@@ -38,6 +38,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 
 const title = "IPTV Not Working? Start With This Troubleshooting Checklist";
 const description =
@@ -582,6 +583,7 @@ export default function IptvNotWorkingPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "mag-box-iptv", "samsung-tv-iptv", "lg-tv-iptv"]} />
           </div>
         </Container>
       </Section>

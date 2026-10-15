@@ -34,6 +34,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 
 const title = "IPTV Buffering: How to Diagnose and Fix It";
 const description =
@@ -482,6 +483,7 @@ export default function IptvBufferingPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "chromecast-iptv", "roku-iptv"]} />
           </div>
         </Container>
       </Section>

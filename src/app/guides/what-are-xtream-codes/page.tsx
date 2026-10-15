@@ -24,6 +24,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Are Xtream Codes? The IPTV API Login Format Explained";
@@ -458,6 +459,7 @@ export default function WhatAreXtreamCodesPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "android-tv-iptv", "apple-tv-iptv", "mag-box-iptv"]} />
           </div>
         </Container>
       </Section>

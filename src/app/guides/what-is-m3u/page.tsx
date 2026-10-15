@@ -20,6 +20,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Is an M3U Playlist? Structure, Syntax, and IPTV Usage";
@@ -524,6 +525,7 @@ export default function WhatIsM3uPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["windows-iptv", "samsung-tv-iptv", "firestick-iptv"]} />
           </div>
         </Container>
       </Section>

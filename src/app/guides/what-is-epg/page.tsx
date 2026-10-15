@@ -33,6 +33,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "What Is an EPG? How IPTV TV Guides Work";
@@ -500,6 +501,7 @@ export default function WhatIsEpgPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["mag-box-iptv", "android-tv-iptv", "firestick-iptv"]} />
           </div>
         </Container>
       </Section>

@@ -18,6 +18,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 import { LastUpdated } from "@/components/shared/LastUpdated";
 
 const title = "M3U vs Xtream Codes: What's the Difference?";
@@ -397,6 +398,7 @@ export default function M3uVsXtreamCodesPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["firestick-iptv", "mag-box-iptv", "apple-tv-iptv"]} />
           </div>
         </Container>
       </Section>

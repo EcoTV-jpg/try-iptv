@@ -36,6 +36,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getRouteLastModified } from "@/lib/site-routes";
+import { RelatedSetupLinks } from "@/components/shared/RelatedSetupLinks";
 
 const title = "EPG Not Working? How to Fix Missing or Incorrect IPTV Guide Data";
 const description =
@@ -490,6 +491,7 @@ export default function EpgNotWorkingPage() {
               </h2>
             </div>
             <FaqList items={faqs} />
+            <RelatedSetupLinks devices={["mag-box-iptv", "android-tv-iptv", "firestick-iptv"]} />
           </div>
         </Container>
       </Section>
