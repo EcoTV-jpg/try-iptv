@@ -1,17 +1,31 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
-import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
-import { HomePricing } from "@/components/sections/HomePricing";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Devices } from "@/components/sections/Devices";
-import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
-import { CTA } from "@/components/sections/CTA";
-
-const FAQ = dynamic(() => import("@/components/sections/FAQ").then((mod) => mod.FAQ));
 import { getHomePageData } from "@/lib/data/home-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+
+const WhyChooseTryIPTV = dynamic(() =>
+  import("@/components/sections/WhyChooseTryIPTV").then((mod) => mod.WhyChooseTryIPTV),
+);
+const HomePricing = dynamic(() =>
+  import("@/components/sections/HomePricing").then((mod) => mod.HomePricing),
+);
+const HowItWorks = dynamic(() =>
+  import("@/components/sections/HowItWorks").then((mod) => mod.HowItWorks),
+);
+const Devices = dynamic(() =>
+  import("@/components/sections/Devices").then((mod) => mod.Devices),
+);
+const CustomerFeedback = dynamic(() =>
+  import("@/components/sections/CustomerFeedback").then((mod) => mod.CustomerFeedback),
+);
+const CTA = dynamic(() =>
+  import("@/components/sections/CTA").then((mod) => mod.CTA),
+);
+const FAQ = dynamic(() =>
+  import("@/components/sections/FAQ").then((mod) => mod.FAQ),
+);
 
 export function generateMetadata(): Metadata {
   const baseMetadata = generatePageMetadata({

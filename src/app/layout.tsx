@@ -1,12 +1,19 @@
 
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { Navbar } from "@/components/shared/Navbar";
 import { Footer } from "@/components/shared/Footer";
 import dynamic from "next/dynamic";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 const Toaster = dynamic(() => import("@/components/ui/toaster").then((mod) => mod.Toaster));
 const ContactSheet = dynamic(() => import("@/components/shared/ContactSheet").then((mod) => mod.ContactSheet));
@@ -126,7 +133,11 @@ export default function RootLayout({
   const isProduction = process.env.NODE_ENV === 'production';
 
   return (
-    <html lang="en" suppressHydrationWarning className={cn("dark font-body antialiased")}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(inter.variable, "dark font-body antialiased")}
+    >
        <head>
           <link
             rel="describedby"
@@ -137,12 +148,6 @@ export default function RootLayout({
           <Schema id="website" schema={generateWebSiteSchema()} />
         </head>
       <body>
-        <Script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          strategy="lazyOnload"
-          async
-          defer
-        />
         <Analytics />
         {isProduction ? (
           <Script

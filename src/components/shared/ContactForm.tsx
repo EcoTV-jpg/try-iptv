@@ -3,6 +3,7 @@
 
 import { useEffect, useActionState, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
+import Script from 'next/script';
 import { submitContactForm } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -31,6 +32,12 @@ export function ContactForm() {
 
   return (
     <form ref={formRef} action={dispatch} className="space-y-4">
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        strategy="lazyOnload"
+        async
+        defer
+      />
       <div
         className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
         aria-hidden="true"
