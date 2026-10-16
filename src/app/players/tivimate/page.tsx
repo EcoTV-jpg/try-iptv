@@ -229,6 +229,9 @@ export default function TivimatePage() {
                   <p className={textClass}>Restart the device, check available storage, and update through Google Play or the official TiviMate site, matching the installation method you used. If an update fails, note the app version and device model before contacting TiviMate support.</p>
                 </div>
               </div>
+              <p className={textClass}>
+                For features and device fit across apps, see our <Link href="/players" className={linkClass}>full IPTV player comparison</Link>.
+              </p>
               <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">
                 Need IPTV credentials for TiviMate? <Link href="/iptv-free-trial" className={linkClass}>Start with a 24-hour IPTV trial</Link>. TryIPTV is an independent IPTV provider, not the developer of TiviMate.
               </div>

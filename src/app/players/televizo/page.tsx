@@ -170,6 +170,9 @@ export default function TelevizoPage() {
                   <p className={textClass}>Test another channel and another app or network activity to narrow down whether the issue is one stream or the connection. Restart Televizo and the device; if the same stream fails across players, report it to the provider. See <Link href="/help/iptv-buffering" className={linkClass}>IPTV buffering checks</Link>.</p>
                 </div>
               </div>
+              <p className={textClass}>
+                You can also <Link href="/players" className={linkClass}>browse more IPTV player guides</Link> for other apps.
+              </p>
               <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">
                 Need IPTV credentials? <Link href="/iptv-free-trial" className={linkClass}>Start with a 24-hour IPTV trial</Link>.
               </div>

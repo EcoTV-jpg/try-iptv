@@ -52,7 +52,7 @@
       {
         "id": "service-vs-player",
         "title": "IPTV Service vs IPTV Player App",
-        "content": "<p>A common source of confusion is the difference between the service provider and the player application:</p><ul><li><strong>The IPTV service (such as TryIPTV):</strong> Provides the streaming feeds, account credentials, and on-demand catalog.</li><li><strong>The IPTV player (such as <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a> or <a href=\"/players/tivimate\">TiviMate</a>):</strong> Is the software installed on your Fire TV that decodes the stream, renders the guide, and accepts remote navigation.</li></ul><p>If you encounter playback or login errors, identifying whether the issue relates to the app or the server credentials speeds up resolution. Read more in our guide on <a href='/guides/what-is-iptv'>what IPTV is</a>.</p>"
+        "content": "<p>A common source of confusion is the difference between the service provider and the player application:</p><ul><li><strong>The IPTV service (such as TryIPTV):</strong> Provides the streaming feeds, account credentials, and on-demand catalog.</li><li><strong>The IPTV player (such as <a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a> or <a href=\"/players/tivimate\">TiviMate</a>):</strong> Is the software installed on your Fire TV that decodes the stream, renders the guide, and accepts remote navigation.</li></ul><p>If you are still choosing an app, browse <a href=\"/players\">compatible IPTV players for Firestick</a>. If you encounter playback or login errors, identifying whether the issue relates to the app or the server credentials speeds up resolution. Read more in our guide on <a href='/guides/what-is-iptv'>what IPTV is</a>.</p>"
       },
       {
         "id": "m3u-vs-xtream",
@@ -359,7 +359,7 @@
       {
         "id": "macos-player-comparison",
         "title": "Comparing IPTV Players for macOS",
-        "content": "<p>Mac users can choose between App Store apps, TV-style interfaces, and versatile media players:</p><ul><li><strong>UHF - IPTV Client:</strong> Built for macOS with SwiftUI, offering keyboard shortcut navigation, multiple playlists, and iCloud synchronization with iOS and tvOS.</li><li><strong>IPTV Smarters Pro for Mac:</strong> Provides a traditional TV layout with separate sections for Live TV, Movies, and Series with EPG support.</li><li><strong>IINA:</strong> Modern open-source media player for macOS with an mpv backend, featuring native dark mode, Picture-in-Picture, and Retina display scaling. Useful for playing individual network streams.</li><li><strong>VLC for macOS:</strong> Cross-platform player for opening direct network stream URLs via <strong>Command + N</strong>.</li></ul>"
+        "content": "<p>Mac users can choose between App Store apps, TV-style interfaces, and versatile media players:</p><ul><li><strong>UHF - IPTV Client:</strong> Built for macOS with SwiftUI, offering keyboard shortcut navigation, multiple playlists, and iCloud synchronization with iOS and tvOS.</li><li><strong>IPTV Smarters Pro for Mac:</strong> Provides a traditional TV layout with separate sections for Live TV, Movies, and Series with EPG support.</li><li><strong>IINA:</strong> Modern open-source media player for macOS with an mpv backend, featuring native dark mode, Picture-in-Picture, and Retina display scaling. Useful for playing individual network streams.</li><li><strong>VLC for macOS:</strong> Cross-platform player for opening direct network stream URLs via <strong>Command + N</strong>.</li></ul><p>See our <a href=\"/players\">Mac IPTV player comparison</a> for guides across platforms.</p>"
       },
       {
         "id": "gatekeeper-walkthrough",
@@ -427,7 +427,7 @@
       },
       {
         "title": "Search for a compatible Tizen IPTV player",
-        "description": "<p>Search for an approved player in the Smart Hub Store, such as <strong>IBO Player</strong> or <strong>Smart IPTV (SIPTV)</strong>. Note that Samsung Smart TVs run Tizen OS; Android APK packages and Downloader cannot be installed on Samsung TVs.</p>"
+        "description": "<p>Search for an approved player in the Smart Hub Store, such as <strong>IBO Player</strong> or <strong>Smart IPTV (SIPTV)</strong>. Note that Samsung Smart TVs run Tizen OS; Android APK packages and Downloader cannot be installed on Samsung TVs. For a wider look at <a href=\"/players\">IPTV apps for Samsung Smart TVs</a> and other platforms, see our player guides.</p>"
       },
       {
         "title": "Install the app and note your TV's identifier",
@@ -523,7 +523,7 @@
       },
       {
         "title": "Search for a compatible webOS IPTV player",
-        "description": "<p>Search for an approved webOS player such as <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> or <strong>IBO Player</strong>. Note that LG Smart TVs run webOS; Android APK packages and sideloading tools cannot be installed on LG TVs.</p>"
+        "description": "<p>Search for an approved webOS player such as <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> or <strong>IBO Player</strong>. Note that LG Smart TVs run webOS; Android APK packages and sideloading tools cannot be installed on LG TVs. Browse <a href=\"/players\">LG Content Store IPTV apps</a> and related setup guides in our player directory.</p>"
       },
       {
         "title": "Install and launch the player on your LG TV",
@@ -637,7 +637,7 @@
       {
         "id": "top-tvos-players",
         "title": "Popular Apple TV IPTV Players",
-        "content": "<p>The tvOS App Store hosts several IPTV player choices:</p><ul><li><strong>iPlayTV:</strong> Established player on Apple TV offering multi-playlist support, EPG timeline display, and audio track selection.</li><li><strong>UHF - IPTV Client:</strong> Built in modern Swift, featuring iCloud synchronization so playlists and favorites configured on an iPhone or Mac can synchronize with Apple TV.</li><li><strong><a href=\"/players/iptv-smarters\">Smarters Player Lite</a>:</strong> A widely used option supporting Xtream Codes API login.</li></ul>"
+        "content": "<p>The tvOS App Store hosts several IPTV player choices:</p><ul><li><strong>iPlayTV:</strong> Established player on Apple TV offering multi-playlist support, EPG timeline display, and audio track selection.</li><li><strong>UHF - IPTV Client:</strong> Built in modern Swift, featuring iCloud synchronization so playlists and favorites configured on an iPhone or Mac can synchronize with Apple TV.</li><li><strong><a href=\"/players/iptv-smarters\">Smarters Player Lite</a>:</strong> A widely used option supporting Xtream Codes API login.</li></ul><p>Compare <a href=\"/players\">tvOS IPTV player options</a> with apps for other devices in our directory.</p>"
       },
       {
         "id": "match-frame-rate-detail",
@@ -700,7 +700,7 @@
       },
       {
         "title": "Method A (Chromecast with Google TV): Install a native player",
-        "description": "<p>If you have Chromecast with Google TV: From the Google TV home screen, go to <strong>Apps &gt; Search for apps</strong>. Search for <strong><a href=\"/players/tivimate\">TiviMate IPTV Player</a></strong> or <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> and click <strong>Install</strong>. This provides an independent TV experience operated with your remote.</p>"
+        "description": "<p>If you have Chromecast with Google TV: From the Google TV home screen, go to <strong>Apps &gt; Search for apps</strong>. Search for <strong><a href=\"/players/tivimate\">TiviMate IPTV Player</a></strong> or <strong><a href=\"/players/iptv-smarters\">IPTV Smarters Pro</a></strong> and click <strong>Install</strong>. This provides an independent TV experience operated with your remote. See <a href=\"/players\">standalone Chromecast IPTV players</a> for additional app guides.</p>"
       },
       {
         "title": "Method B (Legacy Chromecast): Set up casting from mobile or PC",
@@ -925,7 +925,7 @@
       {
         "id": "mag-model-compatibility",
         "title": "MAG Hardware Compatibility and Video Codecs",
-        "content": "<p>Hardware capabilities vary across MAG generations:</p><ul><li><strong>Legacy Models (e.g., MAG 250, 254, 322):</strong> Older generation devices support H.264 video decoding up to 1080p Full HD, but do not support newer HEVC (H.265) 4K compression standards.</li><li><strong>Modern Models (e.g., MAG 520, 524, 540):</strong> Powered by modern Amlogic chipsets supporting 4K resolution and HEVC (H.265) video decoding.</li></ul><p>If you use an older legacy model, upgrading to a modern MAG model or an <a href='/devices/android-tv-iptv'>Android TV device</a> provides support for modern video codecs.</p>"
+        "content": "<p>Hardware capabilities vary across MAG generations:</p><ul><li><strong>Legacy Models (e.g., MAG 250, 254, 322):</strong> Older generation devices support H.264 video decoding up to 1080p Full HD, but do not support newer HEVC (H.265) 4K compression standards.</li><li><strong>Modern Models (e.g., MAG 520, 524, 540):</strong> Powered by modern Amlogic chipsets supporting 4K resolution and HEVC (H.265) video decoding.</li></ul><p>If you use an older legacy model, upgrading to a modern MAG model or an <a href='/devices/android-tv-iptv'>Android TV device</a> provides support for modern video codecs. You can also <a href=\"/players\">compare IPTV player alternatives</a> for Android and other platforms.</p>"
       }
     ],
     "faqs": [
