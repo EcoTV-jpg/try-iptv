@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "Refund Policy",
-    description: "Read TryIPTV's refund and cancellation policy, technical assistance guidelines, and 24-hour free trial terms.",
+    description: "Read TryIPTV's refund and cancellation policy, technical assistance guidelines, prepaid billing rules, and 24-hour free trial terms.",
     canonical: "/refund-policy",
   });
 }

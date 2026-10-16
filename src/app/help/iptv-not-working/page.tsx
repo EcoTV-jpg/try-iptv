@@ -40,7 +40,7 @@ import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-c
 
 const title = "IPTV Not Working? Start With This Troubleshooting Checklist";
 const description =
-  "A master troubleshooting checklist to isolate why your IPTV is not working: authentication errors, playlist failures, buffering streams, blank guides, or app crashes.";
+  "Use this troubleshooting checklist to isolate why IPTV is not working: auth errors, playlist failures, buffering, blank guides, or app crashes.";
 const canonical = "/help/iptv-not-working";
 const modifiedDate = "2026-10-05";
 

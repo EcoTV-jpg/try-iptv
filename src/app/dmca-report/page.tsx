@@ -11,7 +11,7 @@ import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifi
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "DMCA Notice & Copyright Policy",
-    description: "Submit copyright infringement notifications and review TryIPTV's DMCA takedown procedures and compliance contact.",
+    description: "Submit copyright infringement notifications and review TryIPTV's DMCA takedown procedures, required notice elements, and compliance contact.",
     canonical: "/dmca-report",
   });
 }

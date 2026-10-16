@@ -11,7 +11,7 @@ import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifi
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "Legal Disclaimer",
-    description: "Read TryIPTV's legal disclaimer regarding third-party trademarks, hardware compatibility, and stream feeds.",
+    description: "Read TryIPTV's legal disclaimer on third-party trademarks, hardware compatibility, stream feeds, and the limits of service representations.",
     canonical: "/disclaimer",
   });
 }

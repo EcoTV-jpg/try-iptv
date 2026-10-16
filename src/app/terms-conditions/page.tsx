@@ -11,7 +11,7 @@ import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifi
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "Terms & Conditions",
-    description: "Read the service terms and acceptable use guidelines governing your TryIPTV subscription and service usage.",
+    description: "Read the service terms and acceptable use guidelines that govern your TryIPTV prepaid subscription, account access, and streaming usage.",
     canonical: "/terms-conditions",
   });
 }

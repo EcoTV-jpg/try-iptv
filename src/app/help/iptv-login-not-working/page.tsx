@@ -33,7 +33,7 @@ import {
 } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "IPTV Login Not Working? How to Diagnose Authentication Errors";
+const title = "IPTV Login Not Working? Fix Auth Errors | TryIPTV";
 const description =
   "A systematic troubleshooting guide to diagnose IPTV login failures, understand HTTP 401 and 403 response codes, verify server URLs, and restore access.";
 const canonical = "/help/iptv-login-not-working";

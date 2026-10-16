@@ -112,11 +112,11 @@ function StructuredData({ article }: { article: ArticleType }) {
 // needs to differ from the on-page H1 / visible lede paragraph.
 const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?: string }> = {
   'firestick-iptv': {
-    seoTitle: 'How to Install IPTV on Firestick (2026 Setup Guide)',
+    seoTitle: 'Install IPTV on Firestick (2026 Guide)',
     metaDescription: 'Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.',
   },
   firestick: {
-    seoTitle: 'How to Install IPTV on Firestick (2026 Setup Guide)',
+    seoTitle: 'Install IPTV on Firestick (2026 Guide)',
     metaDescription: 'Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.',
   },
   'android-tv-iptv': {
@@ -126,6 +126,34 @@ const DEVICE_SEO_OVERRIDES: Record<string, { seoTitle?: string; metaDescription?
   'windows-iptv': {
     seoTitle: 'IPTV on Windows: Players & PC Setup Guide',
     metaDescription: 'Learn how to use IPTV on Windows, choose a compatible PC player, connect with Xtream Codes or M3U, and download apps from trusted sources.',
+  },
+  'roku-iptv': {
+    seoTitle: 'IPTV on Roku: AirPlay & Mirroring Guide',
+    metaDescription: 'Stream IPTV to Roku via AirPlay 2, screen mirroring, or casting. Check the Roku Channel Store for apps available in your region before installing.',
+  },
+  'chromecast-iptv': {
+    seoTitle: 'IPTV on Chromecast: Google TV & Cast',
+    metaDescription: 'Watch IPTV on Chromecast: install apps on Chromecast with Google TV, or cast from a mobile player on legacy Chromecast devices.',
+  },
+  'mag-box-iptv': {
+    seoTitle: 'MAG Box IPTV Setup: Stalker Portal',
+    metaDescription: 'Configure an Infomir MAG box for IPTV: find the MAC address, set the Portal URL, configure NTP, and resolve common portal loading errors.',
+  },
+  'apple-tv-iptv': {
+    seoTitle: 'IPTV on Apple TV: tvOS Setup Guide',
+    metaDescription: 'Set up IPTV on Apple TV (tvOS): choose players like iPlayTV or UHF, enter Xtream Codes, and configure Match Frame Rate for smoother playback.',
+  },
+  'samsung-tv-iptv': {
+    seoTitle: 'IPTV on Samsung TV: Tizen Setup',
+    metaDescription: 'Set up IPTV on Samsung Smart TV (Tizen): use Smart Hub apps, enter credentials via web portal, and handle post-2018 audio format requirements.',
+  },
+  'lg-tv-iptv': {
+    seoTitle: 'IPTV on LG Smart TV: webOS Setup',
+    metaDescription: 'Set up IPTV on LG Smart TV (webOS): find LG Content Store players, manage large playlists, and configure audio sync for stable playback.',
+  },
+  'mac-iptv': {
+    seoTitle: 'IPTV on Mac: macOS Setup Guide',
+    metaDescription: 'Stream IPTV on macOS (MacBook, iMac, Mac mini): install Mac players like UHF or IINA, manage Gatekeeper permissions, and use Picture-in-Picture.',
   },
 };
 

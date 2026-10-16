@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   title: {
     absolute: "Order Received | TryIPTV",
   },
+  description:
+    "Your TryIPTV order was received. Watch for activation details, then set up your player with the credentials we send after payment confirmation.",
   robots: {
     index: false,
     follow: false,
