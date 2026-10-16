@@ -121,6 +121,7 @@ export default function IptvExtremePage() {
           <div><h3 className="font-headline text-lg font-semibold text-foreground">Only Some Channels Fail</h3><p className={p}>Test another channel in the same group and one in a different group. A limited failure points toward individual streams or category data more than complete installation failure.</p></div>
           <div><h3 className="font-headline text-lg font-semibold text-foreground">App Is Slow, Freezes or Crashes</h3><p className={p}>Check for an app update, available device storage and memory, and whether a very large playlist is slowing loading. Restart the app and device. Consider reinstalling only after preserving settings with backup if available. For stuttering video after the app opens, see <Link href="/help/iptv-buffering" className={a}>buffering checks</Link>.</p></div>
         </div>
+        <p className={p}>You can <Link href="/players" className={a}>compare setup guides for other players</Link> if Extreme is not the right fit.</p>
         <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">Need IPTV credentials for IPTV Extreme? <Link href="/iptv-free-trial" className={a}>Start with a 24-hour IPTV trial</Link>. TryIPTV is independent of IPTV Extreme and Paolo Turatti.</div>
       </section>
     </article></Container></Section>

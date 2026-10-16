@@ -275,6 +275,9 @@ export default function XciptvPage() {
                   <p className={textClass}>Restart the device, check free storage, and update XCIPTV from the verified source you used to install it. If it still crashes, record the app version and device model before contacting OTTRUN. Preserve your provider details before considering a reinstall.</p>
                 </div>
               </div>
+              <p className={textClass}>
+                You can <Link href="/players" className={linkClass}>choose among Android IPTV players</Link> in our comparison guide.
+              </p>
               <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">
                 Need IPTV credentials for XCIPTV? <Link href="/iptv-free-trial" className={linkClass}>Start with a 24-hour IPTV trial</Link>. TryIPTV is an independent provider, not the developer of XCIPTV.
               </div>
