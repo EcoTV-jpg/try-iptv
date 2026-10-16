@@ -94,11 +94,11 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/blog',       section: 'utility', indexable: false },
 
   // ── Legal ─────────────────────────────────────────────────────────────────
-  { path: '/privacy-policy',  section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/terms-conditions',section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/refund-policy',   section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/disclaimer',      section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/dmca-report',     section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  { path: '/privacy-policy',  section: 'legal', indexable: true, lastModified: '2026-10-09' },
+  { path: '/terms-conditions',section: 'legal', indexable: true, lastModified: '2026-10-09' },
+  { path: '/refund-policy',   section: 'legal', indexable: true, lastModified: '2026-10-09' },
+  { path: '/disclaimer',      section: 'legal', indexable: true, lastModified: '2026-10-13' },
+  { path: '/dmca-report',     section: 'legal', indexable: true, lastModified: '2026-09-30' },
 ];
 
 /** All indexable routes that should appear in sitemap.xml */
