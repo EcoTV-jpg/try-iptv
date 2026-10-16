@@ -248,7 +248,7 @@ export default function OttNavigatorPage() {
                 </div>
               </div>
               <p className={textClass}>
-                See the <Link href="/players" className={linkClass}>IPTV player directory</Link> for other apps and device guides.
+                See the <Link href="/players" className={linkClass}>directory of IPTV players</Link> for other apps and device guides.
               </p>
               <div className="mt-8 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 text-sm text-muted-foreground">
                 Need IPTV credentials for OTT Navigator? <Link href="/iptv-free-trial" className={linkClass}>Start with a 24-hour IPTV trial</Link>. TryIPTV is independent of OTT Navigator.
