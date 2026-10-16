@@ -3,6 +3,7 @@
 
 import { useEffect, useState, useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import Script from "next/script";
 import { MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -62,51 +63,59 @@ export function ContactSheet() {
         </Button>
       </SheetTrigger>
       {isOpen && (
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Contact Us</SheetTitle>
-            <SheetDescription>
-              Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
-            </SheetDescription>
-          </SheetHeader>
-          <form action={dispatch} className="mt-8 space-y-4">
-            <div
-              className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
-              aria-hidden="true"
-            >
-              <label htmlFor="company-sheet">Company</label>
-              <input
-                id="company-sheet"
-                name="company"
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
+        <>
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            strategy="lazyOnload"
+            async
+            defer
+          />
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Contact Us</SheetTitle>
+              <SheetDescription>
+                Have a question or need support? Fill out the form below and we&apos;ll get back to you shortly.
+              </SheetDescription>
+            </SheetHeader>
+            <form action={dispatch} className="mt-8 space-y-4">
+              <div
+                className="absolute -left-[9999px] -top-[9999px] h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
                 aria-hidden="true"
+              >
+                <label htmlFor="company-sheet">Company</label>
+                <input
+                  id="company-sheet"
+                  name="company"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="name-sheet">Name</Label>
+                <Input id="name-sheet" name="name" placeholder="Your Name" />
+                {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email-sheet">Email</Label>
+                <Input id="email-sheet" name="email" type="email" placeholder="your@email.com" />
+                {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message-sheet">Message</Label>
+                <Textarea id="message-sheet" name="message" placeholder="How can we help you?" />
+                {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
+              </div>
+              <div
+                className="cf-turnstile"
+                data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                data-theme="auto"
               />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="name-sheet">Name</Label>
-              <Input id="name-sheet" name="name" placeholder="Your Name" />
-              {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email-sheet">Email</Label>
-              <Input id="email-sheet" name="email" type="email" placeholder="your@email.com" />
-              {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="message-sheet">Message</Label>
-              <Textarea id="message-sheet" name="message" placeholder="How can we help you?" />
-              {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
-            </div>
-            <div
-              className="cf-turnstile"
-              data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-              data-theme="auto"
-            />
-            <SubmitButton />
-          </form>
-        </SheetContent>
+              <SubmitButton />
+            </form>
+          </SheetContent>
+        </>
       )}
     </Sheet>
   );
