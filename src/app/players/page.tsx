@@ -38,7 +38,8 @@ const playersList = [
     protocols: "Xtream Codes, M3U / M3U8",
     pricing: "Free/basic access with paid Premium options",
     bestFor: "Television EPG & Remote Navigation",
-    description: "Designed specifically for television screens with native D-pad remote control navigation, customizable EPG timeline grid, SMB network recording, and multi-view.",
+    description: "Install and set up TiviMate on Android TV, Google TV or Fire TV. Add Xtream Codes or M3U, configure EPG, and troubleshoot common issues.",
+    group: "TV remote players",
     icon: Tv,
     badgeColor: "text-primary border-primary/20 bg-primary/10",
   },
@@ -50,7 +51,8 @@ const playersList = [
     protocols: "Xtream Codes API, M3U Playlist",
     pricing: "Free download; optional in-app Premium features",
     bestFor: "Broadest Multi-Device Ecosystem",
-    description: "Broadest multi-platform device availability. Works across iPhone, Apple TV, Smart TVs (Samsung Tizen & LG webOS), Android, and Firestick with a unified interface.",
+    description: "Learn how to set up IPTV Smarters Pro and Smarters Player Lite with Xtream Codes or M3U across Apple, Android, Fire TV, Windows, and supported TVs.",
+    group: "Multi-device players",
     icon: Globe,
     badgeColor: "text-blue-400 border-blue-400/20 bg-blue-400/10",
   },
@@ -62,7 +64,8 @@ const playersList = [
     protocols: "Xtream Codes API (Native), M3U",
     pricing: "Free (ad-supported)",
     bestFor: "Dual Playback Engines & Multi-Screen",
-    description: "Features selectable dual media engines (Google ExoPlayer and VideoLAN VLC) to help with compatibility or playback issues, alongside a 4-channel live sports multi-screen grid.",
+    description: "Learn where XCIPTV Player by OTTRUN is available, how to connect with Xtream Codes or M3U, and how its ExoPlayer and VLC playback engines work.",
+    group: "TV remote players",
     icon: Sliders,
     badgeColor: "text-purple-400 border-purple-400/20 bg-purple-400/10",
   },
@@ -74,7 +77,8 @@ const playersList = [
     protocols: "Xtream Codes API, M3U / M3U8",
     pricing: "Free tier; optional paid Premium upgrade",
     bestFor: "Hybrid Mobile & TV Interface",
-    description: "A fast, modern Kotlin-based media player that adapts gracefully between touch gestures and TV remote D-pads, featuring native Google Cast streaming.",
+    description: "Set up Televizo with an M3U playlist or Xtream Codes, add EPG, and troubleshoot playlist, login, and playback problems.",
+    group: "TV remote players",
     icon: Smartphone,
     badgeColor: "text-emerald-400 border-emerald-400/20 bg-emerald-400/10",
   },
@@ -86,7 +90,8 @@ const playersList = [
     protocols: "Xtream Codes, M3U, Stalker Portal",
     pricing: "Free tier; optional in-app Premium license",
     bestFor: "Videophiles & High-End Codec Control",
-    description: "Advanced playback configuration with the MPV media core, Auto Frame Rate (AFR) HDMI matching, hardware deinterlacing for 1080i sports, and 9-channel Studio Mode.",
+    description: "Set up OTT Navigator with M3U or Xtream Codes, check EPG and connection limits, and diagnose 401, 403, playlist, and playback problems.",
+    group: "TV remote players",
     icon: Layers,
     badgeColor: "text-amber-400 border-amber-400/20 bg-amber-400/10",
   },
@@ -98,7 +103,8 @@ const playersList = [
     protocols: "M3U / M3U8, Xtream Codes",
     pricing: "Free (ad-supported); optional paid Pro version",
     bestFor: "Web Portal Setup & Scheduled DVR",
-    description: "Upload and manage playlists remotely from your laptop or phone via iptvextreme.eu using your TV's virtual MAC address. Includes scheduled DVR recording timers.",
+    description: "Learn how to set up IPTV Extreme with M3U, Xtream Codes or MAG/Stalker, configure EPG, and diagnose playlist, login and playback problems.",
+    group: "Multi-device players",
     icon: HardDrive,
     badgeColor: "text-cyan-400 border-cyan-400/20 bg-cyan-400/10",
   },
@@ -110,7 +116,8 @@ const playersList = [
     protocols: "M3U / M3U8, XSPF",
     pricing: "Free (legacy software; delisted from Google Play)",
     bestFor: "Legacy Hardware & Set-Top Box OSD",
-    description: "Historical pioneer of set-top box On-Screen Display styling. Lightweight footprint for older 1GB RAM Android boxes, with UDPXY proxy integration.",
+    description: "Learn how to configure legacy Perfect Player by Niklabs with M3U and EPG, troubleshoot playback issues, and migrate safely to a maintained IPTV player.",
+    group: "Legacy players",
     icon: History,
     badgeColor: "text-zinc-400 border-zinc-400/20 bg-zinc-400/10",
   },
@@ -189,6 +196,9 @@ export default function PlayersHubPage() {
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               An IPTV player is the software interface that turns raw stream URLs into an organized television viewing experience. From grid-based EPG guides on Android TV to apps across Apple, Samsung, and LG ecosystems, compare seven major IPTV players compatible with TryIPTV.
+            </p>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+              The seven players documented here are TiviMate, IPTV Smarters Pro, XCIPTV, Televizo, OTT Navigator, IPTV Extreme, and Perfect Player. A player renders the stream and shows the playlist and EPG. It does not supply the channels. TV-remote players are TiviMate, XCIPTV, Televizo, and OTT Navigator, which these pages describe on Android TV or Fire TV. IPTV Smarters and IPTV Extreme are grouped as multi-device apps because their pages name more than one kind of hardware, including phones and TVs. Perfect Player is grouped alone because its page describes a legacy Niklabs Android app. Device pages cover the hardware steps. Help pages cover buffering, login, playlists, and the EPG.
             </p>
           </div>
 
@@ -289,8 +299,13 @@ export default function PlayersHubPage() {
             </p>
           </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {playersList.map((player) => (
+          {["TV remote players", "Multi-device players", "Legacy players"].map((groupName) => (
+            <div key={groupName} className="mt-10">
+              <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                {groupName}
+              </h2>
+              <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {playersList.filter((player) => player.group === groupName).map((player) => (
               <Card key={player.slug} className="flex flex-col justify-between border-white/[0.08] bg-white/[0.02] transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:bg-white/[0.04]">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between gap-2 mb-2">
@@ -324,8 +339,10 @@ export default function PlayersHubPage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </Container>
       </Section>
 

@@ -25,6 +25,12 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: "2026-10-12",
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "SoftwareApplication",
+    name: "TiviMate",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: ["Android TV", "Google TV", "Fire TV"],
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

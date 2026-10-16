@@ -24,6 +24,12 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: "2026-10-08",
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "SoftwareApplication",
+    name: "Televizo",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: ["Android", "Android TV", "Google TV", "Fire TV"],
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

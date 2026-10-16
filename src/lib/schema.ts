@@ -128,6 +128,7 @@ interface ArticleSchemaProps {
     authorName?: string;
     publisherName?: string;
     url: string;
+    about?: Article['about'];
 }
 
 export function generateArticleSchema(props: ArticleSchemaProps): WithContext<Article> {
@@ -144,6 +145,7 @@ export function generateArticleSchema(props: ArticleSchemaProps): WithContext<Ar
             '@type': 'WebPage',
             '@id': props.url,
         },
+        ...(props.about ? { about: props.about } : {}),
     };
 }
 

@@ -130,6 +130,11 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "IPTV internet speed",
+    description,
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

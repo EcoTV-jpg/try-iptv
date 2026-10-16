@@ -502,12 +502,18 @@ const DEVICE_CTA_DESCRIPTIONS: Record<string, string> = {
 const DEVICE_NEXT_STEPS: Record<string, SetupLink[]> = {
   "firestick-iptv": [
     { href: "/players/iptv-smarters", label: "IPTV Smarters Pro for Fire TV" },
+    { href: "/players/tivimate", label: "TiviMate on Fire TV" },
+    { href: "/players/xciptv", label: "XCIPTV on Fire TV" },
     { href: "/guides/m3u-vs-xtream-codes", label: "Choose M3U or Xtream Codes" },
     { href: "/help/iptv-buffering", label: "Troubleshoot Firestick buffering" },
+    { href: "/help/iptv-login-not-working", label: "Fix a rejected Fire TV login" },
+    { href: "/help/m3u-not-loading", label: "Fix an M3U playlist that will not load" },
     { href: "/iptv-free-trial", label: "Start 24-hour Fire TV trial" },
   ],
   "android-tv-iptv": [
     { href: "/players/tivimate", label: "TiviMate setup on Android TV" },
+    { href: "/players/xciptv", label: "XCIPTV on Android TV" },
+    { href: "/players/televizo", label: "Televizo on Android TV" },
     { href: "/guides/what-are-xtream-codes", label: "Enter Xtream Codes credentials" },
     { href: "/help/iptv-login-not-working", label: "Troubleshoot login errors" },
     { href: "/iptv-free-trial", label: "Test Android TV with a free trial" },
@@ -537,6 +543,7 @@ const DEVICE_NEXT_STEPS: Record<string, SetupLink[]> = {
     { href: "/iptv-free-trial", label: "Request a free test line" },
   ],
   "mag-box-iptv": [
+    { href: "/players/iptv-extreme", label: "IPTV Extreme MAG and Stalker setup" },
     { href: "/guides/what-are-xtream-codes", label: "Xtream Codes vs Stalker Portals" },
     { href: "/guides/what-is-epg", label: "Configure MAG EPG time zones" },
     { href: "/help/iptv-not-working", label: "Diagnose MAG status messages" },
