@@ -4,7 +4,8 @@ import { SITE_URL } from '@/lib/site-config';
 /**
  * Robots.txt configuration for https://www.tryiptv.com
  *
- * Allow rules: content pages, brand assets, OG image endpoint.
+ * Allow rules: the whole site, plus the OG image endpoint, which must be listed
+ * explicitly because it sits under the disallowed /api/ prefix.
  * Disallow rules: API routes, admin, staging.
  *
  * NOTE: Noindex pages (players/*, guides/*, help/*, etc.) are NOT disallowed here.
@@ -12,38 +13,17 @@ import { SITE_URL } from '@/lib/site-config';
  * control indexability. We allow crawling of all content paths so bots can
  * discover internal links, even for pages that are temporarily noindex.
  */
-const standardAllow = [
-  '/',
-  '/api/og',
-  '/devices/',
-  '/players/',
-  '/guides/',
-  '/help/',
-];
-const brandAssetAllow = [
-  '/favicon.ico',
-  '/favicon-16x16.png',
-  '/favicon-32x32.png',
-  '/favicon-48x48.png',
-  '/apple-touch-icon.png',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/logo.png',
-  '/brand-logo-square.png',
-  '/site.webmanifest',
-  '/manifest.json',
-];
+const publicAllow = ['/', '/api/og'];
 const aiDiscoveryAllow = [
   '/llms.txt',
   '/llms-full.txt',
   '/ai.txt',
 ];
-const publicAllow = [...standardAllow, ...brandAssetAllow, ...aiDiscoveryAllow];
 const standardDisallow = ['/api/', '/admin/', '/staging/'];
- 
+
 export default function robots(): MetadataRoute.Robots {
   const siteUrl = SITE_URL;
-  
+
   return {
     rules: [
       {
@@ -108,6 +88,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
-    host: new URL(siteUrl).host,
   };
 }
