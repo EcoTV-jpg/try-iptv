@@ -28,7 +28,7 @@ export function Hero() {
             </div>
 
             <h1 className="mt-4 font-headline text-[32px] sm:text-[42px] lg:text-[48px] font-bold leading-[1.1] tracking-tight text-foreground">
-              TryIPTV — <span className="text-primary">Best IPTV Service</span> in USA, UK &amp; Worldwide
+              TryIPTV: IPTV Service for the USA & UK
             </h1>
 
             <p className="mt-4 max-w-xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground/90">
@@ -47,6 +47,12 @@ export function Hero() {
                 </Link>
               </Button>
             </div>
+
+            <p className="mt-4 text-sm">
+              <Link href="/guides">IPTV guides</Link>
+              {" · "}
+              <Link href="/help">Help & troubleshooting</Link>
+            </p>
 
             <p className="mt-3 text-[11px] font-medium tracking-wide text-muted-foreground/65">
               Plans from $16 • Prepaid • No auto-renewal
