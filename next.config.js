@@ -14,19 +14,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
         hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
         port: '',
         pathname: '/**',
       },
@@ -39,12 +27,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'iptvwell.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.demotemplates.online',
         port: '',
         pathname: '/**',
       },
@@ -76,7 +58,7 @@ const nextConfig = {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://images.unsplash.com https://iptvwell.com https://image.tmdb.org https://r2.thesportsdb.com https://images-cdn.ubuy.co.in",
       "font-src 'self' data:",
-      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://analytics.ahrefs.com https://*.ingest.us.sentry.io https://*.sentry.io",
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://analytics.ahrefs.com https://challenges.cloudflare.com https://*.ingest.us.sentry.io https://*.sentry.io",
       "frame-src https://challenges.cloudflare.com",
       "media-src 'self'",
       "object-src 'none'",
