@@ -8,7 +8,7 @@ import { GuideScreenshot } from "@/components/guide";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "TiviMate IPTV Player Setup Guide: Install, M3U & Xtream Codes";
+const title = "TiviMate Update, Setup & Error Fixes | TryIPTV";
 const description =
   "Install and set up TiviMate on Android TV, Google TV or Fire TV. Add Xtream Codes or M3U, configure EPG, and troubleshoot common issues.";
 const canonical = "/players/tivimate";

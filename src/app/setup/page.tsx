@@ -31,7 +31,7 @@ import { PRODUCT_TRUTHS, SITE_URL, siteConfig, generateMetadata as generatePageM
 
 const title = "IPTV Setup Hub: From Credentials to Your Device | TryIPTV";
 const description =
-  "Start with your TryIPTV credentials, choose a compatible device and player, and follow the correct setup path for Firestick, Android TV, Smart TVs, Apple TV, PC, or mobile.";
+  "Start with TryIPTV credentials, choose a compatible device and player, and follow setup paths for Firestick, Android TV, Smart TVs, Apple TV, PC, or mobile.";
 const canonical = "/setup";
 
 export function generateMetadata(): Metadata {

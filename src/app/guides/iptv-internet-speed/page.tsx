@@ -28,7 +28,7 @@ import { FaqList, type FaqItem } from "@/components/sections/FAQ";
 import { generateArticleSchema, generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "IPTV Internet Speed: How Much Bandwidth Do You Need? | TryIPTV";
+const title = "IPTV Internet Speed Requirements | TryIPTV";
 const description =
   "Learn how much internet speed IPTV needs for HD, Full HD and 4K streaming, how to plan bandwidth for two streams, and why connection stability matters.";
 const canonical = "/guides/iptv-internet-speed";

@@ -7,7 +7,7 @@ import { Section } from "@/components/shared/Section";
 import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "Perfect Player IPTV Guide: Legacy Setup, M3U, EPG & Migration";
+const title = "Perfect Player IPTV: Setup & Migration | TryIPTV";
 const description = "Learn how to configure legacy Perfect Player by Niklabs with M3U and EPG, troubleshoot playback issues, and migrate safely to a maintained IPTV player.";
 const canonical = "/players/perfect-player";
 

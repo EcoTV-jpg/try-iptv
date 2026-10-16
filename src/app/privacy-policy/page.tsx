@@ -11,7 +11,7 @@ import { PAGE_LAST_MODIFIED, formatLegalDate } from "@/lib/site-data/page-modifi
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "Privacy Policy",
-    description: "Learn how TryIPTV protects your personal information, communication privacy, and transactional data.",
+    description: "Learn how TryIPTV collects, uses, and protects personal information, communication privacy, and transactional data across our prepaid IPTV service.",
     canonical: "/privacy-policy",
   });
 }

@@ -41,52 +41,52 @@ export interface SiteRoute {
 
 export const SITE_ROUTES: SiteRoute[] = [
   // ── Commercial ───────────────────────────────────────────────────────────────
-  { path: '/',                  section: 'commercial', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/',                  section: 'commercial', indexable: true,  lastModified: '2026-10-16' },
   { path: '/pricing',           section: 'commercial', indexable: true,  lastModified: '2026-10-04' },
   { path: '/iptv-free-trial',   section: 'commercial', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/setup',             section: 'commercial', indexable: true,  lastModified: '2026-10-06' },
+  { path: '/setup',             section: 'commercial', indexable: true,  lastModified: '2026-10-16' },
 
   // ── Devices hub + device pages ────────────────────────────────────────────
-  { path: '/devices',                section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/firestick-iptv',  section: 'devices', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/devices',                section: 'devices', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/devices/firestick-iptv',  section: 'devices', indexable: true,  lastModified: '2026-10-16' },
   { path: '/devices/android-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/samsung-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/lg-tv-iptv',      section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/apple-tv-iptv',   section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/chromecast-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/mag-box-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/roku-iptv',       section: 'devices', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/devices/samsung-tv-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/devices/lg-tv-iptv',      section: 'devices', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/devices/apple-tv-iptv',   section: 'devices', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/devices/chromecast-iptv', section: 'devices', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/devices/mag-box-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/devices/roku-iptv',       section: 'devices', indexable: true,  lastModified: '2026-10-16' },
   { path: '/devices/windows-iptv',    section: 'devices', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/devices/mac-iptv',        section: 'devices', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/devices/mac-iptv',        section: 'devices', indexable: true,  lastModified: '2026-10-16' },
 
   // ── Players hub + player pages ────────────────────────────────────────────
-  { path: '/players',                section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players',                section: 'players', indexable: true,  lastModified: '2026-10-16' },
   { path: '/players/iptv-smarters',  section: 'players', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/players/tivimate',       section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/tivimate',       section: 'players', indexable: true,  lastModified: '2026-10-16' },
   { path: '/players/xciptv',         section: 'players', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/players/televizo',       section: 'players', indexable: true,  lastModified: '2026-10-04' },
-  { path: '/players/perfect-player', section: 'players', indexable: true,  lastModified: '2026-10-04' },
+  { path: '/players/televizo',       section: 'players', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/players/perfect-player', section: 'players', indexable: true,  lastModified: '2026-10-16' },
   { path: '/players/ott-navigator',  section: 'players', indexable: true,  lastModified: '2026-10-04' },
   { path: '/players/iptv-extreme',   section: 'players', indexable: true,  lastModified: '2026-10-04' },
 
   // ── Guides hub + guide pages ──────────────────────────────────────────────
-  { path: '/guides',                     section: 'guides', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/guides',                     section: 'guides', indexable: true,  lastModified: '2026-10-16' },
   { path: '/guides/what-is-iptv',        section: 'guides', indexable: true,  lastModified: '2026-10-04' },
   { path: '/guides/how-does-iptv-work',  section: 'guides', indexable: true,  lastModified: '2026-10-06' },
   { path: '/guides/what-is-m3u',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
   { path: '/guides/what-are-xtream-codes',section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/guides/m3u-vs-xtream-codes', section: 'guides', indexable: true,  lastModified: '2026-10-16' },
   { path: '/guides/what-is-epg',         section: 'guides', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: true,  lastModified: '2026-10-06' },
+  { path: '/guides/iptv-internet-speed', section: 'guides', indexable: true,  lastModified: '2026-10-16' },
   { path: '/guides/iptv-vs-cable',       section: 'guides', indexable: true,  lastModified: '2026-10-06' },
 
   // ── Help hub + help pages ─────────────────────────────────────────────────
-  { path: '/help',                        section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/iptv-buffering',         section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/iptv-not-working',       section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/iptv-login-not-working', section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help',                        section: 'help', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/help/iptv-buffering',         section: 'help', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/help/iptv-not-working',       section: 'help', indexable: true,  lastModified: '2026-10-16' },
+  { path: '/help/iptv-login-not-working', section: 'help', indexable: true,  lastModified: '2026-10-16' },
   { path: '/help/m3u-not-loading',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
-  { path: '/help/epg-not-working',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
+  { path: '/help/epg-not-working',        section: 'help', indexable: true,  lastModified: '2026-10-16' },
 
   // ── Utility ───────────────────────────────────────────────────────────────
   { path: '/faq',        section: 'utility', indexable: true, lastModified: '2026-10-04' },
@@ -94,11 +94,11 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/blog',       section: 'utility', indexable: false },
 
   // ── Legal ─────────────────────────────────────────────────────────────────
-  { path: '/privacy-policy',  section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/terms-conditions',section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/refund-policy',   section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/disclaimer',      section: 'legal', indexable: true, lastModified: '2026-03-01' },
-  { path: '/dmca-report',     section: 'legal', indexable: true, lastModified: '2026-03-01' },
+  { path: '/privacy-policy',  section: 'legal', indexable: true, lastModified: '2026-10-16' },
+  { path: '/terms-conditions',section: 'legal', indexable: true, lastModified: '2026-10-16' },
+  { path: '/refund-policy',   section: 'legal', indexable: true, lastModified: '2026-10-16' },
+  { path: '/disclaimer',      section: 'legal', indexable: true, lastModified: '2026-10-16' },
+  { path: '/dmca-report',     section: 'legal', indexable: true, lastModified: '2026-10-16' },
 ];
 
 /** All indexable routes that should appear in sitemap.xml */

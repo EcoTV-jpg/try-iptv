@@ -9,7 +9,7 @@ import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "TryIPTV Blog — IPTV News, Guides & Tips",
-    description: "The TryIPTV blog covering IPTV news, setup guides, player reviews, streaming tips, and industry updates.",
+    description: "TryIPTV blog covering IPTV news, setup guides, player reviews, streaming tips, and industry updates for subscribers and evaluators.",
     canonical: "/blog",
     noIndex: true,
   });
