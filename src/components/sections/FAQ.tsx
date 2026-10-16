@@ -194,7 +194,7 @@ export function FAQ() {
                 <AccordionItem
                   key={faq.question}
                   value={`item-${i}`}
-                  className="border-b border-white/[0.07]"
+                  className="group border-b border-white/[0.07]"
                 >
                   <AccordionTrigger className="gap-3.5 py-3 sm:py-3.5 text-left hover:no-underline group">
                     <span className="flex items-start gap-3.5 sm:gap-5">
@@ -209,7 +209,10 @@ export function FAQ() {
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
+                  <AccordionContent
+                    forceMount
+                    className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95 group-data-[state=closed]:hidden"
+                  >
                     <span
                       dangerouslySetInnerHTML={{
                         __html: faq.answer.includes("support@tryiptv.com")

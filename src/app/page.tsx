@@ -14,17 +14,31 @@ import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
+  const title = "TryIPTV: IPTV Service for USA & UK, 24h Free Trial";
+  const description =
+    "TryIPTV offers 25,000+ channels and 120,000+ movies and TV shows, with 2 connections, plans from $16, and an IPTV free trial for 24 hours.";
   const baseMetadata = generatePageMetadata({
-    title: "TryIPTV — Best IPTV Service in USA, UK & Worldwide",
-    description: "Best IPTV streaming featuring 25,000+ live channels worldwide, sports, and 120,000+ movies and TV shows across compatible devices and supported player apps. 2 connections included. Plans from $16 with a IPTV Free Trial.",
+    title,
+    description,
     canonical: "/",
     image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
 
   return {
     ...baseMetadata,
+    title: { absolute: title },
+    description,
+    robots: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
     openGraph: {
       ...baseMetadata.openGraph,
+      title,
+      description,
       images: [
         {
           url: "https://www.tryiptv.com/images/best-iptv-service.png",
@@ -36,6 +50,8 @@ export function generateMetadata(): Metadata {
     },
     twitter: {
       ...baseMetadata.twitter,
+      title,
+      description,
       images: ["https://www.tryiptv.com/images/best-iptv-service.png"],
     },
   };
