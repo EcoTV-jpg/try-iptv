@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Tv, Zap, Smartphone, CalendarCheck } from "lucide-react";
 import { BlurFade } from "@/components/velora/blur-fade";
 import { Container } from "../shared/Container";
@@ -74,7 +75,7 @@ export function WhyChooseTryIPTV() {
 
         <div className="mt-8 rounded-2xl border border-white/[0.06] bg-white/[0.015] p-5 sm:p-6">
           <h3 className="font-headline text-xl font-bold tracking-tight text-foreground">What to Check Before Choosing an IPTV Service</h3>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">Use these practical checks when comparing an IPTV provider: device compatibility, the content you actually watch, M3U or Xtream Codes support, EPG availability, simultaneous stream limits, prepaid billing terms, trial access, and setup guidance.</p>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">Use these practical checks when comparing an IPTV provider: device compatibility, the content you actually watch, <Link href="/guides/what-is-m3u" className="font-semibold text-primary hover:underline">M3U</Link> or <Link href="/guides/what-are-xtream-codes" className="font-semibold text-primary hover:underline">Xtream Codes</Link> support, <Link href="/guides/what-is-epg" className="font-semibold text-primary hover:underline">EPG</Link> availability, simultaneous stream limits, prepaid billing terms, trial access, and setup guidance.</p>
           <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-muted-foreground">
             {['Device compatibility', 'Content access', 'M3U / Xtream Codes', 'EPG availability', 'Simultaneous connections', 'Prepaid terms', 'Free trial', 'Setup support'].map((criterion) => <span key={criterion} className="rounded-full border border-white/[0.08] bg-card px-3 py-1.5">{criterion}</span>)}
           </div>

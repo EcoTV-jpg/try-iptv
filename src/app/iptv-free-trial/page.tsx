@@ -21,16 +21,16 @@ import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Schema } from "@/components/shared/Schema";
+import { generateWebPageSchema } from "@/lib/schema";
 import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
-import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 const freeTrialWhatsAppUrl =
   "https://wa.me/15205648298?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
   const title = "24-Hour IPTV Free Trial — Test TryIPTV Before You Pay";
-  const description =
-    "Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. 24-hour access, $0, and no credit card required.";
+  const description = trialDescription;
 
   return {
     ...generatePageMetadata({ title, description, canonical: "/iptv-free-trial" }),
@@ -74,7 +74,7 @@ const steps = [
   {
     step: "03",
     title: "Configure Your Player",
-    desc: "Open your IPTV app, enter the issued credentials, and allow the playlist and guide data to load. Follow the Universal IPTV Setup Guide if you need step-by-step assistance.",
+    desc: "Open your IPTV app, enter the issued credentials, and allow the playlist and guide data to load.",
   },
   {
     step: "04",
@@ -125,6 +125,8 @@ const deviceGuides = [
   { name: "Apple TV", href: "/devices/apple-tv-iptv", note: "Setup steps for compatible media players on Apple TV (tvOS)." },
   { name: "Windows PC", href: "/devices/windows-iptv", note: "Setup guide for IPTV player software on Windows computers." },
   { name: "Apple Mac", href: "/devices/mac-iptv", note: "Configuration instructions for compatible players on macOS." },
+  { name: "Roku", href: "/devices/roku-iptv", note: "Setup notes for streaming IPTV to Roku devices." },
+  { name: "MAG Box", href: "/devices/mag-box-iptv", note: "Configure an Infomir MAG box with a portal URL and MAC address." },
 ] as const;
 
 const playerGuides = [
@@ -151,11 +153,26 @@ const planComparisonRows = [
   ["When access ends", "Service stops automatically", "Access expires at the end of the prepaid period"],
 ] as const;
 
+const trialDescription =
+  "Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. 24-hour access, $0, and no credit card required.";
+
+const trialWebPageSchema = generateWebPageSchema({
+  name: "24-Hour IPTV Free Trial — Test TryIPTV Before You Pay",
+  description: trialDescription,
+  url: `${SITE_URL}/iptv-free-trial`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "IPTV free trial",
+    description: trialDescription,
+  },
+});
+
 export default async function IptvFreeTrialPage() {
   const { breadcrumbSchema, serviceSchema, trialFaqs } = await getIptvFreeTrialPageData();
 
   return (
     <>
+      <Schema id="webpage" schema={trialWebPageSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       <Schema id="service" schema={serviceSchema} />
 
@@ -214,7 +231,38 @@ export default async function IptvFreeTrialPage() {
                         <th scope="row" className="w-1/3 px-5 py-3.5 font-semibold text-foreground">
                           {label}
                         </th>
-                        <td className="px-5 py-3.5 text-muted-foreground">{value}</td>
+                        <td className="px-5 py-3.5 text-muted-foreground">
+                          {label === "Supported devices" ? (
+                            <>
+                              <Link href="/devices/firestick-iptv" className="text-primary underline underline-offset-4">Firestick</Link>
+                              {", "}
+                              <Link href="/devices/android-tv-iptv" className="text-primary underline underline-offset-4">Android TV</Link>
+                              {", Smart TVs ("}
+                              <Link href="/devices/samsung-tv-iptv" className="text-primary underline underline-offset-4">Samsung</Link>
+                              {", "}
+                              <Link href="/devices/lg-tv-iptv" className="text-primary underline underline-offset-4">LG</Link>
+                              {"), "}
+                              <Link href="/devices/apple-tv-iptv" className="text-primary underline underline-offset-4">Apple TV</Link>
+                              {", "}
+                              <Link href="/devices/roku-iptv" className="text-primary underline underline-offset-4">Roku</Link>
+                              {", "}
+                              <Link href="/devices/windows-iptv" className="text-primary underline underline-offset-4">Windows</Link>
+                              {", "}
+                              <Link href="/devices/mac-iptv" className="text-primary underline underline-offset-4">Mac</Link>
+                              {", "}
+                              <Link href="/devices/mag-box-iptv" className="text-primary underline underline-offset-4">MAG</Link>
+                            </>
+                          ) : label === "Access formats" ? (
+                            <>
+                              <Link href="/guides/what-are-xtream-codes" className="text-primary underline underline-offset-4">Xtream Codes</Link>
+                              {" (Server URL, Username, Password) and "}
+                              <Link href="/guides/what-is-m3u" className="text-primary underline underline-offset-4">M3U</Link>
+                              {" playlist URL"}
+                            </>
+                          ) : (
+                            value
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -249,9 +297,24 @@ export default async function IptvFreeTrialPage() {
                     {testingChecklist.map(([item, check]) => (
                       <tr key={item} className="transition-colors hover:bg-white/[0.02]">
                         <th scope="row" className="px-5 py-3.5 font-semibold text-foreground align-top">
-                          {item}
+                          {item === "TV guide (EPG)" ? (
+                            <Link href="/guides/what-is-epg" className="text-primary underline underline-offset-4">{item}</Link>
+                          ) : item === "Player compatibility" ? (
+                            <Link href="/players" className="text-primary underline underline-offset-4">{item}</Link>
+                          ) : (
+                            item
+                          )}
                         </th>
-                        <td className="px-5 py-3.5 text-muted-foreground">{check}</td>
+                        <td className="px-5 py-3.5 text-muted-foreground">
+                          {item === "Home network performance" ? (
+                            <>
+                              Compare playback over Wi-Fi versus an Ethernet cable if you encounter{" "}
+                              <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">buffering</Link>.
+                            </>
+                          ) : (
+                            check
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -312,7 +375,19 @@ export default async function IptvFreeTrialPage() {
                 <div key={req.title} className="rounded-lg border border-white/[0.09] bg-card p-5">
                   <h3 className="font-headline text-lg font-extrabold text-foreground">{req.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {req.description}
+                    {req.title === "IPTV Player Application" ? (
+                      <>
+                        TryIPTV provides the IPTV service. You use a compatible IPTV player app to load and watch the service. Popular choices include{" "}
+                        <Link href="/players/tivimate" className="font-semibold text-primary underline underline-offset-4">TiviMate</Link>
+                        {", "}
+                        <Link href="/players/iptv-smarters" className="font-semibold text-primary underline underline-offset-4">IPTV Smarters</Link>
+                        {", and "}
+                        <Link href="/players/televizo" className="font-semibold text-primary underline underline-offset-4">Televizo</Link>
+                        .
+                      </>
+                    ) : (
+                      req.description
+                    )}
                     {"linkText" in req && req.linkText && req.linkHref && (
                       <>
                         {" "}
@@ -408,7 +483,9 @@ export default async function IptvFreeTrialPage() {
                 Testing on your own equipment during your normal viewing hours lets you check channel startup time, stream smoothness, and guide loading firsthand.
               </p>
               <p className="rounded-lg border border-white/[0.09] bg-card p-4 text-sm leading-6 sm:text-base">
-                <strong className="text-foreground">Service Evaluation Note:</strong> A 24-hour test is useful for evaluating current compatibility and playback, but it cannot guarantee how any internet-delivered service will perform over several months. To minimize risk after evaluating the trial, consider starting with a shorter prepaid term (such as a 1-month plan) before selecting a longer subscription.
+                <strong className="text-foreground">Service Evaluation Note:</strong> A 24-hour test is useful for evaluating current compatibility and playback, but it cannot guarantee how any internet-delivered service will perform over several months. To minimize risk after evaluating the trial, consider starting with a shorter prepaid term (such as a{" "}
+                <Link href="/pricing" className="font-semibold text-primary underline underline-offset-4">1-month plan</Link>
+                ) before selecting a longer subscription.
               </p>
             </div>
 

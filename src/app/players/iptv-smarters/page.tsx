@@ -24,6 +24,24 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: "2026-10-11",
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "SoftwareApplication",
+    name: "IPTV Smarters",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: [
+      "iPhone",
+      "iPad",
+      "Apple TV",
+      "Android",
+      "Android TV",
+      "Google TV",
+      "Fire TV",
+      "Windows",
+      "macOS",
+      "Samsung TV",
+      "LG TV",
+    ],
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

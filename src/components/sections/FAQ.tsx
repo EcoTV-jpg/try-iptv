@@ -28,6 +28,8 @@ export interface FaqItem {
 interface FaqListProps {
   items: FaqItem[];
   className?: string;
+  /** When true, answers are in the initial HTML and hidden while the item is closed. */
+  forceMount?: boolean;
 }
 
 const CONTACTS = [
@@ -90,7 +92,7 @@ const homepageFaqs: FaqItem[] = [
 /**
  * Reusable single-column FaqList preserved for guide & device pages.
  */
-export function FaqList({ items, className }: FaqListProps) {
+export function FaqList({ items, className, forceMount = false }: FaqListProps) {
   return (
     <Accordion
       type="single"
@@ -104,12 +106,21 @@ export function FaqList({ items, className }: FaqListProps) {
         <AccordionItem
           key={i}
           value={`item-${i}`}
-          className="border-b border-white/[0.07] px-6 sm:px-8 last:border-b-0"
+          className={cn(
+            "border-b border-white/[0.07] px-6 sm:px-8 last:border-b-0",
+            forceMount && "group"
+          )}
         >
           <AccordionTrigger className="min-h-[68px] py-5 sm:py-6 text-left text-[16px] font-semibold leading-snug text-foreground/90 hover:no-underline hover:text-foreground transition-colors sm:text-[17px]">
             {faq.question}
           </AccordionTrigger>
-          <AccordionContent className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground">
+          <AccordionContent
+            {...(forceMount ? { forceMount: true as const } : {})}
+            className={cn(
+              "pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground",
+              forceMount && "group-data-[state=closed]:hidden"
+            )}
+          >
             <span
               dangerouslySetInnerHTML={{
                 __html: faq.answer.includes("support@tryiptv.com")

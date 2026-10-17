@@ -123,6 +123,10 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: [
+    { "@type": "DefinedTerm", name: "M3U", description },
+    { "@type": "DefinedTerm", name: "Xtream Codes", description },
+  ],
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([
@@ -316,7 +320,11 @@ export default function M3uVsXtreamCodesPage() {
                   <Link href="/players/televizo" className="text-primary hover:underline">
                     Televizo
                   </Link>
-                  , and XCIPTV natively support both connection methods. You can choose either option based on
+                  , and{" "}
+                  <Link href="/players/xciptv" className="text-primary hover:underline">
+                    XCIPTV
+                  </Link>{" "}
+                  natively support both connection methods. You can choose either option based on
                   your organizational preference.
                 </li>
                 <li>

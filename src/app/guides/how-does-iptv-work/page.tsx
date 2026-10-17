@@ -144,6 +144,11 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "IPTV delivery",
+    description,
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([
@@ -319,7 +324,19 @@ export default function HowDoesIptvWorkPage() {
                 </li>
                 <li>
                   <strong className="text-foreground font-semibold">The IPTV Player Application:</strong> A standalone media player
-                  program (such as TiviMate, IPTV Smarters Pro, XCIPTV, Televizo, or Perfect Player) that you install on your
+                  program (such as TiviMate, IPTV Smarters Pro,{" "}
+                  <Link href="/players/xciptv" className="text-primary hover:underline">
+                    XCIPTV
+                  </Link>
+                  ,{" "}
+                  <Link href="/players/televizo" className="text-primary hover:underline">
+                    Televizo
+                  </Link>
+                  , or{" "}
+                  <Link href="/players/perfect-player" className="text-primary hover:underline">
+                    Perfect Player
+                  </Link>
+                  ) that you install on your
                   device. The player provides the interface, remote-control navigation, and video decoding engine.
                 </li>
               </ul>

@@ -100,6 +100,7 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: { "@type": "DefinedTerm", name: "IPTV not working", description },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([
@@ -130,7 +131,10 @@ export default function IptvNotWorkingPage() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">Master Diagnostic Router</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.15] text-foreground sm:text-4xl lg:text-5xl">
-              IPTV Not Working? Start With This Troubleshooting Checklist
+              <Link href="/guides/what-is-iptv" className="text-primary underline underline-offset-4">
+                IPTV
+              </Link>{" "}
+              Not Working? Start With This Troubleshooting Checklist
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               When television playback fails, the broad symptom &quot;IPTV not working&quot; can stem from six

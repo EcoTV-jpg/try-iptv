@@ -26,7 +26,7 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { FaqList, type FaqItem } from "@/components/sections/FAQ";
-import { generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
+import { generateBreadcrumbSchema, generateFAQPageSchema, generateWebPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 const title = "IPTV Setup Hub: From Credentials to Your Device | TryIPTV";
@@ -275,10 +275,23 @@ export default function SetupPage() {
     { name: "Setup Hub", item: `${baseUrl}/setup` },
   ]);
 
+  const webPageSchema = generateWebPageSchema({
+    name: title,
+    description,
+    url: `${baseUrl}/setup`,
+    pageType: "CollectionPage",
+    about: {
+      "@type": "DefinedTerm",
+      name: "IPTV setup",
+      description,
+    },
+  });
+
   const faqSchema = generateFAQPageSchema(setupFaqs);
 
   return (
     <>
+      <Schema id="webpage" schema={webPageSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       <Schema id="faq" schema={faqSchema} />
 
@@ -514,7 +527,7 @@ export default function SetupPage() {
           </div>
 
           <div className="rounded-xl border border-white/[0.08] bg-[#0b0e0c] p-4 sm:p-5 mb-8 text-xs text-muted-foreground leading-relaxed">
-            <strong className="text-foreground font-semibold">Important Distinction:</strong> Third-party player applications (such as TiviMate, IPTV Smarters Pro, XCIPTV, and Televizo) are independent software tools built by external developers. TryIPTV does not own, develop, sell, or claim ownership over these applications. We provide configuration guides strictly as educational assistance.
+            <strong className="text-foreground font-semibold">Important Distinction:</strong> Third-party player applications (such as <Link href="/players/tivimate" className="text-primary hover:underline">TiviMate</Link>, <Link href="/players/iptv-smarters" className="text-primary hover:underline">IPTV Smarters Pro</Link>, <Link href="/players/xciptv" className="text-primary hover:underline">XCIPTV</Link>, and <Link href="/players/televizo" className="text-primary hover:underline">Televizo</Link>) are independent software tools built by external developers. TryIPTV does not own, develop, sell, or claim ownership over these applications. We provide configuration guides strictly as educational assistance.
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

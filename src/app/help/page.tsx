@@ -54,7 +54,7 @@ const specialistGuides = [
     href: "/help/iptv-buffering",
     symptom: "Channels stutter, audio falls out of sync, or spinning wheels interrupt live streams.",
     description:
-      "A systematic 8-step guide to distinguish local Wi-Fi packet delay variation and decoder bottlenecks from ISP routing and upstream media server congestion.",
+      "A systematic troubleshooting guide to diagnose IPTV buffering, distinguish network starvation from decoder stutter, and stabilize your playback setup.",
     badge: "Stream Diagnostics",
     icon: PlaySquare,
     badgeColor: "text-rose-400 border-rose-400/20 bg-rose-400/10",
@@ -64,7 +64,7 @@ const specialistGuides = [
     href: "/help/iptv-login-not-working",
     symptom: "Player displays 'Invalid Details', 'Authentication Failed', or HTTP 401/403 status codes.",
     description:
-      "Step-by-step diagnostic workflow to catch trailing whitespace, remote control typos, server URL port syntax, and active multi-device connection limits.",
+      "A systematic troubleshooting guide to diagnose IPTV login failures, understand HTTP 401 and 403 response codes, verify server URLs, and restore access.",
     badge: "Authentication",
     icon: Lock,
     badgeColor: "text-amber-400 border-amber-400/20 bg-amber-400/10",
@@ -74,7 +74,7 @@ const specialistGuides = [
     href: "/help/m3u-not-loading",
     symptom: "App shows 'Download Error', 'Failed to Load Playlist', or crashes during large playlist parsing.",
     description:
-      "Diagnose URL encoding errors, TLS/SSL certificate verification failures, network timeout issues, and memory constraints on compact streaming sticks.",
+      "A systematic troubleshooting guide to diagnose M3U playlist loading errors, verify URL syntax and encoding, identify parser crashes, and restore access.",
     badge: "Playlist Ingestion",
     icon: FileText,
     badgeColor: "text-blue-400 border-blue-400/20 bg-blue-400/10",
@@ -84,7 +84,7 @@ const specialistGuides = [
     href: "/help/epg-not-working",
     symptom: "Guide grid shows 'No Information', listings end prematurely, or showtimes are shifted by hours.",
     description:
-      "Troubleshoot complete guide blackouts, resolve channel mapping gaps (tvg-id), clear corrupt cache databases, and synchronize device system clocks.",
+      "A systematic diagnostic guide to resolve IPTV EPG errors: missing guide data, 'No Information' messages, wrong broadcast times, and channel mapping mismatches.",
     badge: "EPG Metadata",
     icon: Calendar,
     badgeColor: "text-emerald-400 border-emerald-400/20 bg-emerald-400/10",
@@ -112,6 +112,9 @@ export default function HelpPage() {
             title="IPTV Help &amp; Troubleshooting"
             subtitle="Systematic, symptom-oriented troubleshooting workflows to isolate and resolve IPTV playback, authentication, playlist, and electronic programme guide errors."
           />
+          <p className="mx-auto mt-6 max-w-3xl text-left text-sm leading-7 text-muted-foreground sm:text-base">
+            This directory collects the troubleshooting pages for a setup that already has a player and credentials. Start with the master checklist when the only report is that IPTV is not working. That page separates device, network, player, and server causes. The other pages match a narrower symptom. Buffering covers stutter, audio that falls out of sync, and a spinning wheel. Login covers rejected details, HTTP 401, and HTTP 403. The playlist page covers a list that will not load or shows zero channels. The EPG page covers a missing guide, listings that end early, or showtimes shifted by hours. These pages diagnose a problem. They do not change a channel list or a price.
+          </p>
         </Container>
       </Section>
 
@@ -135,6 +138,9 @@ export default function HelpPage() {
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     Saying &quot;my IPTV is not working&quot; can describe problems at five completely different layers. Use our 2-minute master checklist to identify whether the issue is local to your device, network, player application, or upstream server, and jump directly to the right fix.
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    A master troubleshooting checklist to isolate why your IPTV is not working: authentication errors, playlist failures, buffering streams, blank guides, or app crashes.
                   </p>
                 </div>
                 <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col">

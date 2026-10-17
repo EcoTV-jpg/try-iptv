@@ -12,6 +12,38 @@ import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site
 import { howToArticles, getDeviceSlug } from "@/lib/how-to";
 import { ArrowRight, Clock, Tv, CheckCircle2 } from "lucide-react";
 
+const DEVICE_META: Record<string, string> = {
+  "firestick-iptv":
+    "Learn how to install IPTV on Firestick step by step. Set up an IPTV player using Xtream Codes or M3U, load your EPG, and fix common Fire TV issues.",
+  "android-tv-iptv":
+    "Learn how to set up IPTV on Android TV and Google TV, choose a compatible player, install it from Google Play, and connect with Xtream Codes or M3U.",
+  "windows-iptv":
+    "Learn how to use IPTV on Windows, choose a compatible PC player, connect with Xtream Codes or M3U, and download apps from trusted sources.",
+};
+
+const deviceGroups = [
+  {
+    title: "Living-room TVs and streaming devices",
+    ids: [
+      "firestick-iptv",
+      "android-tv-iptv",
+      "samsung-tv-iptv",
+      "lg-tv-iptv",
+      "apple-tv-iptv",
+      "chromecast-iptv",
+      "roku-iptv",
+    ],
+  },
+  {
+    title: "Set-top boxes",
+    ids: ["mag-box-iptv"],
+  },
+  {
+    title: "Computers",
+    ids: ["windows-iptv", "mac-iptv"],
+  },
+];
+
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
     title: "IPTV Device Setup Guides — Compatible Devices & Tutorials",
@@ -42,63 +74,80 @@ export default function DevicesPage() {
             title="IPTV Setup Guides for All Compatible Devices"
             subtitle="Follow our tested step-by-step installation guides to configure TryIPTV on your streaming hardware. Every plan includes 2 simultaneous connections."
           />
+          <p className="mx-auto mt-6 max-w-3xl text-left text-sm leading-7 text-muted-foreground sm:text-base">
+            These pages are the setup paths for the hardware this site documents. They cover Amazon Fire TV Stick, Android TV, Samsung smart TVs, LG smart TVs, Apple TV, Chromecast, MAG boxes, Roku, Windows, and macOS. Each page explains how that device receives a player or a portal and how credentials are entered. Living-room TVs and streaming devices are grouped together. The MAG box page stands alone because its setup uses a portal URL and a MAC address. Windows and macOS are grouped as computers. Every plan includes 2 simultaneous connections.
+          </p>
         </Container>
       </Section>
 
       <Section className="py-12 sm:py-16">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {howToArticles.map((article) => {
-              const totalTimeInMinutes = article.totalTime?.replace('PT', '').replace('M', '');
+          {deviceGroups.map((group) => {
+            const articles = group.ids
+              .map((id) => howToArticles.find((article) => article.id === id))
+              .filter((article): article is (typeof howToArticles)[number] => Boolean(article));
 
-              return (
-                <Card key={article.id} className="flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:bg-card/80">
-                  <CardHeader className="pb-3">
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-0.5 text-[11px] font-semibold text-primary">
-                        <Tv className="h-3 w-3" />
-                        {article.primaryKeyword}
-                      </span>
-                      {totalTimeInMinutes && (
-                        <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
-                          <Clock className="h-3 w-3 text-primary" />
-                          {totalTimeInMinutes} min
-                        </span>
-                      )}
-                    </div>
-                    <CardTitle as="h2" className="font-headline text-lg sm:text-xl font-extrabold leading-snug">
-                      <Link href={`/devices/${getDeviceSlug(article.id)}`} className="hover:text-primary transition-colors">
-                        {article.title}
-                      </Link>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-0 flex flex-col justify-between flex-1">
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-6">
-                      {article.description}
-                    </p>
-                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">
-                        {article.steps.length} setup steps
-                      </span>
-                      <Link
-                        href={`/devices/${getDeviceSlug(article.id)}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:underline"
-                      >
-                        Read Guide <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+            return (
+              <div key={group.title} className="mb-14">
+                <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                  {group.title}
+                </h2>
+                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {articles.map((article) => {
+                    const totalTimeInMinutes = article.totalTime?.replace("PT", "").replace("M", "");
+                    const blurb = DEVICE_META[article.id] ?? article.description;
+
+                    return (
+                      <Card key={article.id} className="flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:bg-card/80">
+                        <CardHeader className="pb-3">
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-0.5 text-[11px] font-semibold text-primary">
+                              <Tv className="h-3 w-3" />
+                              {article.primaryKeyword}
+                            </span>
+                            {totalTimeInMinutes && (
+                              <span className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                                <Clock className="h-3 w-3 text-primary" />
+                                {totalTimeInMinutes} min
+                              </span>
+                            )}
+                          </div>
+                          <CardTitle as="h3" className="font-headline text-lg sm:text-xl font-extrabold leading-snug">
+                            <Link href={`/devices/${getDeviceSlug(article.id)}`} className="hover:text-primary transition-colors">
+                              {article.title}
+                            </Link>
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="pt-0 flex flex-col justify-between flex-1">
+                          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
+                            {blurb}
+                          </p>
+                          <div className="pt-3 border-t border-white/[0.06] flex items-center justify-between">
+                            <span className="text-xs text-muted-foreground">
+                              {article.steps.length} setup steps
+                            </span>
+                            <Link
+                              href={`/devices/${getDeviceSlug(article.id)}`}
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:underline"
+                            >
+                              Read Guide <ArrowRight className="h-3.5 w-3.5" />
+                            </Link>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
 
           <div className="mt-10 rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6 text-center max-w-2xl mx-auto">
             <h3 className="font-headline text-base sm:text-lg font-bold text-foreground">
               New to IPTV or need a general installation overview?
             </h3>
             <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Check our <Link href="/setup" className="text-primary font-semibold hover:underline">universal IPTV setup hub</Link> for general walkthroughs and credential tips, or <Link href="/players" className="text-primary font-semibold hover:underline">browse player guides</Link> to configure apps like TiviMate, IPTV Smarters Pro, and XCIPTV.
+              Check our <Link href="/setup" className="text-primary font-semibold hover:underline">universal IPTV setup hub</Link> for general walkthroughs and credential tips, or <Link href="/players" className="text-primary font-semibold hover:underline">browse player guides</Link> to configure apps like TiviMate, IPTV Smarters Pro, and <Link href="/players/xciptv" className="text-primary font-semibold hover:underline">XCIPTV</Link>.
             </p>
           </div>
 
