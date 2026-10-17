@@ -48,7 +48,7 @@ const coreGuides = [
     title: "What Is IPTV? How Internet Protocol Television Works",
     href: "/guides/what-is-iptv",
     description:
-      "A foundational overview of Internet Protocol Television, explaining packetized IP stream delivery, linear broadcasts, and how internet streaming compares to cable and satellite infrastructure.",
+      "Learn what IPTV means, how internet-based TV differs from cable or satellite, and how playlists, players, EPG data, and devices fit together.",
     badge: "Foundational Architecture",
     icon: Radio,
     readTime: "6 min read",
@@ -57,7 +57,7 @@ const coreGuides = [
     title: "How Does IPTV Work? From Server to Screen",
     href: "/guides/how-does-iptv-work",
     description:
-      "A technical walkthrough of linear video streaming over IP networks: ingestion, transcoding, packaging, unicast delivery, client-side buffering, and playback decoders.",
+      "Learn how IPTV works, from servers and internet delivery to IPTV players, M3U playlists, Xtream Codes, EPG, live TV and on-demand streaming.",
     badge: "Delivery Architecture",
     icon: Cpu,
     readTime: "8 min read",
@@ -66,7 +66,7 @@ const coreGuides = [
     title: "IPTV Internet Speed: How Much Bandwidth Do You Need?",
     href: "/guides/iptv-internet-speed",
     description:
-      "A practical bandwidth planning guide covering bitrate vs plan speed, HD and 4K requirements, two simultaneous streams, Wi-Fi stability, and hourly data consumption.",
+      "Learn how much internet speed IPTV needs for HD, Full HD and 4K streaming, how to plan bandwidth for two streams, and why connection stability matters.",
     badge: "Network Planning",
     icon: Wifi,
     readTime: "7 min read",
@@ -75,7 +75,7 @@ const coreGuides = [
     title: "What Is an M3U Playlist? Structure, Syntax, and IPTV Usage",
     href: "/guides/what-is-m3u",
     description:
-      "A technical guide to M3U and M3U8 files in IPTV: playlist header directives, #EXTINF syntax, community metadata attributes (tvg-id, group-title), and UTF-8 encoding standards.",
+      "A comprehensive technical guide to M3U and M3U8 playlists in IPTV: header syntax, #EXTINF tags, community metadata attributes, and file handling.",
     badge: "Playlist Specifications",
     icon: FileText,
     readTime: "8 min read",
@@ -84,7 +84,7 @@ const coreGuides = [
     title: "What Are Xtream Codes? The IPTV API Login Format Explained",
     href: "/guides/what-are-xtream-codes",
     description:
-      "Understand how the de facto API login format works in IPTV players: server URL, username, password authentication, dynamic category queries, and critical security practices.",
+      "A clear guide explaining what Xtream Codes credentials are, how the API-based login format works in IPTV players, and essential security considerations.",
     badge: "API Protocols",
     icon: KeyRound,
     readTime: "8 min read",
@@ -93,7 +93,7 @@ const coreGuides = [
     title: "What Is an EPG? How IPTV TV Guides Work",
     href: "/guides/what-is-epg",
     description:
-      "Explore how Electronic Programme Guides operate in IPTV, how XMLTV schedules are ingested by players, channel-matching conventions (tvg-id), and timezone synchronization.",
+      "A clear guide to Electronic Programme Guides (EPG) in IPTV: how TV guide data works, XMLTV and provider ingestion, channel matching, and time offsets.",
     badge: "Metadata & TV Guides",
     icon: Calendar,
     readTime: "7 min read",
@@ -105,7 +105,7 @@ const comparisonGuides = [
     title: "M3U vs. Xtream Codes: What's the Difference?",
     href: "/guides/m3u-vs-xtream-codes",
     description:
-      "A neutral side-by-side comparison between M3U playlists and Xtream-compatible API logins: data delivery architectures, VOD organization, player compatibility, and practical trade-offs.",
+      "A neutral comparison between M3U playlists and Xtream-compatible API logins for IPTV: data delivery models, content organization, player support, and practical trade-offs.",
     badge: "Format Comparison",
     icon: ArrowLeftRight,
     readTime: "9 min read",
@@ -114,7 +114,7 @@ const comparisonGuides = [
     title: "IPTV vs. Cable: What's the Difference?",
     href: "/guides/iptv-vs-cable",
     description:
-      "A balanced side-by-side comparison between IPTV and traditional cable TV: network delivery architectures, equipment costs, internet dependencies, and decision criteria.",
+      "Compare IPTV and cable TV across cost, setup, devices, internet dependence, reliability, flexibility, and on-demand access to see which model fits you better.",
     badge: "Service Comparison",
     icon: Cable,
     readTime: "8 min read",
@@ -142,6 +142,9 @@ export default function GuidesPage() {
             title="IPTV Guides & Technical Explainers"
             subtitle="Explore in-depth technical guides explaining IPTV streaming architecture, playlist standards, API authentication formats, electronic programme guides, and format trade-offs."
           />
+          <p className="mx-auto mt-6 max-w-3xl text-left text-sm leading-7 text-muted-foreground sm:text-base">
+            These guides define the terms used on the device, player, and help pages. IPTV is television delivered over the internet to a player you install. One page explains that idea. The next explains the path from a server, through the network, to the player. Separate pages define an M3U playlist, an Xtream Codes login, and an EPG. Two comparisons cover M3U against Xtream Codes, and IPTV against cable. The bandwidth page covers HD, Full HD, 4K, and two simultaneous streams. The pages do not add channels or change a price.
+          </p>
         </Container>
       </Section>
 

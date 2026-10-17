@@ -34,6 +34,11 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "IPTV",
+    description,
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([
@@ -123,7 +128,11 @@ export default function WhatIsIptvPage() {
               What Is IPTV?
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
-              IPTV means Internet Protocol Television. Instead of receiving TV through a cable line,
+              IPTV means Internet Protocol Television. Instead of receiving TV through a{" "}
+              <Link href="/guides/iptv-vs-cable" className="text-primary underline underline-offset-4">
+                cable line
+              </Link>
+              ,
               satellite dish, or antenna broadcast, IPTV delivers live TV and on-demand video through
               an internet connection to a compatible app or device.
             </p>

@@ -24,6 +24,12 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: "2026-10-11",
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "SoftwareApplication",
+    name: "XCIPTV Player",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: ["Android", "Android TV", "Google TV", "Fire TV"],
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

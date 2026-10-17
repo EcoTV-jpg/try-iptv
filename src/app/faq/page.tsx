@@ -8,15 +8,30 @@ import { CTA } from "@/components/sections/CTA";
 import { getFaqPageData } from "@/lib/data/faq-page";
 import { faqs } from "@/lib/site-data/faq";
 import { Schema } from "@/components/shared/Schema";
-import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateWebPageSchema } from "@/lib/schema";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 export function generateMetadata(): Metadata {
     return generatePageMetadata({
         title: "Frequently Asked Questions",
-        description: "Have questions about TryIPTV? Find answers to common questions about free trials, device compatibility, buffering, activation, and our refund policy.",
+        description: faqDescription,
         canonical: "/faq",
     });
 }
+
+const faqDescription =
+  "Have questions about TryIPTV? Find answers to common questions about free trials, device compatibility, buffering, activation, and our refund policy.";
+
+const faqWebPageSchema = generateWebPageSchema({
+  name: "Frequently Asked Questions About TryIPTV",
+  description: faqDescription,
+  url: `${SITE_URL}/faq`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "TryIPTV",
+    description: faqDescription,
+  },
+});
 
 export default async function FaqPage() {
   const { 
@@ -27,6 +42,7 @@ export default async function FaqPage() {
   return (
     <>
       <Schema id="faq" schema={faqSchema} />
+      <Schema id="webpage" schema={faqWebPageSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
@@ -45,7 +61,7 @@ export default async function FaqPage() {
       <Section>
         <Container>
           <h2 className="sr-only">Frequently Asked Questions</h2>
-          <FaqList items={faqs} />
+          <FaqList items={faqs} forceMount />
         </Container>
       </Section>
 

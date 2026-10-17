@@ -86,6 +86,11 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "Xtream Codes",
+    description,
+  },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

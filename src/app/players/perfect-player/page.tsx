@@ -16,7 +16,16 @@ export function generateMetadata(): Metadata {
 }
 
 const articleSchema = generateArticleSchema({
-  headline: title, description, dateModified: "2026-10-08", url: `${SITE_URL}${canonical}`,
+  headline: title,
+  description,
+  dateModified: "2026-10-08",
+  url: `${SITE_URL}${canonical}`,
+  about: {
+    "@type": "SoftwareApplication",
+    name: "Perfect Player",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: ["Android"],
+  },
 });
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", item: `${SITE_URL}/` },
@@ -36,7 +45,7 @@ export default function PerfectPlayerPage() {
       <div className="mt-8 max-w-4xl">
         <span className="font-mono text-xs font-semibold uppercase tracking-wider text-amber-400">Legacy player guide</span>
         <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">Perfect Player IPTV Guide: Legacy Setup, M3U, EPG &amp; Migration</h1>
-        <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">Perfect Player IPTV by Niklabs Software is a legacy media player with no channels included. Existing installations can still load an M3U playlist and a separate EPG source. The original Niklabs Android app is no longer available on Google Play, so verify the developer before trusting a similarly named app or download.</p>
+        <p className="mt-4 text-base leading-8 text-muted-foreground sm:text-lg">Perfect Player IPTV by Niklabs Software is a legacy media player with no channels included. Existing installations can still load an M3U playlist and a separate EPG source. The original Niklabs <Link href="/devices/android-tv-iptv" className={a}>Android</Link> app is no longer available on Google Play, so verify the developer before trusting a similarly named app or download.</p>
       </div>
     </Container></Section>
     <Section className="py-12 sm:py-16"><Container><article className="mx-auto max-w-4xl space-y-12">

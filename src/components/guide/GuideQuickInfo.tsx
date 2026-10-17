@@ -1,5 +1,41 @@
 import React from "react";
+import Link from "next/link";
 import { Tv, KeyRound, Wrench, ShieldCheck } from "lucide-react";
+
+const LOGIN_TERMS = [
+  { phrase: "Xtream Codes", href: "/guides/what-are-xtream-codes" },
+  { phrase: "M3U", href: "/guides/what-is-m3u" },
+] as const;
+
+function LoginFormatValue({ value }: { value: string }) {
+  const nodes: React.ReactNode[] = [];
+  let rest = value;
+  let key = 0;
+
+  while (rest.length > 0) {
+    let earliest: { index: number; phrase: string; href: string } | null = null;
+    for (const term of LOGIN_TERMS) {
+      const index = rest.indexOf(term.phrase);
+      if (index !== -1 && (earliest === null || index < earliest.index)) {
+        earliest = { index, phrase: term.phrase, href: term.href };
+      }
+    }
+    if (!earliest) {
+      nodes.push(rest);
+      break;
+    }
+    if (earliest.index > 0) nodes.push(rest.slice(0, earliest.index));
+    nodes.push(
+      <Link key={key} href={earliest.href} className="text-primary underline underline-offset-2">
+        {earliest.phrase}
+      </Link>
+    );
+    key += 1;
+    rest = rest.slice(earliest.index + earliest.phrase.length);
+  }
+
+  return <>{nodes}</>;
+}
 
 interface GuideQuickInfoProps {
   device?: string;
@@ -37,7 +73,7 @@ export function GuideQuickInfo({
               {item.label}
             </span>
             <span className="text-xs sm:text-sm font-semibold text-foreground truncate" title={item.value}>
-              {item.value}
+              {item.label === "Login Format" ? <LoginFormatValue value={item.value} /> : item.value}
             </span>
           </div>
         );

@@ -98,6 +98,7 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: { "@type": "DefinedTerm", name: "EPG", description },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

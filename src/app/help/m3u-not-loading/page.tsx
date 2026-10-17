@@ -93,6 +93,7 @@ const articleSchema = generateArticleSchema({
   description,
   dateModified: modifiedDate,
   url: `${SITE_URL}${canonical}`,
+  about: { "@type": "DefinedTerm", name: "M3U playlist", description },
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([
