@@ -214,7 +214,18 @@ export default async function IptvFreeTrialPage() {
                         <th scope="row" className="w-1/3 px-5 py-3.5 font-semibold text-foreground">
                           {label}
                         </th>
-                        <td className="px-5 py-3.5 text-muted-foreground">{value}</td>
+                        <td className="px-5 py-3.5 text-muted-foreground">
+                          {label === "Access formats" ? (
+                            <>
+                              <Link href="/guides/what-are-xtream-codes" className="text-primary underline underline-offset-4">Xtream Codes</Link>
+                              {" (Server URL, Username, Password) and "}
+                              <Link href="/guides/what-is-m3u" className="text-primary underline underline-offset-4">M3U</Link>
+                              {" playlist URL"}
+                            </>
+                          ) : (
+                            value
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -249,9 +260,24 @@ export default async function IptvFreeTrialPage() {
                     {testingChecklist.map(([item, check]) => (
                       <tr key={item} className="transition-colors hover:bg-white/[0.02]">
                         <th scope="row" className="px-5 py-3.5 font-semibold text-foreground align-top">
-                          {item}
+                          {item === "TV guide (EPG)" ? (
+                            <Link href="/guides/what-is-epg" className="text-primary underline underline-offset-4">{item}</Link>
+                          ) : item === "Player compatibility" ? (
+                            <Link href="/players" className="text-primary underline underline-offset-4">{item}</Link>
+                          ) : (
+                            item
+                          )}
                         </th>
-                        <td className="px-5 py-3.5 text-muted-foreground">{check}</td>
+                        <td className="px-5 py-3.5 text-muted-foreground">
+                          {item === "Home network performance" ? (
+                            <>
+                              Compare playback over Wi-Fi versus an Ethernet cable if you encounter{" "}
+                              <Link href="/help/iptv-buffering" className="text-primary underline underline-offset-4">buffering</Link>.
+                            </>
+                          ) : (
+                            check
+                          )}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

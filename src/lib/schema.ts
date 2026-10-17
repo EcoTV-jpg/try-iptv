@@ -7,6 +7,8 @@ import type {
   Article,
   HowTo,
   Service,
+  WebPage,
+  ContactPage,
   Brand,
   Offer,
   AggregateOffer,
@@ -200,6 +202,27 @@ interface ServiceSchemaProps {
     name: string;
     description: string;
     offers?: Offer | AggregateOffer;
+}
+
+interface WebPageSchemaProps {
+    name: string;
+    description: string;
+    url: string;
+    pageType?: 'WebPage' | 'ContactPage' | 'CollectionPage';
+    about?: WebPage['about'];
+}
+
+export function generateWebPageSchema(props: WebPageSchemaProps): WithContext<WebPage | ContactPage> {
+    return {
+        '@context': 'https://schema.org',
+        '@type': props.pageType ?? 'WebPage',
+        name: props.name,
+        description: props.description,
+        url: props.url,
+        isPartOf: { '@id': websiteId },
+        publisher: organizationReference,
+        ...(props.about ? { about: props.about } : {}),
+    };
 }
 
 export function generateServiceSchema(props: ServiceSchemaProps): WithContext<Service> {

@@ -14,22 +14,35 @@ import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { ContactForm } from '@/components/shared/ContactForm';
 import { getContactPageData } from '@/lib/data/contact-page';
 import { Schema } from '@/components/shared/Schema';
-import { generateMetadata as generatePageMetadata } from '@/lib/site-config';
+import { generateWebPageSchema } from '@/lib/schema';
+import { SITE_URL, generateMetadata as generatePageMetadata } from '@/lib/site-config';
 import { Mail, MessageCircle, Clock, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export function generateMetadata(): Metadata {
     return generatePageMetadata({
         title: "Contact Us",
-        description: "Get in touch with the TryIPTV team. Whether you have questions about device setup, channels, or subscriptions, our support desk is ready to help.",
+        description: contactDescription,
         canonical: "/contact-us",
     });
 }
+
+const contactDescription =
+    "Get in touch with the TryIPTV team. Whether you have questions about device setup, channels, or subscriptions, our support desk is ready to help.";
+
+const contactWebPageSchema = generateWebPageSchema({
+    name: "Contact TryIPTV Support",
+    description: contactDescription,
+    url: `${SITE_URL}/contact-us`,
+    pageType: "ContactPage",
+    about: { "@id": `${SITE_URL}/#organization` },
+});
 
 export default async function ContactPage() {
     const { breadcrumbSchema } = await getContactPageData();
 
     return (
         <>
+            <Schema id="webpage" schema={contactWebPageSchema} />
             <Schema id="breadcrumb" schema={breadcrumbSchema} />
 
             <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
@@ -42,6 +55,9 @@ export default async function ContactPage() {
                         title="Contact TryIPTV Support"
                         subtitle="Tell us what you need help with and our support team will get back to you promptly."
                     />
+                    <p className="mx-auto mt-6 max-w-3xl text-left text-sm leading-7 text-muted-foreground sm:text-base">
+                        Support covers device setup, subscriptions, and the 24-hour free trial. Installation steps are on the <Link href="/setup" className="font-semibold text-primary hover:underline">setup hub</Link>. Plan prices are on the <Link href="/pricing" className="font-semibold text-primary hover:underline">pricing page</Link>. Playback, login, playlist, and guide problems are in <Link href="/help" className="font-semibold text-primary hover:underline">Help &amp; troubleshooting</Link>.
+                    </p>
                 </Container>
             </Section>
 

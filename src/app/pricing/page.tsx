@@ -7,7 +7,8 @@ import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Schema } from "@/components/shared/Schema";
-import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateWebPageSchema } from "@/lib/schema";
+import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import { getPricingPageData } from "@/lib/data/pricing-page";
 import { plans } from "@/lib/site-data/pricing";
 
@@ -55,34 +56,42 @@ const planBestFor: Record<string, string> = {
 const sharedFeatures = [
   {
     title: "2 Simultaneous Connections",
+    href: undefined as string | undefined,
     desc: "Stream on up to two devices at the same time in your household.",
   },
   {
     title: "Xtream Codes API",
+    href: "/guides/what-are-xtream-codes",
     desc: "Server URL, username, and password login supported by most modern IPTV players.",
   },
   {
     title: "M3U Playlist URL",
+    href: "/guides/what-is-m3u",
     desc: "Standard playlist URL format for compatible media players and applications.",
   },
   {
     title: "Smart EPG Support",
+    href: "/guides/what-is-epg",
     desc: "Programme schedule information and channel timelines where available.",
   },
   {
     title: "25,000+ Live Channels",
+    href: undefined,
     desc: "Live sports, news, and entertainment channels where available.",
   },
   {
     title: "120,000+ Movies & Series",
+    href: undefined,
     desc: "On-demand video catalog with regular updates where available.",
   },
   {
     title: "HD, Full HD & 4K Streams",
+    href: undefined,
     desc: "High-definition video playback where supported by the source stream.",
   },
   {
     title: "Prepaid Billing — No Auto-Renewal",
+    href: undefined,
     desc: "Flat upfront pricing with zero recurring billing or automatic charges.",
   },
 ] as const;
@@ -148,12 +157,27 @@ const orderSteps = [
   },
 ] as const;
 
+const pricingIntro =
+  "TryIPTV prepaid plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, or $90 for 12 months. All paid plans include two simultaneous connections and do not renew automatically. Longer prepaid terms reduce the equivalent monthly cost.";
+
+const pricingWebPageSchema = generateWebPageSchema({
+  name: "TryIPTV Pricing & Subscription Plans",
+  description: pricingIntro,
+  url: `${SITE_URL}/pricing`,
+  about: {
+    "@type": "DefinedTerm",
+    name: "TryIPTV prepaid plan",
+    description: pricingIntro,
+  },
+});
+
 export default async function IPTVSubscription() {
   const { productSchema, breadcrumbSchema, pricingPageFaqs } = await getPricingPageData();
 
   return (
     <>
       <Schema id="product" schema={productSchema} />
+      <Schema id="webpage" schema={pricingWebPageSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
 
       {/* Hero Section */}
@@ -165,7 +189,7 @@ export default async function IPTVSubscription() {
             as="h1"
             eyebrow="Prepaid Subscription Pricing"
             title="TryIPTV Pricing & Subscription Plans"
-            subtitle="TryIPTV prepaid plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, or $90 for 12 months. All paid plans include two simultaneous connections and do not renew automatically. Longer prepaid terms reduce the equivalent monthly cost."
+            subtitle={pricingIntro}
           />
           <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs font-semibold sm:mt-6 sm:text-sm">
             {quickFacts.map((fact) => (
@@ -317,7 +341,15 @@ export default async function IPTVSubscription() {
             {sharedFeatures.map((feat) => (
               <div key={feat.title} className="rounded-xl border border-white/[0.08] bg-card p-5">
                 <Check className="h-5 w-5 text-primary" />
-                <h3 className="mt-3 font-headline text-base font-extrabold text-foreground">{feat.title}</h3>
+                <h3 className="mt-3 font-headline text-base font-extrabold text-foreground">
+                  {feat.href ? (
+                    <Link href={feat.href} className="hover:text-primary">
+                      {feat.title}
+                    </Link>
+                  ) : (
+                    feat.title
+                  )}
+                </h3>
                 <p className="mt-1 text-xs leading-5 text-muted-foreground">{feat.desc}</p>
               </div>
             ))}
