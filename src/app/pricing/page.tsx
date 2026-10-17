@@ -192,14 +192,26 @@ export default async function IPTVSubscription() {
             subtitle={pricingIntro}
           />
           <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs font-semibold sm:mt-6 sm:text-sm">
-            {quickFacts.map((fact) => (
-              <div
-                key={fact}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-card px-3 py-1 text-muted-foreground"
-              >
-                <Check className="h-3.5 w-3.5 text-primary" /> {fact}
-              </div>
-            ))}
+            {quickFacts.map((fact) => {
+              const chipClass =
+                "inline-flex items-center gap-1.5 rounded-full border border-white/[0.09] bg-card px-3 py-1 text-muted-foreground";
+              if (fact === "24-Hour Free Trial Available") {
+                return (
+                  <Link
+                    key={fact}
+                    href="/iptv-free-trial"
+                    className={`${chipClass} underline-offset-4 hover:border-primary/40 hover:text-primary`}
+                  >
+                    <Check className="h-3.5 w-3.5 text-primary" /> {fact}
+                  </Link>
+                );
+              }
+              return (
+                <div key={fact} className={chipClass}>
+                  <Check className="h-3.5 w-3.5 text-primary" /> {fact}
+                </div>
+              );
+            })}
           </div>
         </Container>
       </Section>
@@ -350,7 +362,19 @@ export default async function IPTVSubscription() {
                     feat.title
                   )}
                 </h3>
-                <p className="mt-1 text-xs leading-5 text-muted-foreground">{feat.desc}</p>
+                <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                  {feat.title === "2 Simultaneous Connections" ? (
+                    <>
+                      Stream on up to two{" "}
+                      <Link href="/devices" className="font-semibold text-primary underline underline-offset-4">
+                        devices
+                      </Link>{" "}
+                      at the same time in your household.
+                    </>
+                  ) : (
+                    feat.desc
+                  )}
+                </p>
               </div>
             ))}
           </div>
@@ -478,7 +502,17 @@ export default async function IPTVSubscription() {
                   <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" />
                 </summary>
                 <div className="pb-5 pr-4 text-[15px] leading-relaxed text-muted-foreground sm:pr-8">
-                  <p>{faq.answer}</p>
+                  {faq.question === "Is there a refund policy?" ? (
+                    <p>
+                      Yes. Technical issues that support cannot resolve may qualify under our 7-day refund policy. Review our{" "}
+                      <Link href="/refund-policy" className="font-semibold text-primary underline underline-offset-4">
+                        refund policy page
+                      </Link>{" "}
+                      for specific terms and conditions.
+                    </p>
+                  ) : (
+                    <p>{faq.answer}</p>
+                  )}
                 </div>
               </details>
             ))}
