@@ -316,7 +316,7 @@ export default function M3uVsXtreamCodesPage() {
                   <Link href="/players/televizo" className="text-primary hover:underline">
                     Televizo
                   </Link>
-                  , and XCIPTV natively support both connection methods. You can choose either option based on
+                  , and <Link href="/players/xciptv">XCIPTV</Link> natively support both connection methods. You can choose either option based on
                   your organizational preference.
                 </li>
                 <li>

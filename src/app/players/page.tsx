@@ -11,7 +11,7 @@ import { ArticleSummary } from "@/components/guide";
 import { generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const title = "Best IPTV Players for 2026: Comparison & Setup Guides";
+const title = "IPTV Players: Comparison & Setup Guides";
 const description =
   "Compare IPTV players by device, M3U and Xtream Codes support, EPG features, and setup needs. Find the right app for Fire TV, Android TV, Apple, Smart TV, Windows, and Mac.";
 const canonical = "/players";
@@ -185,7 +185,7 @@ export default function PlayersHubPage() {
               IPTV Software Directory &amp; Architecture
             </span>
             <h1 className="mt-3 font-headline text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-              Best IPTV Players for 2026: Technical Guides &amp; Comparison
+              IPTV Players: Technical Guides &amp; Comparison
             </h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               An IPTV player is the software interface that turns raw stream URLs into an organized television viewing experience. From grid-based EPG guides on Android TV to apps across Apple, Samsung, and LG ecosystems, compare seven major IPTV players compatible with TryIPTV.
@@ -477,23 +477,29 @@ export default function PlayersHubPage() {
                   <CardTitle className="text-base text-foreground">Device Installation Guides</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 text-xs">
-                  <Link href="/setup" className="block text-primary font-semibold hover:underline">
-                    → Universal IPTV Setup Guide
+                  <Link href="/devices" className="block text-primary font-semibold hover:underline">
+                    → All device setup guides
+                  </Link>
+                  <Link href="/setup" className="block text-muted-foreground hover:text-primary">
+                    → Universal IPTV setup guide
+                  </Link>
+                  <Link href="/help" className="block text-muted-foreground hover:text-primary">
+                    → Help &amp; troubleshooting
                   </Link>
                   <Link href="/devices/firestick-iptv" className="block text-muted-foreground hover:text-primary">
-                    → Amazon Firestick IPTV Setup
+                    → Amazon Firestick IPTV setup
                   </Link>
                   <Link href="/devices/android-tv-iptv" className="block text-muted-foreground hover:text-primary">
-                    → Android TV &amp; Google TV Setup
+                    → Android TV &amp; Google TV setup
                   </Link>
                   <Link href="/devices/apple-tv-iptv" className="block text-muted-foreground hover:text-primary">
-                    → Apple TV IPTV Setup
+                    → Apple TV IPTV setup
                   </Link>
                   <Link href="/devices/samsung-tv-iptv" className="block text-muted-foreground hover:text-primary">
-                    → Samsung Smart TV (Tizen) Setup
+                    → Samsung Smart TV (Tizen) setup
                   </Link>
                   <Link href="/devices/lg-tv-iptv" className="block text-muted-foreground hover:text-primary">
-                    → LG Smart TV (webOS) Setup
+                    → LG Smart TV (webOS) setup
                   </Link>
                 </CardContent>
               </Card>

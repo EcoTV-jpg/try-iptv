@@ -255,25 +255,37 @@ export default function GuidesPage() {
           <div className="mt-16 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="eyebrow mb-1">Looking for Troubleshooting?</p>
+                <p className="eyebrow mb-1">Put These Concepts Into Practice</p>
                 <h3 className="font-headline text-lg font-bold text-foreground sm:text-xl">
-                  Diagnose Playback, Login, or EPG Issues
+                  Setup, Players, Devices, or Troubleshooting
                 </h3>
                 <p className="mt-1.5 max-w-xl text-xs text-muted-foreground sm:text-sm">
-                  If you are experiencing buffering, authentication errors, or missing program data, explore our dedicated troubleshooting directory for step-by-step diagnostic workflows.
+                  After you understand M3U, Xtream Codes, or EPG, continue to installation and playback. Use setup for credentials entry, players for app choice, devices for hardware steps, and help when something fails.
                 </p>
               </div>
               <div className="flex shrink-0 flex-wrap gap-3">
                 <Button asChild size="sm" variant="outline">
-                  <Link href="/help">
-                    <HelpCircle className="mr-1.5 h-4 w-4 text-primary" />
-                    Help &amp; Troubleshooting
+                  <Link href="/setup">
+                    <Layers className="mr-1.5 h-4 w-4 text-primary" />
+                    Universal Setup
                   </Link>
                 </Button>
                 <Button asChild size="sm" variant="ghost">
                   <Link href="/players">
                     <Tv className="mr-1.5 h-4 w-4" />
                     Player Guides
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/devices">
+                    <Cpu className="mr-1.5 h-4 w-4" />
+                    Device Guides
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/help">
+                    <HelpCircle className="mr-1.5 h-4 w-4" />
+                    Help &amp; Troubleshooting
                   </Link>
                 </Button>
               </div>

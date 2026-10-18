@@ -222,7 +222,7 @@ export default function TivimatePage() {
                 </div>
                 <div>
                   <h3 className="font-headline text-lg font-semibold text-foreground">Buffering or Playback Problems</h3>
-                  <p className={textClass}>Compare multiple channels and test the network connection. Restart the app and device before changing playback options; persistent failure across players should be reported to the provider. A larger buffer cannot fix an unavailable stream.</p>
+                  <p className={textClass}>Compare multiple channels and test the network connection. Restart the app and device before changing playback options; persistent failure across players should be reported to the provider. A larger buffer cannot fix an unavailable stream. Use the <Link href="/help/iptv-buffering" className={linkClass}>IPTV buffering guide</Link> for a structured check.</p>
                 </div>
                 <div>
                   <h3 className="font-headline text-lg font-semibold text-foreground">TiviMate App Not Opening or Updating</h3>
