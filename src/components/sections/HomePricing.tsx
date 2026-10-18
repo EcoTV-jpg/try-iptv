@@ -71,7 +71,7 @@ const INCLUDED_FEATURES = [
   "4K Ultra HD Streaming Quality",
   "25,000+ Live Channels Worldwide",
   "120,000+ Movies & TV Shows",
-  "Premium PPV Events Included",
+  "PPV Events Included",
   "VOD Access",
   "Smart EPG & Catch-Up TV",
   "Customer Support",

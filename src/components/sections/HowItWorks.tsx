@@ -20,17 +20,34 @@ const steps: Step[] = [
     {
         icon: CheckCircle,
         title: "Receive Your Login",
-        description: "Credentials are typically delivered within 5–15 minutes after confirmation, including M3U or Xtream Codes details."
+        description: (
+          <>
+            Credentials are typically delivered within 5–15 minutes after confirmation, including{" "}
+            <Link href="/guides/what-is-m3u" className="font-semibold text-primary hover:underline">
+              M3U
+            </Link>{" "}
+            or{" "}
+            <Link href="/guides/what-are-xtream-codes" className="font-semibold text-primary hover:underline">
+              Xtream Codes
+            </Link>{" "}
+            details.
+          </>
+        )
     },
     {
         icon: Tv,
         title: "Set Up Your Device",
         description: (
           <>
-            Enter your credentials into your preferred IPTV player using our universal{" "}
-            <Link href="/setup" className="font-semibold text-primary hover:underline">
-              IPTV setup guide.
+            Enter your credentials into a{" "}
+            <Link href="/players" className="font-semibold text-primary hover:underline">
+              compatible IPTV player
             </Link>
+            , then follow the universal{" "}
+            <Link href="/setup" className="font-semibold text-primary hover:underline">
+              IPTV setup guide
+            </Link>
+            .
           </>
         )
     }
@@ -43,7 +60,7 @@ export function HowItWorks() {
         <SectionHeader
           align="left"
           title="How Do I Start With TryIPTV?"
-          subtitle="Use your TryIPTV access details with a compatible IPTV player, then follow the setup guide for your device."
+          subtitle="TryIPTV is the IPTV service that provides your access credentials. You enter those credentials in a compatible IPTV player on your device—TryIPTV is not a player app itself."
           eyebrow="Setup Process"
           className="mb-8 sm:mb-10 max-w-2xl"
         />
