@@ -40,7 +40,7 @@ export default function DevicesPage() {
             as="h1"
             eyebrow="Device Compatibility & Setup"
             title="IPTV Setup Guides for All Compatible Devices"
-            subtitle="Follow our tested step-by-step installation guides to configure TryIPTV on your streaming hardware. Every plan includes 2 simultaneous connections."
+            subtitle="Step-by-step installation guides to configure TryIPTV on your streaming hardware. A device hosts a compatible IPTV player; TryIPTV provides the service credentials. Every plan includes 2 simultaneous connections."
           />
         </Container>
       </Section>
@@ -98,7 +98,7 @@ export default function DevicesPage() {
               New to IPTV or need a general installation overview?
             </h3>
             <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Check our <Link href="/setup" className="text-primary font-semibold hover:underline">universal IPTV setup hub</Link> for general walkthroughs and credential tips, or <Link href="/players" className="text-primary font-semibold hover:underline">browse player guides</Link> to configure apps like TiviMate, IPTV Smarters Pro, and XCIPTV.
+              Start with the <Link href="/setup" className="text-primary font-semibold hover:underline">universal IPTV setup hub</Link>, then <Link href="/players" className="text-primary font-semibold hover:underline">choose an IPTV player</Link>. For credential formats, see the <Link href="/guides" className="text-primary font-semibold hover:underline">IPTV guides</Link>. If something fails after setup, use <Link href="/help" className="text-primary font-semibold hover:underline">help &amp; troubleshooting</Link>.
             </p>
           </div>
 

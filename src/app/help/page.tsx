@@ -207,12 +207,12 @@ export default function HelpPage() {
           <div className="mt-16 rounded-2xl border border-white/[0.08] bg-[#07080a] p-6 sm:p-8">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="eyebrow mb-1">Looking for Explanations &amp; Specs?</p>
+                <p className="eyebrow mb-1">Still Stuck After Diagnostics?</p>
                 <h3 className="font-headline text-lg font-bold text-foreground sm:text-xl">
-                  Understand IPTV Formats and Architecture
+                  Recheck Setup, Player, Device, or Concepts
                 </h3>
                 <p className="mt-1.5 max-w-xl text-xs text-muted-foreground sm:text-sm">
-                  Want to learn how M3U playlists, Xtream Codes APIs, and XMLTV guides operate under the hood? Explore our comprehensive educational guides.
+                  Many failures trace back to credentials, the player app, or the device path. Use guides for root-cause concepts, setup for re-entry steps, and device/player pages for platform-specific configuration.
                 </p>
               </div>
               <div className="flex shrink-0 flex-wrap gap-3">
@@ -220,6 +220,24 @@ export default function HelpPage() {
                   <Link href="/guides">
                     <BookOpen className="mr-1.5 h-4 w-4 text-primary" />
                     Browse IPTV Guides
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/setup">
+                    <Layers className="mr-1.5 h-4 w-4" />
+                    Universal Setup
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/players">
+                    <Tv className="mr-1.5 h-4 w-4" />
+                    Player Guides
+                  </Link>
+                </Button>
+                <Button asChild size="sm" variant="ghost">
+                  <Link href="/devices">
+                    <Smartphone className="mr-1.5 h-4 w-4" />
+                    Device Guides
                   </Link>
                 </Button>
                 <Button asChild size="sm" variant="ghost">

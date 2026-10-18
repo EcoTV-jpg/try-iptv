@@ -397,7 +397,7 @@ export default function IptvBufferingPage() {
               </p>
               <ul>
                 <li>
-                  <strong>Player-Specific Buffer Controls:</strong> In apps that expose buffer or cache options (such as TiviMate or Televizo), check playback or player settings to test different buffer sizes (such as small, medium, or large presets). Menu paths and available options vary depending on the application version.
+                  <strong>Player-Specific Buffer Controls:</strong> In apps that expose buffer or cache options (such as <Link href="/players/tivimate">TiviMate</Link> or <Link href="/players/televizo">Televizo</Link>), check playback or player settings to test different buffer sizes (such as small, medium, or large presets). Menu paths and available options vary depending on the application version.
                 </li>
                 <li>
                   <strong>Underlying Playback Engines:</strong> Modern player applications often build on playback engines (such as ExoPlayer or LibVLC) that allow developers to configure caching and loading behavior. Individual player apps configure these parameters differently.
