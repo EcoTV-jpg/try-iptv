@@ -8,7 +8,7 @@ import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArticleSummary } from "@/components/guide";
-import { generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
+import { generateBreadcrumbSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 const title = "Best IPTV Players for 2026: Comparison & Setup Guides";
@@ -162,14 +162,12 @@ const itemListSchema = {
   })),
 };
 
-const faqSchema = generateFAQPageSchema(faqs);
 
 export default function PlayersHubPage() {
   return (
     <>
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       <Schema id="itemlist" schema={itemListSchema} />
-      <Schema id="faq" schema={faqSchema} />
 
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />

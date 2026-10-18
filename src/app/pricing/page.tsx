@@ -149,11 +149,10 @@ const orderSteps = [
 ] as const;
 
 export default async function IPTVSubscription() {
-  const { productSchema, breadcrumbSchema, pricingPageFaqs } = await getPricingPageData();
+  const { breadcrumbSchema, pricingPageFaqs } = await getPricingPageData();
 
   return (
     <>
-      <Schema id="product" schema={productSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
 
       {/* Hero Section */}

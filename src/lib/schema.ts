@@ -1,13 +1,11 @@
 import type {
-  Product,
   WebSite,
+  WebPage,
   Organization,
   FAQPage,
   BreadcrumbList,
   Article,
-  HowTo,
   Service,
-  Brand,
   Offer,
   AggregateOffer,
   WithContext,
@@ -55,43 +53,31 @@ export function generateOrganizationSchema(): WithContext<Organization> {
   };
 }
 
-interface ProductSchemaProps {
+interface WebPageSchemaProps {
   name: string;
   description: string;
-  image: string;
-  price?: string;
-  offers?: Offer | AggregateOffer;
-  sku?: string;
-  mpn?: string;
-  brand?: Brand | typeof organizationReference;
+  url: string;
+  id?: string;
 }
 
-export function generateProductSchema(props: ProductSchemaProps): WithContext<Product> {
-    const { name, description, image, price, offers, sku, mpn, brand } = props;
-    
-    const offerDetails = offers || (price ? {
-        '@type': 'Offer' as const,
-        price: price,
-        priceCurrency: 'USD',
-        availability: 'https://schema.org/InStock' as const,
-        url: `${siteConfig.url}/pricing`,
-    } : undefined);
-
-    const schema: WithContext<Product> = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name,
-        description,
-        image,
-        sku,
-        mpn,
-        brand,
-        offers: offerDetails,
-    };
-
-    return schema;
+/** Homepage/root WebPage node. Do not invent Article fields here. */
+export function generateWebPageSchema(props: WebPageSchemaProps): WithContext<WebPage> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': props.id ?? props.url,
+    name: props.name,
+    description: props.description,
+    url: props.url,
+    isPartOf: {
+      '@id': websiteId,
+    },
+    publisher: organizationReference,
+    about: organizationReference,
+  };
 }
 
+/** Kept for /faq only — do not use for FAQPage sprawl on other routes. */
 export function generateFAQPageSchema(mainEntity: { question: string; answer: string }[]): WithContext<FAQPage> {
   return {
     '@context': 'https://schema.org',
@@ -147,51 +133,8 @@ export function generateArticleSchema(props: ArticleSchemaProps): WithContext<Ar
     };
 }
 
-interface HowToSchemaProps {
-    name: string;
-    description: string;
-    image?: { url: string; width?: number; height?: number; };
-    steps: { name: string; text: string; url: string; }[];
-    totalTime?: string;
-}
-
-function stripHtml(html: string): string {
-    return html
-        .replace(/<[^>]+>/g, '')
-        .replace(/&amp;/g, '&')
-        .replace(/&apos;/g, "'")
-        .replace(/&#x27;/g, "'")
-        .replace(/&quot;/g, '"')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .trim();
-}
-
-export function generateHowToSchema(props: HowToSchemaProps): WithContext<HowTo> {
-    const { name, description, image, steps, totalTime } = props;
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'HowTo',
-        name,
-        description,
-        image: image ? {
-            '@type': 'ImageObject',
-            url: image.url,
-            width: image.width ? `${image.width}px` : undefined,
-            height: image.height ? `${image.height}px` : undefined,
-        } : undefined,
-        step: steps.map((step, index) => ({
-            '@type': 'HowToStep',
-            name: step.name,
-            text: stripHtml(step.text),
-            url: step.url,
-            position: index + 1,
-        })),
-        totalTime: totalTime,
-    };
-}
-
 interface ServiceSchemaProps {
+    id?: string;
     serviceType: string;
     providerName: string;
     areaServed?: string;
@@ -204,6 +147,7 @@ export function generateServiceSchema(props: ServiceSchemaProps): WithContext<Se
     return {
         '@context': 'https://schema.org',
         '@type': 'Service',
+        ...(props.id ? { '@id': props.id } : {}),
         serviceType: props.serviceType,
         provider: organizationReference,
         ...(props.areaServed ? { areaServed: props.areaServed } : {}),

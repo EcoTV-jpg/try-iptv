@@ -77,6 +77,7 @@ export const getIptvFreeTrialPageData = cache(
     ]);
 
     const serviceSchema: Service = generateServiceSchema({
+      id: `${pageUrl}#service`,
       serviceType: "Free IPTV Trial",
       providerName: "TryIPTV",
       name: "24-Hour IPTV Free Trial",
