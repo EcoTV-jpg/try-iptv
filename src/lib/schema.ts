@@ -1,6 +1,7 @@
 import type {
   Product,
   WebSite,
+  WebPage,
   Organization,
   FAQPage,
   BreadcrumbList,
@@ -52,6 +53,28 @@ export function generateOrganizationSchema(): WithContext<Organization> {
       'height': 1024 as any,
     },
     'sameAs': [...publicBrandSocialLinks],
+  };
+}
+
+interface WebPageSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+}
+
+/** Homepage/root WebPage node. Do not invent Article fields here. */
+export function generateWebPageSchema(props: WebPageSchemaProps): WithContext<WebPage> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: props.name,
+    description: props.description,
+    url: props.url,
+    isPartOf: {
+      '@id': websiteId,
+    },
+    publisher: organizationReference,
+    about: organizationReference,
   };
 }
 

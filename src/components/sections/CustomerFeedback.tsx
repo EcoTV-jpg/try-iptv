@@ -11,7 +11,7 @@ export const customerFeedbackItems = [
     src: "/images/feedback/customer-feedback-1.jpg",
     alt: "TryIPTV customer WhatsApp chat showing Xtream Codes API setup assistance on IPTV Smarters Pro",
     title: "IPTV Smarters Pro Setup",
-    highlight: "Xtream Codes API • Verified Working",
+    highlight: "Xtream Codes API • Setup Assisted",
   },
   {
     id: "feedback-2",
@@ -48,9 +48,9 @@ export function CustomerFeedback() {
     <Section id="customer-feedback" className="border-t border-white/[0.06] bg-[#050706] py-12 sm:py-16 lg:py-18">
       <Container>
         <SectionHeader
-          title="Real Customer Support & Activation Proof"
-          subtitle="Genuine WhatsApp conversations with active TryIPTV subscribers showing account setup, credential delivery, and player assistance."
-          eyebrow="Verified Customer Proof"
+          title="Customer Support & Activation Examples"
+          subtitle="WhatsApp conversations with TryIPTV subscribers showing account setup, credential delivery, and player assistance."
+          eyebrow="Customer Support Chats"
           className="mb-0 max-w-3xl"
         />
 

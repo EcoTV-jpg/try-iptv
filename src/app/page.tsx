@@ -9,14 +9,18 @@ import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
 import { CTA } from "@/components/sections/CTA";
 
 const FAQ = dynamic(() => import("@/components/sections/FAQ").then((mod) => mod.FAQ));
-import { getHomePageData } from "@/lib/data/home-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
+import { generateWebPageSchema } from "@/lib/schema";
+
+const homeTitle = "TryIPTV: IPTV Service for USA & UK, 24h Free Trial";
+const homeDescription =
+  "TryIPTV offers 25,000+ channels and 120,000+ movies and TV shows, with 2 connections, plans from $16, and an IPTV free trial for 24 hours.";
 
 export function generateMetadata(): Metadata {
   const baseMetadata = generatePageMetadata({
-    title: "TryIPTV — Best IPTV Service in USA, UK & Worldwide",
-    description: "Best IPTV streaming featuring 25,000+ live channels worldwide, sports, and 120,000+ movies and TV shows across compatible devices and supported player apps. 2 connections included. Plans from $16 with a IPTV Free Trial.",
+    title: homeTitle,
+    description: homeDescription,
     canonical: "/",
     image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
@@ -42,11 +46,15 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Home() {
-  const { productSchema } = getHomePageData();
+  const webPageSchema = generateWebPageSchema({
+    name: homeTitle,
+    description: homeDescription,
+    url: "https://www.tryiptv.com/",
+  });
 
   return (
     <>
-      <Schema id="product" schema={productSchema} />
+      <Schema id="webpage" schema={webPageSchema} />
       <Hero />
       <WhyChooseTryIPTV />
       <HomePricing />
