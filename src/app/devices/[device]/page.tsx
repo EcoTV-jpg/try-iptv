@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import InternalLinks from "@/components/shared/InternalLinks";
 import { Schema } from "@/components/shared/Schema";
-import { generateArticleSchema, generateHowToSchema, generateFAQPageSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 import {
   GuideQuickInfo,
@@ -63,7 +63,7 @@ async function getArticleData(deviceId: string): Promise<ArticleType | undefined
 
 function StructuredData({ article }: { article: ArticleType }) {
     if (!article) return null;
-    const { id, title, description, steps, faqs, image, dateModified, totalTime } = article;
+    const { id, title, description, image, dateModified } = article;
     const baseUrl = siteConfig.url;
 
     const articleSchema = generateArticleSchema({
@@ -74,24 +74,6 @@ function StructuredData({ article }: { article: ArticleType }) {
         url: `${baseUrl}/devices/${id}`,
     });
 
-    const howToSchema = generateHowToSchema({
-        name: title,
-        description: description,
-        totalTime: totalTime,
-        image: image ? {
-            url: image.imageUrl,
-            width: image.width,
-            height: image.height
-        } : undefined,
-        steps: steps.map((step, index) => ({
-            name: step.title,
-            text: step.description,
-            url: `${baseUrl}/devices/${id}#step-${index + 1}`,
-        })),
-    });
-
-    const faqSchema = faqs ? generateFAQPageSchema(faqs) : null;
-
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", item: `${baseUrl}/` },
         { name: "Devices", item: `${baseUrl}/devices` },
@@ -101,8 +83,6 @@ function StructuredData({ article }: { article: ArticleType }) {
     return (
         <>
             <Schema id="article" schema={articleSchema} />
-            <Schema id="how-to" schema={howToSchema} />
-            {faqSchema && <Schema id="faq" schema={faqSchema} />}
             <Schema id="breadcrumb" schema={breadcrumbSchema} />
         </>
     );

@@ -26,7 +26,7 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { FaqList, type FaqItem } from "@/components/sections/FAQ";
-import { generateBreadcrumbSchema, generateFAQPageSchema } from "@/lib/schema";
+import { generateBreadcrumbSchema } from "@/lib/schema";
 import { PRODUCT_TRUTHS, SITE_URL, siteConfig, generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 const title = "IPTV Setup Hub: From Credentials to Your Device | TryIPTV";
@@ -275,12 +275,9 @@ export default function SetupPage() {
     { name: "Setup Hub", item: `${baseUrl}/setup` },
   ]);
 
-  const faqSchema = generateFAQPageSchema(setupFaqs);
-
   return (
     <>
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
-      <Schema id="faq" schema={faqSchema} />
 
       {/* Hero Section */}
       <Section className="relative overflow-hidden border-b border-white/[0.07] pt-12 pb-14 sm:pt-16 sm:pb-20">
