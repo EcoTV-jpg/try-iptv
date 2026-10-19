@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -54,7 +55,7 @@ const deviceGuides = [
     slug: "firestick-iptv",
     description: "Install Downloader, configure an IPTV player, and stream on Fire TV Stick 4K, Max, or Lite.",
     icon: Tv,
-    badge: "Most Popular",
+    badge: "Fire OS",
   },
   {
     name: "Android TV & Google TV",
@@ -80,7 +81,7 @@ const deviceGuides = [
   {
     name: "Apple TV (tvOS)",
     slug: "apple-tv-iptv",
-    description: "Configure leading tvOS streaming applications on Apple TV 4K or Apple TV HD.",
+    description: "Install a compatible tvOS player from the App Store on Apple TV 4K or Apple TV HD.",
     icon: Tv,
     badge: "tvOS",
   },
@@ -126,7 +127,7 @@ const featuredPlayers = [
     name: "TiviMate IPTV Player",
     slug: "tivimate",
     platforms: "Android TV, Google TV, Fire TV",
-    description: "Broadcast-grade television interface with dynamic timeline EPG, multi-view, and fast channel switching.",
+    description: "TV-style layout with a timeline EPG, multi-view, and channel switching.",
   },
   {
     name: "IPTV Smarters Pro",
@@ -166,7 +167,7 @@ const featuredPlayers = [
   },
 ];
 
-const setupSteps = [
+const setupSteps: { step: string; title: string; description: ReactNode }[] = [
   {
     step: "01",
     title: "Identify Your Device & Connection",
@@ -177,7 +178,7 @@ const setupSteps = [
     step: "02",
     title: "Install a Compatible IPTV Player",
     description:
-      "Download a reputable third-party media player from your device's official application store (such as TiviMate on Android TV or IPTV Smarters Pro on Smart TVs and iOS).",
+      "Install a compatible IPTV player from the device's official app store (such as TiviMate on Android TV or IPTV Smarters Pro on Smart TVs and iOS).",
   },
   {
     step: "03",
@@ -200,8 +201,15 @@ const setupSteps = [
   {
     step: "06",
     title: "Load the TV Guide (EPG)",
-    description:
-      "Navigate to the electronic program guide section in your app to ensure channel schedules and program information have populated.",
+    description: (
+      <>
+        Open the{" "}
+        <Link href="/guides/what-is-epg" className="font-semibold text-primary hover:underline">
+          electronic program guide (EPG)
+        </Link>{" "}
+        in your player and confirm that channel schedules have populated.
+      </>
+    ),
   },
   {
     step: "07",
@@ -243,7 +251,7 @@ const setupFaqs: FaqItem[] = [
   {
     question: "What do I need to set up IPTV?",
     answer:
-      "To set up IPTV, you need three elements: a reliable high-speed internet connection (recommended 25+ Mbps for HD and 50+ Mbps for 4K), a compatible streaming device or Smart TV, and a third-party IPTV player application. Once you have these, you simply enter the subscription credentials (Xtream Codes API details or M3U playlist link) provided with your TryIPTV account.",
+      "To set up TryIPTV, you need the credentials TryIPTV sends (Xtream Codes or an M3U playlist URL), a compatible device or Smart TV, and an IPTV player. As a planning guideline, about 15–25 Mbps of headroom suits one Full HD stream, and 4K generally benefits from 50+ Mbps. Exact needs depend on bitrate and whether one or both connections are in use.",
   },
   {
     question: "Should I set up using Xtream Codes API or M3U playlist?",
@@ -253,7 +261,7 @@ const setupFaqs: FaqItem[] = [
   {
     question: "Can I set up IPTV directly on a Smart TV without an external stick?",
     answer:
-      "Yes. Most modern Smart TVs support IPTV directly. Samsung Smart TVs running Tizen OS and LG Smart TVs running webOS have compatible applications like IPTV Smarters Pro available in their official application stores. If you have an Android TV or Google TV (such as Sony, TCL, or Hisense), you can install players directly from Google Play. However, for the fastest navigation and broadest codec support, a dedicated 4K streaming stick (such as a Fire TV Stick 4K or Apple TV) remains an outstanding option.",
+      "Yes. Samsung Smart TVs on Tizen and LG Smart TVs on webOS can install a compatible player such as IPTV Smarters Pro from their app stores. Android TV and Google TV sets can install players from Google Play. A streaming stick such as Fire TV Stick 4K or Apple TV is another option when the TV app store does not offer the player you want.",
   },
   {
     question: "Can I use my IPTV subscription on multiple devices?",
@@ -263,7 +271,7 @@ const setupFaqs: FaqItem[] = [
   {
     question: "How long does it take to activate and configure my subscription?",
     answer:
-      "Credentials are automatically prepared and typically delivered within 5–15 minutes following order or trial confirmation. Once you receive your credentials, entering your Server URL, Username, and Password into your player completes the initial connection.",
+      "Credentials are typically delivered within 5–15 minutes after order or trial confirmation. Entering the server URL, username, and password into your player completes the initial connection.",
   },
 ];
 
@@ -289,8 +297,8 @@ export default function SetupPage() {
           <Breadcrumb items={[{ label: "Setup Hub" }]} align="center" />
           <SectionHeader
             as="h1"
-            eyebrow="Universal Installation Directory"
-            title="Start Here: Set Up Your IPTV Service"
+            eyebrow="Setup hub"
+            title="Set Up TryIPTV on a Compatible Device"
             subtitle="Use this onboarding path to go from your TryIPTV credentials to the right device and player setup. Choose your hardware, select a compatible app, and follow the linked platform guide."
           />
         </Container>
@@ -302,10 +310,14 @@ export default function SetupPage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.06] px-3.5 py-1 text-xs font-semibold text-primary mb-4">
               <Sparkles className="h-3.5 w-3.5" />
-              Quick Answer: How IPTV Setup Works
+              How TryIPTV setup works
             </div>
             <p className="text-base sm:text-lg leading-relaxed text-foreground font-medium mb-6">
-              Setting up an IPTV subscription delivers live TV, sports, and on-demand entertainment to your screen over standard internet protocol. Across every operating system, the configuration process follows five core steps:
+              TryIPTV setup is how you enter the credentials TryIPTV sends into a compatible IPTV player on your device. Those credentials are Xtream Codes (server URL, username, and password) or an M3U playlist URL. TryIPTV is the service provider. It is not the player app and it is not the television. If you do not have credentials yet, request the{" "}
+              <Link href="/iptv-free-trial" className="font-semibold text-primary hover:underline">
+                24-hour free trial
+              </Link>{" "}
+              first. The five steps below are the shared path; exact menus are on the device and player guides.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 text-left">
               {[
@@ -348,7 +360,7 @@ export default function SetupPage() {
                     Security &amp; Account Protection
                   </div>
                   <p className="text-xs leading-relaxed text-muted-foreground">
-                    Never input your subscription credentials on public forums or unverified websites. Enter your details only into your chosen, trusted media player application on your local device.
+                    Never enter your subscription credentials on public forums or unverified websites. Enter them only into the IPTV player installed on your device.
                   </p>
                 </div>
               </div>
@@ -368,7 +380,11 @@ export default function SetupPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Stable streaming requires consistent download bandwidth: minimum 15–25 Mbps for 1080p Full HD streams and 40–50+ Mbps for 4K Ultra HD live broadcasts. A wired Ethernet cable or low-interference 5GHz Wi-Fi connection eliminates packet buffering.
+                  Playback depends on stream bitrate and whether one or both of your {PRODUCT_TRUTHS.connections} connections are in use. As a planning guideline, about 15–25 Mbps of headroom suits one Full HD stream, and 4K generally benefits from 50+ Mbps. Wired Ethernet or stable 5GHz Wi-Fi is the usual way to limit packet loss. The{" "}
+                  <Link href="/guides/iptv-internet-speed" className="font-semibold text-primary hover:underline">
+                    IPTV internet speed guide
+                  </Link>{" "}
+                  has the two-connection examples.
                 </CardContent>
               </Card>
 
@@ -385,7 +401,7 @@ export default function SetupPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  IPTV runs on virtually all modern hardware: Amazon Fire TV Sticks, Android TV boxes, Google Chromecast, Apple TV, Smart TVs (Samsung Tizen &amp; LG webOS), Windows PCs, Macs, iPhones, and Android devices.
+                  Compatible hardware includes Amazon Fire TV Sticks, Android TV, Google Chromecast, Apple TV, Samsung and LG Smart TVs, Windows PCs, Macs, iPhones, and Android phones. Phone setup uses an IPTV player; there is no separate phone device guide.
                 </CardContent>
               </Card>
 
@@ -584,7 +600,7 @@ export default function SetupPage() {
                 <ul className="space-y-2 text-xs text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                    <span>Faster initial playlist sync because data is queried on demand.</span>
+                    <span>The player can request playlist data as needed, instead of downloading one large M3U file first.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
@@ -622,7 +638,7 @@ export default function SetupPage() {
                 <ul className="space-y-2 text-xs text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                    <span>Universally supported by almost all media players (including VLC).</span>
+                    <span>Supported by many media players, including VLC.</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
@@ -653,7 +669,7 @@ export default function SetupPage() {
               7-Step Universal Setup Walkthrough
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              While exact buttons and layout differ slightly between applications, this generic sequence applies to virtually all IPTV player software.
+              Button names differ by player. This sequence is the shared path from credentials to a first channel.
             </p>
           </div>
 
@@ -698,7 +714,7 @@ export default function SetupPage() {
                 Having Setup or Playback Problems?
               </h2>
               <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground max-w-xl">
-                Most setup hurdles can be resolved by checking network stability, credential formatting, or decoder settings.
+                Check network stability, how the credentials were pasted, and the player decoder settings before changing devices.
               </p>
             </div>
             <Button asChild variant="outline" size="sm" className="self-start sm:self-auto shrink-0">
@@ -857,7 +873,7 @@ export default function SetupPage() {
             <div className="absolute inset-x-0 top-0 h-1 bg-primary sm:inset-y-0 sm:left-0 sm:h-full sm:w-1" />
             <span className="eyebrow mb-2">Ready to Get Started?</span>
             <h2 className="font-headline text-2xl sm:text-3xl font-extrabold text-foreground">
-              Experience High-Definition IPTV Streaming
+              Need TryIPTV credentials before setup?
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-xs sm:text-sm leading-relaxed text-muted-foreground">
               Test stream reliability, channel availability, and player compatibility with our 24-hour free trial (no credit card required), or explore transparent prepaid plans with 2 simultaneous connections.
