@@ -14,7 +14,7 @@ import { ArrowRight, Clock, Tv, CheckCircle2 } from "lucide-react";
 
 export function generateMetadata(): Metadata {
   return generatePageMetadata({
-    title: "IPTV Device Setup Guides — Compatible Devices & Tutorials",
+    title: "IPTV Setup Guides for All Compatible Devices",
     description: "Step-by-step setup guides to install and configure TryIPTV on Amazon Fire TV Stick, Android TV, Apple TV, Smart TVs, Windows, macOS, and MAG boxes.",
     canonical: "/devices",
   });

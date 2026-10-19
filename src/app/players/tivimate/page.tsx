@@ -12,11 +12,13 @@ const title = "TiviMate IPTV Player Setup Guide: Install, M3U & Xtream Codes";
 const description =
   "Install and set up TiviMate on Android TV, Google TV or Fire TV. Add Xtream Codes or M3U, configure EPG, and troubleshoot common issues.";
 const canonical = "/players/tivimate";
+// Shorter search-result title; `title` stays the article headline.
+const seoTitle = "TiviMate IPTV Player Setup: M3U & Xtream Codes";
 
 export function generateMetadata(): Metadata {
   return {
-    ...generatePageMetadata({ title, description, canonical }),
-    title: { absolute: title },
+    ...generatePageMetadata({ title: seoTitle, description, canonical }),
+    title: { absolute: seoTitle },
   };
 }
 

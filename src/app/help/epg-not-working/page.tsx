@@ -40,6 +40,8 @@ const title = "EPG Not Working? How to Fix Missing or Incorrect IPTV Guide Data"
 const description =
   "A systematic diagnostic guide to resolve IPTV EPG errors: missing guide data, 'No Information' messages, wrong broadcast times, and channel mapping mismatches.";
 const canonical = "/help/epg-not-working";
+// Shorter search-result title; `title` stays the article headline.
+const seoTitle = "EPG Not Working? Fix Missing or Wrong IPTV Guide Data";
 const modifiedDate = "2026-10-06";
 
 /**
@@ -50,12 +52,12 @@ const modifiedDate = "2026-10-06";
 export function generateMetadata(): Metadata {
   return {
     ...generatePageMetadata({
-      title,
+      title: seoTitle,
       description,
       canonical,
     }),
     title: {
-      absolute: title,
+      absolute: seoTitle,
     },
   };
 }
