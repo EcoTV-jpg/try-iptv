@@ -16,12 +16,12 @@ import { getHomePageData } from "@/lib/data/home-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const HOME_TITLE = "IPTV Service for USA & UK – 24h Free Trial | TryIPTV";
+const HOME_TITLE = "Best IPTV Service for USA & UK – 24h Free Trial | TryIPTV.com";
 
 export function generateMetadata(): Metadata {
   const baseMetadata = generatePageMetadata({
     title: HOME_TITLE,
-    description: "TryIPTV is an IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial.",
+    description: "TryIPTV.com is an Best IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial.",
     canonical: "/",
     image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
