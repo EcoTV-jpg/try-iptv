@@ -32,7 +32,7 @@ export function Hero() {
             </h1>
 
             <p className="mt-4 max-w-xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground/90">
-              TryIPTV is a prepaid IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial to test the service on your own device before paying.
+              TryIPTV is an IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial to test the service on your own device before paying.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
