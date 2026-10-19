@@ -24,7 +24,7 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-              Prepaid IPTV Service • 2 Connections Included
+              Best IPTV service • 2 Connections Included
             </div>
 
             <h1 className="mt-4 font-headline text-[32px] sm:text-[42px] lg:text-[48px] font-bold leading-[1.1] tracking-tight text-foreground">
