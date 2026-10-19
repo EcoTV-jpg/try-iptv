@@ -1,4 +1,4 @@
-import { SparklesIcon, ArrowRight } from "lucide-react";
+import { CheckIcon, SparklesIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
@@ -61,6 +61,17 @@ const PLANS = [
     featured: true,
     badge: "Best Value",
   },
+] as const;
+
+const INCLUDED_FEATURES = [
+  "4K Ultra HD Streaming Quality",
+  "25,000+ Live Channels Worldwide",
+  "120,000+ Movies & TV Shows",
+  "PPV Events Included",
+  "VOD Access",
+  "Smart EPG & Catch-Up TV",
+  "Customer Support",
+  "Multi-Device Compatibility",
 ] as const;
 
 export function HomePricing() {
@@ -159,6 +170,15 @@ export function HomePricing() {
                       <span className="sr-only"> — {plan.name} plan</span>
                     </a>
                   </Button>
+
+                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-[13.5px] leading-relaxed text-muted-foreground/95">
+                    {INCLUDED_FEATURES.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2.5">
+                        <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary/75" aria-hidden />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             </BlurFade>
