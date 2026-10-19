@@ -58,6 +58,7 @@ credentials/
 
 # local Search Console monitoring output
 /data/gsc-monitoring/
+/data/gsc/
 /reports/gsc/
 
 # local agent & impeccable
