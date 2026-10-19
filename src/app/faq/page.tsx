@@ -1,21 +1,28 @@
 import { FaqList } from "@/components/sections/FAQ";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
+import { Button } from "@/components/ui/button";
 import { CTA } from "@/components/sections/CTA";
 import { getFaqPageData } from "@/lib/data/faq-page";
-import { faqs } from "@/lib/site-data/faq";
+import { faqGroups } from "@/lib/site-data/faq";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
+const FAQ_TITLE = "IPTV FAQ: Trial, Plans, Devices and Setup | TryIPTV";
+
 export function generateMetadata(): Metadata {
-    return generatePageMetadata({
-        title: "Frequently Asked Questions",
-        description: "Have questions about TryIPTV? Find answers to common questions about free trials, device compatibility, buffering, activation, and our refund policy.",
-        canonical: "/faq",
-    });
+    return {
+        ...generatePageMetadata({
+            title: FAQ_TITLE,
+            description: "Answers about the TryIPTV 24-hour free trial, prepaid plans from $16, 2 simultaneous connections, devices, setup, and support. No credit card for the trial, and plans do not auto-renew.",
+            canonical: "/faq",
+        }),
+        title: { absolute: FAQ_TITLE },
+    };
 }
 
 export default async function FaqPage() {
@@ -35,17 +42,31 @@ export default async function FaqPage() {
           <Breadcrumb items={[{ label: "FAQ" }]} align="center" />
           <SectionHeader
             as="h1"
-            eyebrow="TryIPTV Help Center"
+            eyebrow="Short answers first"
             title="Frequently Asked Questions About TryIPTV"
-            subtitle="Clear answers on IPTV setup, channel playlists, device compatibility, activation, and customer support."
+            subtitle="The trial lasts 24 hours, costs $0, and needs no credit card. Paid plans start at $16, include 2 simultaneous connections, and do not renew automatically. Login details typically arrive within 5–15 minutes."
           />
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href="/iptv-free-trial">Start my free trial</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href="/pricing">See plans and pricing</Link>
+            </Button>
+          </div>
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <h2 className="sr-only">Frequently Asked Questions</h2>
-          <FaqList items={faqs} mountClosedAnswers />
+      <Section className="bg-[#050706] py-10 sm:py-14">
+        <Container className="space-y-12">
+          {faqGroups.map((group) => (
+            <div key={group.id} id={group.id}>
+              <h2 className="mb-4 font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                {group.title}
+              </h2>
+              <FaqList items={group.items} mountClosedAnswers />
+            </div>
+          ))}
         </Container>
       </Section>
 
