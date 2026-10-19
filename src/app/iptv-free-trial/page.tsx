@@ -28,9 +28,9 @@ const freeTrialWhatsAppUrl =
   "https://wa.me/15205648298?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
-  const title = "24-Hour IPTV Free Trial — Test TryIPTV Before You Pay";
+  const title = "IPTV Free Trial: 24 Hours, No Credit Card | TryIPTV";
   const description =
-    "Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. 24-hour access, $0, and no credit card required.";
+    "TryIPTV’s free trial lasts 24 hours, costs $0, and does not require a credit card. Test playback on your own device before choosing a prepaid plan from $16.";
 
   return {
     ...generatePageMetadata({ title, description, canonical: "/iptv-free-trial" }),
@@ -141,10 +141,44 @@ const troubleshootingLinks = [
   { issue: "Streams not playing", label: "IPTV Not Working Guide", href: "/help/iptv-not-working" },
 ] as const;
 
+const includedItems = [
+  {
+    title: "25,000+ live channels",
+    desc: "Use the trial to check the live channels you actually watch, including sports and news, on your own player.",
+  },
+  {
+    title: "120,000+ movies and shows",
+    desc: "Check on-demand titles from the movie and TV catalog where they are available on your lineup.",
+  },
+  {
+    title: "4K where available",
+    desc: "Check HD and 4K playback where the channel provides it, on the screen you actually use.",
+  },
+  {
+    title: "Smart EPG and catch-up",
+    desc: "The programme guide is available where listings are supplied, so you can see whether schedules match what is playing.",
+  },
+  {
+    title: "Compatible devices",
+    desc: "Test the TVs, streaming devices, phones, and computers your household uses. You do not need a TryIPTV app.",
+  },
+  {
+    title: "Support during the trial",
+    desc: "Request the trial on WhatsApp. Support can help with login details and player setup. No payment method is collected.",
+  },
+] as const;
+
+const afterTrialPlans = [
+  { name: "1 Month", price: "$16", note: "Full service, prepaid" },
+  { name: "3 Months", price: "$39", note: "$13.00 per month" },
+  { name: "6 Months", price: "$60", note: "$10.00 per month" },
+  { name: "12 Months", price: "$90", note: "$7.50 per month" },
+] as const;
+
 const planComparisonRows = [
   ["Cost", "$0", "From $16 (1 Month) to $90 (12 Months)"],
   ["Duration", "24 consecutive hours", "1, 3, 6, or 12 months prepaid"],
-  ["Credit card required", "No", "Current payment instructions are provided when ordering"],
+  ["Credit card required", "No", "Pay once by cryptocurrency, PayPal, or Stripe"],
   ["Simultaneous connections", "Confirmed when trial is issued", "2 simultaneous connections included on all plans"],
   ["Automatic renewal", "No", "No (prepaid plans do not auto-renew)"],
   ["Access format", "Xtream Codes / M3U", "Xtream Codes / M3U"],
@@ -164,29 +198,48 @@ export default async function IptvFreeTrialPage() {
         <Container className="relative">
           <div className="mx-auto max-w-4xl text-center">
             <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
-            <p className="eyebrow mb-3">24-Hour Evaluation · $0 Cost · No Credit Card</p>
+            <p className="eyebrow mb-3">24 hours · $0 · No credit card</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-              24-Hour IPTV Free Trial — Test TryIPTV Before You Pay
+              IPTV Free Trial: 24 Hours, No Credit Card
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. The trial lasts 24 hours, costs $0, requires no credit card, and does not automatically convert into a paid subscription.
+              Try the TryIPTV service on your own TV before you pay. The free trial lasts 24 hours, costs $0, does not require a credit card, and does not renew or turn into a paid plan. Login details typically arrive on WhatsApp within 5–15 minutes.
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                  <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial
+                  <SiWhatsapp className="mr-2 h-4 w-4" /> Start my free trial
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/setup">View Setup Guide</Link>
+                <Link href="/pricing">See plans and pricing</Link>
               </Button>
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-muted-foreground">
-              <span>24-Hour Access</span>
-              <span>$0 Cost</span>
-              <span>No Credit Card</span>
-              <span>No Auto-Renewal</span>
+              <span>No credit card</span>
+              <span>No auto-renew</span>
+              <span>24 hours</span>
+              <span>Xtream Codes and M3U</span>
             </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="border-b border-white/[0.06] bg-[#050706] py-10 sm:py-14">
+        <Container>
+          <SectionHeader
+            eyebrow="What&apos;s included"
+            title="What Do You Get With the IPTV Free Trial?"
+            subtitle="The 24-hour trial is for evaluating playback, channels, and guide data on your own device. Trial connection limits are confirmed when credentials are issued. Paid plans include 2 simultaneous connections."
+          />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {includedItems.map((item) => (
+              <div key={item.title} className="rounded-xl border border-white/[0.08] bg-card p-5">
+                <Check className="h-5 w-5 text-primary" />
+                <h3 className="mt-3 font-headline text-base font-extrabold text-foreground">{item.title}</h3>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </Section>
@@ -230,10 +283,17 @@ export default async function IptvFreeTrialPage() {
         <Container>
           <div className="mx-auto max-w-4xl">
             <SectionHeader
-              eyebrow="Evaluation Checklist"
-              title="What to Test During Your 24-Hour Trial"
-              subtitle="Use the 24-hour testing period to evaluate the specific channels, categories, and features you plan to watch regularly."
+              eyebrow="Make the most of it"
+              title="How Should I Test IPTV During the 24 Hours?"
+              subtitle="Test the way your household actually watches: on your own devices, over your own internet connection, including busy evening hours."
             />
+            <p className="mb-6 text-sm leading-6 text-muted-foreground sm:text-base">
+              Open the channels you care about, sign in on each screen you use, and check whether the guide matches what is playing. For picture planning, see the{" "}
+              <Link href="/guides/iptv-internet-speed" className="font-semibold text-primary underline underline-offset-4">
+                IPTV internet speed guide
+              </Link>
+              . A practical starting point is about 15–25 Mbps for one Full HD stream and 50+ Mbps where you want 4K headroom.
+            </p>
 
             <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
@@ -267,9 +327,9 @@ export default async function IptvFreeTrialPage() {
         <Container>
           <div className="mx-auto max-w-4xl">
             <SectionHeader
-              eyebrow="Simple Steps"
-              title="How to Request and Start Your Free Trial"
-              subtitle="Four straightforward steps from request to evaluation."
+              eyebrow="How it works"
+              title="How Do I Get My IPTV Free Trial?"
+              subtitle="Request the trial on WhatsApp. There is no card form and the price stays $0."
             />
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -434,6 +494,32 @@ export default async function IptvFreeTrialPage() {
               </ul>
             </div>
           </div>
+        </Container>
+      </Section>
+
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
+        <Container>
+          <SectionHeader
+            eyebrow="After the trial"
+            title="What Do IPTV Plans Cost After Your Free Trial?"
+            subtitle="If the trial works on your setup, prepaid plans start at $16 for 1 month. Every paid plan includes 2 simultaneous connections and does not renew automatically."
+          />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {afterTrialPlans.map((plan) => (
+              <article key={plan.name} className="rounded-xl border border-white/[0.08] bg-[#07080a] p-5">
+                <h3 className="font-headline text-lg font-extrabold text-foreground">{plan.name}</h3>
+                <p className="mt-2 font-headline text-3xl font-bold text-foreground">{plan.price}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{plan.note}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Compare every option on the{" "}
+            <Link href="/pricing" className="font-semibold text-primary underline underline-offset-4">
+              pricing page
+            </Link>
+            . Payment is a one-time prepaid charge by cryptocurrency, PayPal, or Stripe, and login details are typically delivered within 5–15 minutes after payment is confirmed.
+          </p>
         </Container>
       </Section>
 

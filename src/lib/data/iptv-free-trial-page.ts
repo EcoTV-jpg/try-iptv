@@ -60,6 +60,11 @@ export const trialFaqs = [
       "The trial allows you to evaluate stream playback, channel availability, and guide data. However, paid plans include two simultaneous connections, whereas trial connection limits are confirmed upon issuance.",
   },
   {
+    question: "How much does IPTV cost after the trial?",
+    answer:
+      "Prepaid plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, and $90 for 12 months. Every paid plan includes 2 simultaneous connections and does not renew automatically.",
+  },
+  {
     question: "What should I test during an IPTV free trial?",
     answer:
       "Focus on testing the specific channels you watch most often, verifying picture quality on your main TV screen, observing channel startup time, and confirming that EPG data loads properly.",
