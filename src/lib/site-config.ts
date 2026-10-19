@@ -60,7 +60,11 @@ export function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
+    // Page-level openGraph replaces the layout's object rather than merging
+    // with it, so repeat the type and locale here or they are dropped.
     openGraph: {
+      type: 'website' as const,
+      locale: 'en_US',
       title,
       description,
       url: canonicalUrl || siteConfig.url,

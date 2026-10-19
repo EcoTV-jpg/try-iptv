@@ -40,10 +40,13 @@ const planDescriptions: Record<string, string> = {
 
 const planSavingsExact: Record<string, string | null> = {
   "1-month": null,
-  "3-months": "Save $9 vs three 1-month purchases",
-  "6-months": "Save $36 vs six 1-month purchases",
-  "12-months": "Save $102 vs twelve 1-month purchases",
+  "3-months": "Save $9 vs three 1\u2011month purchases",
+  "6-months": "Save $36 vs six 1\u2011month purchases",
+  "12-months": "Save $102 vs twelve 1\u2011month purchases",
 };
+
+// Whole-dollar amounts without decimals ($16), others with cents ($7.50).
+const formatUsd = (amount: number) => `$${amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2)}`;
 
 const planBestFor: Record<string, string> = {
   "1-month": "Lowest commitment",
@@ -181,7 +184,7 @@ export default async function IPTVSubscription() {
       </Section>
 
       {/* Section 1: Compare TryIPTV Plans */}
-      <Section id="pricing-plans" className="bg-[#050706] py-10 sm:py-14">
+      <Section id="pricing-plans" className="scroll-mt-24 bg-[#050706] py-10 sm:py-14">
         <Container>
           <SectionHeader
             eyebrow="Prepaid IPTV Plans"
@@ -203,16 +206,17 @@ export default async function IPTVSubscription() {
                       : "border-white/[0.08]"
                   }`}
                 >
-                  {isLowestMonthly && (
-                    <div className="absolute right-4 top-4 rounded-md border border-primary/25 bg-primary/[0.08] px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">
-                      Lowest Monthly Equivalent
-                    </div>
-                  )}
-
                   <div>
-                    <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
-                      {String(index + 1).padStart(2, "0")} / Plan
-                    </p>
+                    {/* The badge takes the plan-number slot so it can't overlap it or push the heading down. */}
+                    {isLowestMonthly ? (
+                      <p className="w-fit whitespace-nowrap rounded-md border border-primary/25 bg-primary/[0.08] px-2 text-[10px] font-mono font-bold uppercase leading-[14.5px] text-primary">
+                        Lowest Monthly Equivalent
+                      </p>
+                    ) : (
+                      <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
+                        {String(index + 1).padStart(2, "0")} / Plan
+                      </p>
+                    )}
                     <h3 className="pt-2 font-headline text-xl font-bold tracking-tight text-foreground">
                       {plan.name}
                     </h3>
@@ -220,13 +224,13 @@ export default async function IPTVSubscription() {
                     <div className="pt-4">
                       <div className="flex items-baseline gap-1.5">
                         <span className="font-headline text-[40px] font-bold leading-none tracking-tight text-foreground sm:text-[44px]">
-                          ${plan.price}
+                          {formatUsd(plan.price)}
                         </span>
                         <span className="text-xs font-medium text-muted-foreground">prepaid</span>
                       </div>
                       <p className="mt-2 text-xs text-muted-foreground">
                         <span className="font-medium text-foreground/90">
-                          ${plan.price_monthly.toFixed(2)}/month equivalent
+                          {formatUsd(plan.price_monthly)}/month equivalent
                         </span>
                       </p>
                       {savingsText && (
@@ -246,7 +250,10 @@ export default async function IPTVSubscription() {
                       className="h-12 min-h-[48px] w-full rounded-xl text-[15px] font-semibold"
                       variant={isLowestMonthly ? "default" : "outline"}
                     >
-                      <Link href={plan.checkoutUrl}>Choose {plan.name}</Link>
+                      <a href={plan.checkoutUrl} target="_blank" rel="noopener noreferrer">
+                        Choose {plan.name}
+                        <span className="sr-only"> plan (opens WhatsApp in a new tab)</span>
+                      </a>
                     </Button>
                   </div>
                 </article>
@@ -282,13 +289,13 @@ export default async function IPTVSubscription() {
                         {plan.name}
                       </th>
                       <td className="whitespace-nowrap px-5 py-3.5 text-foreground font-medium">
-                        ${plan.price % 1 === 0 ? plan.price.toFixed(0) : plan.price.toFixed(2)}
+                        {formatUsd(plan.price)}
                       </td>
                       <td className="whitespace-nowrap px-5 py-3.5">
-                        ${plan.price_monthly % 1 === 0 ? plan.price_monthly.toFixed(0) : plan.price_monthly.toFixed(2)}/month
+                        {formatUsd(plan.price_monthly)}/month
                       </td>
                       <td className="whitespace-nowrap px-5 py-3.5 text-primary font-medium">
-                        {planSavingsExact[plan.id] ? planSavingsExact[plan.id]?.split(" vs ")[0] : "—"}
+                        {planSavingsExact[plan.id]?.split(" vs ")[0] ?? "—"}
                       </td>
                       <td className="whitespace-nowrap px-5 py-3.5">2 simultaneous</td>
                       <td className="px-5 py-3.5">{planBestFor[plan.id]}</td>
@@ -427,7 +434,7 @@ export default async function IPTVSubscription() {
       </Section>
 
       {/* Section 7: Pricing FAQ */}
-      <Section id="faq" className="border-t border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
+      <Section id="faq" className="scroll-mt-24 border-t border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
         <Container>
           <SectionHeader
             eyebrow="Pricing &amp; Billing Questions"

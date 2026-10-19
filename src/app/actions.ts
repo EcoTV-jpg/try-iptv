@@ -14,7 +14,16 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     turnstileToken: formData.get('cf-turnstile-response'),
   };
 
-  return await processContactSubmission(rawInput);
+  const result = await processContactSubmission(rawInput);
+  if (result.success) return result;
+
+  // React resets uncontrolled forms after an action, so echo the input back
+  // to restore it via defaultValue and spare the visitor from retyping.
+  const text = (value: FormDataEntryValue | null) => (typeof value === 'string' ? value : '');
+  return {
+    ...result,
+    fields: { name: text(rawInput.name), email: text(rawInput.email), message: text(rawInput.message) },
+  };
 }
 
 export async function getRelatedPostsAction(currentId: string) {

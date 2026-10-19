@@ -31,6 +31,7 @@ export type ContactResult = {
     message?: string[];
     form?: string[];
   } | null;
+  fields?: { name: string; email: string; message: string };
 };
 
 const GENERIC_FORM_ERROR = 'Something went wrong. Please try again.';

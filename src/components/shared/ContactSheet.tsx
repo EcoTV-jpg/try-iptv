@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { submitContactForm } from "@/app/actions";
+import { Turnstile } from "@/components/shared/Turnstile";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -86,24 +87,20 @@ export function ContactSheet() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="name-sheet">Name</Label>
-              <Input id="name-sheet" name="name" placeholder="Your Name" />
-              {state.errors?.name && <p className="text-sm text-destructive">{state.errors.name[0]}</p>}
+              <Input id="name-sheet" autoComplete="name" aria-invalid={!!state.errors?.name} aria-describedby={state.errors?.name ? "name-sheet-error" : undefined} name="name" defaultValue={state.fields?.name} placeholder="Your Name" />
+              {state.errors?.name && <p id="name-sheet-error" role="alert" className="text-sm text-destructive">{state.errors.name[0]}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="email-sheet">Email</Label>
-              <Input id="email-sheet" name="email" type="email" placeholder="your@email.com" />
-              {state.errors?.email && <p className="text-sm text-destructive">{state.errors.email[0]}</p>}
+              <Input id="email-sheet" autoComplete="email" aria-invalid={!!state.errors?.email} aria-describedby={state.errors?.email ? "email-sheet-error" : undefined} name="email" type="email" defaultValue={state.fields?.email} placeholder="your@email.com" />
+              {state.errors?.email && <p id="email-sheet-error" role="alert" className="text-sm text-destructive">{state.errors.email[0]}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="message-sheet">Message</Label>
-              <Textarea id="message-sheet" name="message" placeholder="How can we help you?" />
-              {state.errors?.message && <p className="text-sm text-destructive">{state.errors.message[0]}</p>}
+              <Textarea id="message-sheet" aria-invalid={!!state.errors?.message} aria-describedby={state.errors?.message ? "message-sheet-error" : undefined} name="message" defaultValue={state.fields?.message} placeholder="How can we help you?" />
+              {state.errors?.message && <p id="message-sheet-error" role="alert" className="text-sm text-destructive">{state.errors.message[0]}</p>}
             </div>
-            <div
-              className="cf-turnstile"
-              data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-              data-theme="auto"
-            />
+            <Turnstile resetSignal={state} />
             <SubmitButton />
           </form>
         </SheetContent>
