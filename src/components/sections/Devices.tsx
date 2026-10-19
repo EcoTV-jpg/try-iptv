@@ -34,8 +34,8 @@ export function Devices() {
         <div className="border-t border-white/[0.07] pt-14 sm:pt-16 md:pt-20 lg:pt-24">
           <SectionHeader
             align="left"
-            title="Watch on Your Preferred Devices"
-            subtitle="TryIPTV works across supported TVs, streaming devices, computers, and IPTV players. Detailed installation steps live in the device guides."
+            title="Supported Devices and IPTV Players"
+            subtitle="TryIPTV works on Smart TVs, streaming sticks, set-top boxes, and computers through a compatible IPTV player app. Pick your device for step-by-step setup."
             eyebrow="Device Compatibility"
           />
 
@@ -63,7 +63,10 @@ export function Devices() {
               View all step-by-step device setup guides <ArrowRight className="size-4" aria-hidden />
             </Link>
             <Link href="/players" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:underline">
-              Browse IPTV players <ArrowRight className="size-4" aria-hidden />
+              Compare compatible IPTV players <ArrowRight className="size-4" aria-hidden />
+            </Link>
+            <Link href="/help" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:underline">
+              IPTV troubleshooting guides <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
         </div>

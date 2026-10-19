@@ -20,7 +20,7 @@ interface CTAProps {
 
 export function CTA({
   title = "Start Your 24-Hour IPTV Free Trial",
-  subtitle = "Not sure whether TryIPTV will work smoothly on your device and network? Test our channel lineup, HD & 4K picture quality, and easy setup before choosing a paid plan with our 24-hour trial ($0).",
+  subtitle = "Not sure whether TryIPTV will work smoothly on your device and network? Test the channel lineup, picture quality (HD and 4K where available), and setup on your own device before choosing a paid plan with our 24-hour trial ($0).",
   eyebrow = "Not Sure TryIPTV Is Right for You?",
   buttonText = "Start Free Trial",
   buttonHref = "/iptv-free-trial",

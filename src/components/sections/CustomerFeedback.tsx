@@ -10,7 +10,7 @@ export const customerFeedbackItems = [
     src: "/images/feedback/customer-feedback-1.jpg",
     alt: "TryIPTV customer WhatsApp chat showing Xtream Codes API setup assistance on IPTV Smarters Pro",
     title: "IPTV Smarters Pro Setup",
-    highlight: "Xtream Codes API • Verified Working",
+    highlight: "Xtream Codes API • Setup Completed",
   },
   {
     id: "feedback-2",
@@ -37,7 +37,7 @@ export const customerFeedbackItems = [
     id: "feedback-5",
     src: "/images/feedback/customer-feedback-5.jpg",
     alt: "TryIPTV customer WhatsApp conversation about streaming setup and playback",
-    title: "Stream Stability & Speed",
+    title: "Streaming Setup Feedback",
     highlight: "Stream Setup Feedback",
   },
 ];
@@ -48,9 +48,9 @@ export function CustomerFeedback() {
       <Container>
         <SectionHeader
           align="left"
-          title="Real Customer Support & Activation Proof"
-          subtitle="Genuine WhatsApp conversations with active TryIPTV subscribers showing account setup, credential delivery, and player assistance."
-          eyebrow="Verified Customer Proof"
+          title="Customer Support Conversations"
+          subtitle="WhatsApp conversations with TryIPTV customers showing account setup, credential delivery, and player assistance. Personal details are blurred."
+          eyebrow="Customer Support"
         />
 
         {/* Visitor-controlled row instead of an auto-scrolling marquee: each screenshot appears once and can be read at the visitor's pace. */}

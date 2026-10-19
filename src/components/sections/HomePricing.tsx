@@ -84,7 +84,7 @@ export function HomePricing() {
         <SectionHeader
           eyebrow="Prepaid Subscriptions"
           title="TryIPTV Subscription Plans"
-          subtitle="Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming."
+          subtitle="Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every plan includes the same service and 2 simultaneous connections; only the duration changes."
         />
 
         <div className="mx-auto grid max-w-md grid-cols-1 gap-4 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
@@ -157,14 +157,18 @@ export function HomePricing() {
         </div>
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-muted-foreground">
-          Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
+          Choosing a plan opens WhatsApp, where support sends payment instructions. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent. See the{" "}
+          <Link href="/refund-policy" className="font-medium text-foreground underline underline-offset-4 hover:text-primary">
+            refund policy
+          </Link>
+          .
         </p>
 
         <div className="mt-6 flex flex-col items-center justify-center gap-x-8 gap-y-1 text-sm sm:flex-row">
           <p className="inline-flex min-h-11 flex-wrap items-center justify-center gap-x-1.5 text-muted-foreground">
             Want the full plan comparison?
             <Link href="/pricing" className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline">
-              Compare all plans <ArrowRight className="size-4" aria-hidden />
+              Compare plan prices and savings <ArrowRight className="size-4" aria-hidden />
             </Link>
           </p>
           <Link href="/iptv-free-trial" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-muted-foreground hover:text-foreground hover:underline">

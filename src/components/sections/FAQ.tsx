@@ -57,7 +57,7 @@ const homepageFaqs: FaqItem[] = [
   {
     question: "What is TryIPTV?",
     answer:
-      'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself.',
+      'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself. New to IPTV? <a href="/guides/what-is-iptv" class="text-primary hover:underline">Read what IPTV is</a>.',
   },
   {
     question: "Does TryIPTV offer a free trial?",
@@ -142,9 +142,15 @@ export function FAQ() {
                 align="left"
                 eyebrow="Support, clarified"
                 title="Frequently Asked Questions"
-                subtitle="Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us."
-                className="mb-6 sm:mb-8 lg:mb-8"
+                className="mb-4 sm:mb-4 lg:mb-4"
               />
+              <p className="mb-6 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground sm:mb-8 sm:text-[16.5px]">
+                Quick answers about the service. See{" "}
+                <Link href="/faq" className="font-semibold text-primary hover:underline">all IPTV FAQs</Link>{" "}
+                or{" "}
+                <Link href="/help" className="font-semibold text-primary hover:underline">troubleshooting guides</Link>{" "}
+                for more.
+              </p>
 
               <div className="rounded-2xl border border-white/[0.07] bg-card p-1.5">
                 <ul className="divide-y divide-white/[0.06]">
@@ -191,22 +197,23 @@ export function FAQ() {
                 <AccordionItem
                   key={faq.question}
                   value={`item-${i}`}
-                  className="border-b border-white/[0.07]"
+                  className="border-b border-white/[0.07] [&>[role=region][data-state=closed]]:hidden"
                 >
                   <AccordionTrigger className="gap-3.5 py-3 sm:py-3.5 text-left hover:no-underline group">
                     <span className="flex items-start gap-3.5 sm:gap-5">
+                      {/* The number is CSS-generated so it stays out of the heading text. */}
                       <span
                         aria-hidden
-                        className="mt-0.5 font-mono text-xs sm:text-sm font-semibold text-muted-foreground/60 tabular-nums group-data-[state=open]:text-primary transition-colors shrink-0"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
+                        data-n={String(i + 1).padStart(2, "0")}
+                        className="mt-0.5 font-mono text-xs sm:text-sm font-semibold text-muted-foreground/60 tabular-nums group-data-[state=open]:text-primary transition-colors shrink-0 before:content-[attr(data-n)]"
+                      />
                       <span className="font-headline text-[15.5px] sm:text-[16.5px] font-semibold text-foreground/90 transition-colors group-hover:text-foreground group-data-[state=open]:text-foreground leading-snug">
                         {faq.question}
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
+                  {/* forceMount keeps closed answers in the HTML (hidden until opened) so they are crawlable. */}
+                  <AccordionContent forceMount className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
                     <span
                       dangerouslySetInnerHTML={{
                         __html: faq.answer.includes("support@tryiptv.com")

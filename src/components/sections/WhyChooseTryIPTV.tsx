@@ -1,26 +1,35 @@
-import { Tv, Zap, Smartphone, CalendarCheck } from "lucide-react";
+import Link from "next/link";
+import type React from "react";
+import { KeyRound, Zap, Smartphone, CalendarCheck } from "lucide-react";
 import { Container } from "../shared/Container";
 import { Section } from "../shared/Section";
 import { SectionHeader } from "../shared/SectionHeader";
 
-const benefits = [
-  {
-    icon: Tv,
-    title: "Live TV & Sports",
-    description:
-      "25,000+ live channels across supported regions and categories, with EPG information where available.",
-  },
-  {
-    icon: Zap,
-    title: "Movies & TV Shows",
-    description:
-      "120,000+ on-demand movies and TV shows across supported devices.",
-  },
+const benefits: { icon: typeof Zap; title: string; description: React.ReactNode }[] = [
   {
     icon: Smartphone,
     title: "2 Simultaneous Connections",
     description:
       "Use the service across supported devices with up to two concurrent streams.",
+  },
+  {
+    icon: KeyRound,
+    title: "Xtream Codes & M3U Access",
+    description: (
+      <>
+        Use your login with the{" "}
+        <Link href="/players" className="font-semibold text-primary hover:underline">
+          compatible IPTV players
+        </Link>{" "}
+        you prefer: Xtream Codes (server, username, password) or an M3U playlist URL.
+      </>
+    ),
+  },
+  {
+    icon: Zap,
+    title: "Activation in 5–15 Minutes",
+    description:
+      "Login details are typically delivered within 5–15 minutes after confirmation, for paid plans and the free trial.",
   },
   {
     icon: CalendarCheck,
@@ -38,7 +47,7 @@ export function WhyChooseTryIPTV() {
           align="left"
           eyebrow="Why TryIPTV"
           title="Why Viewers Choose TryIPTV"
-          subtitle="An IPTV service built around extensive channel coverage, HD & 4K streaming, and transparent prepaid plans."
+          subtitle="An IPTV service built around extensive channel coverage, standard player formats, fast activation, and transparent prepaid plans."
         />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">

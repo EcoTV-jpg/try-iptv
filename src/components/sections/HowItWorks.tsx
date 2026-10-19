@@ -27,10 +27,15 @@ const steps: Step[] = [
         title: "Set Up Your Device",
         description: (
           <>
-            Enter your credentials into your preferred IPTV player using our universal{" "}
-            <Link href="/setup" className="font-semibold text-primary hover:underline">
-              IPTV setup guide.
+            Install a{" "}
+            <Link href="/players" className="font-semibold text-primary hover:underline">
+              compatible IPTV player
             </Link>
+            , enter your Xtream Codes or M3U details, then follow the{" "}
+            <Link href="/setup" className="font-semibold text-primary hover:underline">
+              universal IPTV setup guide
+            </Link>
+            .
           </>
         )
     }
