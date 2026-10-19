@@ -1,13 +1,37 @@
 import { unstable_cache as cache } from 'next/cache';
 import { generateBreadcrumbSchema, generateServiceSchema } from '@/lib/schema';
-import type { BreadcrumbList, Service } from 'schema-dts';
+import type { BreadcrumbList, Service, WebPage } from 'schema-dts';
 import { siteConfig } from '@/lib/site-config';
+
+export const TRIAL_PAGE_TITLE = "IPTV Free Trial: 24-Hour Test, No Credit Card | TryIPTV";
+export const TRIAL_PAGE_DESCRIPTION =
+  "Request a free 24-hour IPTV trial with no credit card. Get Xtream Codes or M3U login details in about 5–15 minutes and test channels, EPG and your player.";
 
 export const trialFaqs = [
   {
     question: "How long is the TryIPTV free trial?",
     answer:
       "The trial provides access for 24 consecutive hours from the time your credentials are confirmed and generated.",
+  },
+  {
+    question: "Is there a 48-hour or 72-hour (3-day) free trial?",
+    answer:
+      "No. The TryIPTV free trial lasts 24 hours. We do not offer a 48-hour, 72-hour or 3-day trial.",
+  },
+  {
+    question: "When do the 24 hours start?",
+    answer:
+      "When your trial credentials are activated, not when you send the request. Request the trial when you are ready to test.",
+  },
+  {
+    question: "What is an IPTV test line?",
+    answer:
+      "It is another name for trial login details: an Xtream Codes login (server URL, username and password) or an M3U playlist URL that you enter in a compatible IPTV player. It expires automatically 24 hours after activation.",
+  },
+  {
+    question: "Can I request more than one free trial?",
+    answer:
+      "No. The Terms & Conditions allow one trial per household or user.",
   },
   {
     question: "Is the IPTV trial really free?",
@@ -81,7 +105,7 @@ export const getIptvFreeTrialPageData = cache(
       providerName: "TryIPTV",
       name: "24-Hour IPTV Free Trial",
       description:
-        "24-hour free trial of TryIPTV to evaluate available live TV and on-demand viewing on a compatible device. No credit card required.",
+        "Free 24-hour trial of TryIPTV, requested on WhatsApp, to test live TV and on-demand viewing on your own device and IPTV player. $0, no credit card required.",
       offers: {
         "@type": "Offer",
         price: "0",
@@ -89,13 +113,25 @@ export const getIptvFreeTrialPageData = cache(
       },
     });
 
+    const webPageSchema: WebPage = {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: TRIAL_PAGE_TITLE,
+      description: TRIAL_PAGE_DESCRIPTION,
+      isPartOf: { '@id': `${baseUrl}/#website` },
+      about: { '@id': `${baseUrl}/#organization` },
+    };
+
     return {
       breadcrumbSchema,
+      webPageSchema: { '@context': 'https://schema.org', ...webPageSchema },
       serviceSchema,
       trialFaqs,
     };
   },
-  ['iptv-free-trial-page-data'],
+  // Bump the version when the static data above changes: the data cache outlives rebuilds.
+  ['iptv-free-trial-page-data-v3'],
   {
     revalidate: 3600,
     tags: ['pages', 'iptv-free-trial-page'],
