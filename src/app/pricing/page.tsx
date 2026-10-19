@@ -12,9 +12,9 @@ import { getPricingPageData } from "@/lib/data/pricing-page";
 import { plans } from "@/lib/site-data/pricing";
 
 export function generateMetadata(): Metadata {
-  const title = "TryIPTV Pricing & Subscription Plans";
+  const title = "IPTV Pricing Plans from $16 | TryIPTV";
   const description =
-    "Compare TryIPTV prepaid plans from $16 to $90. Choose 1, 3, 6, or 12 months with 2 simultaneous connections, no automatic renewal, and a 24-hour free trial.";
+    "TryIPTV prepaid plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, or $90 for 12 months. Every plan includes 2 simultaneous connections, does not renew automatically, and can be tested with a 24-hour free trial.";
 
   return {
     ...generatePageMetadata({ title, description, canonical: "/pricing" }),
@@ -44,6 +44,17 @@ const planSavingsExact: Record<string, string | null> = {
   "6-months": "Save $36 vs six 1-month purchases",
   "12-months": "Save $102 vs twelve 1-month purchases",
 };
+
+const includedFeatures = [
+  "4K Ultra HD Streaming Quality",
+  "25,000+ Live Channels Worldwide",
+  "120,000+ Movies & TV Shows",
+  "PPV Events Included",
+  "VOD Access",
+  "Smart EPG & Catch-Up TV",
+  "Customer Support",
+  "Multi-Device Compatibility",
+] as const;
 
 const planBestFor: Record<string, string> = {
   "1-month": "Lowest commitment",
@@ -128,23 +139,18 @@ const pricingWorkPoints = [
 const orderSteps = [
   {
     step: "01",
-    title: "Choose Your Plan",
-    desc: "Select a 1, 3, 6, or 12-month prepaid duration based on your viewing plans.",
+    title: "Choose your plan",
+    desc: "Select 1, 3, 6, or 12 months. Every plan includes 2 simultaneous connections.",
   },
   {
     step: "02",
-    title: "Request Payment Instructions",
-    desc: "Click your chosen plan to connect with support and receive the current payment instructions for your order.",
+    title: "Pay once",
+    desc: "Support sends payment instructions for cryptocurrency, PayPal, or Stripe. The payment is prepaid and does not renew automatically.",
   },
   {
     step: "03",
-    title: "Complete One-Time Payment",
-    desc: "Complete the one-time prepaid payment. There is no recurring subscription or automatic renewal.",
-  },
-  {
-    step: "04",
-    title: "Receive Account Credentials",
-    desc: "Credentials and setup details are typically delivered within 5–15 minutes after payment confirmation.",
+    title: "Start streaming",
+    desc: "Login details are typically delivered within 5–15 minutes after payment is confirmed. Use them in a compatible IPTV player on your device.",
   },
 ] as const;
 
@@ -163,8 +169,8 @@ export default async function IPTVSubscription() {
           <Breadcrumb items={[{ label: "Pricing" }]} align="center" />
           <SectionHeader
             as="h1"
-            eyebrow="Prepaid Subscription Pricing"
-            title="TryIPTV Pricing & Subscription Plans"
+            eyebrow="IPTV Subscription Plans"
+            title="IPTV Pricing Plans from $16"
             subtitle="TryIPTV prepaid plans cost $16 for 1 month, $39 for 3 months, $60 for 6 months, or $90 for 12 months. All paid plans include two simultaneous connections and do not renew automatically. Longer prepaid terms reduce the equivalent monthly cost."
           />
           <div className="mt-5 flex flex-wrap justify-center gap-2 text-xs font-semibold sm:mt-6 sm:text-sm">
@@ -184,9 +190,9 @@ export default async function IPTVSubscription() {
       <Section id="pricing-plans" className="bg-[#050706] py-10 sm:py-14">
         <Container>
           <SectionHeader
-            eyebrow="Prepaid IPTV Plans"
-            title="Compare TryIPTV Plans"
-            subtitle="Choose the prepaid duration that best matches your viewing needs. Each plan is paid upfront and does not renew automatically."
+            eyebrow="Choose a prepaid term"
+            title="Choose Your IPTV Plan"
+            subtitle="Plans start at $16 for 1 month. Every plan includes the same service and 2 simultaneous connections. Only the prepaid term and equivalent monthly cost change."
           />
 
           <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
@@ -203,16 +209,17 @@ export default async function IPTVSubscription() {
                       : "border-white/[0.08]"
                   }`}
                 >
-                  {isLowestMonthly && (
-                    <div className="absolute right-4 top-4 rounded-md border border-primary/25 bg-primary/[0.08] px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">
-                      Lowest Monthly Equivalent
-                    </div>
-                  )}
-
                   <div>
-                    <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
-                      {String(index + 1).padStart(2, "0")} / Plan
-                    </p>
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
+                        {String(index + 1).padStart(2, "0")} / Plan
+                      </p>
+                      {isLowestMonthly && (
+                        <span className="shrink-0 rounded-md border border-primary/25 bg-primary/[0.08] px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">
+                          Lowest Monthly
+                        </span>
+                      )}
+                    </div>
                     <h3 className="pt-2 font-headline text-xl font-bold tracking-tight text-foreground">
                       {plan.name}
                     </h3>
@@ -240,13 +247,25 @@ export default async function IPTVSubscription() {
                     </div>
                   </div>
 
+                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-[13.5px] leading-relaxed text-muted-foreground">
+                    {includedFeatures.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2.5">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
                   <div className="pt-6">
                     <Button
                       asChild
                       className="h-12 min-h-[48px] w-full rounded-xl text-[15px] font-semibold"
                       variant={isLowestMonthly ? "default" : "outline"}
                     >
-                      <Link href={plan.checkoutUrl}>Choose {plan.name}</Link>
+                      <Link href={plan.checkoutUrl}>
+                        Get this plan
+                        <span className="sr-only"> — {plan.name}</span>
+                      </Link>
                     </Button>
                   </div>
                 </article>
@@ -308,7 +327,7 @@ export default async function IPTVSubscription() {
       <Section className="border-t border-white/[0.06] py-10 sm:py-14">
         <Container>
           <SectionHeader
-            eyebrow="Included Features"
+            eyebrow="What you get"
             title="What Is Included With Every Paid Plan?"
             subtitle="Every prepaid subscription includes the same core service, format access, and connection allowance."
           />
@@ -369,12 +388,12 @@ export default async function IPTVSubscription() {
       <Section variant="alt" className="border-t border-white/[0.06] bg-[#070a08] py-10 sm:py-14">
         <Container>
           <SectionHeader
-            eyebrow="Order Process"
-            title="How to Buy a Plan"
-            subtitle="Four straightforward steps take you from plan selection to streaming."
+            eyebrow="Order process"
+            title="How does TryIPTV work?"
+            subtitle="Choose a plan, pay once, and start with the login details support sends. Credentials are typically delivered within 5–15 minutes after payment is confirmed."
           />
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {orderSteps.map((s) => (
               <div key={s.step} className="rounded-xl border border-white/[0.08] bg-card p-5">
                 <span className="font-mono text-xs font-bold text-primary">{s.step}</span>
