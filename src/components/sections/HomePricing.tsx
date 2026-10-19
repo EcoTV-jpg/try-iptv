@@ -70,7 +70,7 @@ const INCLUDED_FEATURES = [
   "4K Ultra HD Streaming Quality",
   "25,000+ Live Channels Worldwide",
   "120,000+ Movies & TV Shows",
-  "Premium PPV Events Included",
+  "PPV Events Included",
   "VOD Access",
   "Smart EPG & Catch-Up TV",
   "Customer Support",
@@ -143,25 +143,22 @@ export function HomePricing() {
                   </a>
                 </Button>
               </div>
+
+              <ul className="mt-6 space-y-2.5 border-t border-white/[0.07] pt-6 text-sm text-muted-foreground">
+                {INCLUDED_FEATURES.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2.5">
+                    <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
 
-        {/* Shared inclusions are listed once instead of repeated inside every card. */}
-        <div className="mt-6 rounded-2xl border border-white/[0.07] bg-card p-6">
-          <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
-            <span className="font-semibold text-foreground">Included with every plan.</span>{" "}
-            Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
-          </p>
-          <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-3 text-sm text-foreground/90 sm:grid-cols-2 lg:grid-cols-4">
-            {INCLUDED_FEATURES.map((feature) => (
-              <li key={feature} className="flex items-start gap-2.5">
-                <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-muted-foreground">
+          Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
+        </p>
 
         <div className="mt-6 flex flex-col items-center justify-center gap-x-8 gap-y-1 text-sm sm:flex-row">
           <p className="inline-flex min-h-11 flex-wrap items-center justify-center gap-x-1.5 text-muted-foreground">
