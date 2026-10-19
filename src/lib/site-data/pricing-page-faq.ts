@@ -1,4 +1,4 @@
-export const pricingPageFaqs = [
+export const pricingPageFaqs: { question: string; answer: string; link?: { href: string; label: string } }[] = [
   {
     question: "How much does TryIPTV cost?",
     answer:
@@ -53,5 +53,11 @@ export const pricingPageFaqs = [
     question: "Is there a refund policy?",
     answer:
       "Yes. Technical issues that support cannot resolve may qualify under our 7-day refund policy. Review our refund policy page for specific terms and conditions.",
+  },
+  {
+    question: "Why does the TV guide show \"No Information\"?",
+    answer:
+      "That usually means the player has not loaded the EPG yet or the guide source needs refreshing.",
+    link: { href: "/help/epg-not-working", label: "Follow the EPG troubleshooting guide" },
   },
 ];

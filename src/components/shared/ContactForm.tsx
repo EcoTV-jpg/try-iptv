@@ -4,6 +4,7 @@
 import { useEffect, useActionState, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 import { submitContactForm } from '@/app/actions';
+import { Turnstile } from '@/components/shared/Turnstile';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -57,35 +58,35 @@ export function ContactForm() {
       )}
       <div className="space-y-2">
         <Label htmlFor="name-form">Name</Label>
-        <Input id="name-form" name="name" placeholder="Your Name" />
+        <Input id="name-form" autoComplete="name" aria-invalid={!!state.errors?.name} aria-describedby={state.errors?.name ? 'name-form-error' : undefined} name="name" defaultValue={state.fields?.name} placeholder="Your Name" />
         {state.errors?.name && (
-          <p className="text-sm text-destructive">{state.errors.name[0]}</p>
+          <p id="name-form-error" role="alert" className="text-sm text-destructive">{state.errors.name[0]}</p>
         )}
       </div>
       <div className="space-y-2">
         <Label htmlFor="email-form">Email</Label>
         <Input
           id="email-form"
+          autoComplete="email"
+          aria-invalid={!!state.errors?.email}
+          aria-describedby={state.errors?.email ? 'email-form-error' : undefined}
           name="email"
+          defaultValue={state.fields?.email}
           type="email"
           placeholder="your@email.com"
         />
         {state.errors?.email && (
-          <p className="text-sm text-destructive">{state.errors.email[0]}</p>
+          <p id="email-form-error" role="alert" className="text-sm text-destructive">{state.errors.email[0]}</p>
         )}
       </div>
       <div className="space-y-2">
         <Label htmlFor="message-form">Message</Label>
-        <Textarea id="message-form" name="message" placeholder="How can we help you?" />
+        <Textarea id="message-form" aria-invalid={!!state.errors?.message} aria-describedby={state.errors?.message ? 'message-form-error' : undefined} name="message" defaultValue={state.fields?.message} placeholder="How can we help you?" />
         {state.errors?.message && (
-          <p className="text-sm text-destructive">{state.errors.message[0]}</p>
+          <p id="message-form-error" role="alert" className="text-sm text-destructive">{state.errors.message[0]}</p>
         )}
       </div>
-      <div
-        className="cf-turnstile"
-        data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-        data-theme="auto"
-      />
+      <Turnstile resetSignal={state} />
       <SubmitButton />
     </form>
   );

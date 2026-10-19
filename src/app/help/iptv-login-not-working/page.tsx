@@ -37,6 +37,8 @@ const title = "IPTV Login Not Working? How to Diagnose Authentication Errors";
 const description =
   "A systematic troubleshooting guide to diagnose IPTV login failures, understand HTTP 401 and 403 response codes, verify server URLs, and restore access.";
 const canonical = "/help/iptv-login-not-working";
+// Shorter search-result title; `title` stays the article headline.
+const seoTitle = "IPTV Login Not Working? Diagnose Authentication Errors";
 const modifiedDate = "2026-10-06";
 
 /**
@@ -47,12 +49,12 @@ const modifiedDate = "2026-10-06";
 export function generateMetadata(): Metadata {
   return {
     ...generatePageMetadata({
-      title,
+      title: seoTitle,
       description,
       canonical,
     }),
     title: {
-      absolute: title,
+      absolute: seoTitle,
     },
   };
 }

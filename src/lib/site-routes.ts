@@ -89,6 +89,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/help/epg-not-working',        section: 'help', indexable: true,  lastModified: '2026-10-05' },
 
   // ── Utility ───────────────────────────────────────────────────────────────
+  { path: '/about',      section: 'utility', indexable: true, lastModified: '2026-10-19' },
   { path: '/faq',        section: 'utility', indexable: true, lastModified: '2026-10-04' },
   { path: '/contact-us', section: 'utility', indexable: true, lastModified: '2026-10-04' },
   { path: '/blog',       section: 'utility', indexable: false },

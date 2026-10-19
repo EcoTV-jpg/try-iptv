@@ -14,10 +14,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BlurFade } from "@/components/velora/blur-fade";
-import { SpotlightCard } from "@/components/velora/spotlight-card";
 import { Container } from "../shared/Container";
 import { Section } from "../shared/Section";
+import { SectionHeader } from "../shared/SectionHeader";
 import { cn } from "@/lib/utils";
 
 export interface FaqItem {
@@ -58,7 +57,7 @@ const homepageFaqs: FaqItem[] = [
   {
     question: "What is TryIPTV?",
     answer:
-      'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself.',
+      'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself. New to IPTV? <a href="/guides/what-is-iptv" class="text-primary hover:underline">Read what IPTV is</a>, or read <a href="/about" class="text-primary hover:underline">more about TryIPTV</a>, including how ordering, the free trial and refunds work.',
   },
   {
     question: "Does TryIPTV offer a free trial?",
@@ -133,23 +132,27 @@ export function FaqList({ items, className }: FaqListProps) {
  */
 export function FAQ() {
   return (
-    <Section id="faq" className="bg-[#050706] py-14 sm:py-18 lg:py-20 border-t border-white/[0.06]">
+    <Section id="faq" className="border-t border-white/[0.07]">
       <Container>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Left Column: Heading & Support Channels */}
           <div className="lg:col-span-5">
-            <BlurFade className="lg:sticky lg:top-24">
-              <p className="text-xs font-mono font-bold uppercase tracking-[0.08em] text-primary">
-                Support, clarified
-              </p>
-              <h2 className="mt-2.5 font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[38px] leading-tight">
-                Frequently Asked Questions
-              </h2>
-              <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-foreground/90">
-                Have questions? We&apos;ve got answers. If you can&apos;t find what you&apos;re looking for, feel free to contact us.
+            <div className="lg:sticky lg:top-24">
+              <SectionHeader
+                align="left"
+                eyebrow="Support, clarified"
+                title="Frequently Asked Questions"
+                className="mb-4 sm:mb-4 lg:mb-4"
+              />
+              <p className="mb-6 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground sm:mb-8 sm:text-[16.5px]">
+                Quick answers about the service. See{" "}
+                <Link href="/faq" className="font-semibold text-primary hover:underline">all IPTV FAQs</Link>{" "}
+                or{" "}
+                <Link href="/help" className="font-semibold text-primary hover:underline">troubleshooting guides</Link>{" "}
+                for more.
               </p>
 
-              <SpotlightCard className="mt-6 p-1.5 rounded-2xl border border-white/[0.07] bg-[#07080a]">
+              <div className="rounded-2xl border border-white/[0.07] bg-card p-1.5">
                 <ul className="divide-y divide-white/[0.06]">
                   {CONTACTS.map(({ icon: Icon, label, detail, href, isExternal }) => {
                     const Component = isExternal ? "a" : Link;
@@ -179,12 +182,12 @@ export function FAQ() {
                     );
                   })}
                 </ul>
-              </SpotlightCard>
-            </BlurFade>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Numbered Accordion */}
-          <BlurFade delay={0.1} className="lg:col-span-7">
+          <div className="lg:col-span-7">
             <Accordion
               type="multiple"
               defaultValue={["item-0"]}
@@ -194,22 +197,23 @@ export function FAQ() {
                 <AccordionItem
                   key={faq.question}
                   value={`item-${i}`}
-                  className="border-b border-white/[0.07]"
+                  className="border-b border-white/[0.07] [&>[role=region][data-state=closed]]:hidden"
                 >
                   <AccordionTrigger className="gap-3.5 py-3 sm:py-3.5 text-left hover:no-underline group">
                     <span className="flex items-start gap-3.5 sm:gap-5">
+                      {/* The number is CSS-generated so it stays out of the heading text. */}
                       <span
                         aria-hidden
-                        className="mt-0.5 font-mono text-xs sm:text-sm font-semibold text-muted-foreground/60 tabular-nums group-data-[state=open]:text-primary transition-colors shrink-0"
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
+                        data-n={String(i + 1).padStart(2, "0")}
+                        className="mt-0.5 font-mono text-xs sm:text-sm font-semibold text-muted-foreground/60 tabular-nums group-data-[state=open]:text-primary transition-colors shrink-0 before:content-[attr(data-n)]"
+                      />
                       <span className="font-headline text-[15.5px] sm:text-[16.5px] font-semibold text-foreground/90 transition-colors group-hover:text-foreground group-data-[state=open]:text-foreground leading-snug">
                         {faq.question}
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
+                  {/* forceMount keeps closed answers in the HTML (hidden until opened) so they are crawlable. */}
+                  <AccordionContent forceMount className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
                     <span
                       dangerouslySetInnerHTML={{
                         __html: faq.answer.includes("support@tryiptv.com")
@@ -224,7 +228,7 @@ export function FAQ() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </BlurFade>
+          </div>
         </div>
       </Container>
     </Section>

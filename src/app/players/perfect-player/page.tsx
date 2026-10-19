@@ -10,9 +10,11 @@ import { SITE_URL, generateMetadata as generatePageMetadata } from "@/lib/site-c
 const title = "Perfect Player IPTV Guide: Legacy Setup, M3U, EPG & Migration";
 const description = "Learn how to configure legacy Perfect Player by Niklabs with M3U and EPG, troubleshoot playback issues, and migrate safely to a maintained IPTV player.";
 const canonical = "/players/perfect-player";
+// Shorter search-result title; `title` stays the article headline.
+const seoTitle = "Perfect Player IPTV: Legacy Setup, EPG & Migration";
 
 export function generateMetadata(): Metadata {
-  return { ...generatePageMetadata({ title, description, canonical }), title: { absolute: title } };
+  return { ...generatePageMetadata({ title: seoTitle, description, canonical }), title: { absolute: seoTitle } };
 }
 
 const articleSchema = generateArticleSchema({

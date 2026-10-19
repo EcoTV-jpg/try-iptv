@@ -27,7 +27,7 @@ export const trialFaqs = [
   {
     question: "Which devices can I use for the trial?",
     answer:
-      "You can test on supported smart TVs, streaming media players, and personal computers, including Firestick, Android TV, Samsung TV, LG TV, Apple TV, Roku, Windows, Mac, and MAG devices.",
+      "You can test on supported smart TVs, streaming media players, and personal computers, including Firestick, Android TV, Samsung TV, LG TV, Apple TV, Windows, Mac, MAG, and Chromecast with Google TV. Roku works through AirPlay or screen mirroring from another device.",
   },
   {
     question: "Can I use TiviMate?",
@@ -95,7 +95,8 @@ export const getIptvFreeTrialPageData = cache(
       trialFaqs,
     };
   },
-  ['iptv-free-trial-page-data'],
+  // Bump the version when the static data above changes: the data cache outlives rebuilds.
+  ['iptv-free-trial-page-data-v2'],
   {
     revalidate: 3600,
     tags: ['pages', 'iptv-free-trial-page'],

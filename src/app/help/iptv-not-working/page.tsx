@@ -42,6 +42,9 @@ const title = "IPTV Not Working? Start With This Troubleshooting Checklist";
 const description =
   "A master troubleshooting checklist to isolate why your IPTV is not working: authentication errors, playlist failures, buffering streams, blank guides, or app crashes.";
 const canonical = "/help/iptv-not-working";
+// Shorter search-result description; `description` stays in the article schema.
+const metaDescription =
+  "A troubleshooting checklist to isolate why IPTV is not working: login errors, playlist failures, buffering streams, blank guides, or app crashes.";
 const modifiedDate = "2026-10-05";
 
 /**
@@ -53,7 +56,7 @@ export function generateMetadata(): Metadata {
   return {
     ...generatePageMetadata({
       title,
-      description,
+      description: metaDescription,
       canonical,
     }),
     title: {

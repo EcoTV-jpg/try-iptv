@@ -38,6 +38,8 @@ const title = "How to Troubleshoot and Fix IPTV Buffering: Practical Diagnostic 
 const description =
   "A systematic troubleshooting guide to diagnose IPTV buffering, distinguish network starvation from decoder stutter, and stabilize your playback setup.";
 const canonical = "/help/iptv-buffering";
+// Shorter search-result title; `title` stays the article headline.
+const seoTitle = "How to Fix IPTV Buffering: A Practical Diagnostic Guide";
 const modifiedDate = "2026-10-11";
 
 /**
@@ -48,12 +50,12 @@ const modifiedDate = "2026-10-11";
 export function generateMetadata(): Metadata {
   return {
     ...generatePageMetadata({
-      title,
+      title: seoTitle,
       description,
       canonical,
     }),
     title: {
-      absolute: title,
+      absolute: seoTitle,
     },
   };
 }

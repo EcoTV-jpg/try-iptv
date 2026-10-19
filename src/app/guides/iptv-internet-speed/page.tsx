@@ -32,18 +32,20 @@ const title = "IPTV Internet Speed: How Much Bandwidth Do You Need? | TryIPTV";
 const description =
   "Learn how much internet speed IPTV needs for HD, Full HD and 4K streaming, how to plan bandwidth for two streams, and why connection stability matters.";
 const canonical = "/guides/iptv-internet-speed";
+// Shorter search-result title; `title` stays the article headline.
+const seoTitle = "IPTV Internet Speed: How Much Bandwidth Do You Need?";
 const modifiedDate = "2026-10-12";
 
 export function generateMetadata(): Metadata {
   return {
     ...generatePageMetadata({
-      title,
+      title: seoTitle,
       description,
       canonical,
       noIndex: false,
     }),
     title: {
-      absolute: title,
+      absolute: seoTitle,
     },
   };
 }

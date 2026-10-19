@@ -44,9 +44,27 @@ const quickFacts = [
   ["Payment details required", "None (no credit card or billing information requested)"],
   ["Typical activation time", "5–15 minutes after request confirmation"],
   ["Access formats", "Xtream Codes (Server URL, Username, Password) and M3U playlist URL"],
-  ["Supported devices", "Firestick, Android TV, Smart TVs (Samsung, LG), Apple TV, Roku, Windows, Mac, MAG"],
+  [
+    "Supported devices",
+    <>
+      Firestick, Android TV, Chromecast with Google TV, Smart TVs (Samsung, LG), Apple TV, Windows, Mac, MAG, and Roku{" "}
+      <Link href="/devices/roku-iptv" className="font-semibold text-primary underline underline-offset-4">
+        via AirPlay or screen mirroring
+      </Link>
+    </>,
+  ],
   ["Simultaneous connections", "Confirmed when trial credentials are issued (Paid plans include two simultaneous connections)"],
   ["After the trial", "Access expires automatically. The trial does not automatically renew or convert into a paid subscription."],
+  [
+    "Trials per household",
+    <>
+      One trial per household or user (
+      <Link href="/terms-conditions" className="font-semibold text-primary underline underline-offset-4">
+        Terms &amp; Conditions
+      </Link>
+      )
+    </>,
+  ],
 ] as const;
 
 const testingChecklist = [
@@ -74,7 +92,7 @@ const steps = [
   {
     step: "03",
     title: "Configure Your Player",
-    desc: "Open your IPTV app, enter the issued credentials, and allow the playlist and guide data to load. Follow the Universal IPTV Setup Guide if you need step-by-step assistance.",
+    desc: "Open your IPTV app, enter the issued credentials, and allow the playlist and guide data to load.",
   },
   {
     step: "04",
@@ -87,7 +105,7 @@ const coreRequirements = [
   {
     title: "Compatible Streaming Device",
     description:
-      "You need a supported streaming device, smart TV, or computer connected to your home network. Supported systems include Amazon Fire TV devices, Android TV, Google TV, Samsung Smart TVs, LG Smart TVs, Apple TV, Roku, Windows, and Mac.",
+      "You need a supported streaming device, smart TV, or computer connected to your home network. Supported systems include Amazon Fire TV devices, Android TV, Google TV, Samsung Smart TVs, LG Smart TVs, Apple TV, Windows, and Mac, plus Roku via AirPlay or screen mirroring.",
   },
   {
     title: "IPTV Player Application",
@@ -125,6 +143,9 @@ const deviceGuides = [
   { name: "Apple TV", href: "/devices/apple-tv-iptv", note: "Setup steps for compatible media players on Apple TV (tvOS)." },
   { name: "Windows PC", href: "/devices/windows-iptv", note: "Setup guide for IPTV player software on Windows computers." },
   { name: "Apple Mac", href: "/devices/mac-iptv", note: "Configuration instructions for compatible players on macOS." },
+  { name: "Google Chromecast", href: "/devices/chromecast-iptv", note: "Player apps on Chromecast with Google TV, or casting to older Chromecast models." },
+  { name: "Roku", href: "/devices/roku-iptv", note: "Streaming to Roku through AirPlay 2 or screen mirroring from another device." },
+  { name: "MAG Box", href: "/devices/mag-box-iptv", note: "Portal URL and MAC address setup for Infomir MAG set-top boxes." },
 ] as const;
 
 const playerGuides = [
@@ -144,8 +165,8 @@ const troubleshootingLinks = [
 const planComparisonRows = [
   ["Cost", "$0", "From $16 (1 Month) to $90 (12 Months)"],
   ["Duration", "24 consecutive hours", "1, 3, 6, or 12 months prepaid"],
-  ["Credit card required", "No", "Current payment instructions are provided when ordering"],
-  ["Simultaneous connections", "Confirmed when trial is issued", "2 simultaneous connections included on all plans"],
+  ["Payment", "None", "Prepaid; payment instructions provided when ordering"],
+  ["Simultaneous connections", "Confirmed at issue", "2 simultaneous connections included on all plans"],
   ["Automatic renewal", "No", "No (prepaid plans do not auto-renew)"],
   ["Access format", "Xtream Codes / M3U", "Xtream Codes / M3U"],
   ["When access ends", "Service stops automatically", "Access expires at the end of the prepaid period"],
@@ -164,7 +185,7 @@ export default async function IptvFreeTrialPage() {
         <Container className="relative">
           <div className="mx-auto max-w-4xl text-center">
             <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
-            <p className="eyebrow mb-3">24-Hour Evaluation · $0 Cost · No Credit Card</p>
+            <p className="eyebrow mb-3">Try Before You Buy</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
               24-Hour IPTV Free Trial — Test TryIPTV Before You Pay
             </h1>
@@ -181,7 +202,8 @@ export default async function IptvFreeTrialPage() {
                 <Link href="/setup">View Setup Guide</Link>
               </Button>
             </div>
-            <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground">Opens WhatsApp — no payment details needed.</p>
+            <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-muted-foreground">
               <span>24-Hour Access</span>
               <span>$0 Cost</span>
               <span>No Credit Card</span>
@@ -198,7 +220,7 @@ export default async function IptvFreeTrialPage() {
             <SectionHeader
               eyebrow="Quick Overview"
               title="How the TryIPTV Free Trial Works"
-              subtitle="Key facts about testing the service before deciding on a paid plan."
+              subtitle="The trial gives you 24 hours of free access, issued over WhatsApp in about 5–15 minutes, to test TryIPTV on your own device and IPTV player."
             />
             <p className="text-base leading-7 text-muted-foreground sm:text-lg">
               The TryIPTV free trial provides temporary 24-hour access so you can evaluate stream playback, device compatibility, and available channels on your home network before spending money. Testing on your own device and home connection gives you the most realistic view of how the service works in your setup.
@@ -206,7 +228,7 @@ export default async function IptvFreeTrialPage() {
 
             <div className="mt-6 overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <caption className="sr-only">TryIPTV free trial details and specifications</caption>
                   <tbody className="divide-y divide-white/[0.06]">
                     {quickFacts.map(([label, value]) => (
@@ -237,7 +259,7 @@ export default async function IptvFreeTrialPage() {
 
             <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <caption className="sr-only">Trial testing priorities and checklist</caption>
                   <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
                     <tr>
@@ -449,7 +471,7 @@ export default async function IptvFreeTrialPage() {
 
             <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <caption className="sr-only">Comparison between free trial and paid subscription plans</caption>
                   <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
                     <tr>
@@ -479,9 +501,9 @@ export default async function IptvFreeTrialPage() {
                 When your 24 hours conclude, trial access expires and streams will stop loading. The trial does not automatically renew or convert into a paid subscription, and no cancellation request is required.
               </p>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                If you want to continue watching, review the options on our{" "}
+                If you want to continue watching,{" "}
                 <Link href="/pricing" className="font-semibold text-primary underline underline-offset-4">
-                  Plans &amp; Pricing Page
+                  compare prepaid plans
                 </Link>
                 . All subscriptions are prepaid upfront with no recurring billing.
               </p>
@@ -532,7 +554,7 @@ export default async function IptvFreeTrialPage() {
                 <details key={faq.question} className="group border-b border-white/[0.07] px-5 last:border-b-0 sm:px-7">
                   <summary className="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-4 py-4 text-left text-sm font-semibold text-foreground sm:text-base [&::-webkit-details-marker]:hidden">
                     {faq.question}
-                    <span className="text-primary transition-transform group-open:rotate-45">+</span>
+                    <span aria-hidden="true" className="text-primary transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <p className="pb-5 pr-6 text-sm leading-6 text-muted-foreground">{faq.answer}</p>
                 </details>
@@ -542,7 +564,7 @@ export default async function IptvFreeTrialPage() {
             <p className="mt-6 text-center text-sm text-muted-foreground">
               Need help with a specific issue?{" "}
               <Link href="/contact-us" className="font-semibold text-primary underline underline-offset-4">
-                Contact Support
+                Contact support
               </Link>
               .
             </p>
@@ -558,21 +580,15 @@ export default async function IptvFreeTrialPage() {
 
             <div className="space-y-4 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
               <p>
-                TryIPTV provides prepaid IPTV streaming access for compatible television, mobile, and desktop media players.
-              </p>
-              <p>
-                All paid plans operate strictly on a prepaid basis with no automatic renewal, and all paid subscriptions include two simultaneous connections. Current payment instructions are provided when ordering. We offer a 24-hour free trial so viewers can evaluate stream playback on their own hardware and network before buying.
+                TryIPTV is an IPTV service provider, not a player app: you watch through a compatible IPTV player on your own device. After the trial, paid plans are prepaid for 1, 3, 6, or 12 months with no automatic renewal.
               </p>
 
               <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-sm font-semibold">
                 <Link href="/pricing" className="text-primary hover:underline">
-                  Plans &amp; Pricing Page
-                </Link>
-                <Link href="/setup" className="text-primary hover:underline">
-                  Universal IPTV Setup Guide
+                  Compare prepaid plans
                 </Link>
                 <Link href="/contact-us" className="text-primary hover:underline">
-                  Contact Us Page
+                  Contact support
                 </Link>
                 <Link href="/terms-conditions" className="text-primary hover:underline">
                   Terms &amp; Conditions
@@ -586,9 +602,9 @@ export default async function IptvFreeTrialPage() {
             {/* Closing Call to Action */}
             <div className="mt-10 overflow-hidden rounded-lg border border-primary/25 bg-[#0b100d] p-7 text-center sm:p-9">
               <p className="eyebrow mb-2">Test Before You Pay</p>
-              <h3 className="font-headline text-2xl font-extrabold text-foreground sm:text-3xl">
+              <h2 className="font-headline text-2xl font-extrabold text-foreground sm:text-3xl">
                 Test TryIPTV Before You Pay
-              </h3>
+              </h2>
               <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground sm:text-base">
                 Request a 24-hour trial to evaluate channels, playback, and player compatibility on your own setup.
               </p>
