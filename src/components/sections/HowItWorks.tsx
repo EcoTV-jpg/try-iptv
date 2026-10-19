@@ -27,10 +27,15 @@ const steps: Step[] = [
         title: "Set Up Your Device",
         description: (
           <>
-            Enter your credentials into your preferred IPTV player using our universal{" "}
-            <Link href="/setup" className="font-semibold text-primary hover:underline">
-              IPTV setup guide.
+            Install a{" "}
+            <Link href="/players" className="font-semibold text-primary hover:underline">
+              compatible IPTV player
             </Link>
+            , enter your Xtream Codes or M3U details, then follow the{" "}
+            <Link href="/setup" className="font-semibold text-primary hover:underline">
+              universal IPTV setup guide
+            </Link>
+            .
           </>
         )
     }
@@ -38,37 +43,31 @@ const steps: Step[] = [
 
 export function HowItWorks() {
   return (
-    <Section id="how-it-works" className="bg-[#07080a] py-14 sm:py-18 lg:py-20">
+    <Section id="how-it-works" variant="alt" className="border-b-0">
       <Container>
         <SectionHeader
           align="left"
           title="How Do I Start With TryIPTV?"
           subtitle="Use your TryIPTV access details with a compatible IPTV player, then follow the setup guide for your device."
           eyebrow="Setup Process"
-          className="mb-8 sm:mb-10 max-w-2xl"
         />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
           {steps.map((step, i) => (
-            <div
-              key={i}
-              className="group relative flex flex-col justify-between rounded-2xl border border-white/[0.04] bg-[#050706]/70 p-5.5 sm:p-6 transition-all duration-200 hover:border-white/[0.12] hover:bg-[#07090b]"
-            >
-              <div>
-                <div className="mb-4 sm:mb-5 flex items-center justify-between">
-                  <div className="grid size-10 place-items-center rounded-xl border border-white/[0.07] bg-white/[0.025] text-foreground/80 transition-colors duration-200 group-hover:border-primary/30 group-hover:bg-primary/[0.08] group-hover:text-primary">
-                    <step.icon className="h-5 w-5" />
-                  </div>
-                  <span className="font-mono text-xl sm:text-2xl font-bold tracking-tight text-foreground/50 transition-colors duration-200 group-hover:text-foreground/85">
-                    0{i + 1}
-                  </span>
-                </div>
-                <h3 className="font-headline text-[17px] sm:text-[18px] font-semibold leading-snug text-foreground">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-[14px] sm:text-[14.5px] leading-relaxed text-muted-foreground/95">
-                  {step.description}
-                </p>
+            <div key={i} className="rounded-2xl border border-white/[0.07] bg-card p-6">
+              <div className="flex items-center justify-between">
+                <span className="grid size-10 place-items-center rounded-xl border border-white/[0.07] bg-white/[0.03] text-primary">
+                  <step.icon className="size-5" aria-hidden />
+                </span>
+                <span aria-hidden className="font-mono text-xs font-semibold tracking-[0.08em] text-muted-foreground">
+                  STEP 0{i + 1}
+                </span>
               </div>
+              <h3 className="mt-5 font-headline text-lg font-bold tracking-tight text-foreground">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>

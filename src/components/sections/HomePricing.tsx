@@ -1,214 +1,148 @@
-import { CheckIcon, SparklesIcon, ArrowRight } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BlurFade } from "@/components/velora/blur-fade";
-import { DotPattern } from "@/components/velora/grid-pattern";
 import { Container } from "../shared/Container";
+import { Section } from "../shared/Section";
+import { SectionHeader } from "../shared/SectionHeader";
 import { cn } from "@/lib/utils";
 
 const PLANS = [
   {
-    index: "01 / Plan",
     name: "1 Month",
-    price: 16,
-    suffix: "prepaid",
-    description: "Standard 1-month prepaid access",
-    monthlyEquivalent: null,
-    savings: null,
-    cta: "Choose 1 Month",
+    price: "$16",
+    monthlyEquivalent: "$16",
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%201%20Month%20IPTV%20plan.",
-    featured: false,
     badge: null,
-    features: [],
   },
   {
-    index: "02 / Plan",
     name: "3 Months",
-    price: 39,
-    suffix: "prepaid",
-    description: null,
-    monthlyEquivalent: "$13.00/mo",
-    savings: "Save 19%",
-    cta: "Choose 3 Months",
+    price: "$39",
+    monthlyEquivalent: "$13",
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%203%20Months%20IPTV%20plan.",
-    featured: false,
     badge: null,
-    features: [],
   },
   {
-    index: "03 / Plan",
     name: "6 Months",
-    price: 60,
-    suffix: "prepaid",
-    description: null,
-    monthlyEquivalent: "$10.00/mo",
-    savings: "Save 38%",
-    cta: "Choose 6 Months",
+    price: "$60",
+    monthlyEquivalent: "$10",
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%206%20Months%20IPTV%20plan.",
-    featured: false,
     badge: null,
-    features: [],
   },
   {
-    index: "04 / Plan",
     name: "12 Months",
-    price: 90,
-    suffix: "prepaid",
-    description: null,
-    monthlyEquivalent: "$7.50/mo",
-    savings: "Save 53%",
-    cta: "Choose 12 Months",
+    price: "$90",
+    monthlyEquivalent: "$7.50",
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%2012%20Months%20IPTV%20plan.",
-    featured: true,
-    badge: "Best Value",
-    features: [],
+    badge: "Lowest monthly price",
   },
 ] as const;
 
-const INCLUDED_FEATURES = [
-  "4K Ultra HD Streaming Quality",
-  "25,000+ Live Channels Worldwide",
-  "120,000+ Movies & TV Shows",
-  "Premium PPV Events Included",
-  "VOD Access",
-  "Smart EPG & Catch-Up TV",
-  "Customer Support",
-  "Multi-Device Compatibility",
+// Only confirmed facts. [TO CONFIRM] before adding: "4K Ultra HD", "PPV events", "Smart EPG & catch-up".
+const INCLUDED_IN_EVERY_PLAN = [
+  "25,000+ live channels and 120,000+ movies and TV shows",
+  "Access with Xtream Codes or an M3U playlist URL in a compatible IPTV player",
+  "2 simultaneous connections",
+  "Prepaid for the full term, with no auto-renewal",
+  "Login details typically within about 5–15 minutes of payment confirmation",
 ] as const;
+
+const link = "font-semibold text-primary underline-offset-4 hover:underline";
 
 export function HomePricing() {
   return (
-    <section id="pricing" className="relative isolate overflow-hidden bg-[#050706] px-4 pt-10 pb-14 sm:px-6 sm:pt-14 sm:pb-18 lg:px-8 lg:pt-16 lg:pb-20">
-      <DotPattern
-        aria-hidden
-        className="absolute inset-0 -z-10 size-full fill-white/[0.05] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-72 max-w-3xl rounded-full bg-gradient-to-r from-primary/15 via-primary/5 to-primary/15 blur-3xl"
-      />
+    <Section id="pricing" className="border-t border-white/[0.07]">
+      <Container>
+        <SectionHeader
+          eyebrow="Prepaid Subscriptions"
+          title="TryIPTV Subscription Plans"
+          subtitle="Simple prepaid plans with no automatic renewal. Every plan includes the same service; only the duration changes."
+        />
 
-      <Container className="relative">
-        <BlurFade className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-mono font-bold uppercase tracking-[0.08em] text-primary">
-            Prepaid Subscriptions
-          </p>
-          <h2 className="mt-2.5 font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[38px] leading-tight">
-            TryIPTV Subscription Plans
-          </h2>
-          <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-foreground/90">
-            Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming.
-          </p>
-        </BlurFade>
-
-        <div className="mx-auto mt-8 sm:mt-10 grid max-w-md grid-cols-1 items-stretch gap-4 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-          {PLANS.map((plan, i) => (
-            <BlurFade
-              key={plan.name}
-              delay={0.08 + i * 0.05}
-              className="h-full flex"
-            >
-              <article
-                className={cn(
-                  "relative flex h-full w-full flex-col justify-between rounded-2xl border border-white/[0.06] bg-[#07080a]/90 p-5 sm:p-6 shadow-sm transition-all duration-200 hover:border-white/[0.14] hover:bg-[#090b0d]",
-                  plan.featured &&
-                    "border-primary/30 bg-gradient-to-b from-primary/[0.05] via-[#07080a] to-[#07080a] shadow-lg shadow-primary/5 hover:border-primary/45"
-                )}
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
-                      {plan.index}
-                    </p>
-                    {plan.featured && (
-                      <Badge className="gap-1 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">
-                        <SparklesIcon className="size-3 text-primary" aria-hidden />
-                        {plan.badge}
-                      </Badge>
-                    )}
-                  </div>
-
-                  <h3 className="mt-2.5 font-headline text-xl font-bold tracking-tight text-foreground">
-                    {plan.name}
-                  </h3>
-
-                  <div className="mt-5 flex items-baseline gap-1.5">
-                    <span className="font-headline text-4xl sm:text-[44px] font-bold tracking-tight text-foreground tabular-nums">
-                      ${plan.price}
-                    </span>
-                    <span className="text-xs font-medium text-muted-foreground">
-                      {plan.suffix}
-                    </span>
-                  </div>
-
-                  <div className="mt-2 flex min-h-[24px] items-center text-xs text-muted-foreground">
-                    {plan.monthlyEquivalent ? (
-                      <>
-                        <span className="font-medium text-foreground/90">
-                          {plan.monthlyEquivalent}
+        <div className="mx-auto max-w-4xl">
+          <div className="overflow-hidden rounded-2xl border border-white/[0.07] bg-card">
+            <table className="w-full text-left text-sm">
+              <caption className="sr-only">TryIPTV prepaid plans: price, monthly equivalent and order link</caption>
+              <thead className="border-b border-white/[0.07] text-[11px] uppercase tracking-wider text-muted-foreground">
+                <tr>
+                  <th scope="col" className="px-3 py-3 font-semibold sm:px-6">Plan</th>
+                  <th scope="col" className="px-2 py-3 font-semibold sm:px-6">Price</th>
+                  <th scope="col" className="px-2 py-3 font-semibold sm:px-6">Per month</th>
+                  <th scope="col" className="px-3 py-3 text-right font-semibold sm:px-6"><span className="sr-only">Order</span></th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/[0.06]">
+                {PLANS.map((plan) => (
+                  <tr key={plan.name} className={cn(plan.badge && "bg-primary/[0.04]")}>
+                    <th scope="row" className="px-3 py-4 align-middle font-semibold text-foreground sm:px-6">
+                      {plan.name}
+                      {plan.badge && (
+                        <span className="mt-1 block w-max rounded-full border border-primary/25 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                          {plan.badge}
                         </span>
-                        {plan.savings && (
-                          <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.2 text-[10px] font-semibold text-primary">
-                            {plan.savings}
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      <span className="text-muted-foreground/90 font-medium">{plan.description}</span>
-                    )}
-                  </div>
-
-                  <Button
-                    asChild
-                    size="lg"
-                    variant={plan.featured ? "default" : "outline"}
-                    className={cn(
-                      "mt-5 h-11 min-h-[44px] w-full rounded-xl text-sm font-semibold",
-                      !plan.featured && "border-white/[0.14] bg-white/[0.03] text-foreground hover:bg-white/[0.08] hover:border-white/[0.25]"
-                    )}
-                  >
-                    <a href={plan.checkoutUrl}>
-                      {plan.cta}
-                      <span className="sr-only"> — {plan.name} plan</span>
-                    </a>
-                  </Button>
-
-                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-[13.5px] leading-relaxed text-muted-foreground/95">
-                    {INCLUDED_FEATURES.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5">
-                        <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary/75" aria-hidden />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                </div>
-              </article>
-            </BlurFade>
-          ))}
-        </div>
-
-        <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-muted-foreground/70">
-          Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
-        </p>
-
-        {/* Clear bridge to detailed pricing comparison and free trial */}
-        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-4.5 text-xs sm:text-sm text-muted-foreground">
-          <div>
-            Want the full plan comparison?{" "}
-            <Link href="/pricing" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
-              Compare all plans <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+                      )}
+                    </th>
+                    <td className="px-2 py-4 align-middle font-headline text-lg font-bold tabular-nums text-foreground sm:px-6 sm:text-xl">
+                      {plan.price}
+                    </td>
+                    <td className="px-2 py-4 align-middle tabular-nums text-muted-foreground sm:px-6">
+                      {plan.monthlyEquivalent}
+                    </td>
+                    <td className="px-3 py-4 text-right align-middle sm:px-6">
+                      <Button asChild size="sm" variant={plan.badge ? "default" : "outline"} className="min-h-11 px-3 sm:px-4">
+                        <a href={plan.checkoutUrl} target="_blank" rel="noopener noreferrer">
+                          Order<span className="sr-only sm:not-sr-only">{plan.name}</span>
+                          <span className="sr-only"> plan on WhatsApp (opens in a new tab)</span>
+                        </a>
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <div className="shrink-0">
-            <Link href="/iptv-free-trial" className="font-medium text-muted-foreground/90 hover:text-foreground underline underline-offset-4">
-              24-hour free trial available &rarr;
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            Ordering opens WhatsApp, where support sends payment instructions. See the{" "}
+            <Link href="/pricing" className={link}>
+              full plan comparison on the pricing page
             </Link>
+            .
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/[0.07] bg-card p-5 sm:p-6">
+              <h3 className="font-headline text-lg font-bold text-foreground">Included in every plan</h3>
+              <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-muted-foreground">
+                {INCLUDED_IN_EVERY_PLAN.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-white/[0.07] bg-card p-5 sm:p-6">
+              <h3 className="font-headline text-lg font-bold text-foreground">How billing works</h3>
+              <ul className="mt-4 space-y-2.5 text-sm leading-relaxed text-muted-foreground">
+                <li><strong className="text-foreground">Prepaid:</strong> you pay once for the term you choose.</li>
+                <li><strong className="text-foreground">No auto-renewal:</strong> access stops when the term ends unless you buy another.</li>
+                <li><strong className="text-foreground">2 connections:</strong> two devices can stream at the same time.</li>
+                <li>
+                  <strong className="text-foreground">Try first:</strong>{" "}
+                  <Link href="/iptv-free-trial" className={link}>24-hour IPTV free trial</Link> for $0, no credit card.
+                </li>
+                <li>
+                  <strong className="text-foreground">Refunds:</strong> technical problems support cannot resolve within 7 days of purchase may qualify for a refund; refunds are discretionary. See the{" "}
+                  <Link href="/refund-policy" className={link}>refund policy</Link>.
+                </li>
+              </ul>
+            </div>
           </div>
+
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }
