@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { Hero } from "@/components/sections/Hero";
+import { Hero, HeroStats } from "@/components/sections/Hero";
 import { WhatYouGet } from "@/components/sections/WhatYouGet";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { HomePricing } from "@/components/sections/HomePricing";
@@ -54,16 +54,17 @@ export default function Home() {
     <>
       <Schema id="product" schema={productSchema} />
       <Hero />
+      <HeroStats />
       <WhatYouGet />
-      <WhyChooseTryIPTV />
       <HomePricing />
-      <Comparison />
-      <HowItWorks />
-      <HomeExplainer />
       <Devices />
-      <CustomerFeedback />
-      <CTA title="Start a 24-Hour IPTV Free Trial" />
+      <HowItWorks />
+      <Comparison />
+      <HomeExplainer />
+      <WhyChooseTryIPTV />
       <FAQ />
+      <CTA title="Start a 24-Hour IPTV Free Trial" />
+      <CustomerFeedback />
     </>
   );
 }
