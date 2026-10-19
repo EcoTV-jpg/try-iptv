@@ -21,20 +21,21 @@ import { Section } from "@/components/shared/Section";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Breadcrumb } from "@/components/shared/Breadcrumb";
 import { Schema } from "@/components/shared/Schema";
-import { getIptvFreeTrialPageData } from "@/lib/data/iptv-free-trial-page";
+import { getIptvFreeTrialPageData, TRIAL_PAGE_TITLE, TRIAL_PAGE_DESCRIPTION } from "@/lib/data/iptv-free-trial-page";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
 const freeTrialWhatsAppUrl =
   "https://wa.me/15205648298?text=Hello%20TryIPTV%2C%20I%20would%20like%20to%20start%20my%20free%20IPTV%20trial.";
 
 export function generateMetadata(): Metadata {
-  const title = "24-Hour IPTV Free Trial — Test TryIPTV Before You Pay";
-  const description =
-    "Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. 24-hour access, $0, and no credit card required.";
+  const title = TRIAL_PAGE_TITLE;
+  const description = TRIAL_PAGE_DESCRIPTION;
 
   return {
     ...generatePageMetadata({ title, description, canonical: "/iptv-free-trial" }),
     title: { absolute: title },
+    // Drop the site-wide keywords tag on this page.
+    keywords: null,
   };
 }
 
@@ -152,10 +153,11 @@ const planComparisonRows = [
 ] as const;
 
 export default async function IptvFreeTrialPage() {
-  const { breadcrumbSchema, serviceSchema, trialFaqs } = await getIptvFreeTrialPageData();
+  const { breadcrumbSchema, webPageSchema, serviceSchema, trialFaqs } = await getIptvFreeTrialPageData();
 
   return (
     <>
+      <Schema id="webpage" schema={webPageSchema} />
       <Schema id="breadcrumb" schema={breadcrumbSchema} />
       <Schema id="service" schema={serviceSchema} />
 
@@ -166,22 +168,24 @@ export default async function IptvFreeTrialPage() {
             <Breadcrumb items={[{ label: "IPTV Free Trial" }]} align="center" />
             <p className="eyebrow mb-3">24-Hour Evaluation · $0 Cost · No Credit Card</p>
             <h1 className="font-headline text-3xl font-extrabold leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
-              24-Hour IPTV Free Trial — Test TryIPTV Before You Pay
+              24-Hour IPTV Free Trial: Test Before You Pay
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
-              Test TryIPTV on your own device, IPTV player, and internet connection before choosing a paid plan. The trial lasts 24 hours, costs $0, requires no credit card, and does not automatically convert into a paid subscription.
+              The TryIPTV free trial gives you 24 hours of access for $0, with no credit card required, and it does not convert into a paid plan. Request it on WhatsApp and your login details usually arrive in about 5–15 minutes. The 24 hours start when your credentials are activated, so request the trial when you&apos;re ready to test.
             </p>
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                  <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial
+                  <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial (opens WhatsApp)
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/setup">View Setup Guide</Link>
               </Button>
             </div>
-            <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground">No payment details needed.</p>
+            {/* TODO: add a trust line linking to /about ("Who runs TryIPTV") once /about is final and deployed. */}
+            <div className="mt-3 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-muted-foreground">
               <span>24-Hour Access</span>
               <span>$0 Cost</span>
               <span>No Credit Card</span>
@@ -225,6 +229,49 @@ export default async function IptvFreeTrialPage() {
         </Container>
       </Section>
 
+      {/* Section 1b: No 48/72-hour trial */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl space-y-4 text-base leading-7 text-muted-foreground">
+            <SectionHeader
+              align="left"
+              eyebrow="Trial Length"
+              title="Is there a 48-hour or 72-hour (3-day) IPTV free trial?"
+              className="mb-4 sm:mb-4 lg:mb-4"
+            />
+            <p>
+              No. The TryIPTV free trial lasts 24 hours, starting when your credentials are activated. We do not offer a 48-hour, 72-hour or 3-day trial.
+            </p>
+            <p>
+              24 hours is enough to check that your channels load, compare picture quality on your main screen, watch a live event at your normal viewing time, confirm the TV guide (EPG) loads, and see whether your player and internet connection work well together.
+            </p>
+            <p>
+              If you want more time after that, the 1-month plan ($16, prepaid, no auto-renewal) is the lowest-commitment next step; see all options on the{" "}
+              <Link href="/pricing" className="font-semibold text-primary underline underline-offset-4">IPTV plans and pricing page</Link>. Technical problems that support cannot resolve within 7 days of purchase may qualify for a refund; refunds are discretionary. Details are in the{" "}
+              <Link href="/refund-policy" className="font-semibold text-primary underline underline-offset-4">refund policy</Link>.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 1c: What is a test line? */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl space-y-4 text-base leading-7 text-muted-foreground">
+            <SectionHeader
+              align="left"
+              eyebrow="Terminology"
+              title={'What is an IPTV "test line"?'}
+              className="mb-4 sm:mb-4 lg:mb-4"
+            />
+            <p>
+              A &quot;test line&quot; is another name for trial login details: an Xtream Codes login (server URL, username and password) or an M3U playlist URL. You enter it in a compatible IPTV player such as TiviMate, IPTV Smarters or XCIPTV; see our{" "}
+              <Link href="/players" className="font-semibold text-primary underline underline-offset-4">IPTV player setup guides</Link>. A TryIPTV test line expires automatically 24 hours after activation.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
       {/* Section 2: What to Test During Your 24-Hour Trial */}
       <Section className="border-b border-white/[0.06] py-10 sm:py-14">
         <Container>
@@ -258,6 +305,31 @@ export default async function IptvFreeTrialPage() {
                 </table>
               </div>
             </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 2b: How to get the most from your 24 hours */}
+      <Section className="border-b border-white/[0.06] py-10 sm:py-14">
+        <Container>
+          <div className="mx-auto max-w-4xl text-base leading-7 text-muted-foreground">
+            <SectionHeader
+              align="left"
+              eyebrow="Trial Tips"
+              title="How to get the most from your 24 hours"
+              className="mb-6 sm:mb-6 lg:mb-6"
+            />
+            <ol className="list-decimal space-y-3 pl-6">
+              <li>Request the trial when you&apos;re ready to test: the 24 hours start when your credentials are activated, not when you send the request.</li>
+              <li>Install your IPTV player before you request the trial, so you can enter the login details as soon as they arrive. If the login is rejected, see the{" "}
+                <Link href="/help/iptv-login-not-working" className="font-semibold text-primary underline underline-offset-4">IPTV login troubleshooting guide</Link>.</li>
+              <li>Test at your normal viewing time, including a live event if you can, so you see how playback behaves when you actually watch.</li>
+              <li>If you notice buffering, compare Wi-Fi with an Ethernet cable; the{" "}
+                <Link href="/help/iptv-buffering" className="font-semibold text-primary underline underline-offset-4">IPTV buffering guide</Link> covers other checks.</li>
+              <li>Check that the TV guide (EPG) loads and that on-demand videos pause and seek properly. For missing guide data or a playlist that won&apos;t load, use the{" "}
+                <Link href="/help/epg-not-working" className="font-semibold text-primary underline underline-offset-4">EPG troubleshooting guide</Link> or the{" "}
+                <Link href="/help/m3u-not-loading" className="font-semibold text-primary underline underline-offset-4">M3U troubleshooting guide</Link>.</li>
+            </ol>
           </div>
         </Container>
       </Section>
@@ -595,7 +667,7 @@ export default async function IptvFreeTrialPage() {
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild size="lg">
                   <a href={freeTrialWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                    <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial
+                    <SiWhatsapp className="mr-2 h-4 w-4" /> Start Free Trial (opens WhatsApp)
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
