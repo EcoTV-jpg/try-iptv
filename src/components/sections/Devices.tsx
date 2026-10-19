@@ -14,7 +14,6 @@ import { Container } from "../shared/Container";
 import { SectionHeader } from "../shared/SectionHeader";
 import { Section } from "../shared/Section";
 import { devices } from "@/lib/site-data/devices";
-import { Marquee } from "@/components/velora/marquee";
 
 const deviceIconMap: Record<string, ComponentType<{ className?: string }>> = {
   SiMacos,
@@ -30,78 +29,43 @@ const deviceIconMap: Record<string, ComponentType<{ className?: string }>> = {
 
 export function Devices() {
   return (
-    <Section id="devices" className="border-y border-white/[0.06] bg-[#070a08] py-12 sm:py-14 lg:py-16">
+    <Section id="devices" variant="alt" className="border-t-0 pt-0 sm:pt-0 md:pt-0 lg:pt-0">
       <Container>
-        <SectionHeader
-          title="Watch on Your Preferred Devices"
-          subtitle="TryIPTV works across supported TVs, streaming devices, computers, and IPTV players. Detailed installation steps live in the device guides."
-          eyebrow="Device Compatibility"
-          className="mb-0 max-w-3xl"
-        />
-
-        <div className="relative mt-6 sm:mt-8">
-          {/* Top border line with gradient fade */}
-          <div
-            aria-hidden
-            className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent"
+        <div className="border-t border-white/[0.07] pt-14 sm:pt-16 md:pt-20 lg:pt-24">
+          <SectionHeader
+            align="left"
+            title="Watch on Your Preferred Devices"
+            subtitle="TryIPTV works across supported TVs, streaming devices, computers, and IPTV players. Detailed installation steps live in the device guides."
+            eyebrow="Device Compatibility"
           />
 
-          {/* Left and right fade gradient overlays */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 sm:w-36 bg-gradient-to-r from-[#070a08] to-transparent"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 sm:w-36 bg-gradient-to-l from-[#070a08] to-transparent"
-          />
-
-          <Marquee
-            pauseOnHover
-            repeat={2}
-            role="list"
-            aria-label="Supported devices"
-            className="py-4 sm:py-5 [--duration:38s] [--gap:1rem] sm:[--gap:1.25rem]"
-          >
+          {/* A static list answers "will it work on my device?" at a glance; no motion, every device visible. */}
+          <ul aria-label="Supported devices" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {devices.map((device) => {
               const Icon = deviceIconMap[device.icon] || Tv;
               return (
-                <Link
-                  key={device.name}
-                  href={device.href}
-                  role="listitem"
-                  className="group flex shrink-0 items-center gap-3.5 rounded-xl border border-white/[0.08] bg-[#070908] px-5 py-3 shadow-sm transition-all duration-200 hover:border-primary/40 hover:bg-[#080d0a] hover:shadow-md hover:shadow-primary/5 motion-reduce:transition-none"
-                  aria-label={`${device.name} IPTV setup guide`}
-                >
-                  <span className="grid size-9.5 place-items-center rounded-lg border border-white/[0.07] bg-white/[0.025] text-foreground/80 transition-all duration-200 group-hover:border-primary/30 group-hover:bg-primary/[0.08] group-hover:text-primary">
-                    <Icon className="size-4.5 shrink-0" />
-                  </span>
-                  <span className="font-headline text-[14px] sm:text-[14.5px] font-semibold tracking-tight text-foreground/95 transition-colors duration-200 group-hover:text-foreground whitespace-nowrap">
-                    {device.name}
-                  </span>
-                </Link>
+                <li key={device.name}>
+                  <Link
+                    href={device.href}
+                    className="flex min-h-14 items-center gap-3 rounded-xl border border-white/[0.07] bg-card px-4 py-3 transition-colors duration-200 hover:border-primary/40"
+                    aria-label={`${device.name} IPTV setup guide`}
+                  >
+                    <Icon className="size-5 shrink-0 text-muted-foreground" aria-hidden />
+                    <span className="text-sm font-semibold text-foreground">{device.name}</span>
+                  </Link>
+                </li>
               );
             })}
-          </Marquee>
+          </ul>
 
-          {/* Bottom border line with gradient fade */}
-          <div
-            aria-hidden
-            className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent"
-          />
-        </div>
-
-        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
-          <Link
-            href="/devices"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-          >
-            <span>View all step-by-step device setup guides</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link href="/players" className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:underline">
-            Browse IPTV players <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-6 flex flex-col items-start gap-x-8 gap-y-1 sm:flex-row sm:items-center">
+            <Link href="/devices" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+              View all step-by-step device setup guides <ArrowRight className="size-4" aria-hidden />
+            </Link>
+            <Link href="/players" className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:underline">
+              Browse IPTV players <ArrowRight className="size-4" aria-hidden />
+            </Link>
+          </div>
         </div>
       </Container>
     </Section>

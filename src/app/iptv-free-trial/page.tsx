@@ -206,7 +206,7 @@ export default async function IptvFreeTrialPage() {
 
             <div className="mt-6 overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <caption className="sr-only">TryIPTV free trial details and specifications</caption>
                   <tbody className="divide-y divide-white/[0.06]">
                     {quickFacts.map(([label, value]) => (
@@ -237,7 +237,7 @@ export default async function IptvFreeTrialPage() {
 
             <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <caption className="sr-only">Trial testing priorities and checklist</caption>
                   <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
                     <tr>
@@ -449,7 +449,7 @@ export default async function IptvFreeTrialPage() {
 
             <div className="overflow-hidden rounded-lg border border-white/[0.09] bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-left text-sm">
+                <table className="w-full text-left text-sm">
                   <caption className="sr-only">Comparison between free trial and paid subscription plans</caption>
                   <thead className="border-b border-white/[0.09] bg-white/[0.02] text-xs font-extrabold uppercase tracking-wider text-muted-foreground">
                     <tr>

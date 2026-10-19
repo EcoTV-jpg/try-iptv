@@ -14,10 +14,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { BlurFade } from "@/components/velora/blur-fade";
-import { SpotlightCard } from "@/components/velora/spotlight-card";
 import { Container } from "../shared/Container";
 import { Section } from "../shared/Section";
+import { SectionHeader } from "../shared/SectionHeader";
 import { cn } from "@/lib/utils";
 
 export interface FaqItem {
@@ -133,23 +132,21 @@ export function FaqList({ items, className }: FaqListProps) {
  */
 export function FAQ() {
   return (
-    <Section id="faq" className="bg-[#050706] py-14 sm:py-18 lg:py-20 border-t border-white/[0.06]">
+    <Section id="faq" className="border-t border-white/[0.07]">
       <Container>
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
           {/* Left Column: Heading & Support Channels */}
           <div className="lg:col-span-5">
-            <BlurFade className="lg:sticky lg:top-24">
-              <p className="text-xs font-mono font-bold uppercase tracking-[0.08em] text-primary">
-                Support, clarified
-              </p>
-              <h2 className="mt-2.5 font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[38px] leading-tight">
-                Frequently Asked Questions
-              </h2>
-              <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-foreground/90">
-                Have questions? We&apos;ve got answers. If you can&apos;t find what you&apos;re looking for, feel free to contact us.
-              </p>
+            <div className="lg:sticky lg:top-24">
+              <SectionHeader
+                align="left"
+                eyebrow="Support, clarified"
+                title="Frequently Asked Questions"
+                subtitle="Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us."
+                className="mb-6 sm:mb-8 lg:mb-8"
+              />
 
-              <SpotlightCard className="mt-6 p-1.5 rounded-2xl border border-white/[0.07] bg-[#07080a]">
+              <div className="rounded-2xl border border-white/[0.07] bg-card p-1.5">
                 <ul className="divide-y divide-white/[0.06]">
                   {CONTACTS.map(({ icon: Icon, label, detail, href, isExternal }) => {
                     const Component = isExternal ? "a" : Link;
@@ -179,12 +176,12 @@ export function FAQ() {
                     );
                   })}
                 </ul>
-              </SpotlightCard>
-            </BlurFade>
+              </div>
+            </div>
           </div>
 
           {/* Right Column: Numbered Accordion */}
-          <BlurFade delay={0.1} className="lg:col-span-7">
+          <div className="lg:col-span-7">
             <Accordion
               type="multiple"
               defaultValue={["item-0"]}
@@ -224,7 +221,7 @@ export function FAQ() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </BlurFade>
+          </div>
         </div>
       </Container>
     </Section>

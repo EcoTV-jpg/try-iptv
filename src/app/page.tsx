@@ -53,7 +53,8 @@ export default function Home() {
       <HowItWorks />
       <Devices />
       <CustomerFeedback />
-      <CTA />
+      {/* Follows a section on the same background, so skip the duplicated top padding. */}
+      <CTA className="pt-0 sm:pt-0 md:pt-0 lg:pt-0" />
       <FAQ />
     </>
   );

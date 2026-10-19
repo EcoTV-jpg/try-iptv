@@ -1,11 +1,10 @@
-import { CheckIcon, SparklesIcon, ArrowRight } from "lucide-react";
+import { CheckIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BlurFade } from "@/components/velora/blur-fade";
-import { DotPattern } from "@/components/velora/grid-pattern";
 import { Container } from "../shared/Container";
+import { Section } from "../shared/Section";
+import { SectionHeader } from "../shared/SectionHeader";
 import { cn } from "@/lib/utils";
 
 const PLANS = [
@@ -80,135 +79,102 @@ const INCLUDED_FEATURES = [
 
 export function HomePricing() {
   return (
-    <section id="pricing" className="relative isolate overflow-hidden bg-[#050706] px-4 pt-10 pb-14 sm:px-6 sm:pt-14 sm:pb-18 lg:px-8 lg:pt-16 lg:pb-20">
-      <DotPattern
-        aria-hidden
-        className="absolute inset-0 -z-10 size-full fill-white/[0.05] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-72 max-w-3xl rounded-full bg-gradient-to-r from-primary/15 via-primary/5 to-primary/15 blur-3xl"
-      />
+    <Section id="pricing">
+      <Container>
+        <SectionHeader
+          eyebrow="Prepaid Subscriptions"
+          title="TryIPTV Subscription Plans"
+          subtitle="Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming."
+        />
 
-      <Container className="relative">
-        <BlurFade className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-mono font-bold uppercase tracking-[0.08em] text-primary">
-            Prepaid Subscriptions
-          </p>
-          <h2 className="mt-2.5 font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[38px] leading-tight">
-            TryIPTV Subscription Plans
-          </h2>
-          <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-foreground/90">
-            Simple, flat prepaid plans with no hidden fees and no automatic renewals. Every subscription includes 2 simultaneous connections, 25,000+ live channels worldwide, and 4K Ultra HD streaming.
-          </p>
-        </BlurFade>
-
-        <div className="mx-auto mt-8 sm:mt-10 grid max-w-md grid-cols-1 items-stretch gap-4 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
-          {PLANS.map((plan, i) => (
-            <BlurFade
+        <div className="mx-auto grid max-w-md grid-cols-1 gap-4 sm:max-w-none sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {PLANS.map((plan) => (
+            <article
               key={plan.name}
-              delay={0.08 + i * 0.05}
-              className="h-full flex"
+              className={cn(
+                "flex flex-col rounded-2xl border bg-card p-6 transition-colors duration-200",
+                plan.featured
+                  ? "border-primary/40 hover:border-primary/60"
+                  : "border-white/[0.07] hover:border-white/[0.14]"
+              )}
             >
-              <article
-                className={cn(
-                  "relative flex h-full w-full flex-col justify-between rounded-2xl border border-white/[0.06] bg-[#07080a]/90 p-5 sm:p-6 shadow-sm transition-all duration-200 hover:border-white/[0.14] hover:bg-[#090b0d]",
-                  plan.featured &&
-                    "border-primary/30 bg-gradient-to-b from-primary/[0.05] via-[#07080a] to-[#07080a] shadow-lg shadow-primary/5 hover:border-primary/45"
+              {/* The badge takes the plan-number slot so every card's content stays on the same baseline. */}
+              {plan.featured ? (
+                <p className="w-fit rounded-md border border-primary/30 bg-primary/10 px-2 font-mono text-[11px] font-bold uppercase leading-4 tracking-wider text-primary">
+                  {plan.badge}
+                </p>
+              ) : (
+                <p className="font-mono text-[11px] font-semibold uppercase leading-[18px] tracking-[0.08em] text-muted-foreground">
+                  {plan.index}
+                </p>
+              )}
+
+              <h3 className="mt-3 font-headline text-xl font-bold tracking-tight text-foreground">
+                {plan.name}
+              </h3>
+
+              <div className="mt-4 flex items-baseline gap-1.5">
+                <span className="font-headline text-[44px] font-bold leading-none tracking-tight text-foreground tabular-nums">
+                  ${plan.price}
+                </span>
+                <span className="text-sm font-medium text-muted-foreground">{plan.suffix}</span>
+              </div>
+
+              <p className="mt-3 flex min-h-6 flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+                {plan.monthlyEquivalent ? (
+                  <>
+                    <span className="font-medium text-foreground">{plan.monthlyEquivalent}</span>
+                    {plan.savings && (
+                      <span className="rounded bg-primary/10 px-1.5 text-xs font-semibold leading-5 text-primary">
+                        {plan.savings}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  plan.description
                 )}
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3">
-                    <p className="text-[11px] font-mono font-semibold uppercase tracking-[0.08em] text-muted-foreground/80">
-                      {plan.index}
-                    </p>
-                    {plan.featured && (
-                      <Badge className="gap-1 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider text-primary">
-                        <SparklesIcon className="size-3 text-primary" aria-hidden />
-                        {plan.badge}
-                      </Badge>
-                    )}
-                  </div>
+              </p>
 
-                  <h3 className="mt-2.5 font-headline text-xl font-bold tracking-tight text-foreground">
-                    {plan.name}
-                  </h3>
-
-                  <div className="mt-5 flex items-baseline gap-1.5">
-                    <span className="font-headline text-4xl sm:text-[44px] font-bold tracking-tight text-foreground tabular-nums">
-                      ${plan.price}
-                    </span>
-                    <span className="text-xs font-medium text-muted-foreground">
-                      {plan.suffix}
-                    </span>
-                  </div>
-
-                  <div className="mt-2 flex min-h-[24px] items-center text-xs text-muted-foreground">
-                    {plan.monthlyEquivalent ? (
-                      <>
-                        <span className="font-medium text-foreground/90">
-                          {plan.monthlyEquivalent}
-                        </span>
-                        {plan.savings && (
-                          <span className="ml-1.5 inline-block rounded bg-primary/10 px-1.5 py-0.2 text-[10px] font-semibold text-primary">
-                            {plan.savings}
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      <span className="text-muted-foreground/90 font-medium">{plan.description}</span>
-                    )}
-                  </div>
-
-                  <Button
-                    asChild
-                    size="lg"
-                    variant={plan.featured ? "default" : "outline"}
-                    className={cn(
-                      "mt-5 h-11 min-h-[44px] w-full rounded-xl text-sm font-semibold",
-                      !plan.featured && "border-white/[0.14] bg-white/[0.03] text-foreground hover:bg-white/[0.08] hover:border-white/[0.25]"
-                    )}
-                  >
-                    <a href={plan.checkoutUrl}>
-                      {plan.cta}
-                      <span className="sr-only"> — {plan.name} plan</span>
-                    </a>
-                  </Button>
-
-                  <ul className="mt-5 space-y-2 border-t border-white/[0.07] pt-5 text-[13.5px] leading-relaxed text-muted-foreground/95">
-                    {INCLUDED_FEATURES.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5">
-                        <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary/75" aria-hidden />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                </div>
-              </article>
-            </BlurFade>
+              <div className="mt-auto pt-6">
+                <Button asChild variant={plan.featured ? "default" : "outline"} className="w-full">
+                  <a href={plan.checkoutUrl} target="_blank" rel="noopener noreferrer">
+                    {plan.cta}
+                    <span className="sr-only"> — {plan.name} plan (opens WhatsApp in a new tab)</span>
+                  </a>
+                </Button>
+              </div>
+            </article>
           ))}
         </div>
 
-        <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-muted-foreground/70">
-          Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
-        </p>
+        {/* Shared inclusions are listed once instead of repeated inside every card. */}
+        <div className="mt-6 rounded-2xl border border-white/[0.07] bg-card p-6">
+          <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+            <span className="font-semibold text-foreground">Included with every plan.</span>{" "}
+            Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
+          </p>
+          <ul className="mt-5 grid grid-cols-1 gap-x-6 gap-y-3 text-sm text-foreground/90 sm:grid-cols-2 lg:grid-cols-4">
+            {INCLUDED_FEATURES.map((feature) => (
+              <li key={feature} className="flex items-start gap-2.5">
+                <CheckIcon className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-        {/* Clear bridge to detailed pricing comparison and free trial */}
-        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 sm:p-4.5 text-xs sm:text-sm text-muted-foreground">
-          <div>
-            Want the full plan comparison?{" "}
-            <Link href="/pricing" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
-              Compare all plans <ArrowRight className="h-3.5 w-3.5" />
+        <div className="mt-6 flex flex-col items-center justify-center gap-x-8 gap-y-1 text-sm sm:flex-row">
+          <p className="inline-flex min-h-11 flex-wrap items-center justify-center gap-x-1.5 text-muted-foreground">
+            Want the full plan comparison?
+            <Link href="/pricing" className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline">
+              Compare all plans <ArrowRight className="size-4" aria-hidden />
             </Link>
-          </div>
-          <div className="shrink-0">
-            <Link href="/iptv-free-trial" className="font-medium text-muted-foreground/90 hover:text-foreground underline underline-offset-4">
-              24-hour free trial available &rarr;
-            </Link>
-          </div>
+          </p>
+          <Link href="/iptv-free-trial" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-muted-foreground hover:text-foreground hover:underline">
+            24-hour free trial available <ArrowRight className="size-4" aria-hidden />
+          </Link>
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

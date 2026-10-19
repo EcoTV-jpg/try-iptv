@@ -3,7 +3,6 @@ import { ArrowUpRight, MessageCircle } from "lucide-react";
 
 import { Container } from "./Container";
 import { Logo } from "./Logo";
-import { TextHoverEffect } from "@/components/velora/text-hover-effect";
 import { footerLinks } from "@/lib/site-data/footer";
 import { socialLinks } from "@/lib/site-data/socials";
 
@@ -89,12 +88,7 @@ function SocialIcon({ name }: { name: SocialIconName }) {
 
 export function Footer() {
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/[0.08] bg-[#040506] px-4 pt-14 pb-6 sm:pt-16 sm:pb-8 lg:px-8">
-      {/* Faint brand glow rising behind the wordmark */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-56 bg-gradient-to-t from-primary/[0.04] via-primary/[0.01] to-transparent blur-3xl"
-      />
+    <footer className="border-t border-white/[0.07] bg-[#040506] pt-14 pb-8 sm:pt-16">
 
       <Container>
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
@@ -104,17 +98,17 @@ export function Footer() {
             <p className="mt-3.5 max-w-sm text-[13.5px] leading-relaxed text-muted-foreground/90">
               Premium live TV and on-demand entertainment, built for the devices you already use. Prepaid access with 25,000+ live channels worldwide and 120,000+ movies and TV shows.
             </p>
-            <div className="mt-5 flex flex-col gap-2 text-sm">
+            <div className="mt-4 flex flex-col items-start text-sm">
               <span
                 dangerouslySetInnerHTML={{
-                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="group/email inline-flex items-center gap-2 font-medium text-muted-foreground/90 transition-colors hover:text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover/email:translate-x-0.5 group-hover/email:-translate-y-0.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><!--/email_off-->`,
+                  __html: `<!--email_off--><a href="mailto:${footerLinks.contact.email}" class="group/email inline-flex items-center gap-2 py-1 font-medium text-muted-foreground/90 transition-colors hover:text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 text-primary shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>${footerLinks.contact.email}<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5 transition-transform group-hover/email:translate-x-0.5 group-hover/email:-translate-y-0.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a><!--/email_off-->`,
                 }}
               />
               <a
                 href="https://wa.me/15205648298"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/wa inline-flex items-center gap-2 font-medium text-muted-foreground/90 transition-colors hover:text-primary"
+                className="group/wa inline-flex items-center gap-2 py-1 font-medium text-muted-foreground/90 transition-colors hover:text-primary"
               >
                 <MessageCircle className="h-3.5 w-3.5 text-primary shrink-0" />
                 <span>WhatsApp Support</span>
@@ -125,15 +119,15 @@ export function Footer() {
 
           {/* Explore */}
           <div className="lg:col-span-2">
-            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+            <h3 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
               Explore
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-0.5">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[13.5px] text-muted-foreground/90 transition-colors duration-150 hover:text-foreground"
+                    className="inline-block py-1 text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground"
                   >
                     {link.name}
                   </Link>
@@ -144,15 +138,15 @@ export function Footer() {
 
           {/* Device Guides */}
           <div className="lg:col-span-2">
-            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+            <h3 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
               Device Guides
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-0.5">
               {footerLinks.supportedLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[13.5px] text-muted-foreground/90 transition-colors duration-150 hover:text-foreground"
+                    className="inline-block py-1 text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground"
                   >
                     {link.name}
                   </Link>
@@ -163,15 +157,15 @@ export function Footer() {
 
           {/* Legal & Trust */}
           <div className="lg:col-span-2">
-            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+            <h3 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
               Legal &amp; Trust
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-0.5">
               {footerLinks.legalLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-[13.5px] text-muted-foreground/90 transition-colors duration-150 hover:text-foreground"
+                    className="inline-block py-1 text-[13.5px] text-muted-foreground transition-colors duration-150 hover:text-foreground"
                   >
                     {link.name}
                   </Link>
@@ -182,10 +176,10 @@ export function Footer() {
 
           {/* Support & Social */}
           <div className="lg:col-span-2">
-            <h3 className="mb-3.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
+            <h3 className="mb-2.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/80">
               Social
             </h3>
-            <ul className="flex flex-wrap gap-2" aria-label="TryIPTV social links">
+            <ul className="flex flex-wrap gap-1.5" aria-label="TryIPTV social links">
               {socialFooterLinks.map((link) => (
                 <li key={link.name}>
                   <a
@@ -194,7 +188,7 @@ export function Footer() {
                     title={link.name}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-muted-foreground transition-colors duration-150 hover:border-primary/30 hover:bg-primary/[0.08] hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                    className="inline-flex size-10 items-center justify-center rounded-xl border border-white/[0.07] lg:size-9 bg-white/[0.03] text-muted-foreground transition-colors duration-150 hover:border-primary/30 hover:text-primary"
                   >
                     <SocialIcon name={link.icon} />
                   </a>
@@ -207,14 +201,6 @@ export function Footer() {
         {/* Bottom copyright and legal bar */}
         <div className="mt-10 flex flex-col-reverse gap-4 border-t border-white/[0.06] pt-6 text-xs text-muted-foreground/80 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} TryIPTV. All rights reserved.</p>
-        </div>
-
-        {/* Interactive outlined wordmark with ambient opacity */}
-        <div className="mt-6 sm:mt-8 overflow-hidden opacity-50 hover:opacity-75 transition-opacity">
-          <TextHoverEffect
-            text="tryiptv"
-            className="h-16 sm:h-20 md:h-24"
-          />
         </div>
       </Container>
     </footer>
