@@ -42,8 +42,8 @@ export function HowItWorks() {
       <Container>
         <SectionHeader
           align="left"
-          title="How Do I Start With TryIPTV?"
-          subtitle="Use your TryIPTV access details with a compatible IPTV player, then follow the setup guide for your device."
+          title="How Does TryIPTV Work?"
+          subtitle="You don’t need a TryIPTV app. TryIPTV provides the service credentials; you use them with a compatible IPTV player."
           eyebrow="Setup Process"
           className="mb-8 sm:mb-10 max-w-2xl"
         />

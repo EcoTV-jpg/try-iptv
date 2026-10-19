@@ -28,6 +28,8 @@ export interface FaqItem {
 interface FaqListProps {
   items: FaqItem[];
   className?: string;
+  /** Keep closed answers in the document. Closed items stay height-collapsed. */
+  mountClosedAnswers?: boolean;
 }
 
 const CONTACTS = [
@@ -61,6 +63,11 @@ const homepageFaqs: FaqItem[] = [
       'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself.',
   },
   {
+    question: "Is TryIPTV an IPTV player?",
+    answer:
+      'No. TryIPTV provides IPTV access credentials. You use those credentials with a compatible IPTV player such as the apps listed in our <a href="/players" class="text-primary hover:underline">player guides</a>.',
+  },
+  {
     question: "Does TryIPTV offer a free trial?",
     answer:
       'Yes. TryIPTV offers a 24-hour free trial at $0. <a href="/iptv-free-trial" class="text-primary hover:underline">Request trial access</a>.',
@@ -90,7 +97,7 @@ const homepageFaqs: FaqItem[] = [
 /**
  * Reusable single-column FaqList preserved for guide & device pages.
  */
-export function FaqList({ items, className }: FaqListProps) {
+export function FaqList({ items, className, mountClosedAnswers = false }: FaqListProps) {
   return (
     <Accordion
       type="single"
@@ -109,7 +116,10 @@ export function FaqList({ items, className }: FaqListProps) {
           <AccordionTrigger className="min-h-[68px] py-5 sm:py-6 text-left text-[16px] font-semibold leading-snug text-foreground/90 hover:no-underline hover:text-foreground transition-colors sm:text-[17px]">
             {faq.question}
           </AccordionTrigger>
-          <AccordionContent className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground">
+          <AccordionContent
+            forceMount={mountClosedAnswers ? true : undefined}
+            className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground"
+          >
             <span
               dangerouslySetInnerHTML={{
                 __html: faq.answer.includes("support@tryiptv.com")
@@ -209,7 +219,7 @@ export function FAQ() {
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
+                  <AccordionContent forceMount className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
                     <span
                       dangerouslySetInnerHTML={{
                         __html: faq.answer.includes("support@tryiptv.com")

@@ -21,7 +21,6 @@ const PLANS = [
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%201%20Month%20IPTV%20plan.",
     featured: false,
     badge: null,
-    features: [],
   },
   {
     index: "02 / Plan",
@@ -35,7 +34,6 @@ const PLANS = [
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%203%20Months%20IPTV%20plan.",
     featured: false,
     badge: null,
-    features: [],
   },
   {
     index: "03 / Plan",
@@ -49,7 +47,6 @@ const PLANS = [
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%206%20Months%20IPTV%20plan.",
     featured: false,
     badge: null,
-    features: [],
   },
   {
     index: "04 / Plan",
@@ -63,7 +60,6 @@ const PLANS = [
     checkoutUrl: "https://wa.me/15205648298?text=I%20would%20like%20to%20order%20the%2012%20Months%20IPTV%20plan.",
     featured: true,
     badge: "Best Value",
-    features: [],
   },
 ] as const;
 
@@ -71,7 +67,7 @@ const INCLUDED_FEATURES = [
   "4K Ultra HD Streaming Quality",
   "25,000+ Live Channels Worldwide",
   "120,000+ Movies & TV Shows",
-  "Premium PPV Events Included",
+  "PPV Events Included",
   "VOD Access",
   "Smart EPG & Catch-Up TV",
   "Customer Support",
@@ -183,15 +179,14 @@ export function HomePricing() {
                       </li>
                     ))}
                   </ul>
-
                 </div>
               </article>
             </BlurFade>
           ))}
         </div>
 
-        <p className="mx-auto mt-5 max-w-3xl text-center text-xs text-muted-foreground/70">
-          Every plan includes the same core service and 2 simultaneous connections. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
+        <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground/80">
+          All plans include the same core service, two simultaneous connections and supported-device access. Choose 1 month for short-term use, 3 months for a shorter commitment, 6 months for balanced value, or 12 months for the lowest monthly equivalent.
         </p>
 
         {/* Clear bridge to detailed pricing comparison and free trial */}
@@ -199,7 +194,7 @@ export function HomePricing() {
           <div>
             Want the full plan comparison?{" "}
             <Link href="/pricing" className="font-semibold text-primary hover:underline inline-flex items-center gap-1">
-              Compare all plans <ArrowRight className="h-3.5 w-3.5" />
+              Compare all IPTV plans <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
           <div className="shrink-0">

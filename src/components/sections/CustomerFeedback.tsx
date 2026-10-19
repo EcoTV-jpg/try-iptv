@@ -10,22 +10,22 @@ export const customerFeedbackItems = [
     id: "feedback-1",
     src: "/images/feedback/customer-feedback-1.jpg",
     alt: "TryIPTV customer WhatsApp chat showing Xtream Codes API setup assistance on IPTV Smarters Pro",
-    title: "IPTV Smarters Pro Setup",
-    highlight: "Xtream Codes API • Verified Working",
+    title: "Xtream Codes setup assistance",
+    highlight: "Xtream Codes setup assistance",
   },
   {
     id: "feedback-2",
     src: "/images/feedback/customer-feedback-2.jpg",
     alt: "TryIPTV customer support conversation on WhatsApp assisting with Smart TV OTT player playlist activation",
-    title: "Smart TV OTT Player",
-    highlight: "Live TV Setup • Support Assisted",
+    title: "Smart TV playlist activation",
+    highlight: "Smart TV playlist activation",
   },
   {
     id: "feedback-3",
     src: "/images/feedback/customer-feedback-3.jpg",
     alt: "TryIPTV subscriber WhatsApp conversation showing M3U playlist and Xtream Codes delivery",
-    title: "M3U & Xtream Delivery",
-    highlight: "M3U & Xtream Delivery",
+    title: "M3U delivery example",
+    highlight: "M3U delivery example",
   },
   {
     id: "feedback-4",
@@ -48,7 +48,7 @@ export function CustomerFeedback() {
     <Section id="customer-feedback" className="border-t border-white/[0.06] bg-[#050706] py-12 sm:py-16 lg:py-18">
       <Container>
         <SectionHeader
-          title="Real Customer Support & Activation Proof"
+          title="Real IPTV Setup & Activation Examples"
           subtitle="Genuine WhatsApp conversations with active TryIPTV subscribers showing account setup, credential delivery, and player assistance."
           eyebrow="Verified Customer Proof"
           className="mb-0 max-w-3xl"
