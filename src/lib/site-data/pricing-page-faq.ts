@@ -32,7 +32,7 @@ export const pricingPageFaqs = [
   {
     question: "What payment methods are available?",
     answer:
-      "Current payment instructions are provided when ordering at checkout. All orders are one-time prepaid purchases with no automatic renewals or recurring charges.",
+      "Support sends the current payment instructions when you order. Accepted methods are cryptocurrency, PayPal, and Stripe. Every order is a one-time prepaid purchase with no automatic renewal.",
   },
   {
     question: "How quickly is an order activated?",
