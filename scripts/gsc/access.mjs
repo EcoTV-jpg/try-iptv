@@ -6,10 +6,18 @@ const results = [];
 const record = (check, ok, detail) => results.push({ check, status: ok ? 'OK' : 'MISSING', detail });
 
 const source = describeCredentialSource();
-record('Credentials configured', Boolean(source), source ? source.method : 'Set GSC_SERVICE_ACCOUNT_EMAIL + GSC_SERVICE_ACCOUNT_PRIVATE_KEY (or GOOGLE_APPLICATION_CREDENTIALS)');
+record('Credentials configured', Boolean(source), source ? source.method : 'Set GSC_OAUTH_CREDENTIALS (recommended) or a service account (GSC_SERVICE_ACCOUNT_EMAIL + GSC_SERVICE_ACCOUNT_PRIVATE_KEY)');
 
+let client = null;
 if (source) {
-  const client = createClient();
+  try {
+    client = createClient();
+  } catch (error) {
+    record('Credentials valid', false, safeError(error).message);
+  }
+}
+
+if (client) {
   const domainProperty = `sc-domain:${new URL(SITE_URL).hostname.replace(/^www\./, '')}`;
   let property = null;
 

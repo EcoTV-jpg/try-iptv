@@ -8,10 +8,14 @@ export const READONLY_SCOPE = 'https://www.googleapis.com/auth/webmasters.readon
 
 /**
  * Credentials, in order of preference (none are ever logged):
+ *  0. GSC_OAUTH_CREDENTIALS — OAuth user credentials for a Google account with property access
  *  1. GSC_SERVICE_ACCOUNT_EMAIL + GSC_SERVICE_ACCOUNT_PRIVATE_KEY (or the legacy GOOGLE_INDEXING_* pair)
  *  2. GOOGLE_APPLICATION_CREDENTIALS pointing at a service-account JSON key file outside the repo
  */
 export function describeCredentialSource() {
+  if (process.env.GSC_OAUTH_CREDENTIALS) {
+    return { method: 'OAuth user account (GSC_OAUTH_CREDENTIALS)', identity: null };
+  }
   if ((process.env.GSC_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_INDEXING_CLIENT_EMAIL) &&
       (process.env.GSC_SERVICE_ACCOUNT_PRIVATE_KEY || process.env.GOOGLE_INDEXING_PRIVATE_KEY)) {
     return { method: 'service account (environment variables)', identity: process.env.GSC_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_INDEXING_CLIENT_EMAIL };
@@ -26,9 +30,12 @@ export function createClient() {
   const source = describeCredentialSource();
   if (!source) {
     throw new Error(
-      'No Search Console credentials found. Set GSC_SERVICE_ACCOUNT_EMAIL and GSC_SERVICE_ACCOUNT_PRIVATE_KEY, ' +
+      'No Search Console credentials found. Set GSC_OAUTH_CREDENTIALS (OAuth, recommended), or GSC_SERVICE_ACCOUNT_EMAIL and GSC_SERVICE_ACCOUNT_PRIVATE_KEY, ' +
       'or GOOGLE_APPLICATION_CREDENTIALS (path to a service-account key file kept outside the repository).',
     );
+  }
+  if (process.env.GSC_OAUTH_CREDENTIALS) {
+    return google.searchconsole({ version: 'v1', auth: new google.auth.GoogleAuth({ credentials: parseOAuthCredentials(), scopes: [READONLY_SCOPE] }) });
   }
   const email = process.env.GSC_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_INDEXING_CLIENT_EMAIL;
   const key = process.env.GSC_SERVICE_ACCOUNT_PRIVATE_KEY || process.env.GOOGLE_INDEXING_PRIVATE_KEY;
@@ -36,6 +43,25 @@ export function createClient() {
     ? new google.auth.GoogleAuth({ credentials: { client_email: email, private_key: key.replace(/\\n/g, '\n') }, scopes: [READONLY_SCOPE] })
     : new google.auth.GoogleAuth({ keyFile: process.env.GOOGLE_APPLICATION_CREDENTIALS, scopes: [READONLY_SCOPE] });
   return google.searchconsole({ version: 'v1', auth });
+}
+
+/**
+ * GSC_OAUTH_CREDENTIALS holds the "authorized_user" JSON written by
+ * `gcloud auth application-default login` (raw JSON or base64). It contains a refresh token for a
+ * personal Google account, scoped by that login to webmasters.readonly — no private key.
+ */
+function parseOAuthCredentials() {
+  const raw = process.env.GSC_OAUTH_CREDENTIALS.trim();
+  let json;
+  try {
+    json = JSON.parse(raw.startsWith('{') ? raw : Buffer.from(raw, 'base64').toString('utf8'));
+  } catch {
+    throw new Error('GSC_OAUTH_CREDENTIALS is not valid JSON (or base64-encoded JSON).');
+  }
+  if (json.type !== 'authorized_user' || !json.refresh_token) {
+    throw new Error('GSC_OAUTH_CREDENTIALS must be the authorized_user JSON from `gcloud auth application-default login`.');
+  }
+  return json;
 }
 
 /** Strip anything that could carry credentials before an error reaches the console or a report. */
