@@ -104,12 +104,13 @@ export function FaqList({ items, className }: FaqListProps) {
         <AccordionItem
           key={i}
           value={`item-${i}`}
-          className="border-b border-white/[0.07] px-6 sm:px-8 last:border-b-0"
+          className="border-b border-white/[0.07] px-6 sm:px-8 last:border-b-0 [&>[role=region][data-state=closed]]:hidden"
         >
           <AccordionTrigger className="min-h-[68px] py-5 sm:py-6 text-left text-[16px] font-semibold leading-snug text-foreground/90 hover:no-underline hover:text-foreground transition-colors sm:text-[17px]">
             {faq.question}
           </AccordionTrigger>
-          <AccordionContent className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground">
+          {/* forceMount keeps closed answers in the HTML (hidden until opened) so they are crawlable. */}
+          <AccordionContent forceMount className="pb-6 sm:pb-8 pr-4 sm:pr-8 text-[15px] sm:text-[16px] leading-relaxed text-muted-foreground">
             <span
               dangerouslySetInnerHTML={{
                 __html: faq.answer.includes("support@tryiptv.com")
@@ -194,7 +195,7 @@ export function FAQ() {
                 <AccordionItem
                   key={faq.question}
                   value={`item-${i}`}
-                  className="border-b border-white/[0.07]"
+                  className="border-b border-white/[0.07] [&>[role=region][data-state=closed]]:hidden"
                 >
                   <AccordionTrigger className="gap-3.5 py-3 sm:py-3.5 text-left hover:no-underline group">
                     <span className="flex items-start gap-3.5 sm:gap-5">
@@ -209,7 +210,8 @@ export function FAQ() {
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
+                  {/* forceMount keeps closed answers in the HTML (hidden until opened) so they are crawlable. */}
+                  <AccordionContent forceMount className="pr-3 pb-4.5 pl-7 sm:pl-10 text-[14px] sm:text-[15px] leading-relaxed text-muted-foreground/95">
                     <span
                       dangerouslySetInnerHTML={{
                         __html: faq.answer.includes("support@tryiptv.com")
