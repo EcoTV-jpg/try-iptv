@@ -14,17 +14,17 @@ interface Step {
 const steps: Step[] = [
     {
         icon: Package,
-        title: "Choose a Plan or Start a Trial",
+        title: "Choose your plan",
         description: <>Choose a prepaid plan or start the <Link href="/iptv-free-trial" className="font-semibold text-primary hover:underline">24-hour free trial</Link>.</>
     },
     {
         icon: CheckCircle,
-        title: "Receive Your Login",
+        title: "Receive your login",
         description: "Credentials are typically delivered within 5–15 minutes after confirmation, including M3U or Xtream Codes details."
     },
     {
         icon: Tv,
-        title: "Set Up Your Device",
+        title: "Start watching",
         description: (
           <>
             Enter your credentials into your preferred IPTV player using our universal{" "}
@@ -43,8 +43,8 @@ export function HowItWorks() {
         <SectionHeader
           align="left"
           title="How Does TryIPTV Work?"
-          subtitle="You don’t need a TryIPTV app. TryIPTV provides the service credentials; you use them with a compatible IPTV player."
-          eyebrow="Setup Process"
+          subtitle="You don’t need a TryIPTV app. Choose a plan or the free trial, receive your login, and start watching in a compatible IPTV player."
+          eyebrow="3 easy steps"
           className="mb-8 sm:mb-10 max-w-2xl"
         />
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">

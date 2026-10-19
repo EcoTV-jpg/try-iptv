@@ -7,7 +7,7 @@ import { Container } from "@/components/shared/Container";
 
 export function Hero() {
   return (
-    <section className="relative -mt-20 overflow-hidden pt-24 pb-8 sm:pt-28 sm:pb-10 lg:pt-32 lg:pb-12">
+    <section className="relative -mt-20 overflow-hidden pt-24 pb-0 sm:pt-28 lg:pt-32">
       {/* Ambient background wash */}
       <div
         aria-hidden
@@ -70,9 +70,16 @@ export function Hero() {
             </div>
           </div>
         </div>
+      </Container>
+    </section>
+  );
+}
 
-        {/* Compact Hero Stats Strip */}
-        <div className="mt-7 sm:mt-8 rounded-2xl border border-white/[0.06] bg-[#07080a]/90 py-3 px-3.5 sm:py-3.5 sm:px-5 shadow-sm">
+export function HeroStats() {
+  return (
+    <section id="stats" className="bg-transparent px-0 pt-7 pb-8 sm:pt-8 sm:pb-10 lg:pb-12">
+      <Container>
+        <div className="rounded-2xl border border-white/[0.06] bg-[#07080a]/90 py-3 px-3.5 sm:py-3.5 sm:px-5 shadow-sm">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.05]">
             <div className="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 py-1 sm:py-0">
               <span className="font-headline text-xl sm:text-[22px] font-bold tracking-tight text-foreground">

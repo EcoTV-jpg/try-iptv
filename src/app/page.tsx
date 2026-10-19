@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { Hero } from "@/components/sections/Hero";
+import { Hero, HeroStats } from "@/components/sections/Hero";
 import { WhatYouGet } from "@/components/sections/WhatYouGet";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { HomePricing } from "@/components/sections/HomePricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { HomeExplainer } from "@/components/sections/HomeExplainer";
+import { Comparison } from "@/components/sections/Comparison";
 import { Devices } from "@/components/sections/Devices";
 import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
 import { CTA } from "@/components/sections/CTA";
@@ -14,12 +16,12 @@ import { getHomePageData } from "@/lib/data/home-page";
 import { Schema } from "@/components/shared/Schema";
 import { generateMetadata as generatePageMetadata } from "@/lib/site-config";
 
-const HOME_TITLE = "IPTV Service for USA & UK – 24h Free Trial | TryIPTV";
+const HOME_TITLE = "Best IPTV Service for USA & UK – 24h Free Trial | TryIPTV.com";
 
 export function generateMetadata(): Metadata {
   const baseMetadata = generatePageMetadata({
     title: HOME_TITLE,
-    description: "TryIPTV is an IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial.",
+    description: "TryIPTV.com is an Best IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial.",
     canonical: "/",
     image: "https://www.tryiptv.com/images/best-iptv-service.png",
   });
@@ -52,14 +54,17 @@ export default function Home() {
     <>
       <Schema id="product" schema={productSchema} />
       <Hero />
+      <HeroStats />
       <WhatYouGet />
-      <WhyChooseTryIPTV />
       <HomePricing />
-      <HowItWorks />
       <Devices />
-      <CustomerFeedback />
-      <CTA title="Start a 24-Hour IPTV Free Trial" />
+      <HowItWorks />
+      <Comparison />
+      <HomeExplainer />
+      <WhyChooseTryIPTV />
       <FAQ />
+      <CTA title="Start a 24-Hour IPTV Free Trial" />
+      <CustomerFeedback />
     </>
   );
 }
