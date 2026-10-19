@@ -101,9 +101,9 @@ export function GuideComparisonTable() {
         {/* Xtream Codes Card */}
         <div className="rounded-xl border border-primary/25 bg-[#07080a] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-white/[0.08]">
-            <h4 className="font-headline font-bold text-foreground text-base">
+            <h3 className="font-headline font-bold text-foreground text-base">
               Xtream Codes API
-            </h4>
+            </h3>
             <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border border-primary/30 bg-primary/[0.08] text-primary">
               Recommended
             </span>
@@ -126,9 +126,9 @@ export function GuideComparisonTable() {
         {/* M3U Card */}
         <div className="rounded-xl border border-white/[0.08] bg-[#07080a] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
           <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-white/[0.08]">
-            <h4 className="font-headline font-bold text-foreground text-base">
+            <h3 className="font-headline font-bold text-foreground text-base">
               M3U Playlist URL
-            </h4>
+            </h3>
             <span className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border border-white/[0.08] bg-white/[0.03] text-muted-foreground">
               Standard Format
             </span>
