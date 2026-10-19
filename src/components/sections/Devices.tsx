@@ -59,8 +59,6 @@ export function Devices() {
           <Marquee
             pauseOnHover
             repeat={2}
-            role="list"
-            aria-label="Supported devices"
             className="py-4 sm:py-5 [--duration:38s] [--gap:1rem] sm:[--gap:1.25rem]"
           >
             {devices.map((device) => {
@@ -69,11 +67,13 @@ export function Devices() {
                 <Link
                   key={device.name}
                   href={device.href}
-                  role="listitem"
                   className="group flex shrink-0 items-center gap-3.5 rounded-xl border border-white/[0.08] bg-[#070908] px-5 py-3 shadow-sm transition-all duration-200 hover:border-primary/40 hover:bg-[#080d0a] hover:shadow-md hover:shadow-primary/5 motion-reduce:transition-none"
                   aria-label={`${device.name} IPTV setup guide`}
                 >
-                  <span className="grid size-9.5 place-items-center rounded-lg border border-white/[0.07] bg-white/[0.025] text-foreground/80 transition-all duration-200 group-hover:border-primary/30 group-hover:bg-primary/[0.08] group-hover:text-primary">
+                  <span
+                    aria-hidden
+                    className="grid size-9.5 place-items-center rounded-lg border border-white/[0.07] bg-white/[0.025] text-foreground/80 transition-all duration-200 group-hover:border-primary/30 group-hover:bg-primary/[0.08] group-hover:text-primary"
+                  >
                     <Icon className="size-4.5 shrink-0" />
                   </span>
                   <span className="font-headline text-[14px] sm:text-[14.5px] font-semibold tracking-tight text-foreground/95 transition-colors duration-200 group-hover:text-foreground whitespace-nowrap">

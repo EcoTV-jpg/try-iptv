@@ -65,7 +65,8 @@ export function Marquee({
       {Array.from({ length: repeat }).map((_, i) => (
         <div
           key={i}
-          aria-hidden={i > 0}
+          aria-hidden={i > 0 || undefined}
+          inert={i > 0 ? true : undefined}
           className={cn(
             "velora-marquee-track",
             vertical && "is-vertical",

@@ -45,7 +45,7 @@ export default async function FaqPage() {
       <Section>
         <Container>
           <h2 className="sr-only">Frequently Asked Questions</h2>
-          <FaqList items={faqs} />
+          <FaqList items={faqs} mountClosedAnswers />
         </Container>
       </Section>
 
