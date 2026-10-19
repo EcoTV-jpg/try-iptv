@@ -63,6 +63,11 @@ const homepageFaqs: FaqItem[] = [
       'TryIPTV is an IPTV service provider. It supplies streaming access for compatible devices and IPTV player apps; it is not a player app itself.',
   },
   {
+    question: "Is TryIPTV an IPTV player?",
+    answer:
+      'No. TryIPTV provides IPTV access credentials. You use those credentials with a compatible IPTV player such as the apps listed in our <a href="/players" class="text-primary hover:underline">player guides</a>.',
+  },
+  {
     question: "Does TryIPTV offer a free trial?",
     answer:
       'Yes. TryIPTV offers a 24-hour free trial at $0. <a href="/iptv-free-trial" class="text-primary hover:underline">Request trial access</a>.',

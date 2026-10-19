@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Tv, Zap, Smartphone, CalendarCheck } from "lucide-react";
 import { BlurFade } from "@/components/velora/blur-fade";
 import { Container } from "../shared/Container";
@@ -32,7 +33,8 @@ const benefits = [
 
 export function WhyChooseTryIPTV() {
   return (
-    <Section id="why-tryiptv" className="bg-[#050706] pt-14 pb-10 sm:pt-18 sm:pb-14 lg:pt-20 lg:pb-16">
+    <>
+    <Section id="why-tryiptv" className="bg-[#050706] pt-10 pb-8 sm:pt-14 sm:pb-10 lg:pt-16 lg:pb-12">
       <Container>
         <BlurFade>
           <div className="max-w-2xl">
@@ -71,15 +73,33 @@ export function WhyChooseTryIPTV() {
             );
           })}
         </div>
+      </Container>
+    </Section>
 
-        <div className="mt-8 rounded-2xl border border-white/[0.06] bg-white/[0.015] p-5 sm:p-6">
-          <h3 className="font-headline text-xl font-bold tracking-tight text-foreground">What to Check Before Choosing an IPTV Service</h3>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">Use these practical checks when comparing an IPTV provider: device compatibility, the content you actually watch, M3U or Xtream Codes support, EPG availability, simultaneous stream limits, prepaid billing terms, trial access, and setup guidance.</p>
+    <Section id="how-to-choose" className="bg-[#050706] pt-2 pb-10 sm:pt-4 sm:pb-14 lg:pb-16">
+      <Container>
+        <div className="rounded-2xl border border-white/[0.06] bg-white/[0.015] p-5 sm:p-6">
+          <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl">How to Choose an IPTV Service</h2>
+          <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
+            Before choosing an IPTV provider, confirm that it works with your{" "}
+            <Link href="/devices" className="font-semibold text-primary hover:underline">device</Link>{" "}
+            and{" "}
+            <Link href="/players" className="font-semibold text-primary hover:underline">preferred player</Link>
+            , check whether the channels you need are available, understand the simultaneous connection limit, and review trial,{" "}
+            <Link href="/pricing" className="font-semibold text-primary hover:underline">billing</Link>
+            , refund, EPG and setup terms.{" "}
+            <Link href="/iptv-free-trial" className="font-semibold text-primary hover:underline">Testing the service</Link>{" "}
+            before committing to a long subscription is usually the safest way to evaluate compatibility. For connection planning, see the{" "}
+            <Link href="/guides/iptv-internet-speed" className="font-semibold text-primary hover:underline">IPTV internet speed guide</Link>.
+          </p>
           <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-muted-foreground">
-            {['Device compatibility', 'Content access', 'M3U / Xtream Codes', 'EPG availability', 'Simultaneous connections', 'Prepaid terms', 'Free trial', 'Setup support'].map((criterion) => <span key={criterion} className="rounded-full border border-white/[0.08] bg-card px-3 py-1.5">{criterion}</span>)}
+            {["Device compatibility", "Content access", "M3U / Xtream Codes", "EPG availability", "Simultaneous connections", "Prepaid terms", "Free trial", "Setup support"].map((criterion) => (
+              <span key={criterion} className="rounded-full border border-white/[0.08] bg-card px-3 py-1.5">{criterion}</span>
+            ))}
           </div>
         </div>
       </Container>
     </Section>
+    </>
   );
 }

@@ -16,6 +16,18 @@ import { Section } from "../shared/Section";
 import { devices } from "@/lib/site-data/devices";
 import { Marquee } from "@/components/velora/marquee";
 
+const deviceAnchorByHref: Record<string, string> = {
+  "/devices/firestick-iptv": "IPTV for Fire TV Stick",
+  "/devices/samsung-tv-iptv": "IPTV for Samsung TV",
+  "/devices/lg-tv-iptv": "IPTV for LG TV",
+  "/devices/android-tv-iptv": "IPTV for Android TV",
+  "/devices/apple-tv-iptv": "IPTV for Apple TV",
+  "/devices/windows-iptv": "IPTV for Windows",
+  "/devices/mac-iptv": "IPTV for Mac",
+  "/devices/roku-iptv": "IPTV for Roku",
+  "/devices/mag-box-iptv": "IPTV for MAG Box",
+};
+
 const deviceIconMap: Record<string, ComponentType<{ className?: string }>> = {
   SiMacos,
   SiAndroid,
@@ -33,7 +45,7 @@ export function Devices() {
     <Section id="devices" className="border-y border-white/[0.06] bg-[#070a08] py-12 sm:py-14 lg:py-16">
       <Container>
         <SectionHeader
-          title="Watch on Your Preferred Devices"
+          title="IPTV-Compatible Devices"
           subtitle="TryIPTV works across supported TVs, streaming devices, computers, and IPTV players. Detailed installation steps live in the device guides."
           eyebrow="Device Compatibility"
           className="mb-0 max-w-3xl"
@@ -63,12 +75,12 @@ export function Devices() {
           >
             {devices.map((device) => {
               const Icon = deviceIconMap[device.icon] || Tv;
+              const label = deviceAnchorByHref[device.href] ?? device.name;
               return (
                 <Link
                   key={device.name}
                   href={device.href}
                   className="group flex shrink-0 items-center gap-3.5 rounded-xl border border-white/[0.08] bg-[#070908] px-5 py-3 shadow-sm transition-all duration-200 hover:border-primary/40 hover:bg-[#080d0a] hover:shadow-md hover:shadow-primary/5 motion-reduce:transition-none"
-                  aria-label={`${device.name} IPTV setup guide`}
                 >
                   <span
                     aria-hidden
@@ -77,7 +89,7 @@ export function Devices() {
                     <Icon className="size-4.5 shrink-0" />
                   </span>
                   <span className="font-headline text-[14px] sm:text-[14.5px] font-semibold tracking-tight text-foreground/95 transition-colors duration-200 group-hover:text-foreground whitespace-nowrap">
-                    {device.name}
+                    {label}
                   </span>
                 </Link>
               );

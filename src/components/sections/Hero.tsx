@@ -24,15 +24,15 @@ export function Hero() {
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-3.5 py-1 text-xs font-mono font-semibold uppercase tracking-wider text-primary">
               <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-              Best IPTV Streaming • 2 Connections Included
+              Prepaid IPTV Service • 2 Connections Included
             </div>
 
             <h1 className="mt-4 font-headline text-[32px] sm:text-[42px] lg:text-[48px] font-bold leading-[1.1] tracking-tight text-foreground">
-              TryIPTV — <span className="text-primary">Best IPTV Service</span> in USA, UK &amp; Worldwide
+              IPTV Service for the USA &amp; UK
             </h1>
 
             <p className="mt-4 max-w-xl text-[15.5px] sm:text-[16.5px] leading-relaxed text-muted-foreground/90">
-              TryIPTV is an IPTV service and provider for viewers in the USA, UK, and supported regions. It provides live TV, sports, movies, and TV shows through compatible devices and IPTV player apps—not a player app itself. Choose a prepaid plan or use the free trial to see whether the service fits your setup.
+              TryIPTV is a prepaid IPTV service for viewers in the USA, UK, and supported regions. Each subscription includes two simultaneous connections and works with compatible IPTV players using Xtream Codes or M3U. Start with a 24-hour free trial to test the service on your own device before paying.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -48,8 +48,8 @@ export function Hero() {
               </Button>
             </div>
 
-            <p className="mt-3 text-[11px] font-medium tracking-wide text-muted-foreground/65">
-              Plans from $16 • Prepaid • No auto-renewal
+            <p className="mt-3 max-w-xl text-[12px] sm:text-[12.5px] font-medium leading-relaxed tracking-wide text-muted-foreground/75">
+              24-hour trial · 2 simultaneous connections · Prepaid · No auto-renewal · Activation typically 5–15 min
             </p>
           </div>
 
