@@ -5,6 +5,8 @@ import { WhatYouGet } from "@/components/sections/WhatYouGet";
 import { WhyChooseTryIPTV } from "@/components/sections/WhyChooseTryIPTV";
 import { HomePricing } from "@/components/sections/HomePricing";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { HomeExplainer } from "@/components/sections/HomeExplainer";
+import { Comparison } from "@/components/sections/Comparison";
 import { Devices } from "@/components/sections/Devices";
 import { CustomerFeedback } from "@/components/sections/CustomerFeedback";
 import { CTA } from "@/components/sections/CTA";
@@ -55,7 +57,9 @@ export default function Home() {
       <WhatYouGet />
       <WhyChooseTryIPTV />
       <HomePricing />
+      <Comparison />
       <HowItWorks />
+      <HomeExplainer />
       <Devices />
       <CustomerFeedback />
       <CTA title="Start a 24-Hour IPTV Free Trial" />
